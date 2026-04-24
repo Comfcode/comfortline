@@ -97,9 +97,36 @@ export function BookingWidget() {
   const paxSummary = paxLabel(totalPax, b.passengerOne, b.passengerFew, b.passengerMany)
     + (pax.vehicleClass !== "any" ? ` · ${classLabel}` : "");
 
-  function handleSubmit(e: React.FormEvent) {
+  const [submitting, setSubmitting] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    toast({ title: b.toastTitle, description: b.toastDesc });
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          from, to, date,
+          adults: pax.adults,
+          children: pax.children,
+          babies: pax.babies,
+          pets: pax.pets,
+          suitcases: pax.suitcases,
+          vehicleClass: pax.vehicleClass,
+          lang: t.lang,
+        }),
+      });
+      if (res.ok) {
+        toast({ title: b.toastTitle, description: b.toastDesc });
+      } else {
+        toast({ title: "Error", description: "Failed to send request. Please try again.", variant: "destructive" });
+      }
+    } catch {
+      toast({ title: "Error", description: "Failed to send request. Please try again.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   const Sep = () => <div className="shrink-0 w-px h-10 bg-gray-200 self-center" />;
@@ -219,9 +246,9 @@ export function BookingWidget() {
 
         {/* SUBMIT */}
         <div className="px-3 py-3 shrink-0 flex items-center">
-          <button type="submit"
-            className="w-full md:w-auto px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30">
-            {b.cta}
+          <button type="submit" disabled={submitting}
+            className="w-full md:w-auto px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30 disabled:opacity-70 disabled:cursor-not-allowed">
+            {submitting ? "..." : b.cta}
           </button>
         </div>
       </div>

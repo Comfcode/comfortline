@@ -3,6 +3,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 type Lang = "ru" | "en";
 
 interface Translations {
+  lang: "ru" | "en";
   nav: {
     services: string;
     fleet: string;
@@ -116,6 +117,7 @@ interface Translations {
 }
 
 const ru: Translations = {
+  lang: "ru",
   nav: {
     services: "Услуги",
     fleet: "Автопарк",
@@ -250,6 +252,7 @@ const ru: Translations = {
 };
 
 const en: Translations = {
+  lang: "en",
   nav: {
     services: "Services",
     fleet: "Fleet",
