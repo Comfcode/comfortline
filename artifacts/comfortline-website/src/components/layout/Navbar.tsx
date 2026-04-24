@@ -1,30 +1,22 @@
 import { useState, useEffect } from "react";
-import { Moon, Sun, Menu, X, Phone } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/context/language-context";
 import { SiWhatsapp, SiTelegram, SiViber } from "react-icons/si";
 import { Instagram } from "lucide-react";
 
 export function Navbar() {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { lang, setLang, t } = useLang();
 
   useEffect(() => {
-    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   const navLinks = [
     { name: t.nav.services, href: "#services" },
@@ -75,7 +67,6 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* Divider */}
             <div className="h-5 w-px bg-border/60" />
 
             {/* Social icons */}
@@ -94,7 +85,6 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* Divider */}
             <div className="h-5 w-px bg-border/60" />
 
             <a
@@ -121,27 +111,10 @@ export function Navbar() {
                 EN
               </button>
             </div>
-
-            {mounted && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="rounded-full w-9 h-9 border border-border/50"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-4 w-4 text-primary" />
-                ) : (
-                  <Moon className="h-4 w-4 text-primary" />
-                )}
-              </Button>
-            )}
           </div>
 
           {/* Mobile Menu Toggle */}
           <div className="flex items-center lg:hidden gap-3">
-            {/* Mobile social icons */}
             <div className="hidden sm:flex items-center gap-2">
               {socialLinks.map(({ icon: Icon, href, label, color }) => (
                 <a
@@ -157,20 +130,6 @@ export function Navbar() {
               ))}
             </div>
 
-            {mounted && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="rounded-full w-9 h-9 border border-border/50"
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-4 w-4 text-primary" />
-                ) : (
-                  <Moon className="h-4 w-4 text-primary" />
-                )}
-              </Button>
-            )}
             <Button
               variant="ghost"
               size="icon"
@@ -203,7 +162,6 @@ export function Navbar() {
               <Phone className="h-5 w-5 text-primary" />
               +375 (29) 155-27-76
             </a>
-            {/* Mobile social icons */}
             <div className="flex items-center gap-4 p-2">
               {socialLinks.map(({ icon: Icon, href, label, color }) => (
                 <a
