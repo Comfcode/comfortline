@@ -52,11 +52,13 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center gap-1 group shrink-0">
-            <span className="text-xl md:text-2xl font-bold text-foreground transition-colors group-hover:text-primary">
+          <a href="/" className="flex items-center gap-1 group shrink-0">
+            <span className="text-xl md:text-2xl font-bold text-foreground transition-colors group-hover:text-primary underline-offset-4 group-hover:underline decoration-primary/40">
               Comfort
             </span>
-            <span className="text-xl md:text-2xl font-bold text-primary">Line</span>
+            <span className="text-xl md:text-2xl font-bold text-primary transition-colors group-hover:opacity-80 underline-offset-4 group-hover:underline decoration-primary/40">
+              Line
+            </span>
           </a>
 
           {/* Desktop Nav */}
