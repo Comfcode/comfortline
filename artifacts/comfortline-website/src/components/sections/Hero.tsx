@@ -8,7 +8,7 @@ export function Hero() {
   const { t } = useLang();
 
   return (
-    <section className="relative min-h-[100dvh] flex items-end justify-center overflow-hidden pt-20">
+    <section className="relative min-h-[100dvh] flex items-end justify-center pt-20">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-background/70 dark:bg-background/80 z-10"></div>
