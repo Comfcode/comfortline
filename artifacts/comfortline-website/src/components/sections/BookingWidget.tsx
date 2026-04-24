@@ -144,7 +144,7 @@ export function BookingWidget() {
           <FieldShell className="flex-1">
             <input type="date" value={date} onChange={e => setDate(e.target.value)}
               min={new Date().toISOString().split("T")[0]}
-              className={`${inputBase} [color-scheme:light] peer`} />
+              className={`${inputBase} [color-scheme:light] peer [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none`} />
             {/* Label always floats for date since browser shows placeholder */}
             <label className={floatingLabel}>{b.date}</label>
           </FieldShell>
