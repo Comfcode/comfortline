@@ -5,7 +5,7 @@ outputs = []
 id = "0h8bbrECqKg6i4_UbFXvF"
 uri = "file://artifacts/comfortline-website/public/hero-bg.png"
 type = "image"
-title = "mercedes hero background"
+title = "Premium black sedan night city"
 
 [[generated]]
 id = "Da9iWR8_LXozgOeK_-A95"
@@ -17,52 +17,22 @@ title = "Luxury car interior detail"
 id = "ykOaXAUz75McL_S-9RF-V"
 uri = "file://artifacts/comfortline-website/public/car-logan.png"
 type = "image"
-title = "sedan night city bokeh dark"
+title = "Economy white sedan"
 
 [[generated]]
 id = "T4KLotfvBq7BsRyuMcAOj"
 uri = "file://artifacts/comfortline-website/public/car-polo.png"
 type = "image"
-title = "sedan night red bokeh front"
+title = "Comfort silver sedan"
 
 [[generated]]
 id = "DytUy7lccGM65_-HBs-yw"
 uri = "file://artifacts/comfortline-website/public/car-passat.png"
 type = "image"
-title = "executive sedan night amber bokeh"
+title = "Comfort plus black sedan"
 
 [[generated]]
 id = "InJDzsoKlrjZ3mcWSrMiX"
 uri = "file://artifacts/comfortline-website/public/car-van.png"
 type = "image"
-title = "luxury van night city bokeh"
-
-[[generated]]
-id = "JKJ-OhswsD_NSvKA2srHQ"
-uri = "file://artifacts/comfortline-website/public/car-logan-day.png"
-type = "image"
-title = "black logan day"
-
-[[generated]]
-id = "X4qPi8IcfAgOazd9qscD8"
-uri = "file://artifacts/comfortline-website/public/car-polo-day.png"
-type = "image"
-title = "black polo day"
-
-[[generated]]
-id = "PS2H1vhf1wHJt4hOhJn0t"
-uri = "file://artifacts/comfortline-website/public/car-passat-day.png"
-type = "image"
-title = "black passat day"
-
-[[generated]]
-id = "VF_5Xu4QJRPs9XxsQqieo"
-uri = "file://artifacts/comfortline-website/public/car-van-day.png"
-type = "image"
-title = "black van day"
-
-[[generated]]
-id = "Y5I8tRFxkhoUu2iaI3Ew9"
-uri = "file://artifacts/comfortline-website/public/hero-bg-day.png"
-type = "image"
-title = "black mercedes day hero"
+title = "Black passenger minivan"
