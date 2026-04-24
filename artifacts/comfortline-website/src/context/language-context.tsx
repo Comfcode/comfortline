@@ -36,10 +36,12 @@ interface Translations {
     childrenNote: string;
     babies: string;
     babiesNote: string;
+    pets: string;
+    petsNote: string;
+    maxPassengers: string;
     suitcases: string;
     vehicleClass: string;
     classAny: string;
-    classEconomy: string;
     classComfort: string;
     classBusiness: string;
     classPremium: string;
@@ -147,10 +149,12 @@ const ru: Translations = {
     childrenNote: "2–12 лет",
     babies: "Младенцы",
     babiesNote: "до 2 лет",
-    suitcases: "Чемоданы",
-    vehicleClass: "Класс автомобиля",
+    pets: "Питомцы",
+    petsNote: "до 30 кг",
+    maxPassengers: "Максимум 6 пассажиров",
+    suitcases: "Количество чемоданов",
+    vehicleClass: "Класс",
     classAny: "Любой",
-    classEconomy: "Эконом",
     classComfort: "Комфорт",
     classBusiness: "Бизнес",
     classPremium: "Премиум",
@@ -279,10 +283,12 @@ const en: Translations = {
     childrenNote: "2–12 years",
     babies: "Babies",
     babiesNote: "under 2 years",
-    suitcases: "Suitcases",
-    vehicleClass: "Vehicle class",
+    pets: "Pets",
+    petsNote: "up to 30 kg",
+    maxPassengers: "Maximum 6 passengers",
+    suitcases: "Number of suitcases",
+    vehicleClass: "Class",
     classAny: "Any",
-    classEconomy: "Economy",
     classComfort: "Comfort",
     classBusiness: "Business",
     classPremium: "Premium",

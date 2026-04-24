@@ -1,15 +1,16 @@
 import { useState, useRef, useEffect } from "react";
-import { ArrowLeftRight, CalendarDays, ChevronDown, X, Briefcase } from "lucide-react";
+import { ArrowLeftRight, CalendarDays, ChevronDown, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { useToast } from "@/hooks/use-toast";
 
-type VehicleClass = "any" | "economy" | "comfort" | "business" | "premium";
+type VehicleClass = "any" | "comfort" | "business" | "premium";
 
 interface PassengerState {
   adults: number;
   children: number;
   babies: number;
+  pets: number;
   suitcases: number;
   vehicleClass: VehicleClass;
 }
@@ -70,13 +71,12 @@ export function BookingWidget() {
   const [date, setDate] = useState("");
   const [paxOpen, setPaxOpen] = useState(false);
   const [pax, setPax] = useState<PassengerState>({
-    adults: 1, children: 0, babies: 0, suitcases: 1, vehicleClass: "any",
+    adults: 1, children: 0, babies: 0, pets: 0, suitcases: 1, vehicleClass: "any",
   });
   const paxRef = useRef<HTMLDivElement>(null);
 
   const classOptions: { key: VehicleClass; label: string }[] = [
     { key: "any",      label: b.classAny     },
-    { key: "economy",  label: b.classEconomy  },
     { key: "comfort",  label: b.classComfort  },
     { key: "business", label: b.classBusiness },
     { key: "premium",  label: b.classPremium  },
@@ -175,24 +175,25 @@ export function BookingWidget() {
                 transition={{ duration: 0.15 }}
                 className="absolute top-full left-0 right-0 md:left-auto md:right-0 md:min-w-[320px] mt-2 bg-white border border-gray-200 rounded-xl shadow-2xl z-50 p-5"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <p className="text-xs text-gray-400 font-medium">{b.passengersClass}</p>
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-xs text-gray-400">{b.maxPassengers}</p>
                   <button type="button" onClick={() => setPaxOpen(false)}
                     className="text-gray-300 hover:text-gray-600 transition-colors">
                     <X className="h-4 w-4" />
                   </button>
                 </div>
 
-                <Counter label={b.adults}   note={b.adultsNote}   value={pax.adults}    min={1} max={8} onChange={v => setPax(p => ({ ...p, adults: v }))} />
-                <Counter label={b.children} note={b.childrenNote} value={pax.children}  max={7}         onChange={v => setPax(p => ({ ...p, children: v }))} />
-                <Counter label={b.babies}   note={b.babiesNote}   value={pax.babies}    max={4}         onChange={v => setPax(p => ({ ...p, babies: v }))} />
-                <Counter label={b.suitcases} note=""              value={pax.suitcases} max={10}        onChange={v => setPax(p => ({ ...p, suitcases: v }))} />
+                <Counter label={b.adults}   note={b.adultsNote}   value={pax.adults}   min={1} max={8} onChange={v => setPax(p => ({ ...p, adults: v }))} />
+                <Counter label={b.children} note={b.childrenNote} value={pax.children} max={5}         onChange={v => setPax(p => ({ ...p, children: v }))} />
+                <Counter label={b.babies}   note={b.babiesNote}   value={pax.babies}   max={4}         onChange={v => setPax(p => ({ ...p, babies: v }))} />
+                <Counter label={b.pets}     note={b.petsNote}     value={pax.pets}     max={2}         onChange={v => setPax(p => ({ ...p, pets: v }))} />
+
+                <div className="my-3 border-t border-gray-100" />
+
+                <Counter label={b.suitcases} note=""              value={pax.suitcases} max={10}       onChange={v => setPax(p => ({ ...p, suitcases: v }))} />
 
                 <div className="mt-4 pt-4 border-t border-gray-100">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
-                    <Briefcase className="h-3.5 w-3.5" />
-                    {b.vehicleClass}
-                  </div>
+                  <p className="text-base font-semibold text-gray-800 mb-3">{b.vehicleClass}</p>
                   <div className="grid grid-cols-2 gap-2">
                     {classOptions.map(opt => (
                       <button key={opt.key} type="button"
