@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "0h8bbrECqKg6i4_UbFXvF"
@@ -36,3 +35,15 @@ id = "InJDzsoKlrjZ3mcWSrMiX"
 uri = "file://artifacts/comfortline-website/public/car-van.png"
 type = "image"
 title = "Black passenger minivan"
+
+[[outputs]]
+id = "Ry-K_H6xv_uw-bCtwdzNy"
+uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"
+type = "image"
+title = "luxury car interior dark cinematic leather premium"
+
+[[outputs]]
+id = "01KrmElVCb2rh2BpBYrvO"
+uri = "file://artifacts/mockup-sandbox/public/images/cinematic-bg.jpg"
+type = "image"
+title = "dark cinematic luxury car driving night city blurred background"
