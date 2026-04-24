@@ -1,26 +1,63 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { BookingWidget } from "@/components/sections/BookingWidget";
-import { useTheme } from "next-themes";
+
+const slides = [
+  { src: "/hero-bg.png", alt: "Premium black Mercedes at night" },
+  { src: "/hero-bg-day.png", alt: "Premium black Mercedes in daylight" },
+  { src: "/car-interior.png", alt: "Luxury car interior" },
+  { src: "/car-passat.png", alt: "Comfort sedan exterior" },
+];
+
+const SLIDE_INTERVAL = 5000;
 
 export function Hero() {
   const { t } = useLang();
-  const { resolvedTheme } = useTheme();
-  const isLight = resolvedTheme === "light";
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent(prev => (prev + 1) % slides.length);
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="relative min-h-[100dvh] flex items-end justify-center overflow-hidden pt-20">
-      {/* Background Image with Overlay */}
+      {/* Rotating background images */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-background/70 dark:bg-background/80 z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10"></div>
-        <img
-          src={isLight ? "/hero-bg-day.png" : "/hero-bg.png"}
-          alt="Premium black Mercedes sedan"
-          className="w-full h-full object-cover object-center"
-        />
+        <AnimatePresence mode="sync">
+          <motion.img
+            key={current}
+            src={slides[current].src}
+            alt={slides[current].alt}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        </AnimatePresence>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-background/65 dark:bg-background/75 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/35 to-transparent z-10"></div>
+      </div>
+
+      {/* Slide indicator dots */}
+      <div className="absolute bottom-36 right-6 z-20 flex gap-1.5">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === current ? "w-6 bg-primary" : "w-1.5 bg-foreground/30 hover:bg-foreground/50"
+            }`}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-20 pb-12 pt-32">
