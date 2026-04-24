@@ -1,0 +1,195 @@
+<form class="simple_form order-selects-wrapper" id="new_order" autocomplete="off" data-controller="home-form" data-action="home-form#formSubmitted input-&gt;home-form#allInputsFilled" data-home-form-prev-arrow-value="&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;7&quot; height=&quot;13&quot; viewBox=&quot;0 0 7 13&quot; fill=&quot;#CBD5E1&quot;&gt;&lt;path d=&quot;M6.99988 1.87431L2.71181 6.58597L6.99988 11.2976L5.81055 12.5859L0.333211 6.58594L5.81055 0.585938L6.99988 1.87431Z&quot; fill=&quot;#FAC800&quot;&gt;&lt;/path&gt;&lt;/svg&gt;" data-home-form-next-arrow-value="&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;7&quot; height=&quot;13&quot; viewBox=&quot;0 0 7 13&quot; fill=&quot;#CBD5E1&quot;&gt;
+  &lt;path d=&quot;M0 1.87431L4.28807 6.58597L0 11.2976L1.18933 12.5859L6.66667 6.58594L1.18933 0.585938L0 1.87431Z&quot; fill=&quot;#FAC800&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;" data-home-form-locale-value="en" data-home-form-popular-destinations-title-value="Popular destinations" data-home-form-submit-tooltip-value="Fill in all fields" data-home-form-nothing-found-value="Nothing found" data-home-form-passenger-count-value="There must be at least 1 adult" data-home-form-bags-number-value="There must be at least 1 suitcase" data-home-form-countries-value="[&quot;Russia&quot;,&quot;Росія&quot;,&quot;Rosja&quot;,&quot;North Korea&quot;,&quot;Північна Корея&quot;,&quot;Korea Północna&quot;,&quot;USA&quot;,&quot;Сполучені Штати Америки&quot;,&quot;Stany Zjednoczone&quot;,&quot;Canada&quot;,&quot;Канада&quot;,&quot;Kanada&quot;,&quot;Mexico&quot;,&quot;Мексика&quot;,&quot;Meksyk&quot;,&quot;Brazil&quot;,&quot;Бразилія&quot;,&quot;Brazylia&quot;,&quot;Argentina&quot;,&quot;Аргентина&quot;,&quot;Argentyna&quot;,&quot;Colombia&quot;,&quot;Колумбія&quot;,&quot;Kolumbia&quot;,&quot;Peru&quot;,&quot;Перу&quot;,&quot;Peru&quot;,&quot;Venezuela&quot;,&quot;Венесуела&quot;,&quot;Wenezuela&quot;,&quot;Chile&quot;,&quot;Чилі&quot;,&quot;Chile&quot;,&quot;Ecuador&quot;,&quot;Еквадор&quot;,&quot;Ekwador&quot;,&quot;Bolivia&quot;,&quot;Болівія&quot;,&quot;Boliwia&quot;,&quot;Paraguay&quot;,&quot;Парагвай&quot;,&quot;Paragwaj&quot;,&quot;Uruguay&quot;,&quot;Уруґвай&quot;,&quot;Urugwaj&quot;,&quot;Australia&quot;,&quot;Австралія&quot;,&quot;Australia&quot;,&quot;New Zealand&quot;,&quot;Нова Зеландія&quot;,&quot;Nowa Zelandia&quot;,&quot;Papua New Guinea&quot;,&quot;Папуа-Нова Гвінея&quot;,&quot;Papua-Nowa Gwinea&quot;,&quot;Fiji&quot;,&quot;Фіджі&quot;,&quot;Fidżi&quot;,&quot;Solomon Islands&quot;,&quot;Соломонові острови&quot;,&quot;Wyspy Salomona&quot;,&quot;Vanuatu&quot;,&quot;Вануату&quot;,&quot;Vanuatu&quot;,&quot;Samoa&quot;,&quot;Самоа&quot;,&quot;Samoa&quot;,&quot;Tonga&quot;,&quot;Тонґа&quot;,&quot;Belarus&quot;,&quot;Білорусь&quot;,&quot;Białoruś&quot;]" data-home-form-vacation-dates-value="[]" data-home-form-popular-destinations-value="{&quot;from&quot;:[{&quot;value&quot;:&quot;ChIJBUVa4U7P1EAR_kYBF9IxSXY&quot;,&quot;title&quot;:&quot;Kyiv, Ukraine&quot;},{&quot;value&quot;:&quot;ChIJV5oQCXzdOkcR4ngjARfFI0I&quot;,&quot;title&quot;:&quot;Lviv, Ukraine&quot;},{&quot;value&quot;:&quot;ChIJ0RhONcBEFkcRv4pHdrW2a7Q&quot;,&quot;title&quot;:&quot;Kraków, Poland&quot;},{&quot;value&quot;:&quot;ChIJAZ-GmmbMHkcR_NPqiCq-8HI&quot;,&quot;title&quot;:&quot;Warsaw, Poland&quot;},{&quot;value&quot;:&quot;ChIJoWm3KDZ8yUARPN1JVzDW0Tc&quot;,&quot;title&quot;:&quot;Chișinău, Moldova&quot;},{&quot;value&quot;:&quot;ChIJSdQUzOP6PEcR7bI-szENJNI&quot;,&quot;title&quot;:&quot;Rzeszów, Poland&quot;}],&quot;to&quot;:[{&quot;value&quot;:&quot;ChIJAZ-GmmbMHkcR_NPqiCq-8HI&quot;,&quot;title&quot;:&quot;Warsaw, Poland&quot;},{&quot;value&quot;:&quot;ChIJ0RhONcBEFkcRv4pHdrW2a7Q&quot;,&quot;title&quot;:&quot;Kraków, Poland&quot;},{&quot;value&quot;:&quot;ChIJV5oQCXzdOkcR4ngjARfFI0I&quot;,&quot;title&quot;:&quot;Lviv, Ukraine&quot;},{&quot;value&quot;:&quot;ChIJSdQUzOP6PEcR7bI-szENJNI&quot;,&quot;title&quot;:&quot;Rzeszów, Poland&quot;},{&quot;value&quot;:&quot;ChIJBUVa4U7P1EAR_kYBF9IxSXY&quot;,&quot;title&quot;:&quot;Kyiv, Ukraine&quot;},{&quot;value&quot;:&quot;ChIJoWm3KDZ8yUARPN1JVzDW0Tc&quot;,&quot;title&quot;:&quot;Chișinău, Moldova&quot;}]}" novalidate="novalidate" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="id-2OGLXi1tKRqfamYHtDPsd2UaQkwMEI4iCjjzezS05bomCtD6MiwmTnZy3yomRoiZMFKVOmB7noN8S3-3oGA" autocomplete="off">
+  <div class="relative w-full">
+    <div class="mb-3 hidden order_from_place_id"><input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md hidden" data-home-form-target="fromPlaceId" autocomplete="off" type="hidden" name="order[from_place_id]" id="order_from_place_id"></div>
+    <input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md string optional peer input-home-field" data-action="input-&gt;home-form#inputChanged focus-&gt;home-form#inputFocused keydown.down-&gt;home-form#selectKeyPress keydown.up-&gt;home-form#selectKeyPress keydown.enter-&gt;home-form#selectKeyPress" data-home-form-target="fromSelect" data-home-form-select-name-param="fromSelect" placeholder=" " type="text" name="order[from]" id="order_from">
+    <label class="string optional input-home-label" for="order_from">From</label>
+    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none" class="btn-change invalid-btn-change" data-action="click-&gt;home-form#changeDirection">
+<rect x="33" y="1" width="32" height="32" rx="16" transform="rotate(90 33 1)" fill="white"></rect>
+<rect x="33" y="1" width="32" height="32" rx="16" transform="rotate(90 33 1)" stroke="black" stroke-width="2"></rect>
+<path d="M20 8L24 12M24 12L20 16M24 12L10 12M14 26L10 22M10 22L14 18M10 22L24 22" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+    <div class="input-home-error hidden">
+      <div class="input-home-error-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+<path d="M6.5 9.625C6.67708 9.625 6.82563 9.565 6.94563 9.445C7.06563 9.325 7.12542 9.17667 7.125 9C7.12458 8.82333 7.06458 8.675 6.945 8.555C6.82542 8.435 6.67708 8.375 6.5 8.375C6.32292 8.375 6.17458 8.435 6.055 8.555C5.93542 8.675 5.87542 8.82333 5.875 9C5.87458 9.17667 5.93458 9.32521 6.055 9.44563C6.17542 9.56604 6.32375 9.62583 6.5 9.625ZM6.5 7.125C6.67708 7.125 6.82563 7.065 6.94563 6.945C7.06563 6.825 7.12542 6.67667 7.125 6.5V4C7.125 3.82292 7.065 3.67458 6.945 3.555C6.825 3.43542 6.67667 3.37542 6.5 3.375C6.32333 3.37458 6.175 3.43458 6.055 3.555C5.935 3.67542 5.875 3.82375 5.875 4V6.5C5.875 6.67708 5.935 6.82563 6.055 6.94563C6.175 7.06563 6.32333 7.12542 6.5 7.125ZM6.5 12.75C5.63542 12.75 4.82292 12.5858 4.0625 12.2575C3.30208 11.9292 2.64063 11.484 2.07813 10.9219C1.51563 10.3598 1.07042 9.69833 0.742501 8.9375C0.414584 8.17667 0.250417 7.36417 0.250001 6.5C0.249584 5.63583 0.413751 4.82333 0.742501 4.0625C1.07125 3.30167 1.51646 2.64021 2.07813 2.07813C2.63979 1.51604 3.30125 1.07083 4.0625 0.7425C4.82375 0.414167 5.63625 0.25 6.5 0.25C7.36375 0.25 8.17625 0.414167 8.9375 0.7425C9.69875 1.07083 10.3602 1.51604 10.9219 2.07813C11.4835 2.64021 11.929 3.30167 12.2581 4.0625C12.5873 4.82333 12.7513 5.63583 12.75 6.5C12.7488 7.36417 12.5846 8.17667 12.2575 8.9375C11.9304 9.69833 11.4852 10.3598 10.9219 10.9219C10.3585 11.484 9.69708 11.9294 8.9375 12.2581C8.17792 12.5869 7.36542 12.7508 6.5 12.75Z" fill="#DF0000"></path>
+</svg>
+      </div>
+      <span>Please indicate where you are coming from.</span>
+    </div>
+  <div class="home-modal-dropdown hidden modal-base !px-0 !w-full" data-action="click@window-&gt;home-form#closeDropdown" data-home-form-select-name-param="fromSelect"></div></div>
+
+  <div class="relative w-full">
+    <div class="mb-3 hidden order_to_place_id"><input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md hidden" data-home-form-target="toPlaceId" autocomplete="off" type="hidden" name="order[to_place_id]" id="order_to_place_id"></div>
+    <input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md string optional peer input-home-field" data-action="input-&gt;home-form#inputChanged focus-&gt;home-form#inputFocused keydown.down-&gt;home-form#selectKeyPress keydown.up-&gt;home-form#selectKeyPress keydown.enter-&gt;home-form#selectKeyPress" data-home-form-target="toSelect" data-home-form-select-name-param="toSelect" placeholder=" " type="text" name="order[to]" id="order_to">
+    <label class="string optional input-home-label" for="order_to">To</label>
+    <div class="input-home-error hidden">
+      <div class="input-home-error-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+<path d="M6.5 9.625C6.67708 9.625 6.82563 9.565 6.94563 9.445C7.06563 9.325 7.12542 9.17667 7.125 9C7.12458 8.82333 7.06458 8.675 6.945 8.555C6.82542 8.435 6.67708 8.375 6.5 8.375C6.32292 8.375 6.17458 8.435 6.055 8.555C5.93542 8.675 5.87542 8.82333 5.875 9C5.87458 9.17667 5.93458 9.32521 6.055 9.44563C6.17542 9.56604 6.32375 9.62583 6.5 9.625ZM6.5 7.125C6.67708 7.125 6.82563 7.065 6.94563 6.945C7.06563 6.825 7.12542 6.67667 7.125 6.5V4C7.125 3.82292 7.065 3.67458 6.945 3.555C6.825 3.43542 6.67667 3.37542 6.5 3.375C6.32333 3.37458 6.175 3.43458 6.055 3.555C5.935 3.67542 5.875 3.82375 5.875 4V6.5C5.875 6.67708 5.935 6.82563 6.055 6.94563C6.175 7.06563 6.32333 7.12542 6.5 7.125ZM6.5 12.75C5.63542 12.75 4.82292 12.5858 4.0625 12.2575C3.30208 11.9292 2.64063 11.484 2.07813 10.9219C1.51563 10.3598 1.07042 9.69833 0.742501 8.9375C0.414584 8.17667 0.250417 7.36417 0.250001 6.5C0.249584 5.63583 0.413751 4.82333 0.742501 4.0625C1.07125 3.30167 1.51646 2.64021 2.07813 2.07813C2.63979 1.51604 3.30125 1.07083 4.0625 0.7425C4.82375 0.414167 5.63625 0.25 6.5 0.25C7.36375 0.25 8.17625 0.414167 8.9375 0.7425C9.69875 1.07083 10.3602 1.51604 10.9219 2.07813C11.4835 2.64021 11.929 3.30167 12.2581 4.0625C12.5873 4.82333 12.7513 5.63583 12.75 6.5C12.7488 7.36417 12.5846 8.17667 12.2575 8.9375C11.9304 9.69833 11.4852 10.3598 10.9219 10.9219C10.3585 11.484 9.69708 11.9294 8.9375 12.2581C8.17792 12.5869 7.36542 12.7508 6.5 12.75Z" fill="#DF0000"></path>
+</svg>
+      </div>
+      <span>Tell us where you are going.</span>
+    </div>
+  <div class="home-modal-dropdown hidden modal-base !px-0 !w-full" data-action="click@window-&gt;home-form#closeDropdown" data-home-form-select-name-param="toSelect"></div></div>
+
+  <div class="relative w-full" data-action="click-&gt;home-form#openFlatpicker">
+    <input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md string required peer input-home-field flatpickr-input" data-home-form-target="transferDate" placeholder=" " type="text" name="order[transfer_date]" id="order_transfer_date" readonly="readonly">
+    <label class="date optional input-home-label" for="order_transfer_date">Date of trip</label>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none" class="btn-home-calendar-icon">
+<path d="M19 19.5H5V8.5H19M16 1.5V3.5H8V1.5H6V3.5H5C3.89 3.5 3 4.39 3 5.5V19.5C3 20.0304 3.21071 20.5391 3.58579 20.9142C3.96086 21.2893 4.46957 21.5 5 21.5H19C19.5304 21.5 20.0391 21.2893 20.4142 20.9142C20.7893 20.5391 21 20.0304 21 19.5V5.5C21 4.96957 20.7893 4.46086 20.4142 4.08579C20.0391 3.71071 19.5304 3.5 19 3.5H18V1.5M17 12.5H12V17.5H17V12.5Z" fill="#878787"></path>
+</svg>
+    <div class="input-home-error hidden">
+      <div class="input-home-error-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+<path d="M6.5 9.625C6.67708 9.625 6.82563 9.565 6.94563 9.445C7.06563 9.325 7.12542 9.17667 7.125 9C7.12458 8.82333 7.06458 8.675 6.945 8.555C6.82542 8.435 6.67708 8.375 6.5 8.375C6.32292 8.375 6.17458 8.435 6.055 8.555C5.93542 8.675 5.87542 8.82333 5.875 9C5.87458 9.17667 5.93458 9.32521 6.055 9.44563C6.17542 9.56604 6.32375 9.62583 6.5 9.625ZM6.5 7.125C6.67708 7.125 6.82563 7.065 6.94563 6.945C7.06563 6.825 7.12542 6.67667 7.125 6.5V4C7.125 3.82292 7.065 3.67458 6.945 3.555C6.825 3.43542 6.67667 3.37542 6.5 3.375C6.32333 3.37458 6.175 3.43458 6.055 3.555C5.935 3.67542 5.875 3.82375 5.875 4V6.5C5.875 6.67708 5.935 6.82563 6.055 6.94563C6.175 7.06563 6.32333 7.12542 6.5 7.125ZM6.5 12.75C5.63542 12.75 4.82292 12.5858 4.0625 12.2575C3.30208 11.9292 2.64063 11.484 2.07813 10.9219C1.51563 10.3598 1.07042 9.69833 0.742501 8.9375C0.414584 8.17667 0.250417 7.36417 0.250001 6.5C0.249584 5.63583 0.413751 4.82333 0.742501 4.0625C1.07125 3.30167 1.51646 2.64021 2.07813 2.07813C2.63979 1.51604 3.30125 1.07083 4.0625 0.7425C4.82375 0.414167 5.63625 0.25 6.5 0.25C7.36375 0.25 8.17625 0.414167 8.9375 0.7425C9.69875 1.07083 10.3602 1.51604 10.9219 2.07813C11.4835 2.64021 11.929 3.30167 12.2581 4.0625C12.5873 4.82333 12.7513 5.63583 12.75 6.5C12.7488 7.36417 12.5846 8.17667 12.2575 8.9375C11.9304 9.69833 11.4852 10.3598 10.9219 10.9219C10.3585 11.484 9.69708 11.9294 8.9375 12.2581C8.17792 12.5869 7.36542 12.7508 6.5 12.75Z" fill="#DF0000"></path>
+</svg>
+      </div>
+      <span>Specify the transfer date</span>
+    </div>
+  </div>
+
+  <div class="md:relative w-full md:col-span-2 @6xl:col-span-1" data-controller="passenger" data-passenger-target="passengerWrapper" data-passenger-adult-value="Adults" data-passenger-children-value="Children" data-passenger-babies-value="Babies" data-passenger-pets-value="Pets" data-passenger-passenger-labels-value="{&quot;one&quot;:&quot;\u003cstrong\u003e%{count}\u003c/strong\u003e passenger&quot;,&quot;other&quot;:&quot;\u003cstrong\u003e%{count}\u003c/strong\u003e passengers&quot;}" data-passenger-reach-max-tooltip-value="Sorry, you have reached the maximum number of passengers.">
+  <div class="relative w-full h-full" data-action="click-&gt;passenger#togglePassengerDropdown">
+    <input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md string optional readonly peer input-home-field cursor-pointer lowercase" data-passenger-target="passenger" data-home-form-target="passengerName" readonly="readonly" placeholder=" " type="text" name="order[passenger_name]" id="order_passenger_name">
+    <label class="string optional input-home-label" for="order_passenger_name">Passengers, class</label>
+    <div class="input-home-error hidden">
+      <div class="input-home-error-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+<path d="M6.5 9.625C6.67708 9.625 6.82563 9.565 6.94563 9.445C7.06563 9.325 7.12542 9.17667 7.125 9C7.12458 8.82333 7.06458 8.675 6.945 8.555C6.82542 8.435 6.67708 8.375 6.5 8.375C6.32292 8.375 6.17458 8.435 6.055 8.555C5.93542 8.675 5.87542 8.82333 5.875 9C5.87458 9.17667 5.93458 9.32521 6.055 9.44563C6.17542 9.56604 6.32375 9.62583 6.5 9.625ZM6.5 7.125C6.67708 7.125 6.82563 7.065 6.94563 6.945C7.06563 6.825 7.12542 6.67667 7.125 6.5V4C7.125 3.82292 7.065 3.67458 6.945 3.555C6.825 3.43542 6.67667 3.37542 6.5 3.375C6.32333 3.37458 6.175 3.43458 6.055 3.555C5.935 3.67542 5.875 3.82375 5.875 4V6.5C5.875 6.67708 5.935 6.82563 6.055 6.94563C6.175 7.06563 6.32333 7.12542 6.5 7.125ZM6.5 12.75C5.63542 12.75 4.82292 12.5858 4.0625 12.2575C3.30208 11.9292 2.64063 11.484 2.07813 10.9219C1.51563 10.3598 1.07042 9.69833 0.742501 8.9375C0.414584 8.17667 0.250417 7.36417 0.250001 6.5C0.249584 5.63583 0.413751 4.82333 0.742501 4.0625C1.07125 3.30167 1.51646 2.64021 2.07813 2.07813C2.63979 1.51604 3.30125 1.07083 4.0625 0.7425C4.82375 0.414167 5.63625 0.25 6.5 0.25C7.36375 0.25 8.17625 0.414167 8.9375 0.7425C9.69875 1.07083 10.3602 1.51604 10.9219 2.07813C11.4835 2.64021 11.929 3.30167 12.2581 4.0625C12.5873 4.82333 12.7513 5.63583 12.75 6.5C12.7488 7.36417 12.5846 8.17667 12.2575 8.9375C11.9304 9.69833 11.4852 10.3598 10.9219 10.9219C10.3585 11.484 9.69708 11.9294 8.9375 12.2581C8.17792 12.5869 7.36542 12.7508 6.5 12.75Z" fill="#DF0000"></path>
+</svg>
+      </div>
+      <span></span>
+    </div>
+  </div>
+  <div class="modal-base passenger-dropdown" data-passenger-target="passengerDropdown" data-action="click@window-&gt;passenger#closePassengerDropdown">
+    <div class="relative p-5">
+      <p class="text-xs text-philippine-grey-03 pb-3.5">Maximum 6 passengers</p>
+      <div class="flex flex-col gap-5 passenger">
+        
+            <div class="flex justify-between sm:gap-35.5 ">
+  <div class="flex flex-col w-max">
+    <span class="font-semibold">Adults</span>
+    <p class="text-xs text-philippine-grey">12+ years</p>
+  </div>
+  <div class="flex items-center gap-3">
+    <button name="button" type="button" class="btn-count-base py-2.75 group btn-minus touch-manipulation" data-action="click-&gt;passenger#minusNumber">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="3" viewBox="0 0 14 3" fill="none" role="img" class="h-0.5 group-disabled:fill-light-silver">
+<path d="M1 0.5H6H8H13C13.2652 0.5 13.5196 0.605357 13.7071 0.792893C13.8946 0.98043 14 1.23478 14 1.5C14 1.76522 13.8946 2.01957 13.7071 2.20711C13.5196 2.39464 13.2652 2.5 13 2.5H8H6H1C0.734784 2.5 0.48043 2.39464 0.292893 2.20711C0.105357 2.01957 0 1.76522 0 1.5C0 1.23478 0.105357 0.98043 0.292893 0.792893C0.48043 0.605357 0.734784 0.5 1 0.5Z" fill="#6D6D6D"></path>
+</svg>
+</button>    <input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md is-valid numeric integer optional readonly number-field no-spinners" min="0" data-passenger-target="adultsCount" data-home-form-target="adultsCount" readonly="readonly" type="number" step="1" value="1" name="order[passenger_attributes][adults_count]" id="order_passenger_attributes_adults_count">
+    <div class="btn-plus-wrapper">
+      <button name="button" type="button" class="btn-count-base group btn-plus touch-manipulation" data-action="click-&gt;passenger#addNumber">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none" role="img" class="group-disabled:fill-light-silver">
+<path d="M8 1.5C8 1.23478 7.89464 0.98043 7.70711 0.792893C7.51957 0.605357 7.26522 0.5 7 0.5C6.73478 0.5 6.48043 0.605357 6.29289 0.792893C6.10536 0.98043 6 1.23478 6 1.5V6.5H1C0.734784 6.5 0.48043 6.60536 0.292893 6.79289C0.105357 6.98043 0 7.23478 0 7.5C0 7.76522 0.105357 8.01957 0.292893 8.20711C0.48043 8.39464 0.734784 8.5 1 8.5H6V13.5C6 13.7652 6.10536 14.0196 6.29289 14.2071C6.48043 14.3946 6.73478 14.5 7 14.5C7.26522 14.5 7.51957 14.3946 7.70711 14.2071C7.89464 14.0196 8 13.7652 8 13.5V8.5H13C13.2652 8.5 13.5196 8.39464 13.7071 8.20711C13.8946 8.01957 14 7.76522 14 7.5C14 7.23478 13.8946 6.98043 13.7071 6.79289C13.5196 6.60536 13.2652 6.5 13 6.5H8V1.5Z" fill="black"></path>
+</svg>
+</button>    </div>
+  </div>
+</div>
+
+            <div class="flex justify-between sm:gap-35.5 ">
+  <div class="flex flex-col w-max">
+    <span class="font-semibold">Children</span>
+    <p class="text-xs text-philippine-grey">2-12 years</p>
+  </div>
+  <div class="flex items-center gap-3">
+    <button name="button" type="button" class="btn-count-base py-2.75 group btn-minus touch-manipulation !cursor-not-allowed" data-action="click-&gt;passenger#minusNumber" disabled="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="3" viewBox="0 0 14 3" fill="none" role="img" class="h-0.5 group-disabled:fill-light-silver">
+<path d="M1 0.5H6H8H13C13.2652 0.5 13.5196 0.605357 13.7071 0.792893C13.8946 0.98043 14 1.23478 14 1.5C14 1.76522 13.8946 2.01957 13.7071 2.20711C13.5196 2.39464 13.2652 2.5 13 2.5H8H6H1C0.734784 2.5 0.48043 2.39464 0.292893 2.20711C0.105357 2.01957 0 1.76522 0 1.5C0 1.23478 0.105357 0.98043 0.292893 0.792893C0.48043 0.605357 0.734784 0.5 1 0.5Z" fill="#6D6D6D"></path>
+</svg>
+</button>    <input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md is-valid numeric integer optional readonly number-field no-spinners" min="0" data-passenger-target="childrenCount" data-home-form-target="childrenCount" readonly="readonly" type="number" step="1" value="0" name="order[passenger_attributes][children_count]" id="order_passenger_attributes_children_count">
+    <div class="btn-plus-wrapper">
+      <button name="button" type="button" class="btn-count-base group btn-plus touch-manipulation" data-action="click-&gt;passenger#addNumber">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none" role="img" class="group-disabled:fill-light-silver">
+<path d="M8 1.5C8 1.23478 7.89464 0.98043 7.70711 0.792893C7.51957 0.605357 7.26522 0.5 7 0.5C6.73478 0.5 6.48043 0.605357 6.29289 0.792893C6.10536 0.98043 6 1.23478 6 1.5V6.5H1C0.734784 6.5 0.48043 6.60536 0.292893 6.79289C0.105357 6.98043 0 7.23478 0 7.5C0 7.76522 0.105357 8.01957 0.292893 8.20711C0.48043 8.39464 0.734784 8.5 1 8.5H6V13.5C6 13.7652 6.10536 14.0196 6.29289 14.2071C6.48043 14.3946 6.73478 14.5 7 14.5C7.26522 14.5 7.51957 14.3946 7.70711 14.2071C7.89464 14.0196 8 13.7652 8 13.5V8.5H13C13.2652 8.5 13.5196 8.39464 13.7071 8.20711C13.8946 8.01957 14 7.76522 14 7.5C14 7.23478 13.8946 6.98043 13.7071 6.79289C13.5196 6.60536 13.2652 6.5 13 6.5H8V1.5Z" fill="black"></path>
+</svg>
+</button>    </div>
+  </div>
+</div>
+
+            <div class="flex justify-between sm:gap-35.5 ">
+  <div class="flex flex-col w-max">
+    <span class="font-semibold">Babies</span>
+    <p class="text-xs text-philippine-grey">To 2 years</p>
+  </div>
+  <div class="flex items-center gap-3">
+    <button name="button" type="button" class="btn-count-base py-2.75 group btn-minus touch-manipulation !cursor-not-allowed" data-action="click-&gt;passenger#minusNumber" disabled="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="3" viewBox="0 0 14 3" fill="none" role="img" class="h-0.5 group-disabled:fill-light-silver">
+<path d="M1 0.5H6H8H13C13.2652 0.5 13.5196 0.605357 13.7071 0.792893C13.8946 0.98043 14 1.23478 14 1.5C14 1.76522 13.8946 2.01957 13.7071 2.20711C13.5196 2.39464 13.2652 2.5 13 2.5H8H6H1C0.734784 2.5 0.48043 2.39464 0.292893 2.20711C0.105357 2.01957 0 1.76522 0 1.5C0 1.23478 0.105357 0.98043 0.292893 0.792893C0.48043 0.605357 0.734784 0.5 1 0.5Z" fill="#6D6D6D"></path>
+</svg>
+</button>    <input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md is-valid numeric integer optional readonly number-field no-spinners" min="0" data-passenger-target="babiesCount" data-home-form-target="babiesCount" readonly="readonly" type="number" step="1" value="0" name="order[passenger_attributes][babies_count]" id="order_passenger_attributes_babies_count">
+    <div class="btn-plus-wrapper">
+      <button name="button" type="button" class="btn-count-base group btn-plus touch-manipulation" data-action="click-&gt;passenger#addNumber">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none" role="img" class="group-disabled:fill-light-silver">
+<path d="M8 1.5C8 1.23478 7.89464 0.98043 7.70711 0.792893C7.51957 0.605357 7.26522 0.5 7 0.5C6.73478 0.5 6.48043 0.605357 6.29289 0.792893C6.10536 0.98043 6 1.23478 6 1.5V6.5H1C0.734784 6.5 0.48043 6.60536 0.292893 6.79289C0.105357 6.98043 0 7.23478 0 7.5C0 7.76522 0.105357 8.01957 0.292893 8.20711C0.48043 8.39464 0.734784 8.5 1 8.5H6V13.5C6 13.7652 6.10536 14.0196 6.29289 14.2071C6.48043 14.3946 6.73478 14.5 7 14.5C7.26522 14.5 7.51957 14.3946 7.70711 14.2071C7.89464 14.0196 8 13.7652 8 13.5V8.5H13C13.2652 8.5 13.5196 8.39464 13.7071 8.20711C13.8946 8.01957 14 7.76522 14 7.5C14 7.23478 13.8946 6.98043 13.7071 6.79289C13.5196 6.60536 13.2652 6.5 13 6.5H8V1.5Z" fill="black"></path>
+</svg>
+</button>    </div>
+  </div>
+</div>
+
+            <div class="flex justify-between sm:gap-35.5 ">
+  <div class="flex flex-col w-max">
+    <span class="font-semibold">Pets</span>
+    <p class="text-xs text-philippine-grey">To 30 kg</p>
+  </div>
+  <div class="flex items-center gap-3">
+    <button name="button" type="button" class="btn-count-base py-2.75 group btn-minus touch-manipulation !cursor-not-allowed" data-action="click-&gt;passenger#minusNumber" disabled="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="3" viewBox="0 0 14 3" fill="none" role="img" class="h-0.5 group-disabled:fill-light-silver">
+<path d="M1 0.5H6H8H13C13.2652 0.5 13.5196 0.605357 13.7071 0.792893C13.8946 0.98043 14 1.23478 14 1.5C14 1.76522 13.8946 2.01957 13.7071 2.20711C13.5196 2.39464 13.2652 2.5 13 2.5H8H6H1C0.734784 2.5 0.48043 2.39464 0.292893 2.20711C0.105357 2.01957 0 1.76522 0 1.5C0 1.23478 0.105357 0.98043 0.292893 0.792893C0.48043 0.605357 0.734784 0.5 1 0.5Z" fill="#6D6D6D"></path>
+</svg>
+</button>    <input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md is-valid numeric integer optional readonly number-field no-spinners" min="0" data-passenger-target="petsCount" data-home-form-target="petsCount" readonly="readonly" type="number" step="1" value="0" name="order[passenger_attributes][pets_count]" id="order_passenger_attributes_pets_count">
+    <div class="btn-plus-wrapper">
+      <button name="button" type="button" class="btn-count-base group btn-plus touch-manipulation" data-action="click-&gt;passenger#addNumber">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none" role="img" class="group-disabled:fill-light-silver">
+<path d="M8 1.5C8 1.23478 7.89464 0.98043 7.70711 0.792893C7.51957 0.605357 7.26522 0.5 7 0.5C6.73478 0.5 6.48043 0.605357 6.29289 0.792893C6.10536 0.98043 6 1.23478 6 1.5V6.5H1C0.734784 6.5 0.48043 6.60536 0.292893 6.79289C0.105357 6.98043 0 7.23478 0 7.5C0 7.76522 0.105357 8.01957 0.292893 8.20711C0.48043 8.39464 0.734784 8.5 1 8.5H6V13.5C6 13.7652 6.10536 14.0196 6.29289 14.2071C6.48043 14.3946 6.73478 14.5 7 14.5C7.26522 14.5 7.51957 14.3946 7.70711 14.2071C7.89464 14.0196 8 13.7652 8 13.5V8.5H13C13.2652 8.5 13.5196 8.39464 13.7071 8.20711C13.8946 8.01957 14 7.76522 14 7.5C14 7.23478 13.8946 6.98043 13.7071 6.79289C13.5196 6.60536 13.2652 6.5 13 6.5H8V1.5Z" fill="black"></path>
+</svg>
+</button>    </div>
+  </div>
+</div>
+
+        <div class="flex justify-between sm:gap-35.5 py-5 border-y  border-light-silver">
+  <div class="flex flex-col w-max">
+    <span class="font-semibold">Number of suitcases</span>
+    <p class="text-xs text-philippine-grey"></p>
+  </div>
+  <div class="flex items-center gap-3">
+    <button name="button" type="button" class="btn-count-base py-2.75 group btn-minus touch-manipulation" data-action="click-&gt;passenger#minusNumber">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="3" viewBox="0 0 14 3" fill="none" role="img" class="h-0.5 group-disabled:fill-light-silver">
+<path d="M1 0.5H6H8H13C13.2652 0.5 13.5196 0.605357 13.7071 0.792893C13.8946 0.98043 14 1.23478 14 1.5C14 1.76522 13.8946 2.01957 13.7071 2.20711C13.5196 2.39464 13.2652 2.5 13 2.5H8H6H1C0.734784 2.5 0.48043 2.39464 0.292893 2.20711C0.105357 2.01957 0 1.76522 0 1.5C0 1.23478 0.105357 0.98043 0.292893 0.792893C0.48043 0.605357 0.734784 0.5 1 0.5Z" fill="#6D6D6D"></path>
+</svg>
+</button>    <input class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md is-valid numeric integer required readonly number-field no-spinners" min="0" data-passenger-target="bagsNumber" data-home-form-target="bagsNumber" readonly="readonly" type="number" step="1" value="1" name="order[bags_number]" id="order_bags_number">
+    <div class="btn-plus-wrapper">
+      <button name="button" type="button" class="btn-count-base group btn-plus touch-manipulation" data-action="click-&gt;passenger#addNumber">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none" role="img" class="group-disabled:fill-light-silver">
+<path d="M8 1.5C8 1.23478 7.89464 0.98043 7.70711 0.792893C7.51957 0.605357 7.26522 0.5 7 0.5C6.73478 0.5 6.48043 0.605357 6.29289 0.792893C6.10536 0.98043 6 1.23478 6 1.5V6.5H1C0.734784 6.5 0.48043 6.60536 0.292893 6.79289C0.105357 6.98043 0 7.23478 0 7.5C0 7.76522 0.105357 8.01957 0.292893 8.20711C0.48043 8.39464 0.734784 8.5 1 8.5H6V13.5C6 13.7652 6.10536 14.0196 6.29289 14.2071C6.48043 14.3946 6.73478 14.5 7 14.5C7.26522 14.5 7.51957 14.3946 7.70711 14.2071C7.89464 14.0196 8 13.7652 8 13.5V8.5H13C13.2652 8.5 13.5196 8.39464 13.7071 8.20711C13.8946 8.01957 14 7.76522 14 7.5C14 7.23478 13.8946 6.98043 13.7071 6.79289C13.5196 6.60536 13.2652 6.5 13 6.5H8V1.5Z" fill="black"></path>
+</svg>
+</button>    </div>
+  </div>
+</div>
+
+
+        <div class="flex flex-col">
+          <span class="font-semibold pb-3.5">Class</span>
+            <div class="grid grid-cols-2 gap-2.5 w-full">
+              <input type="hidden" name="order[category_id]" value="" autocomplete="off"><div class="radio form-check"><label class="btn-category-option btn-base !bg-american-yellow-03 !font-semibold" for="order_category_id_0"><input class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 mr-2 radio_buttons optional hidden" data-action="change-&gt;passenger#clickCategoryOption" data-passenger-target="categoryOption" data-home-form-target="categoryOption" type="radio" value="0" name="order[category_id]" id="order_category_id_0">Any</label></div><div class="radio form-check"><label class="btn-category-option btn-base" for="order_category_id_1"><input class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 mr-2 radio_buttons optional hidden" data-action="change-&gt;passenger#clickCategoryOption" data-passenger-target="categoryOption" data-home-form-target="categoryOption" type="radio" value="1" name="order[category_id]" id="order_category_id_1">Comfort</label></div><div class="radio form-check"><label class="btn-category-option btn-base" for="order_category_id_2"><input class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 mr-2 radio_buttons optional hidden" data-action="change-&gt;passenger#clickCategoryOption" data-passenger-target="categoryOption" data-home-form-target="categoryOption" type="radio" value="2" name="order[category_id]" id="order_category_id_2">Business</label></div><div class="radio form-check"><label class="btn-category-option btn-base" for="order_category_id_3"><input class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 mr-2 radio_buttons optional hidden" data-action="change-&gt;passenger#clickCategoryOption" data-passenger-target="categoryOption" data-home-form-target="categoryOption" type="radio" value="3" name="order[category_id]" id="order_category_id_3">Premium</label></div>
+            </div>
+        </div>
+        <div class="w-full" data-home-form-target="submitButtonWrapper">
+          <input type="submit" name="commit" value="Choose" class="btn-base w-full btn-yellow mt-15 md:hidden" aria_expanded="false" data-home-form-target="submitButton" data-passenger-target="choosePassengerBtn" data-action="click-&gt;home-form#formSubmitted" data-disable-with="Choose">
+        </div>
+      </div>
+      <button name="button" type="button" class="btn-burger md:hidden" aria_expanded="false" data-passenger-target="closePassengerBtn" data-action="click-&gt;passenger#togglePassengerDropdown">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" aria-hidden="true" class="burger-icon stroke-gray close !h-full !w-full">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+</svg>
+</button>    </div>
+  </div>
+</div>
+
+
+  <div class="w-full" data-home-form-target="submitButtonWrapper">
+    <input type="submit" name="commit" value="Order a transfer" class="btn-base btn-main w-full" data-home-form-target="submitButton" data-disable-with="Order a transfer">
+  </div>
+</form>
