@@ -58,6 +58,7 @@ interface Translations {
     seats: string;
     trunk: string;
     wifi: string;
+    airportLabel: string;
     from: string;
     perHour: string;
   };
@@ -170,8 +171,9 @@ const ru: Translations = {
     seats: "Мест",
     trunk: "Багажник",
     wifi: "Wi-Fi",
-    from: "от",
-    perHour: "руб./час",
+    airportLabel: "Трансфер в аэропорт",
+    from: "начиная от",
+    perHour: "час",
   },
   pricing: {
     label: "Тарифы",
@@ -296,10 +298,11 @@ const en: Translations = {
     filterAll: "All",
     book: "Book",
     seats: "Seats",
-    trunk: "Trunk",
+    trunk: "Luggage",
     wifi: "Wi-Fi",
-    from: "from",
-    perHour: "BYN/hr",
+    airportLabel: "Airport transfer",
+    from: "starting from",
+    perHour: "hr",
   },
   pricing: {
     label: "Rates",

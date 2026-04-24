@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/context/language-context";
 
-const prices = ["75 BYN", "85 BYN", "80 BYN", "120 BYN"];
+const prices = ["from $75", "from $85", "from $80", "from $120"];
 const popularIndex = 1;
 
 export function Pricing() {
