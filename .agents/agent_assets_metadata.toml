@@ -41,22 +41,28 @@ title = "Black passenger minivan"
 id = "JKJ-OhswsD_NSvKA2srHQ"
 uri = "file://artifacts/comfortline-website/public/car-logan-day.png"
 type = "image"
-title = "logan day light"
+title = "black logan day"
 
 [[generated]]
 id = "X4qPi8IcfAgOazd9qscD8"
 uri = "file://artifacts/comfortline-website/public/car-polo-day.png"
 type = "image"
-title = "polo day light"
+title = "black polo day"
 
 [[generated]]
 id = "PS2H1vhf1wHJt4hOhJn0t"
 uri = "file://artifacts/comfortline-website/public/car-passat-day.png"
 type = "image"
-title = "passat day light"
+title = "black passat day"
 
 [[generated]]
 id = "VF_5Xu4QJRPs9XxsQqieo"
 uri = "file://artifacts/comfortline-website/public/car-van-day.png"
 type = "image"
-title = "van day light"
+title = "black van day"
+
+[[generated]]
+id = "Y5I8tRFxkhoUu2iaI3Ew9"
+uri = "file://artifacts/comfortline-website/public/hero-bg-day.png"
+type = "image"
+title = "black mercedes day hero"

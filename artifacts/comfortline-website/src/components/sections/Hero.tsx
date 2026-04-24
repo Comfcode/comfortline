@@ -3,9 +3,12 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { BookingWidget } from "@/components/sections/BookingWidget";
+import { useTheme } from "next-themes";
 
 export function Hero() {
   const { t } = useLang();
+  const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === "light";
 
   return (
     <section className="relative min-h-[100dvh] flex items-end justify-center overflow-hidden pt-20">
@@ -14,8 +17,8 @@ export function Hero() {
         <div className="absolute inset-0 bg-background/70 dark:bg-background/80 z-10"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10"></div>
         <img
-          src="/hero-bg.png"
-          alt="Premium black sedan"
+          src={isLight ? "/hero-bg-day.png" : "/hero-bg.png"}
+          alt="Premium black Mercedes sedan"
           className="w-full h-full object-cover object-center"
         />
       </div>
