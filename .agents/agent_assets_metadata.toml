@@ -17,25 +17,25 @@ title = "Luxury car interior detail"
 id = "ykOaXAUz75McL_S-9RF-V"
 uri = "file://artifacts/comfortline-website/public/car-logan.png"
 type = "image"
-title = "Economy white sedan"
+title = "sedan night city bokeh dark"
 
 [[generated]]
 id = "T4KLotfvBq7BsRyuMcAOj"
 uri = "file://artifacts/comfortline-website/public/car-polo.png"
 type = "image"
-title = "Comfort silver sedan"
+title = "sedan night red bokeh front"
 
 [[generated]]
 id = "DytUy7lccGM65_-HBs-yw"
 uri = "file://artifacts/comfortline-website/public/car-passat.png"
 type = "image"
-title = "Comfort plus black sedan"
+title = "executive sedan night amber bokeh"
 
 [[generated]]
 id = "InJDzsoKlrjZ3mcWSrMiX"
 uri = "file://artifacts/comfortline-website/public/car-van.png"
 type = "image"
-title = "Black passenger minivan"
+title = "luxury van night city bokeh"
 
 [[generated]]
 id = "JKJ-OhswsD_NSvKA2srHQ"
