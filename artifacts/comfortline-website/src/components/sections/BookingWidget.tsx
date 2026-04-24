@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { ArrowLeftRight, CalendarDays, ChevronDown, X } from "lucide-react";
+import { ArrowLeftRight, ChevronDown, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { useToast } from "@/hooks/use-toast";
@@ -144,11 +144,10 @@ export function BookingWidget() {
           <FieldShell className="flex-1">
             <input type="date" value={date} onChange={e => setDate(e.target.value)}
               min={new Date().toISOString().split("T")[0]}
-              className={`${inputBase} [color-scheme:light] peer [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none`} />
+              className={`${inputBase} [color-scheme:light] peer`} />
             {/* Label always floats for date since browser shows placeholder */}
             <label className={floatingLabel}>{b.date}</label>
           </FieldShell>
-          <CalendarDays className="h-4 w-4 text-gray-300 shrink-0" />
         </div>
 
         <Sep />
