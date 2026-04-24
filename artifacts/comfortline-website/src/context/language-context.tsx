@@ -19,6 +19,32 @@ interface Translations {
     cta: string;
     ctaSecondary: string;
   };
+  booking: {
+    from: string;
+    fromPlaceholder: string;
+    to: string;
+    toPlaceholder: string;
+    date: string;
+    datePlaceholder: string;
+    passengersClass: string;
+    adults: string;
+    adultsNote: string;
+    children: string;
+    childrenNote: string;
+    babies: string;
+    babiesNote: string;
+    suitcases: string;
+    vehicleClass: string;
+    classAny: string;
+    classEconomy: string;
+    classComfort: string;
+    classBusiness: string;
+    classPremium: string;
+    apply: string;
+    cta: string;
+    toastTitle: string;
+    toastDesc: string;
+  };
   services: {
     label: string;
     heading: string;
@@ -60,34 +86,6 @@ interface Translations {
     phone: string;
     email: string;
     address: string;
-    form: {
-      heading: string;
-      name: string;
-      namePlaceholder: string;
-      phone: string;
-      phonePlaceholder: string;
-      from: string;
-      fromPlaceholder: string;
-      to: string;
-      toPlaceholder: string;
-      date: string;
-      time: string;
-      passengers: string;
-      comment: string;
-      commentPlaceholder: string;
-      submit: string;
-      toastTitle: string;
-      toastDesc: string;
-      errors: {
-        name: string;
-        phone: string;
-        from: string;
-        to: string;
-        date: string;
-        time: string;
-        passengers: string;
-      };
-    };
     licensing: {
       heading: string;
       text: string;
@@ -128,26 +126,40 @@ const ru: Translations = {
     cta: "Заказать трансфер",
     ctaSecondary: "Узнать цены",
   },
+  booking: {
+    from: "Откуда",
+    fromPlaceholder: "Город / аэропорт",
+    to: "Куда",
+    toPlaceholder: "Город / аэропорт",
+    date: "Дата поездки",
+    datePlaceholder: "Выберите дату",
+    passengersClass: "Пассажиры, класс",
+    adults: "Взрослые",
+    adultsNote: "12+ лет",
+    children: "Дети",
+    childrenNote: "2–12 лет",
+    babies: "Младенцы",
+    babiesNote: "до 2 лет",
+    suitcases: "Чемоданы",
+    vehicleClass: "Класс автомобиля",
+    classAny: "Любой",
+    classEconomy: "Эконом",
+    classComfort: "Комфорт",
+    classBusiness: "Бизнес",
+    classPremium: "Премиум",
+    apply: "Применить",
+    cta: "Заказать трансфер",
+    toastTitle: "Заявка отправлена!",
+    toastDesc: "Наш менеджер свяжется с вами в ближайшее время.",
+  },
   services: {
     label: "Наши Услуги",
     heading: "Направления комфорта",
     items: [
-      {
-        title: "Трансфер в Аэропорт",
-        description: "Индивидуальный и групповой. Фиксированная цена. Предварительный заказ. Детские кресла. Встретим с табличкой.",
-      },
-      {
-        title: "Группы / Делегации до 8 человек",
-        description: "Трансферы, экскурсии. Вместительные микроавтобусы (8 мест), большие багажные отделения.",
-      },
-      {
-        title: "Поездки по Минску, Беларуси и России",
-        description: "Почасовая оплата в городе, подсчёт по километражу между городами. Седаны, микроавтобусы.",
-      },
-      {
-        title: "Поездки по Европе (Литва, Латвия, Польша)",
-        description: "На выбор автомобили разных классов и типов кузова. Комфортное прохождение границы.",
-      },
+      { title: "Трансфер в Аэропорт", description: "Индивидуальный и групповой. Фиксированная цена. Предварительный заказ. Детские кресла. Встретим с табличкой." },
+      { title: "Группы / Делегации до 8 человек", description: "Трансферы, экскурсии. Вместительные микроавтобусы (8 мест), большие багажные отделения." },
+      { title: "Поездки по Минску, Беларуси и России", description: "Почасовая оплата в городе, подсчёт по километражу между городами. Седаны, микроавтобусы." },
+      { title: "Поездки по Европе (Литва, Латвия, Польша)", description: "На выбор автомобили разных классов и типов кузова. Комфортное прохождение границы." },
     ],
   },
   fleet: {
@@ -198,38 +210,10 @@ const ru: Translations = {
   contact: {
     label: "Связаться с нами",
     heading: "Заказать трансфер",
-    subheading: "Оставьте заявку онлайн, и наш менеджер свяжется с вами для уточнения деталей и подтверждения заказа. Мы работаем круглосуточно.",
+    subheading: "Заполните форму выше или свяжитесь с нами напрямую — наш менеджер подтвердит детали и организует поездку. Работаем круглосуточно.",
     phone: "Телефон",
     email: "Email",
     address: "Адрес",
-    form: {
-      heading: "Форма заявки",
-      name: "Имя",
-      namePlaceholder: "Иван",
-      phone: "Телефон",
-      phonePlaceholder: "+375 (__) ___-__-__",
-      from: "Откуда",
-      fromPlaceholder: "Минск",
-      to: "Куда",
-      toPlaceholder: "Аэропорт",
-      date: "Дата",
-      time: "Время",
-      passengers: "Пассажиры",
-      comment: "Комментарий (опционально)",
-      commentPlaceholder: "Особые пожелания, номер рейса...",
-      submit: "Отправить заявку",
-      toastTitle: "Заявка отправлена!",
-      toastDesc: "Наш менеджер свяжется с вами в ближайшее время.",
-      errors: {
-        name: "Имя должно содержать минимум 2 символа",
-        phone: "Введите корректный номер телефона",
-        from: "Укажите место отправления",
-        to: "Укажите место назначения",
-        date: "Укажите дату поездки",
-        time: "Укажите время поездки",
-        passengers: "Укажите количество пассажиров",
-      },
-    },
     licensing: {
       heading: "Лицензионная информация",
       text: "Индивидуальный предприниматель Мурашко Андрей Антонович имеет действительную лицензию на международные автомобильные перевозки пассажиров за № 02190/1-85358 (номер лицензии в Едином реестре лицензий — 13230000078378). Дата принятия решения о выдаче лицензии за № 13-ЛИ – 30 июня 2023 года. Срок действия лицензии – бессрочный.",
@@ -270,26 +254,40 @@ const en: Translations = {
     cta: "Book a Transfer",
     ctaSecondary: "See Rates",
   },
+  booking: {
+    from: "From",
+    fromPlaceholder: "City / airport",
+    to: "To",
+    toPlaceholder: "City / airport",
+    date: "Date of trip",
+    datePlaceholder: "Choose date",
+    passengersClass: "Passengers, class",
+    adults: "Adults",
+    adultsNote: "12+ years",
+    children: "Children",
+    childrenNote: "2–12 years",
+    babies: "Babies",
+    babiesNote: "under 2 years",
+    suitcases: "Suitcases",
+    vehicleClass: "Vehicle class",
+    classAny: "Any",
+    classEconomy: "Economy",
+    classComfort: "Comfort",
+    classBusiness: "Business",
+    classPremium: "Premium",
+    apply: "Apply",
+    cta: "Order a transfer",
+    toastTitle: "Request sent!",
+    toastDesc: "Our manager will contact you shortly.",
+  },
   services: {
     label: "Our Services",
     heading: "Routes of Comfort",
     items: [
-      {
-        title: "Airport Transfer",
-        description: "Individual and group. Fixed price. Pre-booking available. Child seats. Meet & greet with name board.",
-      },
-      {
-        title: "Groups / Delegations up to 8",
-        description: "Transfers and excursions. Spacious minivans (8 seats) with large luggage compartments.",
-      },
-      {
-        title: "Trips in Minsk, Belarus & Russia",
-        description: "Hourly rate in the city, per-kilometer rate between cities. Sedans and minivans for any road.",
-      },
-      {
-        title: "Trips Across Europe (Lithuania, Latvia, Poland)",
-        description: "Choose from a wide range of vehicle classes. Comfortable border crossing included.",
-      },
+      { title: "Airport Transfer", description: "Individual and group. Fixed price. Pre-booking available. Child seats. Meet & greet with name board." },
+      { title: "Groups / Delegations up to 8", description: "Transfers and excursions. Spacious minivans (8 seats) with large luggage compartments." },
+      { title: "Trips in Minsk, Belarus & Russia", description: "Hourly rate in the city, per-kilometer rate between cities. Sedans and minivans for any road." },
+      { title: "Trips Across Europe (Lithuania, Latvia, Poland)", description: "Choose from a wide range of vehicle classes. Comfortable border crossing included." },
     ],
   },
   fleet: {
@@ -340,38 +338,10 @@ const en: Translations = {
   contact: {
     label: "Get in Touch",
     heading: "Book a Transfer",
-    subheading: "Submit a request online and our manager will contact you to confirm the details. We operate around the clock.",
+    subheading: "Use the booking form above or contact us directly — our manager will confirm the details and arrange your trip. We operate around the clock.",
     phone: "Phone",
     email: "Email",
     address: "Address",
-    form: {
-      heading: "Booking Form",
-      name: "Name",
-      namePlaceholder: "John",
-      phone: "Phone",
-      phonePlaceholder: "+375 (__) ___-__-__",
-      from: "From",
-      fromPlaceholder: "Minsk",
-      to: "To",
-      toPlaceholder: "Airport",
-      date: "Date",
-      time: "Time",
-      passengers: "Passengers",
-      comment: "Comment (optional)",
-      commentPlaceholder: "Special requests, flight number...",
-      submit: "Submit Request",
-      toastTitle: "Request sent!",
-      toastDesc: "Our manager will contact you shortly.",
-      errors: {
-        name: "Name must be at least 2 characters",
-        phone: "Please enter a valid phone number",
-        from: "Please enter the departure location",
-        to: "Please enter the destination",
-        date: "Please enter the travel date",
-        time: "Please enter the travel time",
-        passengers: "Please enter the number of passengers",
-      },
-    },
     licensing: {
       heading: "Licensing Information",
       text: "Individual Entrepreneur Murashko Andrey Antonovich holds a valid licence for international passenger road transport, No. 02190/1-85358 (registry number 13230000078378). Licence decision date: 30 June 2023. Validity: unlimited.",

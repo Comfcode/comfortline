@@ -2,16 +2,17 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLang } from "@/context/language-context";
+import { BookingWidget } from "@/components/sections/BookingWidget";
 
 export function Hero() {
   const { t } = useLang();
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-[100dvh] flex items-end justify-center overflow-hidden pt-20">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-background/70 dark:bg-background/80 z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10"></div>
         <img
           src="/hero-bg.png"
           alt="Premium black sedan"
@@ -19,8 +20,9 @@ export function Hero() {
         />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-20">
-        <div className="max-w-3xl">
+      <div className="container mx-auto px-4 md:px-6 relative z-20 pb-12 pt-32">
+        {/* Hero copy */}
+        <div className="max-w-3xl mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -36,33 +38,45 @@ export function Hero() {
               <span className="text-primary italic font-serif">{t.hero.headline2}</span>
             </h1>
 
-            <ul className="flex flex-col gap-3 mb-10 text-foreground/80 text-lg md:text-xl">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-8 text-foreground/80 text-base md:text-lg">
               {t.hero.checkmarks.map((item, index) => (
                 <motion.li
                   key={item}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-2"
                 >
-                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0" />
+                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
                   <span>{item}</span>
                 </motion.li>
               ))}
             </ul>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="h-14 px-8 text-base font-semibold shadow-lg shadow-primary/20" asChild>
-                <a href="#contact">
-                  {t.hero.cta} <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 text-base border-border bg-background/50 backdrop-blur-sm hover:bg-background/80" asChild>
-                <a href="#prices">{t.hero.ctaSecondary}</a>
-              </Button>
-            </div>
           </motion.div>
         </div>
+
+        {/* Compact Booking Widget */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <BookingWidget />
+        </motion.div>
+
+        {/* Secondary CTA row */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-5 flex items-center gap-4"
+        >
+          <Button size="sm" variant="ghost" className="text-foreground/60 hover:text-primary px-0" asChild>
+            <a href="#prices">
+              {t.hero.ctaSecondary} <ArrowRight className="ml-1.5 h-4 w-4" />
+            </a>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );
