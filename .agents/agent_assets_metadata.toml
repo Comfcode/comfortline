@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "0h8bbrECqKg6i4_UbFXvF"
+uri = "file://artifacts/comfortline-website/public/hero-bg.png"
+type = "image"
+title = "Premium black sedan night city"
+
+[[generated]]
+id = "Da9iWR8_LXozgOeK_-A95"
+uri = "file://artifacts/comfortline-website/public/car-interior.png"
+type = "image"
+title = "Luxury car interior detail"
+
+[[generated]]
+id = "ykOaXAUz75McL_S-9RF-V"
+uri = "file://artifacts/comfortline-website/public/car-logan.png"
+type = "image"
+title = "Economy white sedan"
+
+[[generated]]
+id = "T4KLotfvBq7BsRyuMcAOj"
+uri = "file://artifacts/comfortline-website/public/car-polo.png"
+type = "image"
+title = "Comfort silver sedan"
+
+[[generated]]
+id = "DytUy7lccGM65_-HBs-yw"
+uri = "file://artifacts/comfortline-website/public/car-passat.png"
+type = "image"
+title = "Comfort plus black sedan"
+
+[[generated]]
+id = "InJDzsoKlrjZ3mcWSrMiX"
+uri = "file://artifacts/comfortline-website/public/car-van.png"
+type = "image"
+title = "Black passenger minivan"
