@@ -2,12 +2,16 @@ import { useState, useEffect } from "react";
 import { Moon, Sun, Menu, X, Phone } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { useLang } from "@/context/language-context";
+import { SiWhatsapp, SiTelegram, SiViber } from "react-icons/si";
+import { Instagram } from "lucide-react";
 
 export function Navbar() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { lang, setLang, t } = useLang();
 
   useEffect(() => {
     setMounted(true);
@@ -23,12 +27,19 @@ export function Navbar() {
   };
 
   const navLinks = [
-    { name: "Услуги", href: "#services" },
-    { name: "Автопарк", href: "#fleet" },
-    { name: "Тарифы", href: "#prices" },
-    { name: "Преимущества", href: "#advantages" },
-    { name: "Отзывы", href: "#reviews" },
-    { name: "Контакты", href: "#contact" },
+    { name: t.nav.services, href: "#services" },
+    { name: t.nav.fleet, href: "#fleet" },
+    { name: t.nav.prices, href: "#prices" },
+    { name: t.nav.advantages, href: "#advantages" },
+    { name: t.nav.reviews, href: "#reviews" },
+    { name: t.nav.contacts, href: "#contact" },
+  ];
+
+  const socialLinks = [
+    { icon: SiWhatsapp, href: "https://wa.me/375291552776", label: "WhatsApp", color: "hover:text-green-500" },
+    { icon: SiTelegram, href: "https://t.me/transfer_comfortline", label: "Telegram", color: "hover:text-sky-400" },
+    { icon: SiViber, href: "viber://chat?number=%2B375291552776", label: "Viber", color: "hover:text-purple-500" },
+    { icon: Instagram, href: "https://www.instagram.com/transfer_comfortline/", label: "Instagram", color: "hover:text-pink-500" },
   ];
 
   return (
@@ -41,7 +52,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center gap-1 group">
+          <a href="#" className="flex items-center gap-1 group shrink-0">
             <span className="text-xl md:text-2xl font-bold text-foreground transition-colors group-hover:text-primary">
               Comfort
             </span>
@@ -49,48 +60,101 @@ export function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <div className="flex space-x-6">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-6">
+            <div className="flex gap-4 xl:gap-5">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                  className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors whitespace-nowrap"
                 >
                   {link.name}
                 </a>
               ))}
             </div>
 
-            <div className="flex items-center space-x-4 ml-4 pl-4 border-l border-border/50">
-              <a
-                href="tel:+375291552776"
-                className="flex items-center gap-2 text-sm font-semibold hover:text-primary transition-colors"
-              >
-                <Phone className="h-4 w-4 text-primary" />
-                +375 (29) 155-27-76
-              </a>
+            {/* Divider */}
+            <div className="h-5 w-px bg-border/60" />
 
-              {mounted && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={toggleTheme}
-                  className="rounded-full w-9 h-9 border border-border/50"
-                  aria-label="Toggle theme"
+            {/* Social icons */}
+            <div className="flex items-center gap-2">
+              {socialLinks.map(({ icon: Icon, href, label, color }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={`text-foreground/60 transition-colors ${color}`}
                 >
-                  {theme === "dark" ? (
-                    <Sun className="h-4 w-4 text-primary" />
-                  ) : (
-                    <Moon className="h-4 w-4 text-primary" />
-                  )}
-                </Button>
-              )}
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
+
+            {/* Divider */}
+            <div className="h-5 w-px bg-border/60" />
+
+            <a
+              href="tel:+375291552776"
+              className="flex items-center gap-2 text-sm font-semibold hover:text-primary transition-colors whitespace-nowrap"
+            >
+              <Phone className="h-4 w-4 text-primary" />
+              +375 (29) 155-27-76
+            </a>
+
+            {/* Language toggle */}
+            <div className="flex items-center gap-1 text-xs font-semibold">
+              <button
+                onClick={() => setLang("ru")}
+                className={`px-1.5 py-0.5 rounded transition-colors ${lang === "ru" ? "text-primary" : "text-foreground/50 hover:text-foreground"}`}
+              >
+                RU
+              </button>
+              <span className="text-border">|</span>
+              <button
+                onClick={() => setLang("en")}
+                className={`px-1.5 py-0.5 rounded transition-colors ${lang === "en" ? "text-primary" : "text-foreground/50 hover:text-foreground"}`}
+              >
+                EN
+              </button>
+            </div>
+
+            {mounted && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className="rounded-full w-9 h-9 border border-border/50"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-4 w-4 text-primary" />
+                ) : (
+                  <Moon className="h-4 w-4 text-primary" />
+                )}
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex items-center lg:hidden gap-4">
+          <div className="flex items-center lg:hidden gap-3">
+            {/* Mobile social icons */}
+            <div className="hidden sm:flex items-center gap-2">
+              {socialLinks.map(({ icon: Icon, href, label, color }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={`text-foreground/60 transition-colors ${color}`}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+
             {mounted && (
               <Button
                 variant="ghost"
@@ -129,7 +193,7 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
-          <div className="pt-4 border-t border-border mt-2">
+          <div className="pt-4 border-t border-border mt-2 flex flex-col gap-3">
             <a
               href="tel:+375291552776"
               className="flex items-center gap-3 p-2 text-lg font-semibold"
@@ -137,6 +201,37 @@ export function Navbar() {
               <Phone className="h-5 w-5 text-primary" />
               +375 (29) 155-27-76
             </a>
+            {/* Mobile social icons */}
+            <div className="flex items-center gap-4 p-2">
+              {socialLinks.map(({ icon: Icon, href, label, color }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={`text-foreground/60 transition-colors ${color}`}
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+            {/* Language toggle mobile */}
+            <div className="flex items-center gap-2 p-2 text-sm font-semibold">
+              <button
+                onClick={() => setLang("ru")}
+                className={`px-2 py-1 rounded transition-colors ${lang === "ru" ? "text-primary" : "text-foreground/50"}`}
+              >
+                RU
+              </button>
+              <span className="text-border">|</span>
+              <button
+                onClick={() => setLang("en")}
+                className={`px-2 py-1 rounded transition-colors ${lang === "en" ? "text-primary" : "text-foreground/50"}`}
+              >
+                EN
+              </button>
+            </div>
           </div>
         </div>
       )}

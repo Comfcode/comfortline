@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLang } from "@/context/language-context";
 
 export function Hero() {
+  const { t } = useLang();
+
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image with Overlay */}
@@ -25,20 +28,16 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              Всегда вовремя. Работаем с 2015 года.
+              {t.hero.badge}
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6">
-              Индивидуальный трансфер <br />
-              <span className="text-primary italic font-serif">бизнес и премиум класса</span>
+              {t.hero.headline1} <br />
+              <span className="text-primary italic font-serif">{t.hero.headline2}</span>
             </h1>
 
             <ul className="flex flex-col gap-3 mb-10 text-foreground/80 text-lg md:text-xl">
-              {[
-                "по Беларуси и России",
-                "по всей Европе",
-                "трансфер в Аэропорт",
-              ].map((item, index) => (
+              {t.hero.checkmarks.map((item, index) => (
                 <motion.li
                   key={item}
                   initial={{ opacity: 0, x: -20 }}
@@ -55,11 +54,11 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="h-14 px-8 text-base font-semibold shadow-lg shadow-primary/20" asChild>
                 <a href="#contact">
-                  Заказать трансфер <ArrowRight className="ml-2 h-5 w-5" />
+                  {t.hero.cta} <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="h-14 px-8 text-base border-border bg-background/50 backdrop-blur-sm hover:bg-background/80" asChild>
-                <a href="#prices">Узнать цены</a>
+                <a href="#prices">{t.hero.ctaSecondary}</a>
               </Button>
             </div>
           </motion.div>
