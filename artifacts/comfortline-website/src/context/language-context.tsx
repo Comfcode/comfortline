@@ -27,6 +27,9 @@ interface Translations {
     date: string;
     datePlaceholder: string;
     passengersClass: string;
+    passengerOne: string;
+    passengerFew: string;
+    passengerMany: string;
     adults: string;
     adultsNote: string;
     children: string;
@@ -135,6 +138,9 @@ const ru: Translations = {
     date: "Дата поездки",
     datePlaceholder: "Выберите дату",
     passengersClass: "Пассажиры, класс",
+    passengerOne: "пассажир",
+    passengerFew: "пассажира",
+    passengerMany: "пассажиров",
     adults: "Взрослые",
     adultsNote: "12+ лет",
     children: "Дети",
@@ -264,6 +270,9 @@ const en: Translations = {
     date: "Date of trip",
     datePlaceholder: "Choose date",
     passengersClass: "Passengers, class",
+    passengerOne: "passenger",
+    passengerFew: "passengers",
+    passengerMany: "passengers",
     adults: "Adults",
     adultsNote: "12+ years",
     children: "Children",
