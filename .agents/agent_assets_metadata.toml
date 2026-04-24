@@ -36,3 +36,27 @@ id = "InJDzsoKlrjZ3mcWSrMiX"
 uri = "file://artifacts/comfortline-website/public/car-van.png"
 type = "image"
 title = "Black passenger minivan"
+
+[[generated]]
+id = "JKJ-OhswsD_NSvKA2srHQ"
+uri = "file://artifacts/comfortline-website/public/car-logan-day.png"
+type = "image"
+title = "logan day light"
+
+[[generated]]
+id = "X4qPi8IcfAgOazd9qscD8"
+uri = "file://artifacts/comfortline-website/public/car-polo-day.png"
+type = "image"
+title = "polo day light"
+
+[[generated]]
+id = "PS2H1vhf1wHJt4hOhJn0t"
+uri = "file://artifacts/comfortline-website/public/car-passat-day.png"
+type = "image"
+title = "passat day light"
+
+[[generated]]
+id = "VF_5Xu4QJRPs9XxsQqieo"
+uri = "file://artifacts/comfortline-website/public/car-van-day.png"
+type = "image"
+title = "van day light"

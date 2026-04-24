@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Users, Briefcase, Plane } from "lucide-react";
 import { useLang } from "@/context/language-context";
+import { useTheme } from "next-themes";
 
 const cars = [
   {
@@ -13,7 +14,8 @@ const cars = [
     seats: 4,
     hourly: 25,
     airport: 65,
-    image: "/car-logan.png",
+    imageDark: "/car-logan.png",
+    imageDay: "/car-logan-day.png",
     category: "sedan",
     luggageRu: "Стандарт",
     luggageEn: "Standard",
@@ -26,7 +28,8 @@ const cars = [
     seats: 4,
     hourly: 30,
     airport: 75,
-    image: "/car-polo.png",
+    imageDark: "/car-polo.png",
+    imageDay: "/car-polo-day.png",
     category: "sedan",
     luggageRu: "Стандарт",
     luggageEn: "Standard",
@@ -39,7 +42,8 @@ const cars = [
     seats: 4,
     hourly: 40,
     airport: 85,
-    image: "/car-passat.png",
+    imageDark: "/car-passat.png",
+    imageDay: "/car-passat-day.png",
     category: "sedan",
     luggageRu: "Стандарт",
     luggageEn: "Standard",
@@ -52,7 +56,8 @@ const cars = [
     seats: 8,
     hourly: 55,
     airport: 120,
-    image: "/car-van.png",
+    imageDark: "/car-van.png",
+    imageDay: "/car-van-day.png",
     category: "minivan",
     luggageRu: "Вместительный",
     luggageEn: "Spacious",
@@ -62,6 +67,8 @@ const cars = [
 export function Fleet() {
   const { t, lang } = useLang();
   const f = t.fleet;
+  const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === "light";
   const [filter, setFilter] = useState("all");
   const filteredCars = filter === "all" ? cars : cars.filter(c => c.category === filter);
 
@@ -108,7 +115,7 @@ export function Fleet() {
                 <div className="h-48 overflow-hidden relative bg-muted flex items-center justify-center">
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10"></div>
                   <img
-                    src={car.image}
+                    src={isLight ? car.imageDay : car.imageDark}
                     alt={car.name}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
