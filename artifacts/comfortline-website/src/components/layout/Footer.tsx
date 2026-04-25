@@ -93,6 +93,9 @@ export function Footer() {
             <a href="/privacy" className="hover:text-primary transition-colors underline underline-offset-2">
               {f.privacyPolicy}
             </a>
+            <a href="/terms" className="hover:text-primary transition-colors underline underline-offset-2">
+              {f.terms}
+            </a>
           </div>
         </div>
       </div>

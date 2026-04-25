@@ -235,6 +235,8 @@ export function BookingModal({ open, onClose, from, to, date, pax }: BookingModa
                     <span className="text-sm text-gray-600 leading-snug">
                       {m.privacyText}{" "}
                       <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:opacity-80">{m.privacyLink}</a>
+                      {" "}{m.privacyAnd}{" "}
+                      <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:opacity-80">{m.termsLink}</a>
                     </span>
                   </label>
 

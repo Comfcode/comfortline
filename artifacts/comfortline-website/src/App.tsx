@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/context/language-context";
 import NotFound from "@/pages/not-found";
 import LandingPage from "@/pages/landing";
 import PrivacyPolicyPage from "@/pages/privacy-policy";
+import TermsPage from "@/pages/terms";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ function Router() {
     <Switch>
       <Route path="/" component={LandingPage} />
       <Route path="/privacy" component={PrivacyPolicyPage} />
+      <Route path="/terms" component={TermsPage} />
       <Route component={NotFound} />
     </Switch>
   );

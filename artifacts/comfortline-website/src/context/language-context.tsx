@@ -24,6 +24,8 @@ interface Translations {
     comment: string;
     privacyText: string;
     privacyLink: string;
+    privacyAnd: string;
+    termsLink: string;
     submit: string;
   };
   nav: {
@@ -136,6 +138,7 @@ interface Translations {
     legalName: string;
     unp: string;
     privacyPolicy: string;
+    terms: string;
   };
 }
 
@@ -159,8 +162,10 @@ const ru: Translations = {
     email: "Ваш email",
     phone: "Ваш телефон",
     comment: "Комментарий",
-    privacyText: "Я согласен на обработку персональных данных в соответствии с",
+    privacyText: "Я согласен с",
     privacyLink: "политикой конфиденциальности",
+    privacyAnd: "и",
+    termsLink: "публичной офертой",
     submit: "Заказать трансфер",
   },
   nav: {
@@ -294,6 +299,7 @@ const ru: Translations = {
     legalName: "ИП Мурашко Андрей Антонович",
     unp: "УНП 193255422",
     privacyPolicy: "Политика конфиденциальности",
+    terms: "Публичная оферта",
   },
 };
 
@@ -317,8 +323,10 @@ const en: Translations = {
     email: "Your email",
     phone: "Your phone number",
     comment: "Your comment",
-    privacyText: "I agree to the processing of my personal data in accordance with the",
+    privacyText: "I agree to the",
     privacyLink: "privacy policy",
+    privacyAnd: "and",
+    termsLink: "terms of service",
     submit: "Order a transfer",
   },
   nav: {
@@ -452,6 +460,7 @@ const en: Translations = {
     legalName: "IE Murashko Andrey Antonovich",
     unp: "TIN 193255422",
     privacyPolicy: "Privacy Policy",
+    terms: "Terms of Service",
   },
 };
 
