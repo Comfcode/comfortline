@@ -173,7 +173,7 @@ const ru: Translations = {
   hero: {
     badge: "Всегда вовремя. Работаем с 2015 года.",
     headline1: "Индивидуальный трансфер",
-    headline2: "бизнес и премиум класса",
+    headline2: "по Беларуси и Европе",
     checkmarks: ["по Беларуси и России", "по всей Европе", "трансфер в Аэропорт"],
     cta: "Заказать трансфер",
     ctaSecondary: "Узнать цены",
@@ -283,7 +283,7 @@ const ru: Translations = {
     },
   },
   footer: {
-    tagline: "Индивидуальный трансфер бизнес и премиум класса. Работаем с 2015 года по всей Беларуси, России и Европе.",
+    tagline: "Индивидуальный трансфер по Беларуси и Европе. Работаем с 2015 года.",
     navHeading: "Навигация",
     navLinks: ["Услуги", "Автопарк", "Тарифы в аэропорт", "Преимущества", "Отзывы"],
     servicesHeading: "Направления",
@@ -330,7 +330,7 @@ const en: Translations = {
   hero: {
     badge: "Always on time. Operating since 2015.",
     headline1: "Individual transfer",
-    headline2: "business & premium class",
+    headline2: "across Belarus & Europe",
     checkmarks: ["across Belarus & Russia", "across all of Europe", "airport transfers"],
     cta: "Book a Transfer",
     ctaSecondary: "See Rates",
@@ -440,7 +440,7 @@ const en: Translations = {
     },
   },
   footer: {
-    tagline: "Individual business and premium class transfer. Operating since 2015 across Belarus, Russia, and Europe.",
+    tagline: "Individual transfer across Belarus and Europe. Operating since 2015.",
     navHeading: "Navigation",
     navLinks: ["Services", "Fleet", "Airport Rates", "Why Us", "Reviews"],
     servicesHeading: "Routes",
