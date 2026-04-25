@@ -79,6 +79,7 @@ export function Navbar() {
   );
 
   return (
+    <>
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
@@ -150,12 +151,6 @@ export function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <div className="flex items-center lg:hidden gap-3">
-            <div className="hidden sm:flex items-center gap-1.5">
-              {socialLinks.map((s) => (
-                <SocialIcon key={s.label} {...s} size={28} />
-              ))}
-            </div>
-
             <Button
               variant="ghost"
               size="icon"
@@ -213,5 +208,13 @@ export function Navbar() {
         </div>
       )}
     </nav>
+
+    {/* Fixed floating social sidebar — mobile only */}
+    <div className="lg:hidden fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 pr-2">
+      {socialLinks.map((s) => (
+        <SocialIcon key={s.label} {...s} size={36} />
+      ))}
+    </div>
+    </>
   );
 }
