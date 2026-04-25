@@ -172,8 +172,8 @@ const ru: Translations = {
   },
   hero: {
     badge: "Всегда вовремя. Работаем с 2015 года.",
-    headline1: "Индивидуальный трансфер",
-    headline2: "по Беларуси и Европе",
+    headline1: "Индивидуальный трансфер, которому доверяют",
+    headline2: "",
     checkmarks: ["по Беларуси и России", "по всей Европе", "трансфер в Аэропорт"],
     cta: "Заказать трансфер",
     ctaSecondary: "Узнать цены",
@@ -329,8 +329,8 @@ const en: Translations = {
   },
   hero: {
     badge: "Always on time. Operating since 2015.",
-    headline1: "Individual transfer",
-    headline2: "across Belarus & Europe",
+    headline1: "Private transfers you can trust",
+    headline2: "",
     checkmarks: ["across Belarus & Russia", "across all of Europe", "airport transfers"],
     cta: "Book a Transfer",
     ctaSecondary: "See Rates",

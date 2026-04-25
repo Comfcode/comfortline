@@ -34,8 +34,13 @@ export function Hero() {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6">
-              {t.hero.headline1} <br />
-              <span className="text-primary italic font-serif">{t.hero.headline2}</span>
+              {t.hero.headline1}
+              {t.hero.headline2 && (
+                <>
+                  <br />
+                  <span className="text-primary italic font-serif">{t.hero.headline2}</span>
+                </>
+              )}
             </h1>
 
             <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-8 text-foreground/80 text-base md:text-lg">
