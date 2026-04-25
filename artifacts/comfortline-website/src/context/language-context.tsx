@@ -135,6 +135,7 @@ interface Translations {
     copyright: string;
     legalName: string;
     unp: string;
+    privacyPolicy: string;
   };
 }
 
@@ -292,6 +293,7 @@ const ru: Translations = {
     copyright: "Все права защищены.",
     legalName: "ИП Мурашко Андрей Антонович",
     unp: "УНП 193255422",
+    privacyPolicy: "Политика конфиденциальности",
   },
 };
 
@@ -449,6 +451,7 @@ const en: Translations = {
     copyright: "All rights reserved.",
     legalName: "IE Murashko Andrey Antonovich",
     unp: "TIN 193255422",
+    privacyPolicy: "Privacy Policy",
   },
 };
 

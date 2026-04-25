@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "@/context/language-context";
 import NotFound from "@/pages/not-found";
 import LandingPage from "@/pages/landing";
+import PrivacyPolicyPage from "@/pages/privacy-policy";
 
 const queryClient = new QueryClient();
 
@@ -13,6 +14,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={LandingPage} />
+      <Route path="/privacy" component={PrivacyPolicyPage} />
       <Route component={NotFound} />
     </Switch>
   );

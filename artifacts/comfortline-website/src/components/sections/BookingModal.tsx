@@ -234,7 +234,7 @@ export function BookingModal({ open, onClose, from, to, date, pax }: BookingModa
                     </div>
                     <span className="text-sm text-gray-600 leading-snug">
                       {m.privacyText}{" "}
-                      <a href="#" className="text-primary underline hover:opacity-80">{m.privacyLink}</a>
+                      <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:opacity-80">{m.privacyLink}</a>
                     </span>
                   </label>
 

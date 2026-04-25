@@ -87,9 +87,12 @@ export function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} ComfortLine. {f.copyright}</p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4 items-center">
             <span>{f.legalName}</span>
             <span>{f.unp}</span>
+            <a href="/privacy" className="hover:text-primary transition-colors underline underline-offset-2">
+              {f.privacyPolicy}
+            </a>
           </div>
         </div>
       </div>
