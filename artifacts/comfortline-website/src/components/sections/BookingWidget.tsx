@@ -129,14 +129,17 @@ export function BookingWidget() {
     }
   }
 
-  const Sep = () => <div className="shrink-0 w-px h-10 bg-gray-200 self-center" />;
+  const Sep = () => <div className="hidden md:block shrink-0 w-px h-10 bg-gray-200 self-center" />;
+
+  const fieldClass = "border border-gray-200 rounded-xl md:border-0 md:rounded-none";
 
   return (
     <form onSubmit={handleSubmit} id="booking">
-      <div className="flex flex-col md:flex-row items-stretch bg-white rounded-2xl shadow-2xl overflow-visible">
+      <div className="flex flex-col md:flex-row items-stretch bg-white md:rounded-2xl md:shadow-2xl gap-2 md:gap-0 overflow-visible">
 
+        {/* FROM + TO stacked on mobile (with swap between), side-by-side on desktop */}
         {/* FROM */}
-        <div className="flex-1 flex items-center gap-3 px-5 py-4 min-w-0">
+        <div className={`flex-1 flex items-center gap-3 px-5 py-4 min-w-0 ${fieldClass}`}>
           <FieldShell className="flex-1">
             <input type="text" value={from} onChange={e => setFrom(e.target.value)}
               placeholder=" " className={`${inputBase} peer`} />
@@ -154,7 +157,7 @@ export function BookingWidget() {
         <Sep />
 
         {/* TO */}
-        <div className="flex-1 flex items-center px-5 py-4 min-w-0">
+        <div className={`flex-1 flex items-center px-5 py-4 min-w-0 ${fieldClass}`}>
           <FieldShell>
             <input type="text" value={to} onChange={e => setTo(e.target.value)}
               placeholder=" " className={`${inputBase} peer`} />
@@ -167,12 +170,11 @@ export function BookingWidget() {
         <Sep />
 
         {/* DATE */}
-        <div className="flex-1 flex items-center gap-2 px-5 py-4 min-w-0">
+        <div className={`flex-1 flex items-center gap-2 px-5 py-4 min-w-0 ${fieldClass}`}>
           <FieldShell className="flex-1">
             <input type="date" value={date} onChange={e => setDate(e.target.value)}
               min={new Date().toISOString().split("T")[0]}
               className={`${inputBase} [color-scheme:light] peer`} />
-            {/* Label always floats for date since browser shows placeholder */}
             <label className={floatingLabel}>{b.date}</label>
           </FieldShell>
         </div>
@@ -180,7 +182,7 @@ export function BookingWidget() {
         <Sep />
 
         {/* PASSENGERS */}
-        <div className="flex-1 relative min-w-0" ref={paxRef}>
+        <div className={`flex-1 relative min-w-0 ${fieldClass}`} ref={paxRef}>
           <button type="button" onClick={() => setPaxOpen(v => !v)}
             className="w-full h-full flex items-center gap-2 px-5 py-4 text-left">
             <FieldShell className="flex-1 pointer-events-none">
@@ -245,7 +247,7 @@ export function BookingWidget() {
         </div>
 
         {/* SUBMIT */}
-        <div className="px-3 py-3 shrink-0 flex items-center">
+        <div className="px-3 py-3 md:shrink-0 flex items-center">
           <button type="submit" disabled={submitting}
             className="w-full md:w-auto px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30 disabled:opacity-70 disabled:cursor-not-allowed">
             {submitting ? "..." : b.cta}
