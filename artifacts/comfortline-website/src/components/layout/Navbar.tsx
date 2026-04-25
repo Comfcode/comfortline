@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ElementType } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/context/language-context";
@@ -28,11 +28,55 @@ export function Navbar() {
   ];
 
   const socialLinks = [
-    { icon: SiWhatsapp, href: "https://wa.me/375291552776", label: "WhatsApp", color: "hover:text-green-500" },
-    { icon: SiTelegram, href: "https://t.me/transfer_comfortline", label: "Telegram", color: "hover:text-sky-400" },
-    { icon: SiViber, href: "viber://chat?number=%2B375291552776", label: "Viber", color: "hover:text-purple-500" },
-    { icon: Instagram, href: "https://www.instagram.com/transfer_comfortline/", label: "Instagram", color: "hover:text-pink-500" },
+    {
+      icon: SiTelegram,
+      href: "https://t.me/transfer_comfortline",
+      label: "Telegram",
+      bg: "#229ED9",
+      gradient: false,
+    },
+    {
+      icon: SiViber,
+      href: "viber://chat?number=%2B375291552776",
+      label: "Viber",
+      bg: "#7360F2",
+      gradient: false,
+    },
+    {
+      icon: SiWhatsapp,
+      href: "https://wa.me/375291552776",
+      label: "WhatsApp",
+      bg: "#25D366",
+      gradient: false,
+    },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/transfer_comfortline/",
+      label: "Instagram",
+      bg: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)",
+      gradient: true,
+    },
   ];
+
+  const SocialIcon = ({ icon: Icon, href, label, bg, size = 32 }: {
+    icon: ElementType; href: string; label: string;
+    bg: string; gradient?: boolean; size?: number;
+  }) => (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="flex-shrink-0 rounded-full flex items-center justify-center text-white transition-transform hover:scale-110 active:scale-95"
+      style={{
+        width: size,
+        height: size,
+        background: bg,
+      }}
+    >
+      <Icon style={{ width: size * 0.5, height: size * 0.5 }} />
+    </a>
+  );
 
   return (
     <nav
@@ -71,17 +115,8 @@ export function Navbar() {
 
             {/* Social icons */}
             <div className="flex items-center gap-2">
-              {socialLinks.map(({ icon: Icon, href, label, color }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className={`text-foreground/60 transition-colors ${color}`}
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
+              {socialLinks.map((s) => (
+                <SocialIcon key={s.label} {...s} size={30} />
               ))}
             </div>
 
@@ -115,18 +150,9 @@ export function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <div className="flex items-center lg:hidden gap-3">
-            <div className="hidden sm:flex items-center gap-2">
-              {socialLinks.map(({ icon: Icon, href, label, color }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className={`text-foreground/60 transition-colors ${color}`}
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
+            <div className="hidden sm:flex items-center gap-1.5">
+              {socialLinks.map((s) => (
+                <SocialIcon key={s.label} {...s} size={28} />
               ))}
             </div>
 
@@ -162,18 +188,9 @@ export function Navbar() {
               <Phone className="h-5 w-5 text-primary" />
               +375 (29) 155-27-76
             </a>
-            <div className="flex items-center gap-4 p-2">
-              {socialLinks.map(({ icon: Icon, href, label, color }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className={`text-foreground/60 transition-colors ${color}`}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
+            <div className="flex items-center gap-3 p-2">
+              {socialLinks.map((s) => (
+                <SocialIcon key={s.label} {...s} size={38} />
               ))}
             </div>
             {/* Language toggle mobile */}
