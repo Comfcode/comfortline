@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { ArrowLeftRight, ChevronDown, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/language-context";
-import { useToast } from "@/hooks/use-toast";
+import { BookingModal } from "./BookingModal";
 
 type VehicleClass = "any" | "comfort" | "business" | "premium";
 
@@ -62,7 +62,6 @@ function FieldShell({ children, className = "" }: { children: React.ReactNode; c
 
 export function BookingWidget() {
   const { t } = useLang();
-  const { toast } = useToast();
   const b = t.booking;
 
   const [from, setFrom] = useState("");
@@ -99,36 +98,11 @@ export function BookingWidget() {
   const paxSummary = paxLabel(totalPax, b.passengerOne, b.passengerFew, b.passengerMany)
     + (pax.vehicleClass !== "any" ? ` · ${classLabel}` : "");
 
-  const [submitting, setSubmitting] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitting(true);
-    try {
-      const res = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          from, to, date,
-          adults: pax.adults,
-          children: pax.children,
-          babies: pax.babies,
-          pets: pax.pets,
-          suitcases: pax.suitcases,
-          vehicleClass: pax.vehicleClass,
-          lang: t.lang,
-        }),
-      });
-      if (res.ok) {
-        toast({ title: b.toastTitle, description: b.toastDesc });
-      } else {
-        toast({ title: "Error", description: "Failed to send request. Please try again.", variant: "destructive" });
-      }
-    } catch {
-      toast({ title: "Error", description: "Failed to send request. Please try again.", variant: "destructive" });
-    } finally {
-      setSubmitting(false);
-    }
+    setModalOpen(true);
   }
 
   const PaxDropdown = ({ parentRef }: { parentRef: React.RefObject<HTMLDivElement | null> }) => (
@@ -185,6 +159,7 @@ export function BookingWidget() {
   );
 
   return (
+    <>
     <form onSubmit={handleSubmit} id="booking">
 
       {/* ── MOBILE LAYOUT (stacked bordered cards) ── */}
@@ -242,9 +217,9 @@ export function BookingWidget() {
         </div>
 
         {/* SUBMIT */}
-        <button type="submit" disabled={submitting}
-          className="w-full px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-2xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30 disabled:opacity-70 disabled:cursor-not-allowed">
-          {submitting ? "..." : b.cta}
+        <button type="submit"
+          className="w-full px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-2xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30">
+          {b.cta}
         </button>
       </div>
 
@@ -310,13 +285,23 @@ export function BookingWidget() {
 
         {/* SUBMIT */}
         <div className="px-3 py-3 shrink-0 flex items-center">
-          <button type="submit" disabled={submitting}
-            className="w-full md:w-auto px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30 disabled:opacity-70 disabled:cursor-not-allowed">
-            {submitting ? "..." : b.cta}
+          <button type="submit"
+            className="w-full md:w-auto px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30">
+            {b.cta}
           </button>
         </div>
       </div>
 
     </form>
+
+    <BookingModal
+      open={modalOpen}
+      onClose={() => setModalOpen(false)}
+      from={from}
+      to={to}
+      date={date}
+      pax={pax}
+    />
+    </>
   );
 }

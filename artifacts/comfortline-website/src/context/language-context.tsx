@@ -4,6 +4,28 @@ type Lang = "ru" | "en";
 
 interface Translations {
   lang: "ru" | "en";
+  modal: {
+    title: string;
+    passenger: string;
+    passengerFew: string;
+    passengerMany: string;
+    adult: string;
+    adultFew: string;
+    adultMany: string;
+    suitcase: string;
+    suitcaseFew: string;
+    suitcaseMany: string;
+    classLabel: string;
+    contactHeading: string;
+    contactSubtext: string;
+    name: string;
+    email: string;
+    phone: string;
+    comment: string;
+    privacyText: string;
+    privacyLink: string;
+    submit: string;
+  };
   nav: {
     services: string;
     fleet: string;
@@ -118,6 +140,28 @@ interface Translations {
 
 const ru: Translations = {
   lang: "ru",
+  modal: {
+    title: "Оформление трансфера",
+    passenger: "пассажир",
+    passengerFew: "пассажира",
+    passengerMany: "пассажиров",
+    adult: "взрослый",
+    adultFew: "взрослых",
+    adultMany: "взрослых",
+    suitcase: "чемодан",
+    suitcaseFew: "чемодана",
+    suitcaseMany: "чемоданов",
+    classLabel: "Класс",
+    contactHeading: "Контактные данные",
+    contactSubtext: "Для оформления заказа оставьте контакты — менеджер свяжется с вами в ближайшее время.",
+    name: "Ваше имя",
+    email: "Ваш email",
+    phone: "Ваш телефон",
+    comment: "Комментарий",
+    privacyText: "Я согласен на обработку персональных данных в соответствии с",
+    privacyLink: "политикой конфиденциальности",
+    submit: "Заказать трансфер",
+  },
   nav: {
     services: "Услуги",
     fleet: "Автопарк",
@@ -253,6 +297,28 @@ const ru: Translations = {
 
 const en: Translations = {
   lang: "en",
+  modal: {
+    title: "Transfer order",
+    passenger: "passenger",
+    passengerFew: "passengers",
+    passengerMany: "passengers",
+    adult: "Adult",
+    adultFew: "Adults",
+    adultMany: "Adults",
+    suitcase: "Suitcase",
+    suitcaseFew: "Suitcases",
+    suitcaseMany: "Suitcases",
+    classLabel: "Class",
+    contactHeading: "Contact details",
+    contactSubtext: "To place an order, leave your contacts and our manager will get in touch shortly.",
+    name: "Your name",
+    email: "Your email",
+    phone: "Your phone number",
+    comment: "Your comment",
+    privacyText: "I agree to the processing of my personal data in accordance with the",
+    privacyLink: "privacy policy",
+    submit: "Order a transfer",
+  },
   nav: {
     services: "Services",
     fleet: "Fleet",
