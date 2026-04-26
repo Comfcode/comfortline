@@ -111,23 +111,30 @@ export function BookingWidget() {
   const paxSummary = paxLabel(totalPax, b.passengerOne, b.passengerFew, b.passengerMany)
     + (pax.vehicleClass !== "any" ? ` · ${classLabel}` : "");
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalConfig, setModalConfig] = useState<{
+    open: boolean;
+    startStep: 1 | 2;
+    initialRouteIndex?: number;
+  }>({ open: false, startStep: 1 });
 
   useEffect(() => {
     const handler = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      if (detail && typeof detail.routeIndex === "number" && detail.routeIndex >= 0) {
-        applyRoute(detail.routeIndex);
-      }
-      setModalOpen(true);
+      const detail = (e as CustomEvent).detail as { routeIndex?: number } | undefined;
+      setModalConfig({
+        open: true,
+        startStep: 1,
+        initialRouteIndex: typeof detail?.routeIndex === "number" && detail.routeIndex >= 0
+          ? detail.routeIndex
+          : 0,
+      });
     };
     window.addEventListener("open-booking-modal", handler);
     return () => window.removeEventListener("open-booking-modal", handler);
-  }, [routes]);
+  }, []);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setModalOpen(true);
+    setModalConfig({ open: true, startStep: 2 });
   }
 
   const PaxDropdown = ({ parentRef }: { parentRef: React.RefObject<HTMLDivElement | null> }) => (
@@ -369,13 +376,15 @@ export function BookingWidget() {
     </form>
 
     <BookingModal
-      open={modalOpen}
-      onClose={() => setModalOpen(false)}
-      from={from}
-      to={to}
-      date={date}
-      pax={pax}
-      routeName={selectedRoute?.name}
+      open={modalConfig.open}
+      onClose={() => setModalConfig(c => ({ ...c, open: false }))}
+      startStep={modalConfig.startStep}
+      initialRouteIndex={modalConfig.initialRouteIndex}
+      prefilledDate={date}
+      prefilledPax={pax}
+      prefilledRouteName={selectedRoute?.name}
+      prefilledFrom={from}
+      prefilledTo={to}
     />
     </>
   );

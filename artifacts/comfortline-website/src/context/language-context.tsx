@@ -27,6 +27,11 @@ interface Translations {
     privacyAnd: string;
     termsLink: string;
     submit: string;
+    step1Title: string;
+    step2Title: string;
+    selectPlan: string;
+    back: string;
+    planLabel: string;
   };
   nav: {
     services: string;
@@ -173,6 +178,11 @@ const ru: Translations = {
     privacyAnd: "и",
     termsLink: "публичной офертой",
     submit: "Заказать трансфер",
+    step1Title: "Выберите маршрут",
+    step2Title: "Оформить заказ",
+    selectPlan: "Выбрать",
+    back: "Назад",
+    planLabel: "Тариф",
   },
   nav: {
     services: "Услуги",
@@ -359,6 +369,11 @@ const en: Translations = {
     privacyAnd: "and",
     termsLink: "terms of service",
     submit: "Order a transfer",
+    step1Title: "Choose your route",
+    step2Title: "Complete your booking",
+    selectPlan: "Select",
+    back: "Back",
+    planLabel: "Plan",
   },
   nav: {
     services: "Services",
