@@ -84,7 +84,14 @@ export function Pricing() {
                   variant={plan.popular ? "default" : "outline"}
                   className={`w-full mt-auto ${plan.popular ? "shadow-md shadow-primary/20" : ""}`}
                   onClick={() => {
-                    window.dispatchEvent(new CustomEvent("open-booking-modal", { detail: { routeIndex: activeRoute } }));
+                    window.dispatchEvent(new CustomEvent("open-booking-modal", {
+                      detail: {
+                        routeIndex: activeRoute,
+                        routeName: route.name,
+                        planName: plan.name,
+                        planPrice: plan.price,
+                      },
+                    }));
                   }}
                 >
                   {t.pricing.book}

@@ -113,28 +113,33 @@ export function BookingWidget() {
 
   const [modalConfig, setModalConfig] = useState<{
     open: boolean;
-    startStep: 1 | 2;
-    initialRouteIndex?: number;
-  }>({ open: false, startStep: 1 });
+    routeName?: string;
+    planName?: string;
+    planPrice?: string;
+  }>({ open: false });
 
   useEffect(() => {
     const handler = (e: Event) => {
-      const detail = (e as CustomEvent).detail as { routeIndex?: number } | undefined;
+      const detail = (e as CustomEvent).detail as {
+        routeIndex?: number; routeName?: string; planName?: string; planPrice?: string;
+      } | undefined;
+      if (detail?.routeIndex !== undefined && detail.routeIndex >= 0) {
+        applyRoute(detail.routeIndex);
+      }
       setModalConfig({
         open: true,
-        startStep: 1,
-        initialRouteIndex: typeof detail?.routeIndex === "number" && detail.routeIndex >= 0
-          ? detail.routeIndex
-          : 0,
+        routeName: detail?.routeName,
+        planName: detail?.planName,
+        planPrice: detail?.planPrice,
       });
     };
     window.addEventListener("open-booking-modal", handler);
     return () => window.removeEventListener("open-booking-modal", handler);
-  }, []);
+  }, [routes]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setModalConfig({ open: true, startStep: 2 });
+    setModalConfig({ open: true });
   }
 
   const PaxDropdown = ({ parentRef }: { parentRef: React.RefObject<HTMLDivElement | null> }) => (
@@ -378,11 +383,11 @@ export function BookingWidget() {
     <BookingModal
       open={modalConfig.open}
       onClose={() => setModalConfig(c => ({ ...c, open: false }))}
-      startStep={modalConfig.startStep}
-      initialRouteIndex={modalConfig.initialRouteIndex}
       prefilledDate={date}
       prefilledPax={pax}
-      prefilledRouteName={selectedRoute?.name}
+      routeName={modalConfig.routeName ?? selectedRoute?.name}
+      planName={modalConfig.planName}
+      planPrice={modalConfig.planPrice}
       prefilledFrom={from}
       prefilledTo={to}
     />
