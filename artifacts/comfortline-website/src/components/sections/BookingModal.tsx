@@ -215,7 +215,7 @@ export function BookingModal({
                 </div>
 
                 {/* Passengers */}
-                <div className="relative">
+                <div>
                   <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">
                     {b.passengersClass}
                   </label>
@@ -227,11 +227,11 @@ export function BookingModal({
                   <AnimatePresence>
                     {paxOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 6, scale: 0.97 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 6, scale: 0.97 }}
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -4 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-20 p-4"
+                        className="mt-1 bg-white border border-gray-200 rounded-xl shadow-md p-4"
                       >
                         <SmallCounter label={b.adults}    value={pax.adults}    min={1} max={8} onChange={v => setPax(p => ({ ...p, adults: v }))} />
                         <SmallCounter label={b.children}  value={pax.children}  max={5}         onChange={v => setPax(p => ({ ...p, children: v }))} />
