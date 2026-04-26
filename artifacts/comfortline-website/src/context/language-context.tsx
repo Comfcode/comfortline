@@ -266,11 +266,11 @@ const ru: Translations = {
       {
         name: "Минск → Аэропорт",
         plans: [
-          { name: "Легковая — Эконом", price: "от 70 руб", features: ["Встреча с табличкой", "Помощь с багажом", "Детское кресло по запросу", "Ожидание при задержке рейса"] },
-          { name: "Комфорт", price: "от 85 руб", popular: true, features: ["Встреча с табличкой", "Помощь с багажом", "Wi-Fi в салоне", "Вода для пассажиров"] },
-          { name: "Бизнес", price: "от 130 руб", features: ["Mercedes E-Class", "Встреча с табличкой", "Wi-Fi в салоне", "Вода для пассажиров"] },
-          { name: "Минивэн (до 6 чел.)", price: "от 110 руб", features: ["Kia Carnival", "Встреча с табличкой", "Много места для багажа", "Детское кресло по запросу"] },
-          { name: "Микроавтобус (до 8 чел.)", price: "от 150 руб", features: ["Fiat Scudo", "Встреча с табличкой", "Подходит для групп", "Детские кресла по запросу"] },
+          { name: "Легковая — Эконом", price: "70 руб", features: ["Встреча с табличкой", "Помощь с багажом", "Детское кресло по запросу", "Ожидание при задержке рейса"] },
+          { name: "Комфорт", price: "85 руб", popular: true, features: ["Встреча с табличкой", "Помощь с багажом", "Wi-Fi в салоне", "Вода для пассажиров"] },
+          { name: "Бизнес", price: "130 руб", features: ["Mercedes E-Class", "Встреча с табличкой", "Wi-Fi в салоне", "Вода для пассажиров"] },
+          { name: "Минивэн (до 6 чел.)", price: "110 руб", features: ["Kia Carnival", "Встреча с табличкой", "Много места для багажа", "Детское кресло по запросу"] },
+          { name: "Микроавтобус (до 8 чел.)", price: "150 руб", features: ["Fiat Scudo", "Встреча с табличкой", "Подходит для групп", "Детские кресла по запросу"] },
         ],
       },
       {
@@ -457,11 +457,11 @@ const en: Translations = {
       {
         name: "Minsk → Airport",
         plans: [
-          { name: "Sedan — Economy", price: "from 70 BYN", features: ["Meet & greet with board", "Luggage assistance", "Child seat on request", "Wait for delayed flights"] },
-          { name: "Comfort", price: "from 85 BYN", popular: true, features: ["Meet & greet with board", "Luggage assistance", "In-car Wi-Fi", "Water for passengers"] },
-          { name: "Business", price: "from 130 BYN", features: ["Mercedes E-Class", "Meet & greet with board", "In-car Wi-Fi", "Water for passengers"] },
-          { name: "Minivan (up to 6 pax)", price: "from 110 BYN", features: ["Kia Carnival", "Meet & greet with board", "Ample luggage space", "Child seat on request"] },
-          { name: "Minibus (up to 8 pax)", price: "from 150 BYN", features: ["Fiat Scudo", "Meet & greet with board", "Suitable for groups", "Child seats on request"] },
+          { name: "Sedan — Economy", price: "70 BYN", features: ["Meet & greet with board", "Luggage assistance", "Child seat on request", "Wait for delayed flights"] },
+          { name: "Comfort", price: "85 BYN", popular: true, features: ["Meet & greet with board", "Luggage assistance", "In-car Wi-Fi", "Water for passengers"] },
+          { name: "Business", price: "130 BYN", features: ["Mercedes E-Class", "Meet & greet with board", "In-car Wi-Fi", "Water for passengers"] },
+          { name: "Minivan (up to 6 pax)", price: "110 BYN", features: ["Kia Carnival", "Meet & greet with board", "Ample luggage space", "Child seat on request"] },
+          { name: "Minibus (up to 8 pax)", price: "150 BYN", features: ["Fiat Scudo", "Meet & greet with board", "Suitable for groups", "Child seats on request"] },
         ],
       },
       {
