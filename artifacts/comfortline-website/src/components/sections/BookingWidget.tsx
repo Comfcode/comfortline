@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { ArrowLeftRight, ChevronDown, X } from "lucide-react";
+import { ArrowLeftRight, ChevronDown, X, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { BookingModal } from "./BookingModal";
@@ -64,6 +64,7 @@ export function BookingWidget() {
   const { t } = useLang();
   const b = t.booking;
 
+  const [routeIndex, setRouteIndex] = useState<number>(-1);
   const [from, setFrom] = useState("");
   const [to,   setTo]   = useState("");
   const [date, setDate] = useState("");
@@ -80,6 +81,18 @@ export function BookingWidget() {
     { key: "business", label: b.classBusiness },
     { key: "premium",  label: b.classPremium  },
   ];
+
+  const routes = t.pricing.routes;
+  const selectedRoute = routeIndex >= 0 ? routes[routeIndex] : null;
+
+  function applyRoute(idx: number) {
+    setRouteIndex(idx);
+    if (idx >= 0) {
+      const parts = routes[idx].name.split(" → ");
+      setFrom(parts[0] ?? "");
+      setTo(parts[1] ?? "");
+    }
+  }
 
   useEffect(() => {
     function onOutside(e: MouseEvent) {
@@ -101,10 +114,16 @@ export function BookingWidget() {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setModalOpen(true);
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail && typeof detail.routeIndex === "number" && detail.routeIndex >= 0) {
+        applyRoute(detail.routeIndex);
+      }
+      setModalOpen(true);
+    };
     window.addEventListener("open-booking-modal", handler);
     return () => window.removeEventListener("open-booking-modal", handler);
-  }, []);
+  }, [routes]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -164,38 +183,71 @@ export function BookingWidget() {
     </AnimatePresence>
   );
 
+  const RouteSelectField = ({ mobile = false }: { mobile?: boolean }) => (
+    <FieldShell className={mobile ? "flex-1" : "flex-1"}>
+      <MapPin className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-4 text-primary pointer-events-none" style={{ top: "calc(50% + 6px)" }} />
+      <span className={floatingLabel}>{b.routeLabel}</span>
+      <select
+        value={routeIndex}
+        onChange={e => applyRoute(Number(e.target.value))}
+        className="absolute inset-0 pt-5 pb-1 pl-5 pr-6 w-full bg-transparent outline-none border-0 text-sm font-medium text-gray-900 appearance-none cursor-pointer"
+      >
+        <option value={-1}>{b.routeCustom}</option>
+        {routes.map((r, i) => (
+          <option key={i} value={i}>{r.name}</option>
+        ))}
+      </select>
+      <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" style={{ top: "calc(50% + 6px)" }} />
+    </FieldShell>
+  );
+
   return (
     <>
     <form onSubmit={handleSubmit} id="booking">
 
-      {/* ── MOBILE LAYOUT (stacked bordered cards) ── */}
+      {/* ── MOBILE LAYOUT ── */}
       <div className="flex flex-col gap-2 md:hidden">
 
-        {/* FROM */}
+        {/* ROUTE SELECT */}
         <div className="flex items-center gap-3 px-5 py-4 bg-white border border-gray-200 rounded-2xl">
-          <FieldShell className="flex-1">
-            <input type="text" value={from} onChange={e => setFrom(e.target.value)}
-              placeholder=" " className={`${inputBase} peer`} />
-            <label className={from ? floatingLabel : `${restingLabel} peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:text-primary peer-focus:font-semibold peer-focus:uppercase peer-focus:tracking-wider`}>
-              {b.from}
-            </label>
-          </FieldShell>
-          <button type="button" onClick={swap} aria-label="Swap"
-            className="shrink-0 w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary transition-colors">
-            <ArrowLeftRight className="h-3.5 w-3.5" />
-          </button>
+          <RouteSelectField mobile />
         </div>
 
-        {/* TO */}
-        <div className="flex items-center px-5 py-4 bg-white border border-gray-200 rounded-2xl">
-          <FieldShell>
-            <input type="text" value={to} onChange={e => setTo(e.target.value)}
-              placeholder=" " className={`${inputBase} peer`} />
-            <label className={to ? floatingLabel : `${restingLabel} peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:text-primary peer-focus:font-semibold peer-focus:uppercase peer-focus:tracking-wider`}>
-              {b.to}
-            </label>
-          </FieldShell>
-        </div>
+        {/* FROM / TO — shown only for custom route */}
+        <AnimatePresence>
+          {routeIndex === -1 && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="flex flex-col gap-2 overflow-hidden"
+            >
+              <div className="flex items-center gap-3 px-5 py-4 bg-white border border-gray-200 rounded-2xl">
+                <FieldShell className="flex-1">
+                  <input type="text" value={from} onChange={e => setFrom(e.target.value)}
+                    placeholder=" " className={`${inputBase} peer`} />
+                  <label className={from ? floatingLabel : `${restingLabel} peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:text-primary peer-focus:font-semibold peer-focus:uppercase peer-focus:tracking-wider`}>
+                    {b.from}
+                  </label>
+                </FieldShell>
+                <button type="button" onClick={swap} aria-label="Swap"
+                  className="shrink-0 w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary transition-colors">
+                  <ArrowLeftRight className="h-3.5 w-3.5" />
+                </button>
+              </div>
+              <div className="flex items-center px-5 py-4 bg-white border border-gray-200 rounded-2xl">
+                <FieldShell>
+                  <input type="text" value={to} onChange={e => setTo(e.target.value)}
+                    placeholder=" " className={`${inputBase} peer`} />
+                  <label className={to ? floatingLabel : `${restingLabel} peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:text-primary peer-focus:font-semibold peer-focus:uppercase peer-focus:tracking-wider`}>
+                    {b.to}
+                  </label>
+                </FieldShell>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* DATE */}
         <div className="flex items-center px-5 py-4 bg-white border border-gray-200 rounded-2xl">
@@ -229,73 +281,89 @@ export function BookingWidget() {
         </button>
       </div>
 
-      {/* ── DESKTOP LAYOUT (horizontal bar) ── */}
-      <div className="hidden md:flex items-stretch bg-white rounded-2xl shadow-2xl overflow-visible">
+      {/* ── DESKTOP LAYOUT ── */}
+      <div className="hidden md:flex flex-col gap-2">
+        <div className="flex items-stretch bg-white rounded-2xl shadow-2xl overflow-visible">
 
-        {/* FROM */}
-        <div className="flex-1 flex items-center gap-3 px-5 py-4 min-w-0">
-          <FieldShell className="flex-1">
-            <input type="text" value={from} onChange={e => setFrom(e.target.value)}
-              placeholder=" " className={`${inputBase} peer`} />
-            <label className={from ? floatingLabel : `${restingLabel} peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:text-primary peer-focus:font-semibold peer-focus:uppercase peer-focus:tracking-wider`}>
-              {b.from}
-            </label>
-          </FieldShell>
-          <button type="button" onClick={swap} aria-label="Swap"
-            className="shrink-0 w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary transition-colors">
-            <ArrowLeftRight className="h-3.5 w-3.5" />
-          </button>
-        </div>
+          {/* ROUTE */}
+          <div className="flex-[1.4] flex items-center gap-3 px-5 py-4 min-w-0">
+            <RouteSelectField />
+          </div>
 
-        <div className="shrink-0 w-px h-10 bg-gray-200 self-center" />
+          <div className="shrink-0 w-px h-10 bg-gray-200 self-center" />
 
-        {/* TO */}
-        <div className="flex-1 flex items-center px-5 py-4 min-w-0">
-          <FieldShell>
-            <input type="text" value={to} onChange={e => setTo(e.target.value)}
-              placeholder=" " className={`${inputBase} peer`} />
-            <label className={to ? floatingLabel : `${restingLabel} peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:text-primary peer-focus:font-semibold peer-focus:uppercase peer-focus:tracking-wider`}>
-              {b.to}
-            </label>
-          </FieldShell>
-        </div>
-
-        <div className="shrink-0 w-px h-10 bg-gray-200 self-center" />
-
-        {/* DATE */}
-        <div className="flex-1 flex items-center gap-2 px-5 py-4 min-w-0">
-          <FieldShell className="flex-1">
-            <input type="date" value={date} onChange={e => setDate(e.target.value)}
-              min={new Date().toISOString().split("T")[0]}
-              className={`${inputBase} [color-scheme:light] peer`} />
-            <label className={floatingLabel}>{b.date}</label>
-          </FieldShell>
-        </div>
-
-        <div className="shrink-0 w-px h-10 bg-gray-200 self-center" />
-
-        {/* PASSENGERS */}
-        <div className="flex-1 relative min-w-0" ref={paxRef}>
-          <button type="button" onClick={() => setPaxOpen(v => !v)}
-            className="w-full h-full flex items-center gap-2 px-5 py-4 text-left">
-            <FieldShell className="flex-1 pointer-events-none">
-              <span className={floatingLabel}>{b.passengersClass}</span>
-              <span className="absolute bottom-1 left-0 text-sm font-medium text-gray-900 truncate w-full">
-                {paxSummary}
-              </span>
+          {/* DATE */}
+          <div className="flex-1 flex items-center gap-2 px-5 py-4 min-w-0">
+            <FieldShell className="flex-1">
+              <input type="date" value={date} onChange={e => setDate(e.target.value)}
+                min={new Date().toISOString().split("T")[0]}
+                className={`${inputBase} [color-scheme:light] peer`} />
+              <label className={floatingLabel}>{b.date}</label>
             </FieldShell>
-            <ChevronDown className={`h-4 w-4 text-gray-400 shrink-0 transition-transform ${paxOpen ? "rotate-180" : ""}`} />
-          </button>
-          <PaxDropdown parentRef={paxRef} />
+          </div>
+
+          <div className="shrink-0 w-px h-10 bg-gray-200 self-center" />
+
+          {/* PASSENGERS */}
+          <div className="flex-1 relative min-w-0" ref={paxRef}>
+            <button type="button" onClick={() => setPaxOpen(v => !v)}
+              className="w-full h-full flex items-center gap-2 px-5 py-4 text-left">
+              <FieldShell className="flex-1 pointer-events-none">
+                <span className={floatingLabel}>{b.passengersClass}</span>
+                <span className="absolute bottom-1 left-0 text-sm font-medium text-gray-900 truncate w-full">
+                  {paxSummary}
+                </span>
+              </FieldShell>
+              <ChevronDown className={`h-4 w-4 text-gray-400 shrink-0 transition-transform ${paxOpen ? "rotate-180" : ""}`} />
+            </button>
+            <PaxDropdown parentRef={paxRef} />
+          </div>
+
+          {/* SUBMIT */}
+          <div className="px-3 py-3 shrink-0 flex items-center">
+            <button type="submit"
+              className="w-full md:w-auto px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30">
+              {b.cta}
+            </button>
+          </div>
         </div>
 
-        {/* SUBMIT */}
-        <div className="px-3 py-3 shrink-0 flex items-center">
-          <button type="submit"
-            className="w-full md:w-auto px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30">
-            {b.cta}
-          </button>
-        </div>
+        {/* FROM / TO — shown below bar only for custom route */}
+        <AnimatePresence>
+          {routeIndex === -1 && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
+              className="flex items-stretch bg-white rounded-2xl shadow-lg overflow-visible"
+            >
+              <div className="flex-1 flex items-center gap-3 px-5 py-4 min-w-0">
+                <FieldShell className="flex-1">
+                  <input type="text" value={from} onChange={e => setFrom(e.target.value)}
+                    placeholder=" " className={`${inputBase} peer`} />
+                  <label className={from ? floatingLabel : `${restingLabel} peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:text-primary peer-focus:font-semibold peer-focus:uppercase peer-focus:tracking-wider`}>
+                    {b.from}
+                  </label>
+                </FieldShell>
+                <button type="button" onClick={swap} aria-label="Swap"
+                  className="shrink-0 w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary transition-colors">
+                  <ArrowLeftRight className="h-3.5 w-3.5" />
+                </button>
+              </div>
+              <div className="shrink-0 w-px h-10 bg-gray-200 self-center" />
+              <div className="flex-1 flex items-center px-5 py-4 min-w-0">
+                <FieldShell>
+                  <input type="text" value={to} onChange={e => setTo(e.target.value)}
+                    placeholder=" " className={`${inputBase} peer`} />
+                  <label className={to ? floatingLabel : `${restingLabel} peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:text-primary peer-focus:font-semibold peer-focus:uppercase peer-focus:tracking-wider`}>
+                    {b.to}
+                  </label>
+                </FieldShell>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
     </form>
@@ -307,6 +375,7 @@ export function BookingWidget() {
       to={to}
       date={date}
       pax={pax}
+      routeName={selectedRoute?.name}
     />
     </>
   );

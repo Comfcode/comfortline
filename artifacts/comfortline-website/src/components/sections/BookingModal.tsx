@@ -22,6 +22,7 @@ interface BookingModalProps {
   to: string;
   date: string;
   pax: PassengerState;
+  routeName?: string;
 }
 
 function plural(n: number, one: string, few: string, many: string) {
@@ -30,7 +31,7 @@ function plural(n: number, one: string, few: string, many: string) {
   return `${n} ${many}`;
 }
 
-export function BookingModal({ open, onClose, from, to, date, pax }: BookingModalProps) {
+export function BookingModal({ open, onClose, from, to, date, pax, routeName }: BookingModalProps) {
   const { t } = useLang();
   const { toast } = useToast();
   const m = t.modal;
@@ -68,7 +69,7 @@ export function BookingModal({ open, onClose, from, to, date, pax }: BookingModa
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          from, to, date,
+          from: routeName ?? from, to: routeName ? "" : to, date,
           adults: pax.adults,
           children: pax.children,
           babies: pax.babies,
@@ -140,12 +141,18 @@ export function BookingModal({ open, onClose, from, to, date, pax }: BookingModa
               <div className="px-6 py-5 space-y-5">
                 {/* Route summary */}
                 <div className="border border-gray-200 rounded-xl overflow-hidden">
-                  <div className="flex items-center gap-3 px-4 py-3 bg-gray-50 border-b border-gray-200">
-                    <span className="font-bold text-gray-900">{from || "—"}</span>
-                    <ArrowRight className="h-4 w-4 text-primary shrink-0" />
-                    <span className="font-bold text-gray-900">{to || "—"}</span>
+                  <div className="flex items-center gap-3 px-4 py-3 bg-gray-50 border-b border-gray-200 flex-wrap">
+                    {routeName ? (
+                      <span className="font-bold text-gray-900">{routeName}</span>
+                    ) : (
+                      <>
+                        <span className="font-bold text-gray-900">{from || "—"}</span>
+                        <ArrowRight className="h-4 w-4 text-primary shrink-0" />
+                        <span className="font-bold text-gray-900">{to || "—"}</span>
+                      </>
+                    )}
                     {date && (
-                      <span className="text-gray-500 text-sm ml-1">, {formattedDate}</span>
+                      <span className="text-gray-500 text-sm">, {formattedDate}</span>
                     )}
                   </div>
 

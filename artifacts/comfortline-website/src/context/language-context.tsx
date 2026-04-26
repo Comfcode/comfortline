@@ -74,6 +74,9 @@ interface Translations {
     cta: string;
     toastTitle: string;
     toastDesc: string;
+    routeLabel: string;
+    routeCustom: string;
+    routePlaceholder: string;
   };
   services: {
     label: string;
@@ -217,6 +220,9 @@ const ru: Translations = {
     cta: "Заказать трансфер",
     toastTitle: "Заявка отправлена!",
     toastDesc: "Наш менеджер свяжется с вами в ближайшее время.",
+    routeLabel: "Направление",
+    routeCustom: "Свой маршрут",
+    routePlaceholder: "Выберите маршрут",
   },
   services: {
     label: "Наши Услуги",
@@ -400,6 +406,9 @@ const en: Translations = {
     cta: "Order a transfer",
     toastTitle: "Request sent!",
     toastDesc: "Our manager will contact you shortly.",
+    routeLabel: "Direction",
+    routeCustom: "Custom destination",
+    routePlaceholder: "Choose a route",
   },
   services: {
     label: "Our Services",

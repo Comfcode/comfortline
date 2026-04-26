@@ -83,9 +83,11 @@ export function Pricing() {
                 <Button
                   variant={plan.popular ? "default" : "outline"}
                   className={`w-full mt-auto ${plan.popular ? "shadow-md shadow-primary/20" : ""}`}
-                  asChild
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent("open-booking-modal", { detail: { routeIndex: activeRoute } }));
+                  }}
                 >
-                  <a href="#contact">{t.pricing.book}</a>
+                  {t.pricing.book}
                 </Button>
               </div>
             ))}
