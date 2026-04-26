@@ -137,8 +137,12 @@ export function Fleet() {
                     </div>
                   </div>
 
-                  <Button variant="default" className="w-full mt-auto" asChild>
-                    <a href="#contact">{f.book}</a>
+                  <Button
+                    variant="default"
+                    className="w-full mt-auto"
+                    onClick={() => window.dispatchEvent(new Event("open-booking-modal"))}
+                  >
+                    {f.book}
                   </Button>
                 </div>
               </motion.div>

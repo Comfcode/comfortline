@@ -100,6 +100,12 @@ export function BookingWidget() {
 
   const [modalOpen, setModalOpen] = useState(false);
 
+  useEffect(() => {
+    const handler = () => setModalOpen(true);
+    window.addEventListener("open-booking-modal", handler);
+    return () => window.removeEventListener("open-booking-modal", handler);
+  }, []);
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setModalOpen(true);
