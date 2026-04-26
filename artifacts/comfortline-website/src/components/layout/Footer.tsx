@@ -59,7 +59,7 @@ export function Footer() {
             <h4 className="font-bold text-foreground mb-6">{f.servicesHeading}</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               {f.serviceLinks.map((label, i) => (
-                <li key={i}><a href="#services" className="hover:text-primary transition-colors">{label}</a></li>
+                <li key={i}><a href="/#services" className="hover:text-primary transition-colors">{label}</a></li>
               ))}
             </ul>
           </div>

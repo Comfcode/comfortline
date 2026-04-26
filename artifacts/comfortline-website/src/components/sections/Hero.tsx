@@ -77,7 +77,7 @@ export function Hero() {
           className="mt-5 flex items-center gap-4"
         >
           <Button size="sm" variant="ghost" className="text-foreground/60 hover:text-primary px-0" asChild>
-            <a href="#prices">
+            <a href="/#prices">
               {t.hero.ctaSecondary} <ArrowRight className="ml-1.5 h-4 w-4" />
             </a>
           </Button>
