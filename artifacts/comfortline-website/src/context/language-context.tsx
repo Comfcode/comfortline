@@ -79,9 +79,8 @@ interface Translations {
     cta: string;
     toastTitle: string;
     toastDesc: string;
-    routeLabel: string;
-    routeCustom: string;
-    routePlaceholder: string;
+    popularDestsLabel: string;
+    popularDests: string[];
   };
   services: {
     label: string;
@@ -230,9 +229,8 @@ const ru: Translations = {
     cta: "Заказать трансфер",
     toastTitle: "Заявка отправлена!",
     toastDesc: "Наш менеджер свяжется с вами в ближайшее время.",
-    routeLabel: "Направление",
-    routeCustom: "Свой маршрут",
-    routePlaceholder: "Выберите маршрут",
+    popularDestsLabel: "Популярные направления",
+    popularDests: ["Аэропорт Минск-2 (MSQ)", "Вильнюс, Литва", "Варшава, Польша", "Брест, Беларусь", "Гродно, Беларусь", "Витебск, Беларусь"],
   },
   services: {
     label: "Наши Услуги",
@@ -421,9 +419,8 @@ const en: Translations = {
     cta: "Order a transfer",
     toastTitle: "Request sent!",
     toastDesc: "Our manager will contact you shortly.",
-    routeLabel: "Direction",
-    routeCustom: "Custom destination",
-    routePlaceholder: "Choose a route",
+    popularDestsLabel: "Popular destinations",
+    popularDests: ["Minsk Airport (MSQ)", "Vilnius, Lithuania", "Warsaw, Poland", "Brest, Belarus", "Grodno, Belarus", "Vitebsk, Belarus"],
   },
   services: {
     label: "Our Services",
