@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Users, Briefcase, Plane } from "lucide-react";
+import { Users, Briefcase } from "lucide-react";
 import { useLang } from "@/context/language-context";
 
 const cars = [
@@ -126,7 +126,7 @@ export function Fleet() {
                   <h4 className="text-lg font-bold mb-3 text-card-foreground">{car.name}</h4>
 
                   {/* Specs */}
-                  <div className="space-y-2 mb-4 text-sm text-muted-foreground">
+                  <div className="space-y-2 mb-5 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <Users className="h-4 w-4 text-primary shrink-0" />
                       <span>{f.seats}: {car.seats}</span>
@@ -135,24 +135,11 @@ export function Fleet() {
                       <Briefcase className="h-4 w-4 text-primary shrink-0" />
                       <span>{f.trunk}: {lang === "ru" ? car.luggageRu : car.luggageEn}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Plane className="h-4 w-4 text-primary shrink-0" />
-                      <span>{f.airportLabel}: <span className="font-semibold text-foreground">${car.airport}</span></span>
-                    </div>
                   </div>
 
-                  {/* Price + CTA */}
-                  <div className="flex items-center justify-between mt-auto pt-3 border-t border-border/50">
-                    <div>
-                      <span className="text-xs text-muted-foreground block">{f.from}</span>
-                      <span className="font-bold text-xl text-foreground">
-                        ${car.hourly}<span className="text-sm font-normal text-muted-foreground">/{f.perHour}</span>
-                      </span>
-                    </div>
-                    <Button variant="ghost" size="sm" className="text-primary hover:text-primary hover:bg-primary/10" asChild>
-                      <a href="#contact">{f.book}</a>
-                    </Button>
-                  </div>
+                  <Button variant="default" className="w-full mt-auto" asChild>
+                    <a href="#contact">{f.book}</a>
+                  </Button>
                 </div>
               </motion.div>
             ))}
