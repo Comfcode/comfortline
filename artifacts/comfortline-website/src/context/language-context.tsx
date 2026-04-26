@@ -98,7 +98,10 @@ interface Translations {
     subheading: string;
     popular: string;
     book: string;
-    plans: { name: string; features: string[] }[];
+    routes: {
+      name: string;
+      plans: { name: string; price: string; features: string[]; popular?: boolean }[];
+    }[];
   };
   advantages: {
     label: string;
@@ -239,15 +242,37 @@ const ru: Translations = {
   },
   pricing: {
     label: "Тарифы",
-    heading: "Трансфер в Аэропорт Минск",
-    subheading: "Фиксированные цены на поездки из Минска в Национальный аэропорт или обратно.",
+    heading: "Цены на трансфер",
+    subheading: "Выберите направление — фиксированные цены на популярные маршруты.",
     popular: "Популярный выбор",
     book: "Заказать",
-    plans: [
-      { name: "Седан (до 4 чел.) — Эконом", features: ["Встреча с табличкой", "Помощь с багажом", "Детское кресло по запросу", "Ожидание при задержке рейса"] },
-      { name: "Седан (до 4 чел.) — Комфорт", features: ["Встреча с табличкой", "Помощь с багажом", "Детское кресло по запросу", "Wi-Fi в салоне", "Вода для пассажиров"] },
-      { name: "Универсал (до 4 чел.)", features: ["Встреча с табличкой", "Увеличенный багажник", "Детское кресло по запросу", "Ожидание при задержке рейса"] },
-      { name: "Микроавтобус (до 8 чел.)", features: ["Встреча с табличкой", "Много места для багажа", "Подходит для групп", "Детские кресла по запросу"] },
+    routes: [
+      {
+        name: "Минск → Аэропорт",
+        plans: [
+          { name: "Легковая — Эконом", price: "от 70 руб", features: ["Встреча с табличкой", "Помощь с багажом", "Детское кресло по запросу", "Ожидание при задержке рейса"] },
+          { name: "Комфорт", price: "от 85 руб", popular: true, features: ["Встреча с табличкой", "Помощь с багажом", "Wi-Fi в салоне", "Вода для пассажиров"] },
+          { name: "Бизнес", price: "от 130 руб", features: ["Mercedes E-Class", "Встреча с табличкой", "Wi-Fi в салоне", "Вода для пассажиров"] },
+          { name: "Минивэн (до 6 чел.)", price: "от 110 руб", features: ["Kia Carnival", "Встреча с табличкой", "Много места для багажа", "Детское кресло по запросу"] },
+          { name: "Микроавтобус (до 8 чел.)", price: "от 150 руб", features: ["Fiat Scudo", "Встреча с табличкой", "Подходит для групп", "Детские кресла по запросу"] },
+        ],
+      },
+      {
+        name: "Минск → Вильнюс",
+        plans: [
+          { name: "Легковой авто", price: "от 250 €", features: ["Сопровождение до двери", "Помощь с багажом", "Ожидание при задержке"] },
+          { name: "Минивэн", price: "от 300 €", popular: true, features: ["Kia Carnival, до 7 пас.", "Сопровождение до двери", "Много места для багажа"] },
+          { name: "Бизнес", price: "от 350 €", features: ["Mercedes E-Class", "Сопровождение до двери", "Wi-Fi в салоне"] },
+        ],
+      },
+      {
+        name: "Минск → Варшава",
+        plans: [
+          { name: "Легковая", price: "от 400 €", features: ["Сопровождение до двери", "Помощь с багажом", "Ожидание при задержке"] },
+          { name: "Бизнес", price: "от 450 €", features: ["Mercedes E-Class", "Сопровождение до двери", "Wi-Fi в салоне"] },
+          { name: "Минивэн", price: "от 470 €", popular: true, features: ["Kia Carnival, до 7 пас.", "Сопровождение до двери", "Много места для багажа"] },
+        ],
+      },
     ],
   },
   advantages: {
@@ -400,15 +425,37 @@ const en: Translations = {
   },
   pricing: {
     label: "Rates",
-    heading: "Airport Transfer — Minsk",
-    subheading: "Fixed prices for transfers from Minsk to the National Airport and back.",
+    heading: "Transfer Prices",
+    subheading: "Select a route — fixed rates on all popular destinations.",
     popular: "Most popular",
     book: "Book",
-    plans: [
-      { name: "Sedan (up to 4 pax) — Economy", features: ["Meet & greet with name board", "Luggage assistance", "Child seat on request", "Wait for delayed flights"] },
-      { name: "Sedan (up to 4 pax) — Comfort", features: ["Meet & greet with name board", "Luggage assistance", "Child seat on request", "In-car Wi-Fi", "Water for passengers"] },
-      { name: "Estate (up to 4 pax)", features: ["Meet & greet with name board", "Larger boot space", "Child seat on request", "Wait for delayed flights"] },
-      { name: "Minivan (up to 8 pax)", features: ["Meet & greet with name board", "Ample luggage space", "Suitable for groups", "Child seats on request"] },
+    routes: [
+      {
+        name: "Minsk → Airport",
+        plans: [
+          { name: "Sedan — Economy", price: "from 70 BYN", features: ["Meet & greet with board", "Luggage assistance", "Child seat on request", "Wait for delayed flights"] },
+          { name: "Comfort", price: "from 85 BYN", popular: true, features: ["Meet & greet with board", "Luggage assistance", "In-car Wi-Fi", "Water for passengers"] },
+          { name: "Business", price: "from 130 BYN", features: ["Mercedes E-Class", "Meet & greet with board", "In-car Wi-Fi", "Water for passengers"] },
+          { name: "Minivan (up to 6 pax)", price: "from 110 BYN", features: ["Kia Carnival", "Meet & greet with board", "Ample luggage space", "Child seat on request"] },
+          { name: "Minibus (up to 8 pax)", price: "from 150 BYN", features: ["Fiat Scudo", "Meet & greet with board", "Suitable for groups", "Child seats on request"] },
+        ],
+      },
+      {
+        name: "Minsk → Vilnius",
+        plans: [
+          { name: "Sedan", price: "from 250 €", features: ["Door-to-door service", "Luggage assistance", "Wait for delays"] },
+          { name: "Minivan", price: "from 300 €", popular: true, features: ["Kia Carnival, up to 7 pax", "Door-to-door service", "Ample luggage space"] },
+          { name: "Business", price: "from 350 €", features: ["Mercedes E-Class", "Door-to-door service", "In-car Wi-Fi"] },
+        ],
+      },
+      {
+        name: "Minsk → Warsaw",
+        plans: [
+          { name: "Sedan", price: "from 400 €", features: ["Door-to-door service", "Luggage assistance", "Wait for delays"] },
+          { name: "Business", price: "from 450 €", features: ["Mercedes E-Class", "Door-to-door service", "In-car Wi-Fi"] },
+          { name: "Minivan", price: "from 470 €", popular: true, features: ["Kia Carnival, up to 7 pax", "Door-to-door service", "Ample luggage space"] },
+        ],
+      },
     ],
   },
   advantages: {
