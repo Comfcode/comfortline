@@ -24,6 +24,7 @@ export function Navbar() {
     { name: t.nav.prices, href: "#prices" },
     { name: t.nav.advantages, href: "#advantages" },
     { name: t.nav.reviews, href: "#reviews" },
+    { name: t.nav.faq, href: "/faq" },
     { name: t.nav.contacts, href: "#contact" },
   ];
 

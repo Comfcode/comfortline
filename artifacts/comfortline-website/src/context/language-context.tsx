@@ -40,6 +40,7 @@ interface Translations {
     advantages: string;
     reviews: string;
     contacts: string;
+    faq: string;
   };
   hero: {
     badge: string;
@@ -190,6 +191,7 @@ const ru: Translations = {
     advantages: "Преимущества",
     reviews: "Отзывы",
     contacts: "Контакты",
+    faq: "FAQ",
   },
   hero: {
     badge: "Всегда вовремя. Работаем с 2015 года.",
@@ -380,6 +382,7 @@ const en: Translations = {
     advantages: "Why Us",
     reviews: "Reviews",
     contacts: "Contacts",
+    faq: "FAQ",
   },
   hero: {
     badge: "Always on time. Operating since 2015.",
