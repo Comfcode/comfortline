@@ -47,9 +47,3 @@ id = "01KrmElVCb2rh2BpBYrvO"
 uri = "file://artifacts/mockup-sandbox/public/images/cinematic-bg.jpg"
 type = "image"
 title = "dark cinematic luxury car driving night city blurred background"
-
-[[outputs]]
-id = "bUmbZxm_-WB2EpUy1_qT1"
-uri = "file://attached_assets/replain_button_nobg.png"
-type = "image"
-title = "Replain button — no background"

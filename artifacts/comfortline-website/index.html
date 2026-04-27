@@ -8,113 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-      #cl-chat-btn {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        z-index: 2147483647;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        cursor: pointer;
-        border: none;
-        background: transparent;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.2s ease, filter 0.2s ease;
-        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
-        pointer-events: auto;
-      }
-      #cl-chat-btn:hover {
-        transform: scale(1.1);
-        filter: drop-shadow(0 6px 18px rgba(0,0,0,0.5));
-      }
-      #cl-chat-btn img {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
-        pointer-events: none;
-      }
-    </style>
   </head>
   <body>
     <div id="root"></div>
-    <button id="cl-chat-btn" aria-label="Open chat">
-      <img src="/replain-icon.png" alt="Chat" />
-    </button>
     <script type="module" src="/src/main.tsx"></script>
     <script>
       window.replainSettings = { id: '64b5def6-9ee7-4b04-be31-287792b23e22' };
       (function(u){var s=document.createElement('script');s.async=true;s.src=u;
       var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
       })('https://widget.replain.cc/dist/client.js');
-
-      var chatOpen = false;
-
-      function openReplain() {
-        chatOpen = true;
-        enableReplainPointerEvents();
-        if (window.Replain && typeof window.Replain.open === 'function') {
-          window.Replain.open();
-        } else {
-          var allIframes = document.querySelectorAll('iframe');
-          for (var i = 0; i < allIframes.length; i++) {
-            if (allIframes[i].src && allIframes[i].src.indexOf('replain') !== -1) {
-              allIframes[i].style.removeProperty('pointer-events');
-              try { allIframes[i].contentWindow.document.querySelector('button').click(); } catch(e) {}
-            }
-          }
-        }
-      }
-
-      function disableReplainLauncherPointerEvents() {
-        if (chatOpen) return;
-        var allIframes = document.querySelectorAll('iframe');
-        allIframes.forEach(function(f) {
-          if (f.src && f.src.indexOf('replain') !== -1) {
-            var w = f.offsetWidth, h = f.offsetHeight;
-            if (w < 200 && h < 200) {
-              f.style.setProperty('pointer-events', 'none', 'important');
-              f.style.setProperty('display', 'none', 'important');
-            }
-          }
-        });
-      }
-
-      function enableReplainPointerEvents() {
-        var allIframes = document.querySelectorAll('iframe');
-        allIframes.forEach(function(f) {
-          if (f.src && f.src.indexOf('replain') !== -1) {
-            f.style.removeProperty('pointer-events');
-            f.style.removeProperty('display');
-          }
-        });
-      }
-
-      var initInterval = setInterval(function() {
-        var found = document.querySelectorAll('iframe[src*="replain"]');
-        if (found.length > 0) {
-          disableReplainLauncherPointerEvents();
-        }
-      }, 500);
-      setTimeout(function(){ clearInterval(initInterval); }, 8000);
-
-      document.getElementById('cl-chat-btn').addEventListener('click', function(e) {
-        e.stopPropagation();
-        openReplain();
-      });
-
-      document.addEventListener('click', function(e) {
-        if (chatOpen && !e.target.closest('#cl-chat-btn')) {
-          setTimeout(function() {
-            chatOpen = false;
-            disableReplainLauncherPointerEvents();
-          }, 300);
-        }
-      });
     </script>
   </body>
 </html>
