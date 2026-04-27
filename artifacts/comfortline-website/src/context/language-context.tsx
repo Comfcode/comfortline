@@ -232,7 +232,7 @@ const ru: Translations = {
     toastTitle: "Заявка отправлена!",
     toastDesc: "Наш менеджер свяжется с вами в ближайшее время.",
     popularDestsLabel: "Популярные направления",
-    popularDests: ["Аэропорт Минск-2 (MSQ)", "Вильнюс, Литва", "Варшава, Польша", "Брест, Беларусь", "Гродно, Беларусь", "Витебск, Беларусь"],
+    popularDests: ["Минск, Беларусь", "Аэропорт Минск-2 (MSQ)", "Вильнюс, Литва", "Варшава, Польша", "Брест, Беларусь", "Гродно, Беларусь", "Витебск, Беларусь"],
   },
   services: {
     label: "Наши Услуги",
@@ -433,7 +433,7 @@ const en: Translations = {
     toastTitle: "Request sent!",
     toastDesc: "Our manager will contact you shortly.",
     popularDestsLabel: "Popular destinations",
-    popularDests: ["Minsk Airport (MSQ)", "Vilnius, Lithuania", "Warsaw, Poland", "Brest, Belarus", "Grodno, Belarus", "Vitebsk, Belarus"],
+    popularDests: ["Minsk, Belarus", "Minsk Airport (MSQ)", "Vilnius, Lithuania", "Warsaw, Poland", "Brest, Belarus", "Grodno, Belarus", "Vitebsk, Belarus"],
   },
   services: {
     label: "Our Services",
