@@ -8,6 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Replain button overrides — applied via CSS so they persist */
+      [id*="replain"][style*="position: fixed"],
+      [id*="replain"][style*="position:fixed"],
+      [class*="replain"][style*="position: fixed"],
+      [class*="replain"][style*="position:fixed"] {
+        background: #B59C73 !important;
+        background-color: #B59C73 !important;
+        border-radius: 22px !important;
+        box-shadow: 0 4px 24px rgba(181,156,115,0.35) !important;
+        overflow: hidden !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -22,40 +35,46 @@
       (function() {
         var BRONZE = '#B59C73';
         var RADIUS = '22px';
+        var SHADOW = '0 4px 24px rgba(181,156,115,0.35)';
 
-        function styleBtn(el) {
+        var watched = new WeakSet();
+
+        function applyStyle(el) {
+          el.style.setProperty('background',       BRONZE, 'important');
           el.style.setProperty('background-color', BRONZE, 'important');
-          el.style.setProperty('background', BRONZE, 'important');
-          el.style.setProperty('border-radius', RADIUS, 'important');
-          el.style.setProperty('box-shadow', '0 4px 20px rgba(181,156,115,0.4)', 'important');
+          el.style.setProperty('border-radius',    RADIUS, 'important');
+          el.style.setProperty('box-shadow',       SHADOW, 'important');
+          el.style.setProperty('overflow',         'hidden', 'important');
         }
 
-        function applyToAll() {
-          var candidates = document.querySelectorAll(
-            '[id*="replain"], [class*="replain"], [data-replain]'
-          );
-          candidates.forEach(function(el) {
-            styleBtn(el);
-            el.querySelectorAll('*').forEach(function(child) {
-              var tag = child.tagName.toLowerCase();
-              if (tag === 'a' || tag === 'button' || tag === 'div' || tag === 'span') {
-                var bg = window.getComputedStyle(child).backgroundColor;
-                if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
-                  styleBtn(child);
-                }
-              }
-            });
+        function watchEl(el) {
+          if (watched.has(el)) return;
+          watched.add(el);
+          applyStyle(el);
+          /* Re-apply any time the widget touches its own style attribute */
+          new MutationObserver(function() {
+            applyStyle(el);
+          }).observe(el, { attributes: true, attributeFilter: ['style'] });
+        }
+
+        function findAndWatch() {
+          var all = document.querySelectorAll('[id*="replain"], [class*="replain"], [data-replain]');
+          all.forEach(function(el) {
+            var pos = window.getComputedStyle(el).position;
+            if (pos === 'fixed') {
+              watchEl(el);
+            }
           });
         }
 
-        var observer = new MutationObserver(function() {
-          applyToAll();
+        /* Watch for widget being inserted */
+        new MutationObserver(findAndWatch).observe(document.body, {
+          childList: true, subtree: true
         });
 
-        observer.observe(document.body, { childList: true, subtree: true, attributes: true });
-
-        setTimeout(applyToAll, 2000);
-        setTimeout(applyToAll, 5000);
+        setTimeout(findAndWatch, 500);
+        setTimeout(findAndWatch, 2000);
+        setTimeout(findAndWatch, 5000);
       })();
     </script>
   </body>
