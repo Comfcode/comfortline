@@ -13,10 +13,50 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      window.replainSettings = { id: '64b5def6-9ee7-4b04-be31-287792b23e22', color: '#B59C73' };
+      window.replainSettings = { id: '64b5def6-9ee7-4b04-be31-287792b23e22' };
       (function(u){var s=document.createElement('script');s.async=true;s.src=u;
       var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
       })('https://widget.replain.cc/dist/client.js');
+    </script>
+    <script>
+      (function() {
+        var BRONZE = '#B59C73';
+        var RADIUS = '22px';
+
+        function styleBtn(el) {
+          el.style.setProperty('background-color', BRONZE, 'important');
+          el.style.setProperty('background', BRONZE, 'important');
+          el.style.setProperty('border-radius', RADIUS, 'important');
+          el.style.setProperty('box-shadow', '0 4px 20px rgba(181,156,115,0.4)', 'important');
+        }
+
+        function applyToAll() {
+          var candidates = document.querySelectorAll(
+            '[id*="replain"], [class*="replain"], [data-replain]'
+          );
+          candidates.forEach(function(el) {
+            styleBtn(el);
+            el.querySelectorAll('*').forEach(function(child) {
+              var tag = child.tagName.toLowerCase();
+              if (tag === 'a' || tag === 'button' || tag === 'div' || tag === 'span') {
+                var bg = window.getComputedStyle(child).backgroundColor;
+                if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+                  styleBtn(child);
+                }
+              }
+            });
+          });
+        }
+
+        var observer = new MutationObserver(function() {
+          applyToAll();
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+
+        setTimeout(applyToAll, 2000);
+        setTimeout(applyToAll, 5000);
+      })();
     </script>
   </body>
 </html>
