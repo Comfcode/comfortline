@@ -8,19 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-      /* Replain button overrides — applied via CSS so they persist */
-      [id*="replain"][style*="position: fixed"],
-      [id*="replain"][style*="position:fixed"],
-      [class*="replain"][style*="position: fixed"],
-      [class*="replain"][style*="position:fixed"] {
-        background: #B59C73 !important;
-        background-color: #B59C73 !important;
-        border-radius: 22px !important;
-        box-shadow: 0 4px 24px rgba(181,156,115,0.35) !important;
-        overflow: hidden !important;
-      }
-    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -33,25 +20,18 @@
     </script>
     <script>
       (function() {
-        var BRONZE = '#B59C73';
         var RADIUS = '22px';
-        var SHADOW = '0 4px 24px rgba(181,156,115,0.35)';
-
         var watched = new WeakSet();
 
         function applyStyle(el) {
-          el.style.setProperty('background',       BRONZE, 'important');
-          el.style.setProperty('background-color', BRONZE, 'important');
-          el.style.setProperty('border-radius',    RADIUS, 'important');
-          el.style.setProperty('box-shadow',       SHADOW, 'important');
-          el.style.setProperty('overflow',         'hidden', 'important');
+          el.style.setProperty('border-radius', RADIUS, 'important');
+          el.style.setProperty('overflow', 'hidden', 'important');
         }
 
         function watchEl(el) {
           if (watched.has(el)) return;
           watched.add(el);
           applyStyle(el);
-          /* Re-apply any time the widget touches its own style attribute */
           new MutationObserver(function() {
             applyStyle(el);
           }).observe(el, { attributes: true, attributeFilter: ['style'] });
@@ -60,21 +40,15 @@
         function findAndWatch() {
           var all = document.querySelectorAll('[id*="replain"], [class*="replain"], [data-replain]');
           all.forEach(function(el) {
-            var pos = window.getComputedStyle(el).position;
-            if (pos === 'fixed') {
+            if (window.getComputedStyle(el).position === 'fixed') {
               watchEl(el);
             }
           });
         }
 
-        /* Watch for widget being inserted */
-        new MutationObserver(findAndWatch).observe(document.body, {
-          childList: true, subtree: true
-        });
-
+        new MutationObserver(findAndWatch).observe(document.body, { childList: true, subtree: true });
         setTimeout(findAndWatch, 500);
         setTimeout(findAndWatch, 2000);
-        setTimeout(findAndWatch, 5000);
       })();
     </script>
   </body>
