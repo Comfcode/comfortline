@@ -2,7 +2,7 @@ import { useState, useEffect, ElementType } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/context/language-context";
-import { SiWhatsapp, SiTelegram, SiViber } from "react-icons/si";
+import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
 
 export function Navbar() {
@@ -55,6 +55,13 @@ export function Navbar() {
       href: "https://www.instagram.com/transfer_comfortline/",
       label: "Instagram",
       bg: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)",
+      gradient: true,
+    },
+    {
+      icon: SiMessenger,
+      href: "https://m.me/103816619260365",
+      label: "Messenger",
+      bg: "linear-gradient(45deg,#0084FF,#B34FFF)",
       gradient: true,
     },
   ];

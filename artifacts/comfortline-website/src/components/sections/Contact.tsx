@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { ExternalLink, Phone, Mail, MapPin } from "lucide-react";
-import { SiWhatsapp, SiTelegram, SiViber } from "react-icons/si";
+import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
 
 export function Contact() {
@@ -70,6 +70,7 @@ export function Contact() {
                   { icon: SiTelegram, href: "https://t.me/transfer_comfortline", label: "Telegram", cls: "hover:bg-sky-500" },
                   { icon: SiViber, href: "viber://chat?number=%2B375291552776", label: "Viber", cls: "hover:bg-purple-500" },
                   { icon: Instagram, href: "https://www.instagram.com/transfer_comfortline/", label: "Instagram", cls: "hover:bg-pink-500" },
+                  { icon: SiMessenger, href: "https://m.me/103816619260365", label: "Messenger", cls: "hover:bg-blue-500" },
                 ].map(({ icon: Icon, href, label, cls }) => (
                   <a
                     key={label}
