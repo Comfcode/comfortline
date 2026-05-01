@@ -342,7 +342,7 @@ const ru: Translations = {
   footer: {
     tagline: "Индивидуальный трансфер по Беларуси и Европе. Работаем с 2015 года.",
     navHeading: "Навигация",
-    navLinks: ["Услуги", "Автопарк", "Тарифы в аэропорт", "Преимущества", "Отзывы"],
+    navLinks: ["Услуги", "Автопарк", "Преимущества", "Отзывы"],
     servicesHeading: "Направления",
     serviceLinks: ["Трансфер в Аэропорт", "Поездки по Минску", "Межгород по Беларуси", "Трансфер в Россию", "Поездки в Европу"],
     contactsHeading: "Контакты",
@@ -543,7 +543,7 @@ const en: Translations = {
   footer: {
     tagline: "Individual transfer across Belarus and Europe. Operating since 2015.",
     navHeading: "Navigation",
-    navLinks: ["Services", "Fleet", "Airport Rates", "Why Us", "Reviews"],
+    navLinks: ["Services", "Fleet", "Why Us", "Reviews"],
     servicesHeading: "Routes",
     serviceLinks: ["Airport Transfer", "Trips in Minsk", "Intercity in Belarus", "Transfer to Russia", "Trips to Europe"],
     contactsHeading: "Contacts",

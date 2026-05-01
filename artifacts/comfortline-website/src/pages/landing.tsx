@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Fleet } from "@/components/sections/Fleet";
-import { Pricing } from "@/components/sections/Pricing";
 import { Advantages } from "@/components/sections/Advantages";
 import { Reviews } from "@/components/sections/Reviews";
 import { Contact } from "@/components/sections/Contact";
@@ -16,7 +15,6 @@ export default function LandingPage() {
         <Hero />
         <Services />
         <Fleet />
-        <Pricing />
         <Advantages />
         <Reviews />
         <Contact />

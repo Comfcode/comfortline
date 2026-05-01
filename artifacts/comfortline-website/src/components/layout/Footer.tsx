@@ -3,7 +3,7 @@ import { Instagram } from "lucide-react";
 import { SiTelegram, SiViber, SiYoutube, SiWhatsapp, SiMessenger } from "react-icons/si";
 import { useLang } from "@/context/language-context";
 
-const navHrefs = ["#services", "#fleet", "#prices", "#advantages", "#reviews"];
+const navHrefs = ["#services", "#fleet", "#advantages", "#reviews"];
 
 export function Footer() {
   const { t } = useLang();

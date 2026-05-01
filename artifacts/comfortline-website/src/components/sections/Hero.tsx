@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { BookingWidget } from "@/components/sections/BookingWidget";
@@ -69,19 +68,6 @@ export function Hero() {
           <BookingWidget />
         </motion.div>
 
-        {/* Secondary CTA row */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-5 flex items-center gap-4"
-        >
-          <Button size="sm" variant="ghost" className="text-foreground/60 hover:text-primary px-0" asChild>
-            <a href="/#prices">
-              {t.hero.ctaSecondary} <ArrowRight className="ml-1.5 h-4 w-4" />
-            </a>
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

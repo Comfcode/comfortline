@@ -21,7 +21,6 @@ export function Navbar() {
   const navLinks = [
     { name: t.nav.services, href: "/#services" },
     { name: t.nav.fleet, href: "/#fleet" },
-    { name: t.nav.prices, href: "/#prices" },
     { name: t.nav.advantages, href: "/#advantages" },
     { name: t.nav.reviews, href: "/#reviews" },
     { name: t.nav.faq, href: "/faq" },
