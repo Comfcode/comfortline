@@ -1,6 +1,6 @@
 import { PhoneCall, Send } from "lucide-react";
 import { Instagram } from "lucide-react";
-import { SiTelegram, SiViber, SiYoutube, SiWhatsapp, SiMessenger } from "react-icons/si";
+import { SiTelegram, SiViber, SiWhatsapp, SiMessenger } from "react-icons/si";
 import { useLang } from "@/context/language-context";
 
 const navHrefs = ["#services", "#fleet", "#advantages", "#reviews"];
@@ -40,9 +40,6 @@ export function Footer() {
               </a>
               <a href="https://m.me/103816619260365" target="_blank" rel="noopener noreferrer" aria-label="Messenger" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <SiMessenger className="h-5 w-5" />
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
-                <SiYoutube className="h-5 w-5" />
               </a>
             </div>
           </div>
