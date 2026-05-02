@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Download, Copy, Check } from "lucide-react";
+import { Download, Copy, Check, Printer } from "lucide-react";
 import { Logo, LogoMark } from "@/components/brand/Logo";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -87,6 +87,16 @@ export default function BrandbookPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+
+      {/* Floating print button */}
+      <button
+        data-no-print="true"
+        onClick={() => window.print()}
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm shadow-xl hover:bg-primary/90 active:scale-95 transition-all"
+      >
+        <Printer className="h-4 w-4" />
+        Save as PDF
+      </button>
 
       <div className="pt-24 pb-32">
 
