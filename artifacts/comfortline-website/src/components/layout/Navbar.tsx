@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef, ElementType, useCallback } from "react";
-import { Menu, X, Phone, ChevronDown, ArrowRight, MapPin, Clock, Plane } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, ArrowRight, MapPin, Clock, Plane, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/context/language-context";
 import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "next-themes";
 
 const serviceRoutes = {
   ru: [
@@ -63,6 +64,8 @@ export function Navbar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { lang, setLang, t } = useLang();
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   const routes = serviceRoutes[lang];
 
   const openServices = useCallback(() => {
@@ -171,7 +174,7 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -6, scale: 0.98 }}
                       transition={{ duration: 0.15, ease: "easeOut" }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[340px] bg-[#181818] border border-white/10 rounded-2xl shadow-2xl shadow-black/60 z-50 overflow-hidden"
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[340px] bg-popover border border-popover-border rounded-2xl shadow-2xl shadow-black/30 dark:shadow-black/60 z-50 overflow-hidden"
                     >
                       {/* Header */}
                       <div className="px-4 pt-4 pb-2 flex items-center gap-2">
@@ -214,7 +217,7 @@ export function Navbar() {
                       <a
                         href="/#services"
                         onClick={() => setServicesOpen(false)}
-                        className="flex items-center justify-center gap-2 px-4 py-3 border-t border-white/8 text-xs font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
+                        className="flex items-center justify-center gap-2 px-4 py-3 border-t border-border/60 text-xs font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
                       >
                         {lang === "ru" ? "Все услуги" : "All services"}
                         <ArrowRight className="h-3 w-3" />
@@ -270,6 +273,31 @@ export function Navbar() {
                 EN
               </button>
             </div>
+
+            {/* Theme toggle */}
+            <button
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+              aria-label="Toggle theme"
+              className="relative w-[52px] h-[28px] rounded-full border border-border bg-muted flex items-center transition-colors hover:border-primary/40 shrink-0"
+            >
+              <motion.div
+                className="absolute w-[22px] h-[22px] rounded-full bg-primary flex items-center justify-center shadow-sm"
+                animate={{ x: isDark ? 3 : 27 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              >
+                <AnimatePresence mode="wait">
+                  {isDark ? (
+                    <motion.div key="moon" initial={{ opacity: 0, rotate: -30 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: 30 }} transition={{ duration: 0.15 }}>
+                      <Moon className="h-3 w-3 text-primary-foreground" />
+                    </motion.div>
+                  ) : (
+                    <motion.div key="sun" initial={{ opacity: 0, rotate: 30 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: -30 }} transition={{ duration: 0.15 }}>
+                      <Sun className="h-3 w-3 text-primary-foreground" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -347,19 +375,38 @@ export function Navbar() {
                 <SocialIcon key={s.label} {...s} size={38} />
               ))}
             </div>
-            <div className="flex items-center gap-2 p-2 text-sm font-semibold">
+            <div className="flex items-center justify-between gap-4 p-2">
+              <div className="flex items-center gap-2 text-sm font-semibold">
+                <button
+                  onClick={() => setLang("ru")}
+                  className={`px-2 py-1 rounded transition-colors ${lang === "ru" ? "text-primary" : "text-foreground/50"}`}
+                >
+                  RU
+                </button>
+                <span className="text-border">|</span>
+                <button
+                  onClick={() => setLang("en")}
+                  className={`px-2 py-1 rounded transition-colors ${lang === "en" ? "text-primary" : "text-foreground/50"}`}
+                >
+                  EN
+                </button>
+              </div>
               <button
-                onClick={() => setLang("ru")}
-                className={`px-2 py-1 rounded transition-colors ${lang === "ru" ? "text-primary" : "text-foreground/50"}`}
+                onClick={() => setTheme(isDark ? "light" : "dark")}
+                aria-label="Toggle theme"
+                className="relative w-[52px] h-[28px] rounded-full border border-border bg-muted flex items-center transition-colors"
               >
-                RU
-              </button>
-              <span className="text-border">|</span>
-              <button
-                onClick={() => setLang("en")}
-                className={`px-2 py-1 rounded transition-colors ${lang === "en" ? "text-primary" : "text-foreground/50"}`}
-              >
-                EN
+                <motion.div
+                  className="absolute w-[22px] h-[22px] rounded-full bg-primary flex items-center justify-center shadow-sm"
+                  animate={{ x: isDark ? 3 : 27 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                >
+                  {isDark ? (
+                    <Moon className="h-3 w-3 text-primary-foreground" />
+                  ) : (
+                    <Sun className="h-3 w-3 text-primary-foreground" />
+                  )}
+                </motion.div>
               </button>
             </div>
           </div>
