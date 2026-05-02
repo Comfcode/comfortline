@@ -1,48 +1,56 @@
-import { Plane, Users, MapPin, Globe2, ArrowRight } from "lucide-react";
+import { Plane, Users, MapPin, Globe2, ArrowRight, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLang } from "@/context/language-context";
 
 const icons = [Plane, MapPin, Users, Globe2];
 
-const serviceRoutes = {
+interface RouteItem {
+  from: string;
+  to: string;
+  code: string;
+  meta: string;
+  href: string;
+}
+
+const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
   ru: [
     [
-      { label: "Минск — Аэропорт Вильнюса (VNO)", href: "/minsk-vilnyus-aeroport" },
-      { label: "Минск — Варшава Шопен (WAW)", href: "/minsk-varshava-shopin-aeroport" },
-      { label: "Минск — Варшава Модлин (WMI)", href: "/minsk-varshava-modlin-aeroport" },
+      { from: "Минск", to: "Аэропорт Вильнюса", code: "VNO", meta: "~175 км · 2,5–5 ч",  href: "/minsk-vilnyus-aeroport" },
+      { from: "Минск", to: "Варшава Шопен",      code: "WAW", meta: "~550 км · 6–9 ч",    href: "/minsk-varshava-shopin-aeroport" },
+      { from: "Минск", to: "Варшава Модлин",     code: "WMI", meta: "~570 км · 7–10 ч",   href: "/minsk-varshava-modlin-aeroport" },
     ],
     [
-      { label: "Трансферы по Минску", href: "/minsk-city-transfer" },
-      { label: "Трансферы по Беларуси", href: "/belarus-transfer" },
-      { label: "Трансферы в Россию", href: "/russia-transfer" },
+      { from: "Минск", to: "по городу",    code: "24/7",      meta: "30–60 мин подача",    href: "/minsk-city-transfer" },
+      { from: "Минск", to: "по Беларуси",  code: "6 ОБЛ.",    meta: "Брест, Гродно, Витебск…", href: "/belarus-transfer" },
+      { from: "Минск", to: "Россия",       code: "BY→RU",     meta: "~370–720 км",         href: "/russia-transfer" },
     ],
     [
-      { label: "Групповой трансфер (до 8 чел.)", href: "/group-transfer" },
+      { from: "Группа", to: "любой маршрут", code: "≤8 ЧЕЛ", meta: "Минивэн / Микроавтобус", href: "/group-transfer" },
     ],
     [
-      { label: "Минск — Варшава (город)", href: "/warsaw-transfer" },
-      { label: "Минск — Берлин", href: "/berlin-transfer" },
-      { label: "Минск — Прага", href: "/prague-transfer" },
+      { from: "Минск", to: "Варшава",  code: "WAW", meta: "~550 км · 6–8 ч",   href: "/warsaw-transfer" },
+      { from: "Минск", to: "Берлин",   code: "BER", meta: "~1 150 км · 14–16 ч", href: "/berlin-transfer" },
+      { from: "Минск", to: "Прага",    code: "PRG", meta: "~1 450 км · 16–18 ч", href: "/prague-transfer" },
     ],
   ],
   en: [
     [
-      { label: "Minsk — Vilnius Airport (VNO)", href: "/minsk-vilnius-airport" },
-      { label: "Minsk — Warsaw Chopin (WAW)", href: "/minsk-warsaw-airport" },
-      { label: "Minsk — Warsaw Modlin (WMI)", href: "/minsk-warsaw-modlin-airport" },
+      { from: "Minsk", to: "Vilnius Airport",  code: "VNO", meta: "~175 km · 2.5–5 hrs", href: "/minsk-vilnius-airport" },
+      { from: "Minsk", to: "Warsaw Chopin",    code: "WAW", meta: "~550 km · 6–9 hrs",   href: "/minsk-warsaw-airport" },
+      { from: "Minsk", to: "Warsaw Modlin",    code: "WMI", meta: "~570 km · 7–10 hrs",  href: "/minsk-warsaw-modlin-airport" },
     ],
     [
-      { label: "Minsk city transfers", href: "/minsk-city-transfer" },
-      { label: "Belarus intercity transfers", href: "/belarus-transfer" },
-      { label: "Russia routes", href: "/russia-transfer" },
+      { from: "Minsk", to: "city",       code: "24/7",      meta: "30–60 min dispatch",    href: "/minsk-city-transfer" },
+      { from: "Minsk", to: "Belarus",    code: "6 REG.",    meta: "Brest, Grodno, Vitebsk…", href: "/belarus-transfer" },
+      { from: "Minsk", to: "Russia",     code: "BY→RU",     meta: "~370–720 km",           href: "/russia-transfer" },
     ],
     [
-      { label: "Group transfer (up to 8 pax)", href: "/group-transfer" },
+      { from: "Group", to: "any route", code: "≤8 PAX", meta: "Minivan / Minibus", href: "/group-transfer" },
     ],
     [
-      { label: "Minsk — Warsaw (city)", href: "/warsaw-transfer" },
-      { label: "Minsk — Berlin", href: "/berlin-transfer" },
-      { label: "Minsk — Prague", href: "/prague-transfer" },
+      { from: "Minsk", to: "Warsaw", code: "WAW", meta: "~550 km · 6–8 hrs",    href: "/warsaw-transfer" },
+      { from: "Minsk", to: "Berlin", code: "BER", meta: "~1,150 km · 14–16 hrs", href: "/berlin-transfer" },
+      { from: "Minsk", to: "Prague", code: "PRG", meta: "~1,450 km · 16–18 hrs", href: "/prague-transfer" },
     ],
   ],
 };
@@ -54,18 +62,20 @@ const cardTitles = {
 
 const cardDescs = {
   ru: [
-    "Рейсы из Вильнюса, Варшавы и других аэропортов — подача точно ко времени вылета.",
+    "Вильнюс, Варшава и другие аэропорты — подача точно ко времени вылета.",
     "Деловые поездки, экскурсии и межгородские маршруты по Беларуси и России.",
-    "До 8 пассажиров в одном автомобиле. Семьи, корпоративные и туристические группы.",
+    "До 8 пассажиров в одном автомобиле. Семьи, корпоративные и тур-группы.",
     "Варшава, Берлин, Прага и другие города — прямой трансфер через границу.",
   ],
   en: [
-    "Flights from Vilnius, Warsaw and beyond — punctual door-to-door airport service.",
+    "Vilnius, Warsaw and beyond — punctual door-to-door airport service.",
     "Business meetings, sightseeing and intercity routes across Belarus and Russia.",
     "Up to 8 passengers in one vehicle. Families, corporate and tour groups.",
     "Warsaw, Berlin, Prague and beyond — direct transfer across the border.",
   ],
 };
+
+const sectionLabel = { ru: "Маршруты", en: "Routes" };
 
 export function Services() {
   const { t, lang } = useLang();
@@ -79,7 +89,7 @@ export function Services() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">{t.services.label}</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-foreground">{t.services.heading}</h3>
-          <div className="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+          <div className="w-20 h-1 bg-primary mx-auto mt-6 rounded-full" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -95,27 +105,53 @@ export function Services() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-card border border-border p-8 rounded-2xl hover:border-primary/50 transition-colors group"
               >
+                {/* Icon + title */}
                 <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                   <Icon className="h-7 w-7 text-primary" />
                 </div>
-                <h4 className="text-xl font-bold mb-4 text-card-foreground group-hover:text-primary transition-colors">
+                <h4 className="text-xl font-bold mb-3 text-card-foreground group-hover:text-primary transition-colors">
                   {title}
                 </h4>
-                <p className="text-muted-foreground leading-relaxed mb-6">
+                <p className="text-muted-foreground leading-relaxed text-sm mb-6">
                   {descs[index]}
                 </p>
 
-                <div className="pt-5 border-t border-border/50 space-y-2">
-                  {cardRoutes.map((route) => (
-                    <a
-                      key={route.href}
-                      href={route.href}
-                      className="flex items-center justify-between gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group/link"
-                    >
-                      <span>{route.label}</span>
-                      <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all" />
-                    </a>
-                  ))}
+                {/* Route list — styled to match header dropdown */}
+                <div className="border-t border-border/50 pt-4">
+                  {/* Mini section header */}
+                  <div className="flex items-center gap-1.5 mb-2 px-1">
+                    <MapPin className="h-3 w-3 text-primary" />
+                    <span className="text-[10px] font-bold text-primary uppercase tracking-[0.12em]">
+                      {sectionLabel[lang]}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    {cardRoutes.map((route) => (
+                      <a
+                        key={route.href}
+                        href={route.href}
+                        className="group/row flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary/10 border border-transparent hover:border-primary/20 transition-all duration-150"
+                      >
+                        {/* Route text */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover/row:text-primary transition-colors">
+                            <span className="truncate">{route.from}</span>
+                            <ArrowRight className="h-3 w-3 text-primary/60 shrink-0" />
+                            <span className="truncate">{route.to}</span>
+                            <span className="ml-1 px-1.5 py-0.5 text-[10px] font-bold bg-primary/15 text-primary rounded-md shrink-0 leading-none whitespace-nowrap">
+                              {route.code}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-1 mt-0.5">
+                            <Clock className="h-2.5 w-2.5 text-muted-foreground/60 shrink-0" />
+                            <span className="text-[11px] text-muted-foreground/70 truncate">{route.meta}</span>
+                          </div>
+                        </div>
+                        <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 group-hover/row:text-primary group-hover/row:translate-x-0.5 transition-all shrink-0" />
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             );
