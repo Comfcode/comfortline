@@ -19,87 +19,165 @@ interface FaqSection {
 
 const ruFaq: FaqSection[] = [
   {
-    icon: "🌍",
-    title: "Трансфер через границу",
+    icon: "📅",
+    title: "Бронирование и заказ",
     items: [
       {
-        q: "Как работает трансфер ЕС – Беларусь?",
-        a: "Comfortline.by организует поездку «под ключ»:",
-        sub: ["Подача автомобиля по адресу", "Профессиональный водитель", "Помощь при пересечении границы", "Доставка в Минск или любой город"],
+        q: "Как сделать заказ?",
+        a: "Оставьте заявку на сайте или напишите нам в WhatsApp / Viber — менеджер свяжется в течение 15 минут и согласует все детали: маршрут, время, класс автомобиля и стоимость.",
       },
       {
-        q: "Возможен ли проезд через границу без пересадки?",
-        a: "Иногда да. Если действуют ограничения — мы организуем водителя с европейской стороны и встречу на стороне Беларуси. Это самый быстрый и безопасный вариант.",
+        q: "За сколько времени нужно бронировать?",
+        a: "Рекомендуем оформлять заказ минимум за 24 часа до поездки. Для международных трансферов лучше — за 2–3 дня, особенно в пиковые периоды.",
       },
       {
-        q: "Нужно ли менять автомобиль на границе?",
-        a: "В некоторых случаях — да, это зависит от правил регистрации транспортного средства и текущей пограничной политики. Мы делаем процесс быстрым, удобным и полностью организованным.",
+        q: "Можно ли изменить или отменить заказ?",
+        a: "Да. Свяжитесь с нами как можно раньше — по телефону или в мессенджере. Условия отмены зависят от времени до поездки и будут оговорены при бронировании.",
       },
       {
-        q: "Сколько занимает пересечение границы?",
-        a: "В среднем: 2–12+ часов. Время зависит от очереди, времени суток и процедур погранконтроля. Мы отслеживаем ситуацию в реальном времени и подбираем оптимальный маршрут.",
-      },
-    ],
-  },
-  {
-    icon: "🚘",
-    title: "Маршруты и направления",
-    items: [
-      {
-        q: "Трансфер в Минск доступен?",
-        a: "Да, популярные направления:",
-        sub: ["Варшава – Минск", "Вильнюс – Минск", "Рига – Минск"],
-      },
-      {
-        q: "В каких странах вы работаете?",
-        a: "Мы обеспечиваем международный трансфер в:",
-        sub: ["Польша", "Литва", "Латвия", "Германия", "Беларусь"],
-      },
-    ],
-  },
-  {
-    icon: "💼",
-    title: "Автопарк и водители",
-    items: [
-      {
-        q: "Какие автомобили предлагает Comfortline.by?",
-        a: "Наш автопарк включает:",
-        sub: ["Бизнес-седаны (уровень Mercedes E/S-Class)", "Премиальные автомобили для VIP-клиентов", "Минивэны для групп"],
-      },
-      {
-        q: "Кто ваши водители?",
-        a: "Все водители опытны в международных поездках, профессиональны и пунктуальны, прошли подготовку по пограничным процедурам. Вы получаете настоящий chauffeur-сервис, а не просто такси.",
-      },
-    ],
-  },
-  {
-    icon: "📄",
-    title: "Документы для поездки",
-    items: [
-      {
-        q: "Какие документы нужны для въезда в Беларусь?",
-        a: "Пассажиры должны иметь:",
-        sub: ["Действующий загранпаспорт", "Визу или право на безвизовый въезд", "Медицинскую страховку"],
+        q: "Что будет, если мой рейс задержали?",
+        a: "Мы отслеживаем статус вашего рейса и корректируем время встречи автоматически. Водитель будет ждать вас — доплат за ожидание при задержке рейса нет.",
       },
     ],
   },
   {
     icon: "💳",
-    title: "Цены и бронирование",
+    title: "Цены и оплата",
     items: [
       {
         q: "Сколько стоит трансфер?",
-        a: "Цена зависит от маршрута, класса автомобиля и ситуации на границе. Вы получаете фиксированную стоимость без скрытых платежей.",
+        a: "Цена зависит от маршрута и класса автомобиля. Вы получаете фиксированную стоимость до поездки — без скрытых доплат и счётчика. Уточнить цену по конкретному направлению можно через форму на сайте или в WhatsApp.",
       },
       {
-        q: "Почему выбирают Comfortline.by?",
-        a: "Ключевые преимущества:",
-        sub: ["Премиум сервис", "Опыт международных поездок", "Поддержка на всех этапах", "Комфорт и безопасность"],
+        q: "Как можно оплатить?",
+        a: "Принимаем наличные и банковскую карту. Точный способ оплаты согласовывается при подтверждении заказа.",
       },
       {
-        q: "Как забронировать трансфер?",
-        a: "Варианты бронирования:",
-        sub: ["Форма на сайте", "WhatsApp / Viber", "Телефон"],
+        q: "Есть ли скрытые доплаты?",
+        a: "Нет. Вы платите ровно ту сумму, которая была согласована при бронировании. Ожидание при задержке рейса, встреча с табличкой, помощь с багажом — всё включено.",
+      },
+      {
+        q: "Можно ли получить чек или документ для отчётности?",
+        a: "Да, по запросу предоставим необходимые документы. Уточните это при оформлении заказа.",
+      },
+    ],
+  },
+  {
+    icon: "✈️",
+    title: "Встреча и посадка",
+    items: [
+      {
+        q: "Где именно водитель встретит меня в аэропорту?",
+        a: "Водитель ждёт вас в зале прилётов с именной табличкой. Мы заранее согласуем точное место встречи и отправим контакт водителя.",
+      },
+      {
+        q: "Помогут ли с багажом?",
+        a: "Да. Водитель поможет загрузить и выгрузить вещи. Это стандартная часть нашего сервиса.",
+      },
+      {
+        q: "Водитель приедет прямо к выходу из моего дома?",
+        a: "Да. Трансфер — «от двери до двери». Водитель приедет по указанному вами адресу точно в назначенное время.",
+      },
+    ],
+  },
+  {
+    icon: "🌍",
+    title: "Граница и документы",
+    items: [
+      {
+        q: "Нужно ли менять машину на границе?",
+        a: "В некоторых случаях — да, в зависимости от действующих правил регистрации ТС и пограничной политики. Если пересадка нужна, мы организуем её быстро и комфортно: водитель с европейской стороны уже будет ждать вас.",
+      },
+      {
+        q: "Сколько времени займёт пересечение границы?",
+        a: "В среднем от 2 до 12 часов — зависит от очереди, времени суток и пропускного пункта. Мы отслеживаем очереди в реальном времени и выбираем наиболее свободный КПП.",
+      },
+      {
+        q: "Какие документы нужны для пересечения границы?",
+        a: "Для поездки в ЕС вам понадобятся:",
+        sub: ["Действующий загранпаспорт", "Виза или право на безвизовый въезд", "Медицинская страховка (обязательна для стран Шенгена)", "Другие документы по требованию конкретной страны"],
+      },
+      {
+        q: "Помогает ли водитель на КПП?",
+        a: "Да. Водитель сопровождает вас, знает актуальные правила на пропускных пунктах и поможет сориентироваться. Ваша задача — только иметь при себе актуальные документы.",
+      },
+    ],
+  },
+  {
+    icon: "🚘",
+    title: "Автомобили и комфорт",
+    items: [
+      {
+        q: "Какие автомобили у вас есть?",
+        a: "В автопарке ComfortLine:",
+        sub: ["Бизнес-седаны — до 3–4 пассажиров, просторный багажник", "Минивэны — до 7–8 пассажиров, большое грузовое отделение", "Автомобили бизнес- и премиум-класса для VIP-поездок"],
+      },
+      {
+        q: "Есть ли Wi-Fi и зарядка в машине?",
+        a: "Да — в наших автомобилях есть Wi-Fi и USB/зарядки для телефонов.",
+      },
+      {
+        q: "Можно ли остановиться в пути?",
+        a: "Да. Мы делаем остановки по запросу — на заправке, кафе или по другой причине. Просто сообщите водителю заранее или во время поездки.",
+      },
+      {
+        q: "Курение в машине разрешено?",
+        a: "Нет. Курение в автомобиле запрещено. При необходимости водитель сделает остановку.",
+      },
+    ],
+  },
+  {
+    icon: "👶",
+    title: "Дети и питомцы",
+    items: [
+      {
+        q: "Можно ли заказать детское кресло?",
+        a: "Да. Детские автокресла и бустеры предоставляются по предварительному запросу. Укажите возраст и вес ребёнка при бронировании — мы подберём подходящее кресло.",
+      },
+      {
+        q: "Можно ли ехать с грудным ребёнком?",
+        a: "Да, мы регулярно перевозим семьи с маленькими детьми. Уточните при заказе — водитель будет готов к комфортной остановке при необходимости.",
+      },
+      {
+        q: "Можно ли взять питомца в поездку?",
+        a: "По предварительному согласованию — да. Уточните при бронировании: породу, размер животного и наличие переноски. Мы постараемся подобрать подходящий автомобиль.",
+      },
+    ],
+  },
+  {
+    icon: "🧳",
+    title: "Багаж",
+    items: [
+      {
+        q: "Сколько багажа можно взять?",
+        a: "Зависит от выбранного автомобиля. Седаны вмещают 2–3 стандартных чемодана. Минивэны — значительно больше, подходят для больших семей и объёмного груза.",
+      },
+      {
+        q: "Можно ли перевезти велосипед, самокат или лыжи?",
+        a: "По предварительной договорённости — да. Сообщите нам о габаритном грузе заранее, и мы подберём подходящий автомобиль.",
+      },
+      {
+        q: "Можно ли везти много вещей при переезде?",
+        a: "Да. Для переездов с большим количеством вещей подходит минивэн с вместительным багажным отделением. Обсудите объём при бронировании.",
+      },
+    ],
+  },
+  {
+    icon: "🗺️",
+    title: "Маршруты и направления",
+    items: [
+      {
+        q: "В каких направлениях вы работаете?",
+        a: "Основные маршруты ComfortLine:",
+        sub: ["Минск ↔ Варшава (аэропорт Шопен и Модлин)", "Минск ↔ Вильнюс (аэропорт VNO)", "Минск ↔ Берлин", "Минск ↔ Прага", "По Беларуси и в Россию", "Групповые трансферы"],
+      },
+      {
+        q: "Работаете ли вы по Минску и Беларуси?",
+        a: "Да. Мы выполняем трансферы по всему Минску (аэропорт, вокзал, отели, офисы) и по всей Беларуси.",
+      },
+      {
+        q: "Работаете ли вы 24/7?",
+        a: "Да. Принимаем заказы и выполняем поездки круглосуточно, включая выходные и праздники.",
       },
     ],
   },
@@ -107,87 +185,165 @@ const ruFaq: FaqSection[] = [
 
 const enFaq: FaqSection[] = [
   {
-    icon: "🌍",
-    title: "Cross-Border Travel",
+    icon: "📅",
+    title: "Booking & Orders",
     items: [
       {
-        q: "How does a private transfer from EU to Belarus work?",
-        a: "With Comfortline.by, your EU to Belarus private transfer is fully managed:",
-        sub: ["Door-to-door pickup", "Professional chauffeur", "Border coordination", "Continued journey to Minsk or any city in Belarus"],
+        q: "How do I book a transfer?",
+        a: "Submit a request on our website or message us on WhatsApp / Viber — a manager will contact you within 15 minutes to confirm the route, timing, vehicle class, and exact price.",
       },
       {
-        q: "Can your chauffeur drive across the EU–Belarus border?",
-        a: "Yes — when regulations allow. If restrictions apply, we organize a seamless cross-border transfer with a chauffeur on the EU side and another waiting on the Belarus side. This ensures the fastest and legally compliant route.",
+        q: "How far in advance should I book?",
+        a: "We recommend booking at least 24 hours ahead. For international transfers, 2–3 days is ideal — especially during busy periods.",
       },
       {
-        q: "Do I need to change cars at the border?",
-        a: "Sometimes, yes. This depends on vehicle registration rules and current border policies. With Comfortline.by, the transition is pre-arranged, fully synchronized, and comfortable.",
+        q: "Can I change or cancel my booking?",
+        a: "Yes. Contact us as soon as possible by phone or messenger. Cancellation terms depend on how much time is left before your journey and will be agreed when booking.",
       },
       {
-        q: "How long does the EU–Belarus border crossing take?",
-        a: "Typical range: 2 to 12+ hours. Crossing time depends on queue length, time of day, and border control procedures. We monitor border conditions in real time to optimize your route.",
-      },
-    ],
-  },
-  {
-    icon: "🚘",
-    title: "Routes & Destinations",
-    items: [
-      {
-        q: "Do you offer transfers to Minsk?",
-        a: "Yes — we specialize in:",
-        sub: ["Private transfer Warsaw → Minsk", "Chauffeur service Vilnius → Minsk", "Taxi Riga → Minsk"],
-      },
-      {
-        q: "Which countries do you operate in?",
-        a: "We provide international chauffeur services across:",
-        sub: ["Poland", "Lithuania", "Latvia", "Germany", "Belarus"],
-      },
-    ],
-  },
-  {
-    icon: "💼",
-    title: "Service Level & Vehicles",
-    items: [
-      {
-        q: "What vehicles does Comfortline.by offer?",
-        a: "Our fleet includes:",
-        sub: ["Executive sedans (Mercedes E/S-Class level)", "Luxury vehicles for VIP clients", "Premium minivans for groups"],
-      },
-      {
-        q: "Who are your chauffeurs?",
-        a: "All drivers are experienced in EU–Belarus transfers, professional, discreet, and punctual, and trained in border procedures. You receive a true chauffeur service, not just a taxi.",
-      },
-    ],
-  },
-  {
-    icon: "📄",
-    title: "Travel Requirements",
-    items: [
-      {
-        q: "What documents are required for Belarus travel?",
-        a: "Passengers must have:",
-        sub: ["Valid passport", "Visa or visa-free eligibility", "Medical insurance"],
+        q: "What if my flight is delayed?",
+        a: "We monitor your flight status and adjust the pickup time automatically. Your driver will wait — there are no extra charges for flight delay waiting.",
       },
     ],
   },
   {
     icon: "💳",
-    title: "Pricing & Booking",
+    title: "Pricing & Payment",
     items: [
       {
-        q: "How much does a private transfer EU to Belarus cost?",
-        a: "Pricing depends on distance and route, vehicle class, and border conditions. With Comfortline.by you get a fixed price in advance with no hidden fees.",
+        q: "How much does a transfer cost?",
+        a: "The price depends on the route and vehicle class. You receive a fixed, agreed price before the trip — no hidden charges, no meter. Request a quote via the website form or WhatsApp.",
       },
       {
-        q: "Why choose Comfortline.by instead of a regular taxi?",
-        a: "Key advantages:",
-        sub: ["Premium chauffeur experience", "Cross-border expertise", "Flexible routes and timing", "Full assistance at the border"],
+        q: "What payment methods do you accept?",
+        a: "We accept cash and bank card. The exact payment method is confirmed when your booking is finalised.",
       },
       {
-        q: "How do I book a transfer?",
-        a: "Booking options:",
-        sub: ["Website request form", "WhatsApp / Viber", "Phone — fast response guaranteed"],
+        q: "Are there any hidden fees?",
+        a: "No. You pay exactly the amount agreed at booking. Flight-delay waiting, airport meet & greet, and luggage assistance are all included.",
+      },
+      {
+        q: "Can I get a receipt or invoice?",
+        a: "Yes — on request. Let us know when you book and we will prepare the necessary documents.",
+      },
+    ],
+  },
+  {
+    icon: "✈️",
+    title: "Pickup & Drop-off",
+    items: [
+      {
+        q: "Where exactly will the driver meet me at the airport?",
+        a: "Your driver waits in the arrivals hall with a name board. We agree the exact meeting point in advance and send you the driver's contact details.",
+      },
+      {
+        q: "Will the driver help with luggage?",
+        a: "Yes. Loading and unloading luggage is a standard part of our service.",
+      },
+      {
+        q: "Will the driver come to my front door?",
+        a: "Yes. This is a true door-to-door service. Your driver arrives at the address you provide, exactly on time.",
+      },
+    ],
+  },
+  {
+    icon: "🌍",
+    title: "Border & Documents",
+    items: [
+      {
+        q: "Do I need to change cars at the border?",
+        a: "Sometimes, yes — depending on current vehicle registration rules and border policy. If a transfer is needed, we organise it seamlessly: a driver on the European side will already be waiting for you.",
+      },
+      {
+        q: "How long does the border crossing take?",
+        a: "Typically 2–12 hours, depending on the queue, time of day, and checkpoint. We monitor queues in real time and choose the least congested crossing.",
+      },
+      {
+        q: "What documents do I need for the EU border?",
+        a: "For travel to the EU you will need:",
+        sub: ["Valid international passport", "Schengen visa or visa-free eligibility", "Medical / travel insurance (required for Schengen countries)", "Any additional documents required by the specific country"],
+      },
+      {
+        q: "Will the driver help at the checkpoint?",
+        a: "Yes. Your driver knows current border procedures and will guide you through. You only need to have your own documents ready.",
+      },
+    ],
+  },
+  {
+    icon: "🚘",
+    title: "Vehicles & Comfort",
+    items: [
+      {
+        q: "What vehicles are available?",
+        a: "The ComfortLine fleet includes:",
+        sub: ["Executive sedans — up to 3–4 passengers, generous boot", "Premium minivans — up to 7–8 passengers, large cargo space", "Business and luxury-class cars for VIP trips"],
+      },
+      {
+        q: "Is there Wi-Fi and phone charging in the car?",
+        a: "Yes — all our vehicles are equipped with Wi-Fi and USB / power charging points.",
+      },
+      {
+        q: "Can we stop during the journey?",
+        a: "Yes. We make stops on request — at a petrol station, cafe, or anywhere else. Just let the driver know in advance or during the trip.",
+      },
+      {
+        q: "Is smoking allowed in the car?",
+        a: "No. Smoking inside the vehicle is not permitted. The driver will be happy to make a stop if needed.",
+      },
+    ],
+  },
+  {
+    icon: "👶",
+    title: "Children & Pets",
+    items: [
+      {
+        q: "Can I request a child seat?",
+        a: "Yes. Child seats and booster seats are available on request. Please provide the child's age and weight when booking so we can fit the right seat.",
+      },
+      {
+        q: "Can I travel with an infant?",
+        a: "Yes — we regularly travel with families with young children. Mention it when booking and the driver will be ready for comfortable stops when needed.",
+      },
+      {
+        q: "Can I bring a pet?",
+        a: "By prior arrangement — yes. Let us know the breed, size, and whether you have a carrier when booking. We will do our best to assign a suitable vehicle.",
+      },
+    ],
+  },
+  {
+    icon: "🧳",
+    title: "Luggage",
+    items: [
+      {
+        q: "How much luggage can I bring?",
+        a: "It depends on the vehicle. Sedans comfortably fit 2–3 standard suitcases. Minivans offer significantly more space — perfect for families and bulky items.",
+      },
+      {
+        q: "Can I bring a bicycle, scooter, or skis?",
+        a: "By prior arrangement — yes. Let us know about oversized items when booking and we will choose the right vehicle.",
+      },
+      {
+        q: "I'm moving and have a lot of bags. Can you help?",
+        a: "Yes. Our minivans have a very large cargo area — ideal for relocation trips. Discuss the volume with us when booking.",
+      },
+    ],
+  },
+  {
+    icon: "🗺️",
+    title: "Routes & Destinations",
+    items: [
+      {
+        q: "Which routes do you cover?",
+        a: "Main ComfortLine routes:",
+        sub: ["Minsk ↔ Warsaw (Chopin & Modlin airports)", "Minsk ↔ Vilnius (VNO airport)", "Minsk ↔ Berlin", "Minsk ↔ Prague", "Across Belarus and to Russia", "Group transfers"],
+      },
+      {
+        q: "Do you operate within Minsk and Belarus?",
+        a: "Yes. We handle transfers across all of Minsk (airport, station, hotels, offices) and throughout Belarus.",
+      },
+      {
+        q: "Do you operate 24/7?",
+        a: "Yes. We accept bookings and run journeys around the clock, including weekends and public holidays.",
       },
     ],
   },
@@ -258,13 +414,13 @@ export default function FaqPage() {
             {lang === "ru" ? "Частые вопросы" : "Frequently Asked Questions"}
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-            {lang === "ru" ? "FAQ" : "FAQ"}
+            FAQ
           </h1>
           <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-5" />
           <p className="text-muted-foreground text-base">
             {lang === "ru"
-              ? "Всё, что вам нужно знать о международном трансфере с Comfortline.by"
-              : "Everything you need to know about international transfers with Comfortline.by"}
+              ? "Всё, что вам нужно знать о трансфере с ComfortLine"
+              : "Everything you need to know about travelling with ComfortLine"}
           </p>
         </div>
       </div>
