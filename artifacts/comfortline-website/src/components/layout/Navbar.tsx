@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ElementType } from "react";
+import { useState, useEffect, useRef, ElementType, useCallback } from "react";
 import { Menu, X, Phone, ChevronDown, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/context/language-context";
@@ -24,8 +24,18 @@ export function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { lang, setLang, t } = useLang();
   const routes = serviceRoutes[lang];
+
+  const openServices = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setServicesOpen(true);
+  }, []);
+
+  const closeServices = useCallback(() => {
+    closeTimer.current = setTimeout(() => setServicesOpen(false), 120);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -104,8 +114,8 @@ export function Navbar() {
               <div
                 ref={dropdownRef}
                 className="relative"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
+                onMouseEnter={openServices}
+                onMouseLeave={closeServices}
               >
                 <a
                   href="/#services"
