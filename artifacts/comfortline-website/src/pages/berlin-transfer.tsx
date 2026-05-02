@@ -1,3 +1,4 @@
+import { MapPin, ShieldCheck, Building2 } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 
@@ -20,9 +21,9 @@ const data: RoutePageData = {
     ],
     howTitle: "Как проходит поездка",
     steps: [
-      { icon: "🏠", title: "Выезд из Минска", desc: "Водитель заберёт вас рано утром — рекомендуем выезжать накануне или очень рано, чтобы учесть время на границе." },
-      { icon: "🛂", title: "Две границы", desc: "Беларусь–Польша, затем Польша–Германия (Шенген). Водитель знает процедуры и документы." },
-      { icon: "🏙️", title: "Берлин: любой адрес", desc: "Отель, аэропорт BER, Hauptbahnhof или любой адрес в пределах города." },
+      { icon: MapPin, title: "Выезд из Минска", desc: "Водитель заберёт вас рано утром — рекомендуем выезжать накануне или очень рано, чтобы учесть время на границе." },
+      { icon: ShieldCheck, title: "Две границы", desc: "Беларусь–Польша, затем Польша–Германия (Шенген). Водитель знает процедуры и документы." },
+      { icon: Building2, title: "Берлин: любой адрес", desc: "Отель, аэропорт BER, Hauptbahnhof или любой адрес в пределах города." },
     ],
     infoTitle: "Детали маршрута",
     infoRows: [
@@ -75,9 +76,9 @@ const data: RoutePageData = {
     ],
     howTitle: "How the transfer works",
     steps: [
-      { icon: "🏠", title: "Early departure from Minsk", desc: "Your driver picks you up early — we recommend a very early start or an overnight stop in Warsaw to account for border time." },
-      { icon: "🛂", title: "Two border crossings", desc: "Belarus–Poland, then Poland–Germany (Schengen). Your driver knows all procedures and paperwork." },
-      { icon: "🏙️", title: "Berlin — any address", desc: "Hotel, Berlin Brandenburg Airport (BER), Hauptbahnhof or any address in the city." },
+      { icon: MapPin, title: "Early departure from Minsk", desc: "Your driver picks you up early — we recommend a very early start or an overnight stop in Warsaw to account for border time." },
+      { icon: ShieldCheck, title: "Two border crossings", desc: "Belarus–Poland, then Poland–Germany (Schengen). Your driver knows all procedures and paperwork." },
+      { icon: Building2, title: "Berlin — any address", desc: "Hotel, Berlin Brandenburg Airport (BER), Hauptbahnhof or any address in the city." },
     ],
     infoTitle: "Route Details",
     infoRows: [

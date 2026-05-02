@@ -1,3 +1,4 @@
+import { MapPin, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 
@@ -20,9 +21,9 @@ const data: RoutePageData = {
     ],
     howTitle: "Как проходит поездка",
     steps: [
-      { icon: "🏠", title: "Выезд из Минска", desc: "Водитель забирает вас по адресу в Минске и берёт курс на Россию." },
-      { icon: "🛂", title: "Граница Беларусь–Россия", desc: "Граница между Беларусью и Россией — только для граждан РФ и РБ. Водитель знает все нюансы." },
-      { icon: "🏁", title: "Прибытие в Москву", desc: "Доставка прямо по адресу: отель, офис, аэропорт Шереметьево / Домодедово / Внуково." },
+      { icon: MapPin, title: "Выезд из Минска", desc: "Водитель забирает вас по адресу в Минске и берёт курс на Россию." },
+      { icon: ShieldCheck, title: "Граница Беларусь–Россия", desc: "Граница между Беларусью и Россией — только для граждан РФ и РБ. Водитель знает все нюансы." },
+      { icon: CheckCircle2, title: "Прибытие в Москву", desc: "Доставка прямо по адресу: отель, офис, аэропорт Шереметьево / Домодедово / Внуково." },
     ],
     infoTitle: "Популярные маршруты",
     infoRows: [
@@ -75,9 +76,9 @@ const data: RoutePageData = {
     ],
     howTitle: "How it works",
     steps: [
-      { icon: "🏠", title: "Departure from Minsk", desc: "Your driver collects you at your Minsk address and heads for Russia." },
-      { icon: "🛂", title: "Belarus–Russia border", desc: "Open border for RU/BY citizens. Your driver is familiar with all procedures and crossing points." },
-      { icon: "🏁", title: "Arrival in Moscow", desc: "Delivered directly to your hotel, office or airport (Sheremetyevo / Domodedovo / Vnukovo)." },
+      { icon: MapPin, title: "Departure from Minsk", desc: "Your driver collects you at your Minsk address and heads for Russia." },
+      { icon: ShieldCheck, title: "Belarus–Russia border", desc: "Open border for RU/BY citizens. Your driver is familiar with all procedures and crossing points." },
+      { icon: CheckCircle2, title: "Arrival in Moscow", desc: "Delivered directly to your hotel, office or airport (Sheremetyevo / Domodedovo / Vnukovo)." },
     ],
     infoTitle: "Popular Routes",
     infoRows: [

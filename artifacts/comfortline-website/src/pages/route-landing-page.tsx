@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
 import { CheckCircle2, PhoneCall, ArrowRight, Car, Info, Clock } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -18,7 +19,7 @@ export interface RouteContent {
   photosTitle: string;
   photos: LandmarkPhoto[];
   howTitle: string;
-  steps: { icon: string; title: string; desc: string }[];
+  steps: { icon: LucideIcon; title: string; desc: string }[];
   infoTitle: string;
   infoRows: { label: string; value: string }[];
   includedTitle: string;
@@ -109,17 +110,22 @@ export function RouteLandingPage({ data }: Props) {
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-2xl font-bold text-foreground mb-8">{c.howTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {c.steps.map((step, i) => (
-              <div key={i} className="bg-card border border-border rounded-2xl p-6 relative">
-                <div className="absolute top-4 right-4 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold">{i + 1}</div>
-                <div className="text-3xl mb-4">{step.icon}</div>
-                <h3 className="font-bold text-foreground mb-2">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
-                {i < c.steps.length - 1 && (
-                  <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/40 z-10" />
-                )}
-              </div>
-            ))}
+            {c.steps.map((step, i) => {
+              const StepIcon = step.icon;
+              return (
+                <div key={i} className="bg-card border border-border rounded-2xl p-6 relative">
+                  <div className="absolute top-4 right-4 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold">{i + 1}</div>
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5">
+                    <StepIcon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2">{step.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+                  {i < c.steps.length - 1 && (
+                    <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/40 z-10" />
+                  )}
+                </div>
+              );
+            })}
           </div>
         </motion.section>
 

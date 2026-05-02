@@ -1,3 +1,4 @@
+import { MapPin, Route, Navigation } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 
@@ -20,9 +21,9 @@ const data: RoutePageData = {
     ],
     howTitle: "Как проходит поездка",
     steps: [
-      { icon: "🏠", title: "Подача от двери", desc: "Водитель забирает вас в Минске по указанному адресу в назначенное время." },
-      { icon: "🛣️", title: "Комфортный путь", desc: "Современные трассы Беларуси, климат-контроль, вода — без пересадок и ожиданий." },
-      { icon: "📍", title: "Точное прибытие", desc: "Доставка прямо в нужный адрес города назначения." },
+      { icon: MapPin, title: "Подача от двери", desc: "Водитель забирает вас в Минске по указанному адресу в назначенное время." },
+      { icon: Route, title: "Комфортный путь", desc: "Современные трассы Беларуси, климат-контроль, вода — без пересадок и ожиданий." },
+      { icon: Navigation, title: "Точное прибытие", desc: "Доставка прямо в нужный адрес города назначения." },
     ],
     infoTitle: "Популярные маршруты",
     infoRows: [
@@ -76,9 +77,9 @@ const data: RoutePageData = {
     ],
     howTitle: "How it works",
     steps: [
-      { icon: "🏠", title: "Door pickup in Minsk", desc: "Your driver collects you at your Minsk address at the agreed time." },
-      { icon: "🛣️", title: "Comfortable journey", desc: "Modern Belarusian highways, climate control, bottled water — no transfers or waiting." },
-      { icon: "📍", title: "Precise delivery", desc: "Dropped off directly at your chosen address in the destination city." },
+      { icon: MapPin, title: "Door pickup in Minsk", desc: "Your driver collects you at your Minsk address at the agreed time." },
+      { icon: Route, title: "Comfortable journey", desc: "Modern Belarusian highways, climate control, bottled water — no transfers or waiting." },
+      { icon: Navigation, title: "Precise delivery", desc: "Dropped off directly at your chosen address in the destination city." },
     ],
     infoTitle: "Popular Routes",
     infoRows: [

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Plane, Clock, MapPin, Car, ArrowRight, Info, CheckCircle2, PhoneCall } from "lucide-react";
+import { Plane, Clock, MapPin, Car, ArrowRight, Info, CheckCircle2, PhoneCall, ShieldCheck } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
@@ -18,9 +18,9 @@ const content = {
     ],
     howTitle: "Как проходит трансфер",
     steps: [
-      { icon: "🏠", title: "Подача от двери", desc: "Водитель приедет к вашему адресу в Минске точно в назначенное время." },
-      { icon: "🛂", title: "Граница Беларусь–Польша", desc: "Водитель знает все КПП, отслеживает очереди и выбирает оптимальный пропускной пункт." },
-      { icon: "✈️", title: "Прибытие в аэропорт", desc: "Доставим прямо к нужному терминалу — Т1 (Chopin) или иному — с запасом до вылета." },
+      { icon: MapPin, title: "Подача от двери", desc: "Водитель приедет к вашему адресу в Минске точно в назначенное время." },
+      { icon: ShieldCheck, title: "Граница Беларусь–Польша", desc: "Водитель знает все КПП, отслеживает очереди и выбирает оптимальный пропускной пункт." },
+      { icon: Plane, title: "Прибытие в аэропорт", desc: "Доставим прямо к нужному терминалу — Т1 (Chopin) или иному — с запасом до вылета." },
     ],
     airportTitle: "Аэропорт Варшавы Шопен (WAW)",
     airportInfo: [
@@ -72,9 +72,9 @@ const content = {
     ],
     howTitle: "How the transfer works",
     steps: [
-      { icon: "🏠", title: "Door pickup", desc: "Your driver arrives at your Minsk address exactly on time." },
-      { icon: "🛂", title: "Belarus–Poland border", desc: "Your driver monitors all border checkpoints in real time and selects the fastest crossing." },
-      { icon: "✈️", title: "Airport arrival", desc: "Delivered directly to the correct terminal at Chopin Airport with time to spare." },
+      { icon: MapPin, title: "Door pickup", desc: "Your driver arrives at your Minsk address exactly on time." },
+      { icon: ShieldCheck, title: "Belarus–Poland border", desc: "Your driver monitors all border checkpoints in real time and selects the fastest crossing." },
+      { icon: Plane, title: "Airport arrival", desc: "Delivered directly to the correct terminal at Chopin Airport with time to spare." },
     ],
     airportTitle: "Warsaw Chopin Airport (WAW)",
     airportInfo: [
@@ -159,19 +159,24 @@ export default function MinskWarsawAirportPage() {
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-2xl font-bold text-foreground mb-8">{c.howTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {c.steps.map((step, i) => (
-              <div key={i} className="bg-card border border-border rounded-2xl p-6 relative">
-                <div className="absolute top-4 right-4 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold">
-                  {i + 1}
+            {c.steps.map((step, i) => {
+              const StepIcon = step.icon;
+              return (
+                <div key={i} className="bg-card border border-border rounded-2xl p-6 relative">
+                  <div className="absolute top-4 right-4 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold">
+                    {i + 1}
+                  </div>
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5">
+                    <StepIcon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2">{step.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+                  {i < c.steps.length - 1 && (
+                    <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/40 z-10" />
+                  )}
                 </div>
-                <div className="text-3xl mb-4">{step.icon}</div>
-                <h3 className="font-bold text-foreground mb-2">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
-                {i < c.steps.length - 1 && (
-                  <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/40 z-10" />
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.section>
 

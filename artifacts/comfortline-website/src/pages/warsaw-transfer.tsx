@@ -1,3 +1,4 @@
+import { MapPin, ShieldCheck, Building2 } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 
@@ -20,9 +21,9 @@ const data: RoutePageData = {
     ],
     howTitle: "Как проходит поездка",
     steps: [
-      { icon: "🏠", title: "Выезд из Минска", desc: "Водитель заберёт вас по указанному адресу в Минске и направится к польской границе." },
-      { icon: "🛂", title: "Граница Беларусь–Польша", desc: "Переход на Тересполь или Кукурыки. Водитель знает актуальные очереди и помогает на КПП." },
-      { icon: "🏙️", title: "Варшава: любой адрес", desc: "Отель в центре, Центральный вокзал, торговый центр или деловой район — куда скажете." },
+      { icon: MapPin, title: "Выезд из Минска", desc: "Водитель заберёт вас по указанному адресу в Минске и направится к польской границе." },
+      { icon: ShieldCheck, title: "Граница Беларусь–Польша", desc: "Переход на Тересполь или Кукурыки. Водитель знает актуальные очереди и помогает на КПП." },
+      { icon: Building2, title: "Варшава: любой адрес", desc: "Отель в центре, Центральный вокзал, торговый центр или деловой район — куда скажете." },
     ],
     infoTitle: "Детали маршрута",
     infoRows: [
@@ -75,9 +76,9 @@ const data: RoutePageData = {
     ],
     howTitle: "How the transfer works",
     steps: [
-      { icon: "🏠", title: "Departure from Minsk", desc: "Your driver picks you up at your Minsk address and heads for the Polish border." },
-      { icon: "🛂", title: "Belarus–Poland border", desc: "Terespol or Kukuryki crossing. Your driver knows current queue conditions and assists at the checkpoint." },
-      { icon: "🏙️", title: "Warsaw — any address", desc: "City centre hotel, Central Station, shopping centre or business district — wherever you need." },
+      { icon: MapPin, title: "Departure from Minsk", desc: "Your driver picks you up at your Minsk address and heads for the Polish border." },
+      { icon: ShieldCheck, title: "Belarus–Poland border", desc: "Terespol or Kukuryki crossing. Your driver knows current queue conditions and assists at the checkpoint." },
+      { icon: Building2, title: "Warsaw — any address", desc: "City centre hotel, Central Station, shopping centre or business district — wherever you need." },
     ],
     infoTitle: "Route Details",
     infoRows: [

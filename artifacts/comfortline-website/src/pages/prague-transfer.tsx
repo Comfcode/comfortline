@@ -1,3 +1,4 @@
+import { MapPin, ShieldCheck, Landmark } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 
@@ -20,9 +21,9 @@ const data: RoutePageData = {
     ],
     howTitle: "Как проходит поездка",
     steps: [
-      { icon: "🏠", title: "Выезд из Минска", desc: "Рекомендуем ранний выезд или поездку за 2 дня с ночёвкой в Варшаве." },
-      { icon: "🛂", title: "Границы BY–PL и PL–CZ", desc: "Два перехода. Водитель знает процедуры и актуальные маршруты через Польшу." },
-      { icon: "🏰", title: "Прага: любой адрес", desc: "Отель в старом городе, аэропорт Вацлава Гавела, любая достопримечательность." },
+      { icon: MapPin, title: "Выезд из Минска", desc: "Рекомендуем ранний выезд или поездку за 2 дня с ночёвкой в Варшаве." },
+      { icon: ShieldCheck, title: "Границы BY–PL и PL–CZ", desc: "Два перехода. Водитель знает процедуры и актуальные маршруты через Польшу." },
+      { icon: Landmark, title: "Прага: любой адрес", desc: "Отель в старом городе, аэропорт Вацлава Гавела, любая достопримечательность." },
     ],
     infoTitle: "Детали маршрута",
     infoRows: [
@@ -75,9 +76,9 @@ const data: RoutePageData = {
     ],
     howTitle: "How the transfer works",
     steps: [
-      { icon: "🏠", title: "Early start from Minsk", desc: "We recommend a very early departure or a 2-day trip with an overnight stop in Warsaw." },
-      { icon: "🛂", title: "BY–PL and PL–CZ borders", desc: "Two crossings. Your driver knows the procedures and optimal routes through Poland." },
-      { icon: "🏰", title: "Prague — any address", desc: "Old Town hotel, Václav Havel Airport (PRG) or any landmark or address in the city." },
+      { icon: MapPin, title: "Early start from Minsk", desc: "We recommend a very early departure or a 2-day trip with an overnight stop in Warsaw." },
+      { icon: ShieldCheck, title: "BY–PL and PL–CZ borders", desc: "Two crossings. Your driver knows the procedures and optimal routes through Poland." },
+      { icon: Landmark, title: "Prague — any address", desc: "Old Town hotel, Václav Havel Airport (PRG) or any landmark or address in the city." },
     ],
     infoTitle: "Route Details",
     infoRows: [

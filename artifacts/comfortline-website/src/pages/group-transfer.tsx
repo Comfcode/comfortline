@@ -1,3 +1,4 @@
+import { Users, Car, Target } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 
@@ -20,9 +21,9 @@ const data: RoutePageData = {
     ],
     howTitle: "Как работает групповой трансфер",
     steps: [
-      { icon: "👥", title: "Укажите группу", desc: "Сообщите количество пассажиров и объём багажа — подберём оптимальный автомобиль." },
-      { icon: "🚐", title: "Минивэн у вашего адреса", desc: "Kia Carnival (7 мест), Fiat Scudo (8 мест) или Hyundai Palisade (7 мест) — по вашему выбору." },
-      { icon: "🎯", title: "Все добираются вместе", desc: "Один автомобиль, один тариф, никаких пересадок и разделений группы." },
+      { icon: Users, title: "Укажите группу", desc: "Сообщите количество пассажиров и объём багажа — подберём оптимальный автомобиль." },
+      { icon: Car, title: "Минивэн у вашего адреса", desc: "Kia Carnival (7 мест), Fiat Scudo (8 мест) или Hyundai Palisade (7 мест) — по вашему выбору." },
+      { icon: Target, title: "Все добираются вместе", desc: "Один автомобиль, один тариф, никаких пересадок и разделений группы." },
     ],
     infoTitle: "Параметры группового трансфера",
     infoRows: [
@@ -75,9 +76,9 @@ const data: RoutePageData = {
     ],
     howTitle: "How group transfers work",
     steps: [
-      { icon: "👥", title: "Tell us your group size", desc: "Share the number of passengers and luggage — we'll match the perfect vehicle." },
-      { icon: "🚐", title: "Minivan at your door", desc: "Kia Carnival (7 seats), Fiat Scudo (8 seats) or Hyundai Palisade (7 seats) — your choice." },
-      { icon: "🎯", title: "Everyone travels together", desc: "One vehicle, one flat fare — no splitting up the group, no separate taxis." },
+      { icon: Users, title: "Tell us your group size", desc: "Share the number of passengers and luggage — we'll match the perfect vehicle." },
+      { icon: Car, title: "Minivan at your door", desc: "Kia Carnival (7 seats), Fiat Scudo (8 seats) or Hyundai Palisade (7 seats) — your choice." },
+      { icon: Target, title: "Everyone travels together", desc: "One vehicle, one flat fare — no splitting up the group, no separate taxis." },
     ],
     infoTitle: "Group Transfer Details",
     infoRows: [

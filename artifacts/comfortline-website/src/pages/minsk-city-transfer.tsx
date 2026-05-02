@@ -1,3 +1,4 @@
+import { MapPin, Car, CheckCircle2 } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 
@@ -20,9 +21,9 @@ const data: RoutePageData = {
     ],
     howTitle: "Как работает трансфер",
     steps: [
-      { icon: "📍", title: "Укажите адрес", desc: "Оставьте заявку с адресом подачи и нужным временем — в любой точке Минска." },
-      { icon: "🚗", title: "Водитель на месте", desc: "Опытный водитель прибудет заблаговременно. Никаких ожиданий и опозданий." },
-      { icon: "🏁", title: "Комфортная поездка", desc: "Прямо к нужному адресу: офис, отель, ресторан, аэропорт, вокзал." },
+      { icon: MapPin, title: "Укажите адрес", desc: "Оставьте заявку с адресом подачи и нужным временем — в любой точке Минска." },
+      { icon: Car, title: "Водитель на месте", desc: "Опытный водитель прибудет заблаговременно. Никаких ожиданий и опозданий." },
+      { icon: CheckCircle2, title: "Комфортная поездка", desc: "Прямо к нужному адресу: офис, отель, ресторан, аэропорт, вокзал." },
     ],
     infoTitle: "Информация о маршруте",
     infoRows: [
@@ -75,9 +76,9 @@ const data: RoutePageData = {
     ],
     howTitle: "How it works",
     steps: [
-      { icon: "📍", title: "Give us your address", desc: "Submit a request with your pickup address and required time — anywhere in Minsk." },
-      { icon: "🚗", title: "Driver arrives early", desc: "Your experienced driver will be there ahead of schedule. No waiting, no delays." },
-      { icon: "🏁", title: "Smooth arrival", desc: "Delivered directly to your destination: office, hotel, restaurant, airport or station." },
+      { icon: MapPin, title: "Give us your address", desc: "Submit a request with your pickup address and required time — anywhere in Minsk." },
+      { icon: Car, title: "Driver arrives early", desc: "Your experienced driver will be there ahead of schedule. No waiting, no delays." },
+      { icon: CheckCircle2, title: "Smooth arrival", desc: "Delivered directly to your destination: office, hotel, restaurant, airport or station." },
     ],
     infoTitle: "Route Details",
     infoRows: [
