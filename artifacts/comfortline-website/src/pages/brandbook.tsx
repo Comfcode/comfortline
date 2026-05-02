@@ -18,26 +18,45 @@ const palette = [
 ];
 
 const typeWeights = [
+  { weight: 200, label: "ExtraLight", sample: "COMFORT" },
   { weight: 300, label: "Light", sample: "Premium transfer across Europe" },
   { weight: 400, label: "Regular", sample: "Premium transfer across Europe" },
   { weight: 500, label: "Medium", sample: "Premium transfer across Europe" },
   { weight: 600, label: "SemiBold", sample: "Premium transfer across Europe" },
   { weight: 700, label: "Bold", sample: "Premium transfer across Europe" },
-  { weight: 800, label: "ExtraBold", sample: "COMFORT LINE" },
+  { weight: 800, label: "ExtraBold", sample: "Premium transfer across Europe" },
+  { weight: 900, label: "Black", sample: "LINE" },
 ];
 
-const svgMark = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" fill="none">
-  <path d="M 39 15 A 20 20 0 1 0 39 45" stroke="#B59C73" stroke-width="4.5" stroke-linecap="round"/>
-  <line x1="42" y1="22" x2="57" y2="22" stroke="#F5F0E8" stroke-width="3" stroke-linecap="round"/>
-  <line x1="42" y1="38" x2="51" y2="38" stroke="#F5F0E8" stroke-width="3" stroke-linecap="round"/>
+const MARK_PATH_EXPORT =
+  "M 60 9 C 59 10 59 17 55 14 A 27 27 0 1 0 55 56 " +
+  "C 59 53 59 59 60 61 C 59 60 51 44 47 47 A 15 15 0 1 1 47 23 " +
+  "C 51 26 59 10 60 9 Z";
+
+const svgMark = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 70" fill="none">
+  <defs>
+    <linearGradient id="g" x1="62" y1="7" x2="10" y2="63" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EDD9A8"/>
+      <stop offset="22%" stop-color="#D4B07A"/>
+      <stop offset="58%" stop-color="#B59C73"/>
+      <stop offset="100%" stop-color="#8A7555"/>
+    </linearGradient>
+  </defs>
+  <path d="${MARK_PATH_EXPORT}" fill="url(#g)"/>
 </svg>`;
 
-const svgLogoFull = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 60" fill="none">
-  <path d="M 39 15 A 20 20 0 1 0 39 45" stroke="#B59C73" stroke-width="4.5" stroke-linecap="round"/>
-  <line x1="42" y1="22" x2="57" y2="22" stroke="#F5F0E8" stroke-width="3" stroke-linecap="round"/>
-  <line x1="42" y1="38" x2="51" y2="38" stroke="#F5F0E8" stroke-width="3" stroke-linecap="round"/>
-  <text x="70" y="27" font-family="Montserrat,sans-serif" font-weight="500" font-size="13" fill="#F5F0E8" letter-spacing="3.5">COMFORT</text>
-  <text x="70" y="44" font-family="Montserrat,sans-serif" font-weight="800" font-size="13" fill="#B59C73" letter-spacing="5.5">LINE</text>
+const svgLogoFull = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 70" fill="none">
+  <defs>
+    <linearGradient id="g" x1="62" y1="7" x2="10" y2="63" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EDD9A8"/>
+      <stop offset="22%" stop-color="#D4B07A"/>
+      <stop offset="58%" stop-color="#B59C73"/>
+      <stop offset="100%" stop-color="#8A7555"/>
+    </linearGradient>
+  </defs>
+  <path d="${MARK_PATH_EXPORT}" fill="url(#g)"/>
+  <text x="84" y="29" font-family="Montserrat,sans-serif" font-weight="200" font-size="13" fill="#F5F0E8" letter-spacing="5">COMFORT</text>
+  <text x="84" y="55" font-family="Montserrat,sans-serif" font-weight="900" font-size="17" fill="#B59C73" letter-spacing="1.5">LINE</text>
 </svg>`;
 
 function CopyButton({ text, label }: { text: string; label: string }) {
@@ -153,23 +172,24 @@ export default function BrandbookPage() {
           <motion.section variants={sectionVariant} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <SectionHeader index="02" title="Symbol Mark" />
             <p className="text-muted-foreground text-sm mt-2 mb-8 max-w-xl">
-              The mark is a geometric "C" arc in brand gold paired with two speed-motion lines — evoking
-              motion, precision, and the CL monogram simultaneously.
+              A ribbon crescent with Sharps-style blade tips — the C arc tapers into two pointed tails
+              that suggest motion and forward momentum. Gradient shine runs from bright gold at the tips
+              to deep burnished gold at the body. Based on LogoLounge 2025 Crossovers + Sharps trends.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { bg: "#0E0D13", gold: "#B59C73", lines: "#F5F0E8", label: "Primary" },
-                { bg: "#B59C73", gold: "#0E0D13", lines: "#0E0D13", label: "Gold BG" },
-                { bg: "#F8F7F5", gold: "#B59C73", lines: "#131218", label: "On Light" },
-                { bg: "#131218", gold: "#F5F0E8", lines: "#F5F0E8", label: "Monochrome" },
+                { bg: "#0E0D13", fill: undefined,    textColor: "#F5F0E8", label: "Primary",     gid: "bm-pri" },
+                { bg: "#B59C73", fill: "#0E0D13",    textColor: "#0E0D13", label: "Gold BG",     gid: "bm-gld" },
+                { bg: "#F8F7F5", fill: undefined,    textColor: "#131218", label: "On Light",    gid: "bm-lgt" },
+                { bg: "#131218", fill: "#F5F0E8",    textColor: "#F5F0E8", label: "Monochrome",  gid: "bm-mno" },
               ].map((v) => (
                 <div
                   key={v.label}
                   className="rounded-2xl border border-border p-8 flex flex-col items-center gap-4"
                   style={{ background: v.bg }}
                 >
-                  <LogoMark goldColor={v.gold} lineColor={v.lines} size={64} />
-                  <p className="text-xs tracking-wider uppercase" style={{ color: v.lines, opacity: 0.6 }}>
+                  <LogoMark fillColor={v.fill} size={64} gradientId={v.gid} />
+                  <p className="text-xs tracking-wider uppercase" style={{ color: v.textColor, opacity: 0.6 }}>
                     {v.label}
                   </p>
                 </div>
@@ -187,12 +207,21 @@ export default function BrandbookPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
               {[64, 48, 32, 16].map((sz) => (
                 <div key={sz} className="rounded-2xl border border-border bg-card p-6 flex flex-col items-center gap-4">
-                  <div className="rounded-[22%] overflow-hidden flex items-center justify-center bg-[#0E0D13]" style={{ width: sz * 1.25, height: sz * 1.25 }}>
+                  <div className="rounded-[22%] overflow-hidden flex items-center justify-center" style={{ width: sz * 1.25, height: sz * 1.25, background: "#0E0D13" }}>
                     <svg width={sz} height={sz} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id={`fg-${sz}`} x1="20" y1="5" x2="3" y2="27" gradientUnits="userSpaceOnUse">
+                          <stop offset="0%"   stopColor="#EDD9A8"/>
+                          <stop offset="30%"  stopColor="#D4B07A"/>
+                          <stop offset="70%"  stopColor="#B59C73"/>
+                          <stop offset="100%" stopColor="#8A7555"/>
+                        </linearGradient>
+                      </defs>
                       <rect width="32" height="32" rx="7" fill="#0E0D13"/>
-                      <path d="M 20 8 A 11 11 0 1 0 20 24" stroke="#B59C73" strokeWidth="2.5" strokeLinecap="round"/>
-                      <line x1="22" y1="11" x2="28" y2="11" stroke="#F5F0E8" strokeWidth="1.5" strokeLinecap="round"/>
-                      <line x1="22" y1="21" x2="26" y2="21" stroke="#F5F0E8" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path
+                        d="M 20 5 L 18 7 A 9 9 0 1 0 18 21 L 20 23 L 15 18 A 5 5 0 1 1 15 10 Z"
+                        fill={`url(#fg-${sz})`}
+                      />
                     </svg>
                   </div>
                   <p className="text-xs text-muted-foreground">{sz}×{sz}</p>
@@ -214,7 +243,7 @@ export default function BrandbookPage() {
                   className="rounded-full flex items-center justify-center"
                   style={{ width: 120, height: 120, background: "#0E0D13" }}
                 >
-                  <LogoMark goldColor="#B59C73" lineColor="#F5F0E8" size={72} />
+                  <LogoMark size={72} gradientId="av-dark" />
                 </div>
                 <p className="text-xs text-muted-foreground">Primary dark</p>
               </div>
@@ -224,7 +253,7 @@ export default function BrandbookPage() {
                   className="rounded-full flex items-center justify-center"
                   style={{ width: 120, height: 120, background: "#F8F7F5" }}
                 >
-                  <LogoMark goldColor="#B59C73" lineColor="#131218" size={72} />
+                  <LogoMark size={72} gradientId="av-light" />
                 </div>
                 <p className="text-xs text-muted-foreground">On light</p>
               </div>
@@ -234,7 +263,7 @@ export default function BrandbookPage() {
                   className="rounded-full flex items-center justify-center"
                   style={{ width: 120, height: 120, background: "#B59C73" }}
                 >
-                  <LogoMark goldColor="#0E0D13" lineColor="#0E0D13" size={72} />
+                  <LogoMark fillColor="#0E0D13" size={72} gradientId="av-gold" />
                 </div>
                 <p className="text-xs text-muted-foreground">Gold background</p>
               </div>
