@@ -16,7 +16,7 @@ const data: RoutePageData = {
     photos: [
       { src: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Building,_23,_Independence_Avenue,_Minsk_-_the_capital_of_Republic_of_Belarus.JPG", caption: "Проспект Независимости" },
       { src: "https://paliparan.com/wp-content/uploads/2025/02/minsk-43a-800x445.jpg", caption: "Площадь Победы" },
-      { src: "https://thumbs.dreamstime.com/b/aerial-view-trinity-troitskoe-suburb-historical-center-minsk-historical-building-city-travel-concept-aerial-238253753.jpg", caption: "Тринитарское предместье" },
+      { src: "https://media-cdn.tripadvisor.com/media/photo-o/11/13/55/48/caption.jpg", caption: "Троицкое предместье" },
     ],
     howTitle: "Как работает трансфер",
     steps: [
@@ -71,7 +71,7 @@ const data: RoutePageData = {
     photos: [
       { src: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Building,_23,_Independence_Avenue,_Minsk_-_the_capital_of_Republic_of_Belarus.JPG", caption: "Independence Avenue" },
       { src: "https://paliparan.com/wp-content/uploads/2025/02/minsk-43a-800x445.jpg", caption: "Victory Square" },
-      { src: "https://thumbs.dreamstime.com/b/aerial-view-trinity-troitskoe-suburb-historical-center-minsk-historical-building-city-travel-concept-aerial-238253753.jpg", caption: "Trinity Suburb" },
+      { src: "https://media-cdn.tripadvisor.com/media/photo-o/11/13/55/48/caption.jpg", caption: "Trinity Suburb (Troitskoye Predmestye)" },
     ],
     howTitle: "How it works",
     steps: [
