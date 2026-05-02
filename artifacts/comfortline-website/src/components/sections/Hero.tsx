@@ -10,8 +10,10 @@ export function Hero() {
     <section className="relative min-h-[100dvh] flex items-end justify-center pt-20">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-background/70 dark:bg-background/80 z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10"></div>
+        {/* Dark mode: heavy charcoal veil; light mode: thin dark scrim — photo stays sharp */}
+        <div className="absolute inset-0 bg-black/20 dark:bg-black/55 z-10"></div>
+        {/* Bottom gradient for text legibility — always dark, never white */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent dark:from-background dark:via-background/40 z-10"></div>
         <img
           src="/hero-bg.png"
           alt="Premium black sedan"
@@ -32,7 +34,7 @@ export function Hero() {
               {t.hero.badge}
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-6">
               {t.hero.headline1}
               {t.hero.headline2 && (
                 <>
@@ -42,7 +44,7 @@ export function Hero() {
               )}
             </h1>
 
-            <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-8 text-foreground/80 text-base md:text-lg">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-8 text-white/80 text-base md:text-lg">
               {t.hero.checkmarks.map((item, index) => (
                 <motion.li
                   key={item}

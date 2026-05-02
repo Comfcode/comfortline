@@ -107,7 +107,8 @@ export function Fleet() {
                 className="bg-card border border-border rounded-2xl overflow-hidden group hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-primary/5 flex flex-col"
               >
                 <div className="h-48 overflow-hidden relative bg-muted flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10"></div>
+                  {/* Fixed dark gradient — looks good in both light & dark mode, keeps photo sharp */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                   <img
                     src={car.image}
                     alt={car.name}
