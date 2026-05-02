@@ -1,0 +1,120 @@
+import { RouteLandingPage, RoutePageData } from "./route-landing-page";
+
+const U = "https://images.unsplash.com/photo-";
+
+const data: RoutePageData = {
+  ru: {
+    badge: "Групповой трансфер",
+    title: "Групповые трансферы",
+    subtitle: "До 8 пассажиров на одном автомобиле. Семейные поездки, корпоративные трансферы, свадьбы, экскурсионные группы — один звонок, один тариф.",
+    stats: [
+      { label: "Вместимость", value: "до 8 чел." },
+      { label: "Автомобили", value: "Минивэн / Автобус" },
+      { label: "Багаж", value: "Вместительный" },
+      { label: "Маршруты", value: "Любые" },
+    ],
+    photosTitle: "Групповые поездки",
+    photos: [
+      { src: `${U}1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80`, caption: "Семейный трансфер" },
+      { src: `${U}1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80`, caption: "Корпоративная группа" },
+      { src: `${U}1606920803700-d6e39d79ee42?auto=format&fit=crop&w=800&q=80`, caption: "Групповая поездка" },
+    ],
+    howTitle: "Как работает групповой трансфер",
+    steps: [
+      { icon: "👥", title: "Укажите группу", desc: "Сообщите количество пассажиров и объём багажа — подберём оптимальный автомобиль." },
+      { icon: "🚐", title: "Минивэн у вашего адреса", desc: "Kia Carnival (7 мест), Fiat Scudo (8 мест) или Hyundai Palisade (7 мест) — по вашему выбору." },
+      { icon: "🎯", title: "Все добираются вместе", desc: "Один автомобиль, один тариф, никаких пересадок и разделений группы." },
+    ],
+    infoTitle: "Параметры группового трансфера",
+    infoRows: [
+      { label: "Максимум пассажиров", value: "8 человек (Fiat Scudo)" },
+      { label: "Максимум чемоданов", value: "8–10 стандартных чемоданов" },
+      { label: "Детские кресла", value: "По запросу, бесплатно" },
+      { label: "Подходящие маршруты", value: "Минск, аэропорты, межгород, Европа" },
+      { label: "Скидка для группы", value: "Выгоднее индивидуальных такси" },
+    ],
+    includedTitle: "Что включено",
+    included: [
+      "Минивэн или микроавтобус на группу",
+      "Вода и комфортный салон",
+      "Детские кресла по запросу",
+      "Помощь с погрузкой багажа",
+      "Фиксированная цена на всю группу",
+      "Водитель говорит на русском и английском",
+    ],
+    whyTitle: "Почему ComfortLine для групп",
+    whyItems: [
+      "Специализируемся на групповых поездках",
+      "Вместительный багажный отсек",
+      "Один тариф дешевле нескольких такси",
+      "Профессиональные водители на дальних маршрутах",
+      "Все маршруты: Беларусь, Литва, Польша, Россия",
+      "Работаем с турфирмами и корпоративными клиентами",
+    ],
+    ctaTitle: "Заказать групповой трансфер",
+    ctaDesc: "Укажите количество человек и маршрут — получите точную цену за 15 минут.",
+    ctaBtn: "Оставить заявку",
+    prefilledFrom: "Минск",
+    prefilledTo: "Групповой маршрут",
+    backBtn: "← Все услуги",
+  },
+  en: {
+    badge: "Group Transfer",
+    title: "Group Transfers",
+    subtitle: "Up to 8 passengers in one vehicle. Family travel, corporate transfers, weddings and tour groups — one booking, one flat rate for the whole party.",
+    stats: [
+      { label: "Capacity", value: "up to 8 pax" },
+      { label: "Vehicles", value: "Minivan / Minibus" },
+      { label: "Luggage", value: "Generous" },
+      { label: "Routes", value: "Any destination" },
+    ],
+    photosTitle: "Group Travel",
+    photos: [
+      { src: `${U}1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80`, caption: "Family transfer" },
+      { src: `${U}1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80`, caption: "Corporate group" },
+      { src: `${U}1606920803700-d6e39d79ee42?auto=format&fit=crop&w=800&q=80`, caption: "Group travel" },
+    ],
+    howTitle: "How group transfers work",
+    steps: [
+      { icon: "👥", title: "Tell us your group size", desc: "Share the number of passengers and luggage — we'll match the perfect vehicle." },
+      { icon: "🚐", title: "Minivan at your door", desc: "Kia Carnival (7 seats), Fiat Scudo (8 seats) or Hyundai Palisade (7 seats) — your choice." },
+      { icon: "🎯", title: "Everyone travels together", desc: "One vehicle, one flat fare — no splitting up the group, no separate taxis." },
+    ],
+    infoTitle: "Group Transfer Details",
+    infoRows: [
+      { label: "Maximum passengers", value: "8 people (Fiat Scudo)" },
+      { label: "Maximum suitcases", value: "8–10 standard suitcases" },
+      { label: "Child seats", value: "On request, at no extra charge" },
+      { label: "Suitable routes", value: "Minsk city, airports, intercity, Europe" },
+      { label: "Group discount", value: "Usually cheaper than multiple individual taxis" },
+    ],
+    includedTitle: "What's included",
+    included: [
+      "Minivan or minibus for the whole group",
+      "Bottled water and comfortable cabin",
+      "Child seats on request",
+      "Luggage loading assistance",
+      "One flat price for the entire group",
+      "Driver speaks Russian and English",
+    ],
+    whyTitle: "Why ComfortLine for groups",
+    whyItems: [
+      "Specialists in group and family travel",
+      "Generous cargo area for heavy luggage",
+      "Flat rate cheaper than multiple taxis",
+      "Professional drivers for long-distance runs",
+      "All routes: Belarus, Lithuania, Poland, Russia",
+      "Works with travel agencies and corporates",
+    ],
+    ctaTitle: "Book a Group Transfer",
+    ctaDesc: "Tell us your group size and destination — get an exact price within 15 minutes.",
+    ctaBtn: "Request a booking",
+    prefilledFrom: "Minsk",
+    prefilledTo: "Group route",
+    backBtn: "← All services",
+  },
+};
+
+export default function GroupTransferPage() {
+  return <RouteLandingPage data={data} />;
+}
