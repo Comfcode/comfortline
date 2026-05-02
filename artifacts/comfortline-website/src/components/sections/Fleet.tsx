@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Users, Briefcase } from "lucide-react";
+import { Users, Briefcase, ArrowRight } from "lucide-react";
 import { useLang } from "@/context/language-context";
 
 const cars = [
@@ -11,12 +11,12 @@ const cars = [
     classRu: "Бизнес",
     classEn: "Business",
     seats: 4,
-    hourly: 55,
-    airport: 95,
     image: "/car-mercedes-e.jpg",
     category: "sedan",
     luggageRu: "Стандарт",
     luggageEn: "Standard",
+    hrefRu: "/mercedes-e-klass-transfer",
+    hrefEn: "/mercedes-e-class-transfer",
   },
   {
     id: 2,
@@ -24,12 +24,12 @@ const cars = [
     classRu: "Минивэн",
     classEn: "Minivan",
     seats: 7,
-    hourly: 60,
-    airport: 110,
     image: "/car-kia-carnival.jpg",
     category: "minivan",
     luggageRu: "Вместительный",
     luggageEn: "Spacious",
+    hrefRu: "/kia-karnaval-transfer",
+    hrefEn: "/kia-carnival-transfer",
   },
   {
     id: 3,
@@ -37,12 +37,12 @@ const cars = [
     classRu: "Внедорожник",
     classEn: "SUV",
     seats: 7,
-    hourly: 65,
-    airport: 115,
     image: "/car-hyundai-palisade.jpg",
     category: "suv",
     luggageRu: "Вместительный",
     luggageEn: "Spacious",
+    hrefRu: "/hyundai-palisade-transfer",
+    hrefEn: "/hyundai-palisade-transfer",
   },
   {
     id: 4,
@@ -50,12 +50,12 @@ const cars = [
     classRu: "Микроавтобус",
     classEn: "Minibus",
     seats: 8,
-    hourly: 55,
-    airport: 105,
     image: "/car-fiat-scudo.jpg",
     category: "minivan",
     luggageRu: "Вместительный",
     luggageEn: "Spacious",
+    hrefRu: "/fiat-scudo-transfer",
+    hrefEn: "/fiat-scudo-transfer",
   },
 ];
 
@@ -139,11 +139,18 @@ export function Fleet() {
 
                   <Button
                     variant="default"
-                    className="w-full mt-auto"
+                    className="w-full"
                     onClick={() => window.dispatchEvent(new Event("open-booking-modal"))}
                   >
                     {f.book}
                   </Button>
+                  <a
+                    href={lang === "ru" ? car.hrefRu : car.hrefEn}
+                    className="mt-2 flex items-center justify-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {lang === "ru" ? "Подробнее" : "Details"}
+                    <ArrowRight className="h-3 w-3" />
+                  </a>
                 </div>
               </motion.div>
             ))}
