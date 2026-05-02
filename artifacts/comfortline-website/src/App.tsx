@@ -11,6 +11,7 @@ import TermsPage from "@/pages/terms";
 import FaqPage from "@/pages/faq";
 import MinskVilniusAirportPage from "@/pages/minsk-vilnius-airport";
 import MinskWarsawAirportPage from "@/pages/minsk-warsaw-airport";
+import MinskWarsawModlinAirportPage from "@/pages/minsk-warsaw-modlin-airport";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/faq" component={FaqPage} />
       <Route path="/minsk-vilnius-airport" component={MinskVilniusAirportPage} />
       <Route path="/minsk-warsaw-airport" component={MinskWarsawAirportPage} />
+      <Route path="/minsk-warsaw-modlin-airport" component={MinskWarsawModlinAirportPage} />
       <Route component={NotFound} />
     </Switch>
   );

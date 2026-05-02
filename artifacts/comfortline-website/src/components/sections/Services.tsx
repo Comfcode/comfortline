@@ -6,12 +6,14 @@ const icons = [Plane, Users, MapPin, Globe2];
 
 const airportRoutes = {
   ru: [
-    { label: "Минск — Аэропорт Вильнюса", href: "/minsk-vilnius-airport" },
-    { label: "Минск — Аэропорт Варшавы", href: "/minsk-warsaw-airport" },
+    { label: "Минск — Аэропорт Вильнюса (VNO)", href: "/minsk-vilnius-airport" },
+    { label: "Минск — Варшава Шопен (WAW)", href: "/minsk-warsaw-airport" },
+    { label: "Минск — Варшава Модлин (WMI)", href: "/minsk-warsaw-modlin-airport" },
   ],
   en: [
-    { label: "Minsk — Vilnius Airport", href: "/minsk-vilnius-airport" },
-    { label: "Minsk — Warsaw Airport", href: "/minsk-warsaw-airport" },
+    { label: "Minsk — Vilnius Airport (VNO)", href: "/minsk-vilnius-airport" },
+    { label: "Minsk — Warsaw Chopin (WAW)", href: "/minsk-warsaw-airport" },
+    { label: "Minsk — Warsaw Modlin (WMI)", href: "/minsk-warsaw-modlin-airport" },
   ],
 };
 

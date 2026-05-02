@@ -76,7 +76,7 @@ const content = {
     steps: [
       { icon: "🏠", title: "Door pickup", desc: "Your driver arrives at your Minsk address exactly on time." },
       { icon: "🛂", title: "Belarus–Poland border", desc: "Your driver monitors all border checkpoints in real time and selects the fastest crossing." },
-      { icon: "✈️", title: "Airport arrival", desc: "Delivered directly to the correct terminal — T1 (Chopin) or Modlin — with time to spare." },
+      { icon: "✈️", title: "Airport arrival", desc: "Delivered directly to the correct terminal at Chopin Airport with time to spare." },
     ],
     airportTitle: "Warsaw Chopin Airport (WAW)",
     airportInfo: [
@@ -197,20 +197,23 @@ export default function MinskWarsawAirportPage() {
           </div>
 
           {/* Also serves */}
-          <div className="bg-card border border-border/60 rounded-2xl p-5">
-            <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">{c.altTitle}</p>
-            {c.altAirports.map((ap, i) => (
-              <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-2">
-                <div className="flex-1">
-                  <p className="font-semibold text-foreground text-sm">{ap.name}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{ap.desc}</p>
-                </div>
-                <a href={ap.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-primary hover:underline shrink-0">
-                  {lang === "ru" ? "Сайт аэропорта" : "Airport website"} <ExternalLink className="h-3 w-3" />
-                </a>
-              </div>
-            ))}
-          </div>
+          <a
+            href="/minsk-warsaw-modlin-airport"
+            className="flex items-center justify-between gap-4 bg-card border border-border/60 rounded-2xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+          >
+            <div>
+              <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">{c.altTitle}</p>
+              <p className="font-semibold text-foreground text-sm group-hover:text-primary transition-colors">
+                {lang === "ru" ? "Аэропорт Варшава-Модлин (WMI)" : "Warsaw Modlin Airport (WMI)"}
+              </p>
+              <p className="text-muted-foreground text-xs mt-0.5">
+                {lang === "ru"
+                  ? "Ryanair, Wizz Air. В 35 км от центра Варшавы."
+                  : "Ryanair, Wizz Air. 35 km north of Warsaw city centre."}
+              </p>
+            </div>
+            <ArrowRight className="h-4 w-4 text-primary shrink-0 group-hover:translate-x-1 transition-transform" />
+          </a>
         </motion.section>
 
         {/* Flight Board */}
