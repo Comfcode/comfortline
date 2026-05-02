@@ -148,10 +148,10 @@ export function Fleet() {
                     <div className="mt-auto pt-4 border-t border-border/50">
                       <a
                         href={href}
-                        className="flex items-center justify-between gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group/link"
+                        className="group/link flex items-center justify-between gap-2 w-full px-4 py-2.5 rounded-xl text-sm font-medium text-muted-foreground border border-border/60 hover:border-primary/50 hover:bg-primary/8 hover:text-primary transition-all duration-200"
                       >
                         <span>{lang === "ru" ? "Подробнее" : "View details"}</span>
-                        <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all" />
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0 text-primary/40 group-hover/link:text-primary group-hover/link:translate-x-1 transition-all duration-200" />
                       </a>
                     </div>
                   </div>
