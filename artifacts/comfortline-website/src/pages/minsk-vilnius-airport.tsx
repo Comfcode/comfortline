@@ -226,65 +226,81 @@ export default function MinskVilniusAirportPage() {
           </div>
         </motion.section>
 
-        {/* Terminal Plan */}
+        {/* Map & Terminal Plan */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-3">
+          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
             <MapPin className="h-5 w-5 text-primary" />
             {c.mapTitle}
           </h2>
-          <p className="text-muted-foreground text-xs mb-6">
-            {lang === "ru" ? "Источник: vilnius-airport.lt" : "Source: vilnius-airport.lt"}
-          </p>
 
-          {/* Terminal isometric plan */}
-          <div className="mb-4">
-            <p className="text-sm font-semibold text-foreground mb-3">
-              {lang === "ru" ? "План терминала" : "Terminal Plan"}
-            </p>
+          {/* Google Maps embed */}
+          <div className="rounded-2xl overflow-hidden border border-border mb-6" style={{ height: 360 }}>
+            <iframe
+              title="Vilnius Airport Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2306.1!2d25.2858!3d54.6341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd93f4d6ac0d7b%3A0x4e39c42c18c87e5f!2sVilnius%20International%20Airport!5e0!3m2!1sen!2sby!4v1700000000000"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+
+          {/* Official plan links */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <a
+              href="https://vnomap.ltou.lt/projects/main/VilniusAirport/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+            >
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                <MapPin className="h-4 w-4 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-foreground leading-tight">
+                  {lang === "ru" ? "Интерактивная карта" : "Interactive Map"}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">vnomap.ltou.lt</p>
+              </div>
+              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
+            </a>
+
             <a
               href="https://www.vilnius-airport.lt/uploads/documents/files/vno/keleiviu-terminalo-planas/2023-05/LTOU_VNO_izometrika_2023_03_24_3fl.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-colors"
+              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
             >
-              <img
-                src="/vno-terminal-plan.jpg"
-                alt="Vilnius Airport Terminal Plan"
-                className="w-full object-contain bg-white"
-                loading="lazy"
-              />
-              <div className="px-4 py-2.5 bg-card border-t border-border flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">
-                  {lang === "ru" ? "Нажмите, чтобы открыть PDF" : "Click to open PDF"}
-                </span>
-                <ExternalLink className="h-3.5 w-3.5 text-primary" />
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Info className="h-4 w-4 text-primary" />
               </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-foreground leading-tight">
+                  {lang === "ru" ? "План терминала" : "Terminal Plan"}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">PDF</p>
+              </div>
+              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
             </a>
-          </div>
 
-          {/* Parking / traffic plan */}
-          <div>
-            <p className="text-sm font-semibold text-foreground mb-3">
-              {lang === "ru" ? "Схема парковки и подъезда" : "Parking & Traffic Plan"}
-            </p>
             <a
-              href="https://www.vilnius-airport.lt/uploads/documents/files/VNO%20traffic%20plan%402x-100.jpg"
+              href="https://www.vilnius-airport.lt/en/passenger-guide/airport-information/airport-terminal-map"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-colors"
+              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
             >
-              <img
-                src="/vno-parking-plan.jpg"
-                alt="Vilnius Airport Parking and Traffic Plan"
-                className="w-full object-contain bg-white"
-                loading="lazy"
-              />
-              <div className="px-4 py-2.5 bg-card border-t border-border flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">
-                  {lang === "ru" ? "Нажмите, чтобы открыть полный размер" : "Click to open full size"}
-                </span>
-                <ExternalLink className="h-3.5 w-3.5 text-primary" />
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Car className="h-4 w-4 text-primary" />
               </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-foreground leading-tight">
+                  {lang === "ru" ? "Схема парковки" : "Parking Plan"}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">vilnius-airport.lt</p>
+              </div>
+              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
             </a>
           </div>
         </motion.section>
