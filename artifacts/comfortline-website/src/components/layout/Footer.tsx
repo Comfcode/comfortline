@@ -2,6 +2,7 @@ import { PhoneCall, Send } from "lucide-react";
 import { Instagram } from "lucide-react";
 import { SiTelegram, SiViber, SiWhatsapp, SiMessenger } from "react-icons/si";
 import { useLang } from "@/context/language-context";
+import { Logo } from "@/components/brand/Logo";
 
 const navHrefs = ["#services", "#fleet", "#advantages", "#reviews"];
 
@@ -16,11 +17,8 @@ export function Footer() {
 
           {/* Logo & About */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <a href="#" className="flex items-center gap-1 group mb-6">
-              <span className="text-2xl font-bold text-foreground">
-                Comfort
-              </span>
-              <span className="text-2xl font-bold text-primary">Line</span>
+            <a href="#" className="inline-block mb-6">
+              <Logo variant="stacked" scheme="dark" height={72} showTagline />
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               {f.tagline}
