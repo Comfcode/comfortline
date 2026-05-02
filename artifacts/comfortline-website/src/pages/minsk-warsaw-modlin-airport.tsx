@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { AirportMap } from "@/components/ui/AirportMap";
+import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 
 const content = {
   ru: {
@@ -364,6 +365,7 @@ export default function MinskWarsawModlinAirportPage() {
 
       </div>
 
+      <GlobalBookingModal />
       <Footer />
     </div>
   );
