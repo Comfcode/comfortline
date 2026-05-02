@@ -3,6 +3,7 @@ import { Plane, Clock, MapPin, Car, ArrowRight, ExternalLink, Info, CheckCircle2
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
+import { AirportMap } from "@/components/ui/AirportMap";
 
 const content = {
   ru: {
@@ -254,16 +255,12 @@ export default function MinskWarsawModlinAirportPage() {
             <MapPin className="h-5 w-5 text-primary" />
             {c.mapTitle}
           </h2>
-          <div className="rounded-2xl overflow-hidden border border-border mb-6" style={{ height: 360 }}>
-            <iframe
-              title="Warsaw Modlin Airport Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2440.0!2d20.6518!3d52.4511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc2c8e7d4c3d%3A0x1a4b2c3d4e5f6a7b!2sWarsaw+Modlin+Airport!5e0!3m2!1sen!2sby!4v1700000000002"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+          <div className="mb-6">
+            <AirportMap
+              lat={52.4511}
+              lng={20.6518}
+              label="Warsaw Modlin Airport (WMI)"
+              googleMapsUrl="https://maps.google.com/?q=Warsaw+Modlin+Airport"
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

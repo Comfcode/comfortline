@@ -3,6 +3,7 @@ import { Plane, Clock, MapPin, Car, ArrowRight, ExternalLink, Info, CheckCircle2
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
+import { AirportMap } from "@/components/ui/AirportMap";
 
 const content = {
   ru: {
@@ -260,17 +261,12 @@ export default function MinskWarsawAirportPage() {
             {c.mapTitle}
           </h2>
 
-          {/* Google Maps embed */}
-          <div className="rounded-2xl overflow-hidden border border-border mb-6" style={{ height: 360 }}>
-            <iframe
-              title="Warsaw Chopin Airport Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2447.1!2d20.967900!3d52.167200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47192da5d5af2e35%3A0x6c3e2a3f2d6a0a6f!2sWarsaw%20Chopin%20Airport!5e0!3m2!1sen!2sby!4v1700000000001"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+          <div className="mb-6">
+            <AirportMap
+              lat={52.1672}
+              lng={20.9679}
+              label="Warsaw Chopin Airport (WAW)"
+              googleMapsUrl="https://maps.google.com/?q=Warsaw+Chopin+Airport"
             />
           </div>
 

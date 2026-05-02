@@ -3,6 +3,7 @@ import { Plane, Clock, MapPin, Car, ArrowRight, ExternalLink, Info, CheckCircle2
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
+import { AirportMap } from "@/components/ui/AirportMap";
 
 const content = {
   ru: {
@@ -233,17 +234,12 @@ export default function MinskVilniusAirportPage() {
             {c.mapTitle}
           </h2>
 
-          {/* Google Maps embed */}
-          <div className="rounded-2xl overflow-hidden border border-border mb-6" style={{ height: 360 }}>
-            <iframe
-              title="Vilnius Airport Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2306.1!2d25.2858!3d54.6341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd93f4d6ac0d7b%3A0x4e39c42c18c87e5f!2sVilnius%20International%20Airport!5e0!3m2!1sen!2sby!4v1700000000000"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+          <div className="mb-6">
+            <AirportMap
+              lat={54.6341}
+              lng={25.2858}
+              label="Vilnius International Airport (VNO)"
+              googleMapsUrl="https://maps.google.com/?q=Vilnius+International+Airport"
             />
           </div>
 
