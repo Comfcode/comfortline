@@ -23,8 +23,11 @@ function Router() {
       <Route path="/terms" component={TermsPage} />
       <Route path="/faq" component={FaqPage} />
       <Route path="/minsk-vilnius-airport" component={MinskVilniusAirportPage} />
+      <Route path="/minsk-vilnyus-aeroport" component={MinskVilniusAirportPage} />
       <Route path="/minsk-warsaw-airport" component={MinskWarsawAirportPage} />
+      <Route path="/minsk-varshava-shopin-aeroport" component={MinskWarsawAirportPage} />
       <Route path="/minsk-warsaw-modlin-airport" component={MinskWarsawModlinAirportPage} />
+      <Route path="/minsk-varshava-modlin-aeroport" component={MinskWarsawModlinAirportPage} />
       <Route component={NotFound} />
     </Switch>
   );

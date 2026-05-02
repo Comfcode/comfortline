@@ -58,7 +58,7 @@ const content = {
     ],
     alsoTitle: "Также смотрите",
     alsoLinks: [
-      { label: "Минск — Аэропорт Варшавы Шопен (WAW)", href: "/minsk-warsaw-airport" },
+      { label: "Минск — Аэропорт Варшавы Шопен (WAW)", href: "/minsk-varshava-shopin-aeroport" },
     ],
     ctaTitle: "Забронировать трансфер",
     ctaDesc: "Оставьте заявку — менеджер свяжется с вами в течение 15 минут и назовёт точную стоимость.",

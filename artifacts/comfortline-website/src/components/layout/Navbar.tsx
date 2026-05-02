@@ -7,9 +7,9 @@ import { Instagram } from "lucide-react";
 
 const serviceRoutes = {
   ru: [
-    { label: "Минск — Аэропорт Вильнюса (VNO)", href: "/minsk-vilnius-airport" },
-    { label: "Минск — Варшава Шопен (WAW)", href: "/minsk-warsaw-airport" },
-    { label: "Минск — Варшава Модлин (WMI)", href: "/minsk-warsaw-modlin-airport" },
+    { label: "Минск — Аэропорт Вильнюса (VNO)", href: "/minsk-vilnyus-aeroport" },
+    { label: "Минск — Варшава Шопен (WAW)", href: "/minsk-varshava-shopin-aeroport" },
+    { label: "Минск — Варшава Модлин (WMI)", href: "/minsk-varshava-modlin-aeroport" },
   ],
   en: [
     { label: "Minsk — Vilnius Airport (VNO)", href: "/minsk-vilnius-airport" },
