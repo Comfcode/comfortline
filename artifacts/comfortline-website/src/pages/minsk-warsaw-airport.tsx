@@ -250,15 +250,17 @@ export default function MinskWarsawAirportPage() {
           </div>
         </motion.section>
 
-        {/* Map */}
+        {/* Map & Terminal Plan */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
             <MapPin className="h-5 w-5 text-primary" />
             {c.mapTitle}
           </h2>
-          <div className="rounded-2xl overflow-hidden border border-border" style={{ height: 380 }}>
+
+          {/* Google Maps embed */}
+          <div className="rounded-2xl overflow-hidden border border-border mb-6" style={{ height: 360 }}>
             <iframe
-              title="Warsaw Chopin Airport Map"
+              title="Warsaw Chopin Airport Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2447.1!2d20.967900!3d52.167200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47192da5d5af2e35%3A0x6c3e2a3f2d6a0a6f!2sWarsaw%20Chopin%20Airport!5e0!3m2!1sen!2sby!4v1700000000001"
               width="100%"
               height="100%"
@@ -267,6 +269,63 @@ export default function MinskWarsawAirportPage() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
+          </div>
+
+          {/* Official resource links */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <a
+              href="https://www.lotnisko-chopina.pl/en/terminal-a.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+            >
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                <MapPin className="h-4 w-4 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-foreground leading-tight">
+                  {lang === "ru" ? "План терминала A" : "Terminal A Map"}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">lotnisko-chopina.pl</p>
+              </div>
+              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
+            </a>
+
+            <a
+              href="https://www.lotnisko-chopina.pl/en/flight-board/arrivals.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+            >
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Plane className="h-4 w-4 text-primary rotate-180" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-foreground leading-tight">
+                  {lang === "ru" ? "Прилёты" : "Arrivals"}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">{lang === "ru" ? "Актуальное расписание" : "Live schedule"}</p>
+              </div>
+              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
+            </a>
+
+            <a
+              href="https://www.lotnisko-chopina.pl/en/flight-board/departures.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+            >
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Plane className="h-4 w-4 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-foreground leading-tight">
+                  {lang === "ru" ? "Вылеты" : "Departures"}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">{lang === "ru" ? "Актуальное расписание" : "Live schedule"}</p>
+              </div>
+              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
+            </a>
           </div>
         </motion.section>
 
