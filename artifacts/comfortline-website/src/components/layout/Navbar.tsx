@@ -1,25 +1,48 @@
-import { useState, useEffect, ElementType } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { useState, useEffect, useRef, ElementType } from "react";
+import { Menu, X, Phone, ChevronDown, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/context/language-context";
 import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
 
+const serviceRoutes = {
+  ru: [
+    { label: "Минск — Аэропорт Вильнюса", href: "/minsk-vilnius-airport" },
+    { label: "Минск — Аэропорт Варшавы", href: "/minsk-warsaw-airport" },
+  ],
+  en: [
+    { label: "Minsk — Vilnius Airport", href: "/minsk-vilnius-airport" },
+    { label: "Minsk — Warsaw Airport", href: "/minsk-warsaw-airport" },
+  ],
+};
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const { lang, setLang, t } = useLang();
+  const routes = serviceRoutes[lang];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: t.nav.services, href: "/#services" },
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  const otherNavLinks = [
     { name: t.nav.fleet, href: "/#fleet" },
     { name: t.nav.advantages, href: "/#advantages" },
     { name: t.nav.reviews, href: "/#reviews" },
@@ -28,41 +51,11 @@ export function Navbar() {
   ];
 
   const socialLinks = [
-    {
-      icon: SiTelegram,
-      href: "https://t.me/transfer_comfortline",
-      label: "Telegram",
-      bg: "#229ED9",
-      gradient: false,
-    },
-    {
-      icon: SiViber,
-      href: "viber://chat?number=%2B375291552776",
-      label: "Viber",
-      bg: "#7360F2",
-      gradient: false,
-    },
-    {
-      icon: SiWhatsapp,
-      href: "https://wa.me/375291552776",
-      label: "WhatsApp",
-      bg: "#25D366",
-      gradient: false,
-    },
-    {
-      icon: Instagram,
-      href: "https://www.instagram.com/transfer_comfortline/",
-      label: "Instagram",
-      bg: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)",
-      gradient: true,
-    },
-    {
-      icon: SiMessenger,
-      href: "https://m.me/103816619260365",
-      label: "Messenger",
-      bg: "linear-gradient(45deg,#0084FF,#B34FFF)",
-      gradient: true,
-    },
+    { icon: SiTelegram, href: "https://t.me/transfer_comfortline", label: "Telegram", bg: "#229ED9", gradient: false },
+    { icon: SiViber, href: "viber://chat?number=%2B375291552776", label: "Viber", bg: "#7360F2", gradient: false },
+    { icon: SiWhatsapp, href: "https://wa.me/375291552776", label: "WhatsApp", bg: "#25D366", gradient: false },
+    { icon: Instagram, href: "https://www.instagram.com/transfer_comfortline/", label: "Instagram", bg: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)", gradient: true },
+    { icon: SiMessenger, href: "https://m.me/103816619260365", label: "Messenger", bg: "linear-gradient(45deg,#0084FF,#B34FFF)", gradient: true },
   ];
 
   const SocialIcon = ({ icon: Icon, href, label, bg, size = 32 }: {
@@ -75,11 +68,7 @@ export function Navbar() {
       rel="noopener noreferrer"
       aria-label={label}
       className="flex-shrink-0 rounded-full flex items-center justify-center text-white transition-transform hover:scale-110 active:scale-95"
-      style={{
-        width: size,
-        height: size,
-        background: bg,
-      }}
+      style={{ width: size, height: size, background: bg }}
     >
       <Icon style={{ width: size * 0.5, height: size * 0.5 }} />
     </a>
@@ -107,8 +96,55 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-5 xl:gap-6">
-            <div className="flex gap-4 xl:gap-5">
-              {navLinks.map((link) => (
+            <div className="flex gap-4 xl:gap-5 items-center">
+
+              {/* Services dropdown */}
+              <div
+                ref={dropdownRef}
+                className="relative"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <a
+                  href="/#services"
+                  className="flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors whitespace-nowrap"
+                  onClick={() => setServicesOpen(false)}
+                >
+                  {t.nav.services}
+                  <ChevronDown className={`h-3.5 w-3.5 text-primary transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
+                </a>
+
+                {/* Dropdown panel */}
+                {servicesOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-card border border-border rounded-xl shadow-xl shadow-black/30 overflow-hidden z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                    <div className="px-3 py-2 border-b border-border/50">
+                      <p className="text-[10px] font-semibold text-primary uppercase tracking-wider">
+                        {lang === "ru" ? "Популярные маршруты" : "Popular Routes"}
+                      </p>
+                    </div>
+                    {routes.map((route) => (
+                      <a
+                        key={route.href}
+                        href={route.href}
+                        onClick={() => setServicesOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors border-b border-border/30 last:border-0"
+                      >
+                        <Plane className="h-3.5 w-3.5 text-primary shrink-0" />
+                        {route.label}
+                      </a>
+                    ))}
+                    <a
+                      href="/#services"
+                      onClick={() => setServicesOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 text-xs text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
+                    >
+                      {lang === "ru" ? "Все услуги →" : "All services →"}
+                    </a>
+                  </div>
+                )}
+              </div>
+
+              {otherNavLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
@@ -171,8 +207,43 @@ export function Navbar() {
 
       {/* Mobile Nav */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border shadow-lg p-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border shadow-lg p-4 flex flex-col gap-1">
+
+          {/* Services expandable item */}
+          <div>
+            <button
+              type="button"
+              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+              className="w-full flex items-center justify-between text-lg font-medium p-2 hover:bg-muted rounded-md transition-colors"
+            >
+              <span>{t.nav.services}</span>
+              <ChevronDown className={`h-4 w-4 text-primary transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`} />
+            </button>
+            {mobileServicesOpen && (
+              <div className="ml-3 mt-1 mb-2 border-l-2 border-primary/30 pl-3 flex flex-col gap-1">
+                {routes.map((route) => (
+                  <a
+                    key={route.href}
+                    href={route.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 py-2 text-sm text-foreground/70 hover:text-primary transition-colors"
+                  >
+                    <Plane className="h-3.5 w-3.5 text-primary shrink-0" />
+                    {route.label}
+                  </a>
+                ))}
+                <a
+                  href="/#services"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-2 text-xs text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {lang === "ru" ? "Все услуги →" : "All services →"}
+                </a>
+              </div>
+            )}
+          </div>
+
+          {otherNavLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
@@ -182,6 +253,7 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
+
           <div className="pt-4 border-t border-border mt-2 flex flex-col gap-3">
             <a
               href="tel:+375291552776"
@@ -195,7 +267,6 @@ export function Navbar() {
                 <SocialIcon key={s.label} {...s} size={38} />
               ))}
             </div>
-            {/* Language toggle mobile */}
             <div className="flex items-center gap-2 p-2 text-sm font-semibold">
               <button
                 onClick={() => setLang("ru")}
