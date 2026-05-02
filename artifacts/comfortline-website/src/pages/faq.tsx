@@ -1,60 +1,74 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import {
+  ChevronDown,
+  Calendar,
+  CreditCard,
+  Plane,
+  Globe2,
+  Car,
+  Users,
+  Briefcase,
+  MapPin,
+  type LucideIcon,
+} from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 
 interface FaqItem {
   q: string;
-  a: string | string[];
+  a: string;
   sub?: string[];
 }
 
 interface FaqSection {
-  icon: string;
+  icon: LucideIcon;
+  label: string;
   title: string;
   items: FaqItem[];
 }
 
 const ruFaq: FaqSection[] = [
   {
-    icon: "📅",
+    icon: Calendar,
+    label: "Организация поездки",
     title: "Бронирование и заказ",
     items: [
       {
         q: "Как сделать заказ?",
-        a: "Оставьте заявку на сайте или напишите нам в WhatsApp / Viber — менеджер свяжется в течение 15 минут и согласует все детали: маршрут, время, класс автомобиля и стоимость.",
+        a: "Оставьте заявку на сайте или напишите нам в WhatsApp / Viber — менеджер свяжется в течение 15 минут и согласует маршрут, время, класс автомобиля и стоимость.",
       },
       {
         q: "За сколько времени нужно бронировать?",
-        a: "Рекомендуем оформлять заказ минимум за 24 часа до поездки. Для международных трансферов лучше — за 2–3 дня, особенно в пиковые периоды.",
+        a: "Рекомендуем оформлять заказ минимум за 24 часа. Для международных трансферов — за 2–3 дня, особенно в пиковые периоды.",
       },
       {
         q: "Можно ли изменить или отменить заказ?",
-        a: "Да. Свяжитесь с нами как можно раньше — по телефону или в мессенджере. Условия отмены зависят от времени до поездки и будут оговорены при бронировании.",
+        a: "Да. Свяжитесь с нами как можно раньше — по телефону или в мессенджере. Условия отмены оговариваются при бронировании.",
       },
       {
         q: "Что будет, если мой рейс задержали?",
-        a: "Мы отслеживаем статус вашего рейса и корректируем время встречи автоматически. Водитель будет ждать вас — доплат за ожидание при задержке рейса нет.",
+        a: "Мы отслеживаем статус вашего рейса и корректируем время встречи автоматически. Водитель будет ждать — доплат за ожидание при задержке рейса нет.",
       },
     ],
   },
   {
-    icon: "💳",
+    icon: CreditCard,
+    label: "Стоимость",
     title: "Цены и оплата",
     items: [
       {
         q: "Сколько стоит трансфер?",
-        a: "Цена зависит от маршрута и класса автомобиля. Вы получаете фиксированную стоимость до поездки — без скрытых доплат и счётчика. Уточнить цену по конкретному направлению можно через форму на сайте или в WhatsApp.",
+        a: "Цена зависит от маршрута и класса автомобиля. Вы получаете фиксированную стоимость до поездки — без скрытых доплат. Уточните цену через форму на сайте или в WhatsApp.",
       },
       {
         q: "Как можно оплатить?",
-        a: "Принимаем наличные и банковскую карту. Точный способ оплаты согласовывается при подтверждении заказа.",
+        a: "Принимаем наличные и банковскую карту. Способ оплаты согласовывается при подтверждении заказа.",
       },
       {
         q: "Есть ли скрытые доплаты?",
-        a: "Нет. Вы платите ровно ту сумму, которая была согласована при бронировании. Ожидание при задержке рейса, встреча с табличкой, помощь с багажом — всё включено.",
+        a: "Нет. Вы платите ровно ту сумму, которая согласована при бронировании. Ожидание при задержке рейса, встреча с табличкой, помощь с багажом — всё включено.",
       },
       {
         q: "Можно ли получить чек или документ для отчётности?",
@@ -63,7 +77,8 @@ const ruFaq: FaqSection[] = [
     ],
   },
   {
-    icon: "✈️",
+    icon: Plane,
+    label: "Трансфер",
     title: "Встреча и посадка",
     items: [
       {
@@ -72,21 +87,22 @@ const ruFaq: FaqSection[] = [
       },
       {
         q: "Помогут ли с багажом?",
-        a: "Да. Водитель поможет загрузить и выгрузить вещи. Это стандартная часть нашего сервиса.",
+        a: "Да. Погрузка и выгрузка вещей — стандартная часть нашего сервиса.",
       },
       {
         q: "Водитель приедет прямо к выходу из моего дома?",
-        a: "Да. Трансфер — «от двери до двери». Водитель приедет по указанному вами адресу точно в назначенное время.",
+        a: "Да. Трансфер — «от двери до двери». Водитель приедет по указанному адресу точно в назначенное время.",
       },
     ],
   },
   {
-    icon: "🌍",
+    icon: Globe2,
+    label: "Пересечение КПП",
     title: "Граница и документы",
     items: [
       {
         q: "Нужно ли менять машину на границе?",
-        a: "В некоторых случаях — да, в зависимости от действующих правил регистрации ТС и пограничной политики. Если пересадка нужна, мы организуем её быстро и комфортно: водитель с европейской стороны уже будет ждать вас.",
+        a: "В некоторых случаях — да, в зависимости от действующих правил регистрации ТС и пограничной политики. Если пересадка нужна, мы организуем её быстро: водитель с европейской стороны уже будет ждать вас.",
       },
       {
         q: "Сколько времени займёт пересечение границы?",
@@ -95,16 +111,17 @@ const ruFaq: FaqSection[] = [
       {
         q: "Какие документы нужны для пересечения границы?",
         a: "Для поездки в ЕС вам понадобятся:",
-        sub: ["Действующий загранпаспорт", "Виза или право на безвизовый въезд", "Медицинская страховка (обязательна для стран Шенгена)", "Другие документы по требованию конкретной страны"],
+        sub: ["Действующий загранпаспорт", "Виза или право на безвизовый въезд", "Медицинская страховка (для стран Шенгена)", "Дополнительные документы по требованию конкретной страны"],
       },
       {
         q: "Помогает ли водитель на КПП?",
-        a: "Да. Водитель сопровождает вас, знает актуальные правила на пропускных пунктах и поможет сориентироваться. Ваша задача — только иметь при себе актуальные документы.",
+        a: "Да. Водитель сопровождает вас, знает актуальные правила на пропускных пунктах и помогает сориентироваться. Ваша задача — иметь при себе актуальные документы.",
       },
     ],
   },
   {
-    icon: "🚘",
+    icon: Car,
+    label: "Автопарк",
     title: "Автомобили и комфорт",
     items: [
       {
@@ -118,7 +135,7 @@ const ruFaq: FaqSection[] = [
       },
       {
         q: "Можно ли остановиться в пути?",
-        a: "Да. Мы делаем остановки по запросу — на заправке, кафе или по другой причине. Просто сообщите водителю заранее или во время поездки.",
+        a: "Да. Мы делаем остановки по запросу — на заправке, кафе или по другой причине. Просто сообщите водителю.",
       },
       {
         q: "Курение в машине разрешено?",
@@ -127,25 +144,27 @@ const ruFaq: FaqSection[] = [
     ],
   },
   {
-    icon: "👶",
+    icon: Users,
+    label: "Семьи",
     title: "Дети и питомцы",
     items: [
       {
         q: "Можно ли заказать детское кресло?",
-        a: "Да. Детские автокресла и бустеры предоставляются по предварительному запросу. Укажите возраст и вес ребёнка при бронировании — мы подберём подходящее кресло.",
+        a: "Да. Детские автокресла и бустеры предоставляются по предварительному запросу. Укажите возраст и вес ребёнка при бронировании.",
       },
       {
         q: "Можно ли ехать с грудным ребёнком?",
-        a: "Да, мы регулярно перевозим семьи с маленькими детьми. Уточните при заказе — водитель будет готов к комфортной остановке при необходимости.",
+        a: "Да, мы регулярно перевозим семьи с маленькими детьми. Упомяните при заказе — водитель будет готов к комфортным остановкам.",
       },
       {
         q: "Можно ли взять питомца в поездку?",
-        a: "По предварительному согласованию — да. Уточните при бронировании: породу, размер животного и наличие переноски. Мы постараемся подобрать подходящий автомобиль.",
+        a: "По предварительному согласованию — да. Уточните при бронировании породу, размер животного и наличие переноски.",
       },
     ],
   },
   {
-    icon: "🧳",
+    icon: Briefcase,
+    label: "Вещи",
     title: "Багаж",
     items: [
       {
@@ -163,8 +182,9 @@ const ruFaq: FaqSection[] = [
     ],
   },
   {
-    icon: "🗺️",
-    title: "Маршруты и направления",
+    icon: MapPin,
+    label: "Направления",
+    title: "Маршруты",
     items: [
       {
         q: "В каких направлениях вы работаете?",
@@ -185,7 +205,8 @@ const ruFaq: FaqSection[] = [
 
 const enFaq: FaqSection[] = [
   {
-    icon: "📅",
+    icon: Calendar,
+    label: "Planning your trip",
     title: "Booking & Orders",
     items: [
       {
@@ -202,12 +223,13 @@ const enFaq: FaqSection[] = [
       },
       {
         q: "What if my flight is delayed?",
-        a: "We monitor your flight status and adjust the pickup time automatically. Your driver will wait — there are no extra charges for flight delay waiting.",
+        a: "We monitor your flight status and adjust the pickup time automatically. Your driver will wait — there are no extra charges for flight-delay waiting.",
       },
     ],
   },
   {
-    icon: "💳",
+    icon: CreditCard,
+    label: "Costs",
     title: "Pricing & Payment",
     items: [
       {
@@ -229,7 +251,8 @@ const enFaq: FaqSection[] = [
     ],
   },
   {
-    icon: "✈️",
+    icon: Plane,
+    label: "Transfer",
     title: "Pickup & Drop-off",
     items: [
       {
@@ -247,7 +270,8 @@ const enFaq: FaqSection[] = [
     ],
   },
   {
-    icon: "🌍",
+    icon: Globe2,
+    label: "Border crossing",
     title: "Border & Documents",
     items: [
       {
@@ -270,7 +294,8 @@ const enFaq: FaqSection[] = [
     ],
   },
   {
-    icon: "🚘",
+    icon: Car,
+    label: "Fleet",
     title: "Vehicles & Comfort",
     items: [
       {
@@ -284,7 +309,7 @@ const enFaq: FaqSection[] = [
       },
       {
         q: "Can we stop during the journey?",
-        a: "Yes. We make stops on request — at a petrol station, cafe, or anywhere else. Just let the driver know in advance or during the trip.",
+        a: "Yes. We make stops on request — at a petrol station, cafe, or anywhere else. Just let the driver know.",
       },
       {
         q: "Is smoking allowed in the car?",
@@ -293,7 +318,8 @@ const enFaq: FaqSection[] = [
     ],
   },
   {
-    icon: "👶",
+    icon: Users,
+    label: "Families",
     title: "Children & Pets",
     items: [
       {
@@ -306,13 +332,14 @@ const enFaq: FaqSection[] = [
       },
       {
         q: "Can I bring a pet?",
-        a: "By prior arrangement — yes. Let us know the breed, size, and whether you have a carrier when booking. We will do our best to assign a suitable vehicle.",
+        a: "By prior arrangement — yes. Let us know the breed, size, and whether you have a carrier when booking.",
       },
     ],
   },
   {
-    icon: "🧳",
-    title: "Luggage",
+    icon: Briefcase,
+    label: "Luggage",
+    title: "Baggage",
     items: [
       {
         q: "How much luggage can I bring?",
@@ -329,8 +356,9 @@ const enFaq: FaqSection[] = [
     ],
   },
   {
-    icon: "🗺️",
-    title: "Routes & Destinations",
+    icon: MapPin,
+    label: "Destinations",
+    title: "Routes",
     items: [
       {
         q: "Which routes do you cover?",
@@ -349,21 +377,34 @@ const enFaq: FaqSection[] = [
   },
 ];
 
-function AccordionItem({ item, isOpen, onToggle }: {
+function AccordionItem({ item, index, isOpen, onToggle }: {
   item: FaqItem;
+  index: number;
   isOpen: boolean;
   onToggle: () => void;
 }) {
   return (
-    <div className={`border rounded-xl overflow-hidden transition-colors ${isOpen ? "border-primary/40 bg-card" : "border-border bg-card/50"}`}>
+    <div className={`rounded-xl overflow-hidden transition-all duration-200 ${
+      isOpen
+        ? "border border-primary/30 bg-card shadow-sm shadow-primary/5"
+        : "border border-border/60 bg-card/40 hover:border-border hover:bg-card/70"
+    }`}>
       <button
         type="button"
         onClick={onToggle}
-        className="w-full flex items-start justify-between gap-4 px-5 py-4 text-left"
+        className="w-full flex items-start justify-between gap-4 px-5 py-4 text-left group"
       >
-        <span className="text-sm font-semibold text-foreground leading-snug pr-4">{item.q}</span>
-        <ChevronDown className={`h-4 w-4 text-primary shrink-0 mt-0.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+        <div className="flex items-start gap-3 min-w-0">
+          <span className={`shrink-0 text-[10px] font-bold tracking-widest mt-0.5 w-5 text-right transition-colors ${isOpen ? "text-primary" : "text-muted-foreground/40"}`}>
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className={`text-sm font-semibold leading-snug transition-colors ${isOpen ? "text-foreground" : "text-foreground/80 group-hover:text-foreground"}`}>
+            {item.q}
+          </span>
+        </div>
+        <ChevronDown className={`h-4 w-4 shrink-0 mt-0.5 transition-all duration-200 ${isOpen ? "rotate-180 text-primary" : "text-muted-foreground/50 group-hover:text-primary/70"}`} />
       </button>
+
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -374,14 +415,15 @@ function AccordionItem({ item, isOpen, onToggle }: {
             transition={{ duration: 0.22, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 text-sm text-muted-foreground space-y-2">
-              {item.a && <p>{item.a}</p>}
+            <div className="pl-12 pr-5 pb-5">
+              <div className="h-px bg-gradient-to-r from-primary/20 via-primary/10 to-transparent mb-4" />
+              <p className="text-sm text-muted-foreground leading-relaxed font-light">{item.a}</p>
               {item.sub && (
-                <ul className="space-y-1.5 mt-2">
+                <ul className="space-y-2 mt-3">
                   {item.sub.map((s, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-primary mt-1 shrink-0">▸</span>
-                      <span>{s}</span>
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <span className="text-primary shrink-0 mt-1.5 text-[8px]">◆</span>
+                      <span className="font-light leading-relaxed">{s}</span>
                     </li>
                   ))}
                 </ul>
@@ -395,7 +437,7 @@ function AccordionItem({ item, isOpen, onToggle }: {
 }
 
 export default function FaqPage() {
-  const { t, lang } = useLang();
+  const { lang } = useLang();
   const sections = lang === "ru" ? ruFaq : enFaq;
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({});
 
@@ -408,16 +450,21 @@ export default function FaqPage() {
       <Navbar />
 
       {/* Hero */}
-      <div className="pt-28 pb-12 border-b border-border/40">
-        <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
-          <p className="text-primary font-semibold tracking-wider uppercase text-xs mb-3">
+      <div className="pt-28 pb-14 border-b border-border/40 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center relative">
+          <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">
             {lang === "ru" ? "Частые вопросы" : "Frequently Asked Questions"}
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+          <h1 className="text-5xl md:text-6xl font-black tracking-tight text-foreground mb-3">
             FAQ
           </h1>
-          <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-5" />
-          <p className="text-muted-foreground text-base">
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+            <div className="h-1 w-8 rounded-full bg-primary" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+          </div>
+          <p className="text-muted-foreground text-sm font-light tracking-wide max-w-md mx-auto">
             {lang === "ru"
               ? "Всё, что вам нужно знать о трансфере с ComfortLine"
               : "Everything you need to know about travelling with ComfortLine"}
@@ -426,47 +473,80 @@ export default function FaqPage() {
       </div>
 
       {/* FAQ Content */}
-      <div className="container mx-auto px-4 md:px-6 max-w-3xl py-14 space-y-12">
-        {sections.map((section) => (
-          <div key={section.title}>
-            <div className="flex items-center gap-3 mb-5">
-              <span className="text-2xl">{section.icon}</span>
-              <h2 className="text-lg font-bold text-foreground">{section.title}</h2>
-              <div className="flex-1 h-px bg-border/40" />
-            </div>
-            <div className="space-y-3">
-              {section.items.map((item, i) => {
-                const key = `${section.title}-${i}`;
-                return (
-                  <AccordionItem
-                    key={key}
-                    item={item}
-                    isOpen={!!openMap[key]}
-                    onToggle={() => toggle(key)}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        ))}
+      <div className="container mx-auto px-4 md:px-6 max-w-3xl py-14 space-y-14">
+        {sections.map((section) => {
+          const Icon = section.icon;
+          return (
+            <motion.div
+              key={section.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+            >
+              {/* Section header */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                  <Icon className="h-4.5 w-4.5 text-primary" style={{ width: "1.125rem", height: "1.125rem" }} />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-primary/60 leading-none mb-1">
+                    {section.label}
+                  </p>
+                  <h2 className="text-base font-bold text-foreground leading-tight">
+                    {section.title}
+                  </h2>
+                </div>
+                <div className="flex-1 h-px bg-gradient-to-r from-border/50 to-transparent ml-1" />
+              </div>
+
+              {/* Accordion items */}
+              <div className="space-y-2">
+                {section.items.map((item, i) => {
+                  const key = `${section.title}-${i}`;
+                  return (
+                    <AccordionItem
+                      key={key}
+                      item={item}
+                      index={i}
+                      isOpen={!!openMap[key]}
+                      onToggle={() => toggle(key)}
+                    />
+                  );
+                })}
+              </div>
+            </motion.div>
+          );
+        })}
 
         {/* CTA */}
-        <div className="mt-10 rounded-2xl border border-primary/30 bg-primary/5 p-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/8 via-primary/4 to-transparent p-8 md:p-10 text-center"
+        >
+          <div className="w-10 h-10 rounded-xl bg-primary/15 border border-primary/25 flex items-center justify-center mx-auto mb-4">
+            <MapPin className="h-4.5 w-4.5 text-primary" style={{ width: "1.125rem", height: "1.125rem" }} />
+          </div>
+          <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-primary mb-2">
+            {lang === "ru" ? "Связаться" : "Get in touch"}
+          </p>
           <p className="text-foreground font-bold text-lg mb-2">
             {lang === "ru" ? "Остались вопросы?" : "Still have questions?"}
           </p>
-          <p className="text-muted-foreground text-sm mb-5">
+          <p className="text-muted-foreground text-sm font-light mb-6 max-w-sm mx-auto leading-relaxed">
             {lang === "ru"
               ? "Свяжитесь с нами — ответим быстро и подберём маршрут под ваши задачи."
               : "Contact us — we respond fast and will find the right route for you."}
           </p>
           <a
             href="/#contact"
-            className="inline-block px-8 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+            className="inline-block px-8 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm tracking-wide hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
           >
             {lang === "ru" ? "Связаться с нами" : "Contact us"}
           </a>
-        </div>
+        </motion.div>
       </div>
 
       <Footer />
