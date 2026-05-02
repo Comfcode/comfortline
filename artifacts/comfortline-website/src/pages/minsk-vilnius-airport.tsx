@@ -129,10 +129,9 @@ export default function MinskVilniusAirportPage() {
           <a href="/#services" className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors mb-6">
             {c.backBtn}
           </a>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-5">
-            <Plane className="h-3.5 w-3.5" />
+          <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">
             {c.badge}
-          </div>
+          </p>
           <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
             {c.title}
           </h1>
