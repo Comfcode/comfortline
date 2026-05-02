@@ -1,20 +1,57 @@
 import { useState, useEffect, useRef, ElementType, useCallback } from "react";
-import { Menu, X, Phone, ChevronDown, Plane } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, ArrowRight, MapPin, Clock, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/context/language-context";
 import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const serviceRoutes = {
   ru: [
-    { label: "Минск — Аэропорт Вильнюса (VNO)", href: "/minsk-vilnyus-aeroport" },
-    { label: "Минск — Варшава Шопен (WAW)", href: "/minsk-varshava-shopin-aeroport" },
-    { label: "Минск — Варшава Модлин (WMI)", href: "/minsk-varshava-modlin-aeroport" },
+    {
+      from: "Минск",
+      to: "Вильнюс",
+      code: "VNO",
+      meta: "~250 км · 3–4 ч",
+      href: "/minsk-vilnyus-aeroport",
+    },
+    {
+      from: "Минск",
+      to: "Варшава Шопен",
+      code: "WAW",
+      meta: "~550 км · 6–9 ч",
+      href: "/minsk-varshava-shopin-aeroport",
+    },
+    {
+      from: "Минск",
+      to: "Варшава Модлин",
+      code: "WMI",
+      meta: "~570 км · 6–10 ч",
+      href: "/minsk-varshava-modlin-aeroport",
+    },
   ],
   en: [
-    { label: "Minsk — Vilnius Airport (VNO)", href: "/minsk-vilnius-airport" },
-    { label: "Minsk — Warsaw Chopin (WAW)", href: "/minsk-warsaw-airport" },
-    { label: "Minsk — Warsaw Modlin (WMI)", href: "/minsk-warsaw-modlin-airport" },
+    {
+      from: "Minsk",
+      to: "Vilnius",
+      code: "VNO",
+      meta: "~250 km · 3–4 h",
+      href: "/minsk-vilnius-airport",
+    },
+    {
+      from: "Minsk",
+      to: "Warsaw Chopin",
+      code: "WAW",
+      meta: "~550 km · 6–9 h",
+      href: "/minsk-warsaw-airport",
+    },
+    {
+      from: "Minsk",
+      to: "Warsaw Modlin",
+      code: "WMI",
+      meta: "~570 km · 6–10 h",
+      href: "/minsk-warsaw-modlin-airport",
+    },
   ],
 };
 
@@ -127,33 +164,64 @@ export function Navbar() {
                 </a>
 
                 {/* Dropdown panel */}
-                {servicesOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-card border border-border rounded-xl shadow-xl shadow-black/30 overflow-hidden z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                    <div className="px-3 py-2 border-b border-border/50">
-                      <p className="text-[10px] font-semibold text-primary uppercase tracking-wider">
-                        {lang === "ru" ? "Популярные маршруты" : "Popular Routes"}
-                      </p>
-                    </div>
-                    {routes.map((route) => (
-                      <a
-                        key={route.href}
-                        href={route.href}
-                        onClick={() => setServicesOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors border-b border-border/30 last:border-0"
-                      >
-                        <Plane className="h-3.5 w-3.5 text-primary shrink-0" />
-                        {route.label}
-                      </a>
-                    ))}
-                    <a
-                      href="/#services"
-                      onClick={() => setServicesOpen(false)}
-                      className="flex items-center gap-3 px-4 py-3 text-xs text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
+                <AnimatePresence>
+                  {servicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                      transition={{ duration: 0.15, ease: "easeOut" }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[340px] bg-[#181818] border border-white/10 rounded-2xl shadow-2xl shadow-black/60 z-50 overflow-hidden"
                     >
-                      {lang === "ru" ? "Все услуги →" : "All services →"}
-                    </a>
-                  </div>
-                )}
+                      {/* Header */}
+                      <div className="px-4 pt-4 pb-2 flex items-center gap-2">
+                        <MapPin className="h-3.5 w-3.5 text-primary" />
+                        <span className="text-[10px] font-bold text-primary uppercase tracking-[0.12em]">
+                          {lang === "ru" ? "Направления" : "Routes"}
+                        </span>
+                      </div>
+
+                      {/* Route cards */}
+                      <div className="px-3 pb-3 flex flex-col gap-1.5">
+                        {routes.map((route) => (
+                          <a
+                            key={route.href}
+                            href={route.href}
+                            onClick={() => setServicesOpen(false)}
+                            className="group flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-primary/10 border border-transparent hover:border-primary/20 transition-all duration-150"
+                          >
+                            {/* Route text */}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                                <span className="truncate">{route.from}</span>
+                                <ArrowRight className="h-3 w-3 text-primary/60 shrink-0" />
+                                <span className="truncate">{route.to}</span>
+                                <span className="ml-1 px-1.5 py-0.5 text-[10px] font-bold bg-primary/15 text-primary rounded-md shrink-0 leading-none">
+                                  {route.code}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-1 mt-0.5">
+                                <Clock className="h-2.5 w-2.5 text-muted-foreground/60 shrink-0" />
+                                <span className="text-[11px] text-muted-foreground/70">{route.meta}</span>
+                              </div>
+                            </div>
+                            <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                          </a>
+                        ))}
+                      </div>
+
+                      {/* Footer */}
+                      <a
+                        href="/#services"
+                        onClick={() => setServicesOpen(false)}
+                        className="flex items-center justify-center gap-2 px-4 py-3 border-t border-white/8 text-xs font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
+                      >
+                        {lang === "ru" ? "Все услуги" : "All services"}
+                        <ArrowRight className="h-3 w-3" />
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
               {otherNavLinks.map((link) => (
