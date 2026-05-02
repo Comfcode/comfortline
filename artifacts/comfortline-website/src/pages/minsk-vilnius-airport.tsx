@@ -226,23 +226,66 @@ export default function MinskVilniusAirportPage() {
           </div>
         </motion.section>
 
-        {/* Map */}
+        {/* Terminal Plan */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+          <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-3">
             <MapPin className="h-5 w-5 text-primary" />
             {c.mapTitle}
           </h2>
-          <div className="rounded-2xl overflow-hidden border border-border" style={{ height: 380 }}>
-            <iframe
-              title="Vilnius Airport Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2306.1!2d25.285800!3d54.634100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd93f4d6ac0d7b%3A0x4e39c42c18c87e5f!2sVilnius%20International%20Airport!5e0!3m2!1sen!2sby!4v1700000000000"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <p className="text-muted-foreground text-xs mb-6">
+            {lang === "ru" ? "Источник: vilnius-airport.lt" : "Source: vilnius-airport.lt"}
+          </p>
+
+          {/* Terminal isometric plan */}
+          <div className="mb-4">
+            <p className="text-sm font-semibold text-foreground mb-3">
+              {lang === "ru" ? "План терминала" : "Terminal Plan"}
+            </p>
+            <a
+              href="https://www.vilnius-airport.lt/uploads/documents/files/vno/keleiviu-terminalo-planas/2023-05/LTOU_VNO_izometrika_2023_03_24_3fl.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-colors"
+            >
+              <img
+                src="/vno-terminal-plan.jpg"
+                alt="Vilnius Airport Terminal Plan"
+                className="w-full object-contain bg-white"
+                loading="lazy"
+              />
+              <div className="px-4 py-2.5 bg-card border-t border-border flex items-center justify-between">
+                <span className="text-xs text-muted-foreground">
+                  {lang === "ru" ? "Нажмите, чтобы открыть PDF" : "Click to open PDF"}
+                </span>
+                <ExternalLink className="h-3.5 w-3.5 text-primary" />
+              </div>
+            </a>
+          </div>
+
+          {/* Parking / traffic plan */}
+          <div>
+            <p className="text-sm font-semibold text-foreground mb-3">
+              {lang === "ru" ? "Схема парковки и подъезда" : "Parking & Traffic Plan"}
+            </p>
+            <a
+              href="https://www.vilnius-airport.lt/uploads/documents/files/VNO%20traffic%20plan%402x-100.jpg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-colors"
+            >
+              <img
+                src="/vno-parking-plan.jpg"
+                alt="Vilnius Airport Parking and Traffic Plan"
+                className="w-full object-contain bg-white"
+                loading="lazy"
+              />
+              <div className="px-4 py-2.5 bg-card border-t border-border flex items-center justify-between">
+                <span className="text-xs text-muted-foreground">
+                  {lang === "ru" ? "Нажмите, чтобы открыть полный размер" : "Click to open full size"}
+                </span>
+                <ExternalLink className="h-3.5 w-3.5 text-primary" />
+              </div>
+            </a>
           </div>
         </motion.section>
 
