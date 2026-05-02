@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import { Plane, Clock, MapPin, Car, ArrowRight, ExternalLink, Info, CheckCircle2, PhoneCall } from "lucide-react";
+import { Plane, Clock, MapPin, Car, ArrowRight, Info, CheckCircle2, PhoneCall } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
-import { AirportMap } from "@/components/ui/AirportMap";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 
 const content = {
@@ -32,11 +31,11 @@ const content = {
       { label: "Основные авиакомпании", value: "Ryanair, Wizz Air, LOT, Turkish Airlines, flydubai" },
       { label: "Трансфер в центр", value: "Автобус №1 (40 мин), такси (25–35 мин)" },
     ],
-    flightBoardTitle: "Расписание рейсов",
-    flightBoardDesc: "Актуальное расписание прилётов и вылетов — на официальном сайте аэропорта Вильнюса.",
-    arrivalsBtn: "Прилёты (Arrivals)",
-    departuresBtn: "Вылеты (Departures)",
-    mapTitle: "Карта аэропорта",
+    photosTitle: "Аэропорт в фото",
+    photos: [
+      { src: "https://www.aerotime.aero/images/2025/02/cover-p-1-e1738667620979-800x500.jpeg", caption: "Терминал аэропорта Вильнюса (VNO)" },
+      { src: "https://www.aerotime.aero/images/2025/02/galery1-1-768x576.jpeg", caption: "Зал вылета" },
+    ],
     tipsTitle: "Полезная информация",
     tips: [
       "Аэропорт открыт круглосуточно. Рейсы есть ранним утром и поздно ночью.",
@@ -85,11 +84,11 @@ const content = {
       { label: "Main airlines", value: "Ryanair, Wizz Air, LOT, Turkish Airlines, flydubai" },
       { label: "City transfer", value: "Bus #1 (40 min), taxi (25–35 min)" },
     ],
-    flightBoardTitle: "Live Flight Schedule",
-    flightBoardDesc: "Check up-to-date arrivals and departures on the official Vilnius Airport website.",
-    arrivalsBtn: "Arrivals",
-    departuresBtn: "Departures",
-    mapTitle: "Airport Map",
+    photosTitle: "Airport Gallery",
+    photos: [
+      { src: "https://www.aerotime.aero/images/2025/02/cover-p-1-e1738667620979-800x500.jpeg", caption: "Vilnius Airport terminal (VNO)" },
+      { src: "https://www.aerotime.aero/images/2025/02/galery1-1-768x576.jpeg", caption: "Departures lounge" },
+    ],
     tipsTitle: "Useful Information",
     tips: [
       "The airport operates 24/7. Early morning and late-night flights are common.",
@@ -191,114 +190,21 @@ export default function MinskVilniusAirportPage() {
           </div>
         </motion.section>
 
-        {/* Flight Board */}
-        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="text-2xl font-bold text-foreground mb-3 flex items-center gap-3">
-            <Plane className="h-5 w-5 text-primary" />
-            {c.flightBoardTitle}
-          </h2>
-          <p className="text-muted-foreground text-sm mb-6">{c.flightBoardDesc}</p>
-          <div className="bg-card border border-border rounded-2xl p-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-            <div className="flex-1">
-              <p className="font-semibold text-foreground text-sm mb-1">Vilnius International Airport — VNO</p>
-              <p className="text-muted-foreground text-xs">vilnius-airport.lt</p>
-            </div>
-            <div className="flex gap-3 flex-wrap">
-              <a
-                href="https://www.vilnius-airport.lt/en/flight-schedule/?tab=arrivals"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
-              >
-                <Plane className="h-4 w-4 rotate-180" />
-                {c.arrivalsBtn}
-                <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-              </a>
-              <a
-                href="https://www.vilnius-airport.lt/en/flight-schedule/?tab=departures"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-primary text-primary text-sm font-semibold hover:bg-primary/10 transition-colors"
-              >
-                <Plane className="h-4 w-4" />
-                {c.departuresBtn}
-                <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-              </a>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Map & Terminal Plan */}
+        {/* Airport Photos */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
             <MapPin className="h-5 w-5 text-primary" />
-            {c.mapTitle}
+            {c.photosTitle}
           </h2>
-
-          <div className="mb-6">
-            <AirportMap
-              lat={54.6341}
-              lng={25.2858}
-              label="Vilnius International Airport (VNO)"
-              googleMapsUrl="https://maps.google.com/?q=Vilnius+International+Airport"
-            />
-          </div>
-
-          {/* Official plan links */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <a
-              href="https://vnomap.ltou.lt/projects/main/VilniusAirport/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
-            >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                <MapPin className="h-4 w-4 text-primary" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {c.photos.map((photo, i) => (
+              <div key={i} className="relative rounded-2xl overflow-hidden aspect-video bg-card border border-border">
+                <img src={photo.src} alt={photo.caption} className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3">
+                  <p className="text-white text-sm font-medium">{photo.caption}</p>
+                </div>
               </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-foreground leading-tight">
-                  {lang === "ru" ? "Интерактивная карта" : "Interactive Map"}
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5">vnomap.ltou.lt</p>
-              </div>
-              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
-            </a>
-
-            <a
-              href="https://www.vilnius-airport.lt/uploads/documents/files/vno/keleiviu-terminalo-planas/2023-05/LTOU_VNO_izometrika_2023_03_24_3fl.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
-            >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                <Info className="h-4 w-4 text-primary" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-foreground leading-tight">
-                  {lang === "ru" ? "План терминала" : "Terminal Plan"}
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5">PDF</p>
-              </div>
-              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
-            </a>
-
-            <a
-              href="https://www.vilnius-airport.lt/en/passenger-guide/airport-information/airport-terminal-map"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
-            >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                <Car className="h-4 w-4 text-primary" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-foreground leading-tight">
-                  {lang === "ru" ? "Схема парковки" : "Parking Plan"}
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5">vilnius-airport.lt</p>
-              </div>
-              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
-            </a>
+            ))}
           </div>
         </motion.section>
 

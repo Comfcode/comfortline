@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import { Plane, Clock, MapPin, Car, ArrowRight, ExternalLink, Info, CheckCircle2, PhoneCall } from "lucide-react";
+import { Plane, Clock, MapPin, Car, ArrowRight, Info, CheckCircle2, PhoneCall } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
-import { AirportMap } from "@/components/ui/AirportMap";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 
 const content = {
@@ -33,14 +32,11 @@ const content = {
       { label: "До центра Варшавы", value: "Поезд SKM (20 мин), метро S2 (30 мин), такси (25–40 мин)" },
     ],
     altTitle: "Также обслуживаем",
-    altAirports: [
-      { name: "Аэропорт Варшава-Модлин (WMI)", desc: "Используется Ryanair и Wizz Air. Расположен в 35 км к северу от центра Варшавы.", url: "https://www.modlinairport.pl/" },
+    photosTitle: "Аэропорт в фото",
+    photos: [
+      { src: "https://www.flynous.com/wp-content/uploads/2020/09/airport-guide-warsaw-chopin-interior.jpg", caption: "Терминал аэропорта Шопен (WAW)" },
+      { src: "https://media.istockphoto.com/id/537402974/photo/international-terminal-of-warsaw-chopin-airport-poland.jpg?s=612x612&w=0&k=20&c=I6R38G1m2FGvs3nzauB3gFFJRGztmZ_sfNGv5v7OSqM=", caption: "Международный терминал" },
     ],
-    flightBoardTitle: "Расписание рейсов",
-    flightBoardDesc: "Актуальное расписание прилётов и вылетов — на официальном сайте аэропорта Варшавы Шопен.",
-    arrivalsBtn: "Прилёты (Arrivals)",
-    departuresBtn: "Вылеты (Departures)",
-    mapTitle: "Карта аэропорта",
     tipsTitle: "Полезная информация",
     tips: [
       "Граница Беларусь–Польша: среднее время 3–8 часов. В пиковые дни — до 12 часов.",
@@ -90,14 +86,11 @@ const content = {
       { label: "City transfer", value: "SKM train (20 min), S2 metro (30 min), taxi (25–40 min)" },
     ],
     altTitle: "We also serve",
-    altAirports: [
-      { name: "Warsaw Modlin Airport (WMI)", desc: "Used by Ryanair and Wizz Air. Located 35 km north of Warsaw city centre.", url: "https://www.modlinairport.pl/" },
+    photosTitle: "Airport Gallery",
+    photos: [
+      { src: "https://www.flynous.com/wp-content/uploads/2020/09/airport-guide-warsaw-chopin-interior.jpg", caption: "Warsaw Chopin Airport terminal (WAW)" },
+      { src: "https://media.istockphoto.com/id/537402974/photo/international-terminal-of-warsaw-chopin-airport-poland.jpg?s=612x612&w=0&k=20&c=I6R38G1m2FGvs3nzauB3gFFJRGztmZ_sfNGv5v7OSqM=", caption: "International terminal" },
     ],
-    flightBoardTitle: "Live Flight Schedule",
-    flightBoardDesc: "Check up-to-date arrivals and departures on the official Warsaw Chopin Airport website.",
-    arrivalsBtn: "Arrivals",
-    departuresBtn: "Departures",
-    mapTitle: "Airport Map",
     tipsTitle: "Useful Information",
     tips: [
       "Belarus–Poland border crossing: average 3–8 hours. Can be up to 12 hours on peak days.",
@@ -218,114 +211,21 @@ export default function MinskWarsawAirportPage() {
           </a>
         </motion.section>
 
-        {/* Flight Board */}
-        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="text-2xl font-bold text-foreground mb-3 flex items-center gap-3">
-            <Plane className="h-5 w-5 text-primary" />
-            {c.flightBoardTitle}
-          </h2>
-          <p className="text-muted-foreground text-sm mb-6">{c.flightBoardDesc}</p>
-          <div className="bg-card border border-border rounded-2xl p-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-            <div className="flex-1">
-              <p className="font-semibold text-foreground text-sm mb-1">Warsaw Chopin Airport — WAW</p>
-              <p className="text-muted-foreground text-xs">lotnisko-chopina.pl</p>
-            </div>
-            <div className="flex gap-3 flex-wrap">
-              <a
-                href="https://www.lotnisko-chopina.pl/en/flight-board/arrivals.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
-              >
-                <Plane className="h-4 w-4 rotate-180" />
-                {c.arrivalsBtn}
-                <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-              </a>
-              <a
-                href="https://www.lotnisko-chopina.pl/en/flight-board/departures.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-primary text-primary text-sm font-semibold hover:bg-primary/10 transition-colors"
-              >
-                <Plane className="h-4 w-4" />
-                {c.departuresBtn}
-                <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-              </a>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Map & Terminal Plan */}
+        {/* Airport Photos */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
             <MapPin className="h-5 w-5 text-primary" />
-            {c.mapTitle}
+            {c.photosTitle}
           </h2>
-
-          <div className="mb-6">
-            <AirportMap
-              lat={52.1672}
-              lng={20.9679}
-              label="Warsaw Chopin Airport (WAW)"
-              googleMapsUrl="https://maps.google.com/?q=Warsaw+Chopin+Airport"
-            />
-          </div>
-
-          {/* Official resource links */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <a
-              href="https://www.lotnisko-chopina.pl/en/terminal-a.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
-            >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                <MapPin className="h-4 w-4 text-primary" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {c.photos.map((photo, i) => (
+              <div key={i} className="relative rounded-2xl overflow-hidden aspect-video bg-card border border-border">
+                <img src={photo.src} alt={photo.caption} className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3">
+                  <p className="text-white text-sm font-medium">{photo.caption}</p>
+                </div>
               </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-foreground leading-tight">
-                  {lang === "ru" ? "План терминала A" : "Terminal A Map"}
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5">lotnisko-chopina.pl</p>
-              </div>
-              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
-            </a>
-
-            <a
-              href="https://www.lotnisko-chopina.pl/en/flight-board/arrivals.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
-            >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                <Plane className="h-4 w-4 text-primary rotate-180" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-foreground leading-tight">
-                  {lang === "ru" ? "Прилёты" : "Arrivals"}
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5">{lang === "ru" ? "Актуальное расписание" : "Live schedule"}</p>
-              </div>
-              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
-            </a>
-
-            <a
-              href="https://www.lotnisko-chopina.pl/en/flight-board/departures.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
-            >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                <Plane className="h-4 w-4 text-primary" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-foreground leading-tight">
-                  {lang === "ru" ? "Вылеты" : "Departures"}
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5">{lang === "ru" ? "Актуальное расписание" : "Live schedule"}</p>
-              </div>
-              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground ml-auto shrink-0" />
-            </a>
+            ))}
           </div>
         </motion.section>
 
