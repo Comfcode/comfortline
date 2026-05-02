@@ -79,16 +79,26 @@ export function BookingModal({
   const [name,      setName]      = useState("");
   const [email,     setEmail]     = useState("");
   const [phone,     setPhone]     = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const [comment,   setComment]   = useState("");
   const [agreed,    setAgreed]    = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  function validatePhone(value: string): string {
+    const digits = value.replace(/\D/g, "");
+    if (!value.trim()) return t.lang === "ru" ? "Введите номер телефона" : "Phone number is required";
+    if (digits.length < 7) return t.lang === "ru" ? "Слишком короткий номер" : "Number is too short";
+    if (digits.length > 15) return t.lang === "ru" ? "Слишком длинный номер" : "Number is too long";
+    if (/^(\d)\1+$/.test(digits)) return t.lang === "ru" ? "Введите настоящий номер телефона" : "Please enter a real phone number";
+    return "";
+  }
 
   useEffect(() => {
     if (!open) return;
     setDate(prefilledDate);
     setPax(prefilledPax ?? defaultPax);
     setPaxOpen(false);
-    setName(""); setEmail(""); setPhone(""); setComment(""); setAgreed(false);
+    setName(""); setEmail(""); setPhone(""); setPhoneError(""); setComment(""); setAgreed(false);
   }, [open]);
 
   const classOptions: { key: VehicleClass; label: string }[] = [
@@ -112,6 +122,8 @@ export function BookingModal({
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!agreed) return;
+    const err = validatePhone(phone);
+    if (err) { setPhoneError(err); return; }
     setSubmitting(true);
     try {
       const res = await fetch("/api/booking", {
@@ -278,8 +290,18 @@ export function BookingModal({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input type="email" placeholder={m.email} value={email}
                       onChange={e => setEmail(e.target.value)} className={inputCls} />
-                    <input type="tel" placeholder={m.phone} value={phone}
-                      onChange={e => setPhone(e.target.value)} required className={inputCls} />
+                    <div className="space-y-1">
+                      <input
+                        type="tel"
+                        placeholder={m.phone}
+                        value={phone}
+                        onChange={e => { setPhone(e.target.value); if (phoneError) setPhoneError(validatePhone(e.target.value)); }}
+                        onBlur={e => setPhoneError(validatePhone(e.target.value))}
+                        required
+                        className={`${inputCls} ${phoneError ? "border-red-400 focus:border-red-400 focus:ring-red-400/20" : ""}`}
+                      />
+                      {phoneError && <p className="text-xs text-red-500 font-medium pl-1">{phoneError}</p>}
+                    </div>
                   </div>
 
                   <textarea placeholder={m.comment} value={comment}
