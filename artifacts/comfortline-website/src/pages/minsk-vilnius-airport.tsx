@@ -343,12 +343,17 @@ export default function MinskVilniusAirportPage() {
             <PhoneCall className="h-8 w-8 text-primary mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-foreground mb-3">{c.ctaTitle}</h2>
             <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">{c.ctaDesc}</p>
-            <a
-              href="/#contact"
-              className="inline-block px-10 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-booking-modal", {
+                detail: {
+                  prefilledFrom: lang === "ru" ? "Минск" : "Minsk",
+                  prefilledTo: lang === "ru" ? "Аэропорт Вильнюса (VNO)" : "Vilnius Airport (VNO)",
+                }
+              }))}
+              className="inline-block px-10 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 cursor-pointer"
             >
               {c.ctaBtn}
-            </a>
+            </button>
           </div>
         </motion.section>
 

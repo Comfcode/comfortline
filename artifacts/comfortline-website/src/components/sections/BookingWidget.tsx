@@ -121,18 +121,23 @@ export function BookingWidget() {
     routeName?: string;
     planName?: string;
     planPrice?: string;
+    prefilledFrom?: string;
+    prefilledTo?: string;
   }>({ open: false });
 
   useEffect(() => {
     const handler = (e: Event) => {
       const detail = (e as CustomEvent).detail as {
         routeName?: string; planName?: string; planPrice?: string;
+        prefilledFrom?: string; prefilledTo?: string;
       } | undefined;
       setModalConfig({
         open: true,
         routeName: detail?.routeName,
         planName: detail?.planName,
         planPrice: detail?.planPrice,
+        prefilledFrom: detail?.prefilledFrom,
+        prefilledTo: detail?.prefilledTo,
       });
     };
     window.addEventListener("open-booking-modal", handler);
@@ -413,8 +418,8 @@ export function BookingWidget() {
       routeName={modalConfig.routeName}
       planName={modalConfig.planName}
       planPrice={modalConfig.planPrice}
-      prefilledFrom={from}
-      prefilledTo={to}
+      prefilledFrom={modalConfig.prefilledFrom ?? from}
+      prefilledTo={modalConfig.prefilledTo ?? to}
     />
     </>
   );
