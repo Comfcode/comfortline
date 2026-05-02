@@ -1,11 +1,23 @@
-import { Plane, Users, MapPin, Globe2 } from "lucide-react";
+import { Plane, Users, MapPin, Globe2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLang } from "@/context/language-context";
 
 const icons = [Plane, Users, MapPin, Globe2];
 
+const airportRoutes = {
+  ru: [
+    { label: "Минск — Аэропорт Вильнюса", href: "/minsk-vilnius-airport" },
+    { label: "Минск — Аэропорт Варшавы", href: "/minsk-warsaw-airport" },
+  ],
+  en: [
+    { label: "Minsk — Vilnius Airport", href: "/minsk-vilnius-airport" },
+    { label: "Minsk — Warsaw Airport", href: "/minsk-warsaw-airport" },
+  ],
+};
+
 export function Services() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const routes = airportRoutes[lang];
 
   return (
     <section id="services" className="py-24 bg-background">
@@ -35,6 +47,22 @@ export function Services() {
                 <p className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
+
+                {/* Popular airport routes — shown only on the first card */}
+                {index === 0 && (
+                  <div className="mt-6 pt-5 border-t border-border/50 space-y-2">
+                    {routes.map((route) => (
+                      <a
+                        key={route.href}
+                        href={route.href}
+                        className="flex items-center justify-between gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group/link"
+                      >
+                        <span>{route.label}</span>
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all" />
+                      </a>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             );
           })}

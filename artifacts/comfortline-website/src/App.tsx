@@ -9,6 +9,8 @@ import LandingPage from "@/pages/landing";
 import PrivacyPolicyPage from "@/pages/privacy-policy";
 import TermsPage from "@/pages/terms";
 import FaqPage from "@/pages/faq";
+import MinskVilniusAirportPage from "@/pages/minsk-vilnius-airport";
+import MinskWarsawAirportPage from "@/pages/minsk-warsaw-airport";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,8 @@ function Router() {
       <Route path="/privacy" component={PrivacyPolicyPage} />
       <Route path="/terms" component={TermsPage} />
       <Route path="/faq" component={FaqPage} />
+      <Route path="/minsk-vilnius-airport" component={MinskVilniusAirportPage} />
+      <Route path="/minsk-warsaw-airport" component={MinskWarsawAirportPage} />
       <Route component={NotFound} />
     </Switch>
   );
