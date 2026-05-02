@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Users, Briefcase, ArrowRight } from "lucide-react";
+import { Users, Briefcase } from "lucide-react";
 import { useLang } from "@/context/language-context";
 
 const cars = [
@@ -139,18 +139,16 @@ export function Fleet() {
 
                   <Button
                     variant="default"
-                    className="w-full"
-                    onClick={() => window.dispatchEvent(new Event("open-booking-modal"))}
+                    className="w-full mt-auto"
+                    onClick={() => window.dispatchEvent(new CustomEvent("open-booking-modal", {
+                      detail: {
+                        routeName: lang === "ru" ? "Выбранный автомобиль" : "Selected vehicle",
+                        planName: car.name,
+                      }
+                    }))}
                   >
-                    {f.book}
+                    {lang === "ru" ? "Выбрать" : "Choose"}
                   </Button>
-                  <a
-                    href={lang === "ru" ? car.hrefRu : car.hrefEn}
-                    className="mt-2 flex items-center justify-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {lang === "ru" ? "Подробнее" : "Details"}
-                    <ArrowRight className="h-3 w-3" />
-                  </a>
                 </div>
               </motion.div>
             ))}
