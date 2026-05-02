@@ -382,17 +382,36 @@ export function VehiclePage({ slug }: VehiclePageProps) {
             ))}
           </div>
 
-          {/* Image */}
-          <div className="rounded-2xl overflow-hidden border border-border bg-muted" style={{ height: 320 }}>
-            <img
-              src={c.image}
-              alt={c.name}
-              className="w-full h-full object-cover object-center"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src =
-                  "https://placehold.co/900x320/131218/B59C73?text=" + encodeURIComponent(c.name);
-              }}
-            />
+          {/* Photo gallery — exterior + interior */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
+              <img
+                src={c.image}
+                alt={c.name}
+                className="w-full h-full object-cover object-center"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src =
+                    "https://placehold.co/600x260/131218/B59C73?text=" + encodeURIComponent(c.name);
+                }}
+              />
+              <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
+                {lang === "ru" ? "Экстерьер" : "Exterior"}
+              </span>
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
+              <img
+                src="/car-interior.png"
+                alt={lang === "ru" ? "Салон" : "Interior"}
+                className="w-full h-full object-cover object-center"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src =
+                    "https://placehold.co/600x260/131218/B59C73?text=Interior";
+                }}
+              />
+              <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
+                {lang === "ru" ? "Интерьер" : "Interior"}
+              </span>
+            </div>
           </div>
         </motion.div>
 

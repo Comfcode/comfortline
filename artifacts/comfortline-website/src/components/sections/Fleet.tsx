@@ -1,83 +1,61 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Users, Briefcase, ArrowRight, Car, Bus, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Users, Briefcase, ArrowRight } from "lucide-react";
 import { useLang } from "@/context/language-context";
-
-const categoryIcon = {
-  sedan: Car,
-  suv: Truck,
-  minivan: Bus,
-};
 
 const cars = [
   {
     id: 1,
-    slug: "mercedes-e-class",
     name: "Mercedes E-Class 2021",
     classRu: "Бизнес",
     classEn: "Business",
-    descRu: "Представительский седан с кожаным салоном, климат-контролем и плавным ходом. Идеален для деловых поездок и трансферов в аэропорт.",
-    descEn: "Executive sedan with leather interior, climate control and a smooth quiet ride. Perfect for business trips and airport transfers.",
     seats: 4,
-    category: "sedan" as const,
+    image: "/car-mercedes-e.jpg",
+    category: "sedan",
     luggageRu: "2 чемодана",
     luggageEn: "2 suitcases",
     hrefRu: "/mercedes-e-klass-transfer",
     hrefEn: "/mercedes-e-class-transfer",
-    detailsRu: "Подробнее о Mercedes",
-    detailsEn: "Mercedes details",
   },
   {
     id: 2,
-    slug: "kia-carnival",
     name: "Kia Carnival 2019",
     classRu: "Минивэн",
     classEn: "Minivan",
-    descRu: "Просторный семиместный минивэн для семейных и групповых поездок. Три ряда сидений и большой багажный отсек.",
-    descEn: "Spacious 7-seat minivan for family and group travel. Three rows of seating and a generous luggage area.",
     seats: 7,
-    category: "minivan" as const,
+    image: "/car-kia-carnival.jpg",
+    category: "minivan",
     luggageRu: "Вместительный",
     luggageEn: "Spacious",
     hrefRu: "/kia-karnaval-transfer",
     hrefEn: "/kia-carnival-transfer",
-    detailsRu: "Подробнее о Kia Carnival",
-    detailsEn: "Kia Carnival details",
   },
   {
     id: 3,
-    slug: "hyundai-palisade",
     name: "Hyundai Palisade 2020",
     classRu: "Внедорожник",
     classEn: "SUV",
-    descRu: "Полноразмерный SUV с полным приводом и высоким клиренсом. Уверенно держит дорогу зимой и на длинных маршрутах.",
-    descEn: "Full-size AWD SUV with high ground clearance. Handles confidently in winter and on long-distance routes.",
     seats: 7,
-    category: "suv" as const,
+    image: "/car-hyundai-palisade.jpg",
+    category: "suv",
     luggageRu: "Вместительный",
     luggageEn: "Spacious",
     hrefRu: "/hyundai-palisade-transfer",
     hrefEn: "/hyundai-palisade-transfer",
-    detailsRu: "Подробнее о Palisade",
-    detailsEn: "Palisade details",
   },
   {
     id: 4,
-    slug: "fiat-scudo",
     name: "Fiat Scudo 2015",
     classRu: "Микроавтобус",
     classEn: "Minibus",
-    descRu: "Просторный микроавтобус на 8 мест с большим грузовым отсеком. Оптимален для групп и корпоративных трансферов.",
-    descEn: "Spacious 8-seat minibus with a large cargo area. Ideal for groups and corporate transfers.",
     seats: 8,
-    category: "minivan" as const,
+    image: "/car-fiat-scudo.jpg",
+    category: "minivan",
     luggageRu: "Большой отсек",
     luggageEn: "Large cargo",
     hrefRu: "/fiat-scudo-transfer",
     hrefEn: "/fiat-scudo-transfer",
-    detailsRu: "Подробнее о Fiat Scudo",
-    detailsEn: "Fiat Scudo details",
   },
 ];
 
@@ -97,7 +75,6 @@ export function Fleet() {
   return (
     <section id="fleet" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 md:px-6">
-
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">{f.label}</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-foreground">{f.heading}</h3>
@@ -117,66 +94,72 @@ export function Fleet() {
           </div>
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <AnimatePresence>
-            {filteredCars.map((car, index) => {
-              const Icon = categoryIcon[car.category];
+            {filteredCars.map((car) => {
               const href = lang === "ru" ? car.hrefRu : car.hrefEn;
               const label = lang === "ru" ? car.classRu : car.classEn;
-              const desc = lang === "ru" ? car.descRu : car.descEn;
               const luggage = lang === "ru" ? car.luggageRu : car.luggageEn;
-              const detailsLabel = lang === "ru" ? car.detailsRu : car.detailsEn;
 
               return (
                 <motion.div
                   key={car.id}
                   layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.35, delay: index * 0.07 }}
-                  className="bg-card border border-border p-8 rounded-2xl hover:border-primary/50 transition-colors group flex flex-col"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-card border border-border rounded-2xl overflow-hidden group hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-primary/5 flex flex-col"
                 >
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors shrink-0">
-                    <Icon className="h-7 w-7 text-primary" />
+                  {/* Photo */}
+                  <div className="h-48 overflow-hidden relative bg-muted flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                    <img
+                      src={car.image}
+                      alt={car.name}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          "https://placehold.co/600x400/131218/B59C73?text=" + car.name.replace(/ /g, "+");
+                      }}
+                    />
+                    <div className="absolute bottom-3 left-4 z-20 bg-primary/90 text-primary-foreground text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                      {label}
+                    </div>
                   </div>
 
-                  <div className="mb-1 flex items-center gap-2">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-primary">{label}</span>
-                  </div>
+                  {/* Content */}
+                  <div className="p-5 flex flex-col flex-1">
+                    <h4 className="text-lg font-bold mb-3 text-card-foreground group-hover:text-primary transition-colors">
+                      {car.name}
+                    </h4>
 
-                  <h4 className="text-xl font-bold mb-3 text-card-foreground group-hover:text-primary transition-colors">
-                    {car.name}
-                  </h4>
-
-                  <p className="text-muted-foreground leading-relaxed mb-6">{desc}</p>
-
-                  <div className="mt-auto pt-5 border-t border-border/50 space-y-3">
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-1.5">
+                    <div className="space-y-2 mb-5 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
                         <Users className="h-4 w-4 text-primary shrink-0" />
-                        {f.seats}: {car.seats}
-                      </span>
-                      <span className="flex items-center gap-1.5">
+                        <span>{f.seats}: {car.seats}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
                         <Briefcase className="h-4 w-4 text-primary shrink-0" />
-                        {luggage}
-                      </span>
+                        <span>{f.trunk}: {luggage}</span>
+                      </div>
                     </div>
 
-                    <a
-                      href={href}
-                      className="flex items-center justify-between gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group/link pt-1"
-                    >
-                      <span>{detailsLabel}</span>
-                      <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all" />
-                    </a>
+                    <div className="mt-auto pt-4 border-t border-border/50">
+                      <a
+                        href={href}
+                        className="flex items-center justify-between gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group/link"
+                      >
+                        <span>{lang === "ru" ? "Подробнее" : "View details"}</span>
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all" />
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
               );
             })}
           </AnimatePresence>
         </motion.div>
-
       </div>
     </section>
   );
