@@ -1,6 +1,5 @@
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
-const U = "https://images.unsplash.com/photo-";
 
 const data: RoutePageData = {
   ru: {
@@ -15,9 +14,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Минск — достопримечательности",
     photos: [
-      { src: `${U}1516815231517-c1e3d9f3e84c?auto=format&fit=crop&w=800&q=80`, caption: "Проспект Независимости" },
-      { src: `${U}1524850011238-e3d235c7d4c9?auto=format&fit=crop&w=800&q=80`, caption: "Площадь Победы" },
-      { src: `${U}1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800&q=80`, caption: "Тринитарское предместье" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Building,_23,_Independence_Avenue,_Minsk_-_the_capital_of_Republic_of_Belarus.JPG", caption: "Проспект Независимости" },
+      { src: "https://paliparan.com/wp-content/uploads/2025/02/minsk-43a-800x445.jpg", caption: "Площадь Победы" },
+      { src: "https://thumbs.dreamstime.com/b/aerial-view-trinity-troitskoe-suburb-historical-center-minsk-historical-building-city-travel-concept-aerial-238253753.jpg", caption: "Тринитарское предместье" },
     ],
     howTitle: "Как работает трансфер",
     steps: [
@@ -70,9 +69,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Minsk — Highlights",
     photos: [
-      { src: `${U}1516815231517-c1e3d9f3e84c?auto=format&fit=crop&w=800&q=80`, caption: "Independence Avenue" },
-      { src: `${U}1524850011238-e3d235c7d4c9?auto=format&fit=crop&w=800&q=80`, caption: "Victory Square" },
-      { src: `${U}1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800&q=80`, caption: "Trinity Suburb" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Building,_23,_Independence_Avenue,_Minsk_-_the_capital_of_Republic_of_Belarus.JPG", caption: "Independence Avenue" },
+      { src: "https://paliparan.com/wp-content/uploads/2025/02/minsk-43a-800x445.jpg", caption: "Victory Square" },
+      { src: "https://thumbs.dreamstime.com/b/aerial-view-trinity-troitskoe-suburb-historical-center-minsk-historical-building-city-travel-concept-aerial-238253753.jpg", caption: "Trinity Suburb" },
     ],
     howTitle: "How it works",
     steps: [

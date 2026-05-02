@@ -1,6 +1,5 @@
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
-const U = "https://images.unsplash.com/photo-";
 
 const data: RoutePageData = {
   ru: {
@@ -15,9 +14,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Берлин — достопримечательности",
     photos: [
-      { src: `${U}1560969184-10fe8719e047?auto=format&fit=crop&w=800&q=80`, caption: "Бранденбургские ворота" },
-      { src: `${U}1549317661-cf369843efb3?auto=format&fit=crop&w=800&q=80`, caption: "Берлинский собор" },
-      { src: `${U}1467269204-daf44d7e5a5e?auto=format&fit=crop&w=800&q=80`, caption: "Центр Берлина" },
+      { src: "https://images.pexels.com/photos/2817497/pexels-photo-2817497.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Бранденбургские ворота" },
+      { src: "https://mywowo.net/media/images/cache/berlino_museuminsel_08_berliner_dom_jpg_1200_630_cover_85.jpg", caption: "Берлинский собор" },
+      { src: "https://images.pexels.com/photos/1128408/pexels-photo-1128408.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Центр Берлина" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -70,9 +69,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Berlin — Highlights",
     photos: [
-      { src: `${U}1560969184-10fe8719e047?auto=format&fit=crop&w=800&q=80`, caption: "Brandenburg Gate" },
-      { src: `${U}1549317661-cf369843efb3?auto=format&fit=crop&w=800&q=80`, caption: "Berlin Cathedral" },
-      { src: `${U}1467269204-daf44d7e5a5e?auto=format&fit=crop&w=800&q=80`, caption: "Central Berlin" },
+      { src: "https://images.pexels.com/photos/2817497/pexels-photo-2817497.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Brandenburg Gate" },
+      { src: "https://mywowo.net/media/images/cache/berlino_museuminsel_08_berliner_dom_jpg_1200_630_cover_85.jpg", caption: "Berlin Cathedral" },
+      { src: "https://images.pexels.com/photos/1128408/pexels-photo-1128408.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Central Berlin" },
     ],
     howTitle: "How the transfer works",
     steps: [

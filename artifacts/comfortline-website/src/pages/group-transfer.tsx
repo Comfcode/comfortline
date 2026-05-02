@@ -1,6 +1,5 @@
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
-const U = "https://images.unsplash.com/photo-";
 
 const data: RoutePageData = {
   ru: {
@@ -15,9 +14,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Групповые поездки",
     photos: [
-      { src: `${U}1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80`, caption: "Семейный трансфер" },
-      { src: `${U}1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80`, caption: "Корпоративная группа" },
-      { src: `${U}1606920803700-d6e39d79ee42?auto=format&fit=crop&w=800&q=80`, caption: "Групповая поездка" },
+      { src: "https://a.veronikasadventure.com/tour/airport-transfer-12-passenger-minivan-d5504-131461P16-3.jpg", caption: "Семейный трансфер" },
+      { src: "https://taxxilo.com/wp-content/uploads/2025/06/Taxi-Barcelona-for-Groups.webp", caption: "Корпоративная группа" },
+      { src: "https://empirelimotransfer.com/wp-content/uploads/2025/11/Different-types-of-airport-transfer-services-available-1024x585.png", caption: "Групповая поездка" },
     ],
     howTitle: "Как работает групповой трансфер",
     steps: [
@@ -70,9 +69,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Group Travel",
     photos: [
-      { src: `${U}1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80`, caption: "Family transfer" },
-      { src: `${U}1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80`, caption: "Corporate group" },
-      { src: `${U}1606920803700-d6e39d79ee42?auto=format&fit=crop&w=800&q=80`, caption: "Group travel" },
+      { src: "https://a.veronikasadventure.com/tour/airport-transfer-12-passenger-minivan-d5504-131461P16-3.jpg", caption: "Family transfer" },
+      { src: "https://taxxilo.com/wp-content/uploads/2025/06/Taxi-Barcelona-for-Groups.webp", caption: "Corporate group" },
+      { src: "https://empirelimotransfer.com/wp-content/uploads/2025/11/Different-types-of-airport-transfer-services-available-1024x585.png", caption: "Group travel" },
     ],
     howTitle: "How group transfers work",
     steps: [

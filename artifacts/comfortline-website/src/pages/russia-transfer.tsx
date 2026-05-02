@@ -1,6 +1,5 @@
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
-const U = "https://images.unsplash.com/photo-";
 
 const data: RoutePageData = {
   ru: {
@@ -15,9 +14,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Россия — города и архитектура",
     photos: [
-      { src: `${U}1513326738677-b964603b136d?auto=format&fit=crop&w=800&q=80`, caption: "Красная площадь, Москва" },
-      { src: `${U}1547782793-e0f022b9788e?auto=format&fit=crop&w=800&q=80`, caption: "Собор Василия Блаженного" },
-      { src: `${U}1555425980-6b56e66b8c9c?auto=format&fit=crop&w=800&q=80`, caption: "Москва-Сити" },
+      { src: "https://media.cnn.com/api/v1/images/stellar/prod/201111165403-04-saint-basils-origins-test-of-time-restricted.jpg", caption: "Красная площадь, Москва" },
+      { src: "https://images.pexels.com/photos/236294/pexels-photo-236294.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Собор Василия Блаженного" },
+      { src: "https://preview.redd.it/the-modern-skyline-of-moscow-contrasted-against-the-older-v0-3ozrrywrlv281.jpg?width=640&crop=smart&auto=webp&s=408ae82e347509d547cf9048ec69c64da33484a8", caption: "Москва-Сити" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -70,9 +69,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Russia — Cities & Architecture",
     photos: [
-      { src: `${U}1513326738677-b964603b136d?auto=format&fit=crop&w=800&q=80`, caption: "Red Square, Moscow" },
-      { src: `${U}1547782793-e0f022b9788e?auto=format&fit=crop&w=800&q=80`, caption: "Saint Basil's Cathedral" },
-      { src: `${U}1555425980-6b56e66b8c9c?auto=format&fit=crop&w=800&q=80`, caption: "Moscow City skyline" },
+      { src: "https://media.cnn.com/api/v1/images/stellar/prod/201111165403-04-saint-basils-origins-test-of-time-restricted.jpg", caption: "Red Square, Moscow" },
+      { src: "https://images.pexels.com/photos/236294/pexels-photo-236294.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Saint Basil's Cathedral" },
+      { src: "https://preview.redd.it/the-modern-skyline-of-moscow-contrasted-against-the-older-v0-3ozrrywrlv281.jpg?width=640&crop=smart&auto=webp&s=408ae82e347509d547cf9048ec69c64da33484a8", caption: "Moscow City skyline" },
     ],
     howTitle: "How it works",
     steps: [

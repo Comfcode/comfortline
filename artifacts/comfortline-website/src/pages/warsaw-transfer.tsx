@@ -1,6 +1,5 @@
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
-const U = "https://images.unsplash.com/photo-";
 
 const data: RoutePageData = {
   ru: {
@@ -15,9 +14,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Варшава — достопримечательности",
     photos: [
-      { src: `${U}1533929736458-ca588d08c8be?auto=format&fit=crop&w=800&q=80`, caption: "Старый город Варшавы" },
-      { src: `${U}1519677100-5e63ee8a56b2?auto=format&fit=crop&w=800&q=80`, caption: "Королевский замок" },
-      { src: `${U}1545652985-a9f5b9f91b37?auto=format&fit=crop&w=800&q=80`, caption: "Центр Варшавы" },
+      { src: "https://dynamic-media.tacdn.com/media/attractions-splice-spp-674x446/0b/27/69/f2.jpg", caption: "Королевский замок" },
+      { src: "https://render.pixels.com/images/images-new-artwork/images/artworkimages/medium/3/warsaw-city-evening-skyline-in-poland-artur-bogacki.jpg", caption: "Центр Варшавы" },
+      { src: "https://www.bautrip.com/images/what-to-visit/royal-zamek-krolewski-caste-warsaw.jpg", caption: "Старый город Варшавы" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -70,9 +69,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Warsaw — Highlights",
     photos: [
-      { src: `${U}1533929736458-ca588d08c8be?auto=format&fit=crop&w=800&q=80`, caption: "Warsaw Old Town" },
-      { src: `${U}1519677100-5e63ee8a56b2?auto=format&fit=crop&w=800&q=80`, caption: "Royal Castle" },
-      { src: `${U}1545652985-a9f5b9f91b37?auto=format&fit=crop&w=800&q=80`, caption: "Warsaw city centre" },
+      { src: "https://dynamic-media.tacdn.com/media/attractions-splice-spp-674x446/0b/27/69/f2.jpg", caption: "Warsaw Old Town" },
+      { src: "https://render.pixels.com/images/images-new-artwork/images/artworkimages/medium/3/warsaw-city-evening-skyline-in-poland-artur-bogacki.jpg", caption: "Royal Castle" },
+      { src: "https://www.bautrip.com/images/what-to-visit/royal-zamek-krolewski-caste-warsaw.jpg", caption: "Warsaw city centre" },
     ],
     howTitle: "How the transfer works",
     steps: [

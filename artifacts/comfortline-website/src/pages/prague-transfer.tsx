@@ -1,6 +1,5 @@
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
-const U = "https://images.unsplash.com/photo-";
 
 const data: RoutePageData = {
   ru: {
@@ -15,9 +14,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Прага — сердце Европы",
     photos: [
-      { src: `${U}1541849546-216549ae216d?auto=format&fit=crop&w=800&q=80`, caption: "Карлов мост" },
-      { src: `${U}1592906209472-a36b1f3782ef?auto=format&fit=crop&w=800&q=80`, caption: "Старомéстская площадь" },
-      { src: `${U}1501436513145-1efbfefbc2ea?auto=format&fit=crop&w=800&q=80`, caption: "Пражский град" },
+      { src: "https://www.amazingczechia.com/wp-content/uploads/2018/07/charles-bridge-prague-02-600x400.jpg", caption: "Карлов мост" },
+      { src: "https://cdn-imgix.headout.com/media/images/203027ede3609da428d3f0e26c552948-15767-prague-prague-skip-the-line-tickets-to-the-astronomical-clock-tower-13.jpg?auto=compress,format&q=90", caption: "Старомéстская площадь" },
+      { src: "https://images.pexels.com/photos/13881307/pexels-photo-13881307.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Пражский град" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -70,9 +69,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Prague — Heart of Europe",
     photos: [
-      { src: `${U}1541849546-216549ae216d?auto=format&fit=crop&w=800&q=80`, caption: "Charles Bridge" },
-      { src: `${U}1592906209472-a36b1f3782ef?auto=format&fit=crop&w=800&q=80`, caption: "Old Town Square" },
-      { src: `${U}1501436513145-1efbfefbc2ea?auto=format&fit=crop&w=800&q=80`, caption: "Prague Castle" },
+      { src: "https://www.amazingczechia.com/wp-content/uploads/2018/07/charles-bridge-prague-02-600x400.jpg", caption: "Charles Bridge" },
+      { src: "https://cdn-imgix.headout.com/media/images/203027ede3609da428d3f0e26c552948-15767-prague-prague-skip-the-line-tickets-to-the-astronomical-clock-tower-13.jpg?auto=compress,format&q=90", caption: "Old Town Square" },
+      { src: "https://images.pexels.com/photos/13881307/pexels-photo-13881307.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Prague Castle" },
     ],
     howTitle: "How the transfer works",
     steps: [

@@ -1,6 +1,5 @@
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
-const U = "https://images.unsplash.com/photo-";
 
 const data: RoutePageData = {
   ru: {
@@ -15,9 +14,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Беларусь — природа и замки",
     photos: [
-      { src: `${U}1568454537-999e0e65a58e?auto=format&fit=crop&w=800&q=80`, caption: "Замок Мир" },
-      { src: `${U}1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80`, caption: "Беловежская пуща" },
-      { src: `${U}1504214572226-19b8f41d9b6c?auto=format&fit=crop&w=800&q=80`, caption: "Замок Несвиж" },
+      { src: "https://thumbs.dreamstime.com/b/old-fortress-4939650.jpg", caption: "Замок Мир" },
+      { src: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/14834/production/_89902048_89902047.jpg", caption: "Беловежская пуща" },
+      { src: "https://belarus365.com/wp-content/uploads/2022/04/nesv_start.jpg", caption: "Замок Несвиж" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -71,9 +70,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Belarus — Nature & Castles",
     photos: [
-      { src: `${U}1568454537-999e0e65a58e?auto=format&fit=crop&w=800&q=80`, caption: "Mir Castle" },
-      { src: `${U}1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80`, caption: "Białowieża Forest" },
-      { src: `${U}1504214572226-19b8f41d9b6c?auto=format&fit=crop&w=800&q=80`, caption: "Nesvizh Castle" },
+      { src: "https://thumbs.dreamstime.com/b/old-fortress-4939650.jpg", caption: "Mir Castle" },
+      { src: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/14834/production/_89902048_89902047.jpg", caption: "Białowieża Forest" },
+      { src: "https://belarus365.com/wp-content/uploads/2022/04/nesv_start.jpg", caption: "Nesvizh Castle" },
     ],
     howTitle: "How it works",
     steps: [
