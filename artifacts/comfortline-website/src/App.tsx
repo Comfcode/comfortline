@@ -13,6 +13,7 @@ import MinskVilniusAirportPage from "@/pages/minsk-vilnius-airport";
 import MinskWarsawAirportPage from "@/pages/minsk-warsaw-airport";
 import MinskWarsawModlinAirportPage from "@/pages/minsk-warsaw-modlin-airport";
 import { VehiclePage } from "@/pages/vehicle-page";
+import BrandbookPage from "@/pages/brandbook";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ function Router() {
       <Route path="/kia-karnaval-transfer" component={() => <VehiclePage slug="kia-carnival" />} />
       <Route path="/hyundai-palisade-transfer" component={() => <VehiclePage slug="hyundai-palisade" />} />
       <Route path="/fiat-scudo-transfer" component={() => <VehiclePage slug="fiat-scudo" />} />
+      <Route path="/brandbook" component={BrandbookPage} />
       <Route component={NotFound} />
     </Switch>
   );

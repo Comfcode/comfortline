@@ -6,6 +6,7 @@ import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
+import { Logo } from "@/components/brand/Logo";
 
 const serviceRoutes = {
   ru: [
@@ -137,13 +138,8 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <a href="/" className="flex items-center gap-1 group shrink-0">
-            <span className="text-xl md:text-2xl font-bold text-foreground transition-colors group-hover:text-primary underline-offset-4 group-hover:underline decoration-primary/40">
-              Comfort
-            </span>
-            <span className="text-xl md:text-2xl font-bold text-primary transition-colors group-hover:opacity-80 underline-offset-4 group-hover:underline decoration-primary/40">
-              Line
-            </span>
+          <a href="/" className="shrink-0 group opacity-90 hover:opacity-100 transition-opacity">
+            <Logo variant="full" scheme={isDark ? "dark" : "light"} height={30} />
           </a>
 
           {/* Desktop Nav */}
