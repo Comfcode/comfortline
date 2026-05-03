@@ -14,7 +14,7 @@ import { dirname, resolve } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const KEY = "c8f3d2a1b94e47f6ae7c1d0b5a8e3c92";
-const HOST = "comfortline.by";
+const HOST = "bycomfortline.com";
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const ENDPOINT = "https://api.indexnow.org/indexnow";
 

@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(__dirname, "..", "dist", "public");
-const SITE_URL = "https://comfortline.by";
+const SITE_URL = "https://bycomfortline.com";
 const OG_IMAGE = `${SITE_URL}/opengraph.jpg`;
 
 const routes = [
@@ -151,7 +151,7 @@ function buildHtml(template, route, lang) {
     name: title,
     description: desc,
     url: canonicalUrl,
-    provider: { "@id": "https://comfortline.by#business" },
+    provider: { "@id": "https://bycomfortline.com#business" },
     areaServed: [
       { "@type": "Place", name: "Minsk" },
       { "@type": "Place", name: isRu ? (route.pathRu.includes("вильнюс") ? "Вильнюс" : "Варшава") : (route.pathEn.includes("vilnius") ? "Vilnius" : "Warsaw") },
