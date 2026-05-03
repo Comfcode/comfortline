@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Seo } from "@/seo/Seo";
 import { motion } from "framer-motion";
 import { Download, Copy, Check, Printer, Palette, RotateCcw, Type } from "lucide-react";
 import { Logo, LogoMark } from "@/components/brand/Logo";
@@ -458,6 +459,16 @@ function FontPicker() {
 export default function BrandbookPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Seo
+        titleRu="Брендбук ComfortLine"
+        titleEn="ComfortLine Brandbook"
+        descRu="Внутренний брендбук ComfortLine — для команды и партнёров."
+        descEn="Internal ComfortLine brandbook — for the team and partners."
+        pathRu="/brandbook"
+        pathEn="/brandbook"
+        noBusinessJsonLd
+        noindex
+      />
       <Navbar />
 
       <FloatingPrintButton />

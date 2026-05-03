@@ -15,6 +15,8 @@ export interface SeoData {
   jsonLd?: object | object[];
   lang?: string;
   keywords?: string;
+  /** When set, overrides the default index,follow with e.g. "noindex, nofollow". */
+  robots?: string;
 }
 
 const SEO_FLAG = "data-seo";
@@ -56,6 +58,20 @@ export function useSeo(data: SeoData) {
 
     upsertMeta("name", "description", data.description);
     if (data.keywords) upsertMeta("name", "keywords", data.keywords);
+    // Default robots in index.html is "index, follow, ...". Only override when a
+    // page explicitly opts out (e.g. brandbook). Restoring on unmount is handled
+    // by the next route's useSeo() running its own upsert.
+    if (data.robots) {
+      upsertMeta("name", "robots", data.robots);
+      upsertMeta("name", "googlebot", data.robots);
+    } else {
+      upsertMeta(
+        "name",
+        "robots",
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      );
+      upsertMeta("name", "googlebot", "index, follow");
+    }
 
     upsertMeta("property", "og:title", data.title);
     upsertMeta("property", "og:description", data.description);

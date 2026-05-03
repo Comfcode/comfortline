@@ -18,6 +18,7 @@ interface SeoProps {
   breadcrumbsRu?: BreadcrumbItem[];
   breadcrumbsEn?: BreadcrumbItem[];
   noBusinessJsonLd?: boolean;
+  noindex?: boolean;
 }
 
 export function Seo(props: SeoProps) {
@@ -68,6 +69,7 @@ export function Seo(props: SeoProps) {
     keywords,
     jsonLd: allJsonLd,
     lang: isRu ? "ru" : "en",
+    robots: props.noindex ? "noindex, nofollow" : undefined,
   });
 
   return null;
