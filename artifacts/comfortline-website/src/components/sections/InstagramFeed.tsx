@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { Instagram, ExternalLink } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Instagram, ExternalLink, ChevronDown } from "lucide-react";
 import { useLang } from "@/context/language-context";
 import { instagramPostUrls } from "@/data/instagramPosts";
 
@@ -12,6 +12,8 @@ declare global {
 }
 
 const EMBED_SCRIPT_SRC = "https://www.instagram.com/embed.js";
+const INITIAL_VISIBLE = 9;
+const LOAD_INCREMENT = 9;
 
 function ensureEmbedScript(): Promise<void> {
   return new Promise((resolve) => {
@@ -38,9 +40,14 @@ export function InstagramFeed() {
   const { t } = useLang();
   const i = t.instagram;
   const containerRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(INITIAL_VISIBLE);
+
+  const total = instagramPostUrls.length;
+  const shown = instagramPostUrls.slice(0, visible);
+  const hasMore = visible < total;
 
   useEffect(() => {
-    if (instagramPostUrls.length === 0) return;
+    if (shown.length === 0) return;
     let cancelled = false;
     ensureEmbedScript().then(() => {
       if (cancelled) return;
@@ -49,9 +56,9 @@ export function InstagramFeed() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [shown.length]);
 
-  if (instagramPostUrls.length === 0) return null;
+  if (total === 0) return null;
 
   return (
     <section
@@ -79,7 +86,7 @@ export function InstagramFeed() {
           ref={containerRef}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
         >
-          {instagramPostUrls.map((url) => (
+          {shown.map((url) => (
             <blockquote
               key={url}
               className="instagram-media w-full max-w-[400px]"
@@ -99,7 +106,22 @@ export function InstagramFeed() {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
+          {hasMore && (
+            <button
+              type="button"
+              onClick={() =>
+                setVisible((v) => Math.min(v + LOAD_INCREMENT, total))
+              }
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
+            >
+              {i.loadMore}
+              <ChevronDown className="h-4 w-4" />
+              <span className="opacity-70">
+                ({Math.min(LOAD_INCREMENT, total - visible)} / {total - visible})
+              </span>
+            </button>
+          )}
           <a
             href={i.profileUrl}
             target="_blank"

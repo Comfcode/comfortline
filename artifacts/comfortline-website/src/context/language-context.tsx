@@ -127,6 +127,7 @@ interface Translations {
     subheading: string;
     cta: string;
     profileUrl: string;
+    loadMore: string;
   };
   contact: {
     label: string;
@@ -341,6 +342,7 @@ const ru: Translations = {
     subheading: "Реальные кадры из наших трансферов — автомобили, маршруты и моменты в дороге. Подписывайтесь, чтобы видеть свежие поездки.",
     cta: "Открыть @transfer_comfortline",
     profileUrl: "https://www.instagram.com/transfer_comfortline/",
+    loadMore: "Показать ещё",
   },
   contact: {
     label: "Связаться с нами",
@@ -561,6 +563,7 @@ const en: Translations = {
     subheading: "Real photos from our transfers — vehicles, routes and moments en route. Follow us to see the latest trips.",
     cta: "Open @transfer_comfortline",
     profileUrl: "https://www.instagram.com/transfer_comfortline/",
+    loadMore: "Show more",
   },
   contact: {
     label: "Get in Touch",
