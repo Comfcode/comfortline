@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Users, Briefcase, Calendar, Shield, CheckCircle2, PhoneCall, ArrowRight, Plane } from "lucide-react";
+import { Users, Briefcase, Calendar, Shield, CheckCircle2, PhoneCall, ArrowRight, Plane, Car } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
@@ -357,7 +357,7 @@ export function VehiclePage({ slug }: VehiclePageProps) {
           </a>
           <span className="text-border/60">·</span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold">
-            🚗 {c.classBadge}
+            <Car className="h-3.5 w-3.5" /> {c.classBadge}
           </span>
         </div>
 
