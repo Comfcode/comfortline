@@ -1,53 +1,57 @@
-import { useEffect, useState } from "react";
-import { Instagram, ExternalLink, Play, Images } from "lucide-react";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { Instagram, ExternalLink } from "lucide-react";
 import { useLang } from "@/context/language-context";
+import { instagramPostUrls } from "@/data/instagramPosts";
 
-type InstagramPost = {
-  id: string;
-  caption?: string;
-  media_type: "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
-  media_url: string;
-  thumbnail_url?: string;
-  permalink: string;
-  timestamp: string;
-};
+declare global {
+  interface Window {
+    instgrm?: {
+      Embeds: { process: () => void };
+    };
+  }
+}
 
-type ApiResponse = {
-  posts: InstagramPost[];
-  configured: boolean;
-};
+const EMBED_SCRIPT_SRC = "https://www.instagram.com/embed.js";
 
-const GRID_LIMIT = 9;
+function ensureEmbedScript(): Promise<void> {
+  return new Promise((resolve) => {
+    if (window.instgrm?.Embeds) {
+      resolve();
+      return;
+    }
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[src="${EMBED_SCRIPT_SRC}"]`,
+    );
+    if (existing) {
+      existing.addEventListener("load", () => resolve());
+      return;
+    }
+    const s = document.createElement("script");
+    s.src = EMBED_SCRIPT_SRC;
+    s.async = true;
+    s.onload = () => resolve();
+    document.body.appendChild(s);
+  });
+}
 
 export function InstagramFeed() {
   const { t } = useLang();
   const i = t.instagram;
-  const [posts, setPosts] = useState<InstagramPost[] | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
-    const url = `${baseUrl}/api/instagram/posts`;
+    if (instagramPostUrls.length === 0) return;
     let cancelled = false;
-    fetch(url)
-      .then((r) => (r.ok ? (r.json() as Promise<ApiResponse>) : null))
-      .then((data) => {
-        if (cancelled) return;
-        if (data && Array.isArray(data.posts)) {
-          setPosts(data.posts.slice(0, GRID_LIMIT));
-        } else {
-          setPosts([]);
-        }
-      })
-      .catch(() => {
-        if (!cancelled) setPosts([]);
-      });
+    ensureEmbedScript().then(() => {
+      if (cancelled) return;
+      window.instgrm?.Embeds.process();
+    });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  if (posts === null || posts.length === 0) return null;
+  if (instagramPostUrls.length === 0) return null;
 
   return (
     <section
@@ -71,53 +75,28 @@ export function InstagramFeed() {
           <div className="w-20 h-1 bg-primary mx-auto mt-6 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {posts.map((p, idx) => {
-            const img = p.media_type === "VIDEO" ? p.thumbnail_url : p.media_url;
-            return (
-              <motion.a
-                key={p.id}
-                href={p.permalink}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: Math.min(idx * 0.04, 0.32) }}
-                className="group relative aspect-square overflow-hidden rounded-xl border border-border bg-muted"
-                aria-label={p.caption?.slice(0, 100) ?? "Instagram post"}
-              >
-                {img ? (
-                  <img
-                    src={img}
-                    alt={p.caption?.slice(0, 120) ?? "Instagram post"}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                    <Instagram className="h-10 w-10" />
-                  </div>
-                )}
-
-                {(p.media_type === "VIDEO" || p.media_type === "CAROUSEL_ALBUM") && (
-                  <div className="absolute top-2 right-2 bg-black/55 backdrop-blur-sm text-white rounded-full p-1.5">
-                    {p.media_type === "VIDEO" ? (
-                      <Play className="h-3.5 w-3.5 fill-white" />
-                    ) : (
-                      <Images className="h-3.5 w-3.5" />
-                    )}
-                  </div>
-                )}
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 md:p-4">
-                  <p className="text-white text-xs md:text-sm leading-snug line-clamp-3">
-                    {p.caption?.slice(0, 160) ?? ""}
-                  </p>
-                </div>
-              </motion.a>
-            );
-          })}
+        <div
+          ref={containerRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
+        >
+          {instagramPostUrls.map((url) => (
+            <blockquote
+              key={url}
+              className="instagram-media w-full max-w-[400px]"
+              data-instgrm-permalink={url}
+              data-instgrm-version="14"
+              style={{
+                background: "#FFF",
+                border: 0,
+                borderRadius: "12px",
+                boxShadow:
+                  "0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)",
+                margin: 0,
+                padding: 0,
+                width: "100%",
+              }}
+            />
+          ))}
         </div>
 
         <div className="mt-10 text-center">
