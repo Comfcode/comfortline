@@ -197,7 +197,7 @@ export default function MinskWarsawAirportPage() {
 
           {/* Also serves */}
           <a
-            href={lang === "ru" ? "/minsk-varshava-modlin-aeroport" : "/minsk-warsaw-modlin-airport"}
+            href={lang === "ru" ? "/трансфер-минск-варшава-модлин" : "/minsk-warsaw-modlin-airport"}
             className="flex items-center justify-between gap-4 bg-card border border-border/60 rounded-2xl px-5 py-4 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
           >
             <div>

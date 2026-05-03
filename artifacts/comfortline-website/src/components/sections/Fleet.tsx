@@ -15,7 +15,7 @@ const cars = [
     category: "sedan",
     luggageRu: "2 чемодана",
     luggageEn: "2 suitcases",
-    hrefRu: "/mercedes-e-klass-transfer",
+    hrefRu: "/трансфер-мерседес-е-класс",
     hrefEn: "/mercedes-e-class-transfer",
   },
   {
@@ -28,7 +28,7 @@ const cars = [
     category: "minivan",
     luggageRu: "Вместительный",
     luggageEn: "Spacious",
-    hrefRu: "/kia-karnaval-transfer",
+    hrefRu: "/трансфер-киа-карнавал",
     hrefEn: "/kia-carnival-transfer",
   },
   {
@@ -41,7 +41,7 @@ const cars = [
     category: "suv",
     luggageRu: "Вместительный",
     luggageEn: "Spacious",
-    hrefRu: "/hyundai-palisade-transfer",
+    hrefRu: "/трансфер-хендай-палисад",
     hrefEn: "/hyundai-palisade-transfer",
   },
   {
@@ -54,7 +54,7 @@ const cars = [
     category: "minivan",
     luggageRu: "Большой отсек",
     luggageEn: "Large cargo",
-    hrefRu: "/fiat-scudo-transfer",
+    hrefRu: "/трансфер-фиат-скудо",
     hrefEn: "/fiat-scudo-transfer",
   },
 ];

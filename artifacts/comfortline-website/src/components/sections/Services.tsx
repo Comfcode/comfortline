@@ -15,26 +15,26 @@ interface RouteItem {
 const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
   ru: [
     [
-      { from: "Минск", to: "Аэропорт Вильнюса", code: "VNO", meta: "~175 км · 2,5–5 ч",  href: "/minsk-vilnyus-aeroport" },
-      { from: "Минск", to: "Варшава Шопен",      code: "WAW", meta: "~550 км · 6–9 ч",    href: "/minsk-varshava-shopin-aeroport" },
-      { from: "Минск", to: "Варшава Модлин",     code: "WMI", meta: "~570 км · 7–10 ч",   href: "/minsk-varshava-modlin-aeroport" },
+      { from: "Минск", to: "Аэропорт Вильнюса", code: "VNO", meta: "~175 км · 2,5–5 ч",  href: "/трансфер-минск-вильнюс-аэропорт" },
+      { from: "Минск", to: "Варшава Шопен",      code: "WAW", meta: "~550 км · 6–9 ч",    href: "/трансфер-минск-варшава-шопен" },
+      { from: "Минск", to: "Варшава Модлин",     code: "WMI", meta: "~570 км · 7–10 ч",   href: "/трансфер-минск-варшава-модлин" },
     ],
     [
-      { from: "Минск", to: "по городу",    code: "24/7",      meta: "30–60 мин подача",    href: "/minsk-city-transfer" },
-      { from: "Минск", to: "по Беларуси",  code: "6 ОБЛ.",    meta: "Брест, Гродно, Витебск…", href: "/belarus-transfer" },
-      { from: "Минск", to: "санаторий",    code: "SPA",       meta: "Нарочь, Браслав, БП…",  href: "/sanatorium-transfer" },
-      { from: "Минск", to: "Россия",       code: "BY→RU",     meta: "~370–720 км",         href: "/russia-transfer" },
+      { from: "Минск", to: "по городу",    code: "24/7",      meta: "30–60 мин подача",    href: "/трансфер-по-минску" },
+      { from: "Минск", to: "по Беларуси",  code: "6 ОБЛ.",    meta: "Брест, Гродно, Витебск…", href: "/трансфер-по-беларуси" },
+      { from: "Минск", to: "санаторий",    code: "SPA",       meta: "Нарочь, Браслав, БП…",  href: "/трансфер-в-санаторий" },
+      { from: "Минск", to: "Россия",       code: "BY→RU",     meta: "~370–720 км",         href: "/трансфер-в-россию" },
     ],
     [
-      { from: "Группа", to: "любой маршрут", code: "≤8 ЧЕЛ", meta: "Минивэн / Микроавтобус", href: "/group-transfer" },
-      { from: "VIP",    to: "бизнес-трансфер", code: "PREM", meta: "Mercedes E / V-class",    href: "/vip-transfer" },
-      { from: "Лыжи",   to: "горнолыжный курорт", code: "SKI", meta: "Силичи, Татры, Закопане", href: "/ski-transfer" },
+      { from: "Группа", to: "любой маршрут", code: "≤8 ЧЕЛ", meta: "Минивэн / Микроавтобус", href: "/групповой-трансфер" },
+      { from: "VIP",    to: "бизнес-трансфер", code: "PREM", meta: "Mercedes E / V-class",    href: "/вип-трансфер" },
+      { from: "Лыжи",   to: "горнолыжный курорт", code: "SKI", meta: "Силичи, Татры, Закопане", href: "/лыжный-трансфер" },
     ],
     [
-      { from: "Минск", to: "Варшава",  code: "WAW", meta: "~550 км · 6–8 ч",   href: "/warsaw-transfer" },
-      { from: "Минск", to: "Рига",     code: "RIX", meta: "~470 км · 5–7 ч",   href: "/riga-transfer" },
-      { from: "Минск", to: "Берлин",   code: "BER", meta: "~1 150 км · 14–16 ч", href: "/berlin-transfer" },
-      { from: "Минск", to: "Прага",    code: "PRG", meta: "~1 450 км · 16–18 ч", href: "/prague-transfer" },
+      { from: "Минск", to: "Варшава",  code: "WAW", meta: "~550 км · 6–8 ч",   href: "/трансфер-варшава" },
+      { from: "Минск", to: "Рига",     code: "RIX", meta: "~470 км · 5–7 ч",   href: "/трансфер-рига" },
+      { from: "Минск", to: "Берлин",   code: "BER", meta: "~1 150 км · 14–16 ч", href: "/трансфер-берлин" },
+      { from: "Минск", to: "Прага",    code: "PRG", meta: "~1 450 км · 16–18 ч", href: "/трансфер-прага" },
     ],
   ],
   en: [

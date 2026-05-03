@@ -322,9 +322,9 @@ const vehicleContent: Record<string, BilingualVehicle> = {
 
 const routeLinks = {
   ru: [
-    { label: "Минск — Аэропорт Вильнюса (VNO)", href: "/minsk-vilnyus-aeroport" },
-    { label: "Минск — Варшава Шопен (WAW)", href: "/minsk-varshava-shopin-aeroport" },
-    { label: "Минск — Варшава Модлин (WMI)", href: "/minsk-varshava-modlin-aeroport" },
+    { label: "Минск — Аэропорт Вильнюса (VNO)", href: "/трансфер-минск-вильнюс-аэропорт" },
+    { label: "Минск — Варшава Шопен (WAW)", href: "/трансфер-минск-варшава-шопен" },
+    { label: "Минск — Варшава Модлин (WMI)", href: "/трансфер-минск-варшава-модлин" },
   ],
   en: [
     { label: "Minsk — Vilnius Airport (VNO)", href: "/minsk-vilnius-airport" },
