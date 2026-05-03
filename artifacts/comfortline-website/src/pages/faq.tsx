@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ContactModal } from "@/components/sections/ContactModal";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
@@ -440,6 +441,7 @@ export default function FaqPage() {
   const { lang } = useLang();
   const sections = lang === "ru" ? ruFaq : enFaq;
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({});
+  const [contactOpen, setContactOpen] = useState(false);
 
   function toggle(key: string) {
     setOpenMap(m => ({ ...m, [key]: !m[key] }));
@@ -540,15 +542,17 @@ export default function FaqPage() {
               ? "Свяжитесь с нами — ответим быстро и подберём маршрут под ваши задачи."
               : "Contact us — we respond fast and will find the right route for you."}
           </p>
-          <a
-            href="/#contact"
-            className="inline-block px-8 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm tracking-wide hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+          <button
+            type="button"
+            onClick={() => setContactOpen(true)}
+            className="inline-block px-8 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm tracking-wide hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 cursor-pointer"
           >
             {lang === "ru" ? "Связаться с нами" : "Contact us"}
-          </a>
+          </button>
         </motion.div>
       </div>
 
+      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
       <Footer />
     </div>
   );
