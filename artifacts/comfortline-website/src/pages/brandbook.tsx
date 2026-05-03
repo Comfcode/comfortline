@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Download, Copy, Check, Printer, Palette, RotateCcw } from "lucide-react";
+import { Download, Copy, Check, Printer, Palette, RotateCcw, Type } from "lucide-react";
 import { Logo, LogoMark } from "@/components/brand/Logo";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -10,10 +10,14 @@ import {
   applyBrandScheme,
   loadStoredScheme,
   saveScheme,
-  applyLogoScheme,
-  loadStoredLogoScheme,
-  saveLogoScheme,
 } from "@/lib/brand-schemes";
+import {
+  FONT_THEMES,
+  DEFAULT_FONT_ID,
+  applyFontTheme,
+  loadStoredFont,
+  saveFont,
+} from "@/lib/font-themes";
 import { useLang } from "@/context/language-context";
 
 const palette = [
@@ -137,12 +141,17 @@ function SchemePicker() {
       viewport={{ once: true }}
       data-no-print="true"
     >
-      <SectionHeader index="00" title={lang === "ru" ? "Цветовые схемы" : "Color Schemes"} />
+      <SectionHeader index="00" title={lang === "ru" ? "Цветовая схема" : "Color Scheme"} />
       <p className="text-muted-foreground text-sm mt-2 mb-8 max-w-2xl">
         {lang === "ru"
-          ? "Семь альтернативных акцентных схем. Выбор применяется ко всему сайту мгновенно и сохраняется в этом браузере. Сбросьте, чтобы вернуть фирменное золото."
-          : "Seven alternative accent schemes. Your choice is applied site-wide instantly and saved in this browser. Reset to restore the signature gold."}
+          ? "Семь акцентных схем. Управляют цветом логотипа, кнопок, ссылок и всех акцентов сайта. Выбор сохраняется в браузере."
+          : "Seven accent schemes. Drive the logo, buttons, links and every accent across the site. Saved in this browser."}
       </p>
+
+      {/* Live logo preview — confirms how the chosen scheme paints the brand mark */}
+      <div className="rounded-2xl border border-border bg-[#0E0D13] p-10 mb-6 flex items-center justify-center">
+        <Logo variant="full" scheme="dark" height={48} showTagline />
+      </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
         {BRAND_SCHEMES.map((s) => {
@@ -242,25 +251,21 @@ function FloatingPrintButton() {
   );
 }
 
-function LogoSchemePicker() {
+function FontPicker() {
   const { lang } = useLang();
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const [activeId, setActiveId] = useState<string>(DEFAULT_FONT_ID);
 
   useEffect(() => {
-    setActiveId(loadStoredLogoScheme());
+    setActiveId(loadStoredFont());
   }, []);
 
   const select = (id: string) => {
-    applyLogoScheme(id);
-    saveLogoScheme(id);
+    applyFontTheme(id);
+    saveFont(id);
     setActiveId(id);
   };
 
-  const reset = () => {
-    applyLogoScheme(null);
-    saveLogoScheme(null);
-    setActiveId(null);
-  };
+  const reset = () => select(DEFAULT_FONT_ID);
 
   return (
     <motion.section
@@ -270,61 +275,74 @@ function LogoSchemePicker() {
       viewport={{ once: true }}
       data-no-print="true"
     >
-      <SectionHeader index="00b" title={lang === "ru" ? "Цвет логотипа" : "Logo Color"} />
+      <SectionHeader index="00b" title={lang === "ru" ? "Шрифт сайта" : "Site Typography"} />
       <p className="text-muted-foreground text-sm mt-2 mb-8 max-w-2xl">
         {lang === "ru"
-          ? "Семь цветов отдельно для логотипа — независимо от акцента сайта. Например: акцент сайта рубиновый, а логотип золотой. По умолчанию следует за акцентом сайта."
-          : "Seven colors for the logo only — independent of the site accent. For example: site accent in ruby, logo in gold. By default the logo follows the site accent."}
+          ? "Семь актуальных шрифтовых пар 2026. Применяется ко всему сайту — заголовкам и тексту. Выбор сохраняется в браузере."
+          : "Seven trending 2026 typefaces. Applied site-wide to headings and body. Saved in this browser."}
       </p>
 
-      {/* Live preview of the logo */}
-      <div className="rounded-2xl border border-border bg-[#0E0D13] p-10 mb-6 flex items-center justify-center">
-        <Logo variant="full" scheme="dark" height={48} showTagline />
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-        {BRAND_SCHEMES.map((s) => {
-          const isActive = s.id === activeId;
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {FONT_THEMES.map((f) => {
+          const isActive = f.id === activeId;
           return (
             <button
-              key={s.id}
+              key={f.id}
               type="button"
-              onClick={() => select(s.id)}
+              onClick={() => select(f.id)}
               aria-pressed={isActive}
-              className={`group text-left rounded-2xl border-2 p-4 transition-all bg-card hover:border-primary/60 ${
+              className={`group text-left rounded-2xl border-2 p-5 transition-all bg-card hover:border-primary/60 ${
                 isActive ? "border-primary shadow-lg shadow-primary/10" : "border-border"
               }`}
             >
-              <div className="flex items-center gap-3 mb-2">
-                <div
-                  className="w-10 h-10 rounded-full ring-2 ring-border shrink-0"
-                  style={{ background: s.swatch }}
-                />
+              <div className="flex items-start justify-between gap-2 mb-3">
                 <div className="min-w-0">
-                  <p className="font-semibold text-sm text-foreground truncate">
-                    {lang === "ru" ? s.nameRu : s.name}
+                  <p
+                    className="font-semibold text-base text-foreground truncate"
+                    style={{ fontFamily: f.heading }}
+                  >
+                    {f.name}
                   </p>
-                  <code className="text-[10px] text-muted-foreground font-mono">{s.swatch}</code>
+                  <p
+                    className="text-xs text-muted-foreground mt-0.5"
+                    style={{ fontFamily: f.body }}
+                  >
+                    {lang === "ru" ? f.descriptionRu : f.description}
+                  </p>
                 </div>
-                {isActive && <Check className="h-4 w-4 text-primary ml-auto shrink-0" />}
+                {isActive && <Check className="h-4 w-4 text-primary shrink-0 mt-1" />}
+              </div>
+              <div className="border-t border-border/60 pt-3 space-y-1">
+                <p
+                  className="text-xl text-foreground leading-tight"
+                  style={{ fontFamily: f.heading, fontWeight: 700 }}
+                >
+                  ComfortLine
+                </p>
+                <p
+                  className="text-xs text-muted-foreground"
+                  style={{ fontFamily: f.body }}
+                >
+                  {lang === "ru"
+                    ? "Премиальные трансферы по Европе"
+                    : "Premium transfers across Europe"}
+                </p>
               </div>
             </button>
           );
         })}
 
-        {/* Follow site accent (default) */}
+        {/* Reset card */}
         <button
           type="button"
           onClick={reset}
-          aria-pressed={activeId === null}
-          className={`group rounded-2xl border-2 border-dashed p-4 transition-all bg-card flex flex-col items-center justify-center text-center min-h-[100px] ${
-            activeId === null ? "border-primary shadow-lg shadow-primary/10" : "border-border hover:border-primary/60"
-          }`}
+          className="group rounded-2xl border-2 border-dashed border-border p-5 transition-all hover:border-primary/60 bg-card flex flex-col items-center justify-center text-center min-h-[140px]"
         >
-          <RotateCcw className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors mb-1" />
-          <p className="text-xs font-semibold text-foreground">
-            {lang === "ru" ? "Как акцент сайта" : "Follow site accent"}
+          <Type className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors mb-2" />
+          <p className="text-sm font-semibold text-foreground">
+            {lang === "ru" ? "Сбросить" : "Reset"}
           </p>
+          <p className="text-xs text-muted-foreground mt-1">Montserrat</p>
         </button>
       </div>
     </motion.section>
@@ -351,11 +369,11 @@ export default function BrandbookPage() {
 
         <div className="container mx-auto px-6 max-w-5xl space-y-28 mt-24">
 
-          {/* ── Color Scheme Picker ── */}
+          {/* ── Color Scheme Picker (drives accent + logo gradient) ── */}
           <SchemePicker />
 
-          {/* ── Logo Color Picker ── */}
-          <LogoSchemePicker />
+          {/* ── Font Picker ── */}
+          <FontPicker />
 
           {/* ── Primary Logo ── */}
           <motion.section variants={sectionVariant} initial="hidden" whileInView="visible" viewport={{ once: true }}>
