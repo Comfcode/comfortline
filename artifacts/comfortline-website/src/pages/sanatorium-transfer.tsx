@@ -13,7 +13,11 @@ const data: RoutePageData = {
       { label: "Класс авто", value: "Седан / Минивэн" },
     ],
     photosTitle: "Здравницы Беларуси",
-    photos: [],
+    photos: [
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/%D0%A1%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_%D0%9D%D0%B0%D1%80%D0%BE%D1%87%D1%8C_%D0%B2%D0%B8%D0%B4_%D1%81_%D0%BE%D0%B7%D0%B5%D1%80%D0%B0.jpg/1280px-%D0%A1%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_%D0%9D%D0%B0%D1%80%D0%BE%D1%87%D1%8C_%D0%B2%D0%B8%D0%B4_%D1%81_%D0%BE%D0%B7%D0%B5%D1%80%D0%B0.jpg", caption: "Санаторий «Нарочь»" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/%D0%A1%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_%22%D0%A1%D0%BF%D1%83%D1%82%D0%BD%D0%B8%D0%BA%22_-_panoramio.jpg/1280px-%D0%A1%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_%22%D0%A1%D0%BF%D1%83%D1%82%D0%BD%D0%B8%D0%BA%22_-_panoramio.jpg", caption: "Санаторий «Спутник»" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/d/dd/Sanatoriy_Krinica.jpg", caption: "Санаторий «Криница»" },
+    ],
     howTitle: "Как проходит поездка",
     steps: [
       { icon: MapPin, title: "Подача к адресу", desc: "Заберём вас от дома, аэропорта или вокзала в назначенное время — без долгого ожидания." },
@@ -64,7 +68,11 @@ const data: RoutePageData = {
       { label: "Vehicle", value: "Sedan / Minivan" },
     ],
     photosTitle: "Belarus Health Resorts",
-    photos: [],
+    photos: [
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/%D0%A1%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_%D0%9D%D0%B0%D1%80%D0%BE%D1%87%D1%8C_%D0%B2%D0%B8%D0%B4_%D1%81_%D0%BE%D0%B7%D0%B5%D1%80%D0%B0.jpg/1280px-%D0%A1%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_%D0%9D%D0%B0%D1%80%D0%BE%D1%87%D1%8C_%D0%B2%D0%B8%D0%B4_%D1%81_%D0%BE%D0%B7%D0%B5%D1%80%D0%B0.jpg", caption: "Naroch Sanatorium" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/%D0%A1%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_%22%D0%A1%D0%BF%D1%83%D1%82%D0%BD%D0%B8%D0%BA%22_-_panoramio.jpg/1280px-%D0%A1%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_%22%D0%A1%D0%BF%D1%83%D1%82%D0%BD%D0%B8%D0%BA%22_-_panoramio.jpg", caption: "Sputnik Sanatorium" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/d/dd/Sanatoriy_Krinica.jpg", caption: "Krinitsa Sanatorium" },
+    ],
     howTitle: "How the transfer works",
     steps: [
       { icon: MapPin, title: "Pickup at your address", desc: "We collect you from home, the airport or the station at the agreed time — no long waits." },
