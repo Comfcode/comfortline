@@ -1,4 +1,22 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://comfortline.by/sitemap.xml
+
+# Yandex-specific directives (Yandex respects Host, Clean-param, Crawl-delay)
+User-agent: Yandex
+Allow: /
+Disallow: /api/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid /
+Host: comfortline.by
+
+# Yandex image bot — explicit allow for richer image indexing
+User-agent: YandexImages
+Allow: /
+
+# Bing / IndexNow — supported by both Bing and Yandex for instant indexing
+# To enable: place <key>.txt at site root containing only the key string,
+# then POST URLs to https://api.indexnow.org/indexnow
+User-agent: bingbot
+Allow: /

@@ -84,6 +84,28 @@ function buildHtml(template, route, lang) {
     `<link rel="canonical" href="${canonicalUrl}" />`,
   );
 
+  const isWarsaw = route.pathEn.includes("warsaw");
+  const isVilnius = route.pathEn.includes("vilnius");
+  const destGeo = isWarsaw
+    ? { region: "PL-MZ", placename: "Warsaw", pos: "52.2297;21.0122" }
+    : isVilnius
+      ? { region: "LT-VL", placename: "Vilnius", pos: "54.6872;25.2797" }
+      : null;
+  if (destGeo) {
+    html = html.replace(
+      /<meta name="geo\.region" content="[^"]*"\s*\/>/,
+      `<meta name="geo.region" content="${destGeo.region}" />\n    <meta name="geo.region" content="BY-MI" />`,
+    );
+    html = html.replace(
+      /<meta name="geo\.placename" content="[^"]*"\s*\/>/,
+      `<meta name="geo.placename" content="Minsk – ${destGeo.placename}" />`,
+    );
+    html = html.replace(
+      /<meta name="geo\.position" content="[^"]*"\s*\/>/,
+      `<meta name="geo.position" content="${destGeo.pos}" />`,
+    );
+  }
+
   html = html.replace(
     /<meta property="og:locale" content="[^"]*"\s*\/>/,
     `<meta property="og:locale" content="${ogLocale}" />`,
