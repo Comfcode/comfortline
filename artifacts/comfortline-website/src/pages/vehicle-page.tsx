@@ -72,6 +72,7 @@ interface VData {
   specsLuggage: string;
   specsYear: string;
   specsClass: string;
+  comfortNote?: string;
 }
 
 type BilingualVehicle = { ru: VData; en: VData };
@@ -83,9 +84,10 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       classBadge: "Бизнес",
       year: "2021",
       seats: 4,
-      luggage: "2 чемодана",
+      luggage: "до 3 чемоданов",
       image: "/car-mercedes-e.webp",
       desc: "Представительский бизнес-седан с кожаным салоном, климат-контролем и плавным ходом. Идеален для деловых поездок, встреч партнёров и трансферов в аэропорт.",
+      comfortNote: "С багажом комфортно для 3 пассажиров",
       featuresLabel: "Оснащение автомобиля",
       features: [
         "Кожаный салон",
@@ -118,9 +120,10 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       classBadge: "Business",
       year: "2021",
       seats: 4,
-      luggage: "2 suitcases",
+      luggage: "up to 3 suitcases",
       image: "/car-mercedes-e.webp",
       desc: "A premium business-class sedan with leather interior, climate control, and a smooth, quiet ride. Perfect for business trips, VIP client pickups, and airport transfers.",
+      comfortNote: "Comfortable with luggage for 3 passengers",
       featuresLabel: "Vehicle equipment",
       features: [
         "Leather interior",
@@ -156,9 +159,10 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       classBadge: "Минивэн",
       year: "2019",
       seats: 7,
-      luggage: "Вместительный",
+      luggage: "до 5 чемоданов",
       image: "/car-kia-carnival.webp",
       desc: "Просторный семиместный минивэн для семейных и групповых поездок. Большой багажник, комфортные кресла в три ряда и плавный ход на дальних маршрутах.",
+      comfortNote: "С багажом комфортно для 5 пассажиров",
       featuresLabel: "Оснащение автомобиля",
       features: [
         "7 мест в 3 рядах",
@@ -190,9 +194,10 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       classBadge: "Minivan",
       year: "2019",
       seats: 7,
-      luggage: "Spacious",
+      luggage: "up to 5 suitcases",
       image: "/car-kia-carnival.webp",
       desc: "A spacious 7-seat minivan for family and group travel. Large boot, comfortable three-row seating and a smooth ride on long-distance routes.",
+      comfortNote: "Comfortable with luggage for 5 passengers",
       featuresLabel: "Vehicle equipment",
       features: [
         "7 seats across 3 rows",
@@ -227,9 +232,10 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       classBadge: "Внедорожник",
       year: "2020",
       seats: 7,
-      luggage: "Вместительный",
+      luggage: "до 5 чемоданов",
       image: "/car-hyundai-palisade.webp",
       desc: "Полноразмерный SUV с семью местами, высоким клиренсом и полным приводом. Уверенно держит дорогу в любых условиях — зимой, на трассе и в длительных поездках.",
+      comfortNote: "С багажом комфортно для 4 пассажиров",
       featuresLabel: "Оснащение автомобиля",
       features: [
         "7 мест в 3 рядах",
@@ -262,9 +268,10 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       classBadge: "SUV",
       year: "2020",
       seats: 7,
-      luggage: "Spacious",
+      luggage: "up to 5 suitcases",
       image: "/car-hyundai-palisade.webp",
       desc: "A full-size SUV with 7 seats, high ground clearance and all-wheel drive. Handles confidently in any weather — winter roads, motorways, and long-haul trips alike.",
+      comfortNote: "Comfortable with luggage for 4 passengers",
       featuresLabel: "Vehicle equipment",
       features: [
         "7 seats across 3 rows",
@@ -300,7 +307,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       classBadge: "Микроавтобус",
       year: "2015",
       seats: 8,
-      luggage: "Вместительный",
+      luggage: "до 6 чемоданов",
       image: "/car-fiat-scudo.webp",
       desc: "Просторный микроавтобус на 8 мест с большим грузовым отсеком. Оптимальный выбор для групп, корпоративных трансферов и поездок с большим количеством багажа.",
       featuresLabel: "Оснащение автомобиля",
@@ -334,7 +341,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       classBadge: "Minibus",
       year: "2015",
       seats: 8,
-      luggage: "Spacious",
+      luggage: "up to 6 suitcases",
       image: "/car-fiat-scudo.webp",
       desc: "A spacious 8-seat minibus with a large cargo area. The ideal choice for groups, corporate transfers, and trips with heavy or bulky luggage.",
       featuresLabel: "Vehicle equipment",
@@ -445,7 +452,7 @@ export function VehiclePage({ slug }: VehiclePageProps) {
           <p className="text-muted-foreground text-base leading-relaxed mb-8">{c.desc}</p>
 
           {/* Spec tiles */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
             {[
               { label: c.specsSeats, value: String(c.seats), icon: Users },
               { label: c.specsLuggage, value: c.luggage, icon: Briefcase },
@@ -459,6 +466,11 @@ export function VehiclePage({ slug }: VehiclePageProps) {
               </div>
             ))}
           </div>
+          {c.comfortNote && (
+            <p className="text-xs text-muted-foreground italic mb-8 pl-1">
+              {c.comfortNote}
+            </p>
+          )}
 
           {/* Photo gallery — exterior + interior */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
