@@ -424,7 +424,7 @@ export default function BrandbookPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { bg: "#0E0D13", fill: undefined,    textColor: "#F5F0E8", label: "Primary",     gid: "bm-pri" },
-                { bg: "#B59C73", fill: "#0E0D13",    textColor: "#0E0D13", label: "Gold BG",     gid: "bm-gld" },
+                { bg: "var(--logo-grad-3, #B59C73)", fill: "#0E0D13", textColor: "#0E0D13", label: "Accent BG", gid: "bm-gld" },
                 { bg: "#F8F7F5", fill: undefined,    textColor: "#131218", label: "On Light",    gid: "bm-lgt" },
                 { bg: "#131218", fill: "#F5F0E8",    textColor: "#F5F0E8", label: "Monochrome",  gid: "bm-mno" },
               ].map((v) => (
@@ -456,10 +456,10 @@ export default function BrandbookPage() {
                     <svg width={sz} height={sz} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <defs>
                         <linearGradient id={`fg-${sz}`} x1="20" y1="5" x2="3" y2="27" gradientUnits="userSpaceOnUse">
-                          <stop offset="0%"   stopColor="#EDD9A8"/>
-                          <stop offset="30%"  stopColor="#D4B07A"/>
-                          <stop offset="70%"  stopColor="#B59C73"/>
-                          <stop offset="100%" stopColor="#8A7555"/>
+                          <stop offset="0%"   stopColor="var(--logo-grad-1, #EDD9A8)"/>
+                          <stop offset="30%"  stopColor="var(--logo-grad-2, #D4B07A)"/>
+                          <stop offset="70%"  stopColor="var(--logo-grad-3, #B59C73)"/>
+                          <stop offset="100%" stopColor="var(--logo-grad-4, #8A7555)"/>
                         </linearGradient>
                       </defs>
                       <rect width="32" height="32" rx="7" fill="#0E0D13"/>
@@ -506,11 +506,11 @@ export default function BrandbookPage() {
               <div className="rounded-2xl border border-border bg-card p-8 flex flex-col items-center gap-5">
                 <div
                   className="rounded-full flex items-center justify-center"
-                  style={{ width: 120, height: 120, background: "#B59C73" }}
+                  style={{ width: 120, height: 120, background: "var(--logo-grad-3, #B59C73)" }}
                 >
                   <LogoMark fillColor="#0E0D13" size={72} gradientId="av-gold" />
                 </div>
-                <p className="text-xs text-muted-foreground">Gold background</p>
+                <p className="text-xs text-muted-foreground">Accent background</p>
               </div>
             </div>
           </motion.section>
