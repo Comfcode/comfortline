@@ -11,7 +11,8 @@ Allow: /
 Disallow: /api/
 Disallow: /brandbook
 Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid /
-Host: bycomfortline.com
+# Tell Yandex the canonical mirror is HTTPS (resolves "main address not using HTTPS" warning)
+Host: https://bycomfortline.com
 
 # Yandex image bot — explicit allow for richer image indexing
 User-agent: YandexImages
