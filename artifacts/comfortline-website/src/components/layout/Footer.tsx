@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { PhoneCall, Send } from "lucide-react";
 import { Instagram } from "lucide-react";
 import { SiTelegram, SiViber, SiWhatsapp, SiMessenger } from "react-icons/si";
@@ -5,10 +6,47 @@ import { useLang } from "@/context/language-context";
 import { Logo } from "@/components/brand/Logo";
 
 const navHrefs = ["#services", "#fleet", "#advantages", "#reviews"];
+const BRANDBOOK_KEY = "comfortline-brandbook-revealed";
+const TAP_THRESHOLD = 5;
+const TAP_WINDOW_MS = 3000;
 
 export function Footer() {
   const { t } = useLang();
   const f = t.footer;
+  const [brandbookVisible, setBrandbookVisible] = useState(false);
+  const tapCount = useRef(0);
+  const tapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    try {
+      setBrandbookVisible(localStorage.getItem(BRANDBOOK_KEY) === "1");
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  const handleCopyrightTap = () => {
+    tapCount.current += 1;
+    if (tapTimer.current) clearTimeout(tapTimer.current);
+    tapTimer.current = setTimeout(() => {
+      tapCount.current = 0;
+    }, TAP_WINDOW_MS);
+
+    if (tapCount.current >= TAP_THRESHOLD) {
+      tapCount.current = 0;
+      if (tapTimer.current) clearTimeout(tapTimer.current);
+      setBrandbookVisible((prev) => {
+        const next = !prev;
+        try {
+          if (next) localStorage.setItem(BRANDBOOK_KEY, "1");
+          else localStorage.removeItem(BRANDBOOK_KEY);
+        } catch {
+          /* ignore */
+        }
+        return next;
+      });
+    }
+  };
 
   return (
     <footer className="bg-background border-t border-border pt-16 pb-8">
@@ -86,7 +124,13 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} ComfortLine. {f.copyright}</p>
+          <p
+            onClick={handleCopyrightTap}
+            className="cursor-default select-none"
+            title=""
+          >
+            © {new Date().getFullYear()} ComfortLine. {f.copyright}
+          </p>
           <div className="flex flex-wrap gap-4 items-center">
             <span>{f.legalName}</span>
             <span>{f.unp}</span>
@@ -96,9 +140,11 @@ export function Footer() {
             <a href="/terms" className="hover:text-primary transition-colors underline underline-offset-2">
               {f.terms}
             </a>
-            <a href="/brandbook" className="hover:text-primary transition-colors underline underline-offset-2">
-              {f.brandbook}
-            </a>
+            {brandbookVisible && (
+              <a href="/brandbook" className="hover:text-primary transition-colors underline underline-offset-2">
+                {f.brandbook}
+              </a>
+            )}
           </div>
         </div>
       </div>

@@ -207,6 +207,41 @@ function SchemePicker() {
   );
 }
 
+function FloatingPrintButton() {
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const scrolled = window.scrollY + window.innerHeight;
+      const total = doc.scrollHeight;
+      // Hide when within 240px of page bottom (footer area)
+      setHidden(total - scrolled < 240);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  return (
+    <button
+      data-no-print="true"
+      onClick={() => window.print()}
+      aria-label="Save as PDF"
+      title="Save as PDF"
+      className={`fixed bottom-6 left-6 z-50 h-12 w-12 flex items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all duration-300 ${
+        hidden ? "opacity-0 pointer-events-none translate-y-4" : "opacity-100"
+      }`}
+    >
+      <Printer className="h-5 w-5" />
+    </button>
+  );
+}
+
 function LogoSchemePicker() {
   const { lang } = useLang();
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -301,15 +336,7 @@ export default function BrandbookPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      {/* Floating print button */}
-      <button
-        data-no-print="true"
-        onClick={() => window.print()}
-        className="fixed bottom-6 left-6 z-50 flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm shadow-xl hover:bg-primary/90 active:scale-95 transition-all"
-      >
-        <Printer className="h-4 w-4" />
-        Save as PDF
-      </button>
+      <FloatingPrintButton />
 
       <div className="pt-24 pb-32">
 
