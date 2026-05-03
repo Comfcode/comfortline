@@ -96,6 +96,9 @@ export function Footer() {
             <a href="/terms" className="hover:text-primary transition-colors underline underline-offset-2">
               {f.terms}
             </a>
+            <a href="/brandbook" className="hover:text-primary transition-colors underline underline-offset-2">
+              {f.brandbook}
+            </a>
           </div>
         </div>
       </div>

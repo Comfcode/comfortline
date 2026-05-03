@@ -151,6 +151,7 @@ interface Translations {
     unp: string;
     privacyPolicy: string;
     terms: string;
+    brandbook: string;
   };
 }
 
@@ -353,6 +354,7 @@ const ru: Translations = {
     unp: "УНП 193255422",
     privacyPolicy: "Политика конфиденциальности",
     terms: "Публичная оферта",
+    brandbook: "Брендбук",
   },
 };
 
@@ -555,6 +557,7 @@ const en: Translations = {
     unp: "TIN 193255422",
     privacyPolicy: "Privacy Policy",
     terms: "Terms of Service",
+    brandbook: "Brandbook",
   },
 };
 
