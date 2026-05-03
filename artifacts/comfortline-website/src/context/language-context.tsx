@@ -128,6 +128,7 @@ interface Translations {
     cta: string;
     profileUrl: string;
     loadMore: string;
+    viewOnInstagram: string;
   };
   contact: {
     label: string;
@@ -343,6 +344,7 @@ const ru: Translations = {
     cta: "Открыть @transfer_comfortline",
     profileUrl: "https://www.instagram.com/transfer_comfortline/",
     loadMore: "Показать ещё",
+    viewOnInstagram: "Открыть пост в Instagram",
   },
   contact: {
     label: "Связаться с нами",
@@ -573,6 +575,7 @@ const en: Translations = {
     cta: "Open @transfer_comfortline",
     profileUrl: "https://www.instagram.com/transfer_comfortline/",
     loadMore: "Show more",
+    viewOnInstagram: "View post on Instagram",
   },
   contact: {
     label: "Get in Touch",

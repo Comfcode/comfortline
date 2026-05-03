@@ -101,8 +101,46 @@ export function InstagramFeed() {
                 margin: 0,
                 padding: 0,
                 width: "100%",
+                minHeight: 320,
               }}
-            />
+            >
+              {/* Fallback shown when Instagram's embed.js fails to render
+                  (deleted post, region block, ad-blocker, slow load).
+                  embed.js replaces this content on success. */}
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 12,
+                  width: "100%",
+                  height: 320,
+                  padding: 24,
+                  color: "#262626",
+                  textDecoration: "none",
+                  fontFamily:
+                    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  textAlign: "center",
+                  lineHeight: 1.4,
+                }}
+                aria-label={`${i.label}: ${url}`}
+              >
+                <Instagram
+                  style={{ width: 32, height: 32, color: "#E1306C" }}
+                  aria-hidden="true"
+                />
+                <span>{i.viewOnInstagram}</span>
+                <span style={{ fontSize: 12, color: "#8e8e8e" }}>
+                  {url.replace("https://www.instagram.com", "")}
+                </span>
+              </a>
+            </blockquote>
           ))}
         </div>
 
