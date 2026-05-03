@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Download, Copy, Check, Printer } from "lucide-react";
+import { Download, Copy, Check, Printer, Palette, RotateCcw } from "lucide-react";
 import { Logo, LogoMark } from "@/components/brand/Logo";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import {
+  BRAND_SCHEMES,
+  DEFAULT_SCHEME_ID,
+  applyBrandScheme,
+  loadStoredScheme,
+  saveScheme,
+} from "@/lib/brand-schemes";
+import { useLang } from "@/context/language-context";
 
 const palette = [
   { name: "Charcoal Core", hex: "#0E0D13", role: "Deepest background", light: true },
@@ -102,6 +110,100 @@ const sectionVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+function SchemePicker() {
+  const { lang } = useLang();
+  const [activeId, setActiveId] = useState<string>(DEFAULT_SCHEME_ID);
+
+  useEffect(() => {
+    setActiveId(loadStoredScheme());
+  }, []);
+
+  const select = (id: string) => {
+    applyBrandScheme(id);
+    saveScheme(id);
+    setActiveId(id);
+  };
+
+  const reset = () => select(DEFAULT_SCHEME_ID);
+
+  return (
+    <motion.section
+      variants={sectionVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      data-no-print="true"
+    >
+      <SectionHeader index="00" title={lang === "ru" ? "Цветовые схемы" : "Color Schemes"} />
+      <p className="text-muted-foreground text-sm mt-2 mb-8 max-w-2xl">
+        {lang === "ru"
+          ? "Семь альтернативных акцентных схем. Выбор применяется ко всему сайту мгновенно и сохраняется в этом браузере. Сбросьте, чтобы вернуть фирменное золото."
+          : "Seven alternative accent schemes. Your choice is applied site-wide instantly and saved in this browser. Reset to restore the signature gold."}
+      </p>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+        {BRAND_SCHEMES.map((s) => {
+          const isActive = s.id === activeId;
+          return (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => select(s.id)}
+              aria-pressed={isActive}
+              className={`group text-left rounded-2xl border-2 p-4 transition-all bg-card hover:border-primary/60 ${
+                isActive ? "border-primary shadow-lg shadow-primary/10" : "border-border"
+              }`}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className="w-10 h-10 rounded-full ring-2 ring-border shrink-0"
+                  style={{ background: s.swatch }}
+                />
+                <div className="min-w-0">
+                  <p className="font-semibold text-sm text-foreground truncate">
+                    {lang === "ru" ? s.nameRu : s.name}
+                  </p>
+                  <code className="text-[10px] text-muted-foreground font-mono">{s.swatch}</code>
+                </div>
+                {isActive && (
+                  <Check className="h-4 w-4 text-primary ml-auto shrink-0" />
+                )}
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {lang === "ru" ? s.descriptionRu : s.description}
+              </p>
+            </button>
+          );
+        })}
+
+        {/* Reset card */}
+        <button
+          type="button"
+          onClick={reset}
+          className="group rounded-2xl border-2 border-dashed border-border p-4 transition-all hover:border-primary/60 bg-card flex flex-col items-center justify-center text-center min-h-[140px]"
+        >
+          <RotateCcw className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors mb-2" />
+          <p className="text-sm font-semibold text-foreground">
+            {lang === "ru" ? "Сбросить" : "Reset"}
+          </p>
+          <p className="text-xs text-muted-foreground mt-1">
+            {lang === "ru" ? "Фирменное золото" : "Signature Gold"}
+          </p>
+        </button>
+      </div>
+
+      <div className="mt-6 flex items-center gap-2 text-xs text-muted-foreground">
+        <Palette className="h-3.5 w-3.5" />
+        <span>
+          {lang === "ru"
+            ? "Изменения применяются к кнопкам, ссылкам, акцентам по всему сайту."
+            : "Changes apply to buttons, links and accents site-wide."}
+        </span>
+      </div>
+    </motion.section>
+  );
+}
+
 export default function BrandbookPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -129,6 +231,9 @@ export default function BrandbookPage() {
         </div>
 
         <div className="container mx-auto px-6 max-w-5xl space-y-28 mt-24">
+
+          {/* ── Color Scheme Picker ── */}
+          <SchemePicker />
 
           {/* ── Primary Logo ── */}
           <motion.section variants={sectionVariant} initial="hidden" whileInView="visible" viewport={{ once: true }}>
