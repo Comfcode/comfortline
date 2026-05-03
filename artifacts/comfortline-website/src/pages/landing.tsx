@@ -5,6 +5,7 @@ import { Services } from "@/components/sections/Services";
 import { Fleet } from "@/components/sections/Fleet";
 import { Advantages } from "@/components/sections/Advantages";
 import { Reviews } from "@/components/sections/Reviews";
+import { InstagramFeed } from "@/components/sections/InstagramFeed";
 import { Contact } from "@/components/sections/Contact";
 import { Seo } from "@/seo/Seo";
 
@@ -28,6 +29,7 @@ export default function LandingPage() {
         <Fleet />
         <Advantages />
         <Reviews />
+        <InstagramFeed />
         <Contact />
       </main>
       <Footer />

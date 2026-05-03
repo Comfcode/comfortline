@@ -121,6 +121,13 @@ interface Translations {
     heading: string;
     items: { name: string; city: string; text: string }[];
   };
+  instagram: {
+    label: string;
+    heading: string;
+    subheading: string;
+    cta: string;
+    profileUrl: string;
+  };
   contact: {
     label: string;
     heading: string;
@@ -327,6 +334,13 @@ const ru: Translations = {
       { name: "Максим", city: "Москва", text: "Прилетал в Минск на конференцию. Встретили прямо у выхода, помогли с чемоданами. В машине уже ждала вода. Приятно удивлён уровнем сервиса." },
       { name: "Елена", city: "Брест", text: "Трансфер Польша — Минск с тремя пересадками пугал, но всё организовали безупречно. Водитель был на связи весь путь. Доехали спокойно и вовремя." },
     ],
+  },
+  instagram: {
+    label: "Мы в Instagram",
+    heading: "Поездки наших клиентов",
+    subheading: "Реальные кадры из наших трансферов — автомобили, маршруты и моменты в дороге. Подписывайтесь, чтобы видеть свежие поездки.",
+    cta: "Открыть @transfer_comfortline",
+    profileUrl: "https://www.instagram.com/transfer_comfortline/",
   },
   contact: {
     label: "Связаться с нами",
@@ -540,6 +554,13 @@ const en: Translations = {
       { name: "Max", city: "Moscow", text: "Flew into Minsk for a conference. Was met right at the exit, luggage handled, water already in the car. Genuinely impressed by the level of service." },
       { name: "Elena", city: "Brest", text: "The Poland–Minsk transfer with border crossing worried me, but everything was arranged perfectly. The driver stayed in touch the whole way. Arrived on time, stress-free." },
     ],
+  },
+  instagram: {
+    label: "Follow us on Instagram",
+    heading: "Our clients on the road",
+    subheading: "Real photos from our transfers — vehicles, routes and moments en route. Follow us to see the latest trips.",
+    cta: "Open @transfer_comfortline",
+    profileUrl: "https://www.instagram.com/transfer_comfortline/",
   },
   contact: {
     label: "Get in Touch",
