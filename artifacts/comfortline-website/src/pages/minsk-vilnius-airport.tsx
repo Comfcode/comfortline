@@ -11,8 +11,9 @@ import { SITE_URL } from "@/seo/seo-config";
 const content = {
   ru: {
     badge: "Трансфер",
-    title: "Минск — Аэропорт Вильнюса",
-    subtitle: "Индивидуальный трансфер на рейс из Вильнюса. Комфортно, вовремя, с профессиональным водителем.",
+    title: "Трансфер Минск — Аэропорт Вильнюса (VNO)",
+    subtitle: "Индивидуальный трансфер Минск — аэропорт Вильнюса (VNO) на ваш рейс. Подача от двери в Минске, фиксированная цена, опытный водитель и помощь на границе Беларусь–Литва.",
+    seoIntro: "Заказать трансфер Минск — Вильнюс аэропорт можно онлайн или по телефону. Цена фиксированная, без счётчика. Маршрут ~175 км через погранпереход Каменный Лог / Котловка обычно занимает 2,5–5 часов в зависимости от очередей на границе. Подаём комфорт-класс или бизнес-седан Mercedes E-class — выбираете под бюджет и количество багажа.",
     stats: [
       { label: "Расстояние", value: "~175 км" },
       { label: "Время в пути", value: "2,5–5 ч" },
@@ -64,8 +65,9 @@ const content = {
   },
   en: {
     badge: "Transfer",
-    title: "Minsk — Vilnius Airport",
-    subtitle: "Private transfer to your Vilnius flight. On time, comfortable, with a professional chauffeur.",
+    title: "Minsk to Vilnius Airport (VNO) Transfer",
+    subtitle: "Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, professional driver, full assistance at the Belarus–Lithuania border.",
+    seoIntro: "Book a Minsk to Vilnius airport transfer online or by phone. Fixed price, no meter, no surge. The ~175 km route via the Kamenny Log / Kotlovka border crossing typically takes 2.5–5 hours depending on queues. Choose comfort class or a Mercedes E-class business sedan — pick the right fit for your budget and luggage.",
     stats: [
       { label: "Distance", value: "~175 km" },
       { label: "Travel time", value: "2.5–5 hrs" },
@@ -167,8 +169,11 @@ export default function MinskVilniusAirportPage() {
           <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
             {c.title}
           </h1>
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mb-10">
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mb-6">
             {c.subtitle}
+          </p>
+          <p className="text-muted-foreground/90 text-sm md:text-[15px] leading-relaxed max-w-3xl mb-10">
+            {c.seoIntro}
           </p>
 
           {/* Stats */}
@@ -258,6 +263,53 @@ export default function MinskVilniusAirportPage() {
               </li>
             ))}
           </ul>
+        </motion.section>
+
+        {/* Related routes — internal SEO links */}
+        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+            <Plane className="h-5 w-5 text-primary" />
+            {isRu ? "Похожие направления" : "Related transfers"}
+          </h2>
+          <p className="text-muted-foreground text-sm mb-6 max-w-2xl">
+            {isRu
+              ? "Если из Вильнюса нет нужного рейса — рассмотрите альтернативные аэропорты с прямым трансфером из Минска:"
+              : "If Vilnius doesn't have your flight, consider these alternative airports with direct transfer from Minsk:"}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a
+              href={isRu ? "/трансфер-минск-варшава-шопен" : "/minsk-warsaw-airport"}
+              className="block bg-card border border-border rounded-2xl p-5 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <p className="font-bold text-foreground group-hover:text-primary transition-colors">
+                  {isRu ? "Трансфер Минск — Аэропорт Варшавы Шопен (WAW)" : "Minsk — Warsaw Chopin Airport (WAW)"}
+                </p>
+                <ArrowRight className="h-4 w-4 text-primary shrink-0 mt-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                {isRu
+                  ? "~550 км, 6–10 ч. Главный международный аэропорт Польши. LOT, Lufthansa, Turkish Airlines."
+                  : "~550 km, 6–10 hrs. Poland's main international airport. LOT, Lufthansa, Turkish Airlines."}
+              </p>
+            </a>
+            <a
+              href={isRu ? "/трансфер-минск-варшава-модлин" : "/minsk-warsaw-modlin-airport"}
+              className="block bg-card border border-border rounded-2xl p-5 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <p className="font-bold text-foreground group-hover:text-primary transition-colors">
+                  {isRu ? "Трансфер Минск — Аэропорт Варшавы Модлин (WMI)" : "Minsk — Warsaw Modlin Airport (WMI)"}
+                </p>
+                <ArrowRight className="h-4 w-4 text-primary shrink-0 mt-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                {isRu
+                  ? "~600 км, 7–10 ч. Бюджетный хаб Ryanair и Wizz Air, в 35 км от центра Варшавы."
+                  : "~600 km, 7–10 hrs. Ryanair and Wizz Air budget hub, 35 km from central Warsaw."}
+              </p>
+            </a>
+          </div>
         </motion.section>
 
         {/* Why ComfortLine */}

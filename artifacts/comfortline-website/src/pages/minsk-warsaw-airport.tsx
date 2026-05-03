@@ -288,6 +288,53 @@ export default function MinskWarsawAirportPage() {
           </ul>
         </motion.section>
 
+        {/* Related routes — internal SEO links */}
+        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+            <Plane className="h-5 w-5 text-primary" />
+            {lang === "ru" ? "Похожие направления" : "Related transfers"}
+          </h2>
+          <p className="text-muted-foreground text-sm mb-6 max-w-2xl">
+            {lang === "ru"
+              ? "Альтернативные аэропорты с прямым трансфером из Минска — иногда выгоднее по цене билета и расписанию:"
+              : "Alternative airports with direct transfer from Minsk — sometimes a better deal on ticket price or schedule:"}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a
+              href={lang === "ru" ? "/трансфер-минск-вильнюс-аэропорт" : "/minsk-vilnius-airport"}
+              className="block bg-card border border-border rounded-2xl p-5 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <p className="font-bold text-foreground group-hover:text-primary transition-colors">
+                  {lang === "ru" ? "Трансфер Минск — Аэропорт Вильнюса (VNO)" : "Minsk — Vilnius Airport (VNO)"}
+                </p>
+                <ArrowRight className="h-4 w-4 text-primary shrink-0 mt-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                {lang === "ru"
+                  ? "~175 км, 2,5–5 ч. Ближайший аэропорт ЕС. Ryanair, Wizz Air, LOT, Turkish Airlines."
+                  : "~175 km, 2.5–5 hrs. The nearest EU airport. Ryanair, Wizz Air, LOT, Turkish Airlines."}
+              </p>
+            </a>
+            <a
+              href={lang === "ru" ? "/трансфер-минск-варшава-модлин" : "/minsk-warsaw-modlin-airport"}
+              className="block bg-card border border-border rounded-2xl p-5 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <p className="font-bold text-foreground group-hover:text-primary transition-colors">
+                  {lang === "ru" ? "Трансфер Минск — Аэропорт Варшавы Модлин (WMI)" : "Minsk — Warsaw Modlin Airport (WMI)"}
+                </p>
+                <ArrowRight className="h-4 w-4 text-primary shrink-0 mt-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                {lang === "ru"
+                  ? "~600 км, 7–10 ч. Бюджетный хаб Ryanair и Wizz Air, в 35 км от центра Варшавы."
+                  : "~600 km, 7–10 hrs. Ryanair and Wizz Air budget hub, 35 km from central Warsaw."}
+              </p>
+            </a>
+          </div>
+        </motion.section>
+
         {/* Why ComfortLine */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
