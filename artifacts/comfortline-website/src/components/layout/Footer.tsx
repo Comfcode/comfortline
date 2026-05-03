@@ -87,8 +87,8 @@ export function Footer() {
               {f.navLinks.map((label, i) => (
                 <li key={i}><a href={navHrefs[i]} className="hover:text-primary transition-colors">{label}</a></li>
               ))}
-              <li><a href="/блог" className="hover:text-primary transition-colors">Блог</a></li>
-              <li><a href="/faq" className="hover:text-primary transition-colors">FAQ</a></li>
+              <li><a href={f.blogHref} className="hover:text-primary transition-colors">{f.blogLabel}</a></li>
+              <li><a href={f.faqHref} className="hover:text-primary transition-colors">{f.faqLabel}</a></li>
             </ul>
           </div>
 
@@ -96,8 +96,8 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-foreground mb-6">{f.servicesHeading}</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              {f.serviceLinks.map((label, i) => (
-                <li key={i}><a href="/#services" className="hover:text-primary transition-colors">{label}</a></li>
+              {f.serviceLinks.map((link, i) => (
+                <li key={i}><a href={link.href} className="hover:text-primary transition-colors">{link.label}</a></li>
               ))}
             </ul>
           </div>

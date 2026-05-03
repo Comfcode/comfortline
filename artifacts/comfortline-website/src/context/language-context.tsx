@@ -144,7 +144,11 @@ interface Translations {
     navHeading: string;
     navLinks: string[];
     servicesHeading: string;
-    serviceLinks: string[];
+    serviceLinks: { label: string; href: string }[];
+    blogLabel: string;
+    blogHref: string;
+    faqLabel: string;
+    faqHref: string;
     contactsHeading: string;
     copyright: string;
     legalName: string;
@@ -347,7 +351,17 @@ const ru: Translations = {
     navHeading: "Навигация",
     navLinks: ["Услуги", "Автопарк", "Преимущества", "Отзывы"],
     servicesHeading: "Направления",
-    serviceLinks: ["Трансфер в Аэропорт", "Поездки по Минску", "Межгород по Беларуси", "Трансфер в Россию", "Поездки в Европу"],
+    serviceLinks: [
+      { label: "Трансфер в Аэропорт", href: "/трансфер-минск-вильнюс-аэропорт" },
+      { label: "Поездки по Минску", href: "/трансфер-по-минску" },
+      { label: "Межгород по Беларуси", href: "/трансфер-по-беларуси" },
+      { label: "Трансфер в Россию", href: "/трансфер-в-россию" },
+      { label: "Поездки в Европу", href: "/трансфер-варшава" },
+    ],
+    blogLabel: "Блог",
+    blogHref: "/блог",
+    faqLabel: "FAQ",
+    faqHref: "/faq",
     contactsHeading: "Контакты",
     copyright: "Все права защищены.",
     legalName: "ИП Мурашко Андрей Антонович",
@@ -550,7 +564,17 @@ const en: Translations = {
     navHeading: "Navigation",
     navLinks: ["Services", "Fleet", "Why Us", "Reviews"],
     servicesHeading: "Routes",
-    serviceLinks: ["Airport Transfer", "Trips in Minsk", "Intercity in Belarus", "Transfer to Russia", "Trips to Europe"],
+    serviceLinks: [
+      { label: "Airport Transfer", href: "/minsk-vilnius-airport" },
+      { label: "Trips in Minsk", href: "/minsk-city-transfer" },
+      { label: "Intercity in Belarus", href: "/belarus-transfer" },
+      { label: "Transfer to Russia", href: "/russia-transfer" },
+      { label: "Trips to Europe", href: "/warsaw-transfer" },
+    ],
+    blogLabel: "Blog",
+    blogHref: "/blog",
+    faqLabel: "FAQ",
+    faqHref: "/faq",
     contactsHeading: "Contacts",
     copyright: "All rights reserved.",
     legalName: "IE Murashko Andrey Antonovich",
