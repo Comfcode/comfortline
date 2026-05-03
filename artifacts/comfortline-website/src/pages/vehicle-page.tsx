@@ -465,8 +465,12 @@ export function VehiclePage({ slug }: VehiclePageProps) {
             <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
               <img
                 src={c.image}
-                alt={c.name}
+                alt={lang === "ru"
+                  ? `${c.name} — премиум-трансфер ComfortLine из Минска в аэропорты Европы`
+                  : `${c.name} — ComfortLine premium transfer from Minsk to European airports`}
                 className="w-full h-full object-cover object-center"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src =
                     "https://placehold.co/600x260/131218/B59C73?text=" + encodeURIComponent(c.name);
@@ -479,8 +483,12 @@ export function VehiclePage({ slug }: VehiclePageProps) {
             <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
               <img
                 src="/car-interior.png"
-                alt={lang === "ru" ? "Салон" : "Interior"}
+                alt={lang === "ru"
+                  ? `Салон ${c.name} — кожаные сиденья, Wi-Fi, USB-зарядка, ComfortLine трансфер`
+                  : `${c.name} interior — leather seats, Wi-Fi, USB charging, ComfortLine transfer`}
                 className="w-full h-full object-cover object-center"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src =
                     "https://placehold.co/600x260/131218/B59C73?text=Interior";

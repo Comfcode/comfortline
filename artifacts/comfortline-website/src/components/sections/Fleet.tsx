@@ -116,8 +116,10 @@ export function Fleet() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                     <img
                       src={car.image}
-                      alt={car.name}
+                      alt={`${car.name} — ${label} ComfortLine, ${f.seats}: ${car.seats}`}
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src =
                           "https://placehold.co/600x400/131218/B59C73?text=" + car.name.replace(/ /g, "+");

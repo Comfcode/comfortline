@@ -27,6 +27,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
+    <!-- LCP optimization: preload the hero image so it starts downloading before JS parses -->
+    <link rel="preload" as="image" href="/hero-bg.png" fetchpriority="high" />
+
+    <!-- Preconnect to messenger CDNs to shave handshake latency on contact-button clicks -->
+    <link rel="preconnect" href="https://wa.me" crossorigin />
+    <link rel="dns-prefetch" href="https://t.me" />
+    <link rel="dns-prefetch" href="https://www.instagram.com" />
+
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ComfortLine" />
     <meta property="og:locale" content="ru_RU" />

@@ -4,7 +4,7 @@ import { useLang } from "@/context/language-context";
 import { BookingWidget } from "@/components/sections/BookingWidget";
 
 export function Hero() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   return (
     <section className="relative min-h-[100dvh] flex items-end justify-center pt-20">
@@ -16,8 +16,17 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent dark:from-background dark:via-background/40 z-10"></div>
         <img
           src="/hero-bg.png"
-          alt="Premium black sedan"
+          alt={
+            lang === "ru"
+              ? "ComfortLine — премиум-трансфер из Минска в аэропорты Европы на чёрном бизнес-седане"
+              : "ComfortLine premium transfer from Minsk to European airports — black business sedan"
+          }
           className="w-full h-full object-cover object-center"
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
         />
       </div>
 
