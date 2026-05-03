@@ -93,6 +93,10 @@ const blogArticles = [
     title: "Как пересечь границу Беларусь — Литва в 2026: время, документы, КПП",
     description: "Подробный гайд по границе Беларусь–Литва в 2026: какие КПП работают, сколько стоят очереди, какие документы нужны для въезда в ЕС, советы водителей ComfortLine.",
     intro: "Граница Беларусь–Литва — это самый востребованный маршрут наших трансферов. Полный гайд: список рабочих КПП (Каменный Лог, Бенякони), среднее время прохождения 2–6 часов, документы (виза, страховка, бронь, финансы), типичные причины отказа во въезде и советы из практики водителей ComfortLine за 2025–2026 год.",
+    datePublished: "2026-04-15T09:00:00+03:00",
+    dateModified: "2026-05-03T09:00:00+03:00",
+    section: "Граница",
+    keywords: "граница беларусь литва, каменный лог, бенякони, кпп, очереди на границе, документы для ес, виза в литву",
   },
   {
     slug: "стоимость-трансфер-минск-варшава",
@@ -100,6 +104,10 @@ const blogArticles = [
     title: "Сколько стоит трансфер Минск — Варшава в 2026",
     description: "Из чего складывается цена трансфера Минск–Варшава: расстояние, класс авто, очереди на границе, доплаты. Сравнение комфорт- и бизнес-класса, реальные кейсы.",
     intro: "Трансфер Минск–Варшава — это поездка в 550–600 км с пересечением границы. Цена зависит от класса авто (от 220 € эконом до 450 € микроавтобус), времени суток и сезона. Разбираем составляющие цены и сравнение Mercedes E-class, VW Passat, Hyundai Palisade и Fiat Scudo.",
+    datePublished: "2026-04-10T09:00:00+03:00",
+    dateModified: "2026-05-03T09:00:00+03:00",
+    section: "Цены",
+    keywords: "трансфер минск варшава цена, стоимость такси минск варшава, mercedes e-class, vw passat, hyundai palisade, fiat scudo",
   },
   {
     slug: "что-нельзя-ввозить-в-ес",
@@ -107,6 +115,10 @@ const blogArticles = [
     title: "Что нельзя ввозить из Беларуси в ЕС в 2026: полный список",
     description: "Актуальный на 2026 год список товаров, запрещённых к ввозу из Беларуси в ЕС: санкционные позиции, лимиты на еду и валюту, наличные, табак, алкоголь.",
     intro: "Литва, Польша и Латвия применяют санкционные правила ЕС на въезд из Беларуси очень строго. Полный список запретов: топливо в канистрах, табак сверх 40 сигарет, электроника от 750 €, мясо и молочка, валюта свыше 10 000 €. Лимиты на ввоз в Беларусь и в ЕС в табличной форме.",
+    datePublished: "2026-04-05T09:00:00+03:00",
+    dateModified: "2026-05-03T09:00:00+03:00",
+    section: "Таможня",
+    keywords: "что нельзя ввозить в ес, санкции ес беларусь, таможенные правила, лимит наличных в ес, табак ввоз, алкоголь ввоз",
   },
   {
     slug: "какой-кпп-выбрать",
@@ -114,6 +126,10 @@ const blogArticles = [
     title: "Каменный Лог vs Котловка vs Бенякони — какой КПП выбрать в 2026",
     description: "Сравнение литовских КПП Каменный Лог, Котловка и Бенякони в 2026: время прохождения, инфраструктура, плюсы и минусы каждого пункта пропуска.",
     intro: "Если вы едете из Минска в Литву, у вас три варианта пунктов пропуска: Каменный Лог (Мядининкай), Бенякони (Шальчининкай) и ограниченно Котловка. Выбор КПП может сэкономить или отнять до 4 часов. Разбор плюсов и минусов на основе ежедневной статистики наших водителей.",
+    datePublished: "2026-03-28T09:00:00+03:00",
+    dateModified: "2026-05-03T09:00:00+03:00",
+    section: "Граница",
+    keywords: "каменный лог, котловка, бенякони, мядининкай, шальчининкай, кпп литва, выбор пункта пропуска",
   },
   {
     slug: "трансфер-с-детьми",
@@ -121,6 +137,10 @@ const blogArticles = [
     title: "Трансфер с детьми из Минска в аэропорт: чек-лист для родителей",
     description: "Чек-лист для трансфера с детьми из Минска в аэропорты Европы: документы, кресла, питание в дороге, советы по границе. Опыт водителей ComfortLine.",
     intro: "Поездка с детьми в аэропорт — это всегда стресс. Документы (загранпаспорт, виза, нотариальное согласие, страховка), детские кресла (ComfortLine предоставляет бесплатно), что взять в дорогу, как пройти границу быстрее. Чек-лист на основе опыта наших водителей за 8 лет.",
+    datePublished: "2026-03-20T09:00:00+03:00",
+    dateModified: "2026-05-03T09:00:00+03:00",
+    section: "Советы",
+    keywords: "трансфер с детьми, детское кресло, нотариальное согласие, поездка с ребёнком за границу, путешествие с детьми",
   },
   {
     slug: "как-добраться-до-аэропорта-вильнюса",
@@ -128,6 +148,10 @@ const blogArticles = [
     title: "Как добраться из Минска в аэропорт Вильнюса (VNO) в 2026",
     description: "Все способы добраться из Минска в аэропорт Вильнюса (VNO) в 2026: трансфер, такси, автобус, личное авто. Сравнение цены, времени и удобства.",
     intro: "Аэропорт Вильнюса (VNO) — самый удобный международный хаб для жителей Беларуси. Из Минска ~175 км. Сравниваем 4 варианта: индивидуальный трансфер ComfortLine от 130 €, сборное такси от 50 €, автобус от 25 €, личное авто. Время, цена, комфорт каждого варианта.",
+    datePublished: "2026-03-15T09:00:00+03:00",
+    dateModified: "2026-05-03T09:00:00+03:00",
+    section: "Маршруты",
+    keywords: "как добраться до аэропорта вильнюса, vno из минска, трансфер минск вильнюс аэропорт, автобус минск вильнюс",
   },
 ];
 
@@ -145,6 +169,10 @@ const blogArticleRoutes = blogArticles.map((a) => ({
   introRu: a.intro,
   introEn: a.intro,
   isArticle: true,
+  datePublished: a.datePublished,
+  dateModified: a.dateModified,
+  section: a.section,
+  keywords: a.keywords,
 }));
 
 const allRoutes = [...routes, blogIndexRoute, ...blogArticleRoutes];
@@ -276,13 +304,27 @@ function buildHtml(template, route, lang) {
       "@type": "Article",
       headline: h1,
       description: desc,
-      image: ogImage,
+      image: { "@type": "ImageObject", url: ogImage, width: 1200, height: 630 },
       url: canonicalUrl,
       mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
-      author: { "@type": "Organization", name: "ComfortLine", url: SITE_URL },
-      publisher: { "@type": "Organization", name: "ComfortLine", logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` } },
+      author: { "@type": "Organization", name: "ComfortLine", url: SITE_URL, "@id": `${SITE_URL}#organization` },
+      publisher: { "@type": "Organization", "@id": `${SITE_URL}#organization`, name: "ComfortLine", logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` } },
+      datePublished: route.datePublished,
+      dateModified: route.dateModified,
+      articleSection: route.section,
+      keywords: route.keywords,
       inLanguage: "ru",
+      isAccessibleForFree: true,
     };
+    const articleMetaInjection = `
+    <meta name="keywords" content="${escapeHtml(route.keywords)}" />
+    <meta property="article:published_time" content="${route.datePublished}" />
+    <meta property="article:modified_time" content="${route.dateModified}" />
+    <meta property="article:author" content="ComfortLine" />
+    <meta property="article:publisher" content="${SITE_URL}" />
+    <meta property="article:section" content="${escapeHtml(route.section)}" />
+    ${route.keywords.split(",").map((k) => `<meta property="article:tag" content="${escapeHtml(k.trim())}" />`).join("\n    ")}`;
+    html = html.replace(`<meta property="og:type" content="${ogType}" />`, `<meta property="og:type" content="${ogType}" />${articleMetaInjection}`);
     const breadcrumbJsonLd = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",

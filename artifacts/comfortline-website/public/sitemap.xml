@@ -1,72 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-          xmlns:xhtml="http://www.w3.org/1999/xhtml">
-    <url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
+  <url>
       <loc>https://bycomfortline.com/</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/opengraph.jpg</image:loc>
+      </image:image>
+      <image:image>
+        <image:loc>https://bycomfortline.com/hero-bg.webp</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/minsk-vilnius-airport"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/minsk-vilnius-airport.jpg</image:loc>
+      </image:image>
+      <image:image>
+        <image:loc>https://bycomfortline.com/car-mercedes-e.webp</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/minsk-vilnius-airport</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/minsk-vilnius-airport"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/minsk-vilnius-airport.jpg</image:loc>
+      </image:image>
+      <image:image>
+        <image:loc>https://bycomfortline.com/car-mercedes-e.webp</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D1%88%D0%BE%D0%BF%D0%B5%D0%BD</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D1%88%D0%BE%D0%BF%D0%B5%D0%BD"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/minsk-warsaw-airport"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D1%88%D0%BE%D0%BF%D0%B5%D0%BD"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/minsk-warsaw-airport.jpg</image:loc>
+      </image:image>
+      <image:image>
+        <image:loc>https://bycomfortline.com/car-kia-carnival.webp</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/minsk-warsaw-airport</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D1%88%D0%BE%D0%BF%D0%B5%D0%BD"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/minsk-warsaw-airport"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D1%88%D0%BE%D0%BF%D0%B5%D0%BD"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/minsk-warsaw-airport.jpg</image:loc>
+      </image:image>
+      <image:image>
+        <image:loc>https://bycomfortline.com/car-kia-carnival.webp</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D0%BC%D0%BE%D0%B4%D0%BB%D0%B8%D0%BD</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
-      <priority>0.9</priority>
+      <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D0%BC%D0%BE%D0%B4%D0%BB%D0%B8%D0%BD"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/minsk-warsaw-modlin-airport"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D0%BC%D0%BE%D0%B4%D0%BB%D0%B8%D0%BD"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/minsk-warsaw-modlin-airport.jpg</image:loc>
+      </image:image>
+      <image:image>
+        <image:loc>https://bycomfortline.com/car-hyundai-palisade.webp</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/minsk-warsaw-modlin-airport</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
-      <priority>0.9</priority>
+      <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D0%BC%D0%BE%D0%B4%D0%BB%D0%B8%D0%BD"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/minsk-warsaw-modlin-airport"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D0%BC%D0%BE%D0%B4%D0%BB%D0%B8%D0%BD"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/minsk-warsaw-modlin-airport.jpg</image:loc>
+      </image:image>
+      <image:image>
+        <image:loc>https://bycomfortline.com/car-hyundai-palisade.webp</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
@@ -75,7 +118,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/warsaw-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
@@ -84,7 +127,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B1%D0%B5%D1%80%D0%BB%D0%B8%D0%BD</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B1%D0%B5%D1%80%D0%BB%D0%B8%D0%BD"/>
@@ -93,7 +136,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/berlin-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B1%D0%B5%D1%80%D0%BB%D0%B8%D0%BD"/>
@@ -102,7 +145,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BF%D1%80%D0%B0%D0%B3%D0%B0</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BF%D1%80%D0%B0%D0%B3%D0%B0"/>
@@ -111,7 +154,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/prague-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BF%D1%80%D0%B0%D0%B3%D0%B0"/>
@@ -120,7 +163,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%80%D0%B8%D0%B3%D0%B0</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%80%D0%B8%D0%B3%D0%B0"/>
@@ -129,7 +172,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/riga-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%80%D0%B8%D0%B3%D0%B0"/>
@@ -138,7 +181,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BF%D0%BE-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA%D1%83</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BF%D0%BE-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA%D1%83"/>
@@ -147,7 +190,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/minsk-city-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BF%D0%BE-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA%D1%83"/>
@@ -156,7 +199,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BF%D0%BE-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D0%B8</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BF%D0%BE-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D0%B8"/>
@@ -165,7 +208,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/belarus-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BF%D0%BE-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D0%B8"/>
@@ -174,7 +217,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D1%80%D0%BE%D1%81%D1%81%D0%B8%D1%8E</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D1%80%D0%BE%D1%81%D1%81%D0%B8%D1%8E"/>
@@ -183,7 +226,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/russia-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D1%80%D0%BE%D1%81%D1%81%D0%B8%D1%8E"/>
@@ -192,7 +235,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%BE%D0%B2%D0%BE%D0%B9-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%BE%D0%B2%D0%BE%D0%B9-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80"/>
@@ -201,7 +244,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/group-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%BE%D0%B2%D0%BE%D0%B9-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80"/>
@@ -210,7 +253,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D1%81%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D1%81%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9"/>
@@ -219,7 +262,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/sanatorium-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D1%81%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9"/>
@@ -228,7 +271,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%BB%D1%8B%D0%B6%D0%BD%D1%8B%D0%B9-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%BB%D1%8B%D0%B6%D0%BD%D1%8B%D0%B9-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80"/>
@@ -237,7 +280,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/ski-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%BB%D1%8B%D0%B6%D0%BD%D1%8B%D0%B9-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80"/>
@@ -246,7 +289,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%B2%D0%B8%D0%BF-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B2%D0%B8%D0%BF-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80"/>
@@ -255,7 +298,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/vip-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B2%D0%B8%D0%BF-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80"/>
@@ -264,7 +307,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B5%D1%80%D1%81%D0%B5%D0%B4%D0%B5%D1%81-%D0%B5-%D0%BA%D0%BB%D0%B0%D1%81%D1%81</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B5%D1%80%D1%81%D0%B5%D0%B4%D0%B5%D1%81-%D0%B5-%D0%BA%D0%BB%D0%B0%D1%81%D1%81"/>
@@ -273,7 +316,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/mercedes-e-class-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B5%D1%80%D1%81%D0%B5%D0%B4%D0%B5%D1%81-%D0%B5-%D0%BA%D0%BB%D0%B0%D1%81%D1%81"/>
@@ -282,7 +325,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BA%D0%B8%D0%B0-%D0%BA%D0%B0%D1%80%D0%BD%D0%B0%D0%B2%D0%B0%D0%BB</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BA%D0%B8%D0%B0-%D0%BA%D0%B0%D1%80%D0%BD%D0%B0%D0%B2%D0%B0%D0%BB"/>
@@ -291,7 +334,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/kia-carnival-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BA%D0%B8%D0%B0-%D0%BA%D0%B0%D1%80%D0%BD%D0%B0%D0%B2%D0%B0%D0%BB"/>
@@ -300,7 +343,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%85%D0%B5%D0%BD%D0%B4%D0%B0%D0%B9-%D0%BF%D0%B0%D0%BB%D0%B8%D1%81%D0%B0%D0%B4</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%85%D0%B5%D0%BD%D0%B4%D0%B0%D0%B9-%D0%BF%D0%B0%D0%BB%D0%B8%D1%81%D0%B0%D0%B4"/>
@@ -309,7 +352,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/hyundai-palisade-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%85%D0%B5%D0%BD%D0%B4%D0%B0%D0%B9-%D0%BF%D0%B0%D0%BB%D0%B8%D1%81%D0%B0%D0%B4"/>
@@ -318,7 +361,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%84%D0%B8%D0%B0%D1%82-%D1%81%D0%BA%D1%83%D0%B4%D0%BE</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%84%D0%B8%D0%B0%D1%82-%D1%81%D0%BA%D1%83%D0%B4%D0%BE"/>
@@ -327,7 +370,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/fiat-scudo-transfer</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%84%D0%B8%D0%B0%D1%82-%D1%81%D0%BA%D1%83%D0%B4%D0%BE"/>
@@ -336,7 +379,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/faq</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/faq"/>
@@ -345,7 +388,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/privacy</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.2</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/privacy"/>
@@ -354,7 +397,7 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/terms</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.2</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/terms"/>
@@ -363,147 +406,200 @@
     </url>
   <url>
       <loc>https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BA%D0%B0%D1%83%D0%BD%D0%B0%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BA%D0%B0%D1%83%D0%BD%D0%B0%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/minsk-kaunas-airport"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BA%D0%B0%D1%83%D0%BD%D0%B0%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/minsk-kaunas-airport.jpg</image:loc>
+      </image:image>
+      <image:image>
+        <image:loc>https://bycomfortline.com/car-mercedes-e.webp</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/minsk-kaunas-airport</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BA%D0%B0%D1%83%D0%BD%D0%B0%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/minsk-kaunas-airport"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BA%D0%B0%D1%83%D0%BD%D0%B0%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/minsk-kaunas-airport.jpg</image:loc>
+      </image:image>
+      <image:image>
+        <image:loc>https://bycomfortline.com/car-mercedes-e.webp</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-index.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/blog</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-index.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C-%D0%BB%D0%B8%D1%82%D0%B2%D0%B0</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C-%D0%BB%D0%B8%D1%82%D0%B2%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C-%D0%BB%D0%B8%D1%82%D0%B2%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C-%D0%BB%D0%B8%D1%82%D0%B2%D0%B0"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-granitsa-belarus-litva.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/blog/%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C-%D0%BB%D0%B8%D1%82%D0%B2%D0%B0</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C-%D0%BB%D0%B8%D1%82%D0%B2%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C-%D0%BB%D0%B8%D1%82%D0%B2%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0-%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C-%D0%BB%D0%B8%D1%82%D0%B2%D0%B0"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-granitsa-belarus-litva.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-stoimost-transfer-minsk-varshava.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/blog/%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-stoimost-transfer-minsk-varshava.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%87%D1%82%D0%BE-%D0%BD%D0%B5%D0%BB%D1%8C%D0%B7%D1%8F-%D0%B2%D0%B2%D0%BE%D0%B7%D0%B8%D1%82%D1%8C-%D0%B2-%D0%B5%D1%81</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%87%D1%82%D0%BE-%D0%BD%D0%B5%D0%BB%D1%8C%D0%B7%D1%8F-%D0%B2%D0%B2%D0%BE%D0%B7%D0%B8%D1%82%D1%8C-%D0%B2-%D0%B5%D1%81"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D1%87%D1%82%D0%BE-%D0%BD%D0%B5%D0%BB%D1%8C%D0%B7%D1%8F-%D0%B2%D0%B2%D0%BE%D0%B7%D0%B8%D1%82%D1%8C-%D0%B2-%D0%B5%D1%81"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%87%D1%82%D0%BE-%D0%BD%D0%B5%D0%BB%D1%8C%D0%B7%D1%8F-%D0%B2%D0%B2%D0%BE%D0%B7%D0%B8%D1%82%D1%8C-%D0%B2-%D0%B5%D1%81"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-chto-nelzya-vvozit-v-es.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/blog/%D1%87%D1%82%D0%BE-%D0%BD%D0%B5%D0%BB%D1%8C%D0%B7%D1%8F-%D0%B2%D0%B2%D0%BE%D0%B7%D0%B8%D1%82%D1%8C-%D0%B2-%D0%B5%D1%81</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%87%D1%82%D0%BE-%D0%BD%D0%B5%D0%BB%D1%8C%D0%B7%D1%8F-%D0%B2%D0%B2%D0%BE%D0%B7%D0%B8%D1%82%D1%8C-%D0%B2-%D0%B5%D1%81"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D1%87%D1%82%D0%BE-%D0%BD%D0%B5%D0%BB%D1%8C%D0%B7%D1%8F-%D0%B2%D0%B2%D0%BE%D0%B7%D0%B8%D1%82%D1%8C-%D0%B2-%D0%B5%D1%81"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%87%D1%82%D0%BE-%D0%BD%D0%B5%D0%BB%D1%8C%D0%B7%D1%8F-%D0%B2%D0%B2%D0%BE%D0%B7%D0%B8%D1%82%D1%8C-%D0%B2-%D0%B5%D1%81"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-chto-nelzya-vvozit-v-es.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BA%D0%BF%D0%BF-%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BA%D0%BF%D0%BF-%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BA%D0%BF%D0%BF-%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BA%D0%BF%D0%BF-%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-kakoy-kpp-vybrat.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/blog/%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BA%D0%BF%D0%BF-%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BA%D0%BF%D0%BF-%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BA%D0%BF%D0%BF-%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BA%D0%BF%D0%BF-%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-kakoy-kpp-vybrat.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%81-%D0%B4%D0%B5%D1%82%D1%8C%D0%BC%D0%B8</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%81-%D0%B4%D0%B5%D1%82%D1%8C%D0%BC%D0%B8"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%81-%D0%B4%D0%B5%D1%82%D1%8C%D0%BC%D0%B8"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%81-%D0%B4%D0%B5%D1%82%D1%8C%D0%BC%D0%B8"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-transfer-s-detmi.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/blog/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%81-%D0%B4%D0%B5%D1%82%D1%8C%D0%BC%D0%B8</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%81-%D0%B4%D0%B5%D1%82%D1%8C%D0%BC%D0%B8"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%81-%D0%B4%D0%B5%D1%82%D1%8C%D0%BC%D0%B8"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D1%81-%D0%B4%D0%B5%D1%82%D1%8C%D0%BC%D0%B8"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-transfer-s-detmi.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B4%D0%BE-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D0%B0-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81%D0%B0</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B4%D0%BE-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D0%B0-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B4%D0%BE-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D0%B0-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B4%D0%BE-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D0%B0-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81%D0%B0"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-kak-dobratsya-do-vno.jpg</image:loc>
+      </image:image>
     </url>
   <url>
       <loc>https://bycomfortline.com/blog/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B4%D0%BE-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D0%B0-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81%D0%B0</loc>
-      <lastmod>2026-05-03</lastmod>
+      <lastmod>2026-05-03T09:00:00+03:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B4%D0%BE-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D0%B0-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://bycomfortline.com/blog/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B4%D0%BE-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D0%B0-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81%D0%B0"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://bycomfortline.com/%D0%B1%D0%BB%D0%BE%D0%B3/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B4%D0%BE-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D0%B0-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81%D0%B0"/>
+      <image:image>
+        <image:loc>https://bycomfortline.com/og/blog-kak-dobratsya-do-vno.jpg</image:loc>
+      </image:image>
     </url>
-  </urlset>
-  
+</urlset>
