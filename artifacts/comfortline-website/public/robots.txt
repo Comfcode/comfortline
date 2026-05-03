@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /brandbook
 
 Sitemap: https://bycomfortline.com/sitemap.xml
 
@@ -8,6 +9,7 @@ Sitemap: https://bycomfortline.com/sitemap.xml
 User-agent: Yandex
 Allow: /
 Disallow: /api/
+Disallow: /brandbook
 Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid /
 Host: bycomfortline.com
 
@@ -15,8 +17,32 @@ Host: bycomfortline.com
 User-agent: YandexImages
 Allow: /
 
-# Bing / IndexNow — supported by both Bing and Yandex for instant indexing
-# To enable: place <key>.txt at site root containing only the key string,
-# then POST URLs to https://api.indexnow.org/indexnow
+# Bing — explicit allow + IndexNow already wired (key file at /c8f3d2a1b94e47f6ae7c1d0b5a8e3c92.txt)
 User-agent: bingbot
 Allow: /
+Disallow: /api/
+Disallow: /brandbook
+
+User-agent: msnbot
+Allow: /
+Disallow: /api/
+
+# Google image bot
+User-agent: Googlebot-Image
+Allow: /
+
+# Block aggressive AI scrapers that don't drive traffic
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
