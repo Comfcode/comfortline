@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { PhoneCall, Send } from "lucide-react";
 import { Instagram } from "lucide-react";
 import { SiTelegram, SiViber, SiWhatsapp, SiMessenger } from "react-icons/si";
+import { useTheme } from "next-themes";
 import { useLang } from "@/context/language-context";
 import { Logo } from "@/components/brand/Logo";
 
@@ -13,11 +14,15 @@ const TAP_WINDOW_MS = 3000;
 export function Footer() {
   const { t } = useLang();
   const f = t.footer;
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const logoScheme = mounted && resolvedTheme === "light" ? "light" : "dark";
   const [brandbookVisible, setBrandbookVisible] = useState(false);
   const tapCount = useRef(0);
   const tapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    setMounted(true);
     try {
       setBrandbookVisible(localStorage.getItem(BRANDBOOK_KEY) === "1");
     } catch {
@@ -56,7 +61,7 @@ export function Footer() {
           {/* Logo & About */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <a href="#" className="inline-block mb-6">
-              <Logo variant="stacked" scheme="dark" height={72} showTagline />
+              <Logo variant="stacked" scheme={logoScheme} height={72} showTagline />
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               {f.tagline}
