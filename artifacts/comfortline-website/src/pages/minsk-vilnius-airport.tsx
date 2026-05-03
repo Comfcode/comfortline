@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Plane, Clock, MapPin, Car, ArrowRight, Info, CheckCircle2, PhoneCall, ShieldCheck } from "lucide-react";
+import { Plane, Clock, MapPin, Car, ArrowRight, Info, CheckCircle2, PhoneCall, ShieldCheck, HelpCircle, ChevronDown, Wallet } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 import { Seo } from "@/seo/Seo";
-import { taxiServiceJsonLd } from "@/seo/jsonld";
+import { taxiServiceJsonLd, faqJsonLd } from "@/seo/jsonld";
 import { SITE_URL } from "@/seo/seo-config";
 
 const content = {
@@ -13,7 +14,17 @@ const content = {
     badge: "Трансфер",
     title: "Трансфер Минск — Аэропорт Вильнюса (VNO)",
     subtitle: "Индивидуальный трансфер Минск — аэропорт Вильнюса (VNO) на ваш рейс. Подача от двери в Минске, фиксированная цена, опытный водитель и помощь на границе Беларусь–Литва.",
-    seoIntro: "Заказать трансфер Минск — Вильнюс аэропорт можно онлайн или по телефону. Цена фиксированная, без счётчика. Маршрут ~175 км через погранпереход Каменный Лог / Котловка обычно занимает 2,5–5 часов в зависимости от очередей на границе. Подаём комфорт-класс или бизнес-седан Mercedes E-class — выбираете под бюджет и количество багажа.",
+    seoIntro: "Из Минска в аэропорт Вильнюса (VNO) можно добраться тремя основными способами: рейсовым автобусом, маршруткой или индивидуальным трансфером. Самый быстрый и удобный — индивидуальный трансфер: подача от двери в Минске, доставка прямо к терминалу VNO, фиксированная цена от 180 € за всю машину (1–4 пассажира) без счётчика. Маршрут ~175 км через пограничный переход Каменный Лог / Котловка занимает 2,5–5 часов в зависимости от очередей. Подаём комфорт-класс Volkswagen Passat или бизнес-седан Mercedes E-class.",
+    comparisonTitle: "Способы добраться: автобус, маршрутка, трансфер",
+    comparisonIntro: "Сравнение трёх основных способов уехать из Минска в аэропорт Вильнюса (VNO):",
+    comparison: {
+      headers: ["Транспорт", "Цена", "Время", "Кому подойдёт"],
+      rows: [
+        ["Рейсовый автобус (Ecolines, Lux Express)", "от 130–180 BYN (≈ 38–55 €)", "5–7 ч + ожидание на границе", "Бюджетные путешественники без багажа"],
+        ["Маршрутка (Минсктранс, частники)", "150–230 BYN (≈ 45–70 €)", "4–6 ч", "1 пассажир с лёгким багажом"],
+        ["Индивидуальный трансфер ComfortLine", "от 180 € за машину (1–4 пасс.)", "2,5–5 ч от двери до терминала", "Семьи, командировки, ночные/утренние рейсы, большой багаж"],
+      ],
+    },
     stats: [
       { label: "Расстояние", value: "~175 км" },
       { label: "Время в пути", value: "2,5–5 ч" },
@@ -58,6 +69,17 @@ const content = {
       "Помощь с багажом",
       "Работаем 24/7, включая праздники",
     ],
+    faqTitle: "Частые вопросы — Минск → Аэропорт Вильнюса",
+    faq: [
+      { q: "Сколько стоит трансфер из Минска в аэропорт Вильнюса (VNO)?", a: "Фиксированная цена от 180 € за машину (1–4 пассажира) на бизнес-седане Mercedes E-class или Volkswagen Passat. Минивэн на 5–8 пассажиров — от 230 €. В стоимость включены топливо, страховка, помощь на границе, бутилированная вода и багаж. Точная сумма зависит от адреса в Минске и времени суток." },
+      { q: "Сколько занимает дорога Минск — VNO?", a: "Сама поездка ~175 км занимает примерно 2 часа по трассе М7. К этому добавляется пограничный переход Каменный Лог / Котловка — обычно 1–3 часа, в пиковые дни до 4–5 часов. Итого планируйте 2,5–5 часов от двери до терминала VNO. Рекомендуем выезжать с запасом 4–5 часов до вылета." },
+      { q: "Какой пограничный переход вы используете?", a: "По умолчанию Каменный Лог (Беларусь) — Мядининкай (Литва), он же «Котловка». Это основной автомобильный переход на этом маршруте. При больших очередях водитель может перенаправить на Бенякони — Шальчининкай. Решение принимается утром по актуальной обстановке." },
+      { q: "Какие документы нужны для въезда в Литву?", a: "Действующий загранпаспорт и шенгенская виза (для граждан Беларуси/России и других стран, которым она требуется). Граждане ЕС/Литвы — паспорт или ID-карта. Дети — собственный загранпаспорт. Рекомендуем шенгенскую медицинскую страховку." },
+      { q: "Что дешевле: автобус или индивидуальный трансфер?", a: "Если едете один с маленькой сумкой — автобус (Ecolines, Lux Express) дешевле: 130–180 BYN (≈ 38–55 €). Если едете вдвоём, втроём или семьёй с багажом — индивидуальный трансфер от 180 € за всю машину обычно выгоднее по цене на человека и быстрее на 1–3 часа за счёт прямой доставки от двери до терминала без пересадок." },
+      { q: "Подаёте ли вы машину ночью или рано утром на ранний рейс?", a: "Да, работаем 24/7 включая праздники. На рейсы 5:00–7:00 утра обычно выезжаем из Минска в 23:00–00:00. Ночная подача и работа в праздники без доплат." },
+      { q: "Доступен ли обратный трансфер из аэропорта Вильнюса в Минск?", a: "Да. Водитель встретит вас в зале прилёта VNO с табличкой с вашим именем (бесплатно), поможет с багажом и доставит к указанному адресу в Минске. Бронируйте сразу обе поездки — скидка 5%." },
+      { q: "Можно ли с детским креслом?", a: "Да, детские кресла и бустеры предоставляются бесплатно по запросу при бронировании. Укажите возраст ребёнка." },
+    ],
     ctaTitle: "Забронировать трансфер",
     ctaDesc: "Оставьте заявку — менеджер свяжется с вами в течение 15 минут и назовёт точную стоимость.",
     ctaBtn: "Оставить заявку",
@@ -67,7 +89,17 @@ const content = {
     badge: "Transfer",
     title: "Minsk to Vilnius Airport (VNO) Transfer",
     subtitle: "Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, professional driver, full assistance at the Belarus–Lithuania border.",
-    seoIntro: "Book a Minsk to Vilnius airport transfer online or by phone. Fixed price, no meter, no surge. The ~175 km route via the Kamenny Log / Kotlovka border crossing typically takes 2.5–5 hours depending on queues. Choose comfort class or a Mercedes E-class business sedan — pick the right fit for your budget and luggage.",
+    seoIntro: "There are three main ways to travel from Minsk to Vilnius Airport (VNO): scheduled coach, shared minibus, or private transfer. The fastest and most convenient is a private transfer: door pickup in Minsk, drop-off right at the VNO terminal, fixed price from €180 for the whole car (1–4 passengers) — no meter. The ~175 km route via the Kamenny Log / Kotlovka border crossing takes 2.5–5 hours depending on queues. We use a comfort-class Volkswagen Passat or a business-class Mercedes E-class.",
+    comparisonTitle: "How to get there: coach, minibus, private transfer",
+    comparisonIntro: "Comparison of the three main ways to travel from Minsk to Vilnius Airport (VNO):",
+    comparison: {
+      headers: ["Transport", "Price", "Travel time", "Best for"],
+      rows: [
+        ["Scheduled coach (Ecolines, Lux Express)", "from 130–180 BYN (≈ €38–55)", "5–7 hrs + border wait", "Solo budget travellers with light luggage"],
+        ["Shared minibus (Minsktrans, private)", "150–230 BYN (≈ €45–70)", "4–6 hrs", "1 passenger with light luggage"],
+        ["ComfortLine private transfer", "from €180 per car (1–4 pax)", "2.5–5 hrs door to terminal", "Families, business trips, night/early flights, lots of luggage"],
+      ],
+    },
     stats: [
       { label: "Distance", value: "~175 km" },
       { label: "Travel time", value: "2.5–5 hrs" },
@@ -112,6 +144,17 @@ const content = {
       "Luggage assistance included",
       "Available 24/7 including holidays",
     ],
+    faqTitle: "Frequently asked — Minsk to Vilnius Airport",
+    faq: [
+      { q: "How much does a Minsk to Vilnius Airport (VNO) transfer cost?", a: "Fixed price from €180 per car (1–4 passengers) in a Mercedes E-class or Volkswagen Passat business sedan. Minivan for 5–8 passengers — from €230. Fuel, insurance, border assistance, bottled water and luggage are included. The exact figure depends on your Minsk address and time of day." },
+      { q: "How long is the Minsk to VNO trip?", a: "The drive itself, ~175 km on the M7 highway, is around 2 hours. Add 1–3 hours (up to 4–5 on peak days) for the Kamenny Log / Kotlovka border crossing. Plan for 2.5–5 hours door to terminal. We recommend leaving Minsk 4–5 hours before your flight." },
+      { q: "Which border crossing do you use?", a: "By default Kamenny Log (Belarus) — Medininkai (Lithuania), also known as 'Kotlovka' — the main passenger crossing on this route. If queues are heavy the driver may switch to Benyakoni — Šalčininkai. The decision is made in the morning based on live conditions." },
+      { q: "What documents do I need to enter Lithuania?", a: "A valid passport and a Schengen visa (for Belarusian, Russian and other nationals who need one). EU/Lithuanian citizens — passport or national ID. Children require their own passport. Schengen-area medical insurance is recommended." },
+      { q: "Is the coach cheaper than a private transfer?", a: "If you're travelling solo with a small bag — yes, the coach (Ecolines, Lux Express) is cheaper at 130–180 BYN (≈ €38–55). If you're travelling as a couple, family or group with luggage, a private transfer from €180 for the whole car is usually cheaper per person and 1–3 hours faster thanks to direct door-to-terminal service with no transfers." },
+      { q: "Do you operate at night or for early-morning flights?", a: "Yes, we run 24/7 including holidays. For 5:00–7:00 AM flights we typically depart Minsk at 23:00–00:00. No surcharge for nights or holidays." },
+      { q: "Is the return transfer Vilnius Airport to Minsk available?", a: "Yes. The driver meets you in the VNO arrivals hall with a name sign (free of charge), helps with luggage, and drops you at your Minsk address. Book both directions in one request — 5% discount." },
+      { q: "Can I request a child seat?", a: "Yes — child seats and boosters are provided free of charge on request at booking. Please tell us the child's age." },
+    ],
     ctaTitle: "Book your transfer",
     ctaDesc: "Submit a request and our manager will contact you within 15 minutes with an exact price.",
     ctaBtn: "Request a booking",
@@ -143,16 +186,21 @@ export default function MinskVilniusAirportPage() {
           { name: "Home", path: "/" },
           { name: "Minsk — Vilnius Airport (VNO)", path: "/minsk-vilnius-airport" },
         ]}
-        jsonLd={taxiServiceJsonLd({
-          lang,
-          name: isRu ? "Трансфер Минск — Аэропорт Вильнюса (VNO)" : "Minsk to Vilnius Airport (VNO) Transfer",
-          description: isRu
-            ? "Индивидуальный трансфер из Минска в международный аэропорт Вильнюса (VNO). Фиксированная цена, подача от двери, опытный водитель."
-            : "Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, professional driver.",
-          url: SITE_URL + (isRu ? "/трансфер-минск-вильнюс-аэропорт" : "/minsk-vilnius-airport"),
-          fromName: isRu ? "Минск" : "Minsk",
-          toName: isRu ? "Аэропорт Вильнюса (VNO)" : "Vilnius International Airport (VNO)",
-        })}
+        jsonLd={[
+          taxiServiceJsonLd({
+            lang,
+            name: isRu ? "Трансфер Минск — Аэропорт Вильнюса (VNO)" : "Minsk to Vilnius Airport (VNO) Transfer",
+            description: isRu
+              ? "Индивидуальный трансфер из Минска в международный аэропорт Вильнюса (VNO). Фиксированная цена, подача от двери, опытный водитель."
+              : "Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, professional driver.",
+            url: SITE_URL + (isRu ? "/трансфер-минск-вильнюс-аэропорт" : "/minsk-vilnius-airport"),
+            fromName: isRu ? "Минск" : "Minsk",
+            toName: isRu ? "Аэропорт Вильнюса (VNO)" : "Vilnius International Airport (VNO)",
+            priceFrom: 180,
+            priceCurrency: "EUR",
+          }),
+          faqJsonLd(c.faq.map((f) => ({ question: f.q, answer: f.a }))),
+        ]}
       />
       <Navbar />
 
@@ -189,6 +237,39 @@ export default function MinskVilniusAirportPage() {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 max-w-4xl py-14 space-y-16">
+
+        {/* Price/transport comparison — AI-overview style */}
+        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <h2 className="text-2xl font-bold text-foreground mb-3 flex items-center gap-3">
+            <Wallet className="h-5 w-5 text-primary" />
+            {c.comparisonTitle}
+          </h2>
+          <p className="text-muted-foreground text-sm mb-6 max-w-2xl">{c.comparisonIntro}</p>
+          <div className="overflow-x-auto rounded-2xl border border-border bg-card">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border bg-primary/5">
+                  {c.comparison.headers.map((h) => (
+                    <th key={h} scope="col" className="px-4 py-3 text-left font-semibold text-foreground whitespace-nowrap text-xs uppercase tracking-wider">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {c.comparison.rows.map((row, i) => (
+                  <tr key={i} className={`${i < c.comparison.rows.length - 1 ? "border-b border-border/50" : ""} ${i === c.comparison.rows.length - 1 ? "bg-primary/[0.04]" : ""}`}>
+                    {row.map((cell, j) => (
+                      <td key={j} className={`px-4 py-3 align-top ${j === 0 ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.section>
 
         {/* How it works */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -328,6 +409,19 @@ export default function MinskVilniusAirportPage() {
           </div>
         </motion.section>
 
+        {/* FAQ */}
+        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+            <HelpCircle className="h-5 w-5 text-primary" />
+            {c.faqTitle}
+          </h2>
+          <div className="space-y-3">
+            {c.faq.map((entry, i) => (
+              <VilniusFaqItem key={i} q={entry.q} a={entry.a} />
+            ))}
+          </div>
+        </motion.section>
+
         {/* CTA */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="rounded-2xl border border-primary/30 bg-primary/5 p-8 md:p-10 text-center">
@@ -352,6 +446,29 @@ export default function MinskVilniusAirportPage() {
 
       <GlobalBookingModal />
       <Footer />
+    </div>
+  );
+}
+
+let vilniusFaqUid = 0;
+function VilniusFaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  const [id] = useState(() => `vno-faq-${++vilniusFaqUid}`);
+  return (
+    <div className="bg-card border border-border rounded-xl overflow-hidden">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-primary/5 transition-colors"
+        aria-expanded={open}
+        aria-controls={id}
+      >
+        <span className="text-sm font-semibold text-foreground">{q}</span>
+        <ChevronDown className={`h-4 w-4 text-primary shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <div id={id} role="region" className="px-5 pb-4 -mt-1 text-sm text-muted-foreground leading-relaxed">{a}</div>
+      )}
     </div>
   );
 }

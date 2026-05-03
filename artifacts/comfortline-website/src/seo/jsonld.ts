@@ -112,10 +112,30 @@ export interface ServiceJsonLdInput {
   toName: string;
   distanceKm?: string;
   durationIso?: string;
+  priceFrom?: number;
+  priceCurrency?: string;
   lang: "ru" | "en";
 }
 
 export function taxiServiceJsonLd(s: ServiceJsonLdInput) {
+  const currency = s.priceCurrency || "EUR";
+  const offer: Record<string, unknown> = {
+    "@type": "Offer",
+    url: s.url,
+    availability: "https://schema.org/InStock",
+    priceCurrency: currency,
+    seller: { "@id": `${SITE_URL}#business` },
+  };
+  if (typeof s.priceFrom === "number") {
+    offer.price = s.priceFrom;
+    offer.priceSpecification = {
+      "@type": "PriceSpecification",
+      price: s.priceFrom,
+      priceCurrency: currency,
+      valueAddedTaxIncluded: true,
+      description: s.lang === "ru" ? "Цена от, фиксированная" : "From, fixed price",
+    };
+  }
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -128,13 +148,7 @@ export function taxiServiceJsonLd(s: ServiceJsonLdInput) {
       { "@type": "Place", name: s.fromName },
       { "@type": "Place", name: s.toName },
     ],
-    offers: {
-      "@type": "Offer",
-      url: s.url,
-      availability: "https://schema.org/InStock",
-      priceCurrency: "EUR",
-      seller: { "@id": `${SITE_URL}#business` },
-    },
+    offers: offer,
   };
 }
 

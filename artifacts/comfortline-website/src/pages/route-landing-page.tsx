@@ -1,17 +1,23 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import { CheckCircle2, PhoneCall, ArrowRight, Car, Info, Clock } from "lucide-react";
+import { CheckCircle2, PhoneCall, ArrowRight, Car, Info, Clock, ChevronDown, HelpCircle } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 import { Seo } from "@/seo/Seo";
-import { taxiServiceJsonLd } from "@/seo/jsonld";
+import { taxiServiceJsonLd, faqJsonLd } from "@/seo/jsonld";
 import { SITE_URL } from "@/seo/seo-config";
 
 export interface LandmarkPhoto {
   src: string;
   caption: string;
+}
+
+export interface FaqEntry {
+  q: string;
+  a: string;
 }
 
 export interface RouteContent {
@@ -29,6 +35,8 @@ export interface RouteContent {
   included: string[];
   whyTitle: string;
   whyItems: string[];
+  faqTitle?: string;
+  faq?: FaqEntry[];
   ctaTitle: string;
   ctaDesc: string;
   ctaBtn: string;
@@ -48,6 +56,8 @@ export interface RouteSeo {
   toName?: string;
   breadcrumbRu?: string;
   breadcrumbEn?: string;
+  priceFrom?: number;
+  priceCurrency?: string;
 }
 
 export interface RoutePageData {
@@ -77,7 +87,13 @@ export function RouteLandingPage({ data }: Props) {
     url: SITE_URL + seoPath,
     fromName: data.seo.fromName || (isRu ? "Минск" : "Minsk"),
     toName: data.seo.toName || c.title,
+    priceFrom: data.seo.priceFrom,
+    priceCurrency: data.seo.priceCurrency,
   });
+  const allJsonLd: object[] = [serviceJsonLd];
+  if (c.faq && c.faq.length > 0) {
+    allJsonLd.push(faqJsonLd(c.faq.map((f) => ({ question: f.q, answer: f.a }))));
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -88,7 +104,7 @@ export function RouteLandingPage({ data }: Props) {
         descEn={data.seo.descEn}
         pathRu={data.seo.pathRu}
         pathEn={data.seo.pathEn}
-        jsonLd={serviceJsonLd}
+        jsonLd={allJsonLd}
         breadcrumbsRu={[
           { name: "Главная", path: "/" },
           { name: data.seo.breadcrumbRu || data.ru.title, path: data.seo.pathRu },
@@ -230,6 +246,21 @@ export function RouteLandingPage({ data }: Props) {
           </div>
         </motion.section>
 
+        {/* FAQ */}
+        {c.faq && c.faq.length > 0 && (
+          <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+              <HelpCircle className="h-5 w-5 text-primary" />
+              {c.faqTitle || (isRu ? "Частые вопросы" : "Frequently asked questions")}
+            </h2>
+            <div className="space-y-3">
+              {c.faq.map((entry, i) => (
+                <FaqItem key={i} q={entry.q} a={entry.a} />
+              ))}
+            </div>
+          </motion.section>
+        )}
+
         {/* CTA */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="rounded-2xl border border-primary/30 bg-primary/5 p-8 md:p-10 text-center">
@@ -251,6 +282,31 @@ export function RouteLandingPage({ data }: Props) {
 
       <GlobalBookingModal />
       <Footer />
+    </div>
+  );
+}
+
+let faqUid = 0;
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  const [id] = useState(() => `faq-${++faqUid}`);
+  return (
+    <div className="bg-card border border-border rounded-xl overflow-hidden">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-primary/5 transition-colors"
+        aria-expanded={open}
+        aria-controls={id}
+      >
+        <span className="text-sm font-semibold text-foreground">{q}</span>
+        <ChevronDown
+          className={`h-4 w-4 text-primary shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <div id={id} role="region" className="px-5 pb-4 -mt-1 text-sm text-muted-foreground leading-relaxed">{a}</div>
+      )}
     </div>
   );
 }
