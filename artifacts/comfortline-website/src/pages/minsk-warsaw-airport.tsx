@@ -37,8 +37,8 @@ const content = {
     altTitle: "Также обслуживаем",
     photosTitle: "Аэропорт в фото",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "Терминал аэропорта Шопен (WAW)" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "Международный терминал" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Terminal_A_of_Warsaw_Chopin_Airport_July_2024.jpg/1280px-Terminal_A_of_Warsaw_Chopin_Airport_July_2024.jpg", caption: "Терминал аэропорта Шопен (WAW)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Leeds_Bradford_Airport_to_Warsaw_Chopin_Airport_%2827th_March_2025%29_030.jpg/1280px-Leeds_Bradford_Airport_to_Warsaw_Chopin_Airport_%2827th_March_2025%29_030.jpg", caption: "Международный терминал" },
     ],
     tipsTitle: "Полезная информация",
     tips: [
@@ -91,8 +91,8 @@ const content = {
     altTitle: "We also serve",
     photosTitle: "Airport Gallery",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "Warsaw Chopin Airport terminal (WAW)" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "International terminal" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Terminal_A_of_Warsaw_Chopin_Airport_July_2024.jpg/1280px-Terminal_A_of_Warsaw_Chopin_Airport_July_2024.jpg", caption: "Warsaw Chopin Airport terminal (WAW)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Leeds_Bradford_Airport_to_Warsaw_Chopin_Airport_%2827th_March_2025%29_030.jpg/1280px-Leeds_Bradford_Airport_to_Warsaw_Chopin_Airport_%2827th_March_2025%29_030.jpg", caption: "International terminal" },
     ],
     tipsTitle: "Useful Information",
     tips: [
