@@ -46,7 +46,7 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
     [
       { from: "Minsk", to: "city",       code: "24/7",      meta: "30–60 min dispatch",    href: "/minsk-city-transfer" },
       { from: "Minsk", to: "Belarus",    code: "6 REG.",    meta: "Brest, Grodno, Vitebsk…", href: "/belarus-transfer" },
-      { from: "Minsk", to: "sanatorium", code: "SPA",       meta: "Naroch, Braslav, BP…",   href: "/sanatorium-transfer" },
+      { from: "Minsk", to: "resort", code: "SPA",       meta: "Naroch, Braslav, BP…",   href: "/sanatorium-transfer" },
       { from: "Minsk", to: "Russia",     code: "BY→RU",     meta: "~370–720 km",           href: "/russia-transfer" },
     ],
     [
