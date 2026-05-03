@@ -127,7 +127,8 @@ export function RouteLandingPage({ data }: Props) {
 
       <div className="container mx-auto px-4 md:px-6 max-w-4xl py-14 space-y-16">
 
-        {/* Landmark photo gallery */}
+        {/* Landmark photo gallery — hidden when no verified photos available */}
+        {c.photos.length > 0 && (
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-2xl font-bold text-foreground mb-6">{c.photosTitle}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -156,6 +157,7 @@ export function RouteLandingPage({ data }: Props) {
             ))}
           </div>
         </motion.section>
+        )}
 
         {/* How it works */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>

@@ -13,10 +13,7 @@ const data: RoutePageData = {
       { label: "Класс авто", value: "Седан / Минивэн" },
     ],
     photosTitle: "Здравницы Беларуси",
-    photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Nara%C4%8D_-_4.jpg/1280px-Nara%C4%8D_-_4.jpg", caption: "Озеро Нарочь" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bialowieza_National_Park_in_Poland0029.JPG/1280px-Bialowieza_National_Park_in_Poland0029.JPG", caption: "Беловежская Пуща" },
-    ],
+    photos: [],
     howTitle: "Как проходит поездка",
     steps: [
       { icon: MapPin, title: "Подача к адресу", desc: "Заберём вас от дома, аэропорта или вокзала в назначенное время — без долгого ожидания." },
@@ -67,10 +64,7 @@ const data: RoutePageData = {
       { label: "Vehicle", value: "Sedan / Minivan" },
     ],
     photosTitle: "Belarus Health Resorts",
-    photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Nara%C4%8D_-_4.jpg/1280px-Nara%C4%8D_-_4.jpg", caption: "Lake Naroch" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bialowieza_National_Park_in_Poland0029.JPG/1280px-Bialowieza_National_Park_in_Poland0029.JPG", caption: "Belovezhskaya Pushcha" },
-    ],
+    photos: [],
     howTitle: "How the transfer works",
     steps: [
       { icon: MapPin, title: "Pickup at your address", desc: "We collect you from home, the airport or the station at the agreed time — no long waits." },
