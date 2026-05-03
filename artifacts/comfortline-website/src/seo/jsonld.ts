@@ -1,34 +1,105 @@
 import { BUSINESS, SITE_URL } from "./seo-config";
 
 export function localBusinessJsonLd(lang: "ru" | "en") {
+  const description =
+    lang === "ru"
+      ? "ComfortLine — премиум трансфер из Минска в аэропорты Вильнюса, Варшавы, Берлина и города Европы. Фиксированная цена, опытные водители, комфортные автомобили."
+      : "ComfortLine — premium private transfers from Minsk to Vilnius, Warsaw, Berlin airports and major European cities. Fixed prices, professional drivers, comfortable vehicles.";
+
+  const popularRoutes = [
+    {
+      ru: { name: "Трансфер Минск — Аэропорт Вильнюса (VNO)", path: "/трансфер-минск-вильнюс-аэропорт" },
+      en: { name: "Minsk to Vilnius Airport (VNO) transfer", path: "/minsk-vilnius-airport" },
+    },
+    {
+      ru: { name: "Трансфер Минск — Аэропорт Шопен (WAW)", path: "/трансфер-минск-варшава-шопен" },
+      en: { name: "Minsk to Warsaw Chopin Airport (WAW) transfer", path: "/minsk-warsaw-airport" },
+    },
+  ];
+
   return {
     "@context": "https://schema.org",
-    "@type": "TaxiService",
+    "@type": ["TaxiService", "LocalBusiness"],
     "@id": `${SITE_URL}#business`,
     name: BUSINESS.name,
+    alternateName: ["ComfortLine Transfer", "Комфортлайн", "ComfortLine Минск"],
     legalName: BUSINESS.legalName,
     url: BUSINESS.url,
     logo: BUSINESS.logo,
-    image: BUSINESS.image,
+    image: [BUSINESS.image, `${SITE_URL}/car-mercedes-e.jpg`, `${SITE_URL}/car-kia-carnival.jpg`],
     telephone: BUSINESS.phone,
     email: BUSINESS.email,
-    priceRange: "$$",
-    description:
-      lang === "ru"
-        ? "ComfortLine — премиум трансфер из Минска в аэропорты Вильнюса, Варшавы, Берлина и города Европы. Фиксированная цена, опытные водители, комфортные автомобили."
-        : "ComfortLine — premium private transfers from Minsk to Vilnius, Warsaw, Berlin airports and major European cities. Fixed prices, professional drivers, comfortable vehicles.",
+    priceRange: "€€",
+    slogan: BUSINESS.slogan[lang],
+    description,
+    foundingDate: BUSINESS.foundingDate,
+    paymentAccepted: BUSINESS.paymentAccepted.join(", "),
+    currenciesAccepted: BUSINESS.currenciesAccepted,
+    knowsLanguage: ["ru", "en", "be", "pl"],
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Minsk",
+      addressLocality: lang === "ru" ? "Минск" : "Minsk",
+      addressRegion: lang === "ru" ? "Минская область" : "Minsk Region",
       addressCountry: "BY",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: BUSINESS.geo.lat,
+      longitude: BUSINESS.geo.lng,
+    },
     areaServed: BUSINESS.serviceArea.map((a) => ({ "@type": "Place", name: a })),
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: BUSINESS.geo.lat,
+        longitude: BUSINESS.geo.lng,
+      },
+      geoRadius: 1500000,
+    },
     sameAs: BUSINESS.sameAs,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: BUSINESS.phone,
+        contactType: "customer service",
+        availableLanguage: ["Russian", "English", "Belarusian", "Polish"],
+        areaServed: ["BY", "LT", "PL", "LV", "DE", "CZ", "RU"],
+        contactOption: ["TollFree"],
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          opens: "00:00",
+          closes: "23:59",
+        },
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: BUSINESS.phone,
+        contactType: "reservations",
+        availableLanguage: ["Russian", "English"],
+        url: "https://wa.me/375291552776",
+      },
+    ],
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       opens: "00:00",
       closes: "23:59",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: lang === "ru" ? "Популярные направления" : "Popular routes",
+      itemListElement: popularRoutes.map((r, i) => ({
+        "@type": "Offer",
+        position: i + 1,
+        itemOffered: {
+          "@type": "Service",
+          name: r[lang].name,
+          url: SITE_URL + r[lang].path,
+          provider: { "@id": `${SITE_URL}#business` },
+        },
+      })),
     },
   };
 }
