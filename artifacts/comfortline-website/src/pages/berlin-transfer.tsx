@@ -15,9 +15,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Берлин — достопримечательности",
     photos: [
-      { src: "https://images.pexels.com/photos/2817497/pexels-photo-2817497.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Бранденбургские ворота" },
-      { src: "https://mywowo.net/media/images/cache/berlino_museuminsel_08_berliner_dom_jpg_1200_630_cover_85.jpg", caption: "Берлинский собор" },
-      { src: "https://images.pexels.com/photos/1128408/pexels-photo-1128408.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Центр Берлина" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Brandenburger_Tor_abends.jpg/1280px-Brandenburger_Tor_abends.jpg", caption: "Бранденбургские ворота" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/141227_Berliner_Dom.jpg/1280px-141227_Berliner_Dom.jpg", caption: "Берлинский собор" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Berlin_reichstag_west_panorama_2.jpg/1280px-Berlin_reichstag_west_panorama_2.jpg", caption: "Центр Берлина" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -70,9 +70,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Berlin — Highlights",
     photos: [
-      { src: "https://images.pexels.com/photos/2817497/pexels-photo-2817497.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Brandenburg Gate" },
-      { src: "https://mywowo.net/media/images/cache/berlino_museuminsel_08_berliner_dom_jpg_1200_630_cover_85.jpg", caption: "Berlin Cathedral" },
-      { src: "https://images.pexels.com/photos/1128408/pexels-photo-1128408.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Central Berlin" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Brandenburger_Tor_abends.jpg/1280px-Brandenburger_Tor_abends.jpg", caption: "Brandenburg Gate" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/141227_Berliner_Dom.jpg/1280px-141227_Berliner_Dom.jpg", caption: "Berlin Cathedral" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Berlin_reichstag_west_panorama_2.jpg/1280px-Berlin_reichstag_west_panorama_2.jpg", caption: "Central Berlin" },
     ],
     howTitle: "How the transfer works",
     steps: [

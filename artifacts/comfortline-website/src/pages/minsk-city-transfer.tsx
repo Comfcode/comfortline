@@ -16,8 +16,8 @@ const data: RoutePageData = {
     photosTitle: "Минск — достопримечательности",
     photos: [
       { src: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Building,_23,_Independence_Avenue,_Minsk_-_the_capital_of_Republic_of_Belarus.JPG", caption: "Проспект Независимости" },
-      { src: "https://paliparan.com/wp-content/uploads/2025/02/minsk-43a-800x445.jpg", caption: "Площадь Победы" },
-      { src: "https://media-cdn.tripadvisor.com/media/photo-o/11/13/55/48/caption.jpg", caption: "Троицкое предместье" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Victory-square.jpg/1280px-Victory-square.jpg", caption: "Площадь Победы" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/%D0%97%D0%B0%D0%BC%D0%B0%D0%BB%D1%91%D1%9E%D0%BA%D1%96_%D0%9C%D1%96%D0%BD%D1%81%D0%BA%D0%B0_35.jpg/1280px-%D0%97%D0%B0%D0%BC%D0%B0%D0%BB%D1%91%D1%9E%D0%BA%D1%96_%D0%9C%D1%96%D0%BD%D1%81%D0%BA%D0%B0_35.jpg", caption: "Троицкое предместье" },
     ],
     howTitle: "Как работает трансфер",
     steps: [
@@ -71,8 +71,8 @@ const data: RoutePageData = {
     photosTitle: "Minsk — Highlights",
     photos: [
       { src: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Building,_23,_Independence_Avenue,_Minsk_-_the_capital_of_Republic_of_Belarus.JPG", caption: "Independence Avenue" },
-      { src: "https://paliparan.com/wp-content/uploads/2025/02/minsk-43a-800x445.jpg", caption: "Victory Square" },
-      { src: "https://media-cdn.tripadvisor.com/media/photo-o/11/13/55/48/caption.jpg", caption: "Trinity Suburb (Troitskoye Predmestye)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Victory-square.jpg/1280px-Victory-square.jpg", caption: "Victory Square" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/%D0%97%D0%B0%D0%BC%D0%B0%D0%BB%D1%91%D1%9E%D0%BA%D1%96_%D0%9C%D1%96%D0%BD%D1%81%D0%BA%D0%B0_35.jpg/1280px-%D0%97%D0%B0%D0%BC%D0%B0%D0%BB%D1%91%D1%9E%D0%BA%D1%96_%D0%9C%D1%96%D0%BD%D1%81%D0%BA%D0%B0_35.jpg", caption: "Trinity Suburb (Troitskoye Predmestye)" },
     ],
     howTitle: "How it works",
     steps: [

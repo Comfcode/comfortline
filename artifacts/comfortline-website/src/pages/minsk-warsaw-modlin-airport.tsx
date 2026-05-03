@@ -39,8 +39,8 @@ const content = {
     note: "Модлин и Шопен — два разных аэропорта. Убедитесь, что ваш рейс именно из Варшавы-Модлин (WMI), а не из аэропорта Шопена (WAW).",
     photosTitle: "Аэропорт в фото",
     photos: [
-      { src: "https://b772872.smushcdn.com/772872/wp-content/uploads/2024/05/modlin-airport-terminal-outside.jpg?lossy=1&strip=1&webp=1", caption: "Терминал аэропорта Варшава-Модлин (WMI)" },
-      { src: "https://media.istockphoto.com/id/2244997557/photo/exterior-view-of-modern-warsaw-modlin-airport-terminal-with-curved-design-and-gate-area.jpg?s=612x612&w=0&k=20&c=XX3vAEHphZ9ceqoYXqg0JKhonHYoxyBBW7-KHRnpNyI=", caption: "Зона прилёта и такси" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Warsaw_Modlin_%28cropped%29.jpg/1280px-Warsaw_Modlin_%28cropped%29.jpg", caption: "Терминал аэропорта Варшава-Модлин (WMI)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Warsaw_Modlin_%28cropped%29.jpg/1280px-Warsaw_Modlin_%28cropped%29.jpg", caption: "Зона прилёта и такси" },
     ],
     tipsTitle: "Полезная информация",
     tips: [
@@ -99,8 +99,8 @@ const content = {
     note: "Modlin and Chopin are two separate airports. Make sure your flight departs from Warsaw Modlin (WMI) and not Warsaw Chopin (WAW).",
     photosTitle: "Airport Gallery",
     photos: [
-      { src: "https://b772872.smushcdn.com/772872/wp-content/uploads/2024/05/modlin-airport-terminal-outside.jpg?lossy=1&strip=1&webp=1", caption: "Warsaw Modlin Airport terminal (WMI)" },
-      { src: "https://media.istockphoto.com/id/2244997557/photo/exterior-view-of-modern-warsaw-modlin-airport-terminal-with-curved-design-and-gate-area.jpg?s=612x612&w=0&k=20&c=XX3vAEHphZ9ceqoYXqg0JKhonHYoxyBBW7-KHRnpNyI=", caption: "Arrivals area and taxi access" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Warsaw_Modlin_%28cropped%29.jpg/1280px-Warsaw_Modlin_%28cropped%29.jpg", caption: "Warsaw Modlin Airport terminal (WMI)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Warsaw_Modlin_%28cropped%29.jpg/1280px-Warsaw_Modlin_%28cropped%29.jpg", caption: "Arrivals area and taxi access" },
     ],
     tipsTitle: "Useful Information",
     tips: [

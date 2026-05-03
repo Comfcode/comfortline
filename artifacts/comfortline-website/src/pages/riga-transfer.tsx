@@ -14,8 +14,8 @@ const data: RoutePageData = {
     ],
     photosTitle: "Рига — достопримечательности",
     photos: [
-      { src: "https://images.pexels.com/photos/8819298/pexels-photo-8819298.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Старый город Риги" },
-      { src: "https://images.pexels.com/photos/2901528/pexels-photo-2901528.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Дом Черноголовых" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Views_from_St._Peter%27s_Church_Spire%2C_Riga_20180808-2.jpg/1280px-Views_from_St._Peter%27s_Church_Spire%2C_Riga_20180808-2.jpg", caption: "Старый город Риги" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/House_of_Blackheads_at_Dusk_3%2C_Riga%2C_Latvia_-_Diliff.jpg/1280px-House_of_Blackheads_at_Dusk_3%2C_Riga%2C_Latvia_-_Diliff.jpg", caption: "Дом Черноголовых" },
       { src: "https://images.pexels.com/photos/7245326/pexels-photo-7245326.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Балтийское побережье" },
     ],
     howTitle: "Как проходит поездка",
@@ -69,8 +69,8 @@ const data: RoutePageData = {
     ],
     photosTitle: "Riga — Highlights",
     photos: [
-      { src: "https://images.pexels.com/photos/8819298/pexels-photo-8819298.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Riga Old Town" },
-      { src: "https://images.pexels.com/photos/2901528/pexels-photo-2901528.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "House of the Blackheads" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Views_from_St._Peter%27s_Church_Spire%2C_Riga_20180808-2.jpg/1280px-Views_from_St._Peter%27s_Church_Spire%2C_Riga_20180808-2.jpg", caption: "Riga Old Town" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/House_of_Blackheads_at_Dusk_3%2C_Riga%2C_Latvia_-_Diliff.jpg/1280px-House_of_Blackheads_at_Dusk_3%2C_Riga%2C_Latvia_-_Diliff.jpg", caption: "House of the Blackheads" },
       { src: "https://images.pexels.com/photos/7245326/pexels-photo-7245326.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Baltic seaside" },
     ],
     howTitle: "How the transfer works",

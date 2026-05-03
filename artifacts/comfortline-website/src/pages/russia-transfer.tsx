@@ -15,9 +15,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Россия — города и архитектура",
     photos: [
-      { src: "https://media.cnn.com/api/v1/images/stellar/prod/201111165403-04-saint-basils-origins-test-of-time-restricted.jpg", caption: "Красная площадь, Москва" },
-      { src: "https://images.pexels.com/photos/236294/pexels-photo-236294.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Собор Василия Блаженного" },
-      { src: "https://preview.redd.it/the-modern-skyline-of-moscow-contrasted-against-the-older-v0-3ozrrywrlv281.jpg?width=640&crop=smart&auto=webp&s=408ae82e347509d547cf9048ec69c64da33484a8", caption: "Москва-Сити" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Kremlin_and_Red_Square.1.jpg/1280px-Kremlin_and_Red_Square.1.jpg", caption: "Красная площадь, Москва" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Saint_Basil%27s_Cathedral_in_Moscow.jpg/1280px-Saint_Basil%27s_Cathedral_in_Moscow.jpg", caption: "Собор Василия Блаженного" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Moscow-City_2025.jpg/1280px-Moscow-City_2025.jpg", caption: "Москва-Сити" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -70,9 +70,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Russia — Cities & Architecture",
     photos: [
-      { src: "https://media.cnn.com/api/v1/images/stellar/prod/201111165403-04-saint-basils-origins-test-of-time-restricted.jpg", caption: "Red Square, Moscow" },
-      { src: "https://images.pexels.com/photos/236294/pexels-photo-236294.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Saint Basil's Cathedral" },
-      { src: "https://preview.redd.it/the-modern-skyline-of-moscow-contrasted-against-the-older-v0-3ozrrywrlv281.jpg?width=640&crop=smart&auto=webp&s=408ae82e347509d547cf9048ec69c64da33484a8", caption: "Moscow City skyline" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Kremlin_and_Red_Square.1.jpg/1280px-Kremlin_and_Red_Square.1.jpg", caption: "Red Square, Moscow" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Saint_Basil%27s_Cathedral_in_Moscow.jpg/1280px-Saint_Basil%27s_Cathedral_in_Moscow.jpg", caption: "Saint Basil's Cathedral" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Moscow-City_2025.jpg/1280px-Moscow-City_2025.jpg", caption: "Moscow City skyline" },
     ],
     howTitle: "How it works",
     steps: [

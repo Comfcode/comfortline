@@ -15,9 +15,8 @@ const data: RoutePageData = {
     ],
     photosTitle: "Варшава — достопримечательности",
     photos: [
-      { src: "https://dynamic-media.tacdn.com/media/attractions-splice-spp-674x446/0b/27/69/f2.jpg", caption: "Королевский замок" },
-      { src: "https://render.pixels.com/images/images-new-artwork/images/artworkimages/medium/3/warsaw-city-evening-skyline-in-poland-artur-bogacki.jpg", caption: "Центр Варшавы" },
-      { src: "https://www.bautrip.com/images/what-to-visit/royal-zamek-krolewski-caste-warsaw.jpg", caption: "Старый город Варшавы" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Royal_Castle_in_Warsaw%2C_Poland%2C_2022%2C_03.jpg/1280px-Royal_Castle_in_Warsaw%2C_Poland%2C_2022%2C_03.jpg", caption: "Королевский замок (Старый город)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "Аэропорт Варшавы Шопен (WAW)" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -70,9 +69,8 @@ const data: RoutePageData = {
     ],
     photosTitle: "Warsaw — Highlights",
     photos: [
-      { src: "https://dynamic-media.tacdn.com/media/attractions-splice-spp-674x446/0b/27/69/f2.jpg", caption: "Warsaw Old Town" },
-      { src: "https://render.pixels.com/images/images-new-artwork/images/artworkimages/medium/3/warsaw-city-evening-skyline-in-poland-artur-bogacki.jpg", caption: "Royal Castle" },
-      { src: "https://www.bautrip.com/images/what-to-visit/royal-zamek-krolewski-caste-warsaw.jpg", caption: "Warsaw city centre" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Royal_Castle_in_Warsaw%2C_Poland%2C_2022%2C_03.jpg/1280px-Royal_Castle_in_Warsaw%2C_Poland%2C_2022%2C_03.jpg", caption: "Royal Castle (Old Town)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "Warsaw Chopin Airport (WAW)" },
     ],
     howTitle: "How the transfer works",
     steps: [

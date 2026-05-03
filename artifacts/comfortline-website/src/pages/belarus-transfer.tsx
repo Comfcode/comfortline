@@ -15,9 +15,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Беларусь — природа и замки",
     photos: [
-      { src: "https://thumbs.dreamstime.com/b/old-fortress-4939650.jpg", caption: "Замок Мир" },
-      { src: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/14834/production/_89902048_89902047.jpg", caption: "Беловежская пуща" },
-      { src: "https://belarus365.com/wp-content/uploads/2022/04/nesv_start.jpg", caption: "Замок Несвиж" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%9C%D0%B8%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%BC%D0%BA%D0%B0.JPG/1280px-%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%9C%D0%B8%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%BC%D0%BA%D0%B0.JPG", caption: "Замок Мир" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bialowieza_National_Park_in_Poland0029.JPG/1280px-Bialowieza_National_Park_in_Poland0029.JPG", caption: "Беловежская пуща" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/%D0%9D%D1%8F%D1%81%D0%B2%D1%96%D0%B6_%D1%96_%D0%9D%D1%8F%D1%81%D0%B2%D1%96%D0%B6%D1%81%D0%BA%D1%96_%D0%B7%D0%B0%D0%BC%D0%B0%D0%BA_12.jpg/1280px-%D0%9D%D1%8F%D1%81%D0%B2%D1%96%D0%B6_%D1%96_%D0%9D%D1%8F%D1%81%D0%B2%D1%96%D0%B6%D1%81%D0%BA%D1%96_%D0%B7%D0%B0%D0%BC%D0%B0%D0%BA_12.jpg", caption: "Замок Несвиж" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -71,9 +71,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Belarus — Nature & Castles",
     photos: [
-      { src: "https://thumbs.dreamstime.com/b/old-fortress-4939650.jpg", caption: "Mir Castle" },
-      { src: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/14834/production/_89902048_89902047.jpg", caption: "Białowieża Forest" },
-      { src: "https://belarus365.com/wp-content/uploads/2022/04/nesv_start.jpg", caption: "Nesvizh Castle" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%9C%D0%B8%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%BC%D0%BA%D0%B0.JPG/1280px-%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%9C%D0%B8%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%BC%D0%BA%D0%B0.JPG", caption: "Mir Castle" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bialowieza_National_Park_in_Poland0029.JPG/1280px-Bialowieza_National_Park_in_Poland0029.JPG", caption: "Białowieża Forest" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/%D0%9D%D1%8F%D1%81%D0%B2%D1%96%D0%B6_%D1%96_%D0%9D%D1%8F%D1%81%D0%B2%D1%96%D0%B6%D1%81%D0%BA%D1%96_%D0%B7%D0%B0%D0%BC%D0%B0%D0%BA_12.jpg/1280px-%D0%9D%D1%8F%D1%81%D0%B2%D1%96%D0%B6_%D1%96_%D0%9D%D1%8F%D1%81%D0%B2%D1%96%D0%B6%D1%81%D0%BA%D1%96_%D0%B7%D0%B0%D0%BC%D0%B0%D0%BA_12.jpg", caption: "Nesvizh Castle" },
     ],
     howTitle: "How it works",
     steps: [

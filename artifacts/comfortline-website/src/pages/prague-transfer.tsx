@@ -15,9 +15,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Прага — сердце Европы",
     photos: [
-      { src: "https://www.amazingczechia.com/wp-content/uploads/2018/07/charles-bridge-prague-02-600x400.jpg", caption: "Карлов мост" },
-      { src: "https://cdn-imgix.headout.com/media/images/203027ede3609da428d3f0e26c552948-15767-prague-prague-skip-the-line-tickets-to-the-astronomical-clock-tower-13.jpg?auto=compress,format&q=90", caption: "Старомéстская площадь" },
-      { src: "https://images.pexels.com/photos/13881307/pexels-photo-13881307.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Пражский град" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg/1280px-Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg", caption: "Карлов мост" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Prague_07-2016_View_from_Old_Town_Hall_Tower_img3.jpg/1280px-Prague_07-2016_View_from_Old_Town_Hall_Tower_img3.jpg", caption: "Старомéстская площадь" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Karl%C5%AFv_most_Praha%2C_Star%C3%A9_M%C4%9Bsto_20170810_007.jpg/1280px-Karl%C5%AFv_most_Praha%2C_Star%C3%A9_M%C4%9Bsto_20170810_007.jpg", caption: "Пражский град" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -70,9 +70,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Prague — Heart of Europe",
     photos: [
-      { src: "https://www.amazingczechia.com/wp-content/uploads/2018/07/charles-bridge-prague-02-600x400.jpg", caption: "Charles Bridge" },
-      { src: "https://cdn-imgix.headout.com/media/images/203027ede3609da428d3f0e26c552948-15767-prague-prague-skip-the-line-tickets-to-the-astronomical-clock-tower-13.jpg?auto=compress,format&q=90", caption: "Old Town Square" },
-      { src: "https://images.pexels.com/photos/13881307/pexels-photo-13881307.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Prague Castle" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg/1280px-Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg", caption: "Charles Bridge" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Prague_07-2016_View_from_Old_Town_Hall_Tower_img3.jpg/1280px-Prague_07-2016_View_from_Old_Town_Hall_Tower_img3.jpg", caption: "Old Town Square" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Karl%C5%AFv_most_Praha%2C_Star%C3%A9_M%C4%9Bsto_20170810_007.jpg/1280px-Karl%C5%AFv_most_Praha%2C_Star%C3%A9_M%C4%9Bsto_20170810_007.jpg", caption: "Prague Castle" },
     ],
     howTitle: "How the transfer works",
     steps: [

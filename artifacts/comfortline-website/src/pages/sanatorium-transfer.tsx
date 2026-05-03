@@ -14,9 +14,8 @@ const data: RoutePageData = {
     ],
     photosTitle: "Здравницы Беларуси",
     photos: [
-      { src: "https://images.pexels.com/photos/3089274/pexels-photo-3089274.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Озеро Нарочь" },
-      { src: "https://images.pexels.com/photos/371589/pexels-photo-371589.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Беловежская Пуща" },
-      { src: "https://images.pexels.com/photos/161758/governor-s-mansion-montgomery-alabama-grand-staircase-161758.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Санаторный комплекс" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Nara%C4%8D_-_4.jpg/1280px-Nara%C4%8D_-_4.jpg", caption: "Озеро Нарочь" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bialowieza_National_Park_in_Poland0029.JPG/1280px-Bialowieza_National_Park_in_Poland0029.JPG", caption: "Беловежская Пуща" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -69,9 +68,8 @@ const data: RoutePageData = {
     ],
     photosTitle: "Belarus Health Resorts",
     photos: [
-      { src: "https://images.pexels.com/photos/3089274/pexels-photo-3089274.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Lake Naroch" },
-      { src: "https://images.pexels.com/photos/371589/pexels-photo-371589.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Belovezhskaya Pushcha" },
-      { src: "https://images.pexels.com/photos/161758/governor-s-mansion-montgomery-alabama-grand-staircase-161758.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Sanatorium complex" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Nara%C4%8D_-_4.jpg/1280px-Nara%C4%8D_-_4.jpg", caption: "Lake Naroch" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bialowieza_National_Park_in_Poland0029.JPG/1280px-Bialowieza_National_Park_in_Poland0029.JPG", caption: "Belovezhskaya Pushcha" },
     ],
     howTitle: "How the transfer works",
     steps: [

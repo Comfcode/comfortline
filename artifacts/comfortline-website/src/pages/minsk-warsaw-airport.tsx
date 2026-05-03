@@ -37,8 +37,8 @@ const content = {
     altTitle: "Также обслуживаем",
     photosTitle: "Аэропорт в фото",
     photos: [
-      { src: "https://www.flynous.com/wp-content/uploads/2020/09/airport-guide-warsaw-chopin-interior.jpg", caption: "Терминал аэропорта Шопен (WAW)" },
-      { src: "https://media.istockphoto.com/id/537402974/photo/international-terminal-of-warsaw-chopin-airport-poland.jpg?s=612x612&w=0&k=20&c=I6R38G1m2FGvs3nzauB3gFFJRGztmZ_sfNGv5v7OSqM=", caption: "Международный терминал" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "Терминал аэропорта Шопен (WAW)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "Международный терминал" },
     ],
     tipsTitle: "Полезная информация",
     tips: [
@@ -91,8 +91,8 @@ const content = {
     altTitle: "We also serve",
     photosTitle: "Airport Gallery",
     photos: [
-      { src: "https://www.flynous.com/wp-content/uploads/2020/09/airport-guide-warsaw-chopin-interior.jpg", caption: "Warsaw Chopin Airport terminal (WAW)" },
-      { src: "https://media.istockphoto.com/id/537402974/photo/international-terminal-of-warsaw-chopin-airport-poland.jpg?s=612x612&w=0&k=20&c=I6R38G1m2FGvs3nzauB3gFFJRGztmZ_sfNGv5v7OSqM=", caption: "International terminal" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "Warsaw Chopin Airport terminal (WAW)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lotnisko_Chopina_w_Warszawie_2018b.jpg/1280px-Lotnisko_Chopina_w_Warszawie_2018b.jpg", caption: "International terminal" },
     ],
     tipsTitle: "Useful Information",
     tips: [

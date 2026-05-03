@@ -37,8 +37,8 @@ const content = {
     ],
     photosTitle: "Аэропорт в фото",
     photos: [
-      { src: "https://www.aerotime.aero/images/2025/02/cover-p-1-e1738667620979-800x500.jpeg", caption: "Терминал аэропорта Вильнюса (VNO)" },
-      { src: "https://www.aerotime.aero/images/2025/02/galery1-1-768x576.jpeg", caption: "Зал вылета" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/EYVI-VNO_by_Augustas_Didzgalvis.jpg/1280px-EYVI-VNO_by_Augustas_Didzgalvis.jpg", caption: "Терминал аэропорта Вильнюса (VNO)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/EYVI-VNO_by_Augustas_Didzgalvis.jpg/1280px-EYVI-VNO_by_Augustas_Didzgalvis.jpg", caption: "Зал вылета" },
     ],
     tipsTitle: "Полезная информация",
     tips: [
@@ -91,8 +91,8 @@ const content = {
     ],
     photosTitle: "Airport Gallery",
     photos: [
-      { src: "https://www.aerotime.aero/images/2025/02/cover-p-1-e1738667620979-800x500.jpeg", caption: "Vilnius Airport terminal (VNO)" },
-      { src: "https://www.aerotime.aero/images/2025/02/galery1-1-768x576.jpeg", caption: "Departures lounge" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/EYVI-VNO_by_Augustas_Didzgalvis.jpg/1280px-EYVI-VNO_by_Augustas_Didzgalvis.jpg", caption: "Vilnius Airport terminal (VNO)" },
+      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/EYVI-VNO_by_Augustas_Didzgalvis.jpg/1280px-EYVI-VNO_by_Augustas_Didzgalvis.jpg", caption: "Departures lounge" },
     ],
     tipsTitle: "Useful Information",
     tips: [
