@@ -142,7 +142,6 @@ const data: RoutePageData = {
     breadcrumbEn: "Minsk — Warsaw",
     fromName: "Минск",
     toName: "Варшава",
-    priceFrom: 250,
     priceCurrency: "EUR",
   },
 };

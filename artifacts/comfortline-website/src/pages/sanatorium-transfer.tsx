@@ -141,7 +141,6 @@ const data: RoutePageData = {
     breadcrumbEn: "Resort Transfer",
     fromName: "Минск",
     toName: "Санаторий",
-    priceFrom: 130,
     priceCurrency: "EUR",
   },
 };

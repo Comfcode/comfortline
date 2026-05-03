@@ -20,8 +20,8 @@ const content = {
     comparison: {
       headers: ["Транспорт", "Цена", "Время", "Кому подойдёт"],
       rows: [
-        ["Рейсовый автобус (Ecolines, Lux Express)", "≈ 130–180 BYN", "5–7 ч + ожидание на границе", "Бюджетные путешественники без багажа"],
-        ["Маршрутка (Минсктранс, частники)", "≈ 150–230 BYN", "4–6 ч", "1 пассажир с лёгким багажом"],
+        ["Рейсовый автобус (Ecolines, Lux Express)", "По расписанию перевозчика", "5–7 ч + ожидание на границе", "Бюджетные путешественники без багажа"],
+        ["Маршрутка (Минсктранс, частники)", "По расписанию перевозчика", "4–6 ч", "1 пассажир с лёгким багажом"],
         ["Индивидуальный трансфер ComfortLine", "Фиксированная цена за машину (1–3 пасс.) — по запросу", "2,5–5 ч от двери до терминала", "Семьи, командировки, ночные/утренние рейсы, большой багаж"],
       ],
     },
@@ -95,8 +95,8 @@ const content = {
     comparison: {
       headers: ["Transport", "Price", "Travel time", "Best for"],
       rows: [
-        ["Scheduled coach (Ecolines, Lux Express)", "≈ 130–180 BYN", "5–7 hrs + border wait", "Solo budget travellers with light luggage"],
-        ["Shared minibus (Minsktrans, private)", "≈ 150–230 BYN", "4–6 hrs", "1 passenger with light luggage"],
+        ["Scheduled coach (Ecolines, Lux Express)", "Per carrier's tariff", "5–7 hrs + border wait", "Solo budget travellers with light luggage"],
+        ["Shared minibus (Minsktrans, private)", "Per carrier's tariff", "4–6 hrs", "1 passenger with light luggage"],
         ["ComfortLine private transfer", "Fixed price per car (1–4 pax) — on request", "2.5–5 hrs door to terminal", "Families, business trips, night/early flights, lots of luggage"],
       ],
     },
@@ -196,7 +196,6 @@ export default function MinskVilniusAirportPage() {
             url: SITE_URL + (isRu ? "/трансфер-минск-вильнюс-аэропорт" : "/minsk-vilnius-airport"),
             fromName: isRu ? "Минск" : "Minsk",
             toName: isRu ? "Аэропорт Вильнюса (VNO)" : "Vilnius International Airport (VNO)",
-            priceFrom: 180,
             priceCurrency: "EUR",
           }),
           faqJsonLd(c.faq.map((f) => ({ question: f.q, answer: f.a }))),

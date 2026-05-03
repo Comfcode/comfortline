@@ -4,7 +4,7 @@ export function localBusinessJsonLd(lang: "ru" | "en") {
   const description =
     lang === "ru"
       ? "ComfortLine — комфортный трансфер из Минска в аэропорт Вильнюса (VNO), аэропорт Варшавы (WAW, Модлин), Берлин и города Европы. Фиксированная цена, опытные водители, комфортные автомобили."
-      : "ComfortLine — comfortable transfers from Minsk to Vilnius Airport (VNO), Warsaw Airport (WAW, Modlin), Berlin and major European cities. Fixed prices, professional drivers, comfortable vehicles.";
+      : "ComfortLine — comfortable transfers from Minsk to Vilnius Airport (VNO), Warsaw Airport (WAW, Modlin), Berlin and major European cities. Personalised quotes, professional drivers, comfortable vehicles.";
 
   const popularRoutes = [
     {
