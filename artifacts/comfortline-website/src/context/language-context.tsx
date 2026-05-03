@@ -129,6 +129,7 @@ interface Translations {
     email: string;
     address: string;
     licensing: {
+      badge: string;
       heading: string;
       text: string;
       registryLabel: string;
@@ -197,7 +198,7 @@ const ru: Translations = {
     badge: "Всегда вовремя. Работаем с 2015 года.",
     headline1: "Индивидуальный трансфер, которому доверяют",
     headline2: "",
-    checkmarks: ["по Беларуси и России", "по всей Европе", "трансфер в Аэропорт"],
+    checkmarks: ["по Беларуси и России", "по всей Европе", "трансфер в Аэропорт", "перевозим с детьми и питомцами"],
     cta: "Заказать трансфер",
     ctaSecondary: "Узнать цены",
   },
@@ -330,6 +331,7 @@ const ru: Translations = {
     email: "Email",
     address: "Адрес",
     licensing: {
+      badge: "Официальный перевозчик",
       heading: "Лицензионная информация",
       text: "Индивидуальный предприниматель Мурашко Андрей Антонович имеет действительную лицензию на международные автомобильные перевозки пассажиров за № 02190/1-85358 (номер лицензии в Едином реестре лицензий — 13230000078378). Дата принятия решения о выдаче лицензии за № 13-ЛИ – 30 июня 2023 года. Срок действия лицензии – бессрочный.",
       registryLabel: "Единый реестр лицензий:",
@@ -398,7 +400,7 @@ const en: Translations = {
     badge: "Always on time. Operating since 2015.",
     headline1: "Private transfers you can trust",
     headline2: "",
-    checkmarks: ["across Belarus & Russia", "across all of Europe", "airport transfers"],
+    checkmarks: ["across Belarus & Russia", "across all of Europe", "airport transfers", "kids & pets welcome"],
     cta: "Book a Transfer",
     ctaSecondary: "See Rates",
   },
@@ -531,6 +533,7 @@ const en: Translations = {
     email: "Email",
     address: "Address",
     licensing: {
+      badge: "Official Licensed Carrier",
       heading: "Licensing Information",
       text: "Individual Entrepreneur Murashko Andrey Antonovich holds a valid licence for international passenger road transport, No. 02190/1-85358 (registry number 13230000078378). Licence decision date: 30 June 2023. Validity: unlimited.",
       registryLabel: "Unified Licence Registry:",

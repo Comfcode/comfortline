@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/context/language-context";
-import { ExternalLink, Phone, Mail, MapPin } from "lucide-react";
+import { ExternalLink, Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
 import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
 
@@ -95,6 +95,10 @@ export function Contact() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="bg-card border border-border/60 rounded-2xl p-8"
           >
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/30 mb-5">
+              <ShieldCheck className="h-3.5 w-3.5 text-primary" />
+              <span className="text-[11px] font-bold text-primary uppercase tracking-wider">{lic.badge}</span>
+            </div>
             <h4 className="text-xs font-bold text-primary uppercase tracking-wider mb-4">{lic.heading}</h4>
             <p className="text-sm text-muted-foreground leading-relaxed mb-5">
               {lic.text}
