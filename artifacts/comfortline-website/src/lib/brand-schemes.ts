@@ -92,8 +92,10 @@ export const BRAND_SCHEMES: BrandScheme[] = [
 
 export const DEFAULT_SCHEME_ID = "signature-gold";
 const STORAGE_KEY = "comfortline-scheme";
+const LOGO_STORAGE_KEY = "comfortline-logo-scheme";
 
 const STYLE_ID = "brand-scheme-override";
+const LOGO_STYLE_ID = "brand-logo-override";
 
 function parseHsl(triple: string): { h: number; s: number; l: number } {
   const m = triple.trim().match(/^([\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
@@ -162,6 +164,58 @@ export function saveScheme(schemeId: string): void {
   }
 }
 
+/**
+ * Apply a separate logo color scheme that overrides the site-accent-derived
+ * logo gradient. Pass null to clear and let the logo follow the site accent.
+ */
+export function applyLogoScheme(schemeId: string | null): void {
+  if (typeof document === "undefined") return;
+  const existing = document.getElementById(LOGO_STYLE_ID);
+  if (!schemeId) {
+    if (existing) existing.remove();
+    delete document.documentElement.dataset.logoScheme;
+    return;
+  }
+  const scheme = BRAND_SCHEMES.find((s) => s.id === schemeId);
+  if (!scheme) return;
+  const [g1, g2, g3, g4] = deriveGradientStops(scheme.primary);
+  const css = `:root, .dark, .light {
+    --logo-grad-1: ${g1} !important;
+    --logo-grad-2: ${g2} !important;
+    --logo-grad-3: ${g3} !important;
+    --logo-grad-4: ${g4} !important;
+  }`;
+  let style = existing as HTMLStyleElement | null;
+  if (!style) {
+    style = document.createElement("style");
+    style.id = LOGO_STYLE_ID;
+    document.head.appendChild(style);
+  }
+  style.textContent = css;
+  document.documentElement.dataset.logoScheme = scheme.id;
+}
+
+export function loadStoredLogoScheme(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return window.localStorage.getItem(LOGO_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+export function saveLogoScheme(schemeId: string | null): void {
+  if (typeof window === "undefined") return;
+  try {
+    if (schemeId) window.localStorage.setItem(LOGO_STORAGE_KEY, schemeId);
+    else window.localStorage.removeItem(LOGO_STORAGE_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
 export function bootstrapBrandScheme(): void {
   applyBrandScheme(loadStoredScheme());
+  const logoScheme = loadStoredLogoScheme();
+  if (logoScheme) applyLogoScheme(logoScheme);
 }

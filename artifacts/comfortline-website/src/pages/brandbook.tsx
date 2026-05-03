@@ -10,6 +10,9 @@ import {
   applyBrandScheme,
   loadStoredScheme,
   saveScheme,
+  applyLogoScheme,
+  loadStoredLogoScheme,
+  saveLogoScheme,
 } from "@/lib/brand-schemes";
 import { useLang } from "@/context/language-context";
 
@@ -204,6 +207,95 @@ function SchemePicker() {
   );
 }
 
+function LogoSchemePicker() {
+  const { lang } = useLang();
+  const [activeId, setActiveId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setActiveId(loadStoredLogoScheme());
+  }, []);
+
+  const select = (id: string) => {
+    applyLogoScheme(id);
+    saveLogoScheme(id);
+    setActiveId(id);
+  };
+
+  const reset = () => {
+    applyLogoScheme(null);
+    saveLogoScheme(null);
+    setActiveId(null);
+  };
+
+  return (
+    <motion.section
+      variants={sectionVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      data-no-print="true"
+    >
+      <SectionHeader index="00b" title={lang === "ru" ? "Цвет логотипа" : "Logo Color"} />
+      <p className="text-muted-foreground text-sm mt-2 mb-8 max-w-2xl">
+        {lang === "ru"
+          ? "Семь цветов отдельно для логотипа — независимо от акцента сайта. Например: акцент сайта рубиновый, а логотип золотой. По умолчанию следует за акцентом сайта."
+          : "Seven colors for the logo only — independent of the site accent. For example: site accent in ruby, logo in gold. By default the logo follows the site accent."}
+      </p>
+
+      {/* Live preview of the logo */}
+      <div className="rounded-2xl border border-border bg-[#0E0D13] p-10 mb-6 flex items-center justify-center">
+        <Logo variant="full" scheme="dark" height={48} showTagline />
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+        {BRAND_SCHEMES.map((s) => {
+          const isActive = s.id === activeId;
+          return (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => select(s.id)}
+              aria-pressed={isActive}
+              className={`group text-left rounded-2xl border-2 p-4 transition-all bg-card hover:border-primary/60 ${
+                isActive ? "border-primary shadow-lg shadow-primary/10" : "border-border"
+              }`}
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <div
+                  className="w-10 h-10 rounded-full ring-2 ring-border shrink-0"
+                  style={{ background: s.swatch }}
+                />
+                <div className="min-w-0">
+                  <p className="font-semibold text-sm text-foreground truncate">
+                    {lang === "ru" ? s.nameRu : s.name}
+                  </p>
+                  <code className="text-[10px] text-muted-foreground font-mono">{s.swatch}</code>
+                </div>
+                {isActive && <Check className="h-4 w-4 text-primary ml-auto shrink-0" />}
+              </div>
+            </button>
+          );
+        })}
+
+        {/* Follow site accent (default) */}
+        <button
+          type="button"
+          onClick={reset}
+          aria-pressed={activeId === null}
+          className={`group rounded-2xl border-2 border-dashed p-4 transition-all bg-card flex flex-col items-center justify-center text-center min-h-[100px] ${
+            activeId === null ? "border-primary shadow-lg shadow-primary/10" : "border-border hover:border-primary/60"
+          }`}
+        >
+          <RotateCcw className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors mb-1" />
+          <p className="text-xs font-semibold text-foreground">
+            {lang === "ru" ? "Как акцент сайта" : "Follow site accent"}
+          </p>
+        </button>
+      </div>
+    </motion.section>
+  );
+}
+
 export default function BrandbookPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -234,6 +326,9 @@ export default function BrandbookPage() {
 
           {/* ── Color Scheme Picker ── */}
           <SchemePicker />
+
+          {/* ── Logo Color Picker ── */}
+          <LogoSchemePicker />
 
           {/* ── Primary Logo ── */}
           <motion.section variants={sectionVariant} initial="hidden" whileInView="visible" viewport={{ once: true }}>
