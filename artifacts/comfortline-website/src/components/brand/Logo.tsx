@@ -62,10 +62,10 @@ export function LogoMark({
             x2={GRAD_X2} y2={GRAD_Y2}
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0%"   stopColor="#EDD9A8" />
-            <stop offset="22%"  stopColor="#D4B07A" />
-            <stop offset="58%"  stopColor="#B59C73" />
-            <stop offset="100%" stopColor="#8A7555" />
+            <stop offset="0%"   stopColor="var(--logo-grad-1, #EDD9A8)" />
+            <stop offset="22%"  stopColor="var(--logo-grad-2, #D4B07A)" />
+            <stop offset="58%"  stopColor="var(--logo-grad-3, #B59C73)" />
+            <stop offset="100%" stopColor="var(--logo-grad-4, #8A7555)" />
           </linearGradient>
         </defs>
       )}
@@ -128,10 +128,10 @@ export function Logo({
             x2={GRAD_X2 + tx} y2={GRAD_Y2}
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0%"   stopColor="#EDD9A8" />
-            <stop offset="22%"  stopColor="#D4B07A" />
-            <stop offset="58%"  stopColor="#B59C73" />
-            <stop offset="100%" stopColor="#8A7555" />
+            <stop offset="0%"   stopColor="var(--logo-grad-1, #EDD9A8)" />
+            <stop offset="22%"  stopColor="var(--logo-grad-2, #D4B07A)" />
+            <stop offset="58%"  stopColor="var(--logo-grad-3, #B59C73)" />
+            <stop offset="100%" stopColor="var(--logo-grad-4, #8A7555)" />
           </linearGradient>
         </defs>
 
@@ -147,7 +147,7 @@ export function Logo({
         >COMFORT</text>
         <text x="80" y="113"
           fontFamily="Montserrat, sans-serif" fontWeight="900" fontSize="16"
-          fill="#B59C73" textAnchor="middle" letterSpacing="1.5"
+          fill="var(--logo-grad-3, #B59C73)" textAnchor="middle" letterSpacing="1.5"
         >LINE</text>
         {showTagline && (
           <text x="80" y={showTagline ? 126 : 0}
@@ -179,10 +179,10 @@ export function Logo({
           x2={GRAD_X2} y2={GRAD_Y2}
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0%"   stopColor="#EDD9A8" />
-          <stop offset="22%"  stopColor="#D4B07A" />
-          <stop offset="58%"  stopColor="#B59C73" />
-          <stop offset="100%" stopColor="#8A7555" />
+          <stop offset="0%"   stopColor="var(--logo-grad-1, #EDD9A8)" />
+          <stop offset="22%"  stopColor="var(--logo-grad-2, #D4B07A)" />
+          <stop offset="58%"  stopColor="var(--logo-grad-3, #B59C73)" />
+          <stop offset="100%" stopColor="var(--logo-grad-4, #8A7555)" />
         </linearGradient>
       </defs>
 
@@ -196,7 +196,7 @@ export function Logo({
       >COMFORT</text>
       <text x="84" y="55"
         fontFamily="Montserrat, sans-serif" fontWeight="900" fontSize="17"
-        fill="#B59C73" letterSpacing="1.5"
+        fill="var(--logo-grad-3, #B59C73)" letterSpacing="1.5"
       >LINE</text>
       {showTagline && (
         <text x="84" y="67"

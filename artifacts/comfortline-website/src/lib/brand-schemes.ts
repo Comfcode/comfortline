@@ -95,10 +95,33 @@ const STORAGE_KEY = "comfortline-scheme";
 
 const STYLE_ID = "brand-scheme-override";
 
+function parseHsl(triple: string): { h: number; s: number; l: number } {
+  const m = triple.trim().match(/^([\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/);
+  if (!m) return { h: 0, s: 0, l: 50 };
+  return { h: parseFloat(m[1]), s: parseFloat(m[2]), l: parseFloat(m[3]) };
+}
+
+function hsl(h: number, s: number, l: number): string {
+  const clamp = (v: number) => Math.max(0, Math.min(100, v));
+  return `hsl(${h.toFixed(1)}, ${clamp(s).toFixed(1)}%, ${clamp(l).toFixed(1)}%)`;
+}
+
+/** Derive 4 gradient stops from a primary HSL (highlight → deep). */
+function deriveGradientStops(primary: string): [string, string, string, string] {
+  const { h, s, l } = parseHsl(primary);
+  return [
+    hsl(h, Math.max(s - 10, 15), l + 22), // bright highlight
+    hsl(h, s, l + 10),
+    hsl(h, s, l),
+    hsl(h, Math.min(s + 5, 95), l - 18),  // deep shade
+  ];
+}
+
 export function applyBrandScheme(schemeId: string): void {
   if (typeof document === "undefined") return;
   const scheme = BRAND_SCHEMES.find((s) => s.id === schemeId);
   if (!scheme) return;
+  const [g1, g2, g3, g4] = deriveGradientStops(scheme.primary);
   const css = `:root, .dark, .light {
     --primary: ${scheme.primary} !important;
     --primary-foreground: ${scheme.primaryForeground} !important;
@@ -106,6 +129,10 @@ export function applyBrandScheme(schemeId: string): void {
     --sidebar-primary: ${scheme.primary} !important;
     --sidebar-primary-foreground: ${scheme.primaryForeground} !important;
     --sidebar-ring: ${scheme.ring} !important;
+    --logo-grad-1: ${g1};
+    --logo-grad-2: ${g2};
+    --logo-grad-3: ${g3};
+    --logo-grad-4: ${g4};
   }`;
   let style = document.getElementById(STYLE_ID) as HTMLStyleElement | null;
   if (!style) {
