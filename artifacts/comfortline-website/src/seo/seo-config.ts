@@ -23,8 +23,8 @@ export const BUSINESS = {
   geo: { lat: 53.9006, lng: 27.5590 },
   foundingDate: "2018",
   slogan: {
-    ru: "Премиум-трансфер из Минска в аэропорты Европы",
-    en: "Premium transfers from Minsk to European airports",
+    ru: "Комфортный трансфер из Минска в аэропорты Вильнюса и Варшавы",
+    en: "Comfortable transfers from Minsk to Vilnius and Warsaw airports",
   },
   paymentAccepted: ["Cash", "Credit Card"],
   currenciesAccepted: "EUR, USD, BYN, PLN",
