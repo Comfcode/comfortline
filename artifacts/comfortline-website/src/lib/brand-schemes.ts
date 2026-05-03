@@ -93,22 +93,28 @@ export const BRAND_SCHEMES: BrandScheme[] = [
 export const DEFAULT_SCHEME_ID = "signature-gold";
 const STORAGE_KEY = "comfortline-scheme";
 
-const VAR_TARGETS = [
-  "--primary",
-  "--ring",
-  "--sidebar-primary",
-  "--sidebar-ring",
-] as const;
+const STYLE_ID = "brand-scheme-override";
 
 export function applyBrandScheme(schemeId: string): void {
   if (typeof document === "undefined") return;
   const scheme = BRAND_SCHEMES.find((s) => s.id === schemeId);
   if (!scheme) return;
-  const root = document.documentElement;
-  for (const v of VAR_TARGETS) root.style.setProperty(v, scheme.primary);
-  root.style.setProperty("--primary-foreground", scheme.primaryForeground);
-  root.style.setProperty("--sidebar-primary-foreground", scheme.primaryForeground);
-  root.dataset.brandScheme = scheme.id;
+  const css = `:root, .dark, .light {
+    --primary: ${scheme.primary} !important;
+    --primary-foreground: ${scheme.primaryForeground} !important;
+    --ring: ${scheme.ring} !important;
+    --sidebar-primary: ${scheme.primary} !important;
+    --sidebar-primary-foreground: ${scheme.primaryForeground} !important;
+    --sidebar-ring: ${scheme.ring} !important;
+  }`;
+  let style = document.getElementById(STYLE_ID) as HTMLStyleElement | null;
+  if (!style) {
+    style = document.createElement("style");
+    style.id = STYLE_ID;
+    document.head.appendChild(style);
+  }
+  style.textContent = css;
+  document.documentElement.dataset.brandScheme = scheme.id;
 }
 
 export function loadStoredScheme(): string {
