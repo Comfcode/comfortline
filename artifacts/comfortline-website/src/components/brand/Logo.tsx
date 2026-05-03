@@ -33,6 +33,7 @@ interface MarkProps {
   size?: number;
   fillColor?: string;    // solid fill override (disables gradient)
   gradientId?: string;   // unique id to avoid SVG defs collision
+  className?: string;
 }
 
 /** Stand-alone symbol mark — use for social avatars, favicons, compact lockups */
@@ -40,6 +41,7 @@ export function LogoMark({
   size = 40,
   fillColor,
   gradientId = "clm",
+  className = "",
 }: MarkProps) {
   const useGrad = !fillColor;
   const fill = fillColor ?? `url(#${gradientId})`;
@@ -53,6 +55,7 @@ export function LogoMark({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
+      className={`cl-brand-svg ${className}`.trim()}
     >
       {useGrad && (
         <defs>
@@ -98,9 +101,7 @@ export function Logo({
 
   // ── Mark only ──
   if (variant === "mark") {
-    return (
-      <LogoMark size={height} gradientId={gradId} className={className} />
-    );
+    return <LogoMark size={height} gradientId={gradId} className={className} />;
   }
 
   // ── Stacked ──
@@ -118,7 +119,7 @@ export function Logo({
         viewBox={`0 0 ${vw} ${vh}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={className}
+        className={`cl-brand-svg ${className}`.trim()}
         aria-label="ComfortLine"
       >
         <defs>
@@ -169,7 +170,7 @@ export function Logo({
       viewBox={`0 0 ${vw} 70`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={`cl-brand-svg ${className}`.trim()}
       aria-label="ComfortLine"
     >
       <defs>

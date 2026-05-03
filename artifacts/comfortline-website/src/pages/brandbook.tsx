@@ -18,6 +18,13 @@ import {
   loadStoredFont,
   saveFont,
 } from "@/lib/font-themes";
+import {
+  LOGO_PALETTES,
+  DEFAULT_LOGO_PALETTE_ID,
+  applyLogoPalette,
+  loadStoredLogoPalette,
+  saveLogoPalette,
+} from "@/lib/logo-palettes";
 import { useLang } from "@/context/language-context";
 
 const palette = [
@@ -144,8 +151,8 @@ function SchemePicker() {
       <SectionHeader index="00" title={lang === "ru" ? "Цветовая схема" : "Color Scheme"} />
       <p className="text-muted-foreground text-sm mt-2 mb-8 max-w-2xl">
         {lang === "ru"
-          ? "Семь акцентных схем. Управляют цветом логотипа, кнопок, ссылок и всех акцентов сайта. Выбор сохраняется в браузере."
-          : "Seven accent schemes. Drive the logo, buttons, links and every accent across the site. Saved in this browser."}
+          ? "Семь акцентных схем. Задают цвет кнопок, ссылок и всех акцентов сайта (а также логотипа, если ниже выбран «Фирменный градиент»). Выбор сохраняется в браузере."
+          : "Seven accent schemes. Drive the buttons, links and every accent across the site (and the logo when «Brand Gradient» is selected below). Saved in this browser."}
       </p>
 
       {/* Live logo preview — confirms how the chosen scheme paints the brand mark */}
@@ -210,6 +217,107 @@ function SchemePicker() {
           {lang === "ru"
             ? "Изменения применяются к кнопкам, ссылкам, акцентам по всему сайту."
             : "Changes apply to buttons, links and accents site-wide."}
+        </span>
+      </div>
+    </motion.section>
+  );
+}
+
+function LogoColorPicker() {
+  const { lang } = useLang();
+  const [activeId, setActiveId] = useState<string>(DEFAULT_LOGO_PALETTE_ID);
+
+  useEffect(() => {
+    setActiveId(loadStoredLogoPalette());
+  }, []);
+
+  const select = (id: string) => {
+    applyLogoPalette(id);
+    saveLogoPalette(id);
+    setActiveId(id);
+  };
+
+  const reset = () => select(DEFAULT_LOGO_PALETTE_ID);
+
+  return (
+    <motion.section
+      variants={sectionVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      data-no-print="true"
+    >
+      <SectionHeader index="00a" title={lang === "ru" ? "Цвет логотипа" : "Logo Colour"} />
+      <p className="text-muted-foreground text-sm mt-2 mb-8 max-w-2xl">
+        {lang === "ru"
+          ? "Шесть вариантов окраски логотипа: фирменный градиент, четыре сплошных цвета и анимированная радуга. Применяется ко всем логотипам сайта — в шапке, подвале и брендбуке. Выбор сохраняется в браузере."
+          : "Six logo colour options: the brand gradient, four solid colours and an animated rainbow. Applied to every logo across the site — header, footer and brandbook. Saved in this browser."}
+      </p>
+
+      {/* Live preview — confirms how the chosen palette paints the brand mark */}
+      <div className="rounded-2xl border border-border bg-[#0E0D13] p-10 mb-6 flex items-center justify-center">
+        <Logo variant="full" scheme="dark" height={48} showTagline />
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3">
+        {LOGO_PALETTES.map((p) => {
+          const isActive = p.id === activeId;
+          return (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => select(p.id)}
+              aria-pressed={isActive}
+              className={`group text-left rounded-2xl border-2 p-4 transition-all bg-card hover:border-primary/60 ${
+                isActive ? "border-primary shadow-lg shadow-primary/10" : "border-border"
+              }`}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className={`w-10 h-10 rounded-full ring-2 ring-border shrink-0 ${
+                    p.kind === "rainbow" ? "animate-spin-slow" : ""
+                  }`}
+                  style={{ background: p.swatch }}
+                />
+                <div className="min-w-0 flex-1">
+                  <p className="font-semibold text-sm text-foreground truncate">
+                    {lang === "ru" ? p.nameRu : p.name}
+                  </p>
+                  <code className="text-[10px] text-muted-foreground font-mono">
+                    {p.kind === "solid" ? p.color : p.kind}
+                  </code>
+                </div>
+                {isActive && <Check className="h-4 w-4 text-primary shrink-0" />}
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {lang === "ru" ? p.descriptionRu : p.description}
+              </p>
+            </button>
+          );
+        })}
+
+        {/* Reset card */}
+        <button
+          type="button"
+          onClick={reset}
+          className="group rounded-2xl border-2 border-dashed border-border p-4 transition-all hover:border-primary/60 bg-card flex flex-col items-center justify-center text-center min-h-[140px]"
+        >
+          <RotateCcw className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors mb-2" />
+          <p className="text-sm font-semibold text-foreground">
+            {lang === "ru" ? "Сбросить" : "Reset"}
+          </p>
+          <p className="text-xs text-muted-foreground mt-1">
+            {lang === "ru" ? "Фирменный градиент" : "Brand Gradient"}
+          </p>
+        </button>
+      </div>
+
+      <div className="mt-6 flex items-center gap-2 text-xs text-muted-foreground">
+        <Palette className="h-3.5 w-3.5" />
+        <span>
+          {lang === "ru"
+            ? "Применяется ко всем логотипам — в шапке, подвале и на странице брендбука."
+            : "Applied to every logo — header, footer and the brandbook page."}
         </span>
       </div>
     </motion.section>
@@ -371,6 +479,9 @@ export default function BrandbookPage() {
 
           {/* ── Color Scheme Picker (drives accent + logo gradient) ── */}
           <SchemePicker />
+
+          {/* ── Logo Color Picker (overrides logo gradient site-wide) ── */}
+          <LogoColorPicker />
 
           {/* ── Font Picker ── */}
           <FontPicker />
