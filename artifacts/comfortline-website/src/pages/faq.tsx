@@ -142,6 +142,29 @@ const ruFaq: FaqSection[] = [
         a: "Лимиты по весу, стоимости, алкоголю и табаку периодически меняются. Перед поездкой уточните актуальные нормы у вашего водителя — мы следим за изменениями и подсказываем перед каждым рейсом. Для крупных покупок планируйте маршрут так, чтобы пройти через красный коридор без давки.",
       },
       {
+        q: "Какая беспошлинная норма ввоза товаров в Беларусь наземным транспортом?",
+        a: "Основная беспошлинная норма для въезда в Беларусь наземным транспортом — до 500 евро и 25 кг товаров на человека. Для авиапассажиров действуют другие лимиты. Особые ограничения есть на алкоголь, табак и продукты животного происхождения. Если везёте больше — проходите через красный коридор и оформляйте декларацию: это снимает риски штрафа.",
+        sub: [
+          "До 500 € стоимости и до 25 кг веса на одного человека (наземный транспорт)",
+          "Алкоголь — лимиты по литражу и возрасту (от 18 лет)",
+          "Табак — ограниченное количество сигарет / сигар на человека",
+          "Продукты животного происхождения (мясо, молочка, сыр) — строго ограничены",
+          "Лекарства строгого учёта — только с рецептом",
+        ],
+      },
+      {
+        q: "Что нельзя ввозить из Беларуси в Литву (и в ЕС)?",
+        a: "При въезде из Беларуси в Литву и другие страны ЕС полностью запрещён ввоз алкоголя, табачных изделий и многих продуктов питания (особенно мясо, молочные продукты, сыр, мёд, яйца). Ограничения регулярно обновляются — наш водитель знает актуальные правила Литвы, Польши и других стран ЕС и подскажет, что лучше оставить дома, чтобы не было проблем на КПП Беларусь–Литва или Беларусь–Польша.",
+        sub: [
+          "Алкоголь любой крепости — запрещён к ввозу из Беларуси в Литву",
+          "Сигареты и табачные изделия — запрещены",
+          "Мясо, молочка, сыр, яйца, мёд — ограничены или запрещены",
+          "Свежие фрукты и овощи — под ограничением",
+          "Семена, растения, корма для животных — требуют разрешения",
+          "Топливо в канистрах сверх бака — запрещено",
+        ],
+      },
+      {
         q: "Можно ли провозить лекарства, технику и продукты?",
         a: "Личные лекарства — да, желательно с рецептом или упаковкой. Электроника для личного пользования (ноутбук, телефон, фотоаппарат) — без проблем в разумных количествах. Продукты животного происхождения (мясо, молочка, сыр) ограничены при въезде в ЕС — лучше не брать. Свежие фрукты и овощи также под ограничением.",
       },
@@ -342,6 +365,29 @@ const enFaq: FaqSection[] = [
       {
         q: "What are the current duty-free limits?",
         a: "Weight, value, alcohol and tobacco limits change periodically. Confirm current rules with your driver before the trip — we monitor changes and brief passengers ahead of every run. For larger shopping trips, plan for the red corridor so you avoid the queue crush.",
+      },
+      {
+        q: "What is the duty-free limit for entering Belarus by road?",
+        a: "The main duty-free allowance for entering Belarus by land transport is up to €500 in value and up to 25 kg of goods per person. Air passengers have different limits. Alcohol, tobacco and animal-origin food have additional restrictions. If you exceed the limit, use the red corridor and declare the goods — it eliminates the risk of a fine.",
+        sub: [
+          "Up to €500 in value and up to 25 kg per person (land transport)",
+          "Alcohol — strict litre limits and age restriction (18+)",
+          "Tobacco — limited cigarettes / cigars per person",
+          "Animal-origin products (meat, dairy, cheese) — strictly restricted",
+          "Controlled medication — prescription required",
+        ],
+      },
+      {
+        q: "What can't I bring from Belarus into Lithuania (or the EU)?",
+        a: "When entering Lithuania (and other EU countries) from Belarus, alcohol, tobacco products and many foods (especially meat, dairy, cheese, honey, eggs) are completely prohibited. The rules update regularly — our driver knows current Lithuanian, Polish and EU customs rules and will advise what to leave at home so you have no issues at the Belarus–Lithuania or Belarus–Poland border.",
+        sub: [
+          "Alcohol of any strength — prohibited when entering Lithuania from Belarus",
+          "Cigarettes and tobacco products — prohibited",
+          "Meat, dairy, cheese, eggs, honey — restricted or prohibited",
+          "Fresh fruit and vegetables — restricted",
+          "Seeds, plants, animal feed — permits required",
+          "Fuel in jerry cans beyond the tank — prohibited",
+        ],
       },
       {
         q: "Can I bring medication, electronics and food?",
