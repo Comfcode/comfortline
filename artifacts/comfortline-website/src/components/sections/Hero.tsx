@@ -15,7 +15,7 @@ export function Hero() {
         {/* Bottom gradient for text legibility — always dark, never white */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent dark:from-background dark:via-background/40 z-10"></div>
         <img
-          src="/hero-bg.png"
+          src="/hero-bg.webp"
           alt={
             lang === "ru"
               ? "ComfortLine — премиум-трансфер из Минска в аэропорты Европы на чёрном бизнес-седане"

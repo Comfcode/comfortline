@@ -1,0 +1,269 @@
+import { useRoute } from "wouter";
+import { motion } from "framer-motion";
+import { Calendar, Clock, ArrowLeft, ArrowRight, Tag, BookOpen, PhoneCall } from "lucide-react";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { useLang } from "@/context/language-context";
+import NotFound from "@/pages/not-found";
+import { Seo } from "@/seo/Seo";
+import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
+import {
+  ARTICLES,
+  BLOG_BASE_RU,
+  BLOG_BASE_EN,
+  findArticle,
+  type Block,
+} from "@/data/blog-articles";
+import { SITE_URL, BUSINESS } from "@/seo/seo-config";
+
+function renderBlock(block: Block, idx: number) {
+  switch (block.type) {
+    case "h2":
+      return (
+        <h2 key={idx} className="text-2xl font-bold text-foreground mt-10 mb-4">
+          {block.text}
+        </h2>
+      );
+    case "h3":
+      return (
+        <h3 key={idx} className="text-lg font-bold text-foreground mt-6 mb-3">
+          {block.text}
+        </h3>
+      );
+    case "p":
+      return (
+        <p key={idx} className="text-foreground/85 leading-relaxed mb-4">
+          {block.text}
+        </p>
+      );
+    case "ul":
+      return (
+        <ul key={idx} className="space-y-2 mb-5 pl-1">
+          {block.items.map((it, i) => (
+            <li key={i} className="flex items-start gap-3 text-foreground/85">
+              <span className="text-primary mt-1.5 shrink-0">▸</span>
+              <span>{it}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    case "ol":
+      return (
+        <ol key={idx} className="space-y-2 mb-5 pl-1 list-none">
+          {block.items.map((it, i) => (
+            <li key={i} className="flex items-start gap-3 text-foreground/85">
+              <span className="text-primary font-bold shrink-0 min-w-[24px]">{i + 1}.</span>
+              <span>{it}</span>
+            </li>
+          ))}
+        </ol>
+      );
+    case "callout":
+      return (
+        <div
+          key={idx}
+          className="rounded-2xl border border-primary/30 bg-primary/5 px-5 py-4 my-6 text-foreground/90 text-sm leading-relaxed"
+        >
+          {block.text}
+        </div>
+      );
+    case "table":
+      return (
+        <div key={idx} className="overflow-x-auto my-6 rounded-xl border border-border">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/50">
+              <tr>
+                {block.headers.map((h, i) => (
+                  <th key={i} className="text-left px-4 py-3 font-bold text-foreground">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, i) => (
+                <tr key={i} className="border-t border-border">
+                  {row.map((cell, j) => (
+                    <td key={j} className="px-4 py-3 text-foreground/85">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+  }
+}
+
+export default function BlogArticlePage() {
+  const { lang } = useLang();
+  const isRu = lang === "ru";
+  const base = isRu ? BLOG_BASE_RU : BLOG_BASE_EN;
+
+  const [, paramsRu] = useRoute(`${BLOG_BASE_RU}/:slug`);
+  const [, paramsEn] = useRoute(`${BLOG_BASE_EN}/:slug`);
+  const slug = (paramsRu?.slug ?? paramsEn?.slug) as string | undefined;
+
+  const article = slug ? findArticle(slug) : undefined;
+  if (!article) return <NotFound />;
+
+  const url = SITE_URL + base + "/" + encodeURI(article.slug);
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    datePublished: article.dateISO,
+    dateModified: article.dateISO,
+    author: {
+      "@type": "Organization",
+      name: BUSINESS.name,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: BUSINESS.name,
+      logo: { "@type": "ImageObject", url: BUSINESS.logo },
+    },
+    image: `${SITE_URL}/og/${article.ogSlug}.jpg`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    inLanguage: "ru",
+    keywords: article.tags.join(", "),
+  };
+
+  const relatedArticles = article.related
+    .map((s) => ARTICLES.find((a) => a.slug === s))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a));
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Seo
+        titleRu={`${article.title} | Блог ComfortLine`}
+        titleEn={`${article.title} | ComfortLine Blog`}
+        descRu={article.description}
+        descEn={article.description}
+        pathRu={`${BLOG_BASE_RU}/${article.slug}`}
+        pathEn={`${BLOG_BASE_EN}/${article.slug}`}
+        keywordsRu={article.tags.join(", ")}
+        keywordsEn={article.tags.join(", ")}
+        ogImage={`${SITE_URL}/og/${article.ogSlug}.jpg`}
+        ogType="article"
+        breadcrumbsRu={[
+          { name: "Главная", path: "/" },
+          { name: "Блог", path: BLOG_BASE_RU },
+          { name: article.title, path: `${BLOG_BASE_RU}/${article.slug}` },
+        ]}
+        breadcrumbsEn={[
+          { name: "Home", path: "/" },
+          { name: "Blog", path: BLOG_BASE_EN },
+          { name: article.title, path: `${BLOG_BASE_EN}/${article.slug}` },
+        ]}
+        jsonLd={articleJsonLd}
+      />
+      <Navbar />
+
+      <article className="pt-28 pb-14">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <a href={base} className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors mb-6">
+            <ArrowLeft className="h-3 w-3" /> {isRu ? "Все статьи" : "All articles"}
+          </a>
+
+          <div className="flex items-center flex-wrap gap-3 mb-4 text-xs text-muted-foreground">
+            <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-semibold">
+              {article.category}
+            </span>
+            <span className="flex items-center gap-1">
+              <Calendar className="h-3 w-3" /> {new Date(article.dateISO).toLocaleDateString(isRu ? "ru-RU" : "en-US", { day: "numeric", month: "long", year: "numeric" })}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock className="h-3 w-3" /> {article.readingMin} {isRu ? "мин чтения" : "min read"}
+            </span>
+          </div>
+
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
+            {article.title}
+          </h1>
+
+          <p className="text-lg text-muted-foreground leading-relaxed mb-10 border-l-2 border-primary/40 pl-4 italic">
+            {article.intro}
+          </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="prose-comfortline"
+          >
+            {article.body.map(renderBlock)}
+          </motion.div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap items-center gap-2 mt-10 pt-6 border-t border-border">
+            <Tag className="h-4 w-4 text-muted-foreground" />
+            {article.tags.map((tag) => (
+              <span key={tag} className="text-xs px-2.5 py-1 rounded-full bg-muted text-muted-foreground">
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          {/* CTA to a money page */}
+          {article.ctaRoute && (
+            <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6 md:p-8 mt-10 text-center">
+              <PhoneCall className="h-7 w-7 text-primary mx-auto mb-3" />
+              <h2 className="text-xl font-bold text-foreground mb-2">
+                {isRu ? "Готовы заказать?" : "Ready to book?"}
+              </h2>
+              <p className="text-muted-foreground text-sm mb-5 max-w-md mx-auto">
+                {isRu
+                  ? "Менеджер свяжется с вами в течение 15 минут и назовёт точную стоимость."
+                  : "Our manager will contact you within 15 minutes with an exact price."}
+              </p>
+              <a
+                href={article.ctaRoute.path}
+                className="inline-block px-8 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+              >
+                {article.ctaRoute.label}
+              </a>
+            </div>
+          )}
+
+          {/* Related articles */}
+          {relatedArticles.length > 0 && (
+            <div className="mt-12">
+              <h2 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
+                <BookOpen className="h-5 w-5 text-primary" />
+                {isRu ? "Читайте также" : "Read also"}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {relatedArticles.map((r) => (
+                  <a
+                    key={r.slug}
+                    href={`${base}/${encodeURI(r.slug)}`}
+                    className="block bg-card border border-border rounded-2xl p-5 hover:border-primary/50 hover:bg-primary/5 transition-all group"
+                  >
+                    <p className="font-bold text-foreground group-hover:text-primary transition-colors mb-1.5 leading-snug">
+                      {r.title}
+                    </p>
+                    <p className="text-muted-foreground text-xs leading-relaxed">
+                      {r.description}
+                    </p>
+                    <span className="inline-flex items-center gap-1 mt-3 text-primary text-xs font-semibold">
+                      {isRu ? "Читать" : "Read"} <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </article>
+
+      <GlobalBookingModal />
+      <Footer />
+    </div>
+  );
+}

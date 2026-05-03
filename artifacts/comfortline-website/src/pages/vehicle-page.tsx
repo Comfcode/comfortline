@@ -84,7 +84,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2021",
       seats: 4,
       luggage: "2 чемодана",
-      image: "/car-mercedes-e.jpg",
+      image: "/car-mercedes-e.webp",
       desc: "Представительский бизнес-седан с кожаным салоном, климат-контролем и плавным ходом. Идеален для деловых поездок, встреч партнёров и трансферов в аэропорт.",
       featuresLabel: "Оснащение автомобиля",
       features: [
@@ -119,7 +119,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2021",
       seats: 4,
       luggage: "2 suitcases",
-      image: "/car-mercedes-e.jpg",
+      image: "/car-mercedes-e.webp",
       desc: "A premium business-class sedan with leather interior, climate control, and a smooth, quiet ride. Perfect for business trips, VIP client pickups, and airport transfers.",
       featuresLabel: "Vehicle equipment",
       features: [
@@ -157,7 +157,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2019",
       seats: 7,
       luggage: "Вместительный",
-      image: "/car-kia-carnival.jpg",
+      image: "/car-kia-carnival.webp",
       desc: "Просторный семиместный минивэн для семейных и групповых поездок. Большой багажник, комфортные кресла в три ряда и плавный ход на дальних маршрутах.",
       featuresLabel: "Оснащение автомобиля",
       features: [
@@ -191,7 +191,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2019",
       seats: 7,
       luggage: "Spacious",
-      image: "/car-kia-carnival.jpg",
+      image: "/car-kia-carnival.webp",
       desc: "A spacious 7-seat minivan for family and group travel. Large boot, comfortable three-row seating and a smooth ride on long-distance routes.",
       featuresLabel: "Vehicle equipment",
       features: [
@@ -228,7 +228,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2020",
       seats: 7,
       luggage: "Вместительный",
-      image: "/car-hyundai-palisade.jpg",
+      image: "/car-hyundai-palisade.webp",
       desc: "Полноразмерный SUV с семью местами, высоким клиренсом и полным приводом. Уверенно держит дорогу в любых условиях — зимой, на трассе и в длительных поездках.",
       featuresLabel: "Оснащение автомобиля",
       features: [
@@ -263,7 +263,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2020",
       seats: 7,
       luggage: "Spacious",
-      image: "/car-hyundai-palisade.jpg",
+      image: "/car-hyundai-palisade.webp",
       desc: "A full-size SUV with 7 seats, high ground clearance and all-wheel drive. Handles confidently in any weather — winter roads, motorways, and long-haul trips alike.",
       featuresLabel: "Vehicle equipment",
       features: [
@@ -301,7 +301,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2015",
       seats: 8,
       luggage: "Вместительный",
-      image: "/car-fiat-scudo.jpg",
+      image: "/car-fiat-scudo.webp",
       desc: "Просторный микроавтобус на 8 мест с большим грузовым отсеком. Оптимальный выбор для групп, корпоративных трансферов и поездок с большим количеством багажа.",
       featuresLabel: "Оснащение автомобиля",
       features: [
@@ -335,7 +335,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2015",
       seats: 8,
       luggage: "Spacious",
-      image: "/car-fiat-scudo.jpg",
+      image: "/car-fiat-scudo.webp",
       desc: "A spacious 8-seat minibus with a large cargo area. The ideal choice for groups, corporate transfers, and trips with heavy or bulky luggage.",
       featuresLabel: "Vehicle equipment",
       features: [
@@ -482,7 +482,7 @@ export function VehiclePage({ slug }: VehiclePageProps) {
             </div>
             <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
               <img
-                src="/car-interior.png"
+                src="/car-interior.webp"
                 alt={lang === "ru"
                   ? `Салон ${c.name} — кожаные сиденья, Wi-Fi, USB-зарядка, ComfortLine трансфер`
                   : `${c.name} interior — leather seats, Wi-Fi, USB charging, ComfortLine transfer`}

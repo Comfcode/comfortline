@@ -27,6 +27,7 @@ export function Navbar() {
     { name: t.nav.advantages, href: "/#advantages" },
     { name: t.nav.reviews, href: "/#reviews" },
     { name: t.nav.faq, href: "/faq" },
+    { name: lang === "ru" ? "Блог" : "Blog", href: lang === "ru" ? "/блог" : "/blog" },
     { name: t.nav.contacts, href: "/#contact" },
   ];
 

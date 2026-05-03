@@ -49,6 +49,8 @@ export function Footer() {
               {f.navLinks.map((label, i) => (
                 <li key={i}><a href={navHrefs[i]} className="hover:text-primary transition-colors">{label}</a></li>
               ))}
+              <li><a href="/блог" className="hover:text-primary transition-colors">Блог</a></li>
+              <li><a href="/faq" className="hover:text-primary transition-colors">FAQ</a></li>
             </ul>
           </div>
 

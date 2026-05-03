@@ -12,6 +12,9 @@ import FaqPage from "@/pages/faq";
 import MinskVilniusAirportPage from "@/pages/minsk-vilnius-airport";
 import MinskWarsawAirportPage from "@/pages/minsk-warsaw-airport";
 import MinskWarsawModlinAirportPage from "@/pages/minsk-warsaw-modlin-airport";
+import MinskKaunasAirportPage from "@/pages/minsk-kaunas-airport";
+import BlogIndexPage from "@/pages/blog/index";
+import BlogArticlePage from "@/pages/blog/article";
 import { VehiclePage } from "@/pages/vehicle-page";
 import BrandbookPage from "@/pages/brandbook";
 import MinskCityTransferPage from "@/pages/minsk-city-transfer";
@@ -43,6 +46,14 @@ function Router() {
       <Route path="/трансфер-минск-варшава-шопен" component={MinskWarsawAirportPage} />
       <Route path="/minsk-warsaw-modlin-airport" component={MinskWarsawModlinAirportPage} />
       <Route path="/трансфер-минск-варшава-модлин" component={MinskWarsawModlinAirportPage} />
+      <Route path="/minsk-kaunas-airport" component={MinskKaunasAirportPage} />
+      <Route path="/трансфер-минск-каунас-аэропорт" component={MinskKaunasAirportPage} />
+
+      {/* Blog */}
+      <Route path="/blog" component={BlogIndexPage} />
+      <Route path="/блог" component={BlogIndexPage} />
+      <Route path="/blog/:slug" component={BlogArticlePage} />
+      <Route path="/блог/:slug" component={BlogArticlePage} />
 
       {/* Vehicle pages */}
       <Route path="/mercedes-e-class-transfer" component={() => <VehiclePage slug="mercedes-e-class" />} />
