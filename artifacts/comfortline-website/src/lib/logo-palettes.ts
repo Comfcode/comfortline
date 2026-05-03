@@ -14,7 +14,7 @@
  *     scheme's golden gradient.
  */
 
-export type LogoPaletteKind = "default" | "solid" | "rainbow";
+export type LogoPaletteKind = "default" | "solid" | "rainbow" | "rainbow-static";
 
 export type LogoPalette = {
   id: string;
@@ -87,6 +87,16 @@ export const LOGO_PALETTES: LogoPalette[] = [
       "conic-gradient(from 180deg, #ff5f6d, #ffc371, #f7ee7f, #4fc79b, #5b8def, #b46cff, #ff5f6d)",
     kind: "rainbow",
   },
+  {
+    id: "rainbow-static",
+    name: "Rainbow Colours",
+    nameRu: "Радужные цвета",
+    description: "Static rainbow gradient — Pride colours without animation.",
+    descriptionRu: "Статичный радужный градиент — Pride-цвета без анимации.",
+    swatch:
+      "linear-gradient(90deg, #e40303 0%, #ff8c00 17%, #ffed00 33%, #008026 50%, #004dff 67%, #750787 100%)",
+    kind: "rainbow-static",
+  },
 ];
 
 export const DEFAULT_LOGO_PALETTE_ID = "default";
@@ -94,6 +104,10 @@ const STORAGE_KEY = "comfortline-logo-palette";
 const STYLE_ID = "brand-logo-palette-override";
 
 const RAINBOW_STOPS = ["#ff5f6d", "#ffc371", "#4fc79b", "#5b8def"];
+
+// Pride flag colours — vivid, instantly recognisable, evenly spaced across
+// the four logo gradient stops to maximise colour separation on the mark.
+const RAINBOW_STATIC_STOPS = ["#e40303", "#ffed00", "#008026", "#750787"];
 
 // Legacy override block + storage key from brand-schemes.ts. The new palette
 // is the single source of truth for logo colour, so we proactively clear the
@@ -146,6 +160,16 @@ function buildRainbowCss(): string {
   }`;
 }
 
+function buildRainbowStaticCss(): string {
+  const [g1, g2, g3, g4] = RAINBOW_STATIC_STOPS;
+  return `:root, .dark, .light {
+    --logo-grad-1: ${g1} !important;
+    --logo-grad-2: ${g2} !important;
+    --logo-grad-3: ${g3} !important;
+    --logo-grad-4: ${g4} !important;
+  }`;
+}
+
 export function applyLogoPalette(id: string): void {
   if (typeof document === "undefined") return;
   const palette = LOGO_PALETTES.find((p) => p.id === id) ?? LOGO_PALETTES[0];
@@ -172,6 +196,8 @@ export function applyLogoPalette(id: string): void {
     style.textContent = buildSolidCss(palette.color);
   } else if (palette.kind === "rainbow") {
     style.textContent = buildRainbowCss();
+  } else if (palette.kind === "rainbow-static") {
+    style.textContent = buildRainbowStaticCss();
   }
 
   document.documentElement.dataset.logoPalette = palette.id;

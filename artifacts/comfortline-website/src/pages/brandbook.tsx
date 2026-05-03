@@ -274,9 +274,7 @@ function LogoColorPicker() {
             >
               <div className="flex items-center gap-3 mb-3">
                 <div
-                  className={`w-10 h-10 rounded-full ring-2 ring-border shrink-0 ${
-                    p.kind === "rainbow" ? "animate-spin-slow" : ""
-                  }`}
+                  className="w-10 h-10 rounded-full ring-2 ring-border shrink-0"
                   style={{ background: p.swatch }}
                 />
                 <div className="min-w-0 flex-1">
