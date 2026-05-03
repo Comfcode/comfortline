@@ -140,7 +140,7 @@ export const ARTICLES: Article[] = [
           ["Эконом", "VW Polo / Renault Logan", "до 3", "от 220 €"],
           ["Комфорт", "VW Passat / Skoda Octavia", "до 3", "от 260 €"],
           ["Бизнес", "Mercedes E-class", "до 3", "от 320 €"],
-          ["Минивэн", "Hyundai Palisade / Kia Carnival", "до 7", "от 380 €"],
+          ["Минивэн", "Hyundai Palisade / Kia Carnival", "до 4–5", "от 380 €"],
           ["Микроавтобус", "Fiat Scudo и аналоги", "до 8", "от 450 €"],
         ],
       },

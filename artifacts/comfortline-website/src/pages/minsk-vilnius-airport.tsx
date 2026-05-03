@@ -14,7 +14,7 @@ const content = {
     badge: "Трансфер",
     title: "Трансфер Минск — Аэропорт Вильнюса (VNO)",
     subtitle: "Индивидуальный трансфер Минск — аэропорт Вильнюса (VNO) на ваш рейс. Подача от двери в Минске, фиксированная цена, опытный водитель и помощь на границе Беларусь–Литва.",
-    seoIntro: "Из Минска в аэропорт Вильнюса (VNO) можно добраться тремя основными способами: рейсовым автобусом, маршруткой или индивидуальным трансфером. Самый быстрый и удобный — индивидуальный трансфер: подача от двери в Минске, доставка прямо к терминалу VNO, фиксированная цена за всю машину (1–4 пассажира) без счётчика. Маршрут ~175 км через пограничный переход Каменный Лог / Котловка занимает 2,5–5 часов в зависимости от очередей. Подаём комфорт-класс Volkswagen Passat или бизнес-седан Mercedes E-class.",
+    seoIntro: "Из Минска в аэропорт Вильнюса (VNO) можно добраться тремя основными способами: рейсовым автобусом, маршруткой или индивидуальным трансфером. Самый быстрый и удобный — индивидуальный трансфер: подача от двери в Минске, доставка прямо к терминалу VNO, фиксированная цена за всю машину (1–3 пассажира) без счётчика. Маршрут ~175 км через пограничный переход Каменный Лог / Котловка занимает 2,5–5 часов в зависимости от очередей. Подаём комфорт-класс Volkswagen Passat или бизнес-седан Mercedes E-class.",
     comparisonTitle: "Способы добраться: автобус, маршрутка, трансфер",
     comparisonIntro: "Сравнение трёх основных способов уехать из Минска в аэропорт Вильнюса (VNO):",
     comparison: {
@@ -22,7 +22,7 @@ const content = {
       rows: [
         ["Рейсовый автобус (Ecolines, Lux Express)", "≈ 130–180 BYN", "5–7 ч + ожидание на границе", "Бюджетные путешественники без багажа"],
         ["Маршрутка (Минсктранс, частники)", "≈ 150–230 BYN", "4–6 ч", "1 пассажир с лёгким багажом"],
-        ["Индивидуальный трансфер ComfortLine", "Фиксированная цена за машину (1–4 пасс.) — по запросу", "2,5–5 ч от двери до терминала", "Семьи, командировки, ночные/утренние рейсы, большой багаж"],
+        ["Индивидуальный трансфер ComfortLine", "Фиксированная цена за машину (1–3 пасс.) — по запросу", "2,5–5 ч от двери до терминала", "Семьи, командировки, ночные/утренние рейсы, большой багаж"],
       ],
     },
     stats: [
@@ -89,7 +89,7 @@ const content = {
     badge: "Transfer",
     title: "Minsk to Vilnius Airport (VNO) Transfer",
     subtitle: "Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, professional driver, full assistance at the Belarus–Lithuania border.",
-    seoIntro: "There are three main ways to travel from Minsk to Vilnius Airport (VNO): scheduled coach, shared minibus, or private transfer. The fastest and most convenient is a private transfer: door pickup in Minsk, drop-off right at the VNO terminal, a fixed price for the whole car (1–4 passengers) — no meter. The ~175 km route via the Kamenny Log / Kotlovka border crossing takes 2.5–5 hours depending on queues. We use a comfort-class Volkswagen Passat or a business-class Mercedes E-class.",
+    seoIntro: "There are three main ways to travel from Minsk to Vilnius Airport (VNO): scheduled coach, shared minibus, or private transfer. The fastest and most convenient is a private transfer: door pickup in Minsk, drop-off right at the VNO terminal, a fixed price for the whole car (1–3 passengers) — no meter. The ~175 km route via the Kamenny Log / Kotlovka border crossing takes 2.5–5 hours depending on queues. We use a comfort-class Volkswagen Passat or a business-class Mercedes E-class.",
     comparisonTitle: "How to get there: coach, minibus, private transfer",
     comparisonIntro: "Comparison of the three main ways to travel from Minsk to Vilnius Airport (VNO):",
     comparison: {

@@ -182,7 +182,7 @@ const ruFaq: FaqSection[] = [
       {
         q: "Какие автомобили у вас есть?",
         a: "В автопарке ComfortLine:",
-        sub: ["Бизнес-седаны — до 3–4 пассажиров, просторный багажник", "Минивэны — до 7–8 пассажиров, большое грузовое отделение", "Автомобили бизнес- и премиум-класса для VIP-поездок"],
+        sub: ["Бизнес-седаны — до 3 пассажиров с багажом, просторный багажник", "Минивэны — до 5–8 пассажиров, большое грузовое отделение", "Автомобили бизнес- и премиум-класса для VIP-поездок"],
       },
       {
         q: "Есть ли Wi-Fi и зарядка в машине?",
@@ -407,7 +407,7 @@ const enFaq: FaqSection[] = [
       {
         q: "What vehicles are available?",
         a: "The ComfortLine fleet includes:",
-        sub: ["Executive sedans — up to 3–4 passengers, generous boot", "Premium minivans — up to 7–8 passengers, large cargo space", "Business and luxury-class cars for VIP trips"],
+        sub: ["Executive sedans — up to 3 passengers with luggage, generous boot", "Premium minivans — up to 5–8 passengers, large cargo space", "Business and luxury-class cars for VIP trips"],
       },
       {
         q: "Is there Wi-Fi and phone charging in the car?",

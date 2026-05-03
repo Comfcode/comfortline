@@ -291,7 +291,7 @@ const ru: Translations = {
         name: "Минск → Вильнюс",
         plans: [
           { name: "Легковой авто", price: "от 250 €", features: ["Сопровождение до двери", "Помощь с багажом", "Ожидание при задержке"] },
-          { name: "Минивэн", price: "от 300 €", popular: true, features: ["Kia Carnival, до 7 пас.", "Сопровождение до двери", "Много места для багажа"] },
+          { name: "Минивэн", price: "от 300 €", popular: true, features: ["Kia Carnival, до 5 пас.", "Сопровождение до двери", "Много места для багажа"] },
           { name: "Бизнес", price: "от 350 €", features: ["Mercedes E-Class", "Сопровождение до двери", "Wi-Fi в салоне"] },
         ],
       },
@@ -300,7 +300,7 @@ const ru: Translations = {
         plans: [
           { name: "Легковая", price: "от 400 €", features: ["Сопровождение до двери", "Помощь с багажом", "Ожидание при задержке"] },
           { name: "Бизнес", price: "от 450 €", features: ["Mercedes E-Class", "Сопровождение до двери", "Wi-Fi в салоне"] },
-          { name: "Минивэн", price: "от 470 €", popular: true, features: ["Kia Carnival, до 7 пас.", "Сопровождение до двери", "Много места для багажа"] },
+          { name: "Минивэн", price: "от 470 €", popular: true, features: ["Kia Carnival, до 5 пас.", "Сопровождение до двери", "Много места для багажа"] },
         ],
       },
     ],
@@ -512,7 +512,7 @@ const en: Translations = {
         name: "Minsk → Vilnius",
         plans: [
           { name: "Sedan", price: "from 250 €", features: ["Door-to-door service", "Luggage assistance", "Wait for delays"] },
-          { name: "Minivan", price: "from 300 €", popular: true, features: ["Kia Carnival, up to 7 pax", "Door-to-door service", "Ample luggage space"] },
+          { name: "Minivan", price: "from 300 €", popular: true, features: ["Kia Carnival, up to 5 pax", "Door-to-door service", "Ample luggage space"] },
           { name: "Business", price: "from 350 €", features: ["Mercedes E-Class", "Door-to-door service", "In-car Wi-Fi"] },
         ],
       },
@@ -521,7 +521,7 @@ const en: Translations = {
         plans: [
           { name: "Sedan", price: "from 400 €", features: ["Door-to-door service", "Luggage assistance", "Wait for delays"] },
           { name: "Business", price: "from 450 €", features: ["Mercedes E-Class", "Door-to-door service", "In-car Wi-Fi"] },
-          { name: "Minivan", price: "from 470 €", popular: true, features: ["Kia Carnival, up to 7 pax", "Door-to-door service", "Ample luggage space"] },
+          { name: "Minivan", price: "from 470 €", popular: true, features: ["Kia Carnival, up to 5 pax", "Door-to-door service", "Ample luggage space"] },
         ],
       },
     ],

@@ -22,7 +22,7 @@ const data: RoutePageData = {
     howTitle: "Как работает групповой трансфер",
     steps: [
       { icon: Users, title: "Укажите группу", desc: "Сообщите количество пассажиров и объём багажа — подберём оптимальный автомобиль." },
-      { icon: Car, title: "Минивэн у вашего адреса", desc: "Kia Carnival (7 мест), Fiat Scudo (8 мест) или Hyundai Palisade (7 мест) — по вашему выбору." },
+      { icon: Car, title: "Минивэн у вашего адреса", desc: "Kia Carnival (до 5 пас.), Hyundai Palisade (до 4 пас.) или Fiat Scudo (до 8 пас.) — по вашему выбору." },
       { icon: Target, title: "Все добираются вместе", desc: "Один автомобиль, один тариф, никаких пересадок и разделений группы." },
     ],
     infoTitle: "Параметры группового трансфера",
@@ -77,7 +77,7 @@ const data: RoutePageData = {
     howTitle: "How group transfers work",
     steps: [
       { icon: Users, title: "Tell us your group size", desc: "Share the number of passengers and luggage — we'll match the perfect vehicle." },
-      { icon: Car, title: "Minivan at your door", desc: "Kia Carnival (7 seats), Fiat Scudo (8 seats) or Hyundai Palisade (7 seats) — your choice." },
+      { icon: Car, title: "Minivan at your door", desc: "Kia Carnival (up to 5 pax), Hyundai Palisade (up to 4 pax) or Fiat Scudo (up to 8 pax) — your choice." },
       { icon: Target, title: "Everyone travels together", desc: "One vehicle, one flat fare — no splitting up the group, no separate taxis." },
     ],
     infoTitle: "Group Transfer Details",
