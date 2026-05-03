@@ -112,6 +112,18 @@ const data: RoutePageData = {
     prefilledTo: "Ski resort",
     backBtn: "← All services",
   },
+  seo: {
+    titleRu: "Лыжный трансфер | Силичи, Татры, Закопане, Альпы | ComfortLine",
+    titleEn: "Ski Transfer | Silichi, Tatras, Zakopane, Alps | ComfortLine",
+    descRu: "Трансфер на горнолыжные курорты: Силичи, Логойск (Беларусь), Закопане и Татры (Польша), Альпы. Везём лыжи, борды и снаряжение. Минивэн до 8 человек. Сезон декабрь–март.",
+    descEn: "Transfer to ski resorts — Silichi, Logoisk (Belarus), Zakopane, Tatras (Poland), Alps. We carry skis, boards, full gear. Minivan for up to 8 people. Season December–March.",
+    pathRu: "/лыжный-трансфер",
+    pathEn: "/ski-transfer",
+    breadcrumbRu: "Лыжный трансфер",
+    breadcrumbEn: "Ski Transfer",
+    fromName: "Минск",
+    toName: "Горнолыжный курорт",
+  },
 };
 
 export default function SkiTransferPage() {

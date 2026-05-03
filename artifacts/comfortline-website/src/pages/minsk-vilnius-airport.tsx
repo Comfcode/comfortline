@@ -4,6 +4,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
+import { Seo } from "@/seo/Seo";
+import { taxiServiceJsonLd } from "@/seo/jsonld";
+import { SITE_URL } from "@/seo/seo-config";
 
 const content = {
   ru: {
@@ -117,9 +120,38 @@ const content = {
 export default function MinskVilniusAirportPage() {
   const { lang } = useLang();
   const c = content[lang];
+  const isRu = lang === "ru";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Seo
+        titleRu="Трансфер Минск — Аэропорт Вильнюса (VNO) | ComfortLine"
+        titleEn="Minsk to Vilnius Airport (VNO) Private Transfer | ComfortLine"
+        descRu="Индивидуальный трансфер из Минска в международный аэропорт Вильнюса (VNO). Фиксированная цена, подача от двери, опытный водитель, помощь на границе Беларусь–Литва. ~175 км, 2,5–5 ч. Заказ онлайн или +375 (29) 155-27-76."
+        descEn="Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, English-speaking driver, comfort or business class. ~175 km, 2.5–5 hrs incl. Belarus–Lithuania border. Book online or call +375 (29) 155-27-76."
+        pathRu="/трансфер-минск-вильнюс-аэропорт"
+        pathEn="/minsk-vilnius-airport"
+        keywordsRu="трансфер минск вильнюс, трансфер минск аэропорт вильнюса, такси минск вильнюс аэропорт, vno трансфер, минск vilnius трансфер, заказ авто в аэропорт вильнюса"
+        keywordsEn="minsk vilnius airport transfer, minsk to vno taxi, private transfer minsk vilnius, vilnius international airport ride, belarus lithuania border transfer"
+        breadcrumbsRu={[
+          { name: "Главная", path: "/" },
+          { name: "Трансфер Минск — Аэропорт Вильнюса (VNO)", path: "/трансфер-минск-вильнюс-аэропорт" },
+        ]}
+        breadcrumbsEn={[
+          { name: "Home", path: "/" },
+          { name: "Minsk — Vilnius Airport (VNO)", path: "/minsk-vilnius-airport" },
+        ]}
+        jsonLd={taxiServiceJsonLd({
+          lang,
+          name: isRu ? "Трансфер Минск — Аэропорт Вильнюса (VNO)" : "Minsk to Vilnius Airport (VNO) Transfer",
+          description: isRu
+            ? "Индивидуальный трансфер из Минска в международный аэропорт Вильнюса (VNO). Фиксированная цена, подача от двери, опытный водитель."
+            : "Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, professional driver.",
+          url: SITE_URL + (isRu ? "/трансфер-минск-вильнюс-аэропорт" : "/minsk-vilnius-airport"),
+          fromName: isRu ? "Минск" : "Minsk",
+          toName: isRu ? "Аэропорт Вильнюса (VNO)" : "Vilnius International Airport (VNO)",
+        })}
+      />
       <Navbar />
 
       {/* Hero */}

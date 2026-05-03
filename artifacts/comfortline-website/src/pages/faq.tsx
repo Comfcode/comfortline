@@ -17,6 +17,8 @@ import {
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
+import { Seo } from "@/seo/Seo";
+import { faqJsonLd } from "@/seo/jsonld";
 
 interface FaqItem {
   q: string;
@@ -504,8 +506,27 @@ export default function FaqPage() {
     setOpenMap(m => ({ ...m, [key]: !m[key] }));
   }
 
+  const faqEntries = sections.flatMap((s) => s.items.map((it) => ({ question: it.q, answer: it.a })));
+
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Seo
+        titleRu="FAQ — Частые вопросы о трансфере | ComfortLine"
+        titleEn="FAQ — Transfer Questions Answered | ComfortLine"
+        descRu="Ответы на частые вопросы о трансфере ComfortLine: бронирование, цены, оплата, граница, документы, детские кресла, багаж и встречи в аэропортах Вильнюса и Варшавы."
+        descEn="Answers to frequently asked questions about ComfortLine transfers: booking, pricing, payment, borders, documents, child seats, luggage, and airport meet-and-greet at Vilnius and Warsaw."
+        pathRu="/faq"
+        pathEn="/faq"
+        breadcrumbsRu={[
+          { name: "Главная", path: "/" },
+          { name: "FAQ", path: "/faq" },
+        ]}
+        breadcrumbsEn={[
+          { name: "Home", path: "/" },
+          { name: "FAQ", path: "/faq" },
+        ]}
+        jsonLd={faqJsonLd(faqEntries)}
+      />
       <Navbar />
 
       {/* Hero */}

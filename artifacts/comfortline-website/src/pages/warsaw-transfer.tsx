@@ -113,6 +113,18 @@ const data: RoutePageData = {
     prefilledTo: "Warsaw",
     backBtn: "← All services",
   },
+  seo: {
+    titleRu: "Трансфер Минск — Варшава | Прямая поездка в центр Варшавы | ComfortLine",
+    titleEn: "Minsk to Warsaw Transfer | Direct Ride to Warsaw City | ComfortLine",
+    descRu: "Прямой трансфер из Минска в центр Варшавы. ~550 км, 6–8 ч. Деловые поездки, шоппинг, отдых. Фиксированная цена, опытный водитель, помощь на границе Беларусь–Польша.",
+    descEn: "Direct transfer from Minsk to central Warsaw. ~550 km, 6–8 hrs. Business, shopping, leisure. Fixed price, professional driver, assistance at the Belarus–Poland border.",
+    pathRu: "/трансфер-варшава",
+    pathEn: "/warsaw-transfer",
+    breadcrumbRu: "Трансфер в Варшаву",
+    breadcrumbEn: "Minsk — Warsaw",
+    fromName: "Минск",
+    toName: "Варшава",
+  },
 };
 
 export default function WarsawTransferPage() {

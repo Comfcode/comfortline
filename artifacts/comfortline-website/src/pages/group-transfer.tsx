@@ -113,6 +113,18 @@ const data: RoutePageData = {
     prefilledTo: "Group route",
     backBtn: "← All services",
   },
+  seo: {
+    titleRu: "Групповой трансфер из Минска | До 8 пассажиров | Минивэн | ComfortLine",
+    titleEn: "Group Transfer from Minsk | Up to 8 Passengers | Minivan | ComfortLine",
+    descRu: "Групповой трансфер до 8 пассажиров — семейные поездки, корпоративные группы, свадьбы, экскурсии. Минивэны Kia Carnival, Hyundai Palisade, Fiat Scudo. Один тариф, всё включено.",
+    descEn: "Group transfers for up to 8 passengers — family trips, corporate groups, weddings, excursions. Kia Carnival, Hyundai Palisade, Fiat Scudo minivans. One fixed price.",
+    pathRu: "/групповой-трансфер",
+    pathEn: "/group-transfer",
+    breadcrumbRu: "Групповой трансфер",
+    breadcrumbEn: "Group Transfer",
+    fromName: "Минск",
+    toName: "Любой маршрут",
+  },
 };
 
 export default function GroupTransferPage() {

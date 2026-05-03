@@ -4,6 +4,52 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
+import { Seo } from "@/seo/Seo";
+import { vehicleJsonLd } from "@/seo/jsonld";
+import { SITE_URL } from "@/seo/seo-config";
+
+const vehicleSeo: Record<string, { titleRu: string; titleEn: string; descRu: string; descEn: string; pathRu: string; pathEn: string; breadcrumbRu: string; breadcrumbEn: string }> = {
+  "mercedes-e-class": {
+    titleRu: "Mercedes-Benz E-Class — бизнес-седан для трансфера | ComfortLine",
+    titleEn: "Mercedes-Benz E-Class — Business Sedan Transfer | ComfortLine",
+    descRu: "Mercedes-Benz E-Class 2021 — представительский бизнес-седан с кожаным салоном и климат-контролем. Идеален для деловых поездок, встреч партнёров и трансферов в аэропорт. До 4 пассажиров, 2 чемодана.",
+    descEn: "Mercedes-Benz E-Class 2021 — executive business sedan with leather interior and climate control. Ideal for business trips, partner meetings and airport transfers. Up to 4 passengers, 2 suitcases.",
+    pathRu: "/трансфер-мерседес-е-класс",
+    pathEn: "/mercedes-e-class-transfer",
+    breadcrumbRu: "Mercedes-Benz E-Class",
+    breadcrumbEn: "Mercedes-Benz E-Class",
+  },
+  "kia-carnival": {
+    titleRu: "Kia Carnival — минивэн для группового трансфера | ComfortLine",
+    titleEn: "Kia Carnival — Minivan for Group Transfer | ComfortLine",
+    descRu: "Kia Carnival — комфортный минивэн на 7 пассажиров. Идеален для семей, групп и багажа. Просторный салон, климат-контроль, индивидуальные кресла.",
+    descEn: "Kia Carnival — comfortable 7-seater minivan. Ideal for families, groups and luggage. Spacious cabin, climate control, individual seats.",
+    pathRu: "/трансфер-киа-карнавал",
+    pathEn: "/kia-carnival-transfer",
+    breadcrumbRu: "Kia Carnival",
+    breadcrumbEn: "Kia Carnival",
+  },
+  "hyundai-palisade": {
+    titleRu: "Hyundai Palisade — премиум-SUV для трансфера | ComfortLine",
+    titleEn: "Hyundai Palisade — Premium SUV Transfer | ComfortLine",
+    descRu: "Hyundai Palisade — премиум-кроссовер на 7 мест. Высокая посадка, кожаный салон, климат-контроль. Идеален для семейных поездок и трансферов с большим багажом.",
+    descEn: "Hyundai Palisade — premium 7-seater SUV. Elevated seating, leather interior, climate control. Ideal for family trips and transfers with extensive luggage.",
+    pathRu: "/трансфер-хендай-палисад",
+    pathEn: "/hyundai-palisade-transfer",
+    breadcrumbRu: "Hyundai Palisade",
+    breadcrumbEn: "Hyundai Palisade",
+  },
+  "fiat-scudo": {
+    titleRu: "Fiat Scudo — минивэн на 8 пассажиров | ComfortLine",
+    titleEn: "Fiat Scudo — 8-Seater Minivan | ComfortLine",
+    descRu: "Fiat Scudo — вместительный минивэн на 8 пассажиров. Идеален для больших групп, корпоративных поездок и спортивного снаряжения (лыжи, борды).",
+    descEn: "Fiat Scudo — spacious 8-seater minivan. Ideal for large groups, corporate trips and sports gear (skis, snowboards).",
+    pathRu: "/трансфер-фиат-скудо",
+    pathEn: "/fiat-scudo-transfer",
+    breadcrumbRu: "Fiat Scudo",
+    breadcrumbEn: "Fiat Scudo",
+  },
+};
 
 interface VData {
   name: string;
@@ -343,9 +389,41 @@ export function VehiclePage({ slug }: VehiclePageProps) {
   if (!vehicle) return null;
   const c = vehicle[lang];
   const routes = routeLinks[lang];
+  const seo = vehicleSeo[slug];
+  const isRu = lang === "ru";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {seo && (
+        <Seo
+          titleRu={seo.titleRu}
+          titleEn={seo.titleEn}
+          descRu={seo.descRu}
+          descEn={seo.descEn}
+          pathRu={seo.pathRu}
+          pathEn={seo.pathEn}
+          breadcrumbsRu={[
+            { name: "Главная", path: "/" },
+            { name: isRu ? "Автопарк" : "Fleet", path: "/" },
+            { name: seo.breadcrumbRu, path: seo.pathRu },
+          ]}
+          breadcrumbsEn={[
+            { name: "Home", path: "/" },
+            { name: "Fleet", path: "/" },
+            { name: seo.breadcrumbEn, path: seo.pathEn },
+          ]}
+          jsonLd={vehicleJsonLd({
+            lang,
+            name: c.name,
+            description: c.desc,
+            image: SITE_URL + c.image,
+            url: SITE_URL + (isRu ? seo.pathRu : seo.pathEn),
+            seatingCapacity: c.seats,
+            modelDate: c.year,
+            vehicleClass: c.classBadge,
+          })}
+        />
+      )}
       <Navbar />
 
       <div className="container mx-auto px-4 md:px-6 pt-28 pb-20 max-w-3xl space-y-14">

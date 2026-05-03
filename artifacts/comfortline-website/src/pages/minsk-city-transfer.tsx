@@ -113,6 +113,18 @@ const data: RoutePageData = {
     prefilledTo: "Minsk (city)",
     backBtn: "← All services",
   },
+  seo: {
+    titleRu: "Трансфер по Минску | Заказ авто 24/7 | ComfortLine",
+    titleEn: "Minsk City Transfer | 24/7 Premium Car Hire | ComfortLine",
+    descRu: "Заказ комфортного автомобиля по Минску: аэропорт, отели, рестораны, бизнес-встречи и экскурсии. Подача 30–60 мин, опытные водители, фиксированные цены. ComfortLine — премиум трансфер в Минске.",
+    descEn: "Premium car hire across Minsk — airport, hotels, restaurants, meetings, sightseeing. 30–60 min pickup, professional English-speaking drivers, fixed prices. ComfortLine premium transfers.",
+    pathRu: "/трансфер-по-минску",
+    pathEn: "/minsk-city-transfer",
+    breadcrumbRu: "Трансфер по Минску",
+    breadcrumbEn: "Minsk City Transfer",
+    fromName: "Минск",
+    toName: "Минск (по городу)",
+  },
 };
 
 export default function MinskCityTransferPage() {

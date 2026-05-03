@@ -112,6 +112,18 @@ const data: RoutePageData = {
     prefilledTo: "Sanatorium",
     backBtn: "← All services",
   },
+  seo: {
+    titleRu: "Трансфер в санатории Беларуси | Нарочь, Браслав, Беловежская Пуща | ComfortLine",
+    titleEn: "Belarus Sanatorium Transfer | Naroch, Braslav, Belovezhskaya | ComfortLine",
+    descRu: "Трансфер в санатории Беларуси: Нарочь, Браслав, Беловежская Пуща, Жлобин и др. От двери дома или аэропорта прямо к корпусу санатория. Помощь с багажом, удобно с детьми и пожилыми.",
+    descEn: "Transfer to Belarus sanatoriums — Naroch, Braslav, Belovezhskaya Pushcha, Zhlobin. Door-to-door from home or airport directly to the sanatorium building. Luggage help, family-friendly.",
+    pathRu: "/трансфер-в-санаторий",
+    pathEn: "/sanatorium-transfer",
+    breadcrumbRu: "Трансфер в санаторий",
+    breadcrumbEn: "Sanatorium Transfer",
+    fromName: "Минск",
+    toName: "Санаторий",
+  },
 };
 
 export default function SanatoriumTransferPage() {

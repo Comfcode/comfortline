@@ -114,6 +114,18 @@ const data: RoutePageData = {
     prefilledTo: "",
     backBtn: "← All services",
   },
+  seo: {
+    titleRu: "VIP и бизнес-трансфер из Минска | Mercedes E-class, V-class | ComfortLine",
+    titleEn: "VIP & Business Transfer from Minsk | Mercedes E-class, V-class | ComfortLine",
+    descRu: "VIP-трансфер из Минска и по Европе. Mercedes E-class и V-class, водитель в костюме, владение английским и польским, конфиденциальность 100%. Для деловых поездок, артистов и гостей высокого ранга.",
+    descEn: "VIP transfer from Minsk and across Europe. Mercedes E-class and V-class, drivers in business attire, English and Polish spoken, 100% discretion. For business, artists, high-profile guests.",
+    pathRu: "/вип-трансфер",
+    pathEn: "/vip-transfer",
+    breadcrumbRu: "VIP трансфер",
+    breadcrumbEn: "VIP Transfer",
+    fromName: "Минск",
+    toName: "Премиум направление",
+  },
 };
 
 export default function VipTransferPage() {

@@ -113,6 +113,18 @@ const data: RoutePageData = {
     prefilledTo: "Moscow / Russia",
     backBtn: "← All services",
   },
+  seo: {
+    titleRu: "Трансфер Беларусь — Россия | Минск — Москва, Смоленск, СПб | ComfortLine",
+    titleEn: "Belarus to Russia Transfer | Minsk — Moscow, Smolensk, St. Petersburg | ComfortLine",
+    descRu: "Прямой трансфер из Минска в Москву (~720 км, 8–10 ч), Смоленск (~370 км), Санкт-Петербург и другие города России. Без пересадок на автобус или поезд. Фиксированная цена, опытный водитель.",
+    descEn: "Direct transfer from Minsk to Moscow (~720 km, 8–10 h), Smolensk, St. Petersburg and other Russian cities. No transfers, fixed price, experienced driver.",
+    pathRu: "/трансфер-в-россию",
+    pathEn: "/russia-transfer",
+    breadcrumbRu: "Трансфер в Россию",
+    breadcrumbEn: "Belarus to Russia Transfer",
+    fromName: "Минск",
+    toName: "Москва",
+  },
 };
 
 export default function RussiaTransferPage() {

@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
+import { Seo } from "@/seo/Seo";
 
 const ruContent = {
   title: "Публичная оферта",
@@ -209,6 +210,14 @@ export default function TermsPage() {
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background">
+      <Seo
+        titleRu="Публичная оферта и условия | ComfortLine"
+        titleEn="Public Offer & Terms | ComfortLine"
+        descRu="Публичная оферта ComfortLine: условия предоставления услуг трансфера, права и обязанности сторон, оплата и отмена бронирования."
+        descEn="ComfortLine public offer & terms: transfer service conditions, rights and obligations of the parties, payment and cancellation."
+        pathRu="/terms"
+        pathEn="/terms"
+      />
       <Navbar />
       <main className="flex-1 pt-28 pb-20">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">

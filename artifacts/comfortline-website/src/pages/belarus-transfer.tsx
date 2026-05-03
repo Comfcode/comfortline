@@ -115,6 +115,18 @@ const data: RoutePageData = {
     prefilledTo: "Belarus (intercity)",
     backBtn: "← All services",
   },
+  seo: {
+    titleRu: "Трансфер по Беларуси | Брест, Гродно, Витебск, Несвиж, Мир | ComfortLine",
+    titleEn: "Belarus Intercity Transfer | Brest, Grodno, Vitebsk, Mir Castle | ComfortLine",
+    descRu: "Межгородские трансферы по Беларуси из Минска: Брест (~350 км), Гродно (~280 км), Витебск, Гомель, Могилёв, замки Мир и Несвиж, Беловежская Пуща. Комфортные авто и фиксированная цена.",
+    descEn: "Intercity transfers across Belarus from Minsk — Brest, Grodno, Vitebsk, Gomel, Mogilev, Mir & Nesvizh castles, Belovezhskaya Pushcha. Comfortable cars, fixed prices.",
+    pathRu: "/трансфер-по-беларуси",
+    pathEn: "/belarus-transfer",
+    breadcrumbRu: "Трансфер по Беларуси",
+    breadcrumbEn: "Belarus Intercity Transfer",
+    fromName: "Минск",
+    toName: "Беларусь",
+  },
 };
 
 export default function BelarusTransferPage() {

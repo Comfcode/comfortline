@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
+import { Seo } from "@/seo/Seo";
 
 const ruContent = {
   title: "Политика обработки персональных данных",
@@ -200,6 +201,14 @@ export default function PrivacyPolicyPage() {
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background">
+      <Seo
+        titleRu="Политика конфиденциальности | ComfortLine"
+        titleEn="Privacy Policy | ComfortLine"
+        descRu="Политика конфиденциальности ComfortLine: как мы обрабатываем персональные данные клиентов трансфера и обеспечиваем их защиту."
+        descEn="ComfortLine privacy policy — how we process and protect personal data of our transfer customers."
+        pathRu="/privacy"
+        pathEn="/privacy"
+      />
       <Navbar />
       <main className="flex-1 pt-28 pb-20">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">

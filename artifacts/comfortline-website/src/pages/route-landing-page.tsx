@@ -5,6 +5,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
+import { Seo } from "@/seo/Seo";
+import { taxiServiceJsonLd } from "@/seo/jsonld";
+import { SITE_URL } from "@/seo/seo-config";
 
 export interface LandmarkPhoto {
   src: string;
@@ -34,9 +37,23 @@ export interface RouteContent {
   backBtn: string;
 }
 
+export interface RouteSeo {
+  titleRu: string;
+  titleEn: string;
+  descRu: string;
+  descEn: string;
+  pathRu: string;
+  pathEn: string;
+  fromName?: string;
+  toName?: string;
+  breadcrumbRu?: string;
+  breadcrumbEn?: string;
+}
+
 export interface RoutePageData {
   ru: RouteContent;
   en: RouteContent;
+  seo: RouteSeo;
 }
 
 interface Props {
@@ -46,10 +63,44 @@ interface Props {
 export function RouteLandingPage({ data }: Props) {
   const { lang } = useLang();
   const c = data[lang];
+  const isRu = lang === "ru";
+  const seoTitle = isRu ? data.seo.titleRu : data.seo.titleEn;
+  const seoDesc = isRu ? data.seo.descRu : data.seo.descEn;
+  const seoPath = isRu ? data.seo.pathRu : data.seo.pathEn;
+  const breadcrumbName = isRu
+    ? (data.seo.breadcrumbRu || data.ru.title)
+    : (data.seo.breadcrumbEn || data.en.title);
+  const serviceJsonLd = taxiServiceJsonLd({
+    lang,
+    name: seoTitle.replace(" | ComfortLine", ""),
+    description: seoDesc,
+    url: SITE_URL + seoPath,
+    fromName: data.seo.fromName || (isRu ? "Минск" : "Minsk"),
+    toName: data.seo.toName || c.title,
+  });
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Seo
+        titleRu={data.seo.titleRu}
+        titleEn={data.seo.titleEn}
+        descRu={data.seo.descRu}
+        descEn={data.seo.descEn}
+        pathRu={data.seo.pathRu}
+        pathEn={data.seo.pathEn}
+        jsonLd={serviceJsonLd}
+        breadcrumbsRu={[
+          { name: "Главная", path: "/" },
+          { name: data.seo.breadcrumbRu || data.ru.title, path: data.seo.pathRu },
+        ]}
+        breadcrumbsEn={[
+          { name: "Home", path: "/" },
+          { name: data.seo.breadcrumbEn || data.en.title, path: data.seo.pathEn },
+        ]}
+      />
       <Navbar />
+      {/* hidden h-tag bait for crawlers — already have h1 below; this just confirms breadcrumb name */}
+      <span className="sr-only">{breadcrumbName}</span>
 
       {/* Hero */}
       <div className="pt-28 pb-14 border-b border-border/40 relative overflow-hidden">

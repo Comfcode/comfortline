@@ -4,6 +4,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
+import { Seo } from "@/seo/Seo";
+import { taxiServiceJsonLd } from "@/seo/jsonld";
+import { SITE_URL } from "@/seo/seo-config";
 
 const content = {
   ru: {
@@ -116,12 +119,48 @@ const content = {
   },
 };
 
+function WarsawAirportSeo() {
+  const { lang } = useLang();
+  const isRu = lang === "ru";
+  return (
+    <Seo
+      titleRu="Трансфер Минск — Аэропорт Варшавы Шопен (WAW) | ComfortLine"
+      titleEn="Minsk to Warsaw Chopin Airport (WAW) Private Transfer | ComfortLine"
+      descRu="Индивидуальный трансфер из Минска в аэропорт Варшавы Шопен (WAW). Фиксированная цена, опытный водитель, помощь на границе Беларусь–Польша. ~550 км, 6–10 ч. Заказ онлайн или +375 (29) 155-27-76."
+      descEn="Private transfer from Minsk to Warsaw Chopin Airport (WAW). Fixed price, professional driver, assistance at Belarus–Poland border. ~550 km, 6–10 hrs. Book online or call +375 (29) 155-27-76."
+      pathRu="/трансфер-минск-варшава-шопен"
+      pathEn="/minsk-warsaw-airport"
+      keywordsRu="трансфер минск варшава, трансфер минск варшава аэропорт, такси минск варшава шопен, waw трансфер, минск warsaw chopin, аэропорт шопен из минска"
+      keywordsEn="minsk warsaw airport transfer, minsk to waw taxi, warsaw chopin airport transfer, private transfer minsk warsaw, belarus poland border transfer"
+      breadcrumbsRu={[
+        { name: "Главная", path: "/" },
+        { name: "Трансфер Минск — Аэропорт Варшавы Шопен (WAW)", path: "/трансфер-минск-варшава-шопен" },
+      ]}
+      breadcrumbsEn={[
+        { name: "Home", path: "/" },
+        { name: "Minsk — Warsaw Chopin Airport (WAW)", path: "/minsk-warsaw-airport" },
+      ]}
+      jsonLd={taxiServiceJsonLd({
+        lang,
+        name: isRu ? "Трансфер Минск — Аэропорт Варшавы Шопен (WAW)" : "Minsk to Warsaw Chopin Airport (WAW) Transfer",
+        description: isRu
+          ? "Индивидуальный трансфер из Минска в аэропорт Варшавы Шопен (WAW). Фиксированная цена, опытный водитель."
+          : "Private transfer from Minsk to Warsaw Chopin Airport (WAW). Fixed price, professional driver.",
+        url: SITE_URL + (isRu ? "/трансфер-минск-варшава-шопен" : "/minsk-warsaw-airport"),
+        fromName: isRu ? "Минск" : "Minsk",
+        toName: isRu ? "Аэропорт Варшавы Шопен (WAW)" : "Warsaw Chopin Airport (WAW)",
+      })}
+    />
+  );
+}
+
 export default function MinskWarsawAirportPage() {
   const { lang } = useLang();
   const c = content[lang];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <WarsawAirportSeo />
       <Navbar />
 
       {/* Hero */}
