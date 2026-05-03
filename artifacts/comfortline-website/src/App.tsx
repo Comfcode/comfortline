@@ -21,6 +21,10 @@ import GroupTransferPage from "@/pages/group-transfer";
 import WarsawTransferPage from "@/pages/warsaw-transfer";
 import BerlinTransferPage from "@/pages/berlin-transfer";
 import PragueTransferPage from "@/pages/prague-transfer";
+import RigaTransferPage from "@/pages/riga-transfer";
+import SanatoriumTransferPage from "@/pages/sanatorium-transfer";
+import SkiTransferPage from "@/pages/ski-transfer";
+import VipTransferPage from "@/pages/vip-transfer";
 
 const queryClient = new QueryClient();
 
@@ -67,6 +71,16 @@ function Router() {
       <Route path="/transfer-berlin" component={BerlinTransferPage} />
       <Route path="/prague-transfer" component={PragueTransferPage} />
       <Route path="/transfer-praga" component={PragueTransferPage} />
+      <Route path="/riga-transfer" component={RigaTransferPage} />
+      <Route path="/transfer-riga" component={RigaTransferPage} />
+
+      {/* Specialty services */}
+      <Route path="/sanatorium-transfer" component={SanatoriumTransferPage} />
+      <Route path="/transfer-v-sanatorij" component={SanatoriumTransferPage} />
+      <Route path="/ski-transfer" component={SkiTransferPage} />
+      <Route path="/lyzhnyj-transfer" component={SkiTransferPage} />
+      <Route path="/vip-transfer" component={VipTransferPage} />
+      <Route path="/vip-transfer-by" component={VipTransferPage} />
 
       <Route path="/brandbook" component={BrandbookPage} />
       <Route component={NotFound} />

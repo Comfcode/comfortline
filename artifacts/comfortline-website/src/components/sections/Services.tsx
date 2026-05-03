@@ -22,13 +22,17 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
     [
       { from: "Минск", to: "по городу",    code: "24/7",      meta: "30–60 мин подача",    href: "/minsk-city-transfer" },
       { from: "Минск", to: "по Беларуси",  code: "6 ОБЛ.",    meta: "Брест, Гродно, Витебск…", href: "/belarus-transfer" },
+      { from: "Минск", to: "санаторий",    code: "SPA",       meta: "Нарочь, Браслав, БП…",  href: "/sanatorium-transfer" },
       { from: "Минск", to: "Россия",       code: "BY→RU",     meta: "~370–720 км",         href: "/russia-transfer" },
     ],
     [
       { from: "Группа", to: "любой маршрут", code: "≤8 ЧЕЛ", meta: "Минивэн / Микроавтобус", href: "/group-transfer" },
+      { from: "VIP",    to: "бизнес-трансфер", code: "PREM", meta: "Mercedes E / V-class",    href: "/vip-transfer" },
+      { from: "Лыжи",   to: "горнолыжный курорт", code: "SKI", meta: "Силичи, Татры, Закопане", href: "/ski-transfer" },
     ],
     [
       { from: "Минск", to: "Варшава",  code: "WAW", meta: "~550 км · 6–8 ч",   href: "/warsaw-transfer" },
+      { from: "Минск", to: "Рига",     code: "RIX", meta: "~470 км · 5–7 ч",   href: "/riga-transfer" },
       { from: "Минск", to: "Берлин",   code: "BER", meta: "~1 150 км · 14–16 ч", href: "/berlin-transfer" },
       { from: "Минск", to: "Прага",    code: "PRG", meta: "~1 450 км · 16–18 ч", href: "/prague-transfer" },
     ],
@@ -42,13 +46,17 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
     [
       { from: "Minsk", to: "city",       code: "24/7",      meta: "30–60 min dispatch",    href: "/minsk-city-transfer" },
       { from: "Minsk", to: "Belarus",    code: "6 REG.",    meta: "Brest, Grodno, Vitebsk…", href: "/belarus-transfer" },
+      { from: "Minsk", to: "sanatorium", code: "SPA",       meta: "Naroch, Braslav, BP…",   href: "/sanatorium-transfer" },
       { from: "Minsk", to: "Russia",     code: "BY→RU",     meta: "~370–720 km",           href: "/russia-transfer" },
     ],
     [
-      { from: "Group", to: "any route", code: "≤8 PAX", meta: "Minivan / Minibus", href: "/group-transfer" },
+      { from: "Group", to: "any route",        code: "≤8 PAX", meta: "Minivan / Minibus",       href: "/group-transfer" },
+      { from: "VIP",   to: "business transfer", code: "PREM",  meta: "Mercedes E / V-class",   href: "/vip-transfer" },
+      { from: "Ski",   to: "winter resort",    code: "SKI",   meta: "Silichi, Tatras, Zakopane", href: "/ski-transfer" },
     ],
     [
       { from: "Minsk", to: "Warsaw", code: "WAW", meta: "~550 km · 6–8 hrs",    href: "/warsaw-transfer" },
+      { from: "Minsk", to: "Riga",   code: "RIX", meta: "~470 km · 5–7 hrs",    href: "/riga-transfer" },
       { from: "Minsk", to: "Berlin", code: "BER", meta: "~1,150 km · 14–16 hrs", href: "/berlin-transfer" },
       { from: "Minsk", to: "Prague", code: "PRG", meta: "~1,450 km · 16–18 hrs", href: "/prague-transfer" },
     ],
@@ -56,22 +64,22 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
 };
 
 const cardTitles = {
-  ru: ["Трансферы в аэропорт", "Минск и Беларусь", "Групповые поездки", "По всей Европе"],
-  en: ["Airport Transfers", "Minsk & Belarus", "Group Travel", "Across Europe"],
+  ru: ["Трансферы в аэропорт", "Беларусь и здравницы", "Группа, VIP и спецуслуги", "По всей Европе"],
+  en: ["Airport Transfers", "Belarus & Resorts", "Group, VIP & Specialty", "Across Europe"],
 };
 
 const cardDescs = {
   ru: [
     "Вильнюс, Варшава и другие аэропорты — подача точно ко времени вылета.",
-    "Деловые поездки, экскурсии и межгородские маршруты по Беларуси и России.",
-    "До 8 пассажиров в одном автомобиле. Семьи, корпоративные и тур-группы.",
-    "Варшава, Берлин, Прага и другие города — прямой трансфер через границу.",
+    "Деловые поездки, межгород по Беларуси, санатории и здравницы — Нарочь, Браслав, Беловежская Пуща.",
+    "До 8 пассажиров. Семьи и тур-группы, премиум-сервис для бизнеса, лыжные поездки на курорты.",
+    "Варшава, Рига, Берлин, Прага и другие города — прямой трансфер через границу.",
   ],
   en: [
     "Vilnius, Warsaw and beyond — punctual door-to-door airport service.",
-    "Business meetings, sightseeing and intercity routes across Belarus and Russia.",
-    "Up to 8 passengers in one vehicle. Families, corporate and tour groups.",
-    "Warsaw, Berlin, Prague and beyond — direct transfer across the border.",
+    "Business trips across Belarus and Russia, plus health resort transfers — Naroch, Braslav, Belovezhskaya Pushcha.",
+    "Up to 8 passengers. Families and tour groups, premium business service, ski-resort runs.",
+    "Warsaw, Riga, Berlin, Prague and beyond — direct transfer across the border.",
   ],
 };
 

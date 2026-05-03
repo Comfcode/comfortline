@@ -1,0 +1,119 @@
+import { MapPin, Users, CheckCircle2 } from "lucide-react";
+import { RouteLandingPage, RoutePageData } from "./route-landing-page";
+
+const data: RoutePageData = {
+  ru: {
+    badge: "Трансфер в санаторий",
+    title: "Трансфер в санатории Беларуси",
+    subtitle: "Доставим вас от двери дома или аэропорта прямо к корпусу санатория. Нарочь, Браслав, Жлобин, Беловежская Пуща — комфорт без пересадок на электричках и автобусах.",
+    stats: [
+      { label: "Маршруты", value: "Все санатории РБ" },
+      { label: "Багаж", value: "Без ограничений" },
+      { label: "Подача", value: "Из любой точки" },
+      { label: "Класс авто", value: "Седан / Минивэн" },
+    ],
+    photosTitle: "Здравницы Беларуси",
+    photos: [
+      { src: "https://images.pexels.com/photos/3089274/pexels-photo-3089274.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Озеро Нарочь" },
+      { src: "https://images.pexels.com/photos/371589/pexels-photo-371589.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Беловежская Пуща" },
+      { src: "https://images.pexels.com/photos/161758/governor-s-mansion-montgomery-alabama-grand-staircase-161758.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Санаторный комплекс" },
+    ],
+    howTitle: "Как проходит поездка",
+    steps: [
+      { icon: MapPin, title: "Подача к адресу", desc: "Заберём вас от дома, аэропорта или вокзала в назначенное время — без долгого ожидания." },
+      { icon: Users, title: "Комфорт всей семье", desc: "Помощь с багажом, удобный салон, остановки по запросу. Перевозим с пожилыми пассажирами и детьми." },
+      { icon: CheckCircle2, title: "Прямо к корпусу", desc: "Доставим прямо к нужному корпусу санатория — не нужно идти с чемоданами." },
+    ],
+    infoTitle: "Популярные направления",
+    infoRows: [
+      { label: "Минск — Нарочь", value: "~160 км, 2–2,5 ч" },
+      { label: "Минск — Браслав", value: "~240 км, 3–3,5 ч" },
+      { label: "Минск — Беловежская Пуща", value: "~370 км, 4,5–5 ч" },
+      { label: "Минск — Жлобин / Бобруйск", value: "~150–170 км, 2–2,5 ч" },
+      { label: "Аэропорт Минск — любой санаторий", value: "Прямой трансфер без посадок" },
+    ],
+    includedTitle: "Что включено",
+    included: [
+      "Подача в любую точку Беларуси",
+      "Помощь с багажом и сумками",
+      "Остановки по запросу (туалет, кафе)",
+      "Сопровождение пожилых пассажиров",
+      "Детские кресла и бустеры по запросу",
+      "Фиксированная цена в обе стороны",
+    ],
+    whyTitle: "Почему ComfortLine",
+    whyItems: [
+      "Доставка прямо к корпусу санатория",
+      "Возможен трансфер «туда-обратно» через 7–14–21 день",
+      "Чистый и просторный салон",
+      "Возможность перевозки с домашним питомцем",
+      "Опытные водители — спокойная и плавная езда",
+      "Работаем 24/7 — рейс в любое время",
+    ],
+    ctaTitle: "Заказать трансфер в санаторий",
+    ctaDesc: "Оставьте заявку — менеджер свяжется в течение 15 минут, уточнит санаторий и назовёт точную стоимость в обе стороны.",
+    ctaBtn: "Оставить заявку",
+    prefilledFrom: "Минск",
+    prefilledTo: "Санаторий",
+    backBtn: "← Все услуги",
+  },
+  en: {
+    badge: "Sanatorium Transfer",
+    title: "Transfer to Belarus Sanatoriums",
+    subtitle: "Door-to-door transfers from home or airport directly to your sanatorium building. Naroch, Braslav, Zhlobin, Belovezhskaya Pushcha — no train changes, no shuttle buses.",
+    stats: [
+      { label: "Destinations", value: "All Belarus resorts" },
+      { label: "Luggage", value: "No limits" },
+      { label: "Pickup", value: "From anywhere" },
+      { label: "Vehicle", value: "Sedan / Minivan" },
+    ],
+    photosTitle: "Belarus Health Resorts",
+    photos: [
+      { src: "https://images.pexels.com/photos/3089274/pexels-photo-3089274.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Lake Naroch" },
+      { src: "https://images.pexels.com/photos/371589/pexels-photo-371589.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Belovezhskaya Pushcha" },
+      { src: "https://images.pexels.com/photos/161758/governor-s-mansion-montgomery-alabama-grand-staircase-161758.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Sanatorium complex" },
+    ],
+    howTitle: "How the transfer works",
+    steps: [
+      { icon: MapPin, title: "Pickup at your address", desc: "We collect you from home, the airport or the station at the agreed time — no long waits." },
+      { icon: Users, title: "Comfort for the whole family", desc: "Luggage assistance, comfortable cabin, on-request stops. Suitable for elderly passengers and children." },
+      { icon: CheckCircle2, title: "Right to the building", desc: "We drop you off directly at the correct sanatorium building — no walking with suitcases." },
+    ],
+    infoTitle: "Popular destinations",
+    infoRows: [
+      { label: "Minsk — Naroch", value: "~160 km, 2–2.5 hrs" },
+      { label: "Minsk — Braslav", value: "~240 km, 3–3.5 hrs" },
+      { label: "Minsk — Belovezhskaya Pushcha", value: "~370 km, 4.5–5 hrs" },
+      { label: "Minsk — Zhlobin / Bobruisk", value: "~150–170 km, 2–2.5 hrs" },
+      { label: "Minsk Airport — any sanatorium", value: "Direct transfer, no stops" },
+    ],
+    includedTitle: "What's included",
+    included: [
+      "Pickup anywhere in Belarus",
+      "Help with luggage and bags",
+      "On-request stops (restroom, café)",
+      "Assistance for elderly passengers",
+      "Child seats and boosters on request",
+      "Fixed return price both ways",
+    ],
+    whyTitle: "Why ComfortLine",
+    whyItems: [
+      "Drop-off at the exact sanatorium building",
+      "Round-trip option: pickup after 7–14–21 days",
+      "Clean and spacious cabin",
+      "Pets welcome on request",
+      "Experienced drivers — calm, smooth driving",
+      "24/7 — depart anytime",
+    ],
+    ctaTitle: "Book a Sanatorium Transfer",
+    ctaDesc: "Submit a request — our manager will reach out within 15 minutes, confirm the sanatorium and quote a fixed return price.",
+    ctaBtn: "Request a booking",
+    prefilledFrom: "Minsk",
+    prefilledTo: "Sanatorium",
+    backBtn: "← All services",
+  },
+};
+
+export default function SanatoriumTransferPage() {
+  return <RouteLandingPage data={data} />;
+}

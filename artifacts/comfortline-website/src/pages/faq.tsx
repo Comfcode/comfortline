@@ -11,6 +11,7 @@ import {
   Users,
   Briefcase,
   MapPin,
+  PackageCheck,
   type LucideIcon,
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
@@ -117,6 +118,34 @@ const ruFaq: FaqSection[] = [
       {
         q: "Помогает ли водитель на КПП?",
         a: "Да. Водитель сопровождает вас, знает актуальные правила на пропускных пунктах и помогает сориентироваться. Ваша задача — иметь при себе актуальные документы.",
+      },
+    ],
+  },
+  {
+    icon: PackageCheck,
+    label: "Таможня и подготовка",
+    title: "Таможня и советы для границы",
+    items: [
+      {
+        q: "Что взять с собой при долгом ожидании на границе?",
+        a: "Очереди на КПП могут затянуться на 8–20 часов. Опытные пассажиры всегда берут с собой:",
+        sub: ["Бутылку воды и лёгкий перекус", "Тёплые вещи и плед (даже летом ночью прохладно)", "Зарядку и пауэрбанк", "Развлечения для детей и наушники", "Лекарства первой необходимости"],
+      },
+      {
+        q: "Зелёный или красный коридор — что выбрать?",
+        a: "«Зелёный коридор» — для пассажиров без декларируемых товаров. «Красный коридор» — если везёте товар сверх беспошлинной нормы, валюту свыше лимита, лекарства строгого учёта или предметы для коммерческой реализации. Если сомневаетесь — выбирайте красный, это снимает риски штрафа.",
+      },
+      {
+        q: "Какие нормы беспошлинного ввоза действуют сейчас?",
+        a: "Лимиты по весу, стоимости, алкоголю и табаку периодически меняются. Перед поездкой уточните актуальные нормы у вашего водителя — мы следим за изменениями и подсказываем перед каждым рейсом. Для крупных покупок планируйте маршрут так, чтобы пройти через красный коридор без давки.",
+      },
+      {
+        q: "Можно ли провозить лекарства, технику и продукты?",
+        a: "Личные лекарства — да, желательно с рецептом или упаковкой. Электроника для личного пользования (ноутбук, телефон, фотоаппарат) — без проблем в разумных количествах. Продукты животного происхождения (мясо, молочка, сыр) ограничены при въезде в ЕС — лучше не брать. Свежие фрукты и овощи также под ограничением.",
+      },
+      {
+        q: "Что делать, если очередь стоит больше 10 часов?",
+        a: "Мы отслеживаем загрузку всех КПП в реальном времени и можем перенаправить машину на менее загруженный переход (например, с Бреста на Гродно или на латвийское направление). На случай длинного ожидания держите при себе паспорт, телефон и тёплые вещи — выходить из машины можно, но далеко не уходите.",
       },
     ],
   },
@@ -291,6 +320,34 @@ const enFaq: FaqSection[] = [
       {
         q: "Will the driver help at the checkpoint?",
         a: "Yes. Your driver knows current border procedures and will guide you through. You only need to have your own documents ready.",
+      },
+    ],
+  },
+  {
+    icon: PackageCheck,
+    label: "Customs & prep",
+    title: "Customs & border tips",
+    items: [
+      {
+        q: "What should I bring for a long border wait?",
+        a: "Border queues can stretch to 8–20 hours. Experienced passengers always pack:",
+        sub: ["Bottled water and a light snack", "Warm layers and a blanket (chilly even on summer nights)", "Phone charger and a power bank", "Entertainment for kids and headphones", "Essential medication"],
+      },
+      {
+        q: "Green or red corridor — which one to pick?",
+        a: "The green corridor is for passengers with nothing to declare. The red corridor is for goods over the duty-free limit, currency above the threshold, controlled medication or items intended for resale. If in doubt, pick red — it removes the risk of a fine.",
+      },
+      {
+        q: "What are the current duty-free limits?",
+        a: "Weight, value, alcohol and tobacco limits change periodically. Confirm current rules with your driver before the trip — we monitor changes and brief passengers ahead of every run. For larger shopping trips, plan for the red corridor so you avoid the queue crush.",
+      },
+      {
+        q: "Can I bring medication, electronics and food?",
+        a: "Personal medication — yes, ideally with a prescription or original packaging. Personal-use electronics (laptop, phone, camera) are fine in reasonable quantities. Animal-origin products (meat, dairy, cheese) are restricted when entering the EU — best left at home. Fresh fruit and vegetables are also restricted.",
+      },
+      {
+        q: "What if the queue is over 10 hours?",
+        a: "We track real-time loads at every checkpoint and can reroute the car to a quieter crossing (e.g. switch from Brest to Grodno or to a Latvian crossing). For long waits keep your passport, phone and warm clothes with you — you can step out of the car but don't go far.",
       },
     ],
   },

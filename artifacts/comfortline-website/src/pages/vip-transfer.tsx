@@ -1,0 +1,121 @@
+import { ShieldCheck, Users, CheckCircle2 } from "lucide-react";
+import { RouteLandingPage, RoutePageData } from "./route-landing-page";
+
+const data: RoutePageData = {
+  ru: {
+    badge: "VIP трансфер",
+    title: "VIP и бизнес-трансфер",
+    subtitle: "Премиум-автомобили, опытные водители, конфиденциальность и пунктуальность. Для деловых поездок, встреч, артистов и гостей высокого ранга — по Беларуси и Европе.",
+    stats: [
+      { label: "Класс авто", value: "Бизнес / Премиум" },
+      { label: "Водитель", value: "В костюме" },
+      { label: "Языки", value: "RU / EN / PL" },
+      { label: "Конфиденциальность", value: "100%" },
+    ],
+    photosTitle: "Премиум-автопарк",
+    photos: [
+      { src: "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Mercedes-Benz E-class" },
+      { src: "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Кожаный салон" },
+      { src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Водитель в костюме" },
+    ],
+    howTitle: "Как организован VIP-сервис",
+    steps: [
+      { icon: ShieldCheck, title: "Личный диспетчер", desc: "Закрепляем менеджера, который ведёт ваш заказ от первого звонка до завершения поездки." },
+      { icon: Users, title: "Опытный водитель", desc: "Водители с многолетним стажем международных рейсов. Деловой дресс-код, владение английским и польским по запросу." },
+      { icon: CheckCircle2, title: "Полная дискретность", desc: "Никаких разговоров о пассажирах. Тонировка, отдельный вход, помощь с багажом — всё по правилам делового этикета." },
+    ],
+    infoTitle: "Услуги в составе VIP-пакета",
+    infoRows: [
+      { label: "Автомобили", value: "Mercedes E-class, Mercedes V-class, Hyundai Palisade" },
+      { label: "Встреча", value: "Именная табличка, встреча у трапа (по запросу)" },
+      { label: "В салоне", value: "Вода, Wi-Fi, USB-зарядки, климат-контроль" },
+      { label: "Языки водителя", value: "Русский, английский, польский (по запросу)" },
+      { label: "Маршруты", value: "Беларусь, ЕС (Польша, Литва, Латвия), Россия" },
+    ],
+    includedTitle: "Что включено в VIP-тариф",
+    included: [
+      "Подача премиум-автомобиля точно ко времени",
+      "Водитель в деловом костюме",
+      "Бутилированная вода и пресса в салоне",
+      "Конфиденциальное сопровождение",
+      "Гибкая корректировка маршрута и остановок",
+      "Возможность почасовой аренды с водителем",
+      "Сопровождение нескольких автомобилей (для делегаций)",
+    ],
+    whyTitle: "Кому подходит VIP-сервис",
+    whyItems: [
+      "Топ-менеджеры и владельцы бизнеса",
+      "Артисты и публичные персоны",
+      "Иностранные гости и делегации",
+      "Корпоративные мероприятия и переговоры",
+      "Сопровождение партнёров на выставках и форумах",
+      "Свадьбы и торжественные мероприятия",
+    ],
+    ctaTitle: "Заказать VIP-трансфер",
+    ctaDesc: "Свяжитесь с нами для индивидуального предложения — менеджер обсудит детали и предложит подходящий автомобиль.",
+    ctaBtn: "Запросить предложение",
+    prefilledFrom: "Минск",
+    prefilledTo: "",
+    backBtn: "← Все услуги",
+  },
+  en: {
+    badge: "VIP Transfer",
+    title: "VIP & Business Transfers",
+    subtitle: "Premium vehicles, experienced drivers, full discretion and punctuality. For executives, business meetings, artists and high-profile guests — across Belarus and Europe.",
+    stats: [
+      { label: "Vehicle class", value: "Business / Premium" },
+      { label: "Driver", value: "Suit & tie" },
+      { label: "Languages", value: "RU / EN / PL" },
+      { label: "Discretion", value: "100%" },
+    ],
+    photosTitle: "Premium fleet",
+    photos: [
+      { src: "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Mercedes-Benz E-class" },
+      { src: "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Leather interior" },
+      { src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Suited chauffeur" },
+    ],
+    howTitle: "How VIP service is organised",
+    steps: [
+      { icon: ShieldCheck, title: "Personal dispatcher", desc: "A dedicated manager handles your booking from first call to completion of the trip." },
+      { icon: Users, title: "Experienced chauffeur", desc: "Drivers with years of international experience. Business dress code, English and Polish on request." },
+      { icon: CheckCircle2, title: "Full discretion", desc: "No conversation about passengers. Tinted glass, private entry, luggage assistance — all per business etiquette." },
+    ],
+    infoTitle: "What's part of the VIP package",
+    infoRows: [
+      { label: "Vehicles", value: "Mercedes E-class, Mercedes V-class, Hyundai Palisade" },
+      { label: "Meet & greet", value: "Name board, meet at the gate (on request)" },
+      { label: "In the cabin", value: "Water, Wi-Fi, USB charging, climate control" },
+      { label: "Driver languages", value: "Russian, English, Polish (on request)" },
+      { label: "Routes", value: "Belarus, EU (Poland, Lithuania, Latvia), Russia" },
+    ],
+    includedTitle: "Included in the VIP tariff",
+    included: [
+      "Premium vehicle dispatched on time",
+      "Chauffeur in business suit",
+      "Bottled water and press in the cabin",
+      "Confidential service",
+      "Flexible route adjustments and stops",
+      "Hourly chauffeur hire available",
+      "Multi-vehicle escorts for delegations",
+    ],
+    whyTitle: "Who VIP service is for",
+    whyItems: [
+      "Senior executives and business owners",
+      "Artists and public figures",
+      "Foreign guests and delegations",
+      "Corporate events and negotiations",
+      "Partner escort at exhibitions and forums",
+      "Weddings and ceremonial events",
+    ],
+    ctaTitle: "Request a VIP Transfer",
+    ctaDesc: "Get in touch for a tailored quote — our manager will discuss details and recommend the right vehicle.",
+    ctaBtn: "Request a quote",
+    prefilledFrom: "Minsk",
+    prefilledTo: "",
+    backBtn: "← All services",
+  },
+};
+
+export default function VipTransferPage() {
+  return <RouteLandingPage data={data} />;
+}
