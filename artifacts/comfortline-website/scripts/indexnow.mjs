@@ -47,5 +47,16 @@ async function submit(urls) {
 }
 
 const argUrls = process.argv.slice(2).filter((a) => /^https?:\/\//.test(a));
+const force = process.argv.includes("--force");
+
+// On Replit, REPLIT_DEPLOYMENT=1 is set during production deploy builds.
+// Outside deploys (local dev, CI typecheck, manual rebuilds) we skip the submission
+// so we don't burn IndexNow quota or trigger spurious recrawls. Use --force to override.
+const isDeploy = process.env.REPLIT_DEPLOYMENT === "1" || process.env.INDEXNOW_SUBMIT === "1";
+if (!isDeploy && !force && argUrls.length === 0) {
+  console.log("IndexNow: skipped (not a production deploy build). Use --force or INDEXNOW_SUBMIT=1 to override.");
+  process.exit(0);
+}
+
 const urls = argUrls.length > 0 ? argUrls : await readSitemapUrls();
 await submit(urls);
