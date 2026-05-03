@@ -58,12 +58,12 @@ const data: RoutePageData = {
     backBtn: "← Все услуги",
     faqTitle: "Частые вопросы — трансфер в санатории",
     faq: [
-      { q: "Сколько стоит трансфер из Минска в санаторий «Нарочь»?", a: "Фиксированная цена от 130 € за машину (1–4 пассажира). Маршрут ~160 км, время в пути 2–2,5 часа. В стоимость включены топливо, страховка, помощь с багажом и подача от любого адреса в Минске. Минивэн на 5–8 пассажиров — от 170 €." },
+      { q: "Сколько стоит трансфер из Минска в санаторий «Нарочь»?", a: "У нас фиксированная цена за всю машину — её называет менеджер при бронировании в зависимости от класса авто (1–4 пассажира на бизнес-седане; 5–8 — на минивэне), конкретного санатория и даты. Маршрут до Нарочи ~160 км, время в пути 2–2,5 часа. В стоимость включены топливо, страховка, помощь с багажом и подача от любого адреса в Минске." },
       { q: "До каких санаториев вы возите?", a: "Все санатории Беларуси: Нарочь и Сосны (озеро Нарочь), Лесные озёра и Браславские озёра, «Спутник», «Криница», «Журавушка», Беловежская Пуща, Жлобин, Бобруйск, Могилёвская и Брестская области. Доставляем точно к нужному корпусу — без долгих прогулок с чемоданами." },
       { q: "Подаёте ли вы прямо из аэропорта Минск-2?", a: "Да. Встретим у выхода из терминала с табличкой и доставим прямо к корпусу санатория без пересадок и автобусов. Из аэропорта в Нарочь — около 3 часов." },
       { q: "Можно ли заказать обратный трансфер заранее?", a: "Да, чаще всего так и делают: бронируете «туда и обратно» одной заявкой, мы фиксируем дату возврата (через 7, 14 или 21 день). Скидка 5% на пару поездок. За день до возврата водитель уточнит точное время выезда." },
       { q: "Можно ли с пожилым пассажиром или ребёнком?", a: "Да — это наш основной профиль. Помогаем сесть/встать, грузим всё в багажник сами, везём плавно без резких манёвров. Детские кресла — бесплатно по запросу. Можно делать остановки в дороге каждые 1,5–2 часа." },
-      { q: "А с домашним животным?", a: "Везём кошек и собак мелких/средних пород в переноске или на коврике. Предупредите менеджера при заказе — подадим машину с защитным чехлом, доплата 15 €." },
+      { q: "А с домашним животным?", a: "Везём кошек и собак мелких/средних пород в переноске или на коврике. Предупредите менеджера при заказе — подадим машину с защитным чехлом (небольшая доплата за подготовку салона)." },
     ],
   },
   en: {
@@ -122,12 +122,12 @@ const data: RoutePageData = {
     backBtn: "← All services",
     faqTitle: "Frequently asked — Belarus resort transfers",
     faq: [
-      { q: "How much is a transfer from Minsk to Naroch resort?", a: "Fixed price from €130 per car (1–4 passengers). The route is ~160 km, around 2–2.5 hours one way. Fuel, insurance, luggage help and pickup from any Minsk address are included. Minivan for 5–8 passengers — from €170." },
+      { q: "How much is a transfer from Minsk to Naroch resort?", a: "We quote a fixed price per car (1–4 passengers in a business sedan; 5–8 in a minivan), confirmed by our manager at booking based on the chosen resort, vehicle class and date. The route to Naroch is ~160 km, around 2–2.5 hours one way. Fuel, insurance, luggage help and pickup from any Minsk address are included." },
       { q: "Which Belarusian resorts do you serve?", a: "All major Belarus sanatoriums and resorts: Naroch and Sosny (Lake Naroch), Forest Lakes and Braslav Lakes, Sputnik, Krinitsa, Zhuravushka, Belovezhskaya Pushcha, Zhlobin, Bobruisk and resorts across Mogilev and Brest regions. We drop you right at the building — no long walk with suitcases." },
       { q: "Can you pick us up directly from Minsk Airport (MSQ)?", a: "Yes. We meet you at the terminal exit with a name sign and drive straight to your resort, no buses or transfers. Airport to Naroch is about 3 hours." },
       { q: "Can I book the return transfer in advance?", a: "Yes — most clients do. Book round-trip in one request and we fix the return date (after 7, 14 or 21 days). 5% discount on the pair. The driver confirms the exact return time the day before." },
       { q: "Is it suitable for elderly passengers or small children?", a: "Yes — this is our specialty. We help with boarding, load all luggage ourselves, drive smoothly without sudden manoeuvres. Child seats are free on request. Stops every 1.5–2 hours en route are no problem." },
-      { q: "Can I travel with a pet?", a: "Yes — small and medium cats and dogs in a carrier or on a mat. Let the manager know at booking — we'll bring a car with a protective seat cover, +€15." },
+      { q: "Can I travel with a pet?", a: "Yes — small and medium cats and dogs in a carrier or on a mat. Let the manager know at booking — we'll bring a car with a protective seat cover (small cabin-prep surcharge applies)." },
     ],
   },
   seo: {
