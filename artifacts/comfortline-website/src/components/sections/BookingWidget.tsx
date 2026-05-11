@@ -48,11 +48,11 @@ function Counter({ label, note, value, onChange, min = 0, max = 8 }: {
 
 const floatingLabel = "absolute left-0 top-1 text-[10px] font-semibold text-primary uppercase tracking-wider pointer-events-none select-none";
 const restingLabel  = "absolute left-0 top-1/2 -translate-y-1/2 text-sm text-gray-400 pointer-events-none select-none transition-all duration-150";
-const inputBase     = "absolute inset-0 pt-5 pb-1 px-0 w-full bg-transparent outline-none border-0 text-sm font-medium text-gray-900 placeholder-transparent";
+const inputBase     = "absolute inset-0 pt-4 md:pt-5 pb-1 px-0 w-full bg-transparent outline-none border-0 text-sm font-medium text-gray-900 placeholder-transparent";
 
 function FieldShell({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`relative w-full h-[52px] ${className}`}>
+    <div className={`relative w-full h-10 md:h-[52px] ${className}`}>
       {children}
     </div>
   );
@@ -235,11 +235,11 @@ export function BookingWidget() {
     <form onSubmit={handleSubmit} id="booking">
 
       {/* ── MOBILE LAYOUT ── */}
-      <div className="flex flex-col gap-2 md:hidden">
+      <div className="flex flex-col gap-1.5 md:hidden">
 
         {/* FROM */}
         <div className="relative" ref={fromRefMob}>
-          <div className="flex items-center gap-3 px-5 py-4 bg-white border border-gray-200 rounded-2xl">
+          <div className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-xl">
             <FieldShell className="flex-1">
               <input type="text" value={from}
                 onChange={e => setFrom(e.target.value)}
@@ -265,7 +265,7 @@ export function BookingWidget() {
 
         {/* TO */}
         <div className="relative" ref={toRefMob}>
-          <div className="flex items-center px-5 py-4 bg-white border border-gray-200 rounded-2xl">
+          <div className="flex items-center px-4 py-2 bg-white border border-gray-200 rounded-xl">
             <FieldShell>
               <input type="text" value={to}
                 onChange={e => setTo(e.target.value)}
@@ -286,7 +286,7 @@ export function BookingWidget() {
         </div>
 
         {/* DATE */}
-        <div className="flex items-center px-5 py-4 bg-white border border-gray-200 rounded-2xl">
+        <div className="flex items-center px-4 py-2 bg-white border border-gray-200 rounded-xl">
           <FieldShell className="flex-1">
             <input type="date" value={date} onChange={e => setDate(e.target.value)}
               min={new Date().toISOString().split("T")[0]}
@@ -296,9 +296,9 @@ export function BookingWidget() {
         </div>
 
         {/* PASSENGERS */}
-        <div className="relative bg-white border border-gray-200 rounded-2xl" ref={paxRefMob}>
+        <div className="relative bg-white border border-gray-200 rounded-xl" ref={paxRefMob}>
           <button type="button" onClick={() => setPaxOpen(v => !v)}
-            className="w-full h-full flex items-center gap-2 px-5 py-4 text-left">
+            className="w-full h-full flex items-center gap-2 px-4 py-2 text-left">
             <FieldShell className="flex-1 pointer-events-none">
               <span className={floatingLabel}>{b.passengersClass}</span>
               <span className="absolute bottom-1 left-0 text-sm font-medium text-gray-900 truncate w-full">
@@ -312,7 +312,7 @@ export function BookingWidget() {
 
         {/* SUBMIT */}
         <button type="submit"
-          className="w-full px-7 py-4 bg-primary text-primary-foreground font-bold text-sm rounded-2xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30">
+          className="w-full px-6 py-3 mt-1 bg-primary text-primary-foreground font-bold text-sm rounded-xl hover:opacity-90 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-primary/30">
           {b.cta}
         </button>
       </div>
