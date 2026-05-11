@@ -1,4 +1,15 @@
 import { Switch, Route, Router as WouterRouter } from "wouter";
+import { useBrowserLocation } from "wouter/use-browser-location";
+
+// Replit's static host 301-redirects /foo → /foo/, so production users land on
+// trailing-slash URLs. Wouter's default matcher treats /foo and /foo/ as
+// different paths, so we strip the trailing slash before matching to keep
+// every route reachable from Google search results.
+function useNormalizedLocation(): [string, (to: string) => void] {
+  const [loc, navigate] = useBrowserLocation();
+  const normalized = loc.length > 1 ? loc.replace(/\/+$/, "") || "/" : loc;
+  return [normalized, navigate];
+}
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -107,7 +118,7 @@ function App() {
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
-            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")} hook={useNormalizedLocation}>
               <Router />
             </WouterRouter>
             <Toaster />
