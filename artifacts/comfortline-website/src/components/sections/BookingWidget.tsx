@@ -241,7 +241,7 @@ export function BookingWidget() {
         <div className="relative" ref={fromRefMob}>
           <div className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-xl">
             <FieldShell className="flex-1">
-              <input type="text" value={from}
+              <input type="text" value={from} aria-label={b.from}
                 onChange={e => setFrom(e.target.value)}
                 onFocus={() => setFromFocus(true)}
                 placeholder=" " className={`${inputBase} peer`} />
@@ -267,7 +267,7 @@ export function BookingWidget() {
         <div className="relative" ref={toRefMob}>
           <div className="flex items-center px-4 py-2 bg-white border border-gray-200 rounded-xl">
             <FieldShell>
-              <input type="text" value={to}
+              <input type="text" value={to} aria-label={b.to}
                 onChange={e => setTo(e.target.value)}
                 onFocus={() => setToFocus(true)}
                 placeholder=" " className={`${inputBase} peer`} />
@@ -288,7 +288,7 @@ export function BookingWidget() {
         {/* DATE */}
         <div className="flex items-center px-4 py-2 bg-white border border-gray-200 rounded-xl">
           <FieldShell className="flex-1">
-            <input type="date" value={date} onChange={e => setDate(e.target.value)}
+            <input type="date" value={date} aria-label={b.date} onChange={e => setDate(e.target.value)}
               min={new Date().toISOString().split("T")[0]}
               className={`${inputBase} [color-scheme:light] peer`} />
             <label className={floatingLabel}>{b.date}</label>

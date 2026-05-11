@@ -178,7 +178,7 @@ export function BookingModal({
               {/* Header */}
               <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-gray-100">
                 <h2 className="text-xl font-bold text-gray-900">{m.title}</h2>
-                <button type="button" onClick={onClose}
+                <button type="button" onClick={onClose} aria-label="Close"
                   className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors">
                   <X className="h-4 w-4" />
                 </button>
@@ -284,16 +284,17 @@ export function BookingModal({
                     <p className="text-sm text-gray-500">{m.contactSubtext}</p>
                   </div>
 
-                  <input type="text" placeholder={m.name} value={name}
+                  <input type="text" placeholder={m.name} aria-label={m.name} value={name}
                     onChange={e => setName(e.target.value)} required className={inputCls} />
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input type="email" placeholder={m.email} value={email}
+                    <input type="email" placeholder={m.email} aria-label={m.email} value={email}
                       onChange={e => setEmail(e.target.value)} className={inputCls} />
                     <div className="space-y-1">
                       <input
                         type="tel"
                         placeholder={m.phone}
+                        aria-label={m.phone}
                         value={phone}
                         onChange={e => { setPhone(e.target.value); if (phoneError) setPhoneError(validatePhone(e.target.value)); }}
                         onBlur={e => setPhoneError(validatePhone(e.target.value))}
@@ -304,7 +305,7 @@ export function BookingModal({
                     </div>
                   </div>
 
-                  <textarea placeholder={m.comment} value={comment}
+                  <textarea placeholder={m.comment} aria-label={m.comment} value={comment}
                     onChange={e => setComment(e.target.value)} rows={2}
                     className={`${inputCls} resize-none`} />
 

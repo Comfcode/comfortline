@@ -162,6 +162,8 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="icon"
+              aria-label={mobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
+              aria-expanded={mobileMenuOpen}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

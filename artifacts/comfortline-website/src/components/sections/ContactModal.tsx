@@ -160,13 +160,14 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
 
               <form onSubmit={handleSubmit} className="px-6 py-5 space-y-4">
 
-                <input type="text" placeholder={c.name} value={name}
+                <input type="text" placeholder={c.name} aria-label={c.name} value={name}
                   onChange={e => setName(e.target.value)} required className={inputCls} />
 
                 <div className="space-y-1">
                   <input
                     type="tel"
                     placeholder={c.phone}
+                    aria-label={c.phone}
                     value={phone}
                     onChange={e => { setPhone(e.target.value); if (phoneError) setPhoneError(validatePhone(e.target.value)); }}
                     onBlur={e => setPhoneError(validatePhone(e.target.value))}
@@ -176,10 +177,10 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
                   {phoneError && <p className="text-xs text-red-500 font-medium pl-1">{phoneError}</p>}
                 </div>
 
-                <input type="email" placeholder={c.email} value={email}
+                <input type="email" placeholder={c.email} aria-label={c.email} value={email}
                   onChange={e => setEmail(e.target.value)} className={inputCls} />
 
-                <textarea placeholder={c.message} value={message}
+                <textarea placeholder={c.message} aria-label={c.message} value={message}
                   onChange={e => setMessage(e.target.value)} rows={3}
                   className={`${inputCls} resize-none`} />
 

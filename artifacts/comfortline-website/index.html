@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт, Минск–Варшава аэропорт</title>
     <meta name="description" content="ComfortLine — комфортный трансфер из Минска в аэропорт Вильнюса (VNO), аэропорт Варшавы (WAW, Модлин), Берлин и города Европы. Фиксированная цена, опытный водитель, комфортные авто. Заказ онлайн или +375 (29) 155-27-76." />
     <meta name="theme-color" content="#0F0E14" />
@@ -60,7 +60,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://widget.replain.cc">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Non-render-blocking font load: preload fires early, onload swaps rel to stylesheet -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" /></noscript>
 
     <script type="application/ld+json">
     {
