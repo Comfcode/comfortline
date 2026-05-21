@@ -22,6 +22,7 @@ const MinskVilniusAirportPage      = lazy(() => import("@/pages/minsk-vilnius-ai
 const MinskWarsawAirportPage       = lazy(() => import("@/pages/minsk-warsaw-airport"));
 const MinskWarsawModlinAirportPage = lazy(() => import("@/pages/minsk-warsaw-modlin-airport"));
 const MinskKaunasAirportPage       = lazy(() => import("@/pages/minsk-kaunas-airport"));
+const MinskRigaAirportPage         = lazy(() => import("@/pages/minsk-riga-airport"));
 const BlogIndexPage                = lazy(() => import("@/pages/blog/index"));
 const BlogArticlePage              = lazy(() => import("@/pages/blog/article"));
 const VehiclePageModule            = lazy(() => import("@/pages/vehicle-page").then(m => ({ default: m.VehiclePage })));
@@ -63,6 +64,8 @@ function Router() {
         <Route path="/трансфер-минск-варшава-модлин" component={MinskWarsawModlinAirportPage} />
         <Route path="/minsk-kaunas-airport" component={MinskKaunasAirportPage} />
         <Route path="/трансфер-минск-каунас-аэропорт" component={MinskKaunasAirportPage} />
+        <Route path="/minsk-riga-airport" component={MinskRigaAirportPage} />
+        <Route path="/трансфер-минск-рига-аэропорт" component={MinskRigaAirportPage} />
 
         <Route path="/blog" component={BlogIndexPage} />
         <Route path="/блог" component={BlogIndexPage} />
