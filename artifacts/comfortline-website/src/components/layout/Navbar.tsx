@@ -154,26 +154,26 @@ export function Navbar() {
                       {isHovered && (
                         <motion.svg
                           key={`heart-loop-${link.href}`}
-                          viewBox="0 0 200 70"
+                          viewBox="0 0 200 66"
                           fill="none"
                           className="absolute pointer-events-none"
-                          style={{ left: "-14px", top: "-14px", width: "calc(100% + 28px)", height: "calc(100% + 28px)" }}
+                          style={{ left: "-12px", top: "-10px", width: "calc(100% + 24px)", height: "calc(100% + 20px)" }}
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
                           transition={{ duration: 0.1 }}
                         >
-                          {/* Flat heart: two lobes with center dip at top, small tail at bottom */}
+                          {/* Elegant two-lobe heart: soft dip at top, thin stroke, small tail at bottom */}
                           <motion.path
-                            d="M100,61 C86,66 58,67 34,60 C12,54 0,42 3,28 C6,15 21,7 44,7 C66,7 86,19 97,32 C99,34 100,36 100,36 C100,36 101,34 103,32 C114,19 134,7 156,7 C179,7 194,15 197,28 C200,42 188,54 166,60 C142,67 114,66 100,61 L100,67"
+                            d="M100,55 C84,60 56,61 32,54 C10,48 -1,36 3,22 C7,10 24,3 50,3 C76,3 94,17 100,28 C106,17 124,3 150,3 C176,3 193,10 197,22 C201,36 190,48 168,54 C144,61 116,60 100,55 L100,62"
                             stroke="currentColor"
-                            strokeWidth="1.4"
+                            strokeWidth="1.0"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             initial={{ pathLength: 0 }}
                             animate={{ pathLength: 1 }}
                             exit={{ pathLength: 0 }}
-                            transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+                            transition={{ duration: 0.65, ease: [0.33, 1, 0.68, 1] }}
                           />
                         </motion.svg>
                       )}
