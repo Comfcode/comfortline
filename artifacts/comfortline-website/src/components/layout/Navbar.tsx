@@ -39,8 +39,8 @@ export function Navbar() {
 
     // For non-home pages, set active based on pathname
     if (!isHome) {
-      const path = window.location.pathname;
-      if (path.startsWith("/faq"))           setActiveHref("/faq");
+      const path = decodeURIComponent(window.location.pathname);
+      if (path.startsWith("/faq"))                              setActiveHref("/faq");
       else if (path.includes("blog") || path.includes("блог")) setActiveHref(lang === "ru" ? "/блог" : "/blog");
       else setActiveHref(null);
       return;
@@ -71,7 +71,7 @@ export function Navbar() {
           const best = [...visible.entries()].sort((a, b) => b[1] - a[1])[0][0];
           setActiveHref(hrefBySection[best] ?? null);
         },
-        { threshold: [0.15, 0.4], rootMargin: "-64px 0px -30% 0px" }
+        { threshold: [0.1, 0.3], rootMargin: "-64px 0px 0px 0px" }
       );
       obs.observe(el);
       observers.push(obs);
