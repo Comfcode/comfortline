@@ -15,9 +15,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Групповые поездки",
     photos: [
-      { src: "https://a.veronikasadventure.com/tour/airport-transfer-12-passenger-minivan-d5504-131461P16-3.jpg", caption: "Семейный трансфер" },
-      { src: "https://taxxilo.com/wp-content/uploads/2025/06/Taxi-Barcelona-for-Groups.webp", caption: "Корпоративная группа" },
-      { src: "https://empirelimotransfer.com/wp-content/uploads/2025/11/Different-types-of-airport-transfer-services-available-1024x585.png", caption: "Групповая поездка" },
+      { src: "/car-mercedes-v.jpg", caption: "Mercedes V-class — семейный трансфер" },
+      { src: "/car-mercedes-v-vip.jpg", caption: "VIP-салон — корпоративная группа" },
+      { src: "/car-kia-carnival.jpg", caption: "Групповая поездка — до 7 пассажиров" },
     ],
     howTitle: "Как работает групповой трансфер",
     steps: [
@@ -70,9 +70,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Group Travel",
     photos: [
-      { src: "https://a.veronikasadventure.com/tour/airport-transfer-12-passenger-minivan-d5504-131461P16-3.jpg", caption: "Family transfer" },
-      { src: "https://taxxilo.com/wp-content/uploads/2025/06/Taxi-Barcelona-for-Groups.webp", caption: "Corporate group" },
-      { src: "https://empirelimotransfer.com/wp-content/uploads/2025/11/Different-types-of-airport-transfer-services-available-1024x585.png", caption: "Group travel" },
+      { src: "/car-mercedes-v.jpg", caption: "Mercedes V-class — family transfer" },
+      { src: "/car-mercedes-v-vip.jpg", caption: "VIP cabin — corporate group" },
+      { src: "/car-kia-carnival.jpg", caption: "Group travel — up to 7 passengers" },
     ],
     howTitle: "How group transfers work",
     steps: [
