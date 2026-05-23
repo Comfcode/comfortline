@@ -1,5 +1,5 @@
 import { useState, useEffect, ElementType } from "react";
-import { Menu, X, Phone, Sun, Moon, Search } from "lucide-react";
+import { Menu, X, Phone, Sun, Moon } from "lucide-react";
 import { useLang } from "@/context/language-context";
 import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
@@ -7,12 +7,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Logo } from "@/components/brand/Logo";
 
+/** Maps each nav href to the section id it represents (for IntersectionObserver) */
+const SECTION_MAP: Record<string, string> = {
+  "/#services":    "services",
+  "/#fleet":       "fleet",
+  "/#advantages":  "advantages",
+  "/#reviews":     "reviews",
+  "/#contact":     "contact",
+};
+
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled]       = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { lang, setLang, t } = useLang();
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [activeHref, setActiveHref]       = useState<string | null>(null);
+  const { lang, setLang, t }              = useLang();
+  const { resolvedTheme, setTheme }       = useTheme();
+  const [mounted, setMounted]             = useState(false);
   const isDark = !mounted || resolvedTheme === "dark";
 
   useEffect(() => setMounted(true), []);
@@ -23,22 +33,69 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Detect active section via IntersectionObserver (homepage only)
+  useEffect(() => {
+    const isHome = window.location.pathname === "/";
+
+    // For non-home pages, set active based on pathname
+    if (!isHome) {
+      const path = window.location.pathname;
+      if (path.startsWith("/faq"))           setActiveHref("/faq");
+      else if (path.includes("blog") || path.includes("блог")) setActiveHref(lang === "ru" ? "/блог" : "/blog");
+      else setActiveHref(null);
+      return;
+    }
+
+    const sectionIds = Object.values(SECTION_MAP);
+    const hrefBySection: Record<string, string> = Object.fromEntries(
+      Object.entries(SECTION_MAP).map(([href, id]) => [id, href])
+    );
+
+    const observers: IntersectionObserver[] = [];
+
+    // Track which sections are currently intersecting
+    const visible = new Map<string, number>();
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            visible.set(id, entry.intersectionRatio);
+          } else {
+            visible.delete(id);
+          }
+          // Pick the section with highest intersection ratio
+          if (visible.size === 0) return;
+          const best = [...visible.entries()].sort((a, b) => b[1] - a[1])[0][0];
+          setActiveHref(hrefBySection[best] ?? null);
+        },
+        { threshold: [0.15, 0.4], rootMargin: "-64px 0px -30% 0px" }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, [lang]);
+
   const navLinks = [
-    { name: t.nav.services,    href: "/#services" },
-    { name: t.nav.fleet,       href: "/#fleet" },
-    { name: t.nav.advantages,  href: "/#advantages" },
-    { name: t.nav.reviews,     href: "/#reviews" },
-    { name: t.nav.faq,         href: "/faq" },
+    { name: t.nav.services,   href: "/#services" },
+    { name: t.nav.fleet,      href: "/#fleet" },
+    { name: t.nav.advantages, href: "/#advantages" },
+    { name: t.nav.reviews,    href: "/#reviews" },
+    { name: t.nav.faq,        href: "/faq" },
     { name: lang === "ru" ? "Блог" : "Blog", href: lang === "ru" ? "/блог" : "/blog" },
-    { name: t.nav.contacts,    href: "/#contact" },
+    { name: t.nav.contacts,   href: "/#contact" },
   ];
 
   const socialLinks = [
-    { icon: SiTelegram,  href: "https://t.me/transfer_comfortline",           label: "Telegram",  bg: "#229ED9" },
-    { icon: SiViber,     href: "viber://chat?number=%2B375291552776",          label: "Viber",     bg: "#7360F2" },
-    { icon: SiWhatsapp,  href: "https://wa.me/375291552776",                   label: "WhatsApp",  bg: "#25D366" },
+    { icon: SiTelegram,  href: "https://t.me/transfer_comfortline",              label: "Telegram",  bg: "#229ED9" },
+    { icon: SiViber,     href: "viber://chat?number=%2B375291552776",             label: "Viber",     bg: "#7360F2" },
+    { icon: SiWhatsapp,  href: "https://wa.me/375291552776",                      label: "WhatsApp",  bg: "#25D366" },
     { icon: Instagram,   href: "https://www.instagram.com/transfer_comfortline/", label: "Instagram", bg: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)" },
-    { icon: SiMessenger, href: "https://m.me/103816619260365",                 label: "Messenger", bg: "linear-gradient(45deg,#0084FF,#B34FFF)" },
+    { icon: SiMessenger, href: "https://m.me/103816619260365",                    label: "Messenger", bg: "linear-gradient(45deg,#0084FF,#B34FFF)" },
   ];
 
   const SocialIcon = ({ icon: Icon, href, label, bg, size = 28 }: {
@@ -68,38 +125,47 @@ export function Navbar() {
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-9">
 
-          {/* Logo — left */}
+          {/* Logo */}
           <a href="/" className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
             <Logo variant="full" scheme={isDark ? "dark" : "light"} height={26} />
           </a>
 
-          {/* Desktop nav — right */}
+          {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
 
-            {/* Nav links — Sequoia-style all caps */}
+            {/* Nav links with active pill */}
             <div className="flex items-center gap-5 xl:gap-7">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-[11px] tracking-[0.12em] uppercase font-medium text-foreground/60 hover:text-foreground transition-colors whitespace-nowrap"
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeHref === link.href;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className={`relative text-[11px] tracking-[0.12em] uppercase font-medium transition-colors whitespace-nowrap px-2.5 py-1 ${
+                      isActive ? "text-foreground" : "text-foreground/55 hover:text-foreground"
+                    }`}
+                  >
+                    {/* Sliding pill outline */}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-active-pill"
+                        className="absolute inset-0 rounded-full border border-foreground/35"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.name}</span>
+                  </a>
+                );
+              })}
             </div>
 
-            {/* Divider */}
             <div className="h-4 w-px bg-border/50" />
 
-            {/* Social icons — compact */}
+            {/* Social icons */}
             <div className="flex items-center gap-1.5">
-              {socialLinks.map((s) => (
-                <SocialIcon key={s.label} {...s} size={26} />
-              ))}
+              {socialLinks.map((s) => <SocialIcon key={s.label} {...s} size={26} />)}
             </div>
 
-            {/* Divider */}
             <div className="h-4 w-px bg-border/50" />
 
             {/* Phone */}
@@ -111,7 +177,6 @@ export function Navbar() {
               +375 (29) 155-27-76
             </a>
 
-            {/* Divider */}
             <div className="h-4 w-px bg-border/50" />
 
             {/* Language toggle */}
@@ -131,7 +196,7 @@ export function Navbar() {
               </button>
             </div>
 
-            {/* Theme toggle — minimal */}
+            {/* Theme toggle */}
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
               aria-label="Toggle theme"
@@ -191,13 +256,14 @@ export function Navbar() {
             className="lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-lg border-b border-border shadow-lg"
           >
             <div className="container mx-auto px-6 py-6 flex flex-col gap-1">
-
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-[11px] tracking-[0.18em] uppercase font-medium text-foreground/60 hover:text-foreground py-3 border-b border-border/30 last:border-0 transition-colors"
+                  className={`text-[11px] tracking-[0.18em] uppercase font-medium py-3 border-b border-border/30 last:border-0 transition-colors ${
+                    activeHref === link.href ? "text-foreground" : "text-foreground/60 hover:text-foreground"
+                  }`}
                 >
                   {link.name}
                 </a>
@@ -205,11 +271,8 @@ export function Navbar() {
 
               <div className="pt-5 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  {socialLinks.map((s) => (
-                    <SocialIcon key={s.label} {...s} size={34} />
-                  ))}
+                  {socialLinks.map((s) => <SocialIcon key={s.label} {...s} size={34} />)}
                 </div>
-
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-0.5 text-[11px] tracking-[0.12em] uppercase font-medium">
                     <button onClick={() => setLang("ru")} className={`px-2 py-1 transition-colors ${lang === "ru" ? "text-foreground" : "text-foreground/40"}`}>RU</button>
@@ -231,7 +294,6 @@ export function Navbar() {
                   </button>
                 </div>
               </div>
-
             </div>
           </motion.div>
         )}
@@ -240,9 +302,7 @@ export function Navbar() {
 
     {/* Floating social sidebar — mobile only */}
     <div className="lg:hidden fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 pr-2">
-      {socialLinks.map((s) => (
-        <SocialIcon key={s.label} {...s} size={36} />
-      ))}
+      {socialLinks.map((s) => <SocialIcon key={s.label} {...s} size={36} />)}
     </div>
     </>
   );
