@@ -145,17 +145,19 @@ export function Services() {
                       >
                         {/* Route text */}
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover/row:text-primary transition-colors">
-                            <span className="truncate">{route.from}</span>
-                            <ArrowRight className="h-3 w-3 text-primary/60 shrink-0" />
-                            <span className="truncate">{route.to}</span>
-                            <span className="ml-1 px-1.5 py-0.5 text-[10px] font-bold bg-primary/15 text-primary rounded-md shrink-0 leading-none whitespace-nowrap">
+                          <div className="flex items-start justify-between gap-2">
+                            <p className="text-sm font-semibold text-foreground group-hover/row:text-primary transition-colors leading-snug">
+                              {route.from}
+                              <ArrowRight className="inline h-3 w-3 text-primary/60 mx-1 align-middle" />
+                              {route.to}
+                            </p>
+                            <span className="px-1.5 py-0.5 text-[10px] font-bold bg-primary/15 text-primary rounded-md shrink-0 leading-none whitespace-nowrap mt-0.5">
                               {route.code}
                             </span>
                           </div>
                           <div className="flex items-center gap-1 mt-0.5">
                             <Clock className="h-2.5 w-2.5 text-muted-foreground/60 shrink-0" />
-                            <span className="text-[11px] text-muted-foreground/70 truncate">{route.meta}</span>
+                            <span className="text-[11px] text-muted-foreground/70">{route.meta}</span>
                           </div>
                         </div>
                         <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 group-hover/row:text-primary group-hover/row:translate-x-0.5 transition-all shrink-0" />
