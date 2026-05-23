@@ -268,6 +268,17 @@ export function Navbar() {
       {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
+          <>
+            {/* Backdrop — tap outside to close */}
+            <motion.div
+              key="mobile-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18 }}
+              className="lg:hidden fixed inset-0 top-full z-[-1]"
+              onClick={() => setMobileMenuOpen(false)}
+            />
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -316,6 +327,7 @@ export function Navbar() {
               </div>
             </div>
           </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
