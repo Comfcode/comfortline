@@ -149,7 +149,8 @@ export function Navbar() {
                     {isActive && (
                       <motion.span
                         layoutId="nav-active-pill"
-                        className="absolute inset-0 rounded-full border border-foreground/35"
+                        className="absolute inset-0 rounded-full border border-foreground/70"
+                        style={{ boxShadow: "0 0 0 0px transparent" }}
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
