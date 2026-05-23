@@ -37,8 +37,8 @@ const content = {
     ],
     photosTitle: "Аэропорт в фото",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Riga_International_Airport_exterior.jpg/1280px-Riga_International_Airport_exterior.jpg", caption: "Терминал аэропорта Риги (RIX)" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Riga_Airport_interior.jpg/1280px-Riga_Airport_interior.jpg", caption: "Интерьер аэропорта Риги" },
+      { src: "/riga-airport-exterior.jpg", caption: "Терминал аэропорта Риги (RIX)" },
+      { src: "/riga-airport-gate.jpg", caption: "Зона ворот аэропорта Риги" },
     ],
     tipsTitle: "Полезная информация",
     tips: [
@@ -91,8 +91,8 @@ const content = {
     ],
     photosTitle: "Airport Gallery",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Riga_International_Airport_exterior.jpg/1280px-Riga_International_Airport_exterior.jpg", caption: "Riga Airport terminal (RIX)" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Riga_Airport_interior.jpg/1280px-Riga_Airport_interior.jpg", caption: "Riga Airport interior" },
+      { src: "/riga-airport-exterior.jpg", caption: "Riga Airport terminal (RIX)" },
+      { src: "/riga-airport-gate.jpg", caption: "Riga Airport departure gate" },
     ],
     tipsTitle: "Useful Information",
     tips: [
