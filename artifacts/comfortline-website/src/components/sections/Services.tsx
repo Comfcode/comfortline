@@ -18,6 +18,7 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
       { from: "Минск", to: "Аэропорт Вильнюса", code: "VNO", meta: "~175 км · 2,5–5 ч",  href: "/трансфер-минск-вильнюс-аэропорт" },
       { from: "Минск", to: "Варшава Шопен",      code: "WAW", meta: "~550 км · 6–9 ч",    href: "/трансфер-минск-варшава-шопен" },
       { from: "Минск", to: "Варшава Модлин",     code: "WMI", meta: "~570 км · 7–10 ч",   href: "/трансфер-минск-варшава-модлин" },
+      { from: "Минск", to: "Аэропорт Риги",      code: "RIX", meta: "~470 км · 5–8 ч",    href: "/трансфер-минск-рига-аэропорт" },
     ],
     [
       { from: "Минск", to: "по городу",    code: "24/7",      meta: "30–60 мин подача",    href: "/трансфер-по-минску" },
@@ -42,6 +43,7 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
       { from: "Minsk", to: "Vilnius Airport",  code: "VNO", meta: "~175 km · 2.5–5 hrs", href: "/minsk-vilnius-airport" },
       { from: "Minsk", to: "Warsaw Chopin",    code: "WAW", meta: "~550 km · 6–9 hrs",   href: "/minsk-warsaw-airport" },
       { from: "Minsk", to: "Warsaw Modlin",    code: "WMI", meta: "~570 km · 7–10 hrs",  href: "/minsk-warsaw-modlin-airport" },
+      { from: "Minsk", to: "Riga Airport",     code: "RIX", meta: "~470 km · 5–8 hrs",   href: "/minsk-riga-airport" },
     ],
     [
       { from: "Minsk", to: "city",       code: "24/7",      meta: "30–60 min dispatch",    href: "/minsk-city-transfer" },
