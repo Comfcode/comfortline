@@ -120,6 +120,58 @@ function DownloadSvg({ content, filename }: { content: string; filename: string 
   );
 }
 
+function DownloadPng({
+  content,
+  filename,
+  scale = 4,
+}: {
+  content: string;
+  filename: string;
+  scale?: number;
+}) {
+  const [busy, setBusy] = useState(false);
+
+  const download = () => {
+    setBusy(true);
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, "image/svg+xml");
+    const svgEl = doc.documentElement as unknown as SVGSVGElement;
+    const vb = svgEl.getAttribute("viewBox")?.split(/[\s,]+/).map(Number) ?? [0, 0, 250, 70];
+    const w = vb[2] * scale;
+    const h = vb[3] * scale;
+
+    const blob = new Blob([content], { type: "image/svg+xml" });
+    const url  = URL.createObjectURL(blob);
+    const img  = new Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width  = w;
+      canvas.height = h;
+      const ctx = canvas.getContext("2d")!;
+      ctx.drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(url);
+      const a = document.createElement("a");
+      a.href     = canvas.toDataURL("image/png");
+      a.download = filename;
+      a.click();
+      setBusy(false);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); setBusy(false); };
+    img.src = url;
+  };
+
+  return (
+    <button
+      onClick={download}
+      disabled={busy}
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-colors disabled:opacity-50"
+    >
+      <Download className="h-3 w-3" />
+      {busy ? "…" : "PNG"}
+    </button>
+  );
+}
+
 const sectionVariant = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -505,6 +557,7 @@ export default function BrandbookPage() {
                 <div className="flex gap-2">
                   <CopyButton text={svgLogoFull} label="Copy SVG" />
                   <DownloadSvg content={svgLogoFull} filename="comfortline-logo-dark.svg" />
+                  <DownloadPng content={svgLogoFull} filename="comfortline-logo-dark.png" />
                 </div>
                 <p className="text-xs text-muted-foreground tracking-wider uppercase">On Dark</p>
               </div>
@@ -516,6 +569,10 @@ export default function BrandbookPage() {
                   <DownloadSvg
                     content={svgLogoFull.replace(/#F5F0E8/g, "#131218")}
                     filename="comfortline-logo-light.svg"
+                  />
+                  <DownloadPng
+                    content={svgLogoFull.replace(/#F5F0E8/g, "#131218")}
+                    filename="comfortline-logo-light.png"
                   />
                 </div>
                 <p className="text-xs text-[#8A8378] tracking-wider uppercase">On Light</p>
@@ -563,6 +620,7 @@ export default function BrandbookPage() {
             <div className="mt-4 flex gap-2">
               <CopyButton text={svgMark} label="Copy mark SVG" />
               <DownloadSvg content={svgMark} filename="comfortline-mark.svg" />
+              <DownloadPng content={svgMark} filename="comfortline-mark.png" scale={8} />
             </div>
           </motion.section>
 
