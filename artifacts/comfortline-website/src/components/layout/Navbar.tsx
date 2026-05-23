@@ -165,7 +165,7 @@ export function Navbar() {
                         >
                           {/* Elegant two-lobe heart: soft dip at top, thin stroke, small tail at bottom */}
                           <motion.path
-                            d="M100,55 C84,60 56,61 32,54 C10,48 -1,36 3,22 C7,10 24,3 50,3 C76,3 94,17 100,28 C106,17 124,3 150,3 C176,3 193,10 197,22 C201,36 190,48 168,54 C144,61 116,60 100,55 L100,62"
+                            d="M100,63 C90,58 66,57 42,51 C16,44 0,32 4,19 C8,8 26,2 52,2 C76,2 94,16 100,28 C106,16 124,2 150,2 C176,2 194,8 196,19 C200,32 184,44 158,51 C134,57 110,58 100,63"
                             stroke="currentColor"
                             strokeWidth="1.0"
                             strokeLinecap="round"
