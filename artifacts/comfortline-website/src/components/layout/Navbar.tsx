@@ -20,6 +20,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled]       = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeHref, setActiveHref]       = useState<string | null>(null);
+  const [hoveredHref, setHoveredHref]     = useState<string | null>(null);
   const { lang, setLang, t }              = useLang();
   const { resolvedTheme, setTheme }       = useTheme();
   const [mounted, setMounted]             = useState(false);
@@ -133,23 +134,26 @@ export function Navbar() {
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
 
-            {/* Nav links with hand-drawn active oval */}
+            {/* Nav links — hover: pen oval · active: pen underline */}
             <div className="flex items-center gap-5 xl:gap-7">
               {navLinks.map((link) => {
-                const isActive = activeHref === link.href;
+                const isActive  = activeHref  === link.href;
+                const isHovered = hoveredHref === link.href && !isActive;
                 return (
                   <a
                     key={link.name}
                     href={link.href}
+                    onMouseEnter={() => setHoveredHref(link.href)}
+                    onMouseLeave={() => setHoveredHref(null)}
                     className={`relative text-[11px] tracking-[0.12em] uppercase font-medium transition-colors whitespace-nowrap px-3 py-1.5 ${
                       isActive ? "text-foreground" : "text-foreground/55 hover:text-foreground"
                     }`}
                   >
-                    {/* Hand-drawn SVG oval — draws itself when active */}
+                    {/* Hover: hand-drawn oval */}
                     <AnimatePresence>
-                      {isActive && (
+                      {isHovered && (
                         <motion.svg
-                          key={link.href}
+                          key={`oval-${link.href}`}
                           viewBox="0 0 182 54"
                           fill="none"
                           className="absolute pointer-events-none"
@@ -157,22 +161,53 @@ export function Navbar() {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.15 }}
+                          transition={{ duration: 0.12 }}
                         >
                           <motion.path
                             d="M92,44 C68,46 38,46 18,41 C2,37 0,28 3,20 C7,10 22,4 55,2 C82,0 118,0 148,4 C168,7 182,14 180,25 C178,36 162,43 135,45 C120,46 106,45 92,44"
                             stroke="currentColor"
-                            strokeWidth="1.2"
+                            strokeWidth="1.1"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             initial={{ pathLength: 0 }}
                             animate={{ pathLength: 1 }}
                             exit={{ pathLength: 0 }}
-                            transition={{ duration: 0.55, ease: [0.33, 1, 0.68, 1] }}
+                            transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
                           />
                         </motion.svg>
                       )}
                     </AnimatePresence>
+
+                    {/* Active: hand-drawn wavy underline */}
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.svg
+                          key={`underline-${link.href}`}
+                          viewBox="0 0 100 7"
+                          fill="none"
+                          preserveAspectRatio="none"
+                          className="absolute pointer-events-none"
+                          style={{ left: "4px", bottom: "-1px", width: "calc(100% - 8px)", height: "7px" }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.12 }}
+                        >
+                          <motion.path
+                            d="M1,3.5 C12,1.5 25,5.5 38,3 C51,0.5 64,5 77,3 C88,1.5 95,4 99,3.5"
+                            stroke="currentColor"
+                            strokeWidth="1.6"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            exit={{ pathLength: 0 }}
+                            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                          />
+                        </motion.svg>
+                      )}
+                    </AnimatePresence>
+
                     <span className="relative z-10">{link.name}</span>
                   </a>
                 );
