@@ -149,30 +149,31 @@ export function Navbar() {
                       isActive ? "text-foreground" : "text-foreground/55 hover:text-foreground"
                     }`}
                   >
-                    {/* Hover: hand-drawn oval */}
+                    {/* Hover: hand-drawn heart */}
                     <AnimatePresence>
                       {isHovered && (
                         <motion.svg
-                          key={`oval-${link.href}`}
-                          viewBox="0 0 182 54"
+                          key={`heart-${link.href}`}
+                          viewBox="0 0 100 90"
                           fill="none"
+                          preserveAspectRatio="xMidYMid meet"
                           className="absolute pointer-events-none"
-                          style={{ left: "-10px", top: "-8px", width: "calc(100% + 20px)", height: "calc(100% + 16px)" }}
+                          style={{ left: "50%", top: "50%", transform: "translate(-50%,-54%)", width: "46px", height: "42px" }}
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.12 }}
+                          transition={{ duration: 0.1 }}
                         >
                           <motion.path
-                            d="M92,44 C68,46 38,46 18,41 C2,37 0,28 3,20 C7,10 22,4 55,2 C82,0 118,0 148,4 C168,7 182,14 180,25 C178,36 162,43 135,45 C120,46 106,45 92,44"
+                            d="M50,76 C44,68 14,57 8,37 C3,21 12,8 27,8 C37,8 45,15 50,25 C55,15 63,8 73,8 C88,8 97,22 92,38 C86,58 56,68 50,76"
                             stroke="currentColor"
-                            strokeWidth="1.1"
+                            strokeWidth="1.3"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             initial={{ pathLength: 0 }}
                             animate={{ pathLength: 1 }}
                             exit={{ pathLength: 0 }}
-                            transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
+                            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
                           />
                         </motion.svg>
                       )}
