@@ -123,7 +123,7 @@ export function Navbar() {
           : "bg-background/60 backdrop-blur-sm border-border/30 py-3"
       }`}
     >
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-9">
 
           {/* Logo */}
@@ -132,10 +132,10 @@ export function Navbar() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-5">
 
             {/* Nav links — hover: pen oval · active: pen underline */}
-            <div className="flex items-center gap-5 xl:gap-7">
+            <div className="flex items-center gap-3 xl:gap-5">
               {navLinks.map((link) => {
                 const isActive  = activeHref  === link.href;
                 const isHovered = hoveredHref === link.href && !isActive;
