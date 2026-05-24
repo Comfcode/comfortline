@@ -30,9 +30,9 @@ export function Hero() {
         />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-20 pb-12 pt-32">
+      <div className="container mx-auto px-4 md:px-6 relative z-20 pb-12 pt-32 2xl:pb-16">
         {/* Hero copy */}
-        <div className="max-w-3xl mb-10">
+        <div className="max-w-3xl 2xl:max-w-5xl mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export function Hero() {
               {t.hero.badge}
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl 2xl:text-[5.5rem] font-bold text-white leading-[1.05] tracking-tight mb-6">
               {t.hero.headline1}
               {t.hero.headline2 && (
                 <>
@@ -53,7 +53,7 @@ export function Hero() {
               )}
             </h1>
 
-            <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-8 text-white/80 text-base md:text-lg">
+            <ul className="flex flex-wrap gap-x-8 gap-y-2 mb-8 text-white/80 text-base md:text-lg 2xl:text-xl">
               {t.hero.checkmarks.map((item, index) => (
                 <motion.li
                   key={item}
@@ -62,7 +62,7 @@ export function Hero() {
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   className="flex items-center gap-2"
                 >
-                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+                  <CheckCircle2 className="h-5 w-5 2xl:h-6 2xl:w-6 text-primary flex-shrink-0" />
                   <span>{item}</span>
                 </motion.li>
               ))}
@@ -75,6 +75,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
+          className="max-w-5xl 2xl:max-w-6xl"
         >
           <BookingWidget />
         </motion.div>
