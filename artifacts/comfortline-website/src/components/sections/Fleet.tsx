@@ -46,6 +46,19 @@ const cars = [
   },
   {
     id: 4,
+    name: "Mercedes V-Class",
+    classRu: "Премиум MPV",
+    classEn: "Premium MPV",
+    seats: 7,
+    image: "/car-van.webp",
+    category: "minivan",
+    luggageRu: "до 7 чемоданов",
+    luggageEn: "up to 7 suitcases",
+    hrefRu: "/трансфер-мерседес-в-класс",
+    hrefEn: "/mercedes-v-class-transfer",
+  },
+  {
+    id: 5,
     name: "Fiat Scudo 2015",
     classRu: "Микроавтобус",
     classEn: "Minibus",
@@ -94,7 +107,7 @@ export function Fleet() {
           </div>
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           <AnimatePresence>
             {filteredCars.map((car) => {
               const href = lang === "ru" ? car.hrefRu : car.hrefEn;
