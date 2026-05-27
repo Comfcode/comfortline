@@ -38,6 +38,7 @@ const RigaTransferPage             = lazy(() => import("@/pages/riga-transfer"))
 const SanatoriumTransferPage       = lazy(() => import("@/pages/sanatorium-transfer"));
 const SkiTransferPage              = lazy(() => import("@/pages/ski-transfer"));
 const VipTransferPage              = lazy(() => import("@/pages/vip-transfer"));
+const MercedesVClassPage           = lazy(() => import("@/pages/mercedes-v-class"));
 const NotFound                     = lazy(() => import("@/pages/not-found"));
 
 const queryClient = new QueryClient();
@@ -106,6 +107,8 @@ function Router() {
         <Route path="/лыжный-трансфер" component={SkiTransferPage} />
         <Route path="/vip-transfer" component={VipTransferPage} />
         <Route path="/вип-трансфер" component={VipTransferPage} />
+        <Route path="/mercedes-v-class-transfer" component={MercedesVClassPage} />
+        <Route path="/трансфер-мерседес-в-класс" component={MercedesVClassPage} />
 
         <Route path="/brandbook" component={BrandbookPage} />
         <Route component={NotFound} />
