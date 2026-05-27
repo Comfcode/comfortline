@@ -16,16 +16,16 @@ const data: RoutePageData = {
     photosTitle: "Mercedes-Benz V-Class — снаружи и внутри",
     photos: [
       {
-        src: "/car-van.webp",
-        caption: "Mercedes V-Class — экстерьер",
+        src: "https://images.pexels.com/photos/17455633/pexels-photo-17455633.jpeg?auto=compress&cs=tinysrgb&w=800",
+        caption: "Mercedes V-Class — чёрный экстерьер",
       },
       {
-        src: "/car-interior.webp",
-        caption: "Салон бизнес-класса",
+        src: "https://images.pexels.com/photos/10054684/pexels-photo-10054684.jpeg?auto=compress&cs=tinysrgb&w=800",
+        caption: "Кожаный салон бизнес-класса",
       },
       {
-        src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800",
-        caption: "Встреча с именной табличкой",
+        src: "https://images.pexels.com/photos/1135379/pexels-photo-1135379.jpeg?auto=compress&cs=tinysrgb&w=800",
+        caption: "Водитель в деловом костюме",
       },
     ],
     howTitle: "Как организован трансфер на V-Class",
@@ -129,16 +129,16 @@ const data: RoutePageData = {
     photosTitle: "Mercedes-Benz V-Class — exterior & interior",
     photos: [
       {
-        src: "/car-van.webp",
-        caption: "Mercedes V-Class — exterior",
+        src: "https://images.pexels.com/photos/17455633/pexels-photo-17455633.jpeg?auto=compress&cs=tinysrgb&w=800",
+        caption: "Mercedes V-Class — black exterior",
       },
       {
-        src: "/car-interior.webp",
-        caption: "Business-class cabin",
+        src: "https://images.pexels.com/photos/10054684/pexels-photo-10054684.jpeg?auto=compress&cs=tinysrgb&w=800",
+        caption: "Business-class leather cabin",
       },
       {
-        src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800",
-        caption: "Meet & greet service",
+        src: "https://images.pexels.com/photos/1135379/pexels-photo-1135379.jpeg?auto=compress&cs=tinysrgb&w=800",
+        caption: "Professional chauffeur",
       },
     ],
     howTitle: "How your V-Class transfer works",
