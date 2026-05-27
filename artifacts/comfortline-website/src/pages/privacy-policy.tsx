@@ -17,7 +17,7 @@ const ruContent = {
 ИП Мурашко Андрей Антонович
 УНП: 193255422
 Адрес: Республика Беларусь, г. Минск, ул. Фёдорова, 19-10
-Email: info@bycomfortline.com
+Email: info@comfortline.by
 Телефон: +375 (29) 155-27-76`,
     },
     {
@@ -77,7 +77,7 @@ Email: info@bycomfortline.com
 • отозвать согласие на обработку
 • обжаловать действия оператора
 
-Для реализации прав необходимо направить запрос на: info@bycomfortline.com`,
+Для реализации прав необходимо направить запрос на: info@comfortline.by`,
     },
     {
       heading: "10. Защита персональных данных",
@@ -113,7 +113,7 @@ Data Controller:
 Sole Proprietor Murashko Andrei Antonovich
 UNP: 193255422
 Address: Republic of Belarus, Minsk, Fyodorova St., 19-10
-Email: info@bycomfortline.com
+Email: info@comfortline.by
 Phone: +375 (29) 155-27-76`,
     },
     {
@@ -173,7 +173,7 @@ Phone: +375 (29) 155-27-76`,
 • Withdraw consent for processing
 • Appeal against the actions of the Controller
 
-To exercise your rights, please send a request to: info@bycomfortline.com`,
+To exercise your rights, please send a request to: info@comfortline.by`,
     },
     {
       heading: "10. Protection of Personal Data",

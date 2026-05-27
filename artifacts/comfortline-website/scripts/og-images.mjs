@@ -62,7 +62,7 @@ function svgFor(route) {
       <text x="0" y="0" fill="${MUTED}" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="32">${subtitle}</text>
     </g>
     <g transform="translate(80, 540)">
-      <text x="0" y="0" fill="${FG}" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="24">bycomfortline.com</text>
+      <text x="0" y="0" fill="${FG}" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="24">comfortline.by</text>
       <text x="350" y="0" fill="${MUTED}" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="24">+375 (29) 155-27-76</text>
     </g>
   </svg>`;

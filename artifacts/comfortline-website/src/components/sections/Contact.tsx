@@ -45,8 +45,8 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">{t.contact.email}</div>
-                <a href="mailto:info@bycomfortline.com" className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
-                  info@bycomfortline.com
+                <a href="mailto:info@comfortline.by" className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
+                  info@comfortline.by
                 </a>
               </div>
             </div>

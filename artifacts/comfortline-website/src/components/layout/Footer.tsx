@@ -117,7 +117,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Send className="h-5 w-5 text-primary shrink-0" />
-                <a href="mailto:info@bycomfortline.com" className="hover:text-primary transition-colors">info@bycomfortline.com</a>
+                <a href="mailto:info@comfortline.by" className="hover:text-primary transition-colors">info@comfortline.by</a>
               </li>
               <li className="flex items-start gap-3">
                 <div className="mt-1 w-2 h-2 rounded-full bg-primary shrink-0" />

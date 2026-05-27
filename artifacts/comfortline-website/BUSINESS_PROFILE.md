@@ -13,8 +13,8 @@ Use these fields when filling out Yandex Бизнес, Google Business Profile, 
 | Telegram | https://t.me/transfer_comfortline |
 | Instagram | https://www.instagram.com/transfer_comfortline/ |
 | Messenger | https://m.me/103816619260365 |
-| Email | info@bycomfortline.com |
-| Website | https://bycomfortline.com |
+| Email | info@comfortline.by |
+| Website | https://comfortline.by |
 | City | Минск, Беларусь / Minsk, Belarus |
 | Coordinates | 53.9006, 27.5590 |
 | Hours | 24/7, круглосуточно / 24/7, around the clock |
@@ -153,7 +153,7 @@ For Google Business Profile, upload the **logo** (favicon.svg → export as 250x
 
 ## Sitemap & verification status
 
-- Sitemap: https://bycomfortline.com/sitemap.xml
+- Sitemap: https://comfortline.by/sitemap.xml
 - Yandex Webmaster verification file: `/yandex_d183d31bca7304df.html` ✅ deployed
 - Google Search Console verification file: `/google6473974a998c37de.html` ✅ deployed
 - IndexNow key file: `/c8f3d2a1b94e47f6ae7c1d0b5a8e3c92.txt` ✅ deployed (instant indexing on Yandex + Bing)

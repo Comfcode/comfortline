@@ -1,4 +1,4 @@
-export const SITE_URL = "https://bycomfortline.com";
+export const SITE_URL = "https://comfortline.by";
 
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph.jpg`;
 
@@ -7,7 +7,7 @@ export const BUSINESS = {
   legalName: "ComfortLine Transfer",
   phone: "+375291552776",
   phoneDisplay: "+375 (29) 155-27-76",
-  email: "info@bycomfortline.com",
+  email: "info@comfortline.by",
   city: "Minsk",
   country: "BY",
   url: SITE_URL,

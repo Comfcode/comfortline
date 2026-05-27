@@ -9,7 +9,7 @@ const ruContent = {
   operator: `ИП Мурашко Андрей Антонович
 УНП: 193255422
 Адрес: Республика Беларусь, г. Минск, ул. Фёдорова, 19-10
-Email: info@bycomfortline.com
+Email: info@comfortline.by
 Телефон: +375 (29) 155-27-76`,
   sections: [
     {
@@ -118,7 +118,7 @@ const enContent = {
   operator: `Sole Proprietor Murashko Andrey Antonovich
 UNP: 193255422
 Address: Minsk, Republic of Belarus
-Email: info@bycomfortline.com
+Email: info@comfortline.by
 Phone: +375 (29) 155-27-76`,
   sections: [
     {

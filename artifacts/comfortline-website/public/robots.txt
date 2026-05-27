@@ -3,7 +3,7 @@ Allow: /
 Disallow: /api/
 Disallow: /brandbook
 
-Sitemap: https://bycomfortline.com/sitemap.xml
+Sitemap: https://comfortline.by/sitemap.xml
 
 # Yandex-specific directives (Yandex respects Host, Clean-param, Crawl-delay)
 User-agent: Yandex
@@ -12,7 +12,7 @@ Disallow: /api/
 Disallow: /brandbook
 Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid /
 # Tell Yandex the canonical mirror is HTTPS (resolves "main address not using HTTPS" warning)
-Host: https://bycomfortline.com
+Host: https://comfortline.by
 
 # Yandex image bot — explicit allow for richer image indexing
 User-agent: YandexImages
