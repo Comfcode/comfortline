@@ -189,6 +189,20 @@ export default function MinskWarsawAirportPage() {
               </div>
             ))}
           </div>
+          <div className="mt-8">
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-booking-modal", {
+                detail: {
+                  prefilledFrom: lang === "ru" ? "Минск" : "Minsk",
+                  prefilledTo: lang === "ru" ? "Аэропорт Варшавы-Шопен (WAW)" : "Warsaw Chopin Airport (WAW)",
+                }
+              }))}
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 cursor-pointer"
+            >
+              {lang === "ru" ? "Забронировать трансфер" : "Book transfer"}
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       </div>
 
