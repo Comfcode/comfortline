@@ -25,7 +25,7 @@ const data: RoutePageData = {
       },
       {
         src: "https://images.pexels.com/photos/1135379/pexels-photo-1135379.jpeg?auto=compress&cs=tinysrgb&w=800",
-        caption: "Водитель в деловом костюме",
+        caption: "Профессиональный водитель",
       },
     ],
     howTitle: "Как организован трансфер на V-Class",
@@ -38,7 +38,7 @@ const data: RoutePageData = {
       {
         icon: Star,
         title: "Водитель встречает вас",
-        desc: "Профессиональный водитель в деловом костюме встретит вас с именной табличкой — у выхода из таможни, у отеля или в любом удобном месте.",
+        desc: "Профессиональный водитель встретит вас с именной табличкой — у выхода из таможни, у отеля или в любом удобном месте.",
       },
       {
         icon: Shield,
@@ -95,7 +95,7 @@ const data: RoutePageData = {
       },
       {
         q: "Подходит ли V-Class для деловых поездок?",
-        a: "Однозначно. Индивидуальные сиденья с высокими спинками, тонированные стёкла, тихий салон и Wi-Fi — полноценная рабочая обстановка в дороге. Водитель в костюме и именная табличка — стандарт обслуживания.",
+        a: "Однозначно. Индивидуальные сиденья с высокими спинками, тонированные стёкла, тихий салон и Wi-Fi — полноценная рабочая обстановка в дороге. Профессиональный водитель и именная табличка — стандарт обслуживания.",
       },
       {
         q: "Можно ли перевозить лыжное снаряжение?",
@@ -151,7 +151,7 @@ const data: RoutePageData = {
       {
         icon: Star,
         title: "Your driver meets you",
-        desc: "A professional chauffeur in business attire will greet you with a name board — at the arrivals gate, your hotel or any convenient meeting point.",
+        desc: "A professional chauffeur will greet you with a name board — at the arrivals gate, your hotel or any convenient meeting point.",
       },
       {
         icon: Shield,
@@ -180,7 +180,7 @@ const data: RoutePageData = {
     includedTitle: "What's included in the price",
     included: [
       "Vehicle dispatched on time",
-      "Chauffeur in business attire",
+      "Professional chauffeur",
       "Complimentary bottled water",
       "4G Wi-Fi throughout the journey",
       "USB and wireless charging",
@@ -208,7 +208,7 @@ const data: RoutePageData = {
       },
       {
         q: "Is the V-Class suitable for business travel?",
-        a: "Absolutely. Individual high-back seats, tinted windows, a quiet cabin and 4G Wi-Fi create a productive environment en route. Chauffeur in a suit and a name board are standard.",
+        a: "Absolutely. Individual high-back seats, tinted windows, a quiet cabin and 4G Wi-Fi create a productive environment en route. Professional chauffeur and a name board are standard.",
       },
       {
         q: "Can ski equipment be transported?",

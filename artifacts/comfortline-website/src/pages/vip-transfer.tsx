@@ -8,7 +8,7 @@ const data: RoutePageData = {
     subtitle: "Премиум-автомобили, опытные водители, конфиденциальность и пунктуальность. Для деловых поездок, встреч, артистов и гостей высокого ранга — по Беларуси и Европе.",
     stats: [
       { label: "Класс авто", value: "Бизнес / Премиум" },
-      { label: "Водитель", value: "В костюме" },
+      { label: "Водитель", value: "Профессиональный" },
       { label: "Языки", value: "RU / EN / PL" },
       { label: "Конфиденциальность", value: "100%" },
     ],
@@ -16,7 +16,7 @@ const data: RoutePageData = {
     photos: [
       { src: "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Mercedes-Benz E-class" },
       { src: "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Кожаный салон" },
-      { src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Водитель в костюме" },
+      { src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Профессиональный водитель" },
     ],
     howTitle: "Как организован VIP-сервис",
     steps: [
@@ -35,7 +35,7 @@ const data: RoutePageData = {
     includedTitle: "Что включено в VIP-тариф",
     included: [
       "Подача премиум-автомобиля точно ко времени",
-      "Водитель в деловом костюме",
+      "Профессиональный водитель",
       "Бутилированная вода и пресса в салоне",
       "Конфиденциальное сопровождение",
       "Гибкая корректировка маршрута и остановок",
@@ -64,7 +64,7 @@ const data: RoutePageData = {
     subtitle: "Premium vehicles, experienced drivers, full discretion and punctuality. For executives, business meetings, artists and high-profile guests — across Belarus and Europe.",
     stats: [
       { label: "Vehicle class", value: "Business / Premium" },
-      { label: "Driver", value: "Suit & tie" },
+      { label: "Driver", value: "Professional" },
       { label: "Languages", value: "RU / EN / PL" },
       { label: "Discretion", value: "100%" },
     ],
@@ -72,7 +72,7 @@ const data: RoutePageData = {
     photos: [
       { src: "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Mercedes-Benz E-class" },
       { src: "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Leather interior" },
-      { src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Suited chauffeur" },
+      { src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Professional chauffeur" },
     ],
     howTitle: "How VIP service is organised",
     steps: [
@@ -91,7 +91,7 @@ const data: RoutePageData = {
     includedTitle: "Included in the VIP tariff",
     included: [
       "Premium vehicle dispatched on time",
-      "Chauffeur in business suit",
+      "Professional chauffeur",
       "Bottled water and press in the cabin",
       "Confidential service",
       "Flexible route adjustments and stops",
