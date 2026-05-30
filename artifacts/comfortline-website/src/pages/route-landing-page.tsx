@@ -132,9 +132,9 @@ export function RouteLandingPage({ data }: Props) {
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mb-10">{c.subtitle}</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {c.stats.map((s) => (
-              <div key={s.label} className="bg-card border border-border rounded-xl p-4">
-                <p className="text-primary font-bold text-lg">{s.value}</p>
-                <p className="text-muted-foreground text-xs mt-0.5">{s.label}</p>
+              <div key={s.label} className="bg-card border border-border rounded-xl p-4 overflow-hidden">
+                <p className="text-primary font-bold text-sm leading-snug break-words">{s.value}</p>
+                <p className="text-muted-foreground text-xs mt-1">{s.label}</p>
               </div>
             ))}
           </div>
