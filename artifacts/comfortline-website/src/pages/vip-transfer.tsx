@@ -14,9 +14,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Премиум-автопарк",
     photos: [
-      { src: "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Mercedes-Benz E-class" },
-      { src: "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Кожаный салон" },
-      { src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Профессиональный водитель" },
+      { src: "/car-mercedes-e-front.webp", caption: "Mercedes-Benz E-Class — экстерьер" },
+      { src: "/vclass-warsaw-front.webp", caption: "Mercedes-Benz V-Class — Варшава" },
+      { src: "/vclass-doors.webp", caption: "Салон V-Class — раздвижные двери" },
     ],
     howTitle: "Как организован VIP-сервис",
     steps: [
@@ -70,9 +70,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Premium fleet",
     photos: [
-      { src: "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Mercedes-Benz E-class" },
-      { src: "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Leather interior" },
-      { src: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Professional chauffeur" },
+      { src: "/car-mercedes-e-front.webp", caption: "Mercedes-Benz E-Class — exterior" },
+      { src: "/vclass-warsaw-front.webp", caption: "Mercedes-Benz V-Class — Warsaw" },
+      { src: "/vclass-doors.webp", caption: "V-Class cabin — sliding doors" },
     ],
     howTitle: "How VIP service is organised",
     steps: [
