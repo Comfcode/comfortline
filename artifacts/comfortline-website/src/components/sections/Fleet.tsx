@@ -50,7 +50,7 @@ const cars = [
     classRu: "Премиум MPV",
     classEn: "Premium MPV",
     seats: 7,
-    image: "https://images.pexels.com/photos/17455625/pexels-photo-17455625.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "/vclass-warsaw-front.webp",
     category: "minivan",
     luggageRu: "до 7 чемоданов",
     luggageEn: "up to 7 suitcases",
