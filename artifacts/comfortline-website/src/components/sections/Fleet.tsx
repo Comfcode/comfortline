@@ -11,7 +11,7 @@ const cars = [
     classRu: "Бизнес",
     classEn: "Business",
     seats: 3,
-    image: "/car-mercedes-e.webp",
+    image: "/car-mercedes-e-front.png",
     category: "sedan",
     luggageRu: "до 3 чемоданов",
     luggageEn: "up to 3 suitcases",

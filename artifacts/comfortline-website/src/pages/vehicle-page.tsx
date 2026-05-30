@@ -58,6 +58,7 @@ interface VData {
   seats: number;
   luggage: string;
   image: string;
+  photos?: { src: string; label: string }[];
   desc: string;
   featuresLabel: string;
   features: string[];
@@ -85,7 +86,13 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2021",
       seats: 3,
       luggage: "до 3 чемоданов",
-      image: "/car-mercedes-e.webp",
+      image: "/car-mercedes-e-front.png",
+      photos: [
+        { src: "/car-mercedes-e-front.png",   label: "Экстерьер — вид спереди" },
+        { src: "/car-mercedes-e-side2.jpg",   label: "Экстерьер — вид сбоку" },
+        { src: "/car-mercedes-e-interior.jpg", label: "Интерьер — задний ряд" },
+        { src: "/car-mercedes-e-side1.jpg",   label: "Экстерьер — в движении" },
+      ],
       desc: "Представительский бизнес-седан с кожаным салоном, климат-контролем и плавным ходом. Идеален для деловых поездок, встреч партнёров и трансферов в аэропорт. До 3 пассажиров с комфортным багажом.",
       featuresLabel: "Оснащение автомобиля",
       features: [
@@ -120,7 +127,13 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       year: "2021",
       seats: 3,
       luggage: "up to 3 suitcases",
-      image: "/car-mercedes-e.webp",
+      image: "/car-mercedes-e-front.png",
+      photos: [
+        { src: "/car-mercedes-e-front.png",   label: "Exterior — front view" },
+        { src: "/car-mercedes-e-side2.jpg",   label: "Exterior — side view" },
+        { src: "/car-mercedes-e-interior.jpg", label: "Interior — rear cabin" },
+        { src: "/car-mercedes-e-side1.jpg",   label: "Exterior — on the road" },
+      ],
       desc: "A premium business-class sedan with leather interior, climate control, and a smooth, quiet ride. Perfect for business trips, VIP client pickups, and airport transfers. Up to 3 passengers travelling comfortably with luggage.",
       featuresLabel: "Vehicle equipment",
       features: [
@@ -467,44 +480,67 @@ export function VehiclePage({ slug }: VehiclePageProps) {
           )}
 
           {/* Photo gallery — exterior + interior */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
-              <img
-                src={c.image}
-                alt={lang === "ru"
-                  ? `${c.name} — премиум-трансфер ComfortLine из Минска в аэропорты Европы`
-                  : `${c.name} — ComfortLine premium transfer from Minsk to European airports`}
-                className="w-full h-full object-cover object-center"
-                loading="lazy"
-                decoding="async"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src =
-                    "https://placehold.co/600x260/131218/B59C73?text=" + encodeURIComponent(c.name);
-                }}
-              />
-              <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
-                {lang === "ru" ? "Экстерьер" : "Exterior"}
-              </span>
+          {c.photos && c.photos.length > 0 ? (
+            <div className="grid grid-cols-2 gap-3">
+              {c.photos.map((photo) => (
+                <div key={photo.src} className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 220 }}>
+                  <img
+                    src={photo.src}
+                    alt={`${c.name} — ${photo.label}`}
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src =
+                        "https://placehold.co/600x220/131218/B59C73?text=" + encodeURIComponent(c.name);
+                    }}
+                  />
+                  <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
+                    {photo.label}
+                  </span>
+                </div>
+              ))}
             </div>
-            <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
-              <img
-                src="/car-interior.webp"
-                alt={lang === "ru"
-                  ? `Салон ${c.name} — кожаные сиденья, Wi-Fi, USB-зарядка, ComfortLine трансфер`
-                  : `${c.name} interior — leather seats, Wi-Fi, USB charging, ComfortLine transfer`}
-                className="w-full h-full object-cover object-center"
-                loading="lazy"
-                decoding="async"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src =
-                    "https://placehold.co/600x260/131218/B59C73?text=Interior";
-                }}
-              />
-              <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
-                {lang === "ru" ? "Интерьер" : "Interior"}
-              </span>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
+                <img
+                  src={c.image}
+                  alt={lang === "ru"
+                    ? `${c.name} — премиум-трансфер ComfortLine из Минска в аэропорты Европы`
+                    : `${c.name} — ComfortLine premium transfer from Minsk to European airports`}
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      "https://placehold.co/600x260/131218/B59C73?text=" + encodeURIComponent(c.name);
+                  }}
+                />
+                <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
+                  {lang === "ru" ? "Экстерьер" : "Exterior"}
+                </span>
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
+                <img
+                  src="/car-interior.webp"
+                  alt={lang === "ru"
+                    ? `Салон ${c.name} — кожаные сиденья, Wi-Fi, USB-зарядка, ComfortLine трансфер`
+                    : `${c.name} interior — leather seats, Wi-Fi, USB charging, ComfortLine transfer`}
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      "https://placehold.co/600x260/131218/B59C73?text=Interior";
+                  }}
+                />
+                <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
+                  {lang === "ru" ? "Интерьер" : "Interior"}
+                </span>
+              </div>
             </div>
-          </div>
+          )}
         </motion.div>
 
         {/* Features */}
