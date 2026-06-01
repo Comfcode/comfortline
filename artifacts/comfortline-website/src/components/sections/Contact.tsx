@@ -3,6 +3,7 @@ import { useLang } from "@/context/language-context";
 import { ExternalLink, Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
 import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
+import { gtagEvent } from "@/lib/gtag";
 
 export function Contact() {
   const { t } = useLang();
@@ -33,7 +34,7 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">{t.contact.phone}</div>
-                <a href="tel:+375291552776" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+                <a href="tel:+375291552776" onClick={() => gtagEvent("phone_call_click", { event_category: "contact" })} className="text-xl font-bold text-foreground hover:text-primary transition-colors">
                   +375 (29) 155-27-76
                 </a>
               </div>
@@ -77,6 +78,7 @@ export function Contact() {
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
+                    onClick={(label === "WhatsApp" || label === "Telegram") ? () => gtagEvent("contact", { event_category: "messenger", event_label: label }) : undefined}
                     aria-label={label}
                     className={`w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-foreground hover:text-white transition-colors ${cls}`}
                   >

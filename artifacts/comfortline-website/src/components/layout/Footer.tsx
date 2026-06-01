@@ -5,6 +5,7 @@ import { SiTelegram, SiViber, SiWhatsapp, SiMessenger } from "react-icons/si";
 import { useTheme } from "next-themes";
 import { useLang } from "@/context/language-context";
 import { Logo } from "@/components/brand/Logo";
+import { gtagEvent } from "@/lib/gtag";
 
 const navHrefs = ["#services", "#fleet", "#advantages", "#reviews"];
 const BRANDBOOK_KEY = "comfortline-brandbook-revealed";
@@ -70,10 +71,10 @@ export function Footer() {
               <a href="https://www.instagram.com/transfer_comfortline/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://t.me/transfer_comfortline" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a href="https://t.me/transfer_comfortline" target="_blank" rel="noopener noreferrer" aria-label="Telegram" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "Telegram" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <SiTelegram className="h-5 w-5" />
               </a>
-              <a href="https://wa.me/375291552776" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a href="https://wa.me/375291552776" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "WhatsApp" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <SiWhatsapp className="h-5 w-5" />
               </a>
               <a href="viber://chat?number=%2B375291552776" aria-label="Viber" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
@@ -113,7 +114,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li className="flex items-start gap-3">
                 <PhoneCall className="h-5 w-5 text-primary shrink-0" />
-                <a href="tel:+375291552776" className="hover:text-primary transition-colors font-medium text-foreground">+375 (29) 155-27-76</a>
+                <a href="tel:+375291552776" onClick={() => gtagEvent("phone_call_click", { event_category: "contact" })} className="hover:text-primary transition-colors font-medium text-foreground">+375 (29) 155-27-76</a>
               </li>
               <li className="flex items-start gap-3">
                 <Send className="h-5 w-5 text-primary shrink-0" />

@@ -4,6 +4,7 @@ import { X, ArrowRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { useToast } from "@/hooks/use-toast";
+import { gtagEvent } from "@/lib/gtag";
 
 type VehicleClass = "any" | "comfort" | "business" | "premium";
 
@@ -140,6 +141,7 @@ export function BookingModal({
       });
       if (res.ok) {
         toast({ title: b.toastTitle, description: b.toastDesc });
+        gtagEvent("generate_lead", { event_category: "booking" });
         onClose();
       } else {
         toast({ title: "Error", description: "Failed to send request. Please try again.", variant: "destructive" });
