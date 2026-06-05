@@ -4,6 +4,7 @@ import { X, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { useToast } from "@/hooks/use-toast";
+import { useLocation } from "wouter";
 
 interface ContactModalProps {
   open: boolean;
@@ -54,6 +55,7 @@ const copy = {
 export function ContactModal({ open, onClose }: ContactModalProps) {
   const { t } = useLang();
   const { toast } = useToast();
+  const [, navigate] = useLocation();
   const lang = t.lang as "ru" | "en";
   const c = copy[lang];
 
@@ -105,8 +107,8 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
         body: JSON.stringify({ name, phone, email, message, lang }),
       });
       if (res.ok) {
-        toast({ title: c.toastTitle, description: c.toastDesc });
         onClose();
+        navigate("/thank-you");
       } else {
         toast({ title: "Error", description: "Failed to send. Please try again.", variant: "destructive" });
       }
