@@ -500,9 +500,6 @@ export function VehiclePage({ slug }: VehiclePageProps) {
                         "https://placehold.co/600x220/131218/B59C73?text=" + encodeURIComponent(c.name);
                     }}
                   />
-                  <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
-                    {photo.label}
-                  </span>
                 </div>
               ))}
             </div>
@@ -522,9 +519,6 @@ export function VehiclePage({ slug }: VehiclePageProps) {
                       "https://placehold.co/600x260/131218/B59C73?text=" + encodeURIComponent(c.name);
                   }}
                 />
-                <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
-                  {lang === "ru" ? "Экстерьер" : "Exterior"}
-                </span>
               </div>
               <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
                 <img
@@ -540,9 +534,6 @@ export function VehiclePage({ slug }: VehiclePageProps) {
                       "https://placehold.co/600x260/131218/B59C73?text=Interior";
                   }}
                 />
-                <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
-                  {lang === "ru" ? "Интерьер" : "Interior"}
-                </span>
               </div>
             </div>
           )}
