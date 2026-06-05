@@ -11,6 +11,7 @@ import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 import { Seo } from "@/seo/Seo";
 import { taxiServiceJsonLd } from "@/seo/jsonld";
 import { SITE_URL } from "@/seo/seo-config";
+import { gtagPhoneConversion } from "@/lib/gtag";
 
 const content = {
   ru: {
@@ -516,6 +517,7 @@ export default function MercedesVClassPage() {
               </button>
               <a
                 href="tel:+375291552776"
+                onClick={gtagPhoneConversion}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-border hover:border-primary/50 text-foreground font-semibold text-sm transition-colors"
               >
                 <PhoneCall className="h-4 w-4 text-primary" />

@@ -3,7 +3,7 @@ import { useLang } from "@/context/language-context";
 import { ExternalLink, Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
 import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
-import { gtagEvent } from "@/lib/gtag";
+import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
 
 export function Contact() {
   const { t } = useLang();
@@ -34,7 +34,7 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">{t.contact.phone}</div>
-                <a href="tel:+375291552776" onClick={() => gtagEvent("phone_call_click", { event_category: "contact" })} className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+                <a href="tel:+375291552776" onClick={gtagPhoneConversion} className="text-xl font-bold text-foreground hover:text-primary transition-colors">
                   +375 (29) 155-27-76
                 </a>
               </div>

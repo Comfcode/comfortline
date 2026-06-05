@@ -5,7 +5,7 @@ import { SiTelegram, SiViber, SiWhatsapp, SiMessenger } from "react-icons/si";
 import { useTheme } from "next-themes";
 import { useLang } from "@/context/language-context";
 import { Logo } from "@/components/brand/Logo";
-import { gtagEvent } from "@/lib/gtag";
+import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
 
 const navHrefs = ["#services", "#fleet", "#advantages", "#reviews"];
 const BRANDBOOK_KEY = "comfortline-brandbook-revealed";
@@ -114,7 +114,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li className="flex items-start gap-3">
                 <PhoneCall className="h-5 w-5 text-primary shrink-0" />
-                <a href="tel:+375291552776" onClick={() => gtagEvent("phone_call_click", { event_category: "contact" })} className="hover:text-primary transition-colors font-medium text-foreground">+375 (29) 155-27-76</a>
+                <a href="tel:+375291552776" onClick={gtagPhoneConversion} className="hover:text-primary transition-colors font-medium text-foreground">+375 (29) 155-27-76</a>
               </li>
               <li className="flex items-start gap-3">
                 <Send className="h-5 w-5 text-primary shrink-0" />

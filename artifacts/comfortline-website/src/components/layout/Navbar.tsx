@@ -6,7 +6,7 @@ import { Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Logo } from "@/components/brand/Logo";
-import { gtagEvent } from "@/lib/gtag";
+import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
 
 /** Maps each nav href to the section id it represents (for IntersectionObserver) */
 const SECTION_MAP: Record<string, string> = {
@@ -232,7 +232,7 @@ export function Navbar() {
             {/* Phone */}
             <a
               href="tel:+375291552776"
-              onClick={() => gtagEvent("phone_call_click", { event_category: "contact" })}
+              onClick={gtagPhoneConversion}
               className="flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
             >
               <Phone className="h-3 w-3 text-primary" />
@@ -289,7 +289,7 @@ export function Navbar() {
           <div className="flex items-center lg:hidden gap-3">
             <a
               href="tel:+375291552776"
-              onClick={() => gtagEvent("phone_call_click", { event_category: "contact" })}
+              onClick={gtagPhoneConversion}
               className="flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/70"
             >
               <Phone className="h-3.5 w-3.5 text-primary" />
