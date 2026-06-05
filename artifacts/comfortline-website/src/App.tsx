@@ -39,6 +39,7 @@ const SanatoriumTransferPage       = lazy(() => import("@/pages/sanatorium-trans
 const SkiTransferPage              = lazy(() => import("@/pages/ski-transfer"));
 const VipTransferPage              = lazy(() => import("@/pages/vip-transfer"));
 const MercedesVClassPage           = lazy(() => import("@/pages/mercedes-v-class"));
+const ThankYouPage                 = lazy(() => import("@/pages/thank-you"));
 const NotFound                     = lazy(() => import("@/pages/not-found"));
 
 const queryClient = new QueryClient();
@@ -111,6 +112,7 @@ function Router() {
         <Route path="/трансфер-мерседес-в-класс" component={MercedesVClassPage} />
 
         <Route path="/brandbook" component={BrandbookPage} />
+        <Route path="/thank-you" component={ThankYouPage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
