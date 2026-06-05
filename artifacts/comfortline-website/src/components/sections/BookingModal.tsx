@@ -6,6 +6,7 @@ import { useLang } from "@/context/language-context";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
 import { gtagEvent } from "@/lib/gtag";
+import { PhoneInput } from "@/components/ui/PhoneInput";
 
 type VehicleClass = "any" | "comfort" | "business" | "premium";
 
@@ -86,11 +87,12 @@ export function BookingModal({
   const [comment,   setComment]   = useState("");
   const [agreed,    setAgreed]    = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [phoneResetKey, setPhoneResetKey] = useState(0);
 
   function validatePhone(value: string): string {
     const digits = value.replace(/\D/g, "");
     if (!value.trim()) return t.lang === "ru" ? "Введите номер телефона" : "Phone number is required";
-    if (digits.length < 7) return t.lang === "ru" ? "Слишком короткий номер" : "Number is too short";
+    if (digits.length < 9)  return t.lang === "ru" ? "Слишком короткий номер" : "Number is too short";
     if (digits.length > 15) return t.lang === "ru" ? "Слишком длинный номер" : "Number is too long";
     if (/^(\d)\1+$/.test(digits)) return t.lang === "ru" ? "Введите настоящий номер телефона" : "Please enter a real phone number";
     return "";
@@ -102,6 +104,7 @@ export function BookingModal({
     setPax(prefilledPax ?? defaultPax);
     setPaxOpen(false);
     setName(""); setEmail(""); setPhone(""); setPhoneError(""); setComment(""); setAgreed(false);
+    setPhoneResetKey(k => k + 1);
   }, [open]);
 
   const classOptions: { key: VehicleClass; label: string }[] = [
@@ -295,15 +298,13 @@ export function BookingModal({
                     <input type="email" placeholder={m.email} aria-label={m.email} value={email}
                       onChange={e => setEmail(e.target.value)} className={inputCls} />
                     <div className="space-y-1">
-                      <input
-                        type="tel"
+                      <PhoneInput
                         placeholder={m.phone}
-                        aria-label={m.phone}
-                        value={phone}
-                        onChange={e => { setPhone(e.target.value); if (phoneError) setPhoneError(validatePhone(e.target.value)); }}
-                        onBlur={e => setPhoneError(validatePhone(e.target.value))}
                         required
-                        className={`${inputCls} ${phoneError ? "border-red-400 focus:border-red-400 focus:ring-red-400/20" : ""}`}
+                        error={!!phoneError}
+                        resetKey={phoneResetKey}
+                        onChange={full => { setPhone(full); if (phoneError) setPhoneError(validatePhone(full)); }}
+                        onBlur={() => setPhoneError(validatePhone(phone))}
                       />
                       {phoneError && <p className="text-xs text-red-500 font-medium pl-1">{phoneError}</p>}
                     </div>

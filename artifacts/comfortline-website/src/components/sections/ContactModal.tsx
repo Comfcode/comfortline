@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/language-context";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
+import { PhoneInput } from "@/components/ui/PhoneInput";
 
 interface ContactModalProps {
   open: boolean;
@@ -66,11 +67,13 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
   const [phoneError, setPhoneError] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [phoneResetKey, setPhoneResetKey] = useState(0);
 
   useEffect(() => {
     if (!open) return;
     setName(""); setPhone(""); setEmail(""); setMessage("");
     setPhoneError(""); setAgreed(false);
+    setPhoneResetKey(k => k + 1);
   }, [open]);
 
   useEffect(() => {
@@ -88,7 +91,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
   function validatePhone(value: string): string {
     const digits = value.replace(/\D/g, "");
     if (!value.trim()) return c.phoneRequired;
-    if (digits.length < 7) return c.phoneTooShort;
+    if (digits.length < 9)  return c.phoneTooShort;
     if (digits.length > 15) return c.phoneTooLong;
     if (/^(\d)\1+$/.test(digits)) return c.phoneInvalid;
     return "";
@@ -166,15 +169,13 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
                   onChange={e => setName(e.target.value)} required className={inputCls} />
 
                 <div className="space-y-1">
-                  <input
-                    type="tel"
+                  <PhoneInput
                     placeholder={c.phone}
-                    aria-label={c.phone}
-                    value={phone}
-                    onChange={e => { setPhone(e.target.value); if (phoneError) setPhoneError(validatePhone(e.target.value)); }}
-                    onBlur={e => setPhoneError(validatePhone(e.target.value))}
                     required
-                    className={`${inputCls} ${phoneError ? "border-red-400 focus:border-red-400 focus:ring-red-400/20" : ""}`}
+                    error={!!phoneError}
+                    resetKey={phoneResetKey}
+                    onChange={full => { setPhone(full); if (phoneError) setPhoneError(validatePhone(full)); }}
+                    onBlur={() => setPhoneError(validatePhone(phone))}
                   />
                   {phoneError && <p className="text-xs text-red-500 font-medium pl-1">{phoneError}</p>}
                 </div>
