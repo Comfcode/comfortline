@@ -256,7 +256,13 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       seats: 4,
       luggage: "до 5 чемоданов",
       image: "/car-hyundai-palisade.webp",
-      interiorImage: "/car-hyundai-palisade-interior.webp",
+      photos: [
+        { src: "/car-hyundai-palisade.webp",   label: "Экстерьер" },
+        { src: "/palisade-dashboard.webp",      label: "Приборная панель" },
+        { src: "/palisade-interior.webp",       label: "Салон спереди" },
+        { src: "/palisade-seats-mid.webp",      label: "Средний ряд" },
+        { src: "/palisade-seats-rear.webp",     label: "Задний ряд" },
+      ],
       desc: "Полноразмерный SUV до 4 пассажиров с большим багажом, высоким клиренсом и полным приводом. Уверенно держит дорогу в любых условиях — зимой, на трассе и в длительных поездках.",
       featuresLabel: "Оснащение автомобиля",
       features: [
@@ -292,7 +298,13 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       seats: 4,
       luggage: "up to 5 suitcases",
       image: "/car-hyundai-palisade.webp",
-      interiorImage: "/car-hyundai-palisade-interior.webp",
+      photos: [
+        { src: "/car-hyundai-palisade.webp",   label: "Exterior" },
+        { src: "/palisade-dashboard.webp",      label: "Dashboard" },
+        { src: "/palisade-interior.webp",       label: "Front cabin" },
+        { src: "/palisade-seats-mid.webp",      label: "Middle row" },
+        { src: "/palisade-seats-rear.webp",     label: "Rear row" },
+      ],
       desc: "A full-size SUV for up to 4 passengers with extensive luggage, high ground clearance and all-wheel drive. Handles confidently in any weather — winter roads, motorways, and long-haul trips alike.",
       featuresLabel: "Vehicle equipment",
       features: [
