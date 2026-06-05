@@ -246,6 +246,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       seats: 4,
       luggage: "до 5 чемоданов",
       image: "/car-hyundai-palisade.webp",
+      interiorImage: "/car-hyundai-palisade-interior.webp",
       desc: "Полноразмерный SUV до 4 пассажиров с большим багажом, высоким клиренсом и полным приводом. Уверенно держит дорогу в любых условиях — зимой, на трассе и в длительных поездках.",
       featuresLabel: "Оснащение автомобиля",
       features: [
@@ -281,6 +282,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       seats: 4,
       luggage: "up to 5 suitcases",
       image: "/car-hyundai-palisade.webp",
+      interiorImage: "/car-hyundai-palisade-interior.webp",
       desc: "A full-size SUV for up to 4 passengers with extensive luggage, high ground clearance and all-wheel drive. Handles confidently in any weather — winter roads, motorways, and long-haul trips alike.",
       featuresLabel: "Vehicle equipment",
       features: [
