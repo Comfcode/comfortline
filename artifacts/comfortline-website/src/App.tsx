@@ -48,6 +48,7 @@ function VehiclePageMercedes()  { return <Suspense fallback={null}><VehiclePageM
 function VehiclePageKia()       { return <Suspense fallback={null}><VehiclePageModule slug="kia-carnival" /></Suspense>; }
 function VehiclePageHyundai()   { return <Suspense fallback={null}><VehiclePageModule slug="hyundai-palisade" /></Suspense>; }
 function VehiclePageFiat()      { return <Suspense fallback={null}><VehiclePageModule slug="fiat-scudo" /></Suspense>; }
+function VehiclePageAudi()      { return <Suspense fallback={null}><VehiclePageModule slug="audi-a6" /></Suspense>; }
 
 function Router() {
   return (
@@ -82,6 +83,8 @@ function Router() {
         <Route path="/трансфер-хендай-палисад" component={VehiclePageHyundai} />
         <Route path="/fiat-scudo-transfer" component={VehiclePageFiat} />
         <Route path="/трансфер-фиат-скудо" component={VehiclePageFiat} />
+        <Route path="/audi-a6-transfer" component={VehiclePageAudi} />
+        <Route path="/трансфер-ауди-а6" component={VehiclePageAudi} />
 
         <Route path="/minsk-city-transfer" component={MinskCityTransferPage} />
         <Route path="/трансфер-по-минску" component={MinskCityTransferPage} />
