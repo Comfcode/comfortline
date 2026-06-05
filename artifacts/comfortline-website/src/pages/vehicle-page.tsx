@@ -58,6 +58,7 @@ interface VData {
   seats: number;
   luggage: string;
   image: string;
+  interiorImage?: string;
   photos?: { src: string; label: string }[];
   desc: string;
   featuresLabel: string;
@@ -172,6 +173,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       seats: 5,
       luggage: "до 5 чемоданов",
       image: "/car-kia-carnival.webp",
+      interiorImage: "/car-kia-carnival-interior.webp",
       desc: "Просторный минивэн для семейных и групповых поездок до 5 пассажиров с багажом. Большой багажник, комфортные кресла и плавный ход на дальних маршрутах.",
       featuresLabel: "Оснащение автомобиля",
       features: [
@@ -206,6 +208,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       seats: 5,
       luggage: "up to 5 suitcases",
       image: "/car-kia-carnival.webp",
+      interiorImage: "/car-kia-carnival-interior.webp",
       desc: "A spacious minivan for family and group travel — up to 5 passengers with luggage. Large boot, comfortable seating and a smooth ride on long-distance routes.",
       featuresLabel: "Vehicle equipment",
       features: [
@@ -523,7 +526,7 @@ export function VehiclePage({ slug }: VehiclePageProps) {
               </div>
               <div className="rounded-2xl overflow-hidden border border-border bg-muted relative" style={{ height: 260 }}>
                 <img
-                  src="/car-interior.webp"
+                  src={c.interiorImage ?? "/car-interior.webp"}
                   alt={lang === "ru"
                     ? `Салон ${c.name} — кожаные сиденья, Wi-Fi, USB-зарядка, ComfortLine трансфер`
                     : `${c.name} interior — leather seats, Wi-Fi, USB charging, ComfortLine transfer`}
