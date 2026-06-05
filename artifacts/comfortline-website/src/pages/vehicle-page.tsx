@@ -415,6 +415,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       seats: 8,
       luggage: "до 6 чемоданов",
       image: "/car-fiat-scudo.webp",
+      interiorImage: "/car-fiat-scudo-interior.webp",
       desc: "Просторный микроавтобус на 8 мест с большим грузовым отсеком. Оптимальный выбор для групп, корпоративных трансферов и поездок с большим количеством багажа.",
       featuresLabel: "Оснащение автомобиля",
       features: [
@@ -449,6 +450,7 @@ const vehicleContent: Record<string, BilingualVehicle> = {
       seats: 8,
       luggage: "up to 6 suitcases",
       image: "/car-fiat-scudo.webp",
+      interiorImage: "/car-fiat-scudo-interior.webp",
       desc: "A spacious 8-seat minibus with a large cargo area. The ideal choice for groups, corporate transfers, and trips with heavy or bulky luggage.",
       featuresLabel: "Vehicle equipment",
       features: [

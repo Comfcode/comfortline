@@ -36,6 +36,12 @@ uri = "file://artifacts/comfortline-website/public/car-van.png"
 type = "image"
 title = "Black passenger minivan"
 
+[[generated]]
+id = "vH3R-T_dfv175esronk6H"
+uri = "file://attached_assets/car-fiat-scudo-interior.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"
