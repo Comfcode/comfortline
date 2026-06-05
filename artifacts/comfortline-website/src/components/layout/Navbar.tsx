@@ -129,11 +129,12 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex items-center justify-between h-9">
+        <div className="flex items-center justify-between h-14 lg:h-9">
 
           {/* Logo */}
           <a href="/" className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
-            <Logo variant="full" scheme={isDark ? "dark" : "light"} height={26} />
+            <Logo variant="full" scheme={isDark ? "dark" : "light"} height={26} className="hidden lg:block" />
+            <Logo variant="full" scheme={isDark ? "dark" : "light"} height={38} className="block lg:hidden" />
           </a>
 
           {/* Desktop nav */}
@@ -286,22 +287,22 @@ export function Navbar() {
           </div>
 
           {/* Mobile right side */}
-          <div className="flex items-center lg:hidden gap-3">
+          <div className="flex items-center lg:hidden gap-4">
             <a
               href="tel:+375291552776"
               onClick={gtagPhoneConversion}
-              className="flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/70"
+              className="flex items-center gap-2 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/70"
             >
-              <Phone className="h-3.5 w-3.5 text-primary" />
+              <Phone className="h-6 w-6 text-primary" />
               <span className="hidden sm:inline">+375 (29) 155-27-76</span>
             </a>
             <button
               aria-label={mobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
               aria-expanded={mobileMenuOpen}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1 text-foreground/70 hover:text-foreground transition-colors"
+              className="p-2 text-foreground/70 hover:text-foreground transition-colors"
             >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
           </div>
 
