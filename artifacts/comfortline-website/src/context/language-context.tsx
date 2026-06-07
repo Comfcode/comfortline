@@ -644,8 +644,14 @@ const LanguageContext = createContext<LanguageContextType>({
   t: ru,
 });
 
+function getInitialLang(): Lang {
+  const param = new URLSearchParams(window.location.search).get("lang");
+  if (param === "en" || param === "ru") return param;
+  return "ru";
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("ru");
+  const [lang, setLang] = useState<Lang>(getInitialLang);
   return (
     <LanguageContext.Provider value={{ lang, setLang, t: lang === "ru" ? ru : en }}>
       {children}
