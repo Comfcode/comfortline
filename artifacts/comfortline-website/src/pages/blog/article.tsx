@@ -94,6 +94,27 @@ function renderBlock(block: Block, idx: number) {
           </table>
         </div>
       );
+    case "link":
+      return (
+        <a
+          key={idx}
+          href={block.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-start gap-4 rounded-2xl border border-primary/30 bg-primary/5 px-5 py-4 my-5 hover:border-primary/60 hover:bg-primary/10 transition-all group"
+        >
+          <span className="text-primary text-lg mt-0.5 shrink-0">↗</span>
+          <span>
+            <span className="block font-semibold text-foreground group-hover:text-primary transition-colors text-sm">
+              {block.label}
+            </span>
+            {block.description && (
+              <span className="block text-xs text-muted-foreground mt-0.5">{block.description}</span>
+            )}
+            <span className="block text-xs text-primary/70 mt-1 break-all">{block.href}</span>
+          </span>
+        </a>
+      );
   }
 }
 
