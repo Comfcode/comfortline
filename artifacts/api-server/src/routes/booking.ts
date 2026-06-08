@@ -106,7 +106,7 @@ router.post("/booking", async (req, res) => {
 
   try {
     await resend.emails.send({
-      from: "ComfortLine <onboarding@resend.dev>",
+      from: "ComfortLine <noreply@comfortline.by>",
       to: [TO_EMAIL],
       subject,
       html,
