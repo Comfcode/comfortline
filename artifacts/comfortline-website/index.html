@@ -42,8 +42,9 @@
     <meta name="yandex-verification" content="6af7e7ce533f0656" />
     <meta name="yandex" content="noyaca" />
 
-    <link rel="canonical" href="https://comfortline.by/" />
-    <!-- hreflang alternates are injected per-route by src/seo/use-seo.ts to avoid stale-state conflicts -->
+    <!-- canonical + hreflang alternates are injected per-route by src/seo/use-seo.ts.
+         No fallback canonical here — a wrong fallback (pointing to "/") causes
+         Google to mark inner pages as "Alternate page with canonical tag". -->
 
     <!-- RSS feed for blog discovery (Yandex Zen, RSS readers, Bing) -->
     <link rel="alternate" type="application/rss+xml" title="ComfortLine — блог" href="https://comfortline.by/feed.xml" />
