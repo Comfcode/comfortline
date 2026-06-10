@@ -18,13 +18,19 @@ localPort = 24307
 run = "pnpm --filter @workspace/comfortline-website run dev"
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/comfortline-website", "run", "build" ]
-publicDir = "artifacts/comfortline-website/dist/public"
-serve = "static"
 
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+[services.production.build]
+args = ["pnpm", "--filter", "@workspace/comfortline-website", "run", "build"]
+
+[services.production.run]
+args = ["node", "artifacts/comfortline-website/server.mjs"]
+
+[services.production.run.env]
+PORT = "24307"
+NODE_ENV = "production"
+
+[services.production.health.startup]
+path = "/"
 
 [services.env]
 PORT = "24307"
