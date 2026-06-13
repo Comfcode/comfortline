@@ -14,6 +14,9 @@ export type Block =
 
 export interface Article {
   slug: string;
+  slugEn?: string;
+  titleEn?: string;
+  descriptionEn?: string;
   ogSlug: string;
   title: string;
   description: string;
@@ -33,6 +36,9 @@ export const BLOG_BASE_EN = "/blog";
 export const ARTICLES: Article[] = [
   {
     slug: "граница-беларусь-литва",
+    slugEn: "belarus-lithuania-border-crossing-guide",
+    titleEn: "Belarus–Lithuania Border Crossing Guide 2026: Wait Times, Documents & Checkpoints",
+    descriptionEn: "Everything about crossing the Belarus–Lithuania border in 2026: open checkpoints, typical wait times, required documents and tips from ComfortLine drivers.",
     ogSlug: "blog-granitsa-belarus-litva",
     title: "Как пересечь границу Беларусь — Литва в 2026: время, документы, КПП",
     description:
@@ -111,6 +117,9 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "стоимость-трансфер-минск-варшава",
+    slugEn: "minsk-warsaw-transfer-price-2026",
+    titleEn: "Minsk to Warsaw Transfer Price 2026: Fixed Costs, Inclusions & Booking",
+    descriptionEn: "How much does a private transfer from Minsk to Warsaw cost in 2026? Fixed prices by car type, what's included, border tips, and how to book.",
     ogSlug: "blog-stoimost-transfer-minsk-varshava",
     title: "Сколько стоит трансфер Минск — Варшава в 2026",
     description:
@@ -184,6 +193,9 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "что-нельзя-ввозить-в-ес",
+    slugEn: "what-not-to-bring-from-belarus-to-eu",
+    titleEn: "What You Cannot Bring from Belarus into the EU: 2026 Customs Rules & Limits",
+    descriptionEn: "Full list of prohibited and restricted items when crossing from Belarus to the EU: cash limits, alcohol, tobacco, food, valuables and customs rules explained.",
     ogSlug: "blog-chto-nelzya-vvozit-v-es",
     title: "Что нельзя ввозить из Беларуси в ЕС в 2026: полный список с лимитами",
     description:
@@ -375,6 +387,9 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "какой-кпп-выбрать",
+    slugEn: "which-belarus-border-crossing-to-choose",
+    titleEn: "Kamenny Log vs Kotlovka vs Benyakoni: Which Belarus Border Crossing Is Fastest",
+    descriptionEn: "Comparing Belarus–Lithuania border checkpoints in 2026: average wait times, working hours, truck restrictions and which crossing is best for car transfers.",
     ogSlug: "blog-kakoy-kpp-vybrat",
     title: "Каменный Лог vs Котловка vs Бенякони — какой КПП выбрать в 2026",
     description:
@@ -443,6 +458,9 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "трансфер-с-детьми",
+    slugEn: "family-airport-transfer-with-children",
+    titleEn: "Airport Transfer with Children from Minsk: Family Travel Checklist",
+    descriptionEn: "How to travel with kids from Minsk to the airport by private transfer: car seats, luggage, timing and tips for a smooth family journey.",
     ogSlug: "blog-transfer-s-detmi",
     title: "Трансфер с детьми из Минска в аэропорт: чек-лист для родителей",
     description:
@@ -515,6 +533,9 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "как-добраться-до-аэропорта-вильнюса",
+    slugEn: "how-to-get-to-vilnius-airport-from-minsk",
+    titleEn: "How to Get from Minsk to Vilnius Airport (VNO): All Options 2026",
+    descriptionEn: "Complete guide to reaching Vilnius Airport from Minsk in 2026: private transfer, bus, minibus — travel times, prices and an honest comparison.",
     ogSlug: "blog-kak-dobratsya-do-vno",
     title: "Как добраться из Минска в аэропорт Вильнюса (VNO) в 2026",
     description:
@@ -567,6 +588,9 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "аэропорт-варшавы-вав",
+    slugEn: "warsaw-chopin-airport-guide-from-belarus",
+    titleEn: "Warsaw Chopin Airport (WAW): Complete Guide for Travelers from Belarus",
+    descriptionEn: "Everything about Warsaw Chopin Airport for passengers from Belarus: terminals, check-in tips, transfer options and how to get there from Minsk.",
     ogSlug: "blog-airport-warsaw-waw",
     title: "Аэропорт Варшавы (WAW): полный гайд для пассажиров из Беларуси",
     description:
@@ -628,6 +652,9 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "граница-беларусь-польша",
+    slugEn: "belarus-poland-border-crossing-guide",
+    titleEn: "Belarus–Poland Border Crossing Guide 2026: Checkpoints, Documents & Wait Times",
+    descriptionEn: "Practical guide to crossing the Belarus–Poland border in 2026: working checkpoints, required documents, typical wait times and practical tips.",
     ogSlug: "blog-granitsa-belarus-polsha",
     title: "Граница Беларусь–Польша в 2026: КПП, документы, очереди",
     description:
@@ -702,6 +729,9 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "аэропорт-риги-rix",
+    slugEn: "riga-airport-guide-from-minsk-belarus",
+    titleEn: "Riga Airport (RIX) Guide for Passengers from Minsk & Belarus",
+    descriptionEn: "Complete guide to Riga Airport for travelers from Belarus: terminals, how to get there from Minsk, check-in tips and private transfer options.",
     ogSlug: "blog-airport-riga-rix",
     title: "Аэропорт Риги (RIX): гайд для пассажиров из Беларуси",
     description:
@@ -765,6 +795,9 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "автобус-минск-варшава-модлин-вильнюс",
+    slugEn: "minsk-warsaw-vilnius-bus-vs-private-transfer",
+    titleEn: "Minsk to Warsaw & Vilnius Airport: Bus vs Private Transfer Comparison 2026",
+    descriptionEn: "Comparing buses, minibuses and private transfers from Minsk to Warsaw (Chopin, Modlin) and Vilnius airports in 2026: prices, comfort and wait times.",
     ogSlug: "blog-avtobus-minsk-varshava-modlin-vilnius",
     title: "Автобус и маршрутка Минск — Варшава (Модлин, Шопен) и Вильнюс: всё о поездке в аэропорт в 2026",
     description:
@@ -970,6 +1003,9 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "виза-свободный-въезд-в-беларусь-2026",
+    slugEn: "visa-free-entry-belarus-2026",
+    titleEn: "Visa-Free Entry to Belarus 2026: Complete Guide for European Citizens",
+    descriptionEn: "Which European countries can enter Belarus without a visa in 2026, which border checkpoints to use, required documents, and private transfer options.",
     ogSlug: "blog-visa-free-belarus-2026",
     title: "Безвизовый въезд в Беларусь в 2026: полный гайд для граждан Европы",
     description:
@@ -1213,5 +1249,5 @@ export const ARTICLES: Article[] = [
 
 export function findArticle(slug: string): Article | undefined {
   const decoded = decodeURIComponent(slug);
-  return ARTICLES.find((a) => a.slug === decoded);
+  return ARTICLES.find((a) => a.slug === decoded || a.slugEn === decoded);
 }

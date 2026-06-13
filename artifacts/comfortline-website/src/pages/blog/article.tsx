@@ -130,13 +130,16 @@ export default function BlogArticlePage() {
   const article = slug ? findArticle(slug) : undefined;
   if (!article) return <NotFound />;
 
-  const url = SITE_URL + base + "/" + encodeURI(article.slug);
+  const enSlug = article.slugEn ?? encodeURI(article.slug);
+  const url = isRu
+    ? SITE_URL + BLOG_BASE_RU + "/" + encodeURI(article.slug)
+    : SITE_URL + BLOG_BASE_EN + "/" + enSlug;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: article.title,
-    description: article.description,
+    headline: isRu ? article.title : (article.titleEn ?? article.title),
+    description: isRu ? article.description : (article.descriptionEn ?? article.description),
     datePublished: article.dateISO,
     dateModified: article.dateISO,
     author: {
@@ -163,11 +166,11 @@ export default function BlogArticlePage() {
     <div className="min-h-screen bg-background text-foreground">
       <Seo
         titleRu={`${article.title} | Блог ComfortLine`}
-        titleEn={`${article.title} | ComfortLine Blog`}
+        titleEn={`${article.titleEn ?? article.title} | ComfortLine Blog`}
         descRu={article.description}
-        descEn={article.description}
+        descEn={article.descriptionEn ?? article.description}
         pathRu={`${BLOG_BASE_RU}/${article.slug}`}
-        pathEn={`${BLOG_BASE_EN}/${article.slug}`}
+        pathEn={`${BLOG_BASE_EN}/${enSlug}`}
         keywordsRu={article.tags.join(", ")}
         keywordsEn={article.tags.join(", ")}
         ogImage={`${SITE_URL}/og/${article.ogSlug}.jpg`}
@@ -180,7 +183,7 @@ export default function BlogArticlePage() {
         breadcrumbsEn={[
           { name: "Home", path: "/" },
           { name: "Blog", path: BLOG_BASE_EN },
-          { name: article.title, path: `${BLOG_BASE_EN}/${article.slug}` },
+          { name: article.titleEn ?? article.title, path: `${BLOG_BASE_EN}/${enSlug}` },
         ]}
         jsonLd={articleJsonLd}
       />

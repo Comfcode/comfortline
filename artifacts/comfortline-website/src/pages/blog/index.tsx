@@ -19,8 +19,10 @@ export default function BlogIndexPage() {
     itemListElement: ARTICLES.map((a, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: SITE_URL + base + "/" + encodeURI(a.slug),
-      name: a.title,
+      url: isRu
+        ? SITE_URL + BLOG_BASE_RU + "/" + encodeURI(a.slug)
+        : SITE_URL + BLOG_BASE_EN + "/" + (a.slugEn ?? encodeURI(a.slug)),
+      name: isRu ? a.title : (a.titleEn ?? a.title),
     })),
   };
 
@@ -71,7 +73,7 @@ export default function BlogIndexPage() {
           {ARTICLES.map((a, i) => (
             <motion.a
               key={a.slug}
-              href={`${base}/${encodeURI(a.slug)}`}
+              href={isRu ? `${BLOG_BASE_RU}/${encodeURI(a.slug)}` : `${BLOG_BASE_EN}/${a.slugEn ?? encodeURI(a.slug)}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -90,10 +92,10 @@ export default function BlogIndexPage() {
                 </span>
               </div>
               <h2 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors leading-snug">
-                {a.title}
+                {isRu ? a.title : (a.titleEn ?? a.title)}
               </h2>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                {a.description}
+                {isRu ? a.description : (a.descriptionEn ?? a.description)}
               </p>
               <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
                 {isRu ? "Читать" : "Read"} <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
