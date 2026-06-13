@@ -647,7 +647,23 @@ const LanguageContext = createContext<LanguageContextType>({
 function getInitialLang(): Lang {
   const param = new URLSearchParams(window.location.search).get("lang");
   if (param === "en" || param === "ru") return param;
-  return "ru";
+
+  const path = window.location.pathname;
+
+  // Cyrillic characters in the path → always Russian
+  if (/[\u0400-\u04FF]/.test(path)) return "ru";
+
+  // Paths that are shared between both languages (same URL) → default Russian
+  const normalized = path.replace(/\/+$/, "") || "/";
+  const sharedPaths = ["/", "/faq", "/privacy", "/terms", "/brandbook", "/thank-you"];
+  if (sharedPaths.includes(normalized)) return "ru";
+
+  // Blog is Russian-only content; /blog/ is the Latin alias for /блог/
+  if (normalized === "/blog" || normalized.startsWith("/blog/")) return "ru";
+
+  // Latin-only slug that is not a shared path → English service page
+  // e.g. /minsk-vilnius-airport, /warsaw-transfer, /mercedes-e-class-transfer
+  return "en";
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

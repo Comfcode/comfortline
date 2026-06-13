@@ -23,24 +23,28 @@ interface SeoProps {
 
 export function Seo(props: SeoProps) {
   const { lang } = useLang();
-  const isRu = lang === "ru";
-  const title = isRu ? props.titleRu : props.titleEn;
-  const description = isRu ? props.descRu : props.descEn;
-  const keywords = isRu ? props.keywordsRu : props.keywordsEn;
+  const isRu = lang === "ru"; // UI language — used for breadcrumbs and JSON-LD (follows user preference)
 
-  // Canonical must reflect the ACTUAL URL the user is on, not the user's language.
-  // Otherwise visiting /minsk-vilnius-airport while in RU mode would canonical away to
-  // the RU URL and Google would de-index the EN URL (a real SEO bug).
+  // SEO language — derived from the ACTUAL URL, not the user's preference.
+  // This ensures Googlebot sees the correct title/description/<html lang> for each URL variant.
+  // e.g. a RU-preferring user on /minsk-vilnius-airport still gets EN meta tags.
+  let seoIsRu = isRu;
   let canonicalPath = isRu ? props.pathRu : props.pathEn;
   if (typeof window !== "undefined") {
     const livePath = window.location.pathname;
-    // Match by URL — first try the literal RU path, then EN, otherwise keep language default.
-    if (livePath === props.pathRu || decodeURIComponent(livePath) === props.pathRu) {
+    const decodedPath = decodeURIComponent(livePath);
+    if (livePath === props.pathRu || decodedPath === props.pathRu) {
+      seoIsRu = true;
       canonicalPath = props.pathRu;
     } else if (livePath === props.pathEn) {
+      seoIsRu = false;
       canonicalPath = props.pathEn;
     }
   }
+
+  const title = seoIsRu ? props.titleRu : props.titleEn;
+  const description = seoIsRu ? props.descRu : props.descEn;
+  const keywords = seoIsRu ? props.keywordsRu : props.keywordsEn;
 
   const allJsonLd: object[] = [];
   if (!props.noBusinessJsonLd) allJsonLd.push(localBusinessJsonLd(lang));
@@ -73,7 +77,7 @@ export function Seo(props: SeoProps) {
     ogType: props.ogType,
     keywords,
     jsonLd: allJsonLd,
-    lang: isRu ? "ru" : "en",
+    lang: seoIsRu ? "ru" : "en",
     robots: props.noindex ? "noindex, nofollow" : undefined,
   });
 
