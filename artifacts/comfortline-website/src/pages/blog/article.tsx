@@ -154,7 +154,7 @@ export default function BlogArticlePage() {
     },
     image: `${SITE_URL}/og/${article.ogSlug}.jpg`,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    inLanguage: "ru",
+    inLanguage: isRu ? "ru" : "en",
     keywords: article.tags.join(", "),
   };
 
@@ -197,7 +197,7 @@ export default function BlogArticlePage() {
 
           <div className="flex items-center flex-wrap gap-3 mb-4 text-xs text-muted-foreground">
             <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-semibold">
-              {article.category}
+              {isRu ? article.category : (article.categoryEn ?? article.category)}
             </span>
             <span className="flex items-center gap-1">
               <Calendar className="h-3 w-3" /> {new Date(article.dateISO).toLocaleDateString(isRu ? "ru-RU" : "en-US", { day: "numeric", month: "long", year: "numeric" })}
@@ -208,11 +208,11 @@ export default function BlogArticlePage() {
           </div>
 
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-            {article.title}
+            {isRu ? article.title : (article.titleEn ?? article.title)}
           </h1>
 
           <p className="text-lg text-muted-foreground leading-relaxed mb-10 border-l-2 border-primary/40 pl-4 italic">
-            {article.intro}
+            {isRu ? article.intro : (article.introEn ?? article.intro)}
           </p>
 
           <motion.div
@@ -221,7 +221,7 @@ export default function BlogArticlePage() {
             transition={{ duration: 0.4 }}
             className="prose-comfortline"
           >
-            {article.body.map(renderBlock)}
+            {(isRu ? article.body : (article.bodyEn ?? article.body)).map(renderBlock)}
           </motion.div>
 
           {/* Tags */}
@@ -250,7 +250,7 @@ export default function BlogArticlePage() {
                 href={article.ctaRoute.path}
                 className="inline-block px-8 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
               >
-                {article.ctaRoute.label}
+                {isRu ? article.ctaRoute.label : (article.ctaRoute.labelEn ?? article.ctaRoute.label)}
               </a>
             </div>
           )}
@@ -266,14 +266,14 @@ export default function BlogArticlePage() {
                 {relatedArticles.map((r) => (
                   <a
                     key={r.slug}
-                    href={`${base}/${encodeURI(r.slug)}`}
+                    href={`${base}/${isRu ? encodeURI(r.slug) : (r.slugEn ?? encodeURI(r.slug))}`}
                     className="block bg-card border border-border rounded-2xl p-5 hover:border-primary/50 hover:bg-primary/5 transition-all group"
                   >
                     <p className="font-bold text-foreground group-hover:text-primary transition-colors mb-1.5 leading-snug">
-                      {r.title}
+                      {isRu ? r.title : (r.titleEn ?? r.title)}
                     </p>
                     <p className="text-muted-foreground text-xs leading-relaxed">
-                      {r.description}
+                      {isRu ? r.description : (r.descriptionEn ?? r.description)}
                     </p>
                     <span className="inline-flex items-center gap-1 mt-3 text-primary text-xs font-semibold">
                       {isRu ? "Читать" : "Read"} <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />

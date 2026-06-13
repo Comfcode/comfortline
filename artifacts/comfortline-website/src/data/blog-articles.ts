@@ -21,13 +21,16 @@ export interface Article {
   title: string;
   description: string;
   intro: string;
+  introEn?: string;
   dateISO: string;
   readingMin: number;
   category: string;
+  categoryEn?: string;
   tags: string[];
   body: Block[];
+  bodyEn?: Block[];
   related: string[]; // slugs of related articles
-  ctaRoute?: { label: string; path: string }; // internal link to a money page
+  ctaRoute?: { label: string; labelEn?: string; path: string }; // internal link to a money page
 }
 
 export const BLOG_BASE_RU = "/блог";
@@ -1243,8 +1246,248 @@ export const ARTICLES: Article[] = [
         text: "ComfortLine выполняет трансферы из Вильнюса, Каунаса, Варшавы, Риги и других европейских городов прямо до вашего адреса в Беларуси. Один звонок — и комфортный автомобиль с русскоязычным водителем заберёт вас у терминала прилёта. Детские кресла, помощь с документами на границе, актуальная информация об очередях — всё включено.",
       },
     ],
+    categoryEn: "Entering Belarus",
+    introEn:
+      "Belarus is open to European visitors: in 2026, citizens of dozens of countries can enter without a visa. Mir and Nesvizh Castles, Białowieża Forest, Brest Fortress, Minsk restaurants — all of it without any visa paperwork. Here we cover the current entry regimes, required documents, border crossings and the most comfortable way to get there.",
+    bodyEn: [
+      {
+        type: "callout",
+        text: "The official list of countries and visa-free entry conditions is published by the Ministry of Foreign Affairs of the Republic of Belarus: mfa.gov.by/visa/freemove/general/ — check before your trip, rules are updated periodically.",
+      },
+      { type: "h2", text: "Two Main Visa-Free Entry Regimes in 2026" },
+      {
+        type: "p",
+        text: "Belarus offers two main visa-free entry formats differing by arrival method: by air and by land. There are also special regional programmes (Grodno region, Augustów Canal). It is important to determine which regime applies to you before you travel.",
+      },
+      {
+        type: "table",
+        headers: ["Regime", "Duration", "Entry via", "Countries covered"],
+        rows: [
+          [
+            "Belarusian airports",
+            "up to 30 days",
+            "Minsk National Airport, airports of Brest, Vitebsk, Gomel, Grodno, Mogilev (except flights from Russia)",
+            "76 states",
+          ],
+          [
+            "Land border (road & rail)",
+            "up to 30 days; citizens of Poland, Lithuania, Latvia and stateless persons of Latvia — up to 90 days",
+            "All international road and railway border crossings",
+            "35 European states",
+          ],
+        ],
+      },
+      { type: "h2", text: "Regime 1 — Belarusian Airports: Up to 30 Days" },
+      {
+        type: "p",
+        text: "Citizens of 76 states — including all EU countries, the United Kingdom, USA, Canada, Australia, Japan and many others — can fly to Belarus without a visa and stay for up to 30 days. Entry is through Minsk National Airport as well as the airports of Brest, Vitebsk, Gomel, Grodno and Mogilev. Important exception: flights arriving from the Russian Federation do not fall under this regime.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Duration — no more than 30 days from the date of entry.",
+          "Entry — through Minsk National Airport (MSQ), airports of Brest, Vitebsk, Gomel, Grodno, Mogilev.",
+          "The regime does not apply to passengers arriving on flights from Russia.",
+          "Exit — through any border crossing.",
+          "Purpose — tourism, business meetings, transit, visiting relatives.",
+          "Required: medical insurance valid in Belarus.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "If you are flying to Minsk from Warsaw, Vilnius, Riga, Berlin or any other European city — this regime applies automatically. After landing, a private transfer can take you anywhere in Belarus, and you can exit through any land or air checkpoint.",
+      },
+      { type: "h2", text: "Regime 2 — Land and Railway Border: Up to 30 Days" },
+      {
+        type: "p",
+        text: "Citizens of 35 European states can enter Belarus through any international road or railway border crossing without a visa, for up to 30 days from the date of entry. Citizens of Poland, Lithuania, Latvia and stateless persons of Latvia are granted a longer stay of up to 90 days.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Entry — through any international road or railway border crossing.",
+          "Duration — up to 30 days for most countries.",
+          "For citizens of Poland, Lithuania, Latvia and stateless persons of Latvia — up to 90 days.",
+          "Coverage: 35 European states (full list on the MFA website).",
+          "Medical insurance is mandatory.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "Citizens of Poland, Lithuania and Latvia can stay in Belarus for up to 90 days without a visa — entry through any international road or railway border crossing.",
+      },
+      { type: "h3", text: "Special Regional Programmes" },
+      {
+        type: "p",
+        text: "Beyond the two main regimes, the Belarusian MFA runs separate programmes: a visit to the Grodno region (up to 15 days, only through checkpoints Bruzgi, Berestovitsa, Peschatka on the Polish border) and the Augustów Canal zone (up to 10 days, through checkpoint Lesnaya). These programmes are restricted to specific areas and suit narrow themed itineraries.",
+      },
+      { type: "h2", text: "Countries with Visa-Free Entry Rights" },
+      {
+        type: "p",
+        text: "The full and current list is published on the MFA website. Countries whose citizens can enter visa-free through Belarusian airports (76 states) include:",
+      },
+      {
+        type: "ul",
+        items: [
+          "All 27 EU member states — Poland, Germany, France, Italy, Spain, Netherlands, Sweden, Austria, Belgium, Denmark, Finland, Greece, Czech Republic, Hungary, Romania, Bulgaria and others.",
+          "United Kingdom, Switzerland, Norway, Iceland, Liechtenstein.",
+          "USA, Canada, Australia, New Zealand.",
+          "Japan, South Korea, Singapore.",
+          "Brazil, Argentina, Mexico.",
+          "76 states in total — full list at mfa.gov.by/visa/freemove/general/",
+        ],
+      },
+      {
+        type: "link",
+        href: "https://mfa.gov.by/visa/freemove/general/",
+        label: "Official list of countries and current conditions — Ministry of Foreign Affairs of Belarus",
+        description: "Check before your trip: rules may be updated",
+      },
+      { type: "h2", text: "Documents Required at the Border" },
+      {
+        type: "p",
+        text: "The document pack is short but every item is mandatory. Belarusian border guards check carefully — it is best to prepare in advance.",
+      },
+      {
+        type: "ol",
+        items: [
+          "Valid international passport — at least 90 days of validity remaining at the time of entry.",
+          "Medical insurance valid in Belarus for the entire duration of stay. Minimum coverage — equivalent to USD 10,000. Many European EHIC cards do not cover Belarus — check with your insurer.",
+          "Documents confirming purpose of visit: hotel booking, invitation letter, business meeting agenda, tourist itinerary.",
+          "Proof of sufficient funds — approximately EUR 25–50 per day (not fixed by law, assessed individually).",
+          "For minors travelling without both parents — notarised parental consent.",
+        ],
+      },
+      { type: "h3", text: "Medical Insurance: What to Check" },
+      {
+        type: "p",
+        text: "This is the most common reason for entry refusal. Important: the European Health Insurance Card (EHIC) is valid only in EU/EEA countries and is not accepted in Belarus. A separate policy is required. You can get one online in minutes — a 5–7 day policy for Belarus typically costs EUR 5–15 depending on the insurer.",
+      },
+      { type: "h3", text: "Is Registration Required?" },
+      {
+        type: "p",
+        text: "Hotels register guests automatically. If staying with a private individual, the host must register the guest within 5 working days through the local internal affairs office or via gosuslugi.by. Failure to comply may result in a fine upon departure.",
+      },
+      { type: "h2", text: "Why a Private Transfer Is the Best Way to Enter Belarus" },
+      {
+        type: "p",
+        text: "Most visa-free tourists fly to Minsk via a European hub — Warsaw, Vilnius, Riga or Kaunas. Then comes the question: how to reach Belarus comfortably and without stress? Buses and shared minivans exist, but come with serious limitations.",
+      },
+      {
+        type: "table",
+        headers: ["Criteria", "Bus / minivan", "Private transfer ComfortLine"],
+        rows: [
+          ["Pick-up point", "Bus station", "Your hotel, airport or address"],
+          ["Drop-off point", "Bus terminal in Minsk", "Your hotel or any address in Belarus"],
+          ["Schedule", "Fixed timetable", "Matched to your flight or preferred time"],
+          ["Border support", "None", "Driver assists, knows the procedure"],
+          ["Journey time", "4–7 h + transfer wait", "Direct from A to B"],
+          ["Comfort", "Seats, limited luggage", "Business car, A/C, Wi-Fi"],
+          ["Child seats", "Not available", "On request, free of charge"],
+          ["Route flexibility", "None", "Stops, detours — at your request"],
+        ],
+      },
+      { type: "h3", text: "The Border: Why It Is Easier with Us" },
+      {
+        type: "p",
+        text: "Crossing the Belarus–Lithuania or Belarus–Poland border can take anywhere from 2 to 8 hours depending on the day and time. Our drivers do this route regularly — they know which lane moves faster, when to set off, and how to prepare documents to speed up customs. This matters especially for first-time border crossers.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Your driver will tell you in advance which documents to have ready.",
+          "Live queue information at border crossings — tracked in real time.",
+          "During long waits — a comfortable car with climate control, a chance to sleep.",
+          "Child seats, luggage assistance — included as standard.",
+          "Meet-and-greet at the arrivals terminal with a name board.",
+        ],
+      },
+      { type: "h2", text: "Popular Routes from Europe to Belarus" },
+      { type: "h3", text: "Vilnius / VNO Airport → Minsk" },
+      {
+        type: "p",
+        text: "The most popular route. Many Europeans fly to Vilnius — direct flights from most European cities — then travel on to Belarus by road. Vilnius–Minsk is around 175 km. Border crossing at Kamenny Log / Kotlovka. Journey time including the border: 3.5–6 hours.",
+      },
+      { type: "h3", text: "Warsaw / WAW and Modlin Airports → Minsk" },
+      {
+        type: "p",
+        text: "Warsaw is the major hub for flights from Western Europe, North America and Asia. Warsaw to Minsk is about 550 km — a full road trip. Border crossing near Terespol / Brest. Popular for travellers connecting through Warsaw who want to continue to Belarus without additional transit.",
+      },
+      { type: "h3", text: "Kaunas / KUN Airport → Minsk" },
+      {
+        type: "p",
+        text: "Kaunas Airport is a Ryanair and low-cost carrier base with direct flights from dozens of European cities at competitive fares. Kaunas–Minsk is around 270 km. The route passes through the same Belarus–Lithuania crossing as Vilnius.",
+      },
+      { type: "h3", text: "Riga / RIX Airport → Minsk" },
+      {
+        type: "p",
+        text: "Riga is a convenient entry point for travellers from Scandinavia and the Baltic states. Riga–Minsk is around 470 km. The border crossing is at Grigorovshchina or Patarnieki. Journey time including border control: 5.5–8 hours.",
+      },
+      { type: "h2", text: "What to See in Belarus: Top 10 Destinations" },
+      {
+        type: "p",
+        text: "Belarus surprises visitors with its combination of nature, history and affordable prices. Here is what to include on your itinerary:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Mir Castle — a UNESCO World Heritage Site, one of the finest castles in Eastern Europe. 100 km from Minsk.",
+          "Nesvizh Palace and Park Complex — the Radziwiłł family residence, also UNESCO-listed. Close to Mir.",
+          "Brest Fortress — a powerful memorial complex, a symbol of resilience. 350 km from Minsk.",
+          "Białowieża Forest — the oldest primeval forest in Europe, home of wild European bison and Belarus's Father Frost residence.",
+          "Grodno — a historic city with Polish and Lithuanian heritage, old churches, castles and cosy cafés.",
+          "Minsk — a modern capital with wide boulevards, Stalinist architecture, a vibrant food scene and museums.",
+          "Dudutki — an open-air ethnographic museum with craft workshops, horse riding and traditional Belarusian cuisine.",
+          "Khatyn Memorial — a moving complex commemorating the villages destroyed during World War II.",
+          "Ostrich Farm in Bolshaya Svorotva — a surprisingly popular attraction for families with children.",
+          "Augustów Canal — a scenic waterway along the Polish–Belarusian border, ideal for walking and cycling.",
+        ],
+      },
+      { type: "h2", text: "Practical Tips Before Your Trip" },
+      {
+        type: "table",
+        headers: ["Question", "Answer"],
+        rows: [
+          ["Do I need Belarusian currency?", "Belarusian ruble (BYN). Cards are accepted at most shops and restaurants, but cash is useful."],
+          ["Do cards work in Belarus?", "Cards issued in EU countries may not be accepted since 2022 — check with your bank. Mir and UnionPay work."],
+          ["Mobile data?", "EU roaming does not apply in Belarus. We recommend buying a local SIM (A1, MTS, life:)) on arrival — from BYN 5."],
+          ["Safety?", "Belarus is traditionally considered one of the safest countries in the region in terms of street crime."],
+          ["Language barrier?", "In Minsk the younger generation speaks reasonable English, especially in tourism. In rural areas it is harder. ComfortLine drivers communicate in English."],
+        ],
+      },
+      { type: "h2", text: "Frequently Asked Questions" },
+      { type: "h3", text: "Can I enter on an EU national ID card?" },
+      {
+        type: "p",
+        text: "No. Entry to Belarus requires an international passport. National identity cards (ID cards) valid within the EU are not accepted in Belarus.",
+      },
+      { type: "h3", text: "Is a visa needed when entering through the Polish or Lithuanian border?" },
+      {
+        type: "p",
+        text: "For citizens of 35 European states — no: entry through any international road or railway border crossing is possible without a visa for up to 30 days. For citizens of Poland, Lithuania and Latvia the limit is 90 days. Citizens of countries outside that list still need a visa for land entry, but may use the airport regime (76 states, entry through Belarusian airports).",
+      },
+      { type: "h3", text: "What happens if I overstay the 30-day limit?" },
+      {
+        type: "p",
+        text: "Overstaying is an administrative offence — a fine and a potential entry ban. Leave strictly before your permitted period expires.",
+      },
+      { type: "h3", text: "Can I exit and re-enter immediately to reset the days?" },
+      {
+        type: "p",
+        text: "The rules do not formally prohibit re-entry after exit. However, border guards may treat it as abuse of the regime and refuse entry. For a longer stay we recommend obtaining a regular visa.",
+      },
+      { type: "h3", text: "Can I work in Belarus on the visa-free regime?" },
+      {
+        type: "p",
+        text: "No. The visa-free regime covers tourist and business visits only, not employment. Work requires the appropriate permit and visa.",
+      },
+      {
+        type: "callout",
+        text: "ComfortLine operates transfers from Vilnius, Kaunas, Warsaw, Riga and other European cities directly to your address in Belarus. One call — and a comfortable car with an English-speaking driver will meet you at the arrivals terminal. Child seats, border document assistance, live queue information — all included.",
+      },
+    ],
     related: ["граница-беларусь-литва", "аэропорт-варшавы-вав", "как-добраться-до-аэропорта-вильнюса"],
-    ctaRoute: { label: "Забронировать трансфер из Европы в Беларусь", path: "/трансфер-минск-вильнюс-аэропорт" },
+    ctaRoute: { label: "Забронировать трансфер из Европы в Беларусь", labelEn: "Book a transfer from Europe to Belarus", path: "/трансфер-минск-вильнюс-аэропорт" },
   },
 ];
 
