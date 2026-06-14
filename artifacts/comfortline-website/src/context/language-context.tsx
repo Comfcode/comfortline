@@ -658,12 +658,8 @@ function getInitialLang(): Lang {
   const sharedPaths = ["/", "/faq", "/privacy", "/terms", "/brandbook", "/thank-you"];
   if (sharedPaths.includes(normalized)) return "ru";
 
-  // Blog index has no slug to distinguish → default Russian
-  // Latin blog slugs like /blog/visa-free-entry-belarus-2026 fall through to "en" below
-  if (normalized === "/blog") return "ru";
-
-  // Latin-only slug that is not a shared path → English service page
-  // e.g. /minsk-vilnius-airport, /warsaw-transfer, /mercedes-e-class-transfer
+  // Latin-only slug that is not a shared path → English service page or blog
+  // e.g. /minsk-vilnius-airport, /warsaw-transfer, /blog, /blog/slug
   return "en";
 }
 

@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Logo } from "@/components/brand/Logo";
 import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
+import { useLocation } from "wouter";
+import { getAlternateLangHref } from "@/lib/lang-urls";
 
 /** Maps each nav href to the section id it represents (for IntersectionObserver) */
 const SECTION_MAP: Record<string, string> = {
@@ -22,9 +24,12 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeHref, setActiveHref]       = useState<string | null>(null);
   const [hoveredHref, setHoveredHref]     = useState<string | null>(null);
-  const { lang, setLang, t }              = useLang();
+  const { lang, t }                       = useLang();
   const { resolvedTheme, setTheme }       = useTheme();
   const [mounted, setMounted]             = useState(false);
+  const [location]                        = useLocation();
+  const ruHref = getAlternateLangHref(location, "ru");
+  const enHref = getAlternateLangHref(location, "en");
   const isDark = !mounted || resolvedTheme === "dark";
 
   useEffect(() => setMounted(true), []);
@@ -244,19 +249,21 @@ export function Navbar() {
 
             {/* Language toggle */}
             <div className="flex items-center gap-0.5 text-[11px] tracking-[0.12em] uppercase font-medium">
-              <button
-                onClick={() => setLang("ru")}
+              <a
+                href={ruHref}
+                hrefLang="ru"
                 className={`px-1.5 py-0.5 transition-colors ${lang === "ru" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"}`}
               >
                 RU
-              </button>
+              </a>
               <span className="text-border/60">/</span>
-              <button
-                onClick={() => setLang("en")}
+              <a
+                href={enHref}
+                hrefLang="en"
                 className={`px-1.5 py-0.5 transition-colors ${lang === "en" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"}`}
               >
                 EN
-              </button>
+              </a>
             </div>
 
             {/* Theme toggle */}
@@ -350,9 +357,9 @@ export function Navbar() {
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-0.5 text-[11px] tracking-[0.12em] uppercase font-medium">
-                    <button onClick={() => setLang("ru")} className={`px-2 py-1 transition-colors ${lang === "ru" ? "text-foreground" : "text-foreground/40"}`}>RU</button>
+                    <a href={ruHref} hrefLang="ru" className={`px-2 py-1 transition-colors ${lang === "ru" ? "text-foreground" : "text-foreground/40"}`}>RU</a>
                     <span className="text-border/60">/</span>
-                    <button onClick={() => setLang("en")} className={`px-2 py-1 transition-colors ${lang === "en" ? "text-foreground" : "text-foreground/40"}`}>EN</button>
+                    <a href={enHref} hrefLang="en" className={`px-2 py-1 transition-colors ${lang === "en" ? "text-foreground" : "text-foreground/40"}`}>EN</a>
                   </div>
                   <button
                     onClick={() => setTheme(isDark ? "light" : "dark")}
