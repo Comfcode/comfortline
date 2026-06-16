@@ -294,7 +294,28 @@ export function Navbar() {
           </div>
 
           {/* Mobile right side */}
-          <div className="flex items-center lg:hidden gap-4">
+          <div className="flex items-center lg:hidden gap-3">
+            {/* Language + theme always visible in mobile header */}
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-0.5 text-[11px] tracking-[0.12em] uppercase font-medium">
+                <a href={ruHref} hrefLang="ru" className={`px-1.5 py-0.5 transition-colors ${lang === "ru" ? "text-foreground" : "text-foreground/40"}`}>RU</a>
+                <span className="text-border/60">/</span>
+                <a href={enHref} hrefLang="en" className={`px-1.5 py-0.5 transition-colors ${lang === "en" ? "text-foreground" : "text-foreground/40"}`}>EN</a>
+              </div>
+              <button
+                onClick={() => setTheme(isDark ? "light" : "dark")}
+                aria-label="Toggle theme"
+                className="relative w-[40px] h-[22px] rounded-full border border-border/60 bg-muted/50 flex items-center transition-colors"
+              >
+                <motion.div
+                  className="absolute w-[16px] h-[16px] rounded-full bg-primary flex items-center justify-center shadow-sm"
+                  animate={{ x: isDark ? 3 : 19 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                >
+                  {isDark ? <Moon className="h-2 w-2 text-primary-foreground" /> : <Sun className="h-2 w-2 text-primary-foreground" />}
+                </motion.div>
+              </button>
+            </div>
             <a
               href="tel:+375291552776"
               onClick={gtagPhoneConversion}
@@ -351,29 +372,9 @@ export function Navbar() {
                 </a>
               ))}
 
-              <div className="pt-5 flex items-center justify-between">
+              <div className="pt-5 flex items-center">
                 <div className="flex items-center gap-2">
                   {socialLinks.map((s) => <SocialIcon key={s.label} {...s} size={34} />)}
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-0.5 text-[11px] tracking-[0.12em] uppercase font-medium">
-                    <a href={ruHref} hrefLang="ru" className={`px-2 py-1 transition-colors ${lang === "ru" ? "text-foreground" : "text-foreground/40"}`}>RU</a>
-                    <span className="text-border/60">/</span>
-                    <a href={enHref} hrefLang="en" className={`px-2 py-1 transition-colors ${lang === "en" ? "text-foreground" : "text-foreground/40"}`}>EN</a>
-                  </div>
-                  <button
-                    onClick={() => setTheme(isDark ? "light" : "dark")}
-                    aria-label="Toggle theme"
-                    className="relative w-[44px] h-[24px] rounded-full border border-border/60 bg-muted/50 flex items-center transition-colors"
-                  >
-                    <motion.div
-                      className="absolute w-[18px] h-[18px] rounded-full bg-primary flex items-center justify-center shadow-sm"
-                      animate={{ x: isDark ? 3 : 23 }}
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    >
-                      {isDark ? <Moon className="h-2.5 w-2.5 text-primary-foreground" /> : <Sun className="h-2.5 w-2.5 text-primary-foreground" />}
-                    </motion.div>
-                  </button>
                 </div>
               </div>
             </div>
