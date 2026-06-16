@@ -233,13 +233,13 @@ export function Navbar() {
               {socialLinks.map((s) => <SocialIcon key={s.label} {...s} size={26} />)}
             </div>
 
-            <div className="h-4 w-px bg-border/50" />
+            <div className="h-4 w-px bg-border/50 hidden 2xl:block" />
 
-            {/* Phone */}
+            {/* Phone — only visible at 2xl (1536px+) to keep RU/EN always in view */}
             <a
               href="tel:+375291552776"
               onClick={gtagPhoneConversion}
-              className="flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
+              className="hidden 2xl:flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
             >
               <Phone className="h-3 w-3 text-primary" />
               +375 (29) 155-27-76
@@ -248,7 +248,7 @@ export function Navbar() {
             <div className="h-4 w-px bg-border/50" />
 
             {/* Language toggle */}
-            <div className="flex items-center gap-0.5 text-[11px] tracking-[0.12em] uppercase font-medium">
+            <div className="shrink-0 flex items-center gap-0.5 text-[11px] tracking-[0.12em] uppercase font-medium">
               <a
                 href={ruHref}
                 hrefLang="ru"
