@@ -645,13 +645,14 @@ const LanguageContext = createContext<LanguageContextType>({
   t: ru,
 });
 
-function getInitialLang(): Lang {
+// Takes a decoded path (wouter's useLocation already calls decodeURI on it).
+// window.location.pathname can be percent-encoded in some proxied environments,
+// so we never read it directly for Cyrillic detection.
+function getLangFromPath(path: string): Lang {
   const param = new URLSearchParams(window.location.search).get("lang");
   if (param === "en" || param === "ru") return param;
 
-  const path = window.location.pathname;
-
-  // Cyrillic characters in the path → always Russian
+  // Cyrillic characters in the decoded path → always Russian
   if (/[\u0400-\u04FF]/.test(path)) return "ru";
 
   // Paths that are shared between both languages (same URL) → default Russian
@@ -660,16 +661,15 @@ function getInitialLang(): Lang {
   if (sharedPaths.includes(normalized)) return "ru";
 
   // Latin-only slug that is not a shared path → English service page or blog
-  // e.g. /minsk-vilnius-airport, /warsaw-transfer, /blog, /blog/slug
   return "en";
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>(getInitialLang);
   const [location] = useLocation();
+  const [lang, setLang] = useState<Lang>(() => getLangFromPath(location));
 
   useEffect(() => {
-    setLang(getInitialLang());
+    setLang(getLangFromPath(location));
   }, [location]);
 
   return (
