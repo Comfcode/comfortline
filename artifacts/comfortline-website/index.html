@@ -93,7 +93,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://widget.replain.cc">
     <!-- Non-render-blocking font load: preload fires early, onload swaps rel to stylesheet -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" /></noscript>
@@ -145,44 +144,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      window.replainSettings = { id: '2390ef50-1a6f-4743-b305-a9794a4138eb' };
-      (function(u){var s=document.createElement('script');s.async=true;s.src=u;
-      var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
-      })('https://widget.replain.cc/dist/client.js');
-    </script>
-    <script>
-      (function() {
-        var RADIUS = '22px';
-        var watched = new WeakSet();
-
-        function applyStyle(el) {
-          el.style.setProperty('border-radius', RADIUS, 'important');
-          el.style.setProperty('overflow', 'hidden', 'important');
-        }
-
-        function watchEl(el) {
-          if (watched.has(el)) return;
-          watched.add(el);
-          applyStyle(el);
-          new MutationObserver(function() {
-            applyStyle(el);
-          }).observe(el, { attributes: true, attributeFilter: ['style'] });
-        }
-
-        function findAndWatch() {
-          var all = document.querySelectorAll('[id*="replain"], [class*="replain"], [data-replain]');
-          all.forEach(function(el) {
-            if (window.getComputedStyle(el).position === 'fixed') {
-              watchEl(el);
-            }
-          });
-        }
-
-        new MutationObserver(findAndWatch).observe(document.body, { childList: true, subtree: true });
-        setTimeout(findAndWatch, 500);
-        setTimeout(findAndWatch, 2000);
-      })();
-    </script>
   </body>
 </html>
