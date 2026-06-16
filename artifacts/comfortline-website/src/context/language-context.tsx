@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { useLocation } from "wouter";
 
 type Lang = "ru" | "en";
 
@@ -665,6 +666,12 @@ function getInitialLang(): Lang {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>(getInitialLang);
+  const [location] = useLocation();
+
+  useEffect(() => {
+    setLang(getInitialLang());
+  }, [location]);
+
   return (
     <LanguageContext.Provider value={{ lang, setLang, t: lang === "ru" ? ru : en }}>
       {children}
