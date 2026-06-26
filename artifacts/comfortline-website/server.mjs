@@ -102,6 +102,14 @@ const server = http.createServer((req, res) => {
     const url = new URL(req.url ?? "/", `http://localhost`);
     const rawPath = url.pathname;
 
+    // --- 0. Normalise trailing slashes: /path/ → /path (permanent redirect) ---
+    if (rawPath !== "/" && rawPath.endsWith("/")) {
+      const canonical = rawPath.replace(/\/+$/, "") + (url.search || "");
+      res.writeHead(301, { "Location": canonical, "Cache-Control": "public, max-age=86400" });
+      res.end();
+      return;
+    }
+
     // --- 1. Static asset? Serve the file directly ---
     const filePath = path.normalize(path.join(PUBLIC_DIR, rawPath));
 
