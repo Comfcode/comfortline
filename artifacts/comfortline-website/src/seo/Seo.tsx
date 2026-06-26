@@ -59,19 +59,17 @@ export function Seo(props: SeoProps) {
     else allJsonLd.push(props.jsonLd);
   }
 
-  // Replit's static host 301-redirects /foo → /foo/. To avoid Google reporting
-  // every page as "Page with redirect", canonical + hreflang must already include
-  // the trailing slash. Root "/" is left as-is.
-  const slashed = (p: string) => (p === "/" || p.endsWith("/") ? p : p + "/");
-
+  // server.mjs canonicalises /foo/ → /foo (301). Canonical and hreflang URLs
+  // must therefore NOT have trailing slashes so they match what the server serves.
+  // Root "/" is the only exception and is left as-is.
   useSeo({
     title,
     description,
-    canonical: SITE_URL + slashed(canonicalPath),
+    canonical: SITE_URL + canonicalPath,
     alternates: [
-      { hreflang: "ru", href: SITE_URL + slashed(props.pathRu) },
-      { hreflang: "en", href: SITE_URL + slashed(props.pathEn) },
-      { hreflang: "x-default", href: SITE_URL + slashed(props.pathRu) },
+      { hreflang: "ru", href: SITE_URL + props.pathRu },
+      { hreflang: "en", href: SITE_URL + props.pathEn },
+      { hreflang: "x-default", href: SITE_URL + props.pathRu },
     ],
     ogImage: props.ogImage || DEFAULT_OG_IMAGE,
     ogType: props.ogType,
