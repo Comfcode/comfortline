@@ -201,14 +201,28 @@ export interface VehicleJsonLdInput {
 export function vehicleJsonLd(v: VehicleJsonLdInput) {
   return {
     "@context": "https://schema.org",
-    "@type": "Vehicle",
+    "@type": "Service",
+    serviceType: v.lang === "ru" ? "Индивидуальный трансфер" : "Private transfer",
     name: v.name,
     description: v.description,
     image: v.image,
     url: v.url,
-    seatingCapacity: v.seatingCapacity,
-    modelDate: v.modelDate,
-    vehicleConfiguration: v.vehicleClass,
-    brand: v.name.split(" ")[0],
+    provider: { "@id": `${SITE_URL}#business` },
+    offers: {
+      "@type": "Offer",
+      url: v.url,
+      availability: "https://schema.org/InStock",
+      priceCurrency: "BYN",
+      seller: { "@id": `${SITE_URL}#business` },
+    },
+    vehicle: {
+      "@type": "Vehicle",
+      name: v.name,
+      image: v.image,
+      seatingCapacity: v.seatingCapacity,
+      modelDate: v.modelDate,
+      vehicleConfiguration: v.vehicleClass,
+      brand: { "@type": "Brand", name: v.name.split(" ")[0] },
+    },
   };
 }
