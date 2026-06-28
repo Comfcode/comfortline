@@ -37,8 +37,8 @@ const content = {
     ],
     photosTitle: "Аэропорт в фото",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Kaunas_International_Airport_terminal.jpg/1280px-Kaunas_International_Airport_terminal.jpg", caption: "Терминал аэропорта Каунаса (KUN)" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Kauno_oro_uostas_2018-09-14.jpg/1280px-Kauno_oro_uostas_2018-09-14.jpg", caption: "Здание аэропорта Каунаса" },
+      { src: "/img/kaunas/airport-terminal.png", caption: "Терминал аэропорта Каунаса (KUN)" },
+      { src: "/img/kaunas/airport-building.png", caption: "Здание аэропорта Каунаса" },
     ],
     tipsTitle: "Полезная информация",
     tips: [
@@ -91,8 +91,8 @@ const content = {
     ],
     photosTitle: "Airport Gallery",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Kaunas_International_Airport_terminal.jpg/1280px-Kaunas_International_Airport_terminal.jpg", caption: "Kaunas Airport terminal (KUN)" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Kauno_oro_uostas_2018-09-14.jpg/1280px-Kauno_oro_uostas_2018-09-14.jpg", caption: "Kaunas Airport building" },
+      { src: "/img/kaunas/airport-terminal.png", caption: "Kaunas Airport terminal (KUN)" },
+      { src: "/img/kaunas/airport-building.png", caption: "Kaunas Airport building" },
     ],
     tipsTitle: "Useful Information",
     tips: [

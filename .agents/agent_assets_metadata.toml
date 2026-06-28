@@ -60,6 +60,42 @@ uri = "file://artifacts/comfortline-website/public/img/kaunas/laisves-aleja.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "PhNhTH2dPgTO8u1FMxBXX"
+uri = "file://artifacts/comfortline-website/public/img/kaunas/airport-terminal.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "1el9VaU5pa0YKpLM-p9gf"
+uri = "file://artifacts/comfortline-website/public/img/kaunas/airport-building.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "oEjo1F9PnCwv-ylljWaxh"
+uri = "file://artifacts/comfortline-website/public/img/warsaw/chopin-terminal.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "0yqY4p3o3cwwdjQCcbyVw"
+uri = "file://artifacts/comfortline-website/public/img/warsaw/chopin-international.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "yCbEAaJkugx57ETs4ALSi"
+uri = "file://artifacts/comfortline-website/public/img/warsaw/modlin-terminal.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "ti0gjC_CPR4Z2ORywBGbf"
+uri = "file://artifacts/comfortline-website/public/img/warsaw/modlin-tower.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"

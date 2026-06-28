@@ -39,8 +39,8 @@ const content = {
     note: "Модлин и Шопен — два разных аэропорта. Убедитесь, что ваш рейс именно из Варшавы-Модлин (WMI), а не из аэропорта Шопена (WAW).",
     photosTitle: "Аэропорт в фото",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Warsaw_Modlin_Airport.jpg/1280px-Warsaw_Modlin_Airport.jpg", caption: "Терминал аэропорта Варшава-Модлин (WMI)" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/ModlinAirportandTowr.JPG/1280px-ModlinAirportandTowr.JPG", caption: "Зона прилёта и такси" },
+      { src: "/img/warsaw/modlin-terminal.png", caption: "Терминал аэропорта Варшава-Модлин (WMI)" },
+      { src: "/img/warsaw/modlin-tower.png", caption: "Зона прилёта и такси" },
     ],
     tipsTitle: "Полезная информация",
     tips: [
@@ -99,8 +99,8 @@ const content = {
     note: "Modlin and Chopin are two separate airports. Make sure your flight departs from Warsaw Modlin (WMI) and not Warsaw Chopin (WAW).",
     photosTitle: "Airport Gallery",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Warsaw_Modlin_Airport.jpg/1280px-Warsaw_Modlin_Airport.jpg", caption: "Warsaw Modlin Airport terminal (WMI)" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/ModlinAirportandTowr.JPG/1280px-ModlinAirportandTowr.JPG", caption: "Arrivals area and taxi access" },
+      { src: "/img/warsaw/modlin-terminal.png", caption: "Warsaw Modlin Airport terminal (WMI)" },
+      { src: "/img/warsaw/modlin-tower.png", caption: "Arrivals area and taxi access" },
     ],
     tipsTitle: "Useful Information",
     tips: [
