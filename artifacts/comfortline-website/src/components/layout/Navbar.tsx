@@ -12,11 +12,16 @@ import { getAlternateLangHref } from "@/lib/lang-urls";
 
 /** Maps each nav href to the section id it represents (for IntersectionObserver) */
 const SECTION_MAP: Record<string, string> = {
-  "/#services":    "services",
-  "/#fleet":       "fleet",
-  "/#advantages":  "advantages",
-  "/#reviews":     "reviews",
-  "/#contact":     "contact",
+  "/#services":          "services",
+  "/?lang=en#services":  "services",
+  "/#fleet":             "fleet",
+  "/?lang=en#fleet":     "fleet",
+  "/#advantages":        "advantages",
+  "/?lang=en#advantages":"advantages",
+  "/#reviews":           "reviews",
+  "/?lang=en#reviews":   "reviews",
+  "/#contact":           "contact",
+  "/?lang=en#contact":   "contact",
 };
 
 export function Navbar() {
@@ -87,14 +92,17 @@ export function Navbar() {
     return () => observers.forEach((o) => o.disconnect());
   }, [lang]);
 
+  // Hash-section links must carry ?lang=en on shared pages so the landing page
+  // loads in the correct language (/ defaults to Russian without the param).
+  const homePrefix = lang === "en" ? "/?lang=en" : "/";
   const navLinks = [
-    { name: t.nav.services,   href: "/#services" },
-    { name: t.nav.fleet,      href: "/#fleet" },
-    { name: t.nav.advantages, href: "/#advantages" },
-    { name: t.nav.reviews,    href: "/#reviews" },
+    { name: t.nav.services,   href: `${homePrefix}#services` },
+    { name: t.nav.fleet,      href: `${homePrefix}#fleet` },
+    { name: t.nav.advantages, href: `${homePrefix}#advantages` },
+    { name: t.nav.reviews,    href: `${homePrefix}#reviews` },
     { name: t.nav.faq,        href: "/faq" },
     { name: lang === "ru" ? "Блог" : "Blog", href: lang === "ru" ? "/блог" : "/blog" },
-    { name: t.nav.contacts,   href: "/#contact" },
+    { name: t.nav.contacts,   href: `${homePrefix}#contact` },
   ];
 
   const socialLinks = [
