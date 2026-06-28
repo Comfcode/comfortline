@@ -8,6 +8,17 @@ const data: CountryPageData = {
     destinationsTitle: "Направления в Литве",
     destinations: [
       {
+        cityRu: "Вильнюс — центр города",
+        cityEn: "Vilnius — city centre",
+        descRu: "Столица Литвы. Старый город ЮНЕСКО, Кафедральная площадь, Ворота Зари, замок Гедиминаса.",
+        descEn: "Lithuania's capital. UNESCO Old Town, Cathedral Square, Gate of Dawn, Gediminas Castle.",
+        distanceKm: "~170 км",
+        travelTime: "2–4 ч",
+        href: "/minsk-vilnius-transfer",
+        hrefRu: "/трансфер-минск-вильнюс",
+        isAvailable: true,
+      },
+      {
         cityRu: "Аэропорт Вильнюса (VNO)",
         cityEn: "Vilnius Airport (VNO)",
         descRu: "Прямой трансфер к терминалу. Удобно к рейсам Ryanair, Wizz Air, LOT и другим авиакомпаниям.",
@@ -116,6 +127,17 @@ const data: CountryPageData = {
     subtitle: "Vilnius, Kaunas and more Lithuanian cities. Direct door-to-door transfers — to the airport, your hotel or office.",
     destinationsTitle: "Destinations in Lithuania",
     destinations: [
+      {
+        cityRu: "Вильнюс — центр города",
+        cityEn: "Vilnius — city centre",
+        descRu: "Столица Литвы. Старый город ЮНЕСКО, Кафедральная площадь, Ворота Зари, замок Гедиминаса.",
+        descEn: "Lithuania's capital. UNESCO Old Town, Cathedral Square, Gate of Dawn, Gediminas Castle.",
+        distanceKm: "~170 km",
+        travelTime: "2–4 hrs",
+        href: "/minsk-vilnius-transfer",
+        hrefRu: "/трансфер-минск-вильнюс",
+        isAvailable: true,
+      },
       {
         cityRu: "Аэропорт Вильнюса (VNO)",
         cityEn: "Vilnius Airport (VNO)",

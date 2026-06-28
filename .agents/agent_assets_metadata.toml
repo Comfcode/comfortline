@@ -168,6 +168,24 @@ uri = "file://artifacts/comfortline-website/public/img/trakai/old-town.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "TV3YXzXDA8vpVdEztAVPx"
+uri = "file://artifacts/comfortline-website/public/img/vilnius/old-town-aerial.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "xfGdytqCHGHIqnnVUsvyq"
+uri = "file://artifacts/comfortline-website/public/img/vilnius/cathedral-square.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "680YMOz-87NS8Teg53f-u"
+uri = "file://artifacts/comfortline-website/public/img/vilnius/gate-of-dawn.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"
