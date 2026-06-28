@@ -312,6 +312,24 @@ uri = "file://artifacts/comfortline-website/public/img/daugavpils/city-river.png
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "1geQI6MClRc6Tzdr7vO14"
+uri = "file://artifacts/comfortline-website/public/img/jurmala/beach.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "4otiYJwj-FYQfa77jQIBI"
+uri = "file://artifacts/comfortline-website/public/img/jurmala/wooden-villas.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "A-a0HJ6dM8kJ7O7MbWAA-"
+uri = "file://artifacts/comfortline-website/public/img/jurmala/pine-forest.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"
