@@ -87,6 +87,7 @@ const KNOWN = new Set([
   // City transfers
   "/minsk-kaunas-transfer",              "/трансфер-минск-каунас",
   "/minsk-palanga-transfer",             "/трансфер-минск-паланга",
+  "/minsk-daugavpils-transfer",          "/трансфер-минск-даугавпилс",
   "/minsk-katowice-transfer",            "/трансфер-минск-катовице",
   "/minsk-lodz-transfer",                "/трансфер-минск-лодзь",
   "/minsk-poznan-transfer",              "/трансфер-минск-познань",

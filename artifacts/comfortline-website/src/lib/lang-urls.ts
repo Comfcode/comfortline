@@ -30,6 +30,7 @@ const RU_TO_EN: Record<string, string> = {
   "/трансфер-в-германию":               "/germany-transfer",
   "/трансфер-минск-каунас":              "/minsk-kaunas-transfer",
   "/трансфер-минск-паланга":             "/minsk-palanga-transfer",
+  "/трансфер-минск-даугавпилс":          "/minsk-daugavpils-transfer",
   "/трансфер-минск-катовице":            "/minsk-katowice-transfer",
   "/трансфер-минск-лодзь":               "/minsk-lodz-transfer",
   "/трансфер-минск-познань":             "/minsk-poznan-transfer",

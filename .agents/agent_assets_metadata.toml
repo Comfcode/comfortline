@@ -294,6 +294,24 @@ uri = "file://artifacts/comfortline-website/public/img/katowice/nikiszowiec.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "DJHm9ZE9tFDJjR3RkB5WQ"
+uri = "file://artifacts/comfortline-website/public/img/daugavpils/fortress.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "mk6ut00991XCAAhaHAP8g"
+uri = "file://artifacts/comfortline-website/public/img/daugavpils/rothko-centre.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "bDersCDFSEME62cBkTfDo"
+uri = "file://artifacts/comfortline-website/public/img/daugavpils/city-river.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"
