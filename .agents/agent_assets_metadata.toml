@@ -276,6 +276,24 @@ uri = "file://artifacts/comfortline-website/public/img/lodz/poznanski-palace.png
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "qOblRJAQQhQyB53umf_L6"
+uri = "file://artifacts/comfortline-website/public/img/katowice/spodek.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "2pQTQO4adKXXb55OQY7CB"
+uri = "file://artifacts/comfortline-website/public/img/katowice/silesian-museum.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "38IcG29Vl80GPGDX2SXVU"
+uri = "file://artifacts/comfortline-website/public/img/katowice/nikiszowiec.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"
