@@ -222,6 +222,24 @@ uri = "file://artifacts/comfortline-website/public/img/wroclaw/oder-bridges.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "gPcywUppJAhmOblDT0I-q"
+uri = "file://artifacts/comfortline-website/public/img/krakow/main-square.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "EkDf-hZ3R5ZkH8dCnS36Z"
+uri = "file://artifacts/comfortline-website/public/img/krakow/wawel-castle.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "OomWWw7pOm-yUUYYicAYc"
+uri = "file://artifacts/comfortline-website/public/img/krakow/wieliczka-mine.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"
