@@ -150,6 +150,24 @@ uri = "file://artifacts/comfortline-website/public/img/druskininkai/grutas-park.
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "A7FwyiUhDDalieG2-0P6R"
+uri = "file://artifacts/comfortline-website/public/img/trakai/island-castle.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "Funk6O_7li2ngoOSHk_pc"
+uri = "file://artifacts/comfortline-website/public/img/trakai/lake-galve.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "Qj2XU9Td7v2FHan1qcfXR"
+uri = "file://artifacts/comfortline-website/public/img/trakai/old-town.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"

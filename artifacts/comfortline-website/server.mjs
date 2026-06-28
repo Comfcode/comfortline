@@ -87,6 +87,7 @@ const KNOWN = new Set([
   // City transfers
   "/minsk-kaunas-transfer",              "/трансфер-минск-каунас",
   "/minsk-palanga-transfer",             "/трансфер-минск-паланга",
+  "/minsk-trakai-transfer",              "/трансфер-минск-тракай",
   "/minsk-klaipeda-transfer",            "/трансфер-минск-клайпеда",
   "/minsk-druskininkai-transfer",        "/трансфер-минск-друскининкай",
   // Utility (noindex, but still valid routes)
