@@ -47,6 +47,7 @@ const PolandTransferPage           = lazy(() => import("@/pages/poland-transfer-
 const FranceTransferPage           = lazy(() => import("@/pages/france-transfer"));
 const GermanyTransferPage          = lazy(() => import("@/pages/germany-transfer-country"));
 const MinskPalangaTransferPage         = lazy(() => import("@/pages/minsk-palanga-transfer"));
+const MinskGdanskTransferPage          = lazy(() => import("@/pages/minsk-gdansk-transfer"));
 const MinskVilniusTransferPage         = lazy(() => import("@/pages/minsk-vilnius-transfer"));
 const MinskTrakaiTransferPage          = lazy(() => import("@/pages/minsk-trakai-transfer"));
 const MinskKlaipedaTransferPage        = lazy(() => import("@/pages/minsk-klaipeda-transfer"));
@@ -141,6 +142,8 @@ function Router() {
         <Route path="/трансфер-минск-каунас" component={MinskKaunasTransferPage} />
         <Route path="/minsk-palanga-transfer" component={MinskPalangaTransferPage} />
         <Route path="/трансфер-минск-паланга" component={MinskPalangaTransferPage} />
+        <Route path="/minsk-gdansk-transfer" component={MinskGdanskTransferPage} />
+        <Route path="/трансфер-минск-гданьск" component={MinskGdanskTransferPage} />
         <Route path="/minsk-vilnius-transfer" component={MinskVilniusTransferPage} />
         <Route path="/трансфер-минск-вильнюс" component={MinskVilniusTransferPage} />
         <Route path="/minsk-trakai-transfer" component={MinskTrakaiTransferPage} />
