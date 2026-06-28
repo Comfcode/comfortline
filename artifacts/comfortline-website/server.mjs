@@ -85,7 +85,8 @@ const KNOWN = new Set([
   "/france-transfer",              "/трансфер-во-францию",
   "/germany-transfer",             "/трансфер-в-германию",
   // City transfers
-  "/minsk-kaunas-transfer",        "/трансфер-минск-каунас",
+  "/minsk-kaunas-transfer",              "/трансфер-минск-каунас",
+  "/minsk-palanga-transfer",             "/трансфер-минск-паланга",
   // Utility (noindex, but still valid routes)
   "/brandbook",
   "/thank-you",

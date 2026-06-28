@@ -96,6 +96,24 @@ uri = "file://artifacts/comfortline-website/public/img/warsaw/modlin-tower.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "O_xpnvYjPmzef96zOC8WS"
+uri = "file://artifacts/comfortline-website/public/img/palanga/pier.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "IXHmN8nBjGRhmEL55kY36"
+uri = "file://artifacts/comfortline-website/public/img/palanga/amber-museum.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "aODQm8oIDBbiG_zOZPkPK"
+uri = "file://artifacts/comfortline-website/public/img/palanga/beach.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"

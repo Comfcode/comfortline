@@ -46,6 +46,7 @@ const LatviaTransferPage           = lazy(() => import("@/pages/latvia-transfer-
 const PolandTransferPage           = lazy(() => import("@/pages/poland-transfer-country"));
 const FranceTransferPage           = lazy(() => import("@/pages/france-transfer"));
 const GermanyTransferPage          = lazy(() => import("@/pages/germany-transfer-country"));
+const MinskPalangaTransferPage         = lazy(() => import("@/pages/minsk-palanga-transfer"));
 const MinskKaunasTransferPage      = lazy(() => import("@/pages/minsk-kaunas-transfer"));
 
 const queryClient = new QueryClient();
@@ -134,6 +135,8 @@ function Router() {
 
         <Route path="/minsk-kaunas-transfer" component={MinskKaunasTransferPage} />
         <Route path="/трансфер-минск-каунас" component={MinskKaunasTransferPage} />
+        <Route path="/minsk-palanga-transfer" component={MinskPalangaTransferPage} />
+        <Route path="/трансфер-минск-паланга" component={MinskPalangaTransferPage} />
 
         <Route path="/brandbook" component={BrandbookPage} />
         <Route path="/thank-you" component={ThankYouPage} />
