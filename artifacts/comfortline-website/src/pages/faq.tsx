@@ -469,7 +469,7 @@ const enFaq: FaqSection[] = [
       {
         q: "Which routes do you cover?",
         a: "Main ComfortLine routes:",
-        sub: ["Minsk ↔ Warsaw (Chopin & Modlin airports)", "Minsk ↔ Vilnius (VNO airport)", "Minsk ↔ Berlin", "Minsk ↔ Prague", "Across Belarus and to Russia", "Group transfers"],
+        sub: ["Minsk ↔ Warsaw (Chopin & Modlin airports)", "Minsk ↔ Vilnius (VNO airport)", "Minsk ↔ Berlin", "Minsk ↔ Prague", "Across Belarus", "Group transfers"],
       },
       {
         q: "Do you operate within Minsk and Belarus?",

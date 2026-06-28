@@ -30,7 +30,7 @@ const data: RoutePageData = {
       { label: "Встреча", value: "Именная табличка, встреча у трапа (по запросу)" },
       { label: "В салоне", value: "Вода, Wi-Fi, USB-зарядки, климат-контроль" },
       { label: "Языки водителя", value: "Русский, английский, польский (по запросу)" },
-      { label: "Маршруты", value: "Беларусь, ЕС (Польша, Литва, Латвия), Россия" },
+      { label: "Маршруты", value: "Беларусь, ЕС (Польша, Литва, Латвия)" },
     ],
     includedTitle: "Что включено в VIP-тариф",
     included: [
@@ -86,7 +86,7 @@ const data: RoutePageData = {
       { label: "Meet & greet", value: "Name board, meet at the gate (on request)" },
       { label: "In the cabin", value: "Water, Wi-Fi, USB charging, climate control" },
       { label: "Driver languages", value: "Russian, English, Polish (on request)" },
-      { label: "Routes", value: "Belarus, EU (Poland, Lithuania, Latvia), Russia" },
+      { label: "Routes", value: "Belarus, EU (Poland, Lithuania, Latvia)" },
     ],
     includedTitle: "Included in the VIP tariff",
     included: [

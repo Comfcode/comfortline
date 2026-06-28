@@ -13,7 +13,6 @@ const RU_TO_EN: Record<string, string> = {
   "/трансфер-ауди-а6":                   "/audi-a6-transfer",
   "/трансфер-по-минску":                 "/minsk-city-transfer",
   "/трансфер-по-беларуси":              "/belarus-transfer",
-  "/трансфер-в-россию":                  "/russia-transfer",
   "/групповой-трансфер":                 "/group-transfer",
   "/трансфер-варшава":                   "/warsaw-transfer",
   "/трансфер-берлин":                    "/berlin-transfer",

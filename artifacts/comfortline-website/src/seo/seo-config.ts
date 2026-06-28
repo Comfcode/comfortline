@@ -19,7 +19,7 @@ export const BUSINESS = {
     "https://www.instagram.com/transfer_comfortline/",
     "https://m.me/103816619260365",
   ],
-  serviceArea: ["Minsk", "Belarus", "Lithuania", "Poland", "Latvia", "Germany", "Czech Republic", "Russia"],
+  serviceArea: ["Minsk", "Belarus", "Lithuania", "Poland", "Latvia", "Germany", "Czech Republic"],
   geo: { lat: 53.9006, lng: 27.5590 },
   foundingDate: "2018",
   slogan: {

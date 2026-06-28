@@ -24,7 +24,6 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
       { from: "Минск", to: "по городу",    code: "24/7",      meta: "30–60 мин подача",    href: "/трансфер-по-минску" },
       { from: "Минск", to: "по Беларуси",  code: "6 ОБЛ.",    meta: "Брест, Гродно, Витебск…", href: "/трансфер-по-беларуси" },
       { from: "Минск", to: "санаторий",    code: "SPA",       meta: "Нарочь, Браслав, БП…",  href: "/трансфер-в-санаторий" },
-      { from: "Минск", to: "Россия",       code: "BY→RU",     meta: "~370–720 км",         href: "/трансфер-в-россию" },
     ],
     [
       { from: "Группа", to: "любой маршрут", code: "≤8 ЧЕЛ", meta: "Минивэн / Микроавтобус", href: "/групповой-трансфер" },
@@ -50,7 +49,6 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
       { from: "Minsk", to: "city",       code: "24/7",      meta: "30–60 min dispatch",    href: "/minsk-city-transfer" },
       { from: "Minsk", to: "Belarus",    code: "6 REG.",    meta: "Brest, Grodno, Vitebsk…", href: "/belarus-transfer" },
       { from: "Minsk", to: "resort", code: "SPA",       meta: "Naroch, Braslav, BP…",   href: "/sanatorium-transfer" },
-      { from: "Minsk", to: "Russia",     code: "BY→RU",     meta: "~370–720 km",           href: "/russia-transfer" },
     ],
     [
       { from: "Group", to: "any route",        code: "≤8 PAX", meta: "Minivan / Minibus",       href: "/group-transfer" },
@@ -81,7 +79,7 @@ const cardDescs = {
   ],
   en: [
     "Vilnius, Warsaw and beyond — punctual door-to-door airport service.",
-    "Business trips across Belarus and Russia, plus health resort transfers — Naroch, Braslav, Belovezhskaya Pushcha.",
+    "Business trips across Belarus, plus health resort transfers — Naroch, Braslav, Belovezhskaya Pushcha.",
     "Up to 8 passengers. Families and tour groups, premium business service, ski-resort runs.",
     "Lithuania, Latvia, Poland, Germany, France — pick a country then choose your city.",
   ],

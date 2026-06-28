@@ -29,7 +29,6 @@ const VehiclePageModule            = lazy(() => import("@/pages/vehicle-page").t
 const BrandbookPage                = lazy(() => import("@/pages/brandbook"));
 const MinskCityTransferPage        = lazy(() => import("@/pages/minsk-city-transfer"));
 const BelarusTransferPage          = lazy(() => import("@/pages/belarus-transfer"));
-const RussiaTransferPage           = lazy(() => import("@/pages/russia-transfer"));
 const GroupTransferPage            = lazy(() => import("@/pages/group-transfer"));
 const WarsawTransferPage           = lazy(() => import("@/pages/warsaw-transfer"));
 const BerlinTransferPage           = lazy(() => import("@/pages/berlin-transfer"));
@@ -97,8 +96,6 @@ function Router() {
         <Route path="/трансфер-по-минску" component={MinskCityTransferPage} />
         <Route path="/belarus-transfer" component={BelarusTransferPage} />
         <Route path="/трансфер-по-беларуси" component={BelarusTransferPage} />
-        <Route path="/russia-transfer" component={RussiaTransferPage} />
-        <Route path="/трансфер-в-россию" component={RussiaTransferPage} />
 
         <Route path="/group-transfer" component={GroupTransferPage} />
         <Route path="/групповой-трансфер" component={GroupTransferPage} />

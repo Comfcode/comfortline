@@ -64,7 +64,6 @@ const KNOWN = new Set([
   "/riga-transfer",                "/трансфер-рига",
   "/minsk-city-transfer",          "/трансфер-по-минску",
   "/belarus-transfer",             "/трансфер-по-беларуси",
-  "/russia-transfer",              "/трансфер-в-россию",
   "/group-transfer",               "/групповой-трансфер",
   "/sanatorium-transfer",          "/трансфер-в-санаторий",
   "/ski-transfer",                 "/лыжный-трансфер",
