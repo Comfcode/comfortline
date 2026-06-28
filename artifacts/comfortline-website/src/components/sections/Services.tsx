@@ -32,10 +32,11 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
       { from: "Лыжи",   to: "горнолыжный курорт", code: "SKI", meta: "Силичи, Татры, Закопане", href: "/лыжный-трансфер" },
     ],
     [
-      { from: "Минск", to: "Варшава",  code: "WAW", meta: "~550 км · 6–8 ч",   href: "/трансфер-варшава" },
-      { from: "Минск", to: "Рига",     code: "RIX", meta: "~470 км · 5–7 ч",   href: "/трансфер-рига" },
-      { from: "Минск", to: "Берлин",   code: "BER", meta: "~1 150 км · 14–16 ч", href: "/трансфер-берлин" },
-      { from: "Минск", to: "Прага",    code: "PRG", meta: "~1 450 км · 16–18 ч", href: "/трансфер-прага" },
+      { from: "Минск", to: "Литва 🇱🇹",    code: "VNO · KUN", meta: "Вильнюс, Каунас, Клайпеда",  href: "/трансфер-в-литву" },
+      { from: "Минск", to: "Латвия 🇱🇻",   code: "RIX",       meta: "Рига, Юрмала",               href: "/трансфер-в-латвию" },
+      { from: "Минск", to: "Польша 🇵🇱",   code: "WAW · WMI", meta: "Варшава Шопен, Варшава Модлин", href: "/трансфер-в-польшу" },
+      { from: "Минск", to: "Германия 🇩🇪", code: "BER",       meta: "Берлин и другие города",      href: "/трансфер-в-германию" },
+      { from: "Минск", to: "Франция 🇫🇷",  code: "CDG",       meta: "Париж — по запросу",          href: "/трансфер-во-францию" },
     ],
   ],
   en: [
@@ -57,10 +58,11 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
       { from: "Ski",   to: "winter resort",    code: "SKI",   meta: "Silichi, Tatras, Zakopane", href: "/ski-transfer" },
     ],
     [
-      { from: "Minsk", to: "Warsaw", code: "WAW", meta: "~550 km · 6–8 hrs",    href: "/warsaw-transfer" },
-      { from: "Minsk", to: "Riga",   code: "RIX", meta: "~470 km · 5–7 hrs",    href: "/riga-transfer" },
-      { from: "Minsk", to: "Berlin", code: "BER", meta: "~1,150 km · 14–16 hrs", href: "/berlin-transfer" },
-      { from: "Minsk", to: "Prague", code: "PRG", meta: "~1,450 km · 16–18 hrs", href: "/prague-transfer" },
+      { from: "Minsk", to: "Lithuania 🇱🇹",  code: "VNO · KUN", meta: "Vilnius, Kaunas, Klaipėda",     href: "/lithuania-transfer" },
+      { from: "Minsk", to: "Latvia 🇱🇻",    code: "RIX",       meta: "Riga, Jūrmala",                href: "/latvia-transfer" },
+      { from: "Minsk", to: "Poland 🇵🇱",    code: "WAW · WMI", meta: "Warsaw Chopin, Warsaw Modlin",  href: "/poland-transfer" },
+      { from: "Minsk", to: "Germany 🇩🇪",   code: "BER",       meta: "Berlin and more",               href: "/germany-transfer" },
+      { from: "Minsk", to: "France 🇫🇷",    code: "CDG",       meta: "Paris — on request",            href: "/france-transfer" },
     ],
   ],
 };
@@ -75,13 +77,13 @@ const cardDescs = {
     "Вильнюс, Варшава и другие аэропорты — подача точно ко времени вылета.",
     "Деловые поездки, межгород по Беларуси, санатории и здравницы — Нарочь, Браслав, Беловежская Пуща.",
     "До 8 пассажиров. Семьи и тур-группы, премиум-сервис для бизнеса, лыжные поездки на курорты.",
-    "Варшава, Рига, Берлин, Прага и другие города — прямой трансфер через границу.",
+    "Литва, Латвия, Польша, Германия, Франция — выберите страну и направление.",
   ],
   en: [
     "Vilnius, Warsaw and beyond — punctual door-to-door airport service.",
     "Business trips across Belarus and Russia, plus health resort transfers — Naroch, Braslav, Belovezhskaya Pushcha.",
     "Up to 8 passengers. Families and tour groups, premium business service, ski-resort runs.",
-    "Warsaw, Riga, Berlin, Prague and beyond — direct transfer across the border.",
+    "Lithuania, Latvia, Poland, Germany, France — pick a country then choose your city.",
   ],
 };
 
