@@ -41,6 +41,13 @@ const VipTransferPage              = lazy(() => import("@/pages/vip-transfer"));
 const MercedesVClassPage           = lazy(() => import("@/pages/mercedes-v-class"));
 const ThankYouPage                 = lazy(() => import("@/pages/thank-you"));
 const NotFound                     = lazy(() => import("@/pages/not-found"));
+const EuropeTransferPage           = lazy(() => import("@/pages/europe-transfer"));
+const LithuaniaTransferPage        = lazy(() => import("@/pages/lithuania-transfer"));
+const LatviaTransferPage           = lazy(() => import("@/pages/latvia-transfer-country"));
+const PolandTransferPage           = lazy(() => import("@/pages/poland-transfer-country"));
+const FranceTransferPage           = lazy(() => import("@/pages/france-transfer"));
+const GermanyTransferPage          = lazy(() => import("@/pages/germany-transfer-country"));
+const MinskKaunasTransferPage      = lazy(() => import("@/pages/minsk-kaunas-transfer"));
 
 const queryClient = new QueryClient();
 
@@ -113,6 +120,23 @@ function Router() {
         <Route path="/вип-трансфер" component={VipTransferPage} />
         <Route path="/mercedes-v-class-transfer" component={MercedesVClassPage} />
         <Route path="/трансфер-мерседес-в-класс" component={MercedesVClassPage} />
+
+        <Route path="/europe-transfer" component={EuropeTransferPage} />
+        <Route path="/трансфер-в-европу" component={EuropeTransferPage} />
+
+        <Route path="/lithuania-transfer" component={LithuaniaTransferPage} />
+        <Route path="/трансфер-в-литву" component={LithuaniaTransferPage} />
+        <Route path="/latvia-transfer" component={LatviaTransferPage} />
+        <Route path="/трансфер-в-латвию" component={LatviaTransferPage} />
+        <Route path="/poland-transfer" component={PolandTransferPage} />
+        <Route path="/трансфер-в-польшу" component={PolandTransferPage} />
+        <Route path="/france-transfer" component={FranceTransferPage} />
+        <Route path="/трансфер-во-францию" component={FranceTransferPage} />
+        <Route path="/germany-transfer" component={GermanyTransferPage} />
+        <Route path="/трансфер-в-германию" component={GermanyTransferPage} />
+
+        <Route path="/minsk-kaunas-transfer" component={MinskKaunasTransferPage} />
+        <Route path="/трансфер-минск-каунас" component={MinskKaunasTransferPage} />
 
         <Route path="/brandbook" component={BrandbookPage} />
         <Route path="/thank-you" component={ThankYouPage} />

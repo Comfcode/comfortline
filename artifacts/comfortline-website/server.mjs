@@ -78,6 +78,15 @@ const KNOWN = new Set([
   "/fiat-scudo-transfer",          "/трансфер-фиат-скудо",
   // Blog index
   "/blog",                         "/блог",
+  // Europe hub + country pages
+  "/europe-transfer",              "/трансфер-в-европу",
+  "/lithuania-transfer",           "/трансфер-в-литву",
+  "/latvia-transfer",              "/трансфер-в-латвию",
+  "/poland-transfer",              "/трансфер-в-польшу",
+  "/france-transfer",              "/трансфер-во-францию",
+  "/germany-transfer",             "/трансфер-в-германию",
+  // City transfers
+  "/minsk-kaunas-transfer",        "/трансфер-минск-каунас",
   // Utility (noindex, but still valid routes)
   "/brandbook",
   "/thank-you",

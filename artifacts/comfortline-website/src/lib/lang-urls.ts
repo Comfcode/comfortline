@@ -23,6 +23,13 @@ const RU_TO_EN: Record<string, string> = {
   "/лыжный-трансфер":                    "/ski-transfer",
   "/вип-трансфер":                       "/vip-transfer",
   "/трансфер-мерседес-в-класс":          "/mercedes-v-class-transfer",
+  "/трансфер-в-европу":                  "/europe-transfer",
+  "/трансфер-в-литву":                   "/lithuania-transfer",
+  "/трансфер-в-латвию":                  "/latvia-transfer",
+  "/трансфер-в-польшу":                  "/poland-transfer",
+  "/трансфер-во-францию":               "/france-transfer",
+  "/трансфер-в-германию":               "/germany-transfer",
+  "/трансфер-минск-каунас":              "/minsk-kaunas-transfer",
   "/блог":                               "/blog",
 };
 
