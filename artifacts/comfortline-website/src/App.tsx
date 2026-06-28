@@ -22,6 +22,7 @@ const MinskVilniusAirportPage      = lazy(() => import("@/pages/minsk-vilnius-ai
 const MinskWarsawAirportPage       = lazy(() => import("@/pages/minsk-warsaw-airport"));
 const MinskWarsawModlinAirportPage = lazy(() => import("@/pages/minsk-warsaw-modlin-airport"));
 const MinskKaunasAirportPage       = lazy(() => import("@/pages/minsk-kaunas-airport"));
+const MinskVentspilsTransferPage   = lazy(() => import("@/pages/minsk-ventspils-transfer"));
 const MinskLiepajaTransferPage     = lazy(() => import("@/pages/minsk-liepaja-transfer"));
 const MinskJurmalaTransferPage     = lazy(() => import("@/pages/minsk-jurmala-transfer"));
 const MinskDaugavpilsTransferPage  = lazy(() => import("@/pages/minsk-daugavpils-transfer"));
@@ -87,6 +88,8 @@ function Router() {
         <Route path="/трансфер-минск-варшава-модлин" component={MinskWarsawModlinAirportPage} />
         <Route path="/minsk-kaunas-airport" component={MinskKaunasAirportPage} />
         <Route path="/трансфер-минск-каунас-аэропорт" component={MinskKaunasAirportPage} />
+        <Route path="/minsk-ventspils-transfer" component={MinskVentspilsTransferPage} />
+        <Route path="/трансфер-минск-вентспилс" component={MinskVentspilsTransferPage} />
         <Route path="/minsk-liepaja-transfer" component={MinskLiepajaTransferPage} />
         <Route path="/трансфер-минск-лиепая" component={MinskLiepajaTransferPage} />
         <Route path="/minsk-jurmala-transfer" component={MinskJurmalaTransferPage} />

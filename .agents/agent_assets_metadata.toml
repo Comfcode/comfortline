@@ -348,6 +348,24 @@ uri = "file://artifacts/comfortline-website/public/img/liepaja/old-town.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "B09n9bCXOkwn1-NQ4bW9V"
+uri = "file://artifacts/comfortline-website/public/img/ventspils/beach.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "ATkPaCkF8Qh2aSCucAF-4"
+uri = "file://artifacts/comfortline-website/public/img/ventspils/castle.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "HJr8LB1r2yOjRYL_ad1E9"
+uri = "file://artifacts/comfortline-website/public/img/ventspils/waterfront.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "Ry-K_H6xv_uw-bCtwdzNy"
 uri = "file://artifacts/mockup-sandbox/public/images/concierge-bg.jpg"
