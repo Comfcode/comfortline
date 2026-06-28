@@ -14,9 +14,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Каунас — достопримечательности",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kaunas_Town_Hall.jpg/1280px-Kaunas_Town_Hall.jpg", caption: "Каунасская ратуша («Белый лебедь»)" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/KaunasOldTown.jpg/1280px-KaunasOldTown.jpg", caption: "Старый город Каунаса" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Laisves_aleja_in_Kaunas.JPG/1280px-Laisves_aleja_in_Kaunas.JPG", caption: "Аллея свободы (Laisvės alėja)" },
+      { src: "/img/kaunas/town-hall.png", caption: "Каунасская ратуша («Белый лебедь»)" },
+      { src: "/img/kaunas/old-town.png", caption: "Старый город Каунаса" },
+      { src: "/img/kaunas/laisves-aleja.png", caption: "Аллея свободы (Laisvės alėja)" },
     ],
     howTitle: "Как проходит поездка",
     steps: [
@@ -77,9 +77,9 @@ const data: RoutePageData = {
     ],
     photosTitle: "Kaunas — Highlights",
     photos: [
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kaunas_Town_Hall.jpg/1280px-Kaunas_Town_Hall.jpg", caption: "Kaunas Town Hall (\"White Swan\")" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/KaunasOldTown.jpg/1280px-KaunasOldTown.jpg", caption: "Kaunas Old Town" },
-      { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Laisves_aleja_in_Kaunas.JPG/1280px-Laisves_aleja_in_Kaunas.JPG", caption: "Laisvės alėja (Freedom Avenue)" },
+      { src: "/img/kaunas/town-hall.png", caption: "Kaunas Town Hall (\"White Swan\")" },
+      { src: "/img/kaunas/old-town.png", caption: "Kaunas Old Town" },
+      { src: "/img/kaunas/laisves-aleja.png", caption: "Laisvės alėja (Freedom Avenue)" },
     ],
     howTitle: "How the transfer works",
     steps: [
