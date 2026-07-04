@@ -10,7 +10,8 @@ User-agent: Yandex
 Allow: /
 Disallow: /api/
 Disallow: /brandbook
-Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid /
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term
+Clean-param: yclid&gclid&fbclid
 # Tell Yandex the canonical mirror is HTTPS (resolves "main address not using HTTPS" warning)
 Host: https://comfortline.by
 
