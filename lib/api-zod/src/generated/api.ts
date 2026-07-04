@@ -14,3 +14,25 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * Returns live vehicle queue counts per Belarusian border checkpoint, sourced from mon.declarant.by.
+ * @summary Get live border checkpoint queue status
+ */
+export const GetBorderQueueResponse = zod.object({
+  updatedAt: zod.string().nullish(),
+  fetchedAt: zod.string(),
+  checkpoints: zod.array(
+    zod.object({
+      name: zod.string(),
+      cars: zod.number(),
+      trucks: zod.number(),
+      buses: zod.number(),
+      moto: zod.number(),
+      total: zod.number(),
+      priority: zod.number(),
+    }),
+  ),
+  stale: zod.boolean(),
+  error: zod.boolean(),
+});

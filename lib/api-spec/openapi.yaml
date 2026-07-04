@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: borderQueue
+    description: Live Belarusian border checkpoint queue monitoring
 paths:
   /healthz:
     get:
@@ -24,6 +26,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /border-queue:
+    get:
+      operationId: getBorderQueue
+      tags: [borderQueue]
+      summary: Get live border checkpoint queue status
+      description: Returns live vehicle queue counts per Belarusian border checkpoint, sourced from mon.declarant.by.
+      responses:
+        "200":
+          description: Border queue status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BorderQueueStatus"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +48,38 @@ components:
           type: string
       required:
         - status
+    BorderQueueCheckpoint:
+      type: object
+      required: [name, cars, trucks, buses, moto, total, priority]
+      properties:
+        name:
+          type: string
+        cars:
+          type: integer
+        trucks:
+          type: integer
+        buses:
+          type: integer
+        moto:
+          type: integer
+        total:
+          type: integer
+        priority:
+          type: integer
+    BorderQueueStatus:
+      type: object
+      required: [checkpoints, fetchedAt, stale, error]
+      properties:
+        updatedAt:
+          type: ["string", "null"]
+        fetchedAt:
+          type: string
+        checkpoints:
+          type: array
+          items:
+            $ref: "#/components/schemas/BorderQueueCheckpoint"
+        stale:
+          type: boolean
+        error:
+          type: boolean
 

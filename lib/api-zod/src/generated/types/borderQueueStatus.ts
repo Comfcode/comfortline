@@ -5,19 +5,7 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-export interface HealthStatus {
-  status: string;
-}
-
-export interface BorderQueueCheckpoint {
-  name: string;
-  cars: number;
-  trucks: number;
-  buses: number;
-  moto: number;
-  total: number;
-  priority: number;
-}
+import type { BorderQueueCheckpoint } from "./borderQueueCheckpoint";
 
 export interface BorderQueueStatus {
   /** @nullable */

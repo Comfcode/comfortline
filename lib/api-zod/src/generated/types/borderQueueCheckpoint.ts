@@ -5,9 +5,6 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-export interface HealthStatus {
-  status: string;
-}
 
 export interface BorderQueueCheckpoint {
   name: string;
@@ -17,13 +14,4 @@ export interface BorderQueueCheckpoint {
   moto: number;
   total: number;
   priority: number;
-}
-
-export interface BorderQueueStatus {
-  /** @nullable */
-  updatedAt?: string | null;
-  fetchedAt: string;
-  checkpoints: BorderQueueCheckpoint[];
-  stale: boolean;
-  error: boolean;
 }

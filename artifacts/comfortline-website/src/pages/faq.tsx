@@ -19,11 +19,13 @@ import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { Seo } from "@/seo/Seo";
 import { faqJsonLd } from "@/seo/jsonld";
+import { BorderQueueWidget } from "@/components/sections/BorderQueueWidget";
 
 interface FaqItem {
   q: string;
   a: string;
   sub?: string[];
+  liveQueue?: boolean;
 }
 
 interface FaqSection {
@@ -174,6 +176,7 @@ const ruFaq: FaqSection[] = [
         sub: [
           "Лучший источник живой информации об очередях на границе в интернете — официальный сервис mon.declarant.by/#/zone (электронная очередь в зонах ожидания). Если сайт не открывается — попробуйте зайти через VPN.",
         ],
+        liveQueue: true,
       },
       {
         q: "Правда, что из Литвы и Латвии в Беларусь нельзя вывозить больше 60 евро наличными?",
@@ -412,6 +415,7 @@ const enFaq: FaqSection[] = [
         sub: [
           "The best live border-queue information available online is the official mon.declarant.by/#/zone service (electronic queue at waiting zones). If the site doesn't load, try opening it with a VPN.",
         ],
+        liveQueue: true,
       },
       {
         q: "Is it true that you can't take more than €60 in cash from Lithuania or Latvia to Belarus?",
@@ -560,6 +564,7 @@ function AccordionItem({ item, index, isOpen, onToggle }: {
                   ))}
                 </ul>
               )}
+              {item.liveQueue && <BorderQueueWidget />}
             </div>
           </motion.div>
         )}

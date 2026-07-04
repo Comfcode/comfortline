@@ -7,6 +7,7 @@ import { useLang } from "@/context/language-context";
 import NotFound from "@/pages/not-found";
 import { Seo } from "@/seo/Seo";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
+import { BorderQueueWidget } from "@/components/sections/BorderQueueWidget";
 import {
   ARTICLES,
   BLOG_BASE_RU,
@@ -115,6 +116,8 @@ function renderBlock(block: Block, idx: number) {
           </span>
         </a>
       );
+    case "liveQueue":
+      return <BorderQueueWidget key={idx} />;
   }
 }
 
