@@ -107,11 +107,11 @@ export function NavBorderQueueBadge({ variant }: { variant: "desktop" | "mobile"
               transition={{ duration: 0.15 }}
               className={
                 variant === "desktop"
-                  ? "absolute right-0 top-full mt-3 w-[min(92vw,420px)] z-50 max-h-[75vh] overflow-y-auto rounded-2xl shadow-2xl bg-background border border-border"
-                  : "fixed left-1/2 -translate-x-1/2 top-16 w-[min(92vw,420px)] z-50 max-h-[75vh] overflow-y-auto rounded-2xl shadow-2xl bg-background border border-border"
+                  ? "absolute right-0 top-full mt-3 w-[min(95vw,560px)] z-50 max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl bg-background border border-border"
+                  : "fixed left-1/2 -translate-x-1/2 top-16 w-[min(96vw,540px)] z-50 max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl bg-background border border-border"
               }
             >
-              <BorderQueueWidget className="m-0 rounded-none border-0" />
+              <BorderQueueWidget className="m-0 rounded-none border-0" size="lg" />
             </motion.div>
           </>
         )}

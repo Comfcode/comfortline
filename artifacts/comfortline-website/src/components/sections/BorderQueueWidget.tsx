@@ -32,9 +32,15 @@ function loadLabel(total: number, isRu: boolean) {
   return { text: isRu ? "Загружено" : "Heavy", className: "text-red-400" };
 }
 
-export function BorderQueueWidget({ className = "my-6" }: { className?: string } = {}) {
+type BorderQueueWidgetProps = {
+  className?: string;
+  size?: "default" | "lg";
+};
+
+export function BorderQueueWidget({ className = "my-6", size = "default" }: BorderQueueWidgetProps = {}) {
   const { lang } = useLang();
   const isRu = lang === "ru";
+  const isLg = size === "lg";
 
   const { data, isLoading, isError, isFetching, refetch } = useGetBorderQueue({
     query: {
@@ -48,13 +54,13 @@ export function BorderQueueWidget({ className = "my-6" }: { className?: string }
   const showError = (isError || data?.error) && checkpoints.length === 0;
 
   return (
-    <div className={`rounded-2xl border border-primary/30 bg-primary/5 p-5 md:p-6 ${className}`}>
+    <div className={`rounded-2xl border border-primary/30 bg-primary/5 ${isLg ? "p-6 md:p-7" : "p-5 md:p-6"} ${className}`}>
       <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
         <div>
-          <h3 className="font-bold text-foreground text-sm md:text-base">
+          <h3 className={`font-bold text-foreground ${isLg ? "text-base md:text-lg" : "text-sm md:text-base"}`}>
             {isRu ? "Живая очередь на границе" : "Live border queue"}
           </h3>
-          <p className="text-xs text-muted-foreground mt-0.5">
+          <p className={`text-muted-foreground mt-0.5 ${isLg ? "text-sm" : "text-xs"}`}>
             {isRu
               ? "Данные с mon.declarant.by, автообновление каждые 3 минуты"
               : "Data from mon.declarant.by, auto-refreshes every 3 minutes"}
@@ -64,9 +70,9 @@ export function BorderQueueWidget({ className = "my-6" }: { className?: string }
           type="button"
           onClick={() => refetch()}
           disabled={isFetching}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors disabled:opacity-50 shrink-0"
+          className={`inline-flex items-center gap-1.5 font-semibold text-primary hover:text-primary/80 transition-colors disabled:opacity-50 shrink-0 ${isLg ? "text-sm" : "text-xs"}`}
         >
-          <RefreshCw className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`} />
+          <RefreshCw className={`${isLg ? "h-4 w-4" : "h-3.5 w-3.5"} ${isFetching ? "animate-spin" : ""}`} />
           {isRu ? "Обновить" : "Refresh"}
         </button>
       </div>
@@ -91,22 +97,22 @@ export function BorderQueueWidget({ className = "my-6" }: { className?: string }
       {!isLoading && !showError && checkpoints.length > 0 && (
         <>
           <div className="overflow-x-auto -mx-1">
-            <table className="w-full text-xs md:text-sm min-w-[440px]">
+            <table className={`w-full ${isLg ? "text-sm md:text-base min-w-[480px]" : "text-xs md:text-sm min-w-[440px]"}`}>
               <thead>
                 <tr className="text-muted-foreground border-b border-border">
-                  <th className="text-left py-2 px-1 font-semibold">
+                  <th className={`text-left font-semibold ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>
                     {isRu ? "КПП" : "Checkpoint"}
                   </th>
-                  <th className="text-center py-2 px-1 font-semibold">
-                    <Car className="h-3.5 w-3.5 inline" />
+                  <th className={`text-center font-semibold ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>
+                    <Car className={isLg ? "h-4 w-4 inline" : "h-3.5 w-3.5 inline"} />
                   </th>
-                  <th className="text-center py-2 px-1 font-semibold">
-                    <Truck className="h-3.5 w-3.5 inline" />
+                  <th className={`text-center font-semibold ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>
+                    <Truck className={isLg ? "h-4 w-4 inline" : "h-3.5 w-3.5 inline"} />
                   </th>
-                  <th className="text-center py-2 px-1 font-semibold">
+                  <th className={`text-center font-semibold ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>
                     {isRu ? "Всего" : "Total"}
                   </th>
-                  <th className="text-right py-2 px-1 font-semibold">
+                  <th className={`text-right font-semibold ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>
                     {isRu ? "Статус" : "Status"}
                   </th>
                 </tr>
@@ -116,15 +122,15 @@ export function BorderQueueWidget({ className = "my-6" }: { className?: string }
                   const load = loadLabel(cp.total, isRu);
                   return (
                     <tr key={cp.name} className="border-b border-border/50 last:border-0">
-                      <td className="py-2 px-1 text-foreground font-medium">
+                      <td className={`text-foreground font-medium ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>
                         {displayName(cp.name, isRu)}
                       </td>
-                      <td className="py-2 px-1 text-center text-foreground/85">{cp.cars}</td>
-                      <td className="py-2 px-1 text-center text-foreground/85">{cp.trucks}</td>
-                      <td className="py-2 px-1 text-center text-foreground/85 font-semibold">
+                      <td className={`text-center text-foreground/85 ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>{cp.cars}</td>
+                      <td className={`text-center text-foreground/85 ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>{cp.trucks}</td>
+                      <td className={`text-center text-foreground/85 font-semibold ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>
                         {cp.total}
                       </td>
-                      <td className={`py-2 px-1 text-right font-semibold ${load.className}`}>
+                      <td className={`text-right font-semibold ${load.className} ${isLg ? "py-2.5 px-2" : "py-2 px-1"}`}>
                         {load.text}
                       </td>
                     </tr>
@@ -135,7 +141,7 @@ export function BorderQueueWidget({ className = "my-6" }: { className?: string }
           </div>
 
           {data?.updatedAt && (
-            <p className="text-xs text-muted-foreground mt-3">
+            <p className={`text-muted-foreground mt-3 ${isLg ? "text-sm" : "text-xs"}`}>
               {isRu ? "По состоянию на: " : "As of: "}
               {data.updatedAt}
               {data.stale && (isRu ? " (кэш)" : " (cached)")}
