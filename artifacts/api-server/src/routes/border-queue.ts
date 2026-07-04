@@ -4,6 +4,7 @@ import type { BorderQueueCheckpoint, BorderQueueStatus } from "@workspace/api-zo
 const router: IRouter = Router();
 
 const CACHE_TTL_MS = 5 * 60 * 1000;
+const FORCE_REFRESH_COOLDOWN_MS = 20 * 1000;
 const JINA_READER_URL = "https://r.jina.ai/https://mon.declarant.by/%23/zone";
 
 type CachedQueue = {
@@ -88,8 +89,11 @@ async function fetchQueue(
 
 router.get("/border-queue", async (req, res): Promise<void> => {
   const now = Date.now();
+  const forceRequested = req.query.force === "true" || req.query.force === "1";
+  const cooldownElapsed = !cache || now - cache.fetchedAt >= FORCE_REFRESH_COOLDOWN_MS;
+  const force = forceRequested && cooldownElapsed;
 
-  if (cache && now - cache.fetchedAt < CACHE_TTL_MS) {
+  if (!force && cache && now - cache.fetchedAt < CACHE_TTL_MS) {
     const body: BorderQueueStatus = {
       updatedAt: cache.updatedAt,
       fetchedAt: new Date(cache.fetchedAt).toISOString(),

@@ -1,5 +1,7 @@
+import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { RefreshCw, AlertTriangle, Car, Truck } from "lucide-react";
-import { useGetBorderQueue, getGetBorderQueueQueryKey } from "@workspace/api-client-react";
+import { useGetBorderQueue, getGetBorderQueueQueryKey, getBorderQueue } from "@workspace/api-client-react";
 import { useLang } from "@/context/language-context";
 
 const REFETCH_INTERVAL_MS = 3 * 60 * 1000;
@@ -42,13 +44,28 @@ export function BorderQueueWidget({ className = "my-6", size = "default" }: Bord
   const isRu = lang === "ru";
   const isLg = size === "lg";
 
-  const { data, isLoading, isError, isFetching, refetch } = useGetBorderQueue({
+  const queryClient = useQueryClient();
+  const [isForcing, setIsForcing] = useState(false);
+
+  const { data, isLoading, isError, isFetching, refetch } = useGetBorderQueue(undefined, {
     query: {
       queryKey: getGetBorderQueueQueryKey(),
       refetchInterval: REFETCH_INTERVAL_MS,
       staleTime: 60_000,
     },
   });
+
+  const handleRefresh = async () => {
+    setIsForcing(true);
+    try {
+      const fresh = await getBorderQueue({ force: true });
+      queryClient.setQueryData(getGetBorderQueueQueryKey(), fresh);
+    } catch {
+      await refetch();
+    } finally {
+      setIsForcing(false);
+    }
+  };
 
   const checkpoints = data?.checkpoints ?? [];
   const showError = (isError || data?.error) && checkpoints.length === 0;
@@ -68,11 +85,11 @@ export function BorderQueueWidget({ className = "my-6", size = "default" }: Bord
         </div>
         <button
           type="button"
-          onClick={() => refetch()}
-          disabled={isFetching}
+          onClick={() => void handleRefresh()}
+          disabled={isFetching || isForcing}
           className={`inline-flex items-center gap-1.5 font-semibold text-primary hover:text-primary/80 transition-colors disabled:opacity-50 shrink-0 ${isLg ? "text-sm" : "text-xs"}`}
         >
-          <RefreshCw className={`${isLg ? "h-4 w-4" : "h-3.5 w-3.5"} ${isFetching ? "animate-spin" : ""}`} />
+          <RefreshCw className={`${isLg ? "h-4 w-4" : "h-3.5 w-3.5"} ${isFetching || isForcing ? "animate-spin" : ""}`} />
           {isRu ? "Обновить" : "Refresh"}
         </button>
       </div>

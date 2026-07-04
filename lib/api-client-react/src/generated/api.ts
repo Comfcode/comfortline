@@ -13,7 +13,11 @@ import type {
   UseQueryResult,
 } from "@tanstack/react-query";
 
-import type { BorderQueueStatus, HealthStatus } from "./api.schemas";
+import type {
+  BorderQueueStatus,
+  GetBorderQueueParams,
+  HealthStatus,
+} from "./api.schemas";
 
 import { customFetch } from "../custom-fetch";
 import type { ErrorType } from "../custom-fetch";
@@ -104,41 +108,57 @@ export function useHealthCheck<
  * Returns live vehicle queue counts per Belarusian border checkpoint, sourced from mon.declarant.by.
  * @summary Get live border checkpoint queue status
  */
-export const getGetBorderQueueUrl = () => {
-  return `/api/border-queue`;
+export const getGetBorderQueueUrl = (params?: GetBorderQueueParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/border-queue?${stringifiedParams}`
+    : `/api/border-queue`;
 };
 
 export const getBorderQueue = async (
+  params?: GetBorderQueueParams,
   options?: RequestInit,
 ): Promise<BorderQueueStatus> => {
-  return customFetch<BorderQueueStatus>(getGetBorderQueueUrl(), {
+  return customFetch<BorderQueueStatus>(getGetBorderQueueUrl(params), {
     ...options,
     method: "GET",
   });
 };
 
-export const getGetBorderQueueQueryKey = () => {
-  return [`/api/border-queue`] as const;
+export const getGetBorderQueueQueryKey = (params?: GetBorderQueueParams) => {
+  return [`/api/border-queue`, ...(params ? [params] : [])] as const;
 };
 
 export const getGetBorderQueueQueryOptions = <
   TData = Awaited<ReturnType<typeof getBorderQueue>>,
   TError = ErrorType<unknown>,
->(options?: {
-  query?: UseQueryOptions<
-    Awaited<ReturnType<typeof getBorderQueue>>,
-    TError,
-    TData
-  >;
-  request?: SecondParameter<typeof customFetch>;
-}) => {
+>(
+  params?: GetBorderQueueParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getBorderQueue>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
   const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey = queryOptions?.queryKey ?? getGetBorderQueueQueryKey();
+  const queryKey = queryOptions?.queryKey ?? getGetBorderQueueQueryKey(params);
 
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getBorderQueue>>> = ({
     signal,
-  }) => getBorderQueue({ signal, ...requestOptions });
+  }) => getBorderQueue(params, { signal, ...requestOptions });
 
   return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
     Awaited<ReturnType<typeof getBorderQueue>>,
@@ -159,15 +179,18 @@ export type GetBorderQueueQueryError = ErrorType<unknown>;
 export function useGetBorderQueue<
   TData = Awaited<ReturnType<typeof getBorderQueue>>,
   TError = ErrorType<unknown>,
->(options?: {
-  query?: UseQueryOptions<
-    Awaited<ReturnType<typeof getBorderQueue>>,
-    TError,
-    TData
-  >;
-  request?: SecondParameter<typeof customFetch>;
-}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
-  const queryOptions = getGetBorderQueueQueryOptions(options);
+>(
+  params?: GetBorderQueueParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getBorderQueue>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetBorderQueueQueryOptions(params, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;

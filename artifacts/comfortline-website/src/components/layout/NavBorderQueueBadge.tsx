@@ -32,7 +32,7 @@ export function NavBorderQueueBadge({ variant }: { variant: "desktop" | "mobile"
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const { data } = useGetBorderQueue({
+  const { data } = useGetBorderQueue(undefined, {
     query: {
       queryKey: getGetBorderQueueQueryKey(),
       refetchInterval: REFETCH_INTERVAL_MS,

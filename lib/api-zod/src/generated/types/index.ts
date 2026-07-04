@@ -8,4 +8,5 @@
 
 export * from "./borderQueueCheckpoint";
 export * from "./borderQueueStatus";
+export * from "./getBorderQueueParams";
 export * from "./healthStatus";

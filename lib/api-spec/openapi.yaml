@@ -32,6 +32,13 @@ paths:
       tags: [borderQueue]
       summary: Get live border checkpoint queue status
       description: Returns live vehicle queue counts per Belarusian border checkpoint, sourced from mon.declarant.by.
+      parameters:
+        - name: force
+          in: query
+          required: false
+          description: When true, bypasses the server-side cache and fetches fresh data (subject to a short cooldown).
+          schema:
+            type: boolean
       responses:
         "200":
           description: Border queue status

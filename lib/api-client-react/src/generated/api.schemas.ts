@@ -27,3 +27,10 @@ export interface BorderQueueStatus {
   stale: boolean;
   error: boolean;
 }
+
+export type GetBorderQueueParams = {
+  /**
+   * When true, bypasses the server-side cache and fetches fresh data (subject to a short cooldown).
+   */
+  force?: boolean;
+};
