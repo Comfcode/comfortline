@@ -19,7 +19,10 @@ Host: https://comfortline.by
 User-agent: YandexImages
 Allow: /
 
-# Bing — explicit allow + IndexNow already wired (key file at /c8f3d2a1b94e47f6ae7c1d0b5a8e3c92.txt)
+# Bing — explicit allow + IndexNow already wired
+# IndexNow key files (used by scripts/indexnow.mjs on every deploy):
+#   /c8f3d2a1b94e47f6ae7c1d0b5a8e3c92.txt (Bing)
+#   /6b6701907fdc44cfbf707eda79e5fd70.txt (Yandex Webmaster)
 User-agent: bingbot
 Allow: /
 Disallow: /api/
