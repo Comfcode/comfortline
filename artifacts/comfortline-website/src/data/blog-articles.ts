@@ -86,6 +86,12 @@ export const ARTICLES: Article[] = [
         text:
           "Самое непредсказуемое в маршруте Минск–Вильнюс — именно граница. По данным наших водителей за 2025–2026 год, в будние дни утром и днём время прохождения Каменного Лога — 2,5–4 часа. По пятницам вечером и в воскресенье днём — может вырасти до 6–8 часов. Бенякони обычно медленнее на 1–1,5 часа, но иногда наоборот — зависит от смены.",
       },
+      {
+        type: "link",
+        href: "https://mon.declarant.by/#/zone",
+        label: "Электронная очередь в зонах ожидания — mon.declarant.by",
+        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в системе электронной очереди на белорусских КПП, включая Каменный Лог и Бенякони, в реальном времени.",
+      },
       { type: "h3", text: "Лайфхаки от наших водителей" },
       {
         type: "ul",
@@ -148,6 +154,12 @@ export const ARTICLES: Article[] = [
       {
         type: "p",
         text: "The border is the most unpredictable part of the Minsk–Vilnius journey. Based on our drivers' data for 2025–2026, on weekdays in the morning and afternoon Kamenny Log takes 2.5–4 hours. On Friday evenings and Sunday afternoons it can stretch to 6–8 hours. Benyakoni is typically 1–1.5 hours slower, though shifts occasionally change this.",
+      },
+      {
+        type: "link",
+        href: "https://mon.declarant.by/#/zone",
+        label: "Electronic queue at waiting zones — mon.declarant.by",
+        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic waiting-zone queue at border checkpoints, including Kamenny Log and Benyakoni, updated in real time.",
       },
       { type: "h3", text: "Driver Tips" },
       {
@@ -730,6 +742,12 @@ export const ARTICLES: Article[] = [
         ],
       },
       {
+        type: "link",
+        href: "https://mon.declarant.by/#/zone",
+        label: "Электронная очередь в зонах ожидания — mon.declarant.by",
+        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в электронной очереди на КПП, обновляется в реальном времени.",
+      },
+      {
         type: "callout",
         text:
           "В ComfortLine водитель сам решает по дороге, какой КПП быстрее. Это часть фиксированной цены — никаких доплат за смену маршрута.",
@@ -780,6 +798,12 @@ export const ARTICLES: Article[] = [
           "Check VSAT (Lithuanian side) — Lithuanian processing sometimes takes longer than Belarusian.",
           "Trust your driver — our queue data is updated every 30 minutes.",
         ],
+      },
+      {
+        type: "link",
+        href: "https://mon.declarant.by/#/zone",
+        label: "Electronic queue at waiting zones — mon.declarant.by",
+        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, updated in real time.",
       },
       {
         type: "callout",
@@ -1193,6 +1217,12 @@ export const ARTICLES: Article[] = [
         ],
       },
       {
+        type: "link",
+        href: "https://mon.declarant.by/#/zone",
+        label: "Электронная очередь в зонах ожидания — mon.declarant.by",
+        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в электронной очереди на белорусских КПП, включая Брест и Домачево, обновляется в реальном времени.",
+      },
+      {
         type: "callout",
         text: "Водители ComfortLine отслеживают ситуацию на обоих переходах онлайн. При необходимости — оперативно перестраиваем маршрут на Домачево, чтобы вы не теряли лишние часы.",
       },
@@ -1252,6 +1282,12 @@ export const ARTICLES: Article[] = [
           "A1/MTS mobile signal works up to the Belarusian side; beyond that, Polish networks take over.",
           "Bring Polish złoty cash — card terminals exist on the Polish side but sometimes fail.",
         ],
+      },
+      {
+        type: "link",
+        href: "https://mon.declarant.by/#/zone",
+        label: "Electronic queue at waiting zones — mon.declarant.by",
+        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, including Brest and Domachevo, updated in real time.",
       },
       {
         type: "callout",
@@ -2311,6 +2347,12 @@ export const ARTICLES: Article[] = [
           "Уточните у водителя или туроператора актуальную практику проверки на конкретном КПП — она периодически меняется.",
         ],
       },
+      {
+        type: "link",
+        href: "https://mon.declarant.by/#/zone",
+        label: "Электронная очередь в зонах ожидания — mon.declarant.by",
+        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в системе электронной очереди на белорусских КПП, обновляется в реальном времени. Полезно спланировать, в какое время меньше проверок.",
+      },
       { type: "h2", text: "А сколько товаров можно ввезти в Беларусь без пошлины" },
       {
         type: "p",
@@ -2403,6 +2445,12 @@ export const ARTICLES: Article[] = [
           "For amounts above €10,000 equivalent (in any currency), file a declaration and keep proof of the funds' origin.",
           "Ask your driver or tour operator about current enforcement practice at the specific checkpoint — it changes periodically.",
         ],
+      },
+      {
+        type: "link",
+        href: "https://mon.declarant.by/#/zone",
+        label: "Electronic queue at waiting zones — mon.declarant.by",
+        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, updated in real time. Useful for timing your trip around fewer checks.",
       },
       { type: "h2", text: "How much can you bring into Belarus duty-free" },
       {

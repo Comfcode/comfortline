@@ -171,6 +171,9 @@ const ruFaq: FaqSection[] = [
       {
         q: "Что делать, если очередь стоит больше 10 часов?",
         a: "Мы отслеживаем загрузку всех КПП в реальном времени и можем перенаправить машину на менее загруженный переход (например, с Бреста на Гродно или на латвийское направление). На случай длинного ожидания держите при себе паспорт, телефон и тёплые вещи — выходить из машины можно, но далеко не уходите.",
+        sub: [
+          "Лучший источник живой информации об очередях на границе в интернете — официальный сервис mon.declarant.by/#/zone (электронная очередь в зонах ожидания)",
+        ],
       },
       {
         q: "Правда, что из Литвы и Латвии в Беларусь нельзя вывозить больше 60 евро наличными?",
@@ -406,6 +409,9 @@ const enFaq: FaqSection[] = [
       {
         q: "What if the queue is over 10 hours?",
         a: "We track real-time loads at every checkpoint and can reroute the car to a quieter crossing (e.g. switch from Brest to Grodno or to a Latvian crossing). For long waits keep your passport, phone and warm clothes with you — you can step out of the car but don't go far.",
+        sub: [
+          "The best live border-queue information available online is the official mon.declarant.by/#/zone service (electronic queue at waiting zones)",
+        ],
       },
       {
         q: "Is it true that you can't take more than €60 in cash from Lithuania or Latvia to Belarus?",
