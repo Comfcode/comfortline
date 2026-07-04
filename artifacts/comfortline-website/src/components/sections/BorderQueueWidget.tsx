@@ -78,9 +78,7 @@ export function BorderQueueWidget({ className = "my-6", size = "default" }: Bord
             {isRu ? "Живая очередь на границе" : "Live border queue"}
           </h3>
           <p className={`text-muted-foreground mt-0.5 ${isLg ? "text-sm" : "text-xs"}`}>
-            {isRu
-              ? "Данные с mon.declarant.by, автообновление каждые 3 минуты"
-              : "Data from mon.declarant.by, auto-refreshes every 3 minutes"}
+            {isRu ? "Данные с mon.declarant.by" : "Data from mon.declarant.by"}
           </p>
         </div>
         <button
@@ -113,6 +111,14 @@ export function BorderQueueWidget({ className = "my-6", size = "default" }: Bord
 
       {!isLoading && !showError && checkpoints.length > 0 && (
         <>
+          {data?.updatedAt && (
+            <p className={`text-muted-foreground mb-3 ${isLg ? "text-sm" : "text-xs"}`}>
+              {isRu ? "По состоянию на: " : "As of: "}
+              {data.updatedAt}
+              {data.stale && (isRu ? " (кэш)" : " (cached)")}
+            </p>
+          )}
+
           {/* Compact stacked list — used on narrow screens so nothing is clipped off-screen */}
           <div className={`divide-y divide-border/50 ${isLg ? "sm:hidden" : "min-[420px]:hidden"}`}>
             {checkpoints.map((cp) => {
@@ -190,13 +196,11 @@ export function BorderQueueWidget({ className = "my-6", size = "default" }: Bord
             </table>
           </div>
 
-          {data?.updatedAt && (
-            <p className={`text-muted-foreground mt-3 ${isLg ? "text-sm" : "text-xs"}`}>
-              {isRu ? "По состоянию на: " : "As of: "}
-              {data.updatedAt}
-              {data.stale && (isRu ? " (кэш)" : " (cached)")}
-            </p>
-          )}
+          <p className={`text-muted-foreground mt-3 ${isLg ? "text-xs" : "text-[11px]"}`}>
+            {isRu
+              ? "Время указано по UTC+3, переход на летнее время не учитывается"
+              : "Times are UTC+3 and do not observe Daylight Saving Time"}
+          </p>
         </>
       )}
     </div>
