@@ -17,6 +17,26 @@ let cache: CachedQueue | null = null;
 let inFlight: Promise<{ updatedAt: string | null; checkpoints: BorderQueueCheckpoint[] }> | null =
   null;
 
+const MINSK_OFFSET_MS = 3 * 60 * 60 * 1000;
+
+// The source reports "По состоянию на" in UTC even though the site displays
+// no timezone label. Convert it to Minsk local time (UTC+3, no DST) so it
+// matches the actual time at the border checkpoints.
+function toMinskTime(rawTimestamp: string): string {
+  const match = rawTimestamp.match(/^(\d{2})\.(\d{2})\.(\d{4})\s*\|\s*(\d{2}):(\d{2})$/);
+  if (!match) return rawTimestamp;
+
+  const [, day, month, year, hour, minute] = match;
+  const utcMs = Date.UTC(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute));
+  const minsk = new Date(utcMs + MINSK_OFFSET_MS);
+
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return (
+    `${pad(minsk.getUTCDate())}.${pad(minsk.getUTCMonth() + 1)}.${minsk.getUTCFullYear()}` +
+    ` | ${pad(minsk.getUTCHours())}:${pad(minsk.getUTCMinutes())}`
+  );
+}
+
 function parseQueueMarkdown(markdown: string): {
   updatedAt: string | null;
   checkpoints: BorderQueueCheckpoint[];
@@ -29,7 +49,7 @@ function parseQueueMarkdown(markdown: string): {
 
     const statusMatch = line.match(/По состоянию на:\s*(.+)/);
     if (statusMatch) {
-      updatedAt = statusMatch[1].trim();
+      updatedAt = toMinskTime(statusMatch[1].trim());
       continue;
     }
 
