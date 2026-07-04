@@ -389,14 +389,40 @@ export const ARTICLES: Article[] = [
         type: "callout",
         text: "Лимиты не суммируются: нельзя взять 0 сигарет и 2 л крепкого вместо 1 л. Каждая категория — независимая норма.",
       },
-      { type: "h2", text: "Лимиты на ввоз товаров в Беларусь из ЕС" },
+      { type: "h2", text: "Лимиты на беспошлинный ввоз товаров в Беларусь" },
       {
         type: "p",
-        text: "Без уплаты таможенной пошлины разрешается ввезти товары общей стоимостью до 500 € и весом до 25 кг на одного совершеннолетнего, не чаще одного раза в 3 календарных месяца. Алкоголь — не более 3 л, сигареты — до 200 шт.",
+        text: "Норма беспошлинного ввоза зависит от способа пересечения границы. Для наземного транспорта (машина, автобус) и пешего перехода — то есть для всех пассажиров ComfortLine — с 1 апреля 2024 года действует сниженная норма: стоимость товаров не выше 500 € и вес не более 25 кг на одного взрослого пассажира.",
+      },
+      {
+        type: "table",
+        headers: ["Способ ввоза", "Стоимость", "Вес"],
+        rows: [
+          ["Наземный транспорт / пешком (с 1 апреля 2024)", "до 500 €", "до 25 кг"],
+          ["Воздушный транспорт (самолёт)", "до 10 000 €", "до 50 кг"],
+          ["Доставка перевозчиком (не лично)", "до 200 €", "до 31 кг"],
+          ["Международные почтовые отправления", "до 200 €", "до 31 кг (брутто)"],
+        ],
       },
       {
         type: "p",
-        text: "Сверх установленного лимита — единая ставка пошлины 30% от суммы превышения, но не менее 4 € за каждый килограмм. Товары для коммерческих целей (оптовые партии, несколько единиц одинаковых товаров) оформляются отдельно.",
+        text: "Табак и табачные изделия — отдельная норма, одинаковая для всех способов ввоза: 200 сигарет, или 50 сигар (сигарилл), или 200 стиков нагреваемого табака, или 250 г табака (либо ассорти этих товаров общим весом не более 250 г). Алкогольные напитки крепостью более 0,5% — не более 3 л при ввозе в багаже. Нормы на алкоголь и табак действуют для лиц старше 18 лет.",
+      },
+      {
+        type: "p",
+        text: "Сверх этих лимитов ввоз облагается таможенными платежами: для товаров в багаже наземным транспортом — 30% от суммы превышения стоимости, но не менее 4 € за каждый кг превышения по весу. Для товаров, доставленных перевозчиком или почтой, ставка ниже — 15% от превышения, но не менее 2 € за кг. Алкоголь в количестве от 3 до 5 л облагается по ставке 10 € за литр сверх нормы 3 л; этиловый спирт (до 5 л) — 22 € за литр. Товары с признаками коммерческой партии (оптовые количества, несколько одинаковых единиц) декларируются и оформляются отдельно как товары не для личного пользования.",
+      },
+      {
+        type: "link",
+        href: "https://www.customs.gov.by/fizicheskim-litsam/besposhlinnyy-vvoz-vyvoz-tovarov-dlya-lichnogo-polzovaniya/",
+        label: "ГТК Беларуси — беспошлинный ввоз/вывоз товаров для личного пользования",
+        description: "Официальные стоимостные, весовые и количественные нормы беспошлинного ввоза и вывоза товаров физическими лицами",
+      },
+      {
+        type: "link",
+        href: "https://www.customs.gov.by/fizicheskim-litsam/vvoz-tovarov-dlya-lichnogo-polzovaniya-s-uplatoy-tamozhennykh-platezhey/",
+        label: "ГТК Беларуси — ввоз товаров с уплатой таможенных платежей",
+        description: "Официальные ставки таможенных пошлин и налогов при превышении беспошлинных норм ввоза",
       },
       { type: "h2", text: "Наличные деньги и декларирование" },
       {
@@ -567,14 +593,40 @@ export const ARTICLES: Article[] = [
         type: "callout",
         text: "Allowances are not interchangeable: you cannot skip cigarettes and bring 2 l of spirits instead of 1 l. Each category is an independent limit.",
       },
-      { type: "h2", text: "Goods Allowances Entering Belarus from the EU" },
+      { type: "h2", text: "Duty-Free Import Allowances into Belarus" },
       {
         type: "p",
-        text: "Duty-free import to Belarus is allowed for goods with a total value up to €500 and weight up to 25 kg per adult, no more than once every 3 calendar months. Alcohol — no more than 3 l; cigarettes — up to 200.",
+        text: "The duty-free allowance depends on how you cross the border. For land transport (car, bus) or on foot — which covers all ComfortLine passengers — a reduced allowance has applied since 1 April 2024: goods worth no more than €500 and weighing no more than 25 kg per adult passenger.",
+      },
+      {
+        type: "table",
+        headers: ["Mode of entry", "Value", "Weight"],
+        rows: [
+          ["Land transport / on foot (since 1 April 2024)", "up to €500", "up to 25 kg"],
+          ["Air transport (flight)", "up to €10,000", "up to 50 kg"],
+          ["Delivered by carrier (not carried in person)", "up to €200", "up to 31 kg"],
+          ["International postal items", "up to €200", "up to 31 kg (gross)"],
+        ],
       },
       {
         type: "p",
-        text: "Above the duty-free threshold, a flat duty rate of 30% of the excess value applies, but no less than €4 per kilogram. Goods for commercial use (wholesale quantities, multiple identical items) must be declared separately.",
+        text: "Tobacco products have a separate allowance that's the same for every mode of entry: 200 cigarettes, or 50 cigars (cigarillos), or 200 heated-tobacco sticks, or 250 g of tobacco (or an assortment of these totalling no more than 250 g). Alcoholic drinks over 0.5% ABV — no more than 3 l when carried in baggage. Alcohol and tobacco allowances apply to travellers aged 18 and over.",
+      },
+      {
+        type: "p",
+        text: "Above these limits, customs duty applies: for goods in baggage entering by land, the rate is 30% of the excess value, but no less than €4 per kilogram over the weight limit. For goods delivered by a carrier or by post, the rate is lower — 15% of the excess, but no less than €2 per kilogram. Alcohol between 3 and 5 l is charged at €10 per litre over the 3 l allowance; ethyl spirit (up to 5 l) is charged at €22 per litre. Goods showing signs of a commercial shipment (wholesale quantities, multiple identical items) are declared and processed separately as goods not intended for personal use.",
+      },
+      {
+        type: "link",
+        href: "https://www.customs.gov.by/fizicheskim-litsam/besposhlinnyy-vvoz-vyvoz-tovarov-dlya-lichnogo-polzovaniya/",
+        label: "Belarus State Customs Committee — duty-free import/export of goods for personal use",
+        description: "Official value, weight and quantity allowances for duty-free import and export of goods by individuals",
+      },
+      {
+        type: "link",
+        href: "https://www.customs.gov.by/fizicheskim-litsam/vvoz-tovarov-dlya-lichnogo-polzovaniya-s-uplatoy-tamozhennykh-platezhey/",
+        label: "Belarus State Customs Committee — import of goods with payment of customs duties",
+        description: "Official customs duty and tax rates for goods that exceed the duty-free import allowances",
       },
       { type: "h2", text: "Cash and Declaration Requirements" },
       {

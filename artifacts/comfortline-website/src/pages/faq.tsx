@@ -145,11 +145,12 @@ const ruFaq: FaqSection[] = [
       },
       {
         q: "Какая беспошлинная норма ввоза товаров в Беларусь наземным транспортом?",
-        a: "Основная беспошлинная норма для въезда в Беларусь наземным транспортом — до 500 евро и 25 кг товаров на человека. Для авиапассажиров действуют другие лимиты. Особые ограничения есть на алкоголь, табак и продукты животного происхождения. Если везёте больше — проходите через красный коридор и оформляйте декларацию: это снимает риски штрафа.",
+        a: "С 1 апреля 2024 года беспошлинная норма для въезда в Беларусь наземным транспортом (машина, автобус, пешком) — до 500 € стоимости и до 25 кг веса на одного взрослого пассажира. Для авиапассажиров лимит выше — до 10 000 € и 50 кг. Табак — отдельная норма независимо от способа въезда: 200 сигарет, или 50 сигар, или 200 стиков нагреваемого табака, или 250 г табака. Алкоголь крепостью более 0,5% — не более 3 л. Если везёте больше — сверх нормы наземным транспортом взимается 30% от суммы превышения (но не менее 4 € за кг), а алкоголь от 3 до 5 л облагается по 10 € за литр превышения. Официальные нормы опубликованы на сайте ГТК Беларуси (customs.gov.by).",
         sub: [
-          "До 500 € стоимости и до 25 кг веса на одного человека (наземный транспорт)",
-          "Алкоголь — лимиты по литражу и возрасту (от 18 лет)",
-          "Табак — ограниченное количество сигарет / сигар на человека",
+          "До 500 € стоимости и до 25 кг веса на одного человека (наземный транспорт, с 1 апреля 2024)",
+          "Табак — 200 сигарет, или 50 сигар, или 200 стиков, или 250 г (одна норма для всех способов ввоза)",
+          "Алкоголь — до 3 л беспошлинно, от 18 лет; свыше 3 л (до 5 л) — пошлина 10 €/л",
+          "Сверх нормы по весу/стоимости — пошлина 30% от превышения, но не менее 4 €/кг",
           "Продукты животного происхождения (мясо, молочка, сыр) — строго ограничены",
           "Лекарства строгого учёта — только с рецептом",
         ],
@@ -384,11 +385,12 @@ const enFaq: FaqSection[] = [
       },
       {
         q: "What is the duty-free limit for entering Belarus by road?",
-        a: "The main duty-free allowance for entering Belarus by land transport is up to €500 in value and up to 25 kg of goods per person. Air passengers have different limits. Alcohol, tobacco and animal-origin food have additional restrictions. If you exceed the limit, use the red corridor and declare the goods — it eliminates the risk of a fine.",
+        a: "Since 1 April 2024, the duty-free allowance for entering Belarus by land transport (car, bus, or on foot) is up to €500 in value and up to 25 kg per adult passenger. Air passengers have a higher limit — up to €10,000 and 50 kg. Tobacco has its own allowance regardless of the mode of entry: 200 cigarettes, or 50 cigars, or 200 heated-tobacco sticks, or 250 g of tobacco. Alcohol over 0.5% ABV — no more than 3 l. Above these limits, land-transport baggage is charged 30% of the excess value (minimum €4 per kg), and alcohol between 3 and 5 l is charged €10 per litre over the limit. Official allowances are published on the Belarus State Customs Committee website (customs.gov.by).",
         sub: [
-          "Up to €500 in value and up to 25 kg per person (land transport)",
-          "Alcohol — strict litre limits and age restriction (18+)",
-          "Tobacco — limited cigarettes / cigars per person",
+          "Up to €500 in value and up to 25 kg per person (land transport, since 1 April 2024)",
+          "Tobacco — 200 cigarettes, or 50 cigars, or 200 sticks, or 250 g (one allowance for every mode of entry)",
+          "Alcohol — up to 3 l duty-free, age 18+; 3–5 l is charged €10 per litre over the limit",
+          "Above the value/weight limit — 30% duty on the excess, minimum €4 per kg",
           "Animal-origin products (meat, dairy, cheese) — strictly restricted",
           "Controlled medication — prescription required",
         ],
