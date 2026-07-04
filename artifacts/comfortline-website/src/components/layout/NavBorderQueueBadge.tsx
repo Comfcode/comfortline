@@ -96,7 +96,7 @@ export function NavBorderQueueBadge({ variant }: { variant: "desktop" | "mobile"
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-0 z-40 bg-background/40 backdrop-blur-[1px] lg:hidden"
+              className="fixed inset-0 z-40 bg-background/70 backdrop-blur-sm"
               onClick={() => setOpen(false)}
             />
             <motion.div
@@ -107,11 +107,11 @@ export function NavBorderQueueBadge({ variant }: { variant: "desktop" | "mobile"
               transition={{ duration: 0.15 }}
               className={
                 variant === "desktop"
-                  ? "absolute right-0 top-full mt-3 w-[min(92vw,420px)] z-50 max-h-[75vh] overflow-y-auto rounded-2xl shadow-2xl"
-                  : "fixed left-1/2 -translate-x-1/2 top-16 w-[min(92vw,420px)] z-50 max-h-[75vh] overflow-y-auto rounded-2xl shadow-2xl"
+                  ? "absolute right-0 top-full mt-3 w-[min(92vw,420px)] z-50 max-h-[75vh] overflow-y-auto rounded-2xl shadow-2xl bg-background border border-border"
+                  : "fixed left-1/2 -translate-x-1/2 top-16 w-[min(92vw,420px)] z-50 max-h-[75vh] overflow-y-auto rounded-2xl shadow-2xl bg-background border border-border"
               }
             >
-              <BorderQueueWidget className="m-0" />
+              <BorderQueueWidget className="m-0 rounded-none border-0" />
             </motion.div>
           </>
         )}
