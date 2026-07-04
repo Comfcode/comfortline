@@ -97,8 +97,8 @@ export default function EuropeTransferPage() {
           </h1>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl">
             {isRu
-              ? "Прямые трансферы в Литву, Латвию, Польшу, Францию и Германию. Выберите страну — мы покажем доступные направления и рассчитаем цену за 15 минут."
-              : "Direct transfers to Lithuania, Latvia, Poland, France and Germany. Pick a country — we'll show available destinations and send you an exact price within 15 minutes."}
+              ? "Прямые трансферы в Литву, Латвию, Польшу, Францию и Германию. Выберите страну — мы покажем доступные направления и рассчитаем цену в ближайшее время."
+              : "Direct transfers to Lithuania, Latvia, Poland, France and Germany. Pick a country — we'll show available destinations and send you an exact price shortly."}
           </p>
         </div>
       </div>
@@ -165,8 +165,8 @@ export default function EuropeTransferPage() {
           </h2>
           <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
             {isRu
-              ? "Мы перевозим в любую точку Европы. Оставьте заявку с маршрутом — рассчитаем цену за 15 минут."
-              : "We transfer to any point in Europe. Leave a request with your route — we'll calculate the price within 15 minutes."}
+              ? "Мы перевозим в любую точку Европы. Оставьте заявку с маршрутом — рассчитаем цену в ближайшее время."
+              : "We transfer to any point in Europe. Leave a request with your route — we'll calculate the price shortly."}
           </p>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-booking-modal", {

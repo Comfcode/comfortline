@@ -246,8 +246,8 @@ export default function BlogArticlePage() {
               </h2>
               <p className="text-muted-foreground text-sm mb-5 max-w-md mx-auto">
                 {isRu
-                  ? "Менеджер свяжется с вами в течение 15 минут и назовёт точную стоимость."
-                  : "Our manager will contact you within 15 minutes with an exact price."}
+                  ? "Менеджер свяжется с вами в ближайшее время и назовёт точную стоимость."
+                  : "Our manager will contact you shortly with an exact price."}
               </p>
               <a
                 href={article.ctaRoute.path}

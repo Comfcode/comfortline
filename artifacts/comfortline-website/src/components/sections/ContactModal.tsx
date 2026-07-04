@@ -15,7 +15,7 @@ interface ContactModalProps {
 const copy = {
   ru: {
     title: "Связаться с нами",
-    subtitle: "Ответим быстро — обычно в течение 15 минут.",
+    subtitle: "Ответим быстро — обычно в ближайшее время.",
     name: "Ваше имя",
     phone: "Телефон *",
     email: "Email (необязательно)",
@@ -34,7 +34,7 @@ const copy = {
   },
   en: {
     title: "Contact us",
-    subtitle: "We respond fast — usually within 15 minutes.",
+    subtitle: "We respond fast — usually shortly.",
     name: "Your name",
     phone: "Phone *",
     email: "Email (optional)",

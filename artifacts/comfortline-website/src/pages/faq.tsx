@@ -43,7 +43,7 @@ const ruFaq: FaqSection[] = [
     items: [
       {
         q: "Как сделать заказ?",
-        a: "Оставьте заявку на сайте или напишите нам в WhatsApp / Viber — менеджер свяжется в течение 15 минут и согласует маршрут, время, класс автомобиля и стоимость.",
+        a: "Оставьте заявку на сайте или напишите нам в WhatsApp / Viber — менеджер свяжется в ближайшее время и согласует маршрут, время, класс автомобиля и стоимость.",
       },
       {
         q: "За сколько времени нужно бронировать?",
@@ -283,7 +283,7 @@ const enFaq: FaqSection[] = [
     items: [
       {
         q: "How do I book a transfer?",
-        a: "Submit a request on our website or message us on WhatsApp / Viber — a manager will contact you within 15 minutes to confirm the route, timing, vehicle class, and exact price.",
+        a: "Submit a request on our website or message us on WhatsApp / Viber — a manager will contact you shortly to confirm the route, timing, vehicle class, and exact price.",
       },
       {
         q: "How far in advance should I book?",

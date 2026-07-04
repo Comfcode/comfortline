@@ -237,7 +237,7 @@ export const ARTICLES: Article[] = [
       {
         type: "p",
         text:
-          "Финальная стоимость зависит от точки подачи в Минске, конкретного аэропорта Варшавы (Шопен или Модлин), сезона и времени суток. Все цены ComfortLine фиксированные — что назвал менеджер, то вы и платите, без счётчика и доплат за пробки. Точную стоимость сообщим в течение 15 минут после заявки.",
+          "Финальная стоимость зависит от точки подачи в Минске, конкретного аэропорта Варшавы (Шопен или Модлин), сезона и времени суток. Все цены ComfortLine фиксированные — что назвал менеджер, то вы и платите, без счётчика и доплат за пробки. Точную стоимость сообщим в ближайшее время после заявки.",
       },
       { type: "h2", text: "Когда трансфер дороже" },
       {
@@ -264,7 +264,7 @@ export const ARTICLES: Article[] = [
       {
         type: "callout",
         text:
-          "Хотите точную цену под ваши даты? Оставьте заявку — менеджер пришлёт расчёт за 15 минут.",
+          "Хотите точную цену под ваши даты? Оставьте заявку — менеджер пришлёт расчёт в ближайшее время.",
       },
     ],
     categoryEn: "Pricing",
@@ -296,7 +296,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "The final price depends on your pick-up address in Minsk, which Warsaw airport (Chopin or Modlin), season and time of day. All ComfortLine prices are fixed — what the manager quotes is what you pay, with no meter and no surcharge for traffic. We'll confirm an exact price within 15 minutes of your request.",
+        text: "The final price depends on your pick-up address in Minsk, which Warsaw airport (Chopin or Modlin), season and time of day. All ComfortLine prices are fixed — what the manager quotes is what you pay, with no meter and no surcharge for traffic. We'll confirm an exact price shortly after your request.",
       },
       { type: "h2", text: "When the Transfer Costs More" },
       {
@@ -322,7 +322,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "callout",
-        text: "Want an exact price for your dates? Send us a request — our manager will reply with a quote within 15 minutes.",
+        text: "Want an exact price for your dates? Send us a request — our manager will reply with a quote shortly.",
       },
     ],
     related: ["граница-беларусь-литва", "что-нельзя-ввозить-в-ес"],
@@ -1051,7 +1051,7 @@ export const ARTICLES: Article[] = [
       {
         type: "callout",
         text:
-          "Если для вас важно успеть на рейс без сюрпризов — индивидуальный трансфер ComfortLine. Заказ онлайн или по телефону, расчёт за 15 минут.",
+          "Если для вас важно успеть на рейс без сюрпризов — индивидуальный трансфер ComfortLine. Заказ онлайн или по телефону, расчёт в ближайшее время.",
       },
     ],
     categoryEn: "Airport",
@@ -1086,7 +1086,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "callout",
-        text: "If catching your flight without surprises matters — choose a private ComfortLine transfer. Book online or by phone; quote within 15 minutes.",
+        text: "If catching your flight without surprises matters — choose a private ComfortLine transfer. Book online or by phone; quote shortly.",
       },
     ],
     related: ["граница-беларусь-литва", "какой-кпп-выбрать", "трансфер-с-детьми"],
