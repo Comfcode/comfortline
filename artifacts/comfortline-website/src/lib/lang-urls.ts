@@ -63,6 +63,7 @@ const BLOG_SLUGS: Array<{ ru: string; en: string }> = [
   { ru: "аэропорт-риги-rix",                  en: "riga-airport-guide-from-minsk-belarus" },
   { ru: "автобус-минск-варшава-модлин-вильнюс", en: "minsk-warsaw-vilnius-bus-vs-private-transfer" },
   { ru: "виза-свободный-въезд-в-беларусь-2026", en: "visa-free-entry-belarus-2026" },
+  { ru: "вывоз-60-евро-в-беларусь-из-литвы-латвии", en: "eu-60-euro-cash-limit-belarus-lithuania-latvia" },
 ];
 
 /**

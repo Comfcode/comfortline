@@ -2243,6 +2243,207 @@ export const ARTICLES: Article[] = [
     related: ["граница-беларусь-литва", "аэропорт-варшавы-вав", "как-добраться-до-аэропорта-вильнюса"],
     ctaRoute: { label: "Забронировать трансфер из Европы в Беларусь", labelEn: "Book a transfer from Europe to Belarus", path: "/трансфер-минск-вильнюс-аэропорт" },
   },
+  {
+    slug: "вывоз-60-евро-в-беларусь-из-литвы-латвии",
+    slugEn: "eu-60-euro-cash-limit-belarus-lithuania-latvia",
+    titleEn: "Why You Can't Take More Than €60 in Cash From Lithuania or Latvia to Belarus (2026)",
+    descriptionEn: "The EU sanctions rule that limits cash euro banknotes crossing from Lithuania or Latvia into Belarus to €60 per person — legal basis, how checks work in practice, and what happens if you carry more.",
+    ogSlug: "blog-60-evro-litva-latvia-belarus",
+    title: "Почему из Литвы и Латвии в Беларусь нельзя вывезти больше 60 евро наличными (2026)",
+    description:
+      "Разбираем санкционное правило ЕС, которое ограничивает вывоз наличных евро из Литвы и Латвии в Беларусь суммой 60 евро на человека: откуда оно взялось, как проверяют на границе и что делать, если у вас больше.",
+    intro:
+      "Если вы едете из Литвы или Латвии в Беларусь и везёте с собой наличные евро — важно знать: с 2022 года действует санкционное правило Евросоюза, которое фактически ограничивает сумму наличных евро при выезде в Беларусь суммой 60 € на человека. Разбираем, откуда это взялось, как это проверяют на границе и как не попасть в неприятную ситуацию.",
+    dateISO: "2026-06-28",
+    readingMin: 7,
+    category: "Граница",
+    tags: ["наличные", "евро", "Литва", "Латвия", "санкции", "граница", "60 евро"],
+    body: [
+      { type: "h2", text: "Откуда взялось ограничение «не больше 60 евро»" },
+      {
+        type: "p",
+        text:
+          "В марте 2022 года Совет ЕС ввёл запрет на продажу, поставку, передачу или экспорт банкнот, номинированных в валюте любого государства-члена ЕС (включая евро), в адрес Беларуси, правительства и Национального банка Беларуси или для использования в Беларуси. Это часть общего санкционного пакета, изначально направленного на евро, а затем расширенного на все валюты стран ЕС.",
+      },
+      {
+        type: "p",
+        text:
+          "У этого запрета есть исключение: он не касается передачи банкнот, необходимых для личных нужд физических лиц, которые едут в Беларусь, или членов их семьи, сопровождающих их в поездке. Именно в рамках этого «личного» исключения таможенные и пограничные службы Литвы и Латвии на практике установили порог — 60 евро наличными на одного человека. Суммы выше этого порога считаются выходящими за пределы «личных нужд» и подпадают под запрет.",
+      },
+      {
+        type: "link",
+        href: "https://eur-lex.europa.eu/eli/reg/2006/765/oj/eng",
+        label: "Регламент Совета (ЕС) № 765/2006 — официальный текст на EUR-Lex",
+        description: "Базовый санкционный регламент ЕС в отношении Беларуси, включающий запрет на вывоз банкнот стран ЕС (в редакции 2022–2026 гг.)",
+      },
+      { type: "h2", text: "Как правило действует на литовской и латвийской границе" },
+      {
+        type: "table",
+        headers: ["Страна выезда", "Лимит наличных евро", "Другие валюты"],
+        rows: [
+          ["Литва → Беларусь", "до 60 € на человека", "без ограничения суммы (до 10 000 € в декларацию)"],
+          ["Латвия → Беларусь", "до 60 € на человека", "без ограничения суммы (до 10 000 € в декларацию)"],
+          ["Беларусь → ЕС (въезд)", "запрета на ввоз евро нет", "—"],
+        ],
+      },
+      {
+        type: "p",
+        text:
+          "Важно понимать: ограничение действует только в одном направлении — при вывозе наличных евро (и других валют ЕС) ИЗ Литвы и Латвии В Беларусь. Обратный ввоз евро из Беларуси в страны ЕС не запрещён. Проверки проводятся выборочно — сотрудник таможни или пограничной службы может попросить показать содержимое кошелька при выезде из ЕС в сторону Беларуси, особенно на автобусных и легковых КПП.",
+      },
+      { type: "h2", text: "Что происходит, если у вас нашли больше 60 евро" },
+      {
+        type: "ul",
+        items: [
+          "Деньги, как правило, не изымают на месте — пассажира просто не выпускают с суммой сверх лимита и просят вернуться в ЕС, чтобы обменять избыток на другую валюту (доллары, злотые и т.д.) или оставить деньги в ЕС.",
+          "Если сумма значительная, деньги могут быть изъяты до решения суда — тогда вопрос возврата решается в судебном порядке.",
+          "За нарушение предусмотрена административная ответственность по законодательству страны выезда.",
+          "Строгость проверки зависит от конкретного пункта пропуска и смены сотрудников — где-то проверяют почти всегда, где-то выборочно.",
+        ],
+      },
+      { type: "h2", text: "Как не попасть в неприятную ситуацию" },
+      {
+        type: "ul",
+        items: [
+          "Перед поездкой посчитайте наличные евро в кошельке и во всех отделениях сумки — лимит считается суммарно на человека.",
+          "Если нужно взять с собой больше, переведите избыток в другую валюту (доллары США, польские злотые) — эти валюты не входят в запрет по банкнотам стран ЕС.",
+          "Для сумм свыше 10 000 € в эквиваленте (в любой валюте) обязательно заполните декларацию и сохраните подтверждение происхождения средств.",
+          "Уточните у водителя или туроператора актуальную практику проверки на конкретном КПП — она периодически меняется.",
+        ],
+      },
+      { type: "h2", text: "А сколько товаров можно ввезти в Беларусь без пошлины" },
+      {
+        type: "p",
+        text:
+          "Это отдельный вопрос, не связанный с санкциями ЕС, а регулируемый белорусским таможенным законодательством. Норма для въезда в Беларусь наземным транспортом — до 500 евро и 25 кг товаров на человека (по состоянию на 2026 год). При превышении лимита нужно декларировать товар и оплатить пошлину.",
+      },
+      {
+        type: "table",
+        headers: ["Способ въезда", "Беспошлинный лимит", "Лимит по весу"],
+        rows: [
+          ["Наземный транспорт", "500 €", "25 кг"],
+          ["Авиаперелёт", "10 000 €", "50 кг"],
+          ["Международные посылки", "200 €", "31 кг"],
+        ],
+      },
+      { type: "h2", text: "Часто задаваемые вопросы" },
+      { type: "h3", text: "Ограничение касается только евро?" },
+      {
+        type: "p",
+        text: "Изначально запрет касался только евро, но впоследствии был расширен на банкноты любой официальной валюты стран ЕС (злотые, чешские кроны, шведские кроны и т.д.). Доллары США и валюты стран, не входящих в ЕС, под этот запрет не подпадают.",
+      },
+      { type: "h3", text: "Если я въезжаю в ЕС из Беларуси с евро — тоже действует лимит?" },
+      {
+        type: "p",
+        text: "Нет. Ограничение действует только на вывоз банкнот ИЗ стран ЕС В Беларусь. Ввоз наличных евро (или других валют) из Беларуси в Литву, Латвию и другие страны ЕС этим правилом не ограничен — действуют только общие правила декларирования сумм свыше 10 000 евро.",
+      },
+      { type: "h3", text: "60 евро — это на машину или на человека?" },
+      {
+        type: "p",
+        text: "Лимит считается на одного человека. Если в машине едет несколько пассажиров, у каждого может быть при себе до 60 евро наличными — но суммы нельзя формально «складывать» и провозить как деньги одного пассажира.",
+      },
+      {
+        type: "callout",
+        text:
+          "Водители ComfortLine ежедневно работают на маршрутах Минск–Литва и Минск–Латвия и в курсе актуальной практики проверок на каждом конкретном КПП. Перед поездкой мы всегда напоминаем пассажирам о лимите по наличным и других нюансах, чтобы дорога прошла без неприятных сюрпризов.",
+      },
+    ],
+    categoryEn: "Border",
+    introEn:
+      "If you're travelling from Lithuania or Latvia to Belarus with cash euros, there's an EU sanctions rule you should know about. Since 2022, an EU regulation has effectively capped the amount of cash euro banknotes you can bring into Belarus at €60 per person. Here's where the rule comes from, how it's enforced at the border, and how to avoid trouble.",
+    bodyEn: [
+      { type: "h2", text: "Where the '€60 limit' comes from" },
+      {
+        type: "p",
+        text:
+          "In March 2022 the Council of the EU banned the sale, supply, transfer or export of banknotes denominated in any EU member state's currency (including the euro) to Belarus, its government, its central bank, or for use in Belarus. This is part of the broader EU sanctions package, originally targeting the euro and later widened to cover all EU member-state currencies.",
+      },
+      {
+        type: "p",
+        text:
+          "The ban carries one exception: it does not apply to banknotes needed for the personal use of natural persons travelling to Belarus, or their accompanying family members. In practice, Lithuanian and Latvian customs and border services have set the working threshold for that 'personal use' exception at €60 in cash per person. Amounts above that are treated as exceeding personal needs and fall under the export ban.",
+      },
+      {
+        type: "link",
+        href: "https://eur-lex.europa.eu/eli/reg/2006/765/oj/eng",
+        label: "Council Regulation (EC) No 765/2006 — official text on EUR-Lex",
+        description: "The core EU sanctions regulation concerning Belarus, including the ban on exporting EU member-state banknotes (as amended 2022–2026)",
+      },
+      { type: "h2", text: "How the rule is enforced at the Lithuanian and Latvian border" },
+      {
+        type: "table",
+        headers: ["Direction", "Cash euro limit", "Other currencies"],
+        rows: [
+          ["Lithuania → Belarus", "up to €60 per person", "no set cap (declare above €10,000)"],
+          ["Latvia → Belarus", "up to €60 per person", "no set cap (declare above €10,000)"],
+          ["Belarus → EU (entry)", "no import ban on euros", "—"],
+        ],
+      },
+      {
+        type: "p",
+        text:
+          "The key detail: the restriction only applies in one direction — exporting cash euros (and other EU currencies) FROM Lithuania and Latvia TO Belarus. Bringing euros back into the EU from Belarus is not restricted. Checks are done on a spot basis — a customs or border officer may ask you to show the cash in your wallet when exiting the EU towards Belarus, especially at bus and car checkpoints.",
+      },
+      { type: "h2", text: "What happens if you're found with more than €60" },
+      {
+        type: "ul",
+        items: [
+          "The cash is usually not confiscated on the spot — you're simply not allowed to proceed with the excess and asked to return into the EU to exchange it into another currency (USD, PLN, etc.) or leave it behind.",
+          "For larger amounts, the cash can be seized pending a court decision, with the return of funds decided judicially.",
+          "Violations carry administrative liability under the exiting country's law.",
+          "Enforcement strictness varies by checkpoint and shift — some checkpoints check almost every traveller, others only spot-check.",
+        ],
+      },
+      { type: "h2", text: "How to avoid a problem" },
+      {
+        type: "ul",
+        items: [
+          "Before travelling, count all the cash euros in your wallet and every pocket of your bag — the limit is a per-person total, not just what's visible.",
+          "If you need to carry more, convert the excess into another currency (US dollars, Polish złoty) — these are not covered by the EU banknote export ban.",
+          "For amounts above €10,000 equivalent (in any currency), file a declaration and keep proof of the funds' origin.",
+          "Ask your driver or tour operator about current enforcement practice at the specific checkpoint — it changes periodically.",
+        ],
+      },
+      { type: "h2", text: "How much can you bring into Belarus duty-free" },
+      {
+        type: "p",
+        text:
+          "This is a separate question governed by Belarusian customs law rather than EU sanctions. The allowance for entering Belarus by land transport is up to €500 in value and up to 25 kg of goods per person (as of 2026). Exceeding the limit requires declaring the goods and paying duty.",
+      },
+      {
+        type: "table",
+        headers: ["Mode of entry", "Duty-free limit", "Weight limit"],
+        rows: [
+          ["Land transport", "€500", "25 kg"],
+          ["Air travel", "€10,000", "50 kg"],
+          ["International parcels", "€200", "31 kg"],
+        ],
+      },
+      { type: "h2", text: "Frequently Asked Questions" },
+      { type: "h3", text: "Does the restriction only apply to euros?" },
+      {
+        type: "p",
+        text: "Originally it applied only to the euro, but the ban was later extended to banknotes of any official EU member-state currency (Polish złoty, Czech koruna, Swedish krona, etc.). US dollars and non-EU currencies are not covered.",
+      },
+      { type: "h3", text: "Does the limit apply when entering the EU from Belarus with euros?" },
+      {
+        type: "p",
+        text: "No. The restriction only applies to exporting banknotes FROM EU countries TO Belarus. Bringing cash euros (or other currencies) from Belarus into Lithuania, Latvia or other EU countries is not restricted by this rule — only the standard declaration requirement above €10,000 applies.",
+      },
+      { type: "h3", text: "Is the €60 limit per car or per person?" },
+      {
+        type: "p",
+        text: "The limit applies per person. If several passengers travel in the same car, each may individually carry up to €60 in cash — but amounts cannot formally be pooled and carried as one passenger's money.",
+      },
+      {
+        type: "callout",
+        text:
+          "ComfortLine drivers run the Minsk–Lithuania and Minsk–Latvia routes daily and stay current on enforcement practice at each specific checkpoint. Before every trip we remind passengers about the cash limit and other border nuances, so the journey goes smoothly.",
+      },
+    ],
+    related: ["граница-беларусь-литва", "какой-кпп-выбрать", "виза-свободный-въезд-в-беларусь-2026"],
+    ctaRoute: { label: "Забронировать трансфер в Литву или Латвию", labelEn: "Book a transfer to Lithuania or Latvia", path: "/трансфер-в-литву" },
+  },
 ];
 
 export function findArticle(slug: string): Article | undefined {

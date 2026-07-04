@@ -172,6 +172,16 @@ const ruFaq: FaqSection[] = [
         q: "Что делать, если очередь стоит больше 10 часов?",
         a: "Мы отслеживаем загрузку всех КПП в реальном времени и можем перенаправить машину на менее загруженный переход (например, с Бреста на Гродно или на латвийское направление). На случай длинного ожидания держите при себе паспорт, телефон и тёплые вещи — выходить из машины можно, но далеко не уходите.",
       },
+      {
+        q: "Правда, что из Литвы и Латвии в Беларусь нельзя вывозить больше 60 евро наличными?",
+        a: "Да. С 2022 года действует санкционный регламент ЕС (Регламент Совета № 765/2006), который запрещает вывоз банкнот стран ЕС в Беларусь. Исключение сделано только для личных нужд путешественника, и на практике таможня Литвы и Латвии установила порог в 60 евро наличными на человека. Суммы свыше 60 € могут не пропустить через границу — деньги обычно не изымают, но просят вернуться в ЕС и обменять избыток на другую валюту (например, доллары). Правило действует только в одну сторону — при выезде из ЕС в Беларусь; ввоз евро из Беларуси в ЕС не ограничен.",
+        sub: [
+          "Лимит — 60 € наличными на одного человека при выезде из Литвы или Латвии в Беларусь",
+          "Другие валюты (доллары, злотые) под запрет не подпадают",
+          "Суммы свыше 10 000 € в эквиваленте требуют декларации в любом случае",
+          "Полный текст правила: Регламент Совета (ЕС) № 765/2006 на eur-lex.europa.eu",
+        ],
+      },
     ],
   },
   {
@@ -396,6 +406,16 @@ const enFaq: FaqSection[] = [
       {
         q: "What if the queue is over 10 hours?",
         a: "We track real-time loads at every checkpoint and can reroute the car to a quieter crossing (e.g. switch from Brest to Grodno or to a Latvian crossing). For long waits keep your passport, phone and warm clothes with you — you can step out of the car but don't go far.",
+      },
+      {
+        q: "Is it true that you can't take more than €60 in cash from Lithuania or Latvia to Belarus?",
+        a: "Yes. Since 2022, an EU sanctions regulation (Council Regulation No 765/2006) has banned exporting EU member-state banknotes to Belarus. The only exception is for a traveller's personal needs, and in practice Lithuanian and Latvian customs have set that threshold at €60 in cash per person. Amounts above €60 may not be allowed through — the cash is usually not confiscated, but you'll be asked to return into the EU and exchange the excess into another currency (e.g. US dollars). The rule only applies one way — exiting the EU towards Belarus; bringing euros from Belarus into the EU is not restricted.",
+        sub: [
+          "Limit — €60 in cash per person when exiting Lithuania or Latvia towards Belarus",
+          "Other currencies (US dollars, Polish złoty) are not covered by the ban",
+          "Amounts above €10,000 equivalent require declaration regardless",
+          "Full text of the rule: Council Regulation (EC) No 765/2006 on eur-lex.europa.eu",
+        ],
       },
     ],
   },
