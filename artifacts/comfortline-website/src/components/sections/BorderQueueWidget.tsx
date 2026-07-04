@@ -96,7 +96,40 @@ export function BorderQueueWidget({ className = "my-6", size = "default" }: Bord
 
       {!isLoading && !showError && checkpoints.length > 0 && (
         <>
-          <div className="overflow-x-auto -mx-1">
+          {/* Compact stacked list — used on narrow screens so nothing is clipped off-screen */}
+          <div className={`divide-y divide-border/50 ${isLg ? "sm:hidden" : "min-[420px]:hidden"}`}>
+            {checkpoints.map((cp) => {
+              const load = loadLabel(cp.total, isRu);
+              return (
+                <div key={cp.name} className="py-2.5 flex items-center justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className={`text-foreground font-medium truncate ${isLg ? "text-sm" : "text-xs"}`}>
+                      {displayName(cp.name, isRu)}
+                    </p>
+                    <p className={`flex items-center gap-2.5 text-muted-foreground mt-1 ${isLg ? "text-xs" : "text-[11px]"}`}>
+                      <span className="inline-flex items-center gap-1">
+                        <Car className="h-3 w-3" />
+                        {cp.cars}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Truck className="h-3 w-3" />
+                        {cp.trucks}
+                      </span>
+                    </p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <p className={`text-foreground font-semibold ${isLg ? "text-sm" : "text-xs"}`}>{cp.total}</p>
+                    <p className={`font-semibold mt-0.5 ${load.className} ${isLg ? "text-xs" : "text-[11px]"}`}>
+                      {load.text}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Full table — used once there is enough horizontal room */}
+          <div className={`overflow-x-auto -mx-1 ${isLg ? "hidden sm:block" : "hidden min-[420px]:block"}`}>
             <table className={`w-full ${isLg ? "text-sm md:text-base min-w-[480px]" : "text-xs md:text-sm min-w-[440px]"}`}>
               <thead>
                 <tr className="text-muted-foreground border-b border-border">
