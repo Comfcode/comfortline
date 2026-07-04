@@ -72,8 +72,18 @@ export function BorderQueueWidget({ className = "my-6", size = "default", onClos
   const showError = (isError || data?.error) && checkpoints.length === 0;
 
   return (
-    <div className={`rounded-2xl border border-primary/30 bg-primary/5 ${isLg ? "p-6 md:p-7" : "p-5 md:p-6"} ${className}`}>
-      <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+    <div className={`relative rounded-2xl border border-primary/30 bg-primary/5 ${isLg ? "p-6 md:p-7" : "p-5 md:p-6"} ${className}`}>
+      {onClose && (
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label={isRu ? "Закрыть" : "Close"}
+          className="absolute top-3 right-3 z-10 inline-flex items-center justify-center h-8 w-8 rounded-full text-foreground/60 hover:text-foreground hover:bg-foreground/10 transition-colors"
+        >
+          <X className="h-4 w-4" />
+        </button>
+      )}
+      <div className={`flex items-center justify-between gap-3 mb-4 flex-wrap ${onClose ? "pr-9" : ""}`}>
         <div>
           <h3 className={`font-bold text-foreground ${isLg ? "text-base md:text-lg" : "text-sm md:text-base"}`}>
             {isRu ? "Живая очередь на границе" : "Live border queue"}
@@ -82,27 +92,15 @@ export function BorderQueueWidget({ className = "my-6", size = "default", onClos
             {isRu ? "Данные с mon.declarant.by" : "Data from mon.declarant.by"}
           </p>
         </div>
-        <div className="flex items-center gap-3 shrink-0">
-          <button
-            type="button"
-            onClick={() => void handleRefresh()}
-            disabled={isFetching || isForcing}
-            className={`inline-flex items-center gap-1.5 font-semibold text-primary hover:text-primary/80 transition-colors disabled:opacity-50 shrink-0 ${isLg ? "text-sm" : "text-xs"}`}
-          >
-            <RefreshCw className={`${isLg ? "h-4 w-4" : "h-3.5 w-3.5"} ${isFetching || isForcing ? "animate-spin" : ""}`} />
-            {isRu ? "Обновить" : "Refresh"}
-          </button>
-          {onClose && (
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label={isRu ? "Закрыть" : "Close"}
-              className="inline-flex items-center justify-center h-7 w-7 rounded-full text-foreground/60 hover:text-foreground hover:bg-foreground/10 transition-colors shrink-0"
-            >
-              <X className={isLg ? "h-4 w-4" : "h-3.5 w-3.5"} />
-            </button>
-          )}
-        </div>
+        <button
+          type="button"
+          onClick={() => void handleRefresh()}
+          disabled={isFetching || isForcing}
+          className={`inline-flex items-center gap-1.5 font-semibold text-primary hover:text-primary/80 transition-colors disabled:opacity-50 shrink-0 ${isLg ? "text-sm" : "text-xs"}`}
+        >
+          <RefreshCw className={`${isLg ? "h-4 w-4" : "h-3.5 w-3.5"} ${isFetching || isForcing ? "animate-spin" : ""}`} />
+          {isRu ? "Обновить" : "Refresh"}
+        </button>
       </div>
 
       {isLoading && (
