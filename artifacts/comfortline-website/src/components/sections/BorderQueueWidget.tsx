@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { RefreshCw, AlertTriangle, Car, Truck } from "lucide-react";
+import { RefreshCw, AlertTriangle, Car, Truck, X } from "lucide-react";
 import { useGetBorderQueue, getGetBorderQueueQueryKey, getBorderQueue } from "@workspace/api-client-react";
 import { useLang } from "@/context/language-context";
 
@@ -37,9 +37,10 @@ function loadLabel(total: number, isRu: boolean) {
 type BorderQueueWidgetProps = {
   className?: string;
   size?: "default" | "lg";
+  onClose?: () => void;
 };
 
-export function BorderQueueWidget({ className = "my-6", size = "default" }: BorderQueueWidgetProps = {}) {
+export function BorderQueueWidget({ className = "my-6", size = "default", onClose }: BorderQueueWidgetProps = {}) {
   const { lang } = useLang();
   const isRu = lang === "ru";
   const isLg = size === "lg";
@@ -81,15 +82,27 @@ export function BorderQueueWidget({ className = "my-6", size = "default" }: Bord
             {isRu ? "Данные с mon.declarant.by" : "Data from mon.declarant.by"}
           </p>
         </div>
-        <button
-          type="button"
-          onClick={() => void handleRefresh()}
-          disabled={isFetching || isForcing}
-          className={`inline-flex items-center gap-1.5 font-semibold text-primary hover:text-primary/80 transition-colors disabled:opacity-50 shrink-0 ${isLg ? "text-sm" : "text-xs"}`}
-        >
-          <RefreshCw className={`${isLg ? "h-4 w-4" : "h-3.5 w-3.5"} ${isFetching || isForcing ? "animate-spin" : ""}`} />
-          {isRu ? "Обновить" : "Refresh"}
-        </button>
+        <div className="flex items-center gap-3 shrink-0">
+          <button
+            type="button"
+            onClick={() => void handleRefresh()}
+            disabled={isFetching || isForcing}
+            className={`inline-flex items-center gap-1.5 font-semibold text-primary hover:text-primary/80 transition-colors disabled:opacity-50 shrink-0 ${isLg ? "text-sm" : "text-xs"}`}
+          >
+            <RefreshCw className={`${isLg ? "h-4 w-4" : "h-3.5 w-3.5"} ${isFetching || isForcing ? "animate-spin" : ""}`} />
+            {isRu ? "Обновить" : "Refresh"}
+          </button>
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label={isRu ? "Закрыть" : "Close"}
+              className="inline-flex items-center justify-center h-7 w-7 rounded-full text-foreground/60 hover:text-foreground hover:bg-foreground/10 transition-colors shrink-0"
+            >
+              <X className={isLg ? "h-4 w-4" : "h-3.5 w-3.5"} />
+            </button>
+          )}
+        </div>
       </div>
 
       {isLoading && (

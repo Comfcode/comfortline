@@ -111,7 +111,11 @@ export function NavBorderQueueBadge({ variant }: { variant: "desktop" | "mobile"
                   : "fixed left-1/2 -translate-x-1/2 top-16 w-[min(96vw,540px)] z-50 max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl bg-background border border-border"
               }
             >
-              <BorderQueueWidget className="m-0 rounded-none border-0" size="lg" />
+              <BorderQueueWidget
+                className="m-0 rounded-none border-0"
+                size="lg"
+                onClose={() => setOpen(false)}
+              />
             </motion.div>
           </>
         )}
