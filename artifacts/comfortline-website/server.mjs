@@ -120,10 +120,25 @@ function isKnownRoute(pathname) {
 // ---------------------------------------------------------------------------
 const INDEX_PATH = path.join(PUBLIC_DIR, "index.html");
 
+const CANONICAL_HOST = "comfortline.by";
+
 const server = http.createServer((req, res) => {
   try {
     const url = new URL(req.url ?? "/", `http://localhost`);
     const rawPath = url.pathname;
+
+    // --- -1. Canonicalise host: www.comfortline.by → comfortline.by (permanent redirect) ---
+    // Google Search Console flags www/non-www as unresolved duplicates unless the
+    // non-canonical host issues a real 301 (a <link rel="canonical"> tag alone isn't
+    // enough of a signal). SITE_URL in src/seo/seo-config.ts is the non-www origin,
+    // so every other host variant must merge into it here.
+    const hostHeader = (req.headers.host || "").toLowerCase().split(":")[0];
+    if (hostHeader && hostHeader !== CANONICAL_HOST && hostHeader === `www.${CANONICAL_HOST}`) {
+      const location = `https://${CANONICAL_HOST}${rawPath}${url.search || ""}`;
+      res.writeHead(301, { "Location": location, "Cache-Control": "public, max-age=86400" });
+      res.end();
+      return;
+    }
 
     // --- 0. Normalise trailing slashes: /path/ → /path (permanent redirect) ---
     if (rawPath !== "/" && rawPath.endsWith("/")) {
