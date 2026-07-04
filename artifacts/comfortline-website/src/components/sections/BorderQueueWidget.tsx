@@ -32,7 +32,7 @@ function loadLabel(total: number, isRu: boolean) {
   return { text: isRu ? "Загружено" : "Heavy", className: "text-red-400" };
 }
 
-export function BorderQueueWidget() {
+export function BorderQueueWidget({ className = "my-6" }: { className?: string } = {}) {
   const { lang } = useLang();
   const isRu = lang === "ru";
 
@@ -48,7 +48,7 @@ export function BorderQueueWidget() {
   const showError = (isError || data?.error) && checkpoints.length === 0;
 
   return (
-    <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5 md:p-6 my-6">
+    <div className={`rounded-2xl border border-primary/30 bg-primary/5 p-5 md:p-6 ${className}`}>
       <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
         <div>
           <h3 className="font-bold text-foreground text-sm md:text-base">

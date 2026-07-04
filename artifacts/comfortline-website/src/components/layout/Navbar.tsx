@@ -6,6 +6,7 @@ import { Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Logo } from "@/components/brand/Logo";
+import { NavBorderQueueBadge } from "@/components/layout/NavBorderQueueBadge";
 import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
 import { useLocation } from "wouter";
 import { getAlternateLangHref } from "@/lib/lang-urls";
@@ -241,6 +242,11 @@ export function Navbar() {
               {socialLinks.map((s) => <SocialIcon key={s.label} {...s} size={26} />)}
             </div>
 
+            <div className="h-4 w-px bg-border/50" />
+
+            {/* Border queue live status */}
+            <NavBorderQueueBadge variant="desktop" />
+
             <div className="h-4 w-px bg-border/50 hidden 2xl:block" />
 
             {/* Phone — only visible at 2xl (1536px+) to keep RU/EN always in view */}
@@ -324,6 +330,7 @@ export function Navbar() {
                 </motion.div>
               </button>
             </div>
+            <NavBorderQueueBadge variant="mobile" />
             <a
               href="tel:+375291552776"
               onClick={gtagPhoneConversion}
