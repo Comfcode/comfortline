@@ -90,7 +90,7 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Электронная очередь в зонах ожидания — mon.declarant.by",
-        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в системе электронной очереди на белорусских КПП, включая Каменный Лог и Бенякони, в реальном времени.",
+        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в системе электронной очереди на белорусских КПП, включая Каменный Лог и Бенякони, в реальном времени. Если сайт не открывается — попробуйте зайти через VPN.",
       },
       { type: "h3", text: "Лайфхаки от наших водителей" },
       {
@@ -159,7 +159,7 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Electronic queue at waiting zones — mon.declarant.by",
-        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic waiting-zone queue at border checkpoints, including Kamenny Log and Benyakoni, updated in real time.",
+        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic waiting-zone queue at border checkpoints, including Kamenny Log and Benyakoni, updated in real time. If the site doesn't load, try opening it with a VPN.",
       },
       { type: "h3", text: "Driver Tips" },
       {
@@ -745,7 +745,7 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Электронная очередь в зонах ожидания — mon.declarant.by",
-        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в электронной очереди на КПП, обновляется в реальном времени.",
+        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в электронной очереди на КПП, обновляется в реальном времени. Если сайт не открывается — попробуйте зайти через VPN.",
       },
       {
         type: "callout",
@@ -803,7 +803,7 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Electronic queue at waiting zones — mon.declarant.by",
-        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, updated in real time.",
+        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, updated in real time. If the site doesn't load, try opening it with a VPN.",
       },
       {
         type: "callout",
@@ -1220,7 +1220,7 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Электронная очередь в зонах ожидания — mon.declarant.by",
-        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в электронной очереди на белорусских КПП, включая Брест и Домачево, обновляется в реальном времени.",
+        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в электронной очереди на белорусских КПП, включая Брест и Домачево, обновляется в реальном времени. Если сайт не открывается — попробуйте зайти через VPN.",
       },
       {
         type: "callout",
@@ -1287,7 +1287,7 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Electronic queue at waiting zones — mon.declarant.by",
-        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, including Brest and Domachevo, updated in real time.",
+        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, including Brest and Domachevo, updated in real time. If the site doesn't load, try opening it with a VPN.",
       },
       {
         type: "callout",
@@ -2351,7 +2351,7 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Электронная очередь в зонах ожидания — mon.declarant.by",
-        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в системе электронной очереди на белорусских КПП, обновляется в реальном времени. Полезно спланировать, в какое время меньше проверок.",
+        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в системе электронной очереди на белорусских КПП, обновляется в реальном времени. Полезно спланировать, в какое время меньше проверок. Если сайт не открывается — попробуйте зайти через VPN.",
       },
       { type: "h2", text: "А сколько товаров можно ввезти в Беларусь без пошлины" },
       {
@@ -2450,7 +2450,7 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Electronic queue at waiting zones — mon.declarant.by",
-        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, updated in real time. Useful for timing your trip around fewer checks.",
+        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, updated in real time. Useful for timing your trip around fewer checks. If the site doesn't load, try opening it with a VPN.",
       },
       { type: "h2", text: "How much can you bring into Belarus duty-free" },
       {
