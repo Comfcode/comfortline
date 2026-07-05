@@ -2558,13 +2558,13 @@ export const ARTICLES: Article[] = [
     slug: "советские-мозаики-минска",
     slugEn: "soviet-mosaics-minsk-guide",
     titleEn: "Soviet Mosaics of Minsk: A Walking Guide to the City's Hidden Monumental Art",
-    descriptionEn: "Where to find Minsk's best Soviet-era mosaics: the Vostok-1 towers ('Golden Gates'), the Florentine mosaic at Oktyabrskaya metro, the Dom Kino frieze and the Palace of Water Sports panel — with photos and directions.",
+    descriptionEn: "Where to find Minsk's best Soviet-era mosaics: the Vostok-1 towers ('Golden Gates'), the Florentine mosaic at Oktyabrskaya metro, and the Dom Kino frieze — with photos and directions.",
     ogSlug: "blog-sovetskie-mozaiki-minska",
     title: "Советские мозаики Минска: гид по монументальному искусству города",
     description:
-      "Где искать лучшие советские мозаики Минска: башни микрорайона Восток-1 («Золотые ворота»), флорентийская мозаика на «Октябрьской», фриз Дома кино и панно Дворца водного спорта — с фото и маршрутом.",
+      "Где искать лучшие советские мозаики Минска: башни микрорайона Восток-1 («Золотые ворота»), флорентийская мозаика на «Октябрьской» и фриз Дома кино — с фото и маршрутом.",
     intro:
-      "Минск — один из самых недооценённых городов Европы для любителей советского монументального искусства. На фасадах жилых башен, в переходах метро и на кинотеатрах до сих пор сохранились огромные мозаичные панно 1960–1980-х годов — эпические сцены труда, космоса и культуры, выложенные смальтой и мрамором. Собрали маршрут по четырём главным точкам, которые стоит увидеть своими глазами.",
+      "Минск — один из самых недооценённых городов Европы для любителей советского монументального искусства. На фасадах жилых башен, в переходах метро и на кинотеатрах до сих пор сохранились огромные мозаичные панно 1960–1980-х годов — эпические сцены труда, космоса и культуры, выложенные смальтой и мрамором. Собрали маршрут по трём главным точкам, которые стоит увидеть своими глазами.",
     dateISO: "2026-07-05",
     readingMin: 8,
     category: "Минск",
@@ -2637,16 +2637,10 @@ export const ARTICLES: Article[] = [
         text:
           "Здание неоднократно меняло назначение (сейчас в нём располагается Дворец детей и молодёжи), но фасадный декор сохранён. Стоит заглянуть сюда, если вы уже смотрите башни Восток-1 — это в 10–15 минутах на машине.",
       },
-      { type: "h2", text: "Дворец водного спорта: мозаичное панно на фасаде" },
-      {
-        type: "p",
-        text:
-          "Дворец водного спорта в спортивном комплексе «Олимпийский» — характерный образец советской спортивной архитектуры 1970-х с монументальным декором на тему воды, спорта и здоровья на фасаде. Здание действующее: здесь по-прежнему тренируются пловцы и работают секции, поэтому осматривать декор удобнее снаружи, не мешая посетителям.",
-      },
       {
         type: "callout",
         text:
-          "Маршрут по всем четырём точкам занимает около 3–4 часов с учётом переездов на машине и остановок для фото. Многие туристы объединяют его с посещением проспекта Независимости — крупнейшего цельного ансамбля сталинской архитектуры в Европе.",
+          "Маршрут по всем трём точкам занимает около 2–3 часов с учётом переездов на машине и остановок для фото. Многие туристы объединяют его с посещением проспекта Независимости — крупнейшего цельного ансамбля сталинской архитектуры в Европе.",
       },
       { type: "h2", text: "Как спланировать маршрут" },
       {
@@ -2654,8 +2648,7 @@ export const ARTICLES: Article[] = [
         items: [
           "Начните с башен Восток-1 (метро «Восток») — это самая эффектная и фотогеничная точка.",
           "Доедьте до станции метро «Октябрьская» и спуститесь в переход к мозаике Кузнецова.",
-          "Проедьте мимо здания бывшего Дома кино на Толбухина, чтобы увидеть фриз.",
-          "Завершите маршрут у Дворца водного спорта в комплексе «Олимпийский».",
+          "Завершите маршрут у здания бывшего Дома кино на Толбухина, чтобы увидеть фриз.",
         ],
       },
       {
@@ -2729,16 +2722,10 @@ export const ARTICLES: Article[] = [
         text:
           "The building has changed function more than once (it now houses a children's and youth centre), but the façade decoration has been preserved. Worth a short stop if you're already visiting the Vostok-1 towers — it's a 10–15 minute drive away.",
       },
-      { type: "h2", text: "Palace of Water Sports: the mosaic facade panel" },
-      {
-        type: "p",
-        text:
-          "The Palace of Water Sports, part of the 'Olimpiysky' sports complex, is a typical example of 1970s Soviet sports architecture, with monumental decoration on the theme of water, sport and health on its façade. The building is still active — swimmers train here and classes run daily — so it's best viewed from outside without disturbing visitors.",
-      },
       {
         type: "callout",
         text:
-          "The full four-stop route takes about 3–4 hours including driving time and photo stops. Many visitors combine it with a walk down Independence Avenue, the largest intact ensemble of Stalinist architecture in Europe.",
+          "The full three-stop route takes about 2–3 hours including driving time and photo stops. Many visitors combine it with a walk down Independence Avenue, the largest intact ensemble of Stalinist architecture in Europe.",
       },
       { type: "h2", text: "How to plan the route" },
       {
@@ -2746,8 +2733,7 @@ export const ARTICLES: Article[] = [
         items: [
           "Start at the Vostok-1 towers (Vostok metro station) — the most striking and photogenic stop.",
           "Head to Oktyabrskaya metro station and go down into the passage to see the Kuznetsov mosaic.",
-          "Drive past the former Dom Kino building on Talbukhina Street to see the frieze.",
-          "Finish at the Palace of Water Sports in the Olimpiysky complex.",
+          "Finish at the former Dom Kino building on Talbukhina Street to see the frieze.",
         ],
       },
       {
