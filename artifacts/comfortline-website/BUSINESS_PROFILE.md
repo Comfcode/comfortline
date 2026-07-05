@@ -8,9 +8,9 @@ Use these fields when filling out Yandex Бизнес, Google Business Profile, 
 
 | Field | Value |
 |---|---|
-| Phone | +375 (29) 155-27-76 |
-| WhatsApp / Viber | https://wa.me/375291552776 |
-| Telegram | https://t.me/transfer_comfortline |
+| Phone | +375 (44) 762-06-49 |
+| WhatsApp / Viber | https://wa.me/375447620649 |
+| Telegram | https://t.me/+375447620649 |
 | Instagram | https://www.instagram.com/transfer_comfortline/ |
 | Messenger | https://m.me/103816619260365 |
 | Email | info@comfortline.by |
@@ -49,7 +49,7 @@ ComfortLine — индивидуальный премиум-трансфер и�
 
 Маршруты: Минск ↔ Вильнюс, Минск ↔ Варшава, Минск ↔ Берлин, Минск ↔ Прага, Минск ↔ Рига, по Беларуси, в Россию. Групповые трансферы для 6+ человек.
 
-Заказ: позвоните +375 (29) 155-27-76 или напишите в WhatsApp / Telegram / Viber — менеджер ответит в течение 15 минут.
+Заказ: позвоните +375 (44) 762-06-49 или напишите в WhatsApp / Telegram / Viber — менеджер ответит в течение 15 минут.
 
 **Категории / рубрики (выбирайте всё, что подходит):**
 - Трансфер
@@ -91,7 +91,7 @@ ComfortLine provides premium private transfers from Minsk to Vilnius (VNO), Wars
 
 What you get: fixed price before the trip, no hidden fees; airport meet-and-greet with a name board and luggage help; experienced English- and Russian-speaking drivers who know every border checkpoint; comfortable vehicles (Mercedes E-class, Kia Carnival, Hyundai Palisade); Wi-Fi and charging on board; flight tracking with free wait time; child seats on request.
 
-Book by phone +375 (29) 155-27-76 or WhatsApp / Telegram / Viber — a manager replies within 15 minutes.
+Book by phone +375 (44) 762-06-49 or WhatsApp / Telegram / Viber — a manager replies within 15 minutes.
 
 **Primary category:**
 Airport shuttle service
