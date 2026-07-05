@@ -4,3 +4,4 @@
 - [Free live-data scraping via jina.ai reader](jina-reader-scraping.md) — pattern for pulling live data from JS-rendered sites with no API/key.
 - [GSC canonical/www duplicate warnings](gsc-canonical-www-duplicates.md) — correct rel=canonical tags aren't enough; www/non-www needs a real server 301, not just a meta tag.
 - [GSC "alternate page with canonical" reports](gsc-canonical-alternate-page-report.md) — often stale crawl data from before a prior fix; diff sitemap vs routes before touching canonical logic.
+- [Build-time TS/TSX source extraction](build-time-tsx-source-extraction.md) — regex+brace-balance parsing of .tsx source in prerender scripts; brace search must start after the full marker match, not at it.

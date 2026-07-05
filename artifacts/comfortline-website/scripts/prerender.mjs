@@ -3,179 +3,410 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DIST = path.resolve(__dirname, "..", "dist", "public");
+const ROOT = path.resolve(__dirname, "..");
+const PAGES_DIR = path.join(ROOT, "src", "pages");
+const DIST = path.join(ROOT, "dist", "public");
 const SITE_URL = "https://comfortline.by";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph.jpg`;
 
 // ============================================================================
-// Airport / route landing pages — bilingual
+// Generic source-extraction helpers.
+//
+// Route metadata (titles, descriptions, H1s, intros) lives inline in the page
+// components and in src/data/blog-articles.ts. Rather than hand-copy it into
+// this script (which drifts out of sync — see the EN/RU blog bug this file
+// used to have), we parse it directly out of the source files at build time.
 // ============================================================================
-const routes = [
+
+function extractObjectLiteral(src, markerRegex) {
+  const m = markerRegex.exec(src);
+  if (!m) return null;
+  const searchFrom = m.index + m[0].length;
+  const braceStart = src.indexOf("{", searchFrom);
+  if (braceStart === -1) return null;
+  let depth = 0;
+  for (let i = braceStart; i < src.length; i++) {
+    if (src[i] === "{") depth++;
+    else if (src[i] === "}") {
+      depth--;
+      if (depth === 0) return src.slice(braceStart, i + 1);
+    }
+  }
+  return null;
+}
+
+function splitTopLevelObjects(arrayBodyStr) {
+  const objects = [];
+  let depth = 0;
+  let start = -1;
+  for (let i = 0; i < arrayBodyStr.length; i++) {
+    const c = arrayBodyStr[i];
+    if (c === "{") {
+      if (depth === 0) start = i;
+      depth++;
+    } else if (c === "}") {
+      depth--;
+      if (depth === 0 && start !== -1) {
+        objects.push(arrayBodyStr.slice(start, i + 1));
+        start = -1;
+      }
+    }
+  }
+  return objects;
+}
+
+function unescapeJsString(s) {
+  return s.replace(/\\"/g, '"').replace(/\\\\/g, "\\");
+}
+
+/** Extract a `key: "value"` field from a plain JS object literal string. */
+function field(objStr, name) {
+  if (!objStr) return null;
+  const re = new RegExp(name + ':\\s*"((?:[^"\\\\]|\\\\.)*)"');
+  const m = re.exec(objStr);
+  return m ? unescapeJsString(m[1]) : null;
+}
+
+/** Extract a `key="value"` prop from a JSX tag's attribute string. */
+function attr(tagStr, name) {
+  if (!tagStr) return null;
+  const re = new RegExp(name + '="((?:[^"\\\\]|\\\\.)*)"');
+  const m = re.exec(tagStr);
+  return m ? unescapeJsString(m[1]) : null;
+}
+
+function stripComfortLineSuffix(s) {
+  return s ? s.replace(/\s*\|\s*ComfortLine.*$/i, "").trim() : s;
+}
+
+function slugFromPath(p) {
+  return p.replace(/^\//, "").replace(/\//g, "-") || "home";
+}
+
+// ----------------------------------------------------------------------------
+// Auto-extraction over src/pages/*.tsx
+//
+// Two conventions are used across the codebase:
+//  (a) `const data: RoutePageData/CountryPageData = { ru: {...}, en: {...}, seo: {...} }`
+//  (b) `<Seo titleRu="..." titleEn="..." .../>` + `const content = { ru: {...}, en: {...} }`
+// ----------------------------------------------------------------------------
+
+const TEMPLATE_FILES = new Set([
+  "route-landing-page.tsx",
+  "country-transfer-page.tsx",
+  "vehicle-page.tsx",
+  "not-found.tsx",
+]);
+// Handled with hand-curated entries below because they don't fit either
+// convention (query-param language switch, or a bespoke content shape).
+const MANUAL_FILES = new Set(["landing.tsx", "faq.tsx", "terms.tsx", "privacy-policy.tsx"]);
+// Excluded entirely: brandbook is noindex, thank-you has no static <Seo/> (client-only redirect target).
+const EXCLUDED_FILES = new Set(["brandbook.tsx", "thank-you.tsx"]);
+
+function extractRouteFromPageSource(src) {
+  const dataObj = extractObjectLiteral(src, /const\s+data\s*:\s*\w+\s*=\s*/);
+  if (dataObj) {
+    const ruBlock = extractObjectLiteral(dataObj, /\bru:\s*/);
+    const enBlock = extractObjectLiteral(dataObj, /\ben:\s*/);
+    const seoBlock = extractObjectLiteral(dataObj, /\bseo:\s*/);
+    if (!seoBlock) return null;
+    return {
+      h1Ru: field(ruBlock, "title"),
+      introRu: field(ruBlock, "subtitle"),
+      h1En: field(enBlock, "title"),
+      introEn: field(enBlock, "subtitle"),
+      titleRu: field(seoBlock, "titleRu"),
+      titleEn: field(seoBlock, "titleEn"),
+      descRu: field(seoBlock, "descRu"),
+      descEn: field(seoBlock, "descEn"),
+      pathRu: field(seoBlock, "pathRu"),
+      pathEn: field(seoBlock, "pathEn"),
+    };
+  }
+
+  const seoTagMatch = /<Seo\b([\s\S]*?)\/>/.exec(src);
+  if (!seoTagMatch) return null;
+  const seoTag = seoTagMatch[1];
+  if (/\bnoindex\b/.test(seoTag)) return null;
+
+  const contentObj = extractObjectLiteral(src, /const\s+content\s*=\s*/);
+  const ruBlock = contentObj ? extractObjectLiteral(contentObj, /\bru:\s*/) : null;
+  const enBlock = contentObj ? extractObjectLiteral(contentObj, /\ben:\s*/) : null;
+
+  const titleRu = attr(seoTag, "titleRu");
+  const titleEn = attr(seoTag, "titleEn");
+  const descRu = attr(seoTag, "descRu");
+  const descEn = attr(seoTag, "descEn");
+
+  return {
+    h1Ru: field(ruBlock, "title") || stripComfortLineSuffix(titleRu),
+    introRu: field(ruBlock, "subtitle") || field(ruBlock, "seoIntro") || descRu,
+    h1En: field(enBlock, "title") || stripComfortLineSuffix(titleEn),
+    introEn: field(enBlock, "subtitle") || field(enBlock, "seoIntro") || descEn,
+    titleRu,
+    titleEn,
+    descRu,
+    descEn,
+    pathRu: attr(seoTag, "pathRu"),
+    pathEn: attr(seoTag, "pathEn"),
+  };
+}
+
+function collectAutoRoutes() {
+  const out = [];
+  for (const file of fs.readdirSync(PAGES_DIR)) {
+    if (!file.endsWith(".tsx")) continue;
+    if (TEMPLATE_FILES.has(file) || MANUAL_FILES.has(file) || EXCLUDED_FILES.has(file)) continue;
+    const src = fs.readFileSync(path.join(PAGES_DIR, file), "utf8");
+    const extracted = extractRouteFromPageSource(src);
+    if (!extracted || !extracted.pathRu || !extracted.pathEn || !extracted.titleRu || !extracted.titleEn) {
+      console.warn(`[prerender] WARNING: could not extract SEO route metadata from src/pages/${file} — skipping.`);
+      continue;
+    }
+    out.push({ ogSlug: slugFromPath(extracted.pathEn), ...extracted });
+  }
+  return out;
+}
+
+// ----------------------------------------------------------------------------
+// vehicle-page.tsx — parameterized by slug via `vehicleSeo` + `vehicleContent` maps.
+// ----------------------------------------------------------------------------
+
+function collectVehicleRoutes() {
+  const src = fs.readFileSync(path.join(PAGES_DIR, "vehicle-page.tsx"), "utf8");
+  const seoMapStr = extractObjectLiteral(src, /const\s+vehicleSeo\s*:[^=]*=\s*/);
+  const contentMapStr = extractObjectLiteral(src, /const\s+vehicleContent\s*:[^=]*=\s*/);
+  if (!seoMapStr || !contentMapStr) {
+    console.warn("[prerender] WARNING: could not parse vehicleSeo/vehicleContent maps from vehicle-page.tsx");
+    return [];
+  }
+
+  function mapEntries(mapStr) {
+    const entries = {};
+    const keyRe = /"([a-z0-9-]+)":\s*/g;
+    let m;
+    while ((m = keyRe.exec(mapStr))) {
+      const slug = m[1];
+      const objStr = extractObjectLiteral(mapStr, new RegExp(`"${slug}":\\s*`));
+      if (objStr) entries[slug] = objStr;
+    }
+    return entries;
+  }
+
+  const seoEntries = mapEntries(seoMapStr);
+  const contentEntries = mapEntries(contentMapStr);
+
+  const routes = [];
+  for (const slug of Object.keys(seoEntries)) {
+    const seoStr = seoEntries[slug];
+    const contentStr = contentEntries[slug];
+    const ruBlock = contentStr ? extractObjectLiteral(contentStr, /\bru:\s*/) : null;
+    const enBlock = contentStr ? extractObjectLiteral(contentStr, /\ben:\s*/) : null;
+    const titleRu = field(seoStr, "titleRu");
+    const titleEn = field(seoStr, "titleEn");
+    routes.push({
+      ogSlug: slug,
+      pathRu: field(seoStr, "pathRu"),
+      pathEn: field(seoStr, "pathEn"),
+      titleRu,
+      titleEn,
+      descRu: field(seoStr, "descRu"),
+      descEn: field(seoStr, "descEn"),
+      h1Ru: field(ruBlock, "name") || stripComfortLineSuffix(titleRu),
+      h1En: field(enBlock, "name") || stripComfortLineSuffix(titleEn),
+      introRu: field(ruBlock, "desc") || field(seoStr, "descRu"),
+      introEn: field(enBlock, "desc") || field(seoStr, "descEn"),
+    });
+  }
+  return routes;
+}
+
+// ----------------------------------------------------------------------------
+// Blog articles — parsed directly from src/data/blog-articles.ts so EN/RU
+// fields (slugEn/titleEn/descriptionEn/introEn) always match the live data
+// instead of a manually duplicated (and easily stale) list.
+// ----------------------------------------------------------------------------
+
+function collectBlogRoutes() {
+  const src = fs.readFileSync(path.join(ROOT, "src", "data", "blog-articles.ts"), "utf8");
+  const arrMatch = /export const ARTICLES\s*:\s*Article\[\]\s*=\s*\[/.exec(src);
+  if (!arrMatch) {
+    console.warn("[prerender] WARNING: could not find ARTICLES array in blog-articles.ts");
+    return { blogIndexRoute: null, blogArticleRoutes: [] };
+  }
+  const arrStart = arrMatch.index + arrMatch[0].length - 1; // position of the opening "["
+  let depth = 0;
+  let arrEnd = -1;
+  for (let i = arrStart; i < src.length; i++) {
+    if (src[i] === "[") depth++;
+    else if (src[i] === "]") {
+      depth--;
+      if (depth === 0) {
+        arrEnd = i;
+        break;
+      }
+    }
+  }
+  const arrBody = src.slice(arrStart + 1, arrEnd);
+  const objStrs = splitTopLevelObjects(arrBody);
+
+  const blogArticleRoutes = [];
+  for (const objStr of objStrs) {
+    const slug = field(objStr, "slug");
+    const slugEn = field(objStr, "slugEn");
+    const ogSlug = field(objStr, "ogSlug");
+    const title = field(objStr, "title");
+    const titleEn = field(objStr, "titleEn");
+    const description = field(objStr, "description");
+    const descriptionEn = field(objStr, "descriptionEn");
+    const intro = field(objStr, "intro");
+    const introEn = field(objStr, "introEn");
+    const dateISO = field(objStr, "dateISO");
+    const category = field(objStr, "category");
+    const categoryEn = field(objStr, "categoryEn");
+    const tagsMatch = /\btags:\s*\[([^\]]*)\]/.exec(objStr);
+    const tags = tagsMatch
+      ? tagsMatch[1]
+          .split(",")
+          .map((t) => t.trim().replace(/^"|"$/g, ""))
+          .filter(Boolean)
+      : [];
+
+    if (!slug || !title || !description || !intro) {
+      console.warn(`[prerender] WARNING: incomplete blog article entry (slug=${slug}) — skipping.`);
+      continue;
+    }
+    if (!slugEn || !titleEn || !descriptionEn || !introEn) {
+      console.warn(
+        `[prerender] WARNING: blog article "${slug}" is missing EN fields (slugEn/titleEn/descriptionEn/introEn) — falling back to RU for the English variant.`,
+      );
+    }
+
+    blogArticleRoutes.push({
+      ogSlug: ogSlug || `blog-${slug}`,
+      pathRu: `/блог/${slug}`,
+      pathEn: `/blog/${slugEn || slug}`,
+      titleRu: `${title} | Блог ComfortLine`,
+      titleEn: `${titleEn || title} | ComfortLine Blog`,
+      descRu: description,
+      descEn: descriptionEn || description,
+      h1Ru: title,
+      h1En: titleEn || title,
+      introRu: intro,
+      introEn: introEn || intro,
+      isArticle: true,
+      datePublished: dateISO,
+      dateModified: dateISO,
+      section: category,
+      sectionEn: categoryEn || category,
+      keywords: tags.join(", "),
+    });
+  }
+
+  const blogIndexRoute = {
+    ogSlug: "blog-index",
+    pathRu: "/блог",
+    pathEn: "/blog",
+    titleRu: "Блог ComfortLine — гайды по трансферу, границе и аэропортам",
+    titleEn: "ComfortLine Blog — guides on transfers, border and airports",
+    descRu:
+      "Гайды по трансферу из Минска: пересечение границы Беларусь–Литва, стоимость поездок, что нельзя ввозить в ЕС, выбор КПП, советы для семей с детьми.",
+    descEn:
+      "Guides on Minsk transfers: Belarus–Lithuania border crossings, pricing, EU customs rules, picking a border checkpoint, family travel tips.",
+    h1Ru: "Блог ComfortLine",
+    h1En: "ComfortLine Blog",
+    introRu:
+      "Практические гайды по трансферу, пересечению границы и аэропортам Европы. Опыт водителей ComfortLine за 8 лет работы.",
+    introEn: "Practical guides on transfers, border crossings and European airports. 8 years of ComfortLine driver experience.",
+  };
+
+  return { blogIndexRoute, blogArticleRoutes };
+}
+
+// ----------------------------------------------------------------------------
+// Manually curated entries.
+//
+// These four routes (/, /faq, /terms, /privacy) are registered as a SINGLE
+// wouter <Route> each in App.tsx — English is toggled client-side via a
+// `?lang=en` query string, not a distinct path. A static file host can only
+// serve one prerendered document per path, so we emit one HTML file (in RU,
+// matching the site's default <html lang="ru">) with hreflang correctly
+// pointing at the `?lang=en` variant, mirroring src/seo/use-seo.ts.
+// ----------------------------------------------------------------------------
+
+const manualRoutes = [
   {
-    ogSlug: "minsk-vilnius-airport",
-    pathRu: "/трансфер-минск-вильнюс-аэропорт",
-    pathEn: "/minsk-vilnius-airport",
-    titleRu: "Трансфер Минск — Аэропорт Вильнюса (VNO) | ComfortLine",
-    titleEn: "Minsk to Vilnius Airport (VNO) Private Transfer | ComfortLine",
-    descRu: "Трансфер Минск — аэропорт Вильнюса (VNO). Подача от двери, фиксированная цена, опытный водитель, помощь на границе Беларусь–Литва. Заказ онлайн или +375 (29) 155-27-76.",
-    descEn: "Private transfer Minsk to Vilnius Airport (VNO). Door-to-door pickup, fixed price, experienced driver, full assistance at the Belarus–Lithuania border. Book online or call +375 (29) 155-27-76.",
-    h1Ru: "Трансфер Минск — Аэропорт Вильнюса (VNO)",
-    h1En: "Minsk to Vilnius Airport (VNO) Transfer",
-    introRu: "Индивидуальный трансфер Минск — аэропорт Вильнюса (VNO) на ваш рейс. Подача от двери в Минске, фиксированная цена, опытный водитель и помощь на границе Беларусь–Литва. Заказать трансфер Минск — Вильнюс аэропорт можно онлайн или по телефону. Маршрут ~175 км через погранпереход Каменный Лог / Котловка обычно занимает 2,5–5 часов.",
-    introEn: "Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, professional driver, full assistance at the Belarus–Lithuania border. The ~175 km route via the Kamenny Log / Kotlovka border crossing typically takes 2.5–5 hours.",
+    ogSlug: "home",
+    pathRu: "/",
+    pathEn: "/?lang=en",
+    singleFile: true,
+    titleRu: "ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт, Минск–Варшава аэропорт",
+    titleEn: "ComfortLine — Comfortable Transfers Minsk–Vilnius Airport, Minsk–Warsaw Airport",
+    descRu:
+      "Комфортный трансфер из Минска в аэропорт Вильнюса (VNO) и аэропорт Варшавы (WAW, Модлин), Берлин и города Европы. Фиксированная цена, опытный водитель, комфортные авто. Заказ онлайн или +375 (44) 762-06-49.",
+    descEn:
+      "Comfortable transfers from Minsk to Vilnius Airport (VNO) and Warsaw Airport (WAW, Modlin), Berlin and major European cities. Fixed prices, English-speaking drivers, comfortable vehicles. Book online or call +375 (44) 762-06-49.",
+    h1Ru: "ComfortLine — комфортный трансфер из Минска",
+    h1En: "ComfortLine — Comfortable Transfers from Minsk",
+    introRu:
+      "Комфортный трансфер из Минска в аэропорт Вильнюса (VNO) и аэропорт Варшавы (WAW, Модлин), Берлин и города Европы. Фиксированная цена, опытный водитель, комфортные авто.",
+    introEn:
+      "Comfortable transfers from Minsk to Vilnius Airport (VNO) and Warsaw Airport (WAW, Modlin), Berlin and major European cities. Fixed prices, English-speaking drivers, comfortable vehicles.",
   },
   {
-    ogSlug: "minsk-warsaw-airport",
-    pathRu: "/трансфер-минск-варшава-шопен",
-    pathEn: "/minsk-warsaw-airport",
-    titleRu: "Трансфер Минск — Аэропорт Варшавы Шопен (WAW) | ComfortLine",
-    titleEn: "Minsk to Warsaw Chopin Airport (WAW) Private Transfer | ComfortLine",
-    descRu: "Трансфер Минск — аэропорт Варшавы Шопен (WAW). Подача от двери, фиксированная цена, опытный водитель, помощь на границе Беларусь–Польша. Заказ онлайн или +375 (29) 155-27-76.",
-    descEn: "Private transfer Minsk to Warsaw Chopin Airport (WAW). Door-to-door pickup, fixed price, experienced driver, full assistance at the Belarus–Poland border. Book online or call +375 (29) 155-27-76.",
-    h1Ru: "Трансфер Минск — Аэропорт Варшавы Шопен (WAW)",
-    h1En: "Minsk to Warsaw Chopin Airport (WAW) Transfer",
-    introRu: "Индивидуальный трансфер Минск — аэропорт Варшавы Шопен (WAW) на ваш рейс. Подача от двери, фиксированная цена, профессиональный водитель. Маршрут ~550 км через погранпереход Брест/Тересполь обычно занимает 6–10 часов.",
-    introEn: "Private transfer Minsk to Warsaw Chopin Airport (WAW). Door-to-door pickup, fixed price, professional chauffeur. The ~550 km route via the Brest / Terespol border crossing typically takes 6–10 hours.",
+    ogSlug: "faq",
+    pathRu: "/faq",
+    pathEn: "/faq?lang=en",
+    singleFile: true,
+    titleRu: "FAQ — Частые вопросы о трансфере | ComfortLine",
+    titleEn: "FAQ — Transfer Questions Answered | ComfortLine",
+    descRu:
+      "Ответы на частые вопросы о трансфере ComfortLine: бронирование, цены, оплата, граница, документы, детские кресла, багаж и встречи в аэропортах Вильнюса и Варшавы.",
+    descEn:
+      "Answers to frequently asked questions about ComfortLine transfers: booking, pricing, payment, borders, documents, child seats, luggage, and airport meet-and-greet at Vilnius and Warsaw.",
+    h1Ru: "FAQ — Частые вопросы о трансфере",
+    h1En: "FAQ — Transfer Questions Answered",
+    introRu:
+      "Ответы на частые вопросы о трансфере ComfortLine: бронирование, цены, оплата, граница, документы, детские кресла, багаж и встречи в аэропортах.",
+    introEn:
+      "Answers to frequently asked questions about ComfortLine transfers: booking, pricing, payment, borders, documents, child seats, luggage, and airport meet-and-greet.",
   },
   {
-    ogSlug: "minsk-warsaw-modlin-airport",
-    pathRu: "/трансфер-минск-варшава-модлин",
-    pathEn: "/minsk-warsaw-modlin-airport",
-    titleRu: "Трансфер Минск — Аэропорт Варшава-Модлин (WMI) | ComfortLine",
-    titleEn: "Minsk to Warsaw Modlin Airport (WMI) Private Transfer | ComfortLine",
-    descRu: "Трансфер Минск — аэропорт Варшава-Модлин (WMI). Бюджетный хаб Ryanair и Wizz Air. Фиксированная цена, опытный водитель, помощь на границе. +375 (29) 155-27-76.",
-    descEn: "Private transfer Minsk to Warsaw Modlin Airport (WMI). Ryanair and Wizz Air budget hub. Fixed price, experienced driver, border assistance. +375 (29) 155-27-76.",
-    h1Ru: "Трансфер Минск — Аэропорт Варшава-Модлин (WMI)",
-    h1En: "Minsk to Warsaw Modlin Airport (WMI) Transfer",
-    introRu: "Индивидуальный трансфер Минск — аэропорт Варшава-Модлин (WMI). Бюджетный хаб Ryanair и Wizz Air, в 35 км от центра Варшавы. Фиксированная цена, опытный водитель.",
-    introEn: "Private transfer Minsk to Warsaw Modlin Airport (WMI). Ryanair and Wizz Air budget hub, 35 km north of central Warsaw. Fixed price, professional chauffeur.",
+    ogSlug: "terms",
+    pathRu: "/terms",
+    pathEn: "/terms?lang=en",
+    singleFile: true,
+    titleRu: "Публичная оферта и условия | ComfortLine",
+    titleEn: "Public Offer & Terms | ComfortLine",
+    descRu:
+      "Публичная оферта ComfortLine: условия предоставления услуг трансфера, права и обязанности сторон, оплата и отмена бронирования.",
+    descEn:
+      "ComfortLine public offer & terms: transfer service conditions, rights and obligations of the parties, payment and cancellation.",
+    h1Ru: "Публичная оферта",
+    h1En: "Public Offer (Terms of Service)",
+    introRu: "на оказание услуг по организации индивидуального трансфера",
+    introEn: "Private transfer and chauffeur services",
   },
   {
-    ogSlug: "minsk-kaunas-airport",
-    pathRu: "/трансфер-минск-каунас-аэропорт",
-    pathEn: "/minsk-kaunas-airport",
-    titleRu: "Трансфер Минск — Аэропорт Каунаса (KUN) | ComfortLine",
-    titleEn: "Minsk to Kaunas Airport (KUN) Private Transfer | ComfortLine",
-    descRu: "Трансфер Минск — международный аэропорт Каунаса (KUN). Подача от двери, фиксированная цена, опытный водитель, помощь на границе Беларусь–Литва. ~280 км, 4–7 ч. +375 (29) 155-27-76.",
-    descEn: "Private transfer Minsk to Kaunas International Airport (KUN). Door-to-door pickup, fixed price, English-speaking driver, Belarus–Lithuania border assistance. ~280 km, 4–7 hrs. +375 (29) 155-27-76.",
-    h1Ru: "Трансфер Минск — Аэропорт Каунаса (KUN)",
-    h1En: "Minsk to Kaunas Airport (KUN) Transfer",
-    introRu: "Индивидуальный трансфер Минск — международный аэропорт Каунаса (KUN). Каунас — второй аэропорт Литвы и крупный хаб Ryanair. Подача от двери в Минске, фиксированная цена, опытный водитель и помощь на границе Беларусь–Литва. Маршрут ~280 км через погранпереход Каменный Лог / Бенякони обычно занимает 4–7 часов в зависимости от очередей.",
-    introEn: "Private door-to-door transfer from Minsk to Kaunas International Airport (KUN). Kaunas is Lithuania's second-largest airport and a major Ryanair hub. Fixed price, professional driver, full assistance at the Belarus–Lithuania border. The ~280 km route via the Kamenny Log / Benyakoni border crossing typically takes 4–7 hours.",
+    ogSlug: "privacy",
+    pathRu: "/privacy",
+    pathEn: "/privacy?lang=en",
+    singleFile: true,
+    titleRu: "Политика конфиденциальности | ComfortLine",
+    titleEn: "Privacy Policy | ComfortLine",
+    descRu:
+      "Политика конфиденциальности ComfortLine: как мы обрабатываем персональные данные клиентов трансфера и обеспечиваем их защиту.",
+    descEn: "ComfortLine privacy policy — how we process and protect personal data of our transfer customers.",
+    h1Ru: "Политика обработки персональных данных",
+    h1En: "Personal Data Processing Policy",
+    introRu: "ИП Мурашко Андрей Антонович (Comfortline.by)",
+    introEn: "Sole Proprietor Murashko Andrei Antonovich (Comfortline.by)",
   },
 ];
 
 // ============================================================================
-// Blog index — bilingual stub. RU is the primary content audience.
+// HTML generation
 // ============================================================================
-const blogIndexRoute = {
-  ogSlug: "blog-index",
-  pathRu: "/блог",
-  pathEn: "/blog",
-  titleRu: "Блог ComfortLine — гайды по трансферу, границе и аэропортам",
-  titleEn: "ComfortLine Blog — guides on transfers, border and airports",
-  descRu: "Гайды по трансферу из Минска: пересечение границы Беларусь–Литва, стоимость поездок, что нельзя ввозить в ЕС, выбор КПП, советы для семей с детьми.",
-  descEn: "Guides on Minsk transfers: Belarus–Lithuania border crossings, pricing, EU customs rules, picking a border checkpoint, family travel tips.",
-  h1Ru: "Блог ComfortLine",
-  h1En: "ComfortLine Blog",
-  introRu: "Практические гайды по трансферу, пересечению границы и аэропортам Европы. Опыт водителей ComfortLine за 8 лет работы. Темы: граница Беларусь–Литва, цена трансфера в Варшаву, что нельзя ввозить в ЕС, выбор КПП, поездки с детьми, как добраться до аэропорта Вильнюса.",
-  introEn: "Practical guides on transfers, border crossings and European airports. 8 years of ComfortLine driver experience.",
-};
-
-// ============================================================================
-// Blog articles — RU-only content but route exists at both /блог and /blog.
-// Mirrors src/data/blog-articles.ts (slugs + titles + intros must stay in sync).
-// ============================================================================
-const blogArticles = [
-  {
-    slug: "граница-беларусь-литва",
-    ogSlug: "blog-granitsa-belarus-litva",
-    title: "Как пересечь границу Беларусь — Литва в 2026: время, документы, КПП",
-    description: "Подробный гайд по границе Беларусь–Литва в 2026: какие КПП работают, сколько стоят очереди, какие документы нужны для въезда в ЕС, советы водителей ComfortLine.",
-    intro: "Граница Беларусь–Литва — это самый востребованный маршрут наших трансферов. Полный гайд: список рабочих КПП (Каменный Лог, Бенякони), среднее время прохождения 2–6 часов, документы (виза, страховка, бронь, финансы), типичные причины отказа во въезде и советы из практики водителей ComfortLine за 2025–2026 год.",
-    datePublished: "2026-04-15T09:00:00+03:00",
-    dateModified: "2026-05-03T09:00:00+03:00",
-    section: "Граница",
-    keywords: "граница беларусь литва, каменный лог, бенякони, кпп, очереди на границе, документы для ес, виза в литву",
-  },
-  {
-    slug: "стоимость-трансфер-минск-варшава",
-    ogSlug: "blog-stoimost-transfer-minsk-varshava",
-    title: "Сколько стоит трансфер Минск — Варшава в 2026",
-    description: "Из чего складывается цена трансфера Минск–Варшава: расстояние, класс авто, очереди на границе, доплаты. Сравнение комфорт- и бизнес-класса, реальные кейсы.",
-    intro: "Трансфер Минск–Варшава — это поездка в 550–600 км с пересечением границы. Цена зависит от класса авто (от 220 € эконом до 450 € микроавтобус), времени суток и сезона. Разбираем составляющие цены и сравнение Mercedes E-class, VW Passat, Hyundai Palisade и Fiat Scudo.",
-    datePublished: "2026-04-10T09:00:00+03:00",
-    dateModified: "2026-05-03T09:00:00+03:00",
-    section: "Цены",
-    keywords: "трансфер минск варшава цена, стоимость такси минск варшава, mercedes e-class, vw passat, hyundai palisade, fiat scudo",
-  },
-  {
-    slug: "что-нельзя-ввозить-в-ес",
-    ogSlug: "blog-chto-nelzya-vvozit-v-es",
-    title: "Что нельзя ввозить из Беларуси в ЕС в 2026: полный список",
-    description: "Актуальный на 2026 год список товаров, запрещённых к ввозу из Беларуси в ЕС: санкционные позиции, лимиты на еду и валюту, наличные, табак, алкоголь.",
-    intro: "Литва, Польша и Латвия применяют санкционные правила ЕС на въезд из Беларуси очень строго. Полный список запретов: топливо в канистрах, табак сверх 40 сигарет, электроника от 750 €, мясо и молочка, валюта свыше 10 000 €. Лимиты на ввоз в Беларусь и в ЕС в табличной форме.",
-    datePublished: "2026-04-05T09:00:00+03:00",
-    dateModified: "2026-05-03T09:00:00+03:00",
-    section: "Таможня",
-    keywords: "что нельзя ввозить в ес, санкции ес беларусь, таможенные правила, лимит наличных в ес, табак ввоз, алкоголь ввоз",
-  },
-  {
-    slug: "какой-кпп-выбрать",
-    ogSlug: "blog-kakoy-kpp-vybrat",
-    title: "Каменный Лог vs Котловка vs Бенякони — какой КПП выбрать в 2026",
-    description: "Сравнение литовских КПП Каменный Лог, Котловка и Бенякони в 2026: время прохождения, инфраструктура, плюсы и минусы каждого пункта пропуска.",
-    intro: "Если вы едете из Минска в Литву, у вас три варианта пунктов пропуска: Каменный Лог (Мядининкай), Бенякони (Шальчининкай) и ограниченно Котловка. Выбор КПП может сэкономить или отнять до 4 часов. Разбор плюсов и минусов на основе ежедневной статистики наших водителей.",
-    datePublished: "2026-03-28T09:00:00+03:00",
-    dateModified: "2026-05-03T09:00:00+03:00",
-    section: "Граница",
-    keywords: "каменный лог, котловка, бенякони, мядининкай, шальчининкай, кпп литва, выбор пункта пропуска",
-  },
-  {
-    slug: "трансфер-с-детьми",
-    ogSlug: "blog-transfer-s-detmi",
-    title: "Трансфер с детьми из Минска в аэропорт: чек-лист для родителей",
-    description: "Чек-лист для трансфера с детьми из Минска в аэропорты Европы: документы, кресла, питание в дороге, советы по границе. Опыт водителей ComfortLine.",
-    intro: "Поездка с детьми в аэропорт — это всегда стресс. Документы (загранпаспорт, виза, нотариальное согласие, страховка), детские кресла (ComfortLine предоставляет бесплатно), что взять в дорогу, как пройти границу быстрее. Чек-лист на основе опыта наших водителей за 8 лет.",
-    datePublished: "2026-03-20T09:00:00+03:00",
-    dateModified: "2026-05-03T09:00:00+03:00",
-    section: "Советы",
-    keywords: "трансфер с детьми, детское кресло, нотариальное согласие, поездка с ребёнком за границу, путешествие с детьми",
-  },
-  {
-    slug: "как-добраться-до-аэропорта-вильнюса",
-    ogSlug: "blog-kak-dobratsya-do-vno",
-    title: "Как добраться из Минска в аэропорт Вильнюса (VNO) в 2026",
-    description: "Все способы добраться из Минска в аэропорт Вильнюса (VNO) в 2026: трансфер, такси, автобус, личное авто. Сравнение цены, времени и удобства.",
-    intro: "Аэропорт Вильнюса (VNO) — самый удобный международный хаб для жителей Беларуси. Из Минска ~175 км. Сравниваем 4 варианта: индивидуальный трансфер ComfortLine от 130 €, сборное такси от 50 €, автобус от 25 €, личное авто. Время, цена, комфорт каждого варианта.",
-    datePublished: "2026-03-15T09:00:00+03:00",
-    dateModified: "2026-05-03T09:00:00+03:00",
-    section: "Маршруты",
-    keywords: "как добраться до аэропорта вильнюса, vno из минска, трансфер минск вильнюс аэропорт, автобус минск вильнюс",
-  },
-];
-
-// Build virtual routes for each blog article (both /блог/ and /blog/ prefix).
-const blogArticleRoutes = blogArticles.map((a) => ({
-  ogSlug: a.ogSlug,
-  pathRu: `/блог/${a.slug}`,
-  pathEn: `/blog/${a.slug}`,
-  titleRu: `${a.title} | Блог ComfortLine`,
-  titleEn: `${a.title} | ComfortLine Blog`,
-  descRu: a.description,
-  descEn: a.description,
-  h1Ru: a.title,
-  h1En: a.title,
-  introRu: a.intro,
-  introEn: a.intro,
-  isArticle: true,
-  datePublished: a.datePublished,
-  dateModified: a.dateModified,
-  section: a.section,
-  keywords: a.keywords,
-}));
-
-const allRoutes = [...routes, blogIndexRoute, ...blogArticleRoutes];
 
 function escapeHtml(s) {
   return s
@@ -186,7 +417,7 @@ function escapeHtml(s) {
     .replace(/'/g, "&#39;");
 }
 
-function buildHtml(template, route, lang) {
+function buildHtml(template, route, lang, blogIndexRoute) {
   const isRu = lang === "ru";
   const title = isRu ? route.titleRu : route.titleEn;
   const desc = isRu ? route.descRu : route.descEn;
@@ -288,6 +519,9 @@ function buildHtml(template, route, lang) {
     `<meta name="twitter:image" content="${ogImage}" />`,
   );
 
+  // For single-file routes (/, /faq, /terms, /privacy) there is only one
+  // prerendered document; still self-reference + point hreflang at the
+  // `?lang=en` variant of the same path, matching the client's use-seo.ts.
   const hreflang = `
     <link rel="alternate" hreflang="ru" href="${SITE_URL + encodeURI(route.pathRu)}" />
     <link rel="alternate" hreflang="en" href="${SITE_URL + encodeURI(route.pathEn)}" />
@@ -311,9 +545,9 @@ function buildHtml(template, route, lang) {
       publisher: { "@type": "Organization", "@id": `${SITE_URL}#organization`, name: "ComfortLine", logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` } },
       datePublished: route.datePublished,
       dateModified: route.dateModified,
-      articleSection: route.section,
+      articleSection: isRu ? route.section : route.sectionEn || route.section,
       keywords: route.keywords,
-      inLanguage: "ru",
+      inLanguage: lang,
       isAccessibleForFree: true,
     };
     const articleMetaInjection = `
@@ -322,7 +556,7 @@ function buildHtml(template, route, lang) {
     <meta property="article:modified_time" content="${route.dateModified}" />
     <meta property="article:author" content="ComfortLine" />
     <meta property="article:publisher" content="${SITE_URL}" />
-    <meta property="article:section" content="${escapeHtml(route.section)}" />
+    <meta property="article:section" content="${escapeHtml(isRu ? route.section : route.sectionEn || route.section)}" />
     ${route.keywords.split(",").map((k) => `<meta property="article:tag" content="${escapeHtml(k.trim())}" />`).join("\n    ")}`;
     html = html.replace(`<meta property="og:type" content="${ogType}" />`, `<meta property="og:type" content="${ogType}" />${articleMetaInjection}`);
     const breadcrumbJsonLd = {
@@ -383,7 +617,8 @@ function buildHtml(template, route, lang) {
 }
 
 function emit(routePath, html) {
-  const folderRel = decodeURIComponent(routePath).replace(/^\//, "");
+  const [pathname] = routePath.split("?");
+  const folderRel = decodeURIComponent(pathname).replace(/^\//, "");
   const folder = path.join(DIST, folderRel);
   fs.mkdirSync(folder, { recursive: true });
   fs.writeFileSync(path.join(folder, "index.html"), html, "utf8");
@@ -397,12 +632,34 @@ function main() {
     process.exit(1);
   }
   const template = fs.readFileSync(templatePath, "utf8");
+
+  const autoRoutes = collectAutoRoutes();
+  const vehicleRoutes = collectVehicleRoutes();
+  const { blogIndexRoute, blogArticleRoutes } = collectBlogRoutes();
+
+  const allRoutes = [
+    ...manualRoutes,
+    ...autoRoutes,
+    ...vehicleRoutes,
+    ...(blogIndexRoute ? [blogIndexRoute] : []),
+    ...blogArticleRoutes,
+  ];
+
   const written = [];
   for (const route of allRoutes) {
-    written.push(emit(route.pathRu, buildHtml(template, route, "ru")));
-    written.push(emit(route.pathEn, buildHtml(template, route, "en")));
+    if (route.singleFile) {
+      // Only one static document can exist at this path; RU is the default
+      // (matches <html lang="ru"> in index.html and the client's default).
+      written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute)));
+    } else {
+      written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute)));
+      written.push(emit(route.pathEn, buildHtml(template, route, "en", blogIndexRoute)));
+    }
   }
-  console.log(`[prerender] wrote ${written.length} files:`);
+
+  console.log(
+    `[prerender] wrote ${written.length} files for ${allRoutes.length} routes (${manualRoutes.length} manual, ${autoRoutes.length} auto, ${vehicleRoutes.length} vehicle, ${1 + blogArticleRoutes.length} blog):`,
+  );
   for (const f of written) console.log(`  - ${f}`);
 }
 
