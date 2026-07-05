@@ -29,6 +29,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-берлин",
         isAvailable: false,
         prefilledTo: "Берлин BER",
+        slug: "berlin-ber",
       },
       {
         cityRu: "Гамбург",
@@ -41,6 +42,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-в-германию",
         isAvailable: false,
         prefilledTo: "Гамбург",
+        slug: "hamburg",
       },
     ],
     infoTitle: "Полезная информация",
@@ -96,6 +98,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-берлин",
         isAvailable: false,
         prefilledTo: "Berlin BER",
+        slug: "berlin-ber",
       },
       {
         cityRu: "Гамбург",
@@ -108,6 +111,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-в-германию",
         isAvailable: false,
         prefilledTo: "Hamburg",
+        slug: "hamburg",
       },
     ],
     infoTitle: "Useful information",

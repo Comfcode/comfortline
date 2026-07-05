@@ -18,6 +18,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-во-францию",
         isAvailable: false,
         prefilledTo: "Париж CDG",
+        slug: "paris-cdg",
       },
       {
         cityRu: "Париж — центр города",
@@ -30,6 +31,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-во-францию",
         isAvailable: false,
         prefilledTo: "Париж",
+        slug: "paris-city",
       },
       {
         cityRu: "Страсбург",
@@ -42,6 +44,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-во-францию",
         isAvailable: false,
         prefilledTo: "Страсбург",
+        slug: "strasbourg",
       },
     ],
     infoTitle: "Полезная информация",
@@ -86,6 +89,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-во-францию",
         isAvailable: false,
         prefilledTo: "Paris CDG",
+        slug: "paris-cdg",
       },
       {
         cityRu: "Париж — центр города",
@@ -98,6 +102,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-во-францию",
         isAvailable: false,
         prefilledTo: "Paris",
+        slug: "paris-city",
       },
       {
         cityRu: "Страсбург",
@@ -110,6 +115,7 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-во-францию",
         isAvailable: false,
         prefilledTo: "Strasbourg",
+        slug: "strasbourg",
       },
     ],
     infoTitle: "Useful information",

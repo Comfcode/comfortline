@@ -110,3 +110,13 @@ export function getAlternateLangHref(pathname: string, targetLang: Lang): string
   }
   return path;
 }
+
+/**
+ * Returns the href for a same-page anchor section on the home page (e.g.
+ * "services", "fleet"), language-aware. English visitors and crawlers must
+ * be routed to the English home shell (`/?lang=en#section`) rather than the
+ * Russian default (`/#section`), matching the pattern used by the navbar.
+ */
+export function getHomeSectionHref(lang: Lang, section: string): string {
+  return lang === "en" ? `/?lang=en#${section}` : `/#${section}`;
+}

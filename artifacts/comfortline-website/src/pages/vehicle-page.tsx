@@ -7,6 +7,7 @@ import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 import { Seo } from "@/seo/Seo";
 import { vehicleJsonLd } from "@/seo/jsonld";
 import { SITE_URL } from "@/seo/seo-config";
+import { getHomeSectionHref } from "@/lib/lang-urls";
 
 const vehicleSeo: Record<string, { titleRu: string; titleEn: string; descRu: string; descEn: string; pathRu: string; pathEn: string; breadcrumbRu: string; breadcrumbEn: string }> = {
   "mercedes-e-class": {
@@ -545,7 +546,7 @@ export function VehiclePage({ slug }: VehiclePageProps) {
 
         {/* Breadcrumb */}
         <div className="flex items-center gap-3">
-          <a href="/#fleet" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+          <a href={getHomeSectionHref(lang, "fleet")} className="text-sm text-muted-foreground hover:text-primary transition-colors">
             {c.backBtn}
           </a>
           <span className="text-border/60">·</span>

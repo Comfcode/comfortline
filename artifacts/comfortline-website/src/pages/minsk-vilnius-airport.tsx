@@ -8,6 +8,7 @@ import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 import { Seo } from "@/seo/Seo";
 import { taxiServiceJsonLd, faqJsonLd } from "@/seo/jsonld";
 import { SITE_URL } from "@/seo/seo-config";
+import { getHomeSectionHref } from "@/lib/lang-urls";
 
 const content = {
   ru: {
@@ -207,7 +208,7 @@ export default function MinskVilniusAirportPage() {
       <div className="pt-28 pb-14 border-b border-border/40 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
         <div className="container mx-auto px-4 md:px-6 max-w-4xl relative">
-          <a href="/#services" className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors mb-6">
+          <a href={getHomeSectionHref(lang, "services")} className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors mb-6">
             {c.backBtn}
           </a>
           <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">

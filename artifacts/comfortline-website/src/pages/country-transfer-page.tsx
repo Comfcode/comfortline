@@ -18,6 +18,9 @@ export interface DestinationCard {
   hrefRu: string;
   isAvailable?: boolean;
   prefilledTo?: string;
+  /** Anchor id appended to `href` (e.g. `#paris-cdg`) so destinations sharing
+   * a country page still resolve to a unique, crawlable, deep-linkable URL. */
+  slug?: string;
 }
 
 export interface CountryContent {
@@ -114,12 +117,14 @@ export function CountryTransferPage({ data }: Props) {
             {c.destinations.map((dest, i) => {
               const city = isRu ? dest.cityRu : dest.cityEn;
               const desc = isRu ? dest.descRu : dest.descEn;
-              const href = isRu ? dest.hrefRu : dest.href;
+              const baseHref = isRu ? dest.hrefRu : dest.href;
+              const href = dest.slug ? `${baseHref}#${dest.slug}` : baseHref;
               const available = dest.isAvailable !== false;
 
               return (
                 <motion.div
                   key={i}
+                  id={dest.slug}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -144,25 +149,21 @@ export function CountryTransferPage({ data }: Props) {
                     <span>{dest.distanceKm}</span>
                   </div>
 
-                  {available ? (
-                    <a
-                      href={href}
-                      className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity group-hover:gap-3"
-                    >
-                      {c.detailsLabel}
-                      <ArrowRight className="h-4 w-4 transition-all" />
-                    </a>
-                  ) : (
-                    <button
-                      onClick={() => window.dispatchEvent(new CustomEvent("open-booking-modal", {
-                        detail: { prefilledFrom: isRu ? "Минск" : "Minsk", prefilledTo: dest.prefilledTo || city }
-                      }))}
-                      className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity cursor-pointer"
-                    >
-                      {c.bookLabel}
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
-                  )}
+                  <a
+                    href={href}
+                    onClick={(e) => {
+                      if (!available) {
+                        e.preventDefault();
+                        window.dispatchEvent(new CustomEvent("open-booking-modal", {
+                          detail: { prefilledFrom: isRu ? "Минск" : "Minsk", prefilledTo: dest.prefilledTo || city }
+                        }));
+                      }
+                    }}
+                    className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity group-hover:gap-3"
+                  >
+                    {available ? c.detailsLabel : c.bookLabel}
+                    <ArrowRight className="h-4 w-4 transition-all" />
+                  </a>
                 </motion.div>
               );
             })}

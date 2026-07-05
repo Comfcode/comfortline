@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 import { Seo } from "@/seo/Seo";
+import { getHomeSectionHref } from "@/lib/lang-urls";
 
 const countries = [
   {
@@ -86,7 +87,7 @@ export default function EuropeTransferPage() {
       <div className="pt-28 pb-14 border-b border-border/40 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-transparent pointer-events-none" />
         <div className="container mx-auto px-4 md:px-6 max-w-4xl relative">
-          <a href="/#services" className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors mb-6">
+          <a href={getHomeSectionHref(lang, "services")} className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors mb-6">
             {isRu ? "← Все услуги" : "← All services"}
           </a>
           <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">

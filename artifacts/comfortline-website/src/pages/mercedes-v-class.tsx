@@ -12,6 +12,7 @@ import { Seo } from "@/seo/Seo";
 import { taxiServiceJsonLd } from "@/seo/jsonld";
 import { SITE_URL } from "@/seo/seo-config";
 import { gtagPhoneConversion } from "@/lib/gtag";
+import { getHomeSectionHref } from "@/lib/lang-urls";
 
 const content = {
   ru: {
@@ -215,8 +216,8 @@ export default function MercedesVClassPage() {
         descEn="Mercedes-Benz V-Class with driver from Minsk — up to 7 passengers, 7 suitcases, business-class seats, 3 climate zones, Wi-Fi. Transfers to Vilnius, Warsaw, Riga airports and across Europe. Child seats free of charge."
         pathRu="/трансфер-мерседес-в-класс"
         pathEn="/mercedes-v-class-transfer"
-        breadcrumbsRu={[{ name: "Главная", path: "/" }, { name: "Автопарк", path: "/#fleet" }, { name: "Mercedes V-Class", path: "/трансфер-мерседес-в-класс" }]}
-        breadcrumbsEn={[{ name: "Home", path: "/" }, { name: "Fleet", path: "/#fleet" }, { name: "Mercedes V-Class", path: "/mercedes-v-class-transfer" }]}
+        breadcrumbsRu={[{ name: "Главная", path: "/" }, { name: "Автопарк", path: getHomeSectionHref("ru", "fleet") }, { name: "Mercedes V-Class", path: "/трансфер-мерседес-в-класс" }]}
+        breadcrumbsEn={[{ name: "Home", path: "/" }, { name: "Fleet", path: getHomeSectionHref("en", "fleet") }, { name: "Mercedes V-Class", path: "/mercedes-v-class-transfer" }]}
         jsonLd={taxiServiceJsonLd({
           lang,
           name: isRu ? "Трансфер Mercedes-Benz V-Class из Минска" : "Mercedes-Benz V-Class Transfer from Minsk",
@@ -249,7 +250,7 @@ export default function MercedesVClassPage() {
 
         {/* Back link */}
         <a
-          href="/#fleet"
+          href={getHomeSectionHref(lang, "fleet")}
           className="absolute top-28 left-4 md:left-8 z-20 inline-flex items-center gap-1.5 text-xs text-white/60 hover:text-primary transition-colors"
         >
           {c.backBtn}
