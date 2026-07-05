@@ -142,13 +142,13 @@ export function Navbar() {
           : "bg-background/60 backdrop-blur-sm border-border/30 py-3"
       }`}
     >
-      <div className="container mx-auto px-4 lg:px-6">
+      <div className="container mx-auto px-3 min-[400px]:px-4 lg:px-6">
         <div className="flex items-center justify-between h-14 lg:h-9">
 
           {/* Logo */}
           <a href="/" className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
             <Logo variant="full" scheme={isDark ? "dark" : "light"} height={26} className="hidden lg:block" />
-            <Logo variant="full" scheme={isDark ? "dark" : "light"} height={38} className="block lg:hidden" />
+            <Logo variant="full" scheme={isDark ? "dark" : "light"} height={30} className="block lg:hidden" />
           </a>
 
           {/* Desktop nav */}
@@ -308,21 +308,21 @@ export function Navbar() {
           </div>
 
           {/* Mobile right side */}
-          <div className="flex items-center lg:hidden gap-3">
+          <div className="flex items-center lg:hidden gap-1 min-[400px]:gap-2">
             {/* Language + theme always visible in mobile header */}
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-0.5 text-[11px] tracking-[0.12em] uppercase font-medium">
-                <a href={ruHref} hrefLang="ru" className={`px-1.5 py-0.5 transition-colors ${lang === "ru" ? "text-foreground" : "text-foreground/40"}`}>RU</a>
+            <div className="flex items-center gap-1 min-[400px]:gap-2">
+              <div className="flex items-center gap-0.5 text-[10px] min-[400px]:text-[11px] tracking-[0.1em] uppercase font-medium">
+                <a href={ruHref} hrefLang="ru" className={`px-1 py-0.5 transition-colors ${lang === "ru" ? "text-foreground" : "text-foreground/40"}`}>RU</a>
                 <span className="text-border/60">/</span>
-                <a href={enHref} hrefLang="en" className={`px-1.5 py-0.5 transition-colors ${lang === "en" ? "text-foreground" : "text-foreground/40"}`}>EN</a>
+                <a href={enHref} hrefLang="en" className={`px-1 py-0.5 transition-colors ${lang === "en" ? "text-foreground" : "text-foreground/40"}`}>EN</a>
               </div>
               <button
                 onClick={() => setTheme(isDark ? "light" : "dark")}
                 aria-label="Toggle theme"
-                className="relative w-[40px] h-[22px] rounded-full border border-border/60 bg-muted/50 flex items-center transition-colors"
+                className="relative shrink-0 w-[36px] h-[20px] rounded-full border border-border/60 bg-muted/50 flex items-center transition-colors"
               >
                 <motion.div
-                  className="absolute w-[16px] h-[16px] rounded-full bg-primary flex items-center justify-center shadow-sm"
+                  className="absolute w-[14px] h-[14px] rounded-full bg-primary flex items-center justify-center shadow-sm"
                   animate={{ x: isDark ? 3 : 19 }}
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 >
@@ -334,18 +334,18 @@ export function Navbar() {
             <a
               href="tel:+375447620649"
               onClick={gtagPhoneConversion}
-              className="flex items-center gap-2 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/70"
+              className="flex items-center gap-2 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/70 shrink-0"
             >
-              <Phone className="h-6 w-6 text-primary" />
+              <Phone className="h-5 w-5 min-[400px]:h-6 min-[400px]:w-6 text-primary" />
               <span className="hidden sm:inline">+375 (44) 762-06-49</span>
             </a>
             <button
               aria-label={mobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
               aria-expanded={mobileMenuOpen}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-foreground/70 hover:text-foreground transition-colors"
+              className="p-1 min-[400px]:p-2 text-foreground/70 hover:text-foreground transition-colors shrink-0"
             >
-              {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+              {mobileMenuOpen ? <X className="h-6 w-6 min-[400px]:h-7 min-[400px]:w-7" /> : <Menu className="h-6 w-6 min-[400px]:h-7 min-[400px]:w-7" />}
             </button>
           </div>
 
