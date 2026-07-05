@@ -36,18 +36,39 @@ Disallow: /api/
 User-agent: Googlebot-Image
 Allow: /
 
-# Block aggressive AI scrapers that don't drive traffic
+# AI crawlers — allow public marketing/blog content so the site can be
+# cited and summarized in AI answer engines, but keep non-public paths out.
 User-agent: GPTBot
-Disallow: /
+Allow: /
+Disallow: /api/
+Disallow: /brandbook
 
 User-agent: CCBot
-Disallow: /
+Allow: /
+Disallow: /api/
+Disallow: /brandbook
 
 User-agent: ClaudeBot
-Disallow: /
+Allow: /
+Disallow: /api/
+Disallow: /brandbook
 
 User-agent: Google-Extended
-Disallow: /
+Allow: /
+Disallow: /api/
+Disallow: /brandbook
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
+Disallow: /api/
+Disallow: /brandbook
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /brandbook
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /brandbook
