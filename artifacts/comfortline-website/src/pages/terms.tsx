@@ -216,7 +216,7 @@ export default function TermsPage() {
         descRu="Публичная оферта ComfortLine: условия предоставления услуг трансфера, права и обязанности сторон, оплата и отмена бронирования."
         descEn="ComfortLine public offer & terms: transfer service conditions, rights and obligations of the parties, payment and cancellation."
         pathRu="/terms"
-        pathEn="/terms"
+        pathEn="/terms?lang=en"
       />
       <Navbar />
       <main className="flex-1 pt-28 pb-20">

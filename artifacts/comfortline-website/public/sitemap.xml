@@ -8,7 +8,7 @@
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/?lang=en"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/"/>
       <image:image>
         <image:loc>https://comfortline.by/opengraph.jpg</image:loc>
@@ -16,6 +16,15 @@
       <image:image>
         <image:loc>https://comfortline.by/hero-bg.webp</image:loc>
       </image:image>
+    </url>
+  <url>
+      <loc>https://comfortline.by/?lang=en</loc>
+      <lastmod>2026-06-14</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/"/>
     </url>
   <url>
       <loc>https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82</loc>
@@ -383,7 +392,16 @@
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/faq"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/faq"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/faq?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/faq"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/faq?lang=en</loc>
+      <lastmod>2026-06-14</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/faq"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/faq?lang=en"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/faq"/>
     </url>
   <url>
@@ -392,7 +410,16 @@
       <changefreq>yearly</changefreq>
       <priority>0.2</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/privacy"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/privacy"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/privacy?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/privacy"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/privacy?lang=en</loc>
+      <lastmod>2026-06-14</lastmod>
+      <changefreq>yearly</changefreq>
+      <priority>0.2</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/privacy"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/privacy?lang=en"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/privacy"/>
     </url>
   <url>
@@ -401,7 +428,16 @@
       <changefreq>yearly</changefreq>
       <priority>0.2</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/terms"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/terms"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/terms?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/terms"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/terms?lang=en</loc>
+      <lastmod>2026-06-14</lastmod>
+      <changefreq>yearly</changefreq>
+      <priority>0.2</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/terms"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/terms?lang=en"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/terms"/>
     </url>
   <url>

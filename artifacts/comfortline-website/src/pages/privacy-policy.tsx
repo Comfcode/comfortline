@@ -207,7 +207,7 @@ export default function PrivacyPolicyPage() {
         descRu="Политика конфиденциальности ComfortLine: как мы обрабатываем персональные данные клиентов трансфера и обеспечиваем их защиту."
         descEn="ComfortLine privacy policy — how we process and protect personal data of our transfer customers."
         pathRu="/privacy"
-        pathEn="/privacy"
+        pathEn="/privacy?lang=en"
       />
       <Navbar />
       <main className="flex-1 pt-28 pb-20">
