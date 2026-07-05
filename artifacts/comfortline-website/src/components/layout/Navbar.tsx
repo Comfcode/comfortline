@@ -107,7 +107,7 @@ export function Navbar() {
   ];
 
   const socialLinks = [
-    { icon: SiTelegram,  href: "https://t.me/transfer_comfortline",              label: "Telegram",  bg: "#229ED9" },
+    { icon: SiTelegram,  href: "https://t.me/+375447620649",              label: "Telegram",  bg: "#229ED9" },
     { icon: SiViber,     href: "viber://chat?number=%2B375447620649",             label: "Viber",     bg: "#7360F2" },
     { icon: SiWhatsapp,  href: "https://wa.me/375447620649",                      label: "WhatsApp",  bg: "#25D366" },
     { icon: Instagram,   href: "https://www.instagram.com/transfer_comfortline/", label: "Instagram", bg: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)" },

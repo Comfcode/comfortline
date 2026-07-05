@@ -14,7 +14,7 @@ export const BUSINESS = {
   logo: `${SITE_URL}/favicon.svg`,
   image: `${SITE_URL}/opengraph.jpg`,
   sameAs: [
-    "https://t.me/transfer_comfortline",
+    "https://t.me/+375447620649",
     "https://wa.me/375447620649",
     "https://www.instagram.com/transfer_comfortline/",
     "https://m.me/103816619260365",

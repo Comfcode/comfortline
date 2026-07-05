@@ -68,7 +68,7 @@ export function Contact() {
               <div className="flex gap-3">
                 {[
                   { icon: SiWhatsapp, href: "https://wa.me/375447620649", label: "WhatsApp", cls: "hover:bg-green-500" },
-                  { icon: SiTelegram, href: "https://t.me/transfer_comfortline", label: "Telegram", cls: "hover:bg-sky-500" },
+                  { icon: SiTelegram, href: "https://t.me/+375447620649", label: "Telegram", cls: "hover:bg-sky-500" },
                   { icon: SiViber, href: "viber://chat?number=%2B375447620649", label: "Viber", cls: "hover:bg-purple-500" },
                   { icon: Instagram, href: "https://www.instagram.com/transfer_comfortline/", label: "Instagram", cls: "hover:bg-pink-500" },
                   { icon: SiMessenger, href: "https://m.me/103816619260365", label: "Messenger", cls: "hover:bg-blue-500" },

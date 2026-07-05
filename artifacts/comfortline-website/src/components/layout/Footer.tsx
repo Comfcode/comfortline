@@ -71,7 +71,7 @@ export function Footer() {
               <a href="https://www.instagram.com/transfer_comfortline/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://t.me/transfer_comfortline" target="_blank" rel="noopener noreferrer" aria-label="Telegram" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "Telegram" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a href="https://t.me/+375447620649" target="_blank" rel="noopener noreferrer" aria-label="Telegram" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "Telegram" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <SiTelegram className="h-5 w-5" />
               </a>
               <a href="https://wa.me/375447620649" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "WhatsApp" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
