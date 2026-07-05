@@ -20,6 +20,75 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, "dist", "public");
+const ARTICLES_SRC_PATH = path.join(__dirname, "src", "data", "blog-articles.ts");
+
+// ---------------------------------------------------------------------------
+// Blog article allowlist, parsed straight from src/data/blog-articles.ts.
+//
+// Why: this file used to treat any `/blog/:slug` path as "known" via a broad
+// regex, so nonexistent slugs got HTTP 200 + the client-rendered <NotFound />
+// page — a classic soft-404 that wastes crawl budget. The real article
+// inventory is finite, so we parse the live RU/EN slugs out of the source
+// (brace-balanced object extraction, same technique as scripts/prerender.mjs)
+// and only mark those exact paths as known. Anything else under /blog or
+// /блог gets a real HTTP 404.
+// ---------------------------------------------------------------------------
+function loadBlogSlugPaths() {
+  const paths = new Set();
+  try {
+    const src = fs.readFileSync(ARTICLES_SRC_PATH, "utf8");
+    const startMarker = "export const ARTICLES: Article[] = [";
+    const startIdx = src.indexOf(startMarker);
+    if (startIdx === -1) return paths;
+    const arrStart = startIdx + startMarker.length - 1;
+
+    let depth = 0;
+    let arrEnd = -1;
+    for (let i = arrStart; i < src.length; i++) {
+      if (src[i] === "[") depth++;
+      else if (src[i] === "]") {
+        depth--;
+        if (depth === 0) {
+          arrEnd = i;
+          break;
+        }
+      }
+    }
+    if (arrEnd === -1) return paths;
+
+    const arrayBody = src.slice(arrStart + 1, arrEnd);
+    let i = 0;
+    while (i < arrayBody.length) {
+      if (arrayBody[i] === "{") {
+        let objDepth = 0;
+        const start = i;
+        for (; i < arrayBody.length; i++) {
+          if (arrayBody[i] === "{") objDepth++;
+          else if (arrayBody[i] === "}") {
+            objDepth--;
+            if (objDepth === 0) {
+              i++;
+              break;
+            }
+          }
+        }
+        const objStr = arrayBody.slice(start, i);
+        const slug = /(?<!\w)slug:\s*"([^"]+)"/.exec(objStr)?.[1];
+        const slugEn = /slugEn:\s*"([^"]+)"/.exec(objStr)?.[1];
+        if (slug) paths.add(`/блог/${slug}`);
+        if (slugEn) paths.add(`/blog/${slugEn}`);
+      } else {
+        i++;
+      }
+    }
+  } catch {
+    // If parsing fails, fall back to an empty allowlist rather than crashing
+    // the server — every /blog/:slug request will 404 until this is fixed.
+  }
+  return paths;
+}
+
+const BLOG_SLUG_PATHS = loadBlogSlugPaths();
 
 const MIME = {
   ".html":  "text/html; charset=utf-8",
@@ -110,8 +179,9 @@ const KNOWN = new Set([
 function isKnownRoute(pathname) {
   const p = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
   if (KNOWN.has(p)) return true;
-  // Blog article routes: /blog/:slug  or  /блог/:slug
-  if (/^\/(blog|блог)\/.+/.test(p)) return true;
+  // Blog article routes: only real slugs from blog-articles.ts are known.
+  // Anything else under /blog/ or /блог/ is a soft-404 and must return 404.
+  if (BLOG_SLUG_PATHS.has(p)) return true;
   return false;
 }
 

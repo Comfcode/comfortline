@@ -1,3 +1,5 @@
+import { ARTICLES } from "@/data/blog-articles";
+
 type Lang = "ru" | "en";
 
 const RU_TO_EN: Record<string, string> = {
@@ -51,20 +53,12 @@ const EN_TO_RU: Record<string, string> = Object.fromEntries(
   Object.entries(RU_TO_EN).map(([ru, en]) => [en, ru])
 );
 
-const BLOG_SLUGS: Array<{ ru: string; en: string }> = [
-  { ru: "граница-беларусь-литва",             en: "belarus-lithuania-border-crossing-guide" },
-  { ru: "стоимость-трансфер-минск-варшава",   en: "minsk-warsaw-transfer-price-2026" },
-  { ru: "что-нельзя-ввозить-в-ес",            en: "what-not-to-bring-from-belarus-to-eu" },
-  { ru: "какой-кпп-выбрать",                  en: "which-belarus-border-crossing-to-choose" },
-  { ru: "трансфер-с-детьми",                  en: "family-airport-transfer-with-children" },
-  { ru: "как-добраться-до-аэропорта-вильнюса", en: "how-to-get-to-vilnius-airport-from-minsk" },
-  { ru: "аэропорт-варшавы-вав",               en: "warsaw-chopin-airport-guide-from-belarus" },
-  { ru: "граница-беларусь-польша",             en: "belarus-poland-border-crossing-guide" },
-  { ru: "аэропорт-риги-rix",                  en: "riga-airport-guide-from-minsk-belarus" },
-  { ru: "автобус-минск-варшава-модлин-вильнюс", en: "minsk-warsaw-vilnius-bus-vs-private-transfer" },
-  { ru: "виза-свободный-въезд-в-беларусь-2026", en: "visa-free-entry-belarus-2026" },
-  { ru: "вывоз-60-евро-в-беларусь-из-литвы-латвии", en: "eu-60-euro-cash-limit-belarus-lithuania-latvia" },
-];
+// Derived from the article inventory itself (rather than hand-maintained) so
+// every bilingual blog article automatically gets a language-switch target —
+// new articles cannot be published without one.
+const BLOG_SLUGS: Array<{ ru: string; en: string }> = ARTICLES.filter(
+  (a): a is typeof a & { slugEn: string } => Boolean(a.slugEn)
+).map((a) => ({ ru: a.slug, en: a.slugEn }));
 
 /**
  * Returns the href a language-switcher link should point to for the given
