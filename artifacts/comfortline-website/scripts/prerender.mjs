@@ -131,9 +131,6 @@ function buildHtml(template, route, lang, blogIndexRoute) {
     `<meta name="twitter:image" content="${ogImage}" />`,
   );
 
-  // For single-file routes (/, /faq, /terms, /privacy) there is only one
-  // prerendered document; still self-reference + point hreflang at the
-  // `?lang=en` variant of the same path, matching the client's use-seo.ts.
   const hreflang = `
     <link rel="alternate" hreflang="ru" href="${SITE_URL + encodeURI(route.pathRu)}" />
     <link rel="alternate" hreflang="en" href="${SITE_URL + encodeURI(route.pathEn)}" />
@@ -264,7 +261,29 @@ function buildHtml(template, route, lang, blogIndexRoute) {
   }
   html = html.replace("</head>", `${extraJsonLd}\n  </head>`);
 
-  const seoBlock = `<div id="root"><div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true"><h1>${escapeHtml(h1)}</h1><p>${escapeHtml(intro)}</p><p><a href="${altUrl}" hreflang="${isRu ? "en" : "ru"}">${isRu ? "English version" : "Русская версия"}</a></p></div></div>`;
+  // Real, visible, in-flow pre-hydration body content (not an off-screen
+  // teaser) so crawlers and users on slow/no-JS connections get an actual H1,
+  // body copy, FAQ answers, and internal links in the initial HTML response.
+  // The client app replaces this markup the moment React mounts.
+  const faqEntries = isRu ? route.faqRu : route.faqEn;
+  const homeHref = isRu ? "/" : "/en";
+  const faqHref = isRu ? "/faq" : "/en/faq";
+  const blogHref = isRu ? "/блог" : "/blog";
+  const homeLabel = isRu ? "Главная" : "Home";
+  const faqLabel = "FAQ";
+  const blogLabel = isRu ? "Блог" : "Blog";
+  const altLabel = isRu ? "English version" : "Русская версия";
+  const faqHeading = isRu ? "Частые вопросы" : "Frequently Asked Questions";
+  const navLabel = isRu ? "Основная навигация" : "Main navigation";
+
+  const faqHtml =
+    faqEntries && faqEntries.length > 0
+      ? `<section><h2>${escapeHtml(faqHeading)}</h2>${faqEntries
+          .map((e) => `<h3>${escapeHtml(e.question)}</h3><p>${escapeHtml(e.answer)}</p>`)
+          .join("")}</section>`
+      : "";
+
+  const seoBlock = `<div id="root"><header><h1>${escapeHtml(h1)}</h1></header><main><p>${escapeHtml(intro)}</p>${faqHtml}<nav aria-label="${escapeHtml(navLabel)}"><a href="${homeHref}">${escapeHtml(homeLabel)}</a> · <a href="${faqHref}">${escapeHtml(faqLabel)}</a> · <a href="${blogHref}">${escapeHtml(blogLabel)}</a> · <a href="${altUrl}" hreflang="${isRu ? "en" : "ru"}">${escapeHtml(altLabel)}</a></nav></main></div>`;
   html = html.replace('<div id="root"></div>', seoBlock);
 
   return html;
@@ -291,14 +310,8 @@ function main() {
 
   const written = [];
   for (const route of allRoutes) {
-    if (route.singleFile) {
-      // Only one static document can exist at this path; RU is the default
-      // (matches <html lang="ru"> in index.html and the client's default).
-      written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute)));
-    } else {
-      written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute)));
-      written.push(emit(route.pathEn, buildHtml(template, route, "en", blogIndexRoute)));
-    }
+    written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute)));
+    written.push(emit(route.pathEn, buildHtml(template, route, "en", blogIndexRoute)));
   }
 
   console.log(

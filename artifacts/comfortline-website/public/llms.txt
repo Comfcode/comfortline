@@ -5,12 +5,12 @@
 ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт, Минск–Варшава аэропорт. Fixed prices, professional drivers, and a range of vehicles for individual and group transfers between Belarus and neighboring EU countries.
 
 Primary domain: https://comfortline.by
-Languages: Russian (default), English (`?lang=en` or English URL slugs)
+Languages: Russian (default), English (`/en` prefix for shared pages, or English URL slugs for service pages)
 
 ## Main Pages
 
-- [Home](https://comfortline.by/): Overview of ComfortLine's transfer services, fleet, and booking information.
-- [FAQ](https://comfortline.by/faq): Frequently asked questions about bookings, pricing, and border crossing.
+- [Home](https://comfortline.by/) / [Home (EN)](https://comfortline.by/en): Overview of ComfortLine's transfer services, fleet, and booking information.
+- [FAQ](https://comfortline.by/faq) / [FAQ (EN)](https://comfortline.by/en/faq): Frequently asked questions about bookings, pricing, and border crossing.
 
 ## Airport Transfers
 

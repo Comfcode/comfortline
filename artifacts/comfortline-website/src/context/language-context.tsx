@@ -650,6 +650,10 @@ function getLangFromPath(path: string): Lang {
   const param = new URLSearchParams(window.location.search).get("lang");
   if (param === "en" || param === "ru") return param;
 
+  // Path-based English shell for shared pages (/en, /en/faq, /en/privacy, /en/terms).
+  const normalizedForEnCheck = path.replace(/\/+$/, "") || "/";
+  if (normalizedForEnCheck === "/en" || normalizedForEnCheck.startsWith("/en/")) return "en";
+
   // Cyrillic characters in the decoded path → always Russian
   if (/[\u0400-\u04FF]/.test(path)) return "ru";
 

@@ -76,9 +76,13 @@ function Router() {
     <Suspense fallback={null}>
       <Switch>
         <Route path="/" component={LandingPage} />
+        <Route path="/en" component={LandingPage} />
         <Route path="/privacy" component={PrivacyPolicyPage} />
+        <Route path="/en/privacy" component={PrivacyPolicyPage} />
         <Route path="/terms" component={TermsPage} />
+        <Route path="/en/terms" component={TermsPage} />
         <Route path="/faq" component={FaqPage} />
+        <Route path="/en/faq" component={FaqPage} />
 
         <Route path="/minsk-vilnius-airport" component={MinskVilniusAirportPage} />
         <Route path="/трансфер-минск-вильнюс-аэропорт" component={MinskVilniusAirportPage} />

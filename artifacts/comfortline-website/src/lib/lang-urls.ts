@@ -53,6 +53,20 @@ const EN_TO_RU: Record<string, string> = Object.fromEntries(
   Object.entries(RU_TO_EN).map(([ru, en]) => [en, ru])
 );
 
+// Shared pages (/, /faq, /privacy, /terms) are a single wouter <Route> per
+// pathname; English now has its own crawlable path under /en/... rather than
+// a `?lang=en` query string, so search engines and AI crawlers get a
+// genuinely distinct source HTML document per language.
+const SHARED_RU_TO_EN: Record<string, string> = {
+  "/": "/en",
+  "/faq": "/en/faq",
+  "/privacy": "/en/privacy",
+  "/terms": "/en/terms",
+};
+const SHARED_EN_TO_RU: Record<string, string> = Object.fromEntries(
+  Object.entries(SHARED_RU_TO_EN).map(([ru, en]) => [en, ru])
+);
+
 // Derived from the article inventory itself (rather than hand-maintained) so
 // every bilingual blog article automatically gets a language-switch target —
 // new articles cannot be published without one.
@@ -66,17 +80,18 @@ const BLOG_SLUGS: Array<{ ru: string; en: string }> = ARTICLES.filter(
  *
  * - Service pages  → navigate to the URL-based alternate (Cyrillic ↔ Latin).
  * - Blog articles  → navigate to the translated article (or blog index as fallback).
- * - Shared pages (/, /faq, etc.) → stay on same pathname; append ?lang=en for English,
- *   return clean path for Russian (Russian is the default / no-param state).
+ * - Shared pages (/, /faq, /privacy, /terms) → navigate to the /en/... path-based
+ *   alternate (Russian keeps the clean root pathname).
  */
 export function getAlternateLangHref(pathname: string, targetLang: Lang): string {
   const path = decodeURIComponent(pathname).replace(/\/+$/, "") || "/";
 
   if (targetLang === "en") {
-    const en = RU_TO_EN[path];
+    const en = RU_TO_EN[path] || SHARED_RU_TO_EN[path];
     if (en) return en;
+    if (SHARED_EN_TO_RU[path]) return path; // already an /en/... shared path
   } else {
-    const ru = EN_TO_RU[path];
+    const ru = EN_TO_RU[path] || SHARED_EN_TO_RU[path];
     if (ru) return ru;
   }
 
@@ -100,7 +115,8 @@ export function getAlternateLangHref(pathname: string, targetLang: Lang): string
 
   // If path already belongs to the target language, return it unchanged.
   // Cyrillic → Russian URL; Latin + non-shared → English URL.
-  const isShared = ["/", "/faq", "/privacy", "/terms", "/brandbook", "/thank-you"].includes(path);
+  // (/, /faq, /privacy, /terms are handled above via SHARED_RU_TO_EN/SHARED_EN_TO_RU.)
+  const isShared = ["/brandbook", "/thank-you"].includes(path);
   const hasCyrillic = /[\u0400-\u04FF]/.test(path);
   if (targetLang === "ru" && hasCyrillic) return path;
   if (targetLang === "en" && !hasCyrillic && !isShared) return path;
@@ -114,9 +130,9 @@ export function getAlternateLangHref(pathname: string, targetLang: Lang): string
 /**
  * Returns the href for a same-page anchor section on the home page (e.g.
  * "services", "fleet"), language-aware. English visitors and crawlers must
- * be routed to the English home shell (`/?lang=en#section`) rather than the
+ * be routed to the English home shell (`/en#section`) rather than the
  * Russian default (`/#section`), matching the pattern used by the navbar.
  */
 export function getHomeSectionHref(lang: Lang, section: string): string {
-  return lang === "en" ? `/?lang=en#${section}` : `/#${section}`;
+  return lang === "en" ? `/en#${section}` : `/#${section}`;
 }

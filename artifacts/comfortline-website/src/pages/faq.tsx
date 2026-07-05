@@ -595,7 +595,7 @@ export default function FaqPage() {
         descRu="Ответы на частые вопросы о трансфере ComfortLine: бронирование, цены, оплата, граница, документы, детские кресла, багаж и встречи в аэропортах Вильнюса и Варшавы."
         descEn="Answers to frequently asked questions about ComfortLine transfers: booking, pricing, payment, borders, documents, child seats, luggage, and airport meet-and-greet at Vilnius and Warsaw."
         pathRu="/faq"
-        pathEn="/faq?lang=en"
+        pathEn="/en/faq"
         breadcrumbsRu={[
           { name: "Главная", path: "/" },
           { name: "FAQ", path: "/faq" },

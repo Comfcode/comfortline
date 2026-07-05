@@ -117,9 +117,13 @@ const MIME = {
 // ---------------------------------------------------------------------------
 const KNOWN = new Set([
   "/",
+  "/en",
   "/privacy",
+  "/en/privacy",
   "/terms",
+  "/en/terms",
   "/faq",
+  "/en/faq",
   // Airport transfers (EN + RU)
   "/minsk-vilnius-airport",        "/трансфер-минск-вильнюс-аэропорт",
   "/minsk-warsaw-airport",         "/трансфер-минск-варшава-шопен",

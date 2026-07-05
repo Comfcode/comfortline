@@ -8,7 +8,7 @@
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/"/>
       <image:image>
         <image:loc>https://comfortline.by/opengraph.jpg</image:loc>
@@ -18,12 +18,12 @@
       </image:image>
     </url>
   <url>
-      <loc>https://comfortline.by/?lang=en</loc>
+      <loc>https://comfortline.by/en</loc>
       <lastmod>2026-06-14</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/"/>
     </url>
   <url>
@@ -392,16 +392,16 @@
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/faq"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/faq?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en/faq"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/faq"/>
     </url>
   <url>
-      <loc>https://comfortline.by/faq?lang=en</loc>
+      <loc>https://comfortline.by/en/faq</loc>
       <lastmod>2026-06-14</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/faq"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/faq?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en/faq"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/faq"/>
     </url>
   <url>
@@ -410,16 +410,16 @@
       <changefreq>yearly</changefreq>
       <priority>0.2</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/privacy"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/privacy?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en/privacy"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/privacy"/>
     </url>
   <url>
-      <loc>https://comfortline.by/privacy?lang=en</loc>
+      <loc>https://comfortline.by/en/privacy</loc>
       <lastmod>2026-06-14</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.2</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/privacy"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/privacy?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en/privacy"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/privacy"/>
     </url>
   <url>
@@ -428,16 +428,16 @@
       <changefreq>yearly</changefreq>
       <priority>0.2</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/terms"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/terms?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en/terms"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/terms"/>
     </url>
   <url>
-      <loc>https://comfortline.by/terms?lang=en</loc>
+      <loc>https://comfortline.by/en/terms</loc>
       <lastmod>2026-06-14</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.2</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/terms"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/terms?lang=en"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en/terms"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/terms"/>
     </url>
   <url>

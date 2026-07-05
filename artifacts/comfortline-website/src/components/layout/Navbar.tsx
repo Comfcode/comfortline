@@ -13,16 +13,16 @@ import { getAlternateLangHref } from "@/lib/lang-urls";
 
 /** Maps each nav href to the section id it represents (for IntersectionObserver) */
 const SECTION_MAP: Record<string, string> = {
-  "/#services":          "services",
-  "/?lang=en#services":  "services",
-  "/#fleet":             "fleet",
-  "/?lang=en#fleet":     "fleet",
-  "/#advantages":        "advantages",
-  "/?lang=en#advantages":"advantages",
-  "/#reviews":           "reviews",
-  "/?lang=en#reviews":   "reviews",
-  "/#contact":           "contact",
-  "/?lang=en#contact":   "contact",
+  "/#services":     "services",
+  "/en#services":   "services",
+  "/#fleet":        "fleet",
+  "/en#fleet":      "fleet",
+  "/#advantages":   "advantages",
+  "/en#advantages": "advantages",
+  "/#reviews":      "reviews",
+  "/en#reviews":    "reviews",
+  "/#contact":      "contact",
+  "/en#contact":    "contact",
 };
 
 export function Navbar() {
@@ -53,7 +53,7 @@ export function Navbar() {
     // For non-home pages, set active based on pathname
     if (!isHome) {
       const path = decodeURIComponent(window.location.pathname);
-      if (path.startsWith("/faq"))                              setActiveHref("/faq");
+      if (path.startsWith("/faq") || path.startsWith("/en/faq"))  setActiveHref(lang === "en" ? "/en/faq" : "/faq");
       else if (path.includes("blog") || path.includes("блог")) setActiveHref(lang === "ru" ? "/блог" : "/blog");
       else setActiveHref(null);
       return;
@@ -93,15 +93,15 @@ export function Navbar() {
     return () => observers.forEach((o) => o.disconnect());
   }, [lang]);
 
-  // Hash-section links must carry ?lang=en on shared pages so the landing page
-  // loads in the correct language (/ defaults to Russian without the param).
-  const homePrefix = lang === "en" ? "/?lang=en" : "/";
+  // Hash-section links must use the /en shell on shared pages so the landing
+  // page loads in the correct language (/ defaults to Russian).
+  const homePrefix = lang === "en" ? "/en" : "/";
   const navLinks = [
     { name: t.nav.services,   href: `${homePrefix}#services` },
     { name: t.nav.fleet,      href: `${homePrefix}#fleet` },
     { name: t.nav.advantages, href: `${homePrefix}#advantages` },
     { name: t.nav.reviews,    href: `${homePrefix}#reviews` },
-    { name: t.nav.faq,        href: "/faq" },
+    { name: t.nav.faq,        href: lang === "en" ? "/en/faq" : "/faq" },
     { name: lang === "ru" ? "Блог" : "Blog", href: lang === "ru" ? "/блог" : "/blog" },
     { name: t.nav.contacts,   href: `${homePrefix}#contact` },
   ];

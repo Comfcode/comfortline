@@ -419,8 +419,7 @@ const manualRoutes = [
   {
     ogSlug: "home",
     pathRu: "/",
-    pathEn: "/?lang=en",
-    singleFile: true,
+    pathEn: "/en",
     titleRu: "ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт, Минск–Варшава аэропорт",
     titleEn: "ComfortLine — Comfortable Transfers Minsk–Vilnius Airport, Minsk–Warsaw Airport",
     descRu:
@@ -437,8 +436,7 @@ const manualRoutes = [
   {
     ogSlug: "faq",
     pathRu: "/faq",
-    pathEn: "/faq?lang=en",
-    singleFile: true,
+    pathEn: "/en/faq",
     titleRu: "FAQ — Частые вопросы о трансфере | ComfortLine",
     titleEn: "FAQ — Transfer Questions Answered | ComfortLine",
     descRu:
@@ -455,8 +453,7 @@ const manualRoutes = [
   {
     ogSlug: "terms",
     pathRu: "/terms",
-    pathEn: "/terms?lang=en",
-    singleFile: true,
+    pathEn: "/en/terms",
     titleRu: "Публичная оферта и условия | ComfortLine",
     titleEn: "Public Offer & Terms | ComfortLine",
     descRu:
@@ -471,8 +468,7 @@ const manualRoutes = [
   {
     ogSlug: "privacy",
     pathRu: "/privacy",
-    pathEn: "/privacy?lang=en",
-    singleFile: true,
+    pathEn: "/en/privacy",
     titleRu: "Политика конфиденциальности | ComfortLine",
     titleEn: "Privacy Policy | ComfortLine",
     descRu:
