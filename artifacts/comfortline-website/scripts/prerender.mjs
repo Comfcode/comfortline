@@ -120,14 +120,15 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
   const altUrl = SITE_URL + encodeURI(altPath);
   const ogLocale = isRu ? "ru_RU" : "en_US";
   const ogLocaleAlt = isRu ? "en_US" : "ru_RU";
-  // og-images.mjs generates a /og/<ogSlug>.jpg for every route in this same
-  // manifest, but we still verify the file landed on disk before pointing
-  // social metadata at it — any route-specific file that failed to generate
-  // falls back to the stable, always-present site-wide opengraph.jpg instead
-  // of a broken image URL.
+  // og-images.mjs generates a locale-specific /og/<ogSlug>-<lang>.jpg for
+  // every route in this same manifest, so English pages get an
+  // English-language preview image instead of sharing the Russian one. We
+  // still verify the file landed on disk before pointing social metadata at
+  // it — any route-specific file that failed to generate falls back to the
+  // stable, always-present site-wide opengraph.jpg instead of a broken image URL.
   const ogImage =
-    route.ogSlug && fs.existsSync(path.join(OG_DIR, `${route.ogSlug}.jpg`))
-      ? `${SITE_URL}/og/${route.ogSlug}.jpg`
+    route.ogSlug && fs.existsSync(path.join(OG_DIR, `${route.ogSlug}-${lang}.jpg`))
+      ? `${SITE_URL}/og/${route.ogSlug}-${lang}.jpg`
       : DEFAULT_OG_IMAGE;
   const ogType = route.isArticle ? "article" : "website";
 
@@ -147,16 +148,27 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
     `<link rel="canonical" href="${canonicalUrl}" />`,
   );
 
-  const isWarsaw = route.pathEn.includes("warsaw");
-  const isVilnius = route.pathEn.includes("vilnius");
-  const isKaunas = route.pathEn.includes("kaunas");
-  const destGeo = isWarsaw
-    ? { region: "PL-MZ", placename: "Warsaw", pos: "52.2297;21.0122" }
-    : isVilnius
-      ? { region: "LT-VL", placename: "Vilnius", pos: "54.6872;25.2797" }
-      : isKaunas
-        ? { region: "LT-KU", placename: "Kaunas", pos: "54.8985;23.9036" }
-        : null;
+  // Real per-route destination (from route-manifest.mjs, sourced from the
+  // page's own fromName/toName data) rather than guessing from the URL —
+  // only known geo coordinates get a destGeo override; everything else
+  // keeps the site-wide Minsk default already baked into the HTML template.
+  const toName = isRu ? route.toNameRu : route.toNameEn;
+  const KNOWN_GEO = {
+    warsaw: { region: "PL-MZ", placename: "Warsaw", pos: "52.2297;21.0122" },
+    варшава: { region: "PL-MZ", placename: "Warsaw", pos: "52.2297;21.0122" },
+    vilnius: { region: "LT-VL", placename: "Vilnius", pos: "54.6872;25.2797" },
+    вильнюс: { region: "LT-VL", placename: "Vilnius", pos: "54.6872;25.2797" },
+    kaunas: { region: "LT-KU", placename: "Kaunas", pos: "54.8985;23.9036" },
+    каунас: { region: "LT-KU", placename: "Kaunas", pos: "54.8985;23.9036" },
+    riga: { region: "LV-RIX", placename: "Riga", pos: "56.9496;24.1052" },
+    рига: { region: "LV-RIX", placename: "Riga", pos: "56.9496;24.1052" },
+    berlin: { region: "DE-BE", placename: "Berlin", pos: "52.5200;13.4050" },
+    берлин: { region: "DE-BE", placename: "Berlin", pos: "52.5200;13.4050" },
+  };
+  const destGeo =
+    route.pageType === "service" && toName
+      ? Object.entries(KNOWN_GEO).find(([key]) => toName.toLowerCase().includes(key))?.[1] || null
+      : null;
   if (destGeo) {
     html = html.replace(
       /<meta name="geo\.region" content="[^"]*"\s*\/>/,
@@ -279,7 +291,13 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
     extraJsonLd = `
     <script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd)}</script>`;
   } else {
-    let mainJsonLd;
+    // Only real transfer/service pages (route.pageType === "service", or
+    // vehicle pages handled separately below) get a service JSON-LD block.
+    // Country hub pages, home, FAQ, and legal pages get no fabricated
+    // TaxiService entity — that matches what each page's own React source
+    // actually renders client-side (Seo.tsx only adds a page-specific
+    // jsonLd prop for real route/vehicle pages).
+    let mainJsonLd = null;
     if (route.isVehicle) {
       const vehicleClass = isRu ? route.vehicleClassRu : route.vehicleClassEn || route.vehicleClassRu;
       mainJsonLd = {
@@ -308,7 +326,12 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
           brand: { "@type": "Brand", name: h1.split(" ")[0] },
         },
       };
-    } else {
+    } else if (route.pageType === "service") {
+      // Real route/airport/themed transfer pages: use the exact fromName/
+      // toName the page itself defines (route-manifest.mjs extracts these
+      // from the page source) instead of guessing the destination from the URL.
+      const fromName = (isRu ? route.fromNameRu : route.fromNameEn) || (isRu ? "Минск" : "Minsk");
+      const routeToName = (isRu ? route.toNameRu : route.toNameEn) || h1;
       mainJsonLd = {
         "@context": "https://schema.org",
         "@type": "TaxiService",
@@ -317,12 +340,15 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
         url: canonicalUrl,
         provider: { "@id": `${SITE_URL}#business` },
         areaServed: [
-          { "@type": "Place", name: "Minsk" },
-          { "@type": "Place", name: isKaunas ? (isRu ? "Каунас" : "Kaunas") : isRu ? (route.pathRu.includes("вильнюс") ? "Вильнюс" : "Варшава") : (route.pathEn.includes("vilnius") ? "Vilnius" : "Warsaw") },
+          { "@type": "Place", name: fromName },
+          { "@type": "Place", name: routeToName },
         ],
         inLanguage: lang,
       };
     }
+    // Country hub pages ("country"), home, FAQ, and legal pages: no
+    // fabricated service entity, only breadcrumb (+ FAQPage below when
+    // applicable) — matching what those pages actually render client-side.
     const breadcrumbJsonLd = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -331,7 +357,7 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
         { "@type": "ListItem", position: 2, name: title, item: canonicalUrl },
       ],
     };
-    const scripts = [mainJsonLd, breadcrumbJsonLd];
+    const scripts = [...(mainJsonLd ? [mainJsonLd] : []), breadcrumbJsonLd];
     const faqEntries = isRu ? route.faqRu : route.faqEn;
     if (faqEntries && faqEntries.length > 0) {
       scripts.push({

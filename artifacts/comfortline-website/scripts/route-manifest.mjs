@@ -121,6 +121,24 @@ function attr(tagStr, name) {
   return m ? unescapeJsString(m[1]) : null;
 }
 
+/**
+ * Extract a `key: "value"` field that may be written either as a plain
+ * string or as a `key: isRu ? "ruValue" : "enValue"` ternary (the pattern
+ * used inline in `taxiServiceJsonLd({...})` calls on Seo-tag pages, e.g.
+ * minsk-riga-airport.tsx). Returns { ru, en } — both equal to the plain
+ * value when no ternary is present.
+ */
+function langField(objStr, name) {
+  if (!objStr) return { ru: null, en: null };
+  const ternaryRe = new RegExp(
+    name + ':\\s*isRu\\s*\\?\\s*"((?:[^"\\\\]|\\\\.)*)"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"',
+  );
+  const tm = ternaryRe.exec(objStr);
+  if (tm) return { ru: unescapeJsString(tm[1]), en: unescapeJsString(tm[2]) };
+  const plain = field(objStr, name);
+  return { ru: plain, en: plain };
+}
+
 function stripComfortLineSuffix(s) {
   return s ? s.replace(/\s*\|\s*ComfortLine.*$/i, "").trim() : s;
 }
@@ -150,12 +168,22 @@ const MANUAL_FILES = new Set(["landing.tsx", "faq.tsx", "terms.tsx", "privacy-po
 const EXCLUDED_FILES = new Set(["brandbook.tsx", "thank-you.tsx"]);
 
 function extractRouteFromPageSource(src) {
+  const dataTypeMatch = /const\s+data\s*:\s*(\w+)\s*=\s*/.exec(src);
   const dataObj = extractObjectLiteral(src, /const\s+data\s*:\s*\w+\s*=\s*/);
   if (dataObj) {
     const ruBlock = extractObjectLiteral(dataObj, /\bru:\s*/);
     const enBlock = extractObjectLiteral(dataObj, /\ben:\s*/);
     const seoBlock = extractObjectLiteral(dataObj, /\bseo:\s*/);
     if (!seoBlock) return null;
+    // CountryPageData routes (e.g. france-transfer.tsx) cover many
+    // destinations at once and never carry a single fromName/toName pair —
+    // the client renders no service-specific JSON-LD for them either.
+    const isCountryPage = dataTypeMatch && dataTypeMatch[1] === "CountryPageData";
+    // RouteSeo.fromName/toName are plain (RU-only) strings reused verbatim
+    // for both languages at runtime by RouteLandingPage — mirror that here
+    // rather than inventing a translation that the live site doesn't have.
+    const fromName = isCountryPage ? null : field(seoBlock, "fromName");
+    const toName = isCountryPage ? null : field(seoBlock, "toName");
     return {
       h1Ru: field(ruBlock, "title"),
       introRu: field(ruBlock, "subtitle"),
@@ -167,6 +195,11 @@ function extractRouteFromPageSource(src) {
       descEn: field(seoBlock, "descEn"),
       pathRu: field(seoBlock, "pathRu"),
       pathEn: field(seoBlock, "pathEn"),
+      pageType: isCountryPage ? "country" : "service",
+      fromNameRu: fromName,
+      fromNameEn: fromName,
+      toNameRu: toName,
+      toNameEn: toName,
     };
   }
 
@@ -184,6 +217,14 @@ function extractRouteFromPageSource(src) {
   const descRu = attr(seoTag, "descRu");
   const descEn = attr(seoTag, "descEn");
 
+  // Seo-tag pages (airport pages, mercedes-v-class.tsx) build their service
+  // JSON-LD inline via `jsonLd={taxiServiceJsonLd({ fromName, toName, ... })}`
+  // rather than a data-object seo block. Only pages with that call are real
+  // transfer services; others (europe-transfer.tsx) get no service schema.
+  const taxiServiceBlock = extractObjectLiteral(src, /taxiServiceJsonLd\(\s*/);
+  const fromNameField = langField(taxiServiceBlock, "fromName");
+  const toNameField = langField(taxiServiceBlock, "toName");
+
   return {
     h1Ru: field(ruBlock, "title") || stripComfortLineSuffix(titleRu),
     introRu: field(ruBlock, "subtitle") || field(ruBlock, "seoIntro") || descRu,
@@ -197,6 +238,11 @@ function extractRouteFromPageSource(src) {
     pathEn: attr(seoTag, "pathEn"),
     faqRu: extractFaqEntries(ruBlock),
     faqEn: extractFaqEntries(enBlock),
+    pageType: taxiServiceBlock ? "service" : "other",
+    fromNameRu: fromNameField.ru,
+    fromNameEn: fromNameField.en,
+    toNameRu: toNameField.ru,
+    toNameEn: toNameField.en,
   };
 }
 
@@ -291,6 +337,7 @@ function collectVehicleRoutes() {
       h1En: field(enBlock, "name") || stripComfortLineSuffix(titleEn),
       introRu: field(ruBlock, "desc") || field(seoStr, "descRu"),
       introEn: field(enBlock, "desc") || field(seoStr, "descEn"),
+      pageType: "vehicle",
       isVehicle: true,
       vehicleImage: field(ruBlock, "image") || field(enBlock, "image"),
       vehicleSeats: numField(ruBlock, "seats") || numField(enBlock, "seats"),
@@ -419,6 +466,7 @@ function collectBlogRoutes() {
 const manualRoutes = [
   {
     ogSlug: "home",
+    pageType: "home",
     pathRu: "/",
     pathEn: "/en",
     titleRu: "ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт, Минск–Варшава аэропорт",
@@ -436,6 +484,7 @@ const manualRoutes = [
   },
   {
     ogSlug: "faq",
+    pageType: "faq",
     pathRu: "/faq",
     pathEn: "/en/faq",
     titleRu: "FAQ — Частые вопросы о трансфере | ComfortLine",
@@ -453,6 +502,7 @@ const manualRoutes = [
   },
   {
     ogSlug: "terms",
+    pageType: "legal",
     pathRu: "/terms",
     pathEn: "/en/terms",
     titleRu: "Публичная оферта и условия | ComfortLine",
@@ -468,6 +518,7 @@ const manualRoutes = [
   },
   {
     ogSlug: "privacy",
+    pageType: "legal",
     pathRu: "/privacy",
     pathEn: "/en/privacy",
     titleRu: "Политика конфиденциальности | ComfortLine",

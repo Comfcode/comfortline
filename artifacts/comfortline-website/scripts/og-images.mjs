@@ -31,8 +31,17 @@ function truncate(s, max) {
  * a route's SEO fields, so every route in the shared manifest (built once in
  * route-manifest.mjs and also consumed by prerender.mjs) automatically gets
  * a matching preview image — no separate hard-coded list to keep in sync.
+ *
+ * Locale-aware: English pages must render an English overlay, not the
+ * Russian copy every route defines first — otherwise the social preview
+ * looks unfinished/wrong-language when an English URL is shared.
  */
-function textFor(route) {
+function textFor(route, lang) {
+  if (lang === "en") {
+    const title = route.h1En || route.titleEn;
+    const subtitle = truncate(route.introEn || route.descEn || "", MAX_SUBTITLE_LEN);
+    return { title, subtitle };
+  }
   const title = route.h1Ru || route.titleRu;
   const subtitle = truncate(route.introRu || route.descRu || "", MAX_SUBTITLE_LEN);
   return { title, subtitle };
@@ -82,17 +91,22 @@ async function main() {
 
   // Multiple manifest entries can share the same ogSlug only by mistake;
   // de-dupe defensively so we never overwrite/regenerate the same file twice.
+  // Each route gets a RU and an EN image (/og/<slug>-ru.jpg, /og/<slug>-en.jpg)
+  // built from that language's own fields, so English pages never advertise
+  // a Russian-language social preview.
   const seen = new Set();
   let count = 0;
   for (const route of allRoutes) {
     if (!route.ogSlug || seen.has(route.ogSlug)) continue;
     seen.add(route.ogSlug);
 
-    const svg = svgFor(textFor(route));
-    const outPath = path.join(OG_DIR, `${route.ogSlug}.jpg`);
-    await sharp(Buffer.from(svg)).jpeg({ quality: 90, mozjpeg: true }).toFile(outPath);
-    console.log(`[og] ${route.ogSlug}.jpg`);
-    count++;
+    for (const lang of ["ru", "en"]) {
+      const svg = svgFor(textFor(route, lang));
+      const outPath = path.join(OG_DIR, `${route.ogSlug}-${lang}.jpg`);
+      await sharp(Buffer.from(svg)).jpeg({ quality: 90, mozjpeg: true }).toFile(outPath);
+      console.log(`[og] ${route.ogSlug}-${lang}.jpg`);
+      count++;
+    }
   }
   console.log(`[og] generated ${count} OG images in dist/public/og/`);
 }
