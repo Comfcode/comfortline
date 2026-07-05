@@ -18,7 +18,7 @@ export function AirportMap({ lat, lng, label, googleMapsUrl }: AirportMapProps) 
     let map: unknown;
     let marker: unknown;
 
-    import("leaflet").then((L) => {
+    Promise.all([import("leaflet"), import("leaflet/dist/leaflet.css")]).then(([L]) => {
       if (!containerRef.current || mapRef.current) return;
 
       const leaflet = L.default ?? L;
