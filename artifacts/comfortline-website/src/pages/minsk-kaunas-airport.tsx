@@ -129,8 +129,8 @@ export default function MinskKaunasAirportPage() {
       <Seo
         titleRu="Трансфер Минск — Аэропорт Каунаса (KUN) | ComfortLine"
         titleEn="Minsk to Kaunas Airport (KUN) Private Transfer | ComfortLine"
-        descRu="Индивидуальный трансфер из Минска в международный аэропорт Каунаса (KUN). Фиксированная цена, подача от двери, опытный водитель, помощь на границе Беларусь–Литва. ~280 км, 4–7 ч. Заказ онлайн или +375 (29) 155-27-76."
-        descEn="Private door-to-door transfer from Minsk to Kaunas International Airport (KUN). Fixed price, English-speaking driver, comfort or business class. ~280 km, 4–7 hrs incl. Belarus–Lithuania border. Book online or call +375 (29) 155-27-76."
+        descRu="Индивидуальный трансфер из Минска в международный аэропорт Каунаса (KUN). Фиксированная цена, подача от двери, опытный водитель, помощь на границе Беларусь–Литва. ~280 км, 4–7 ч. Заказ онлайн или +375 (44) 762-06-49."
+        descEn="Private door-to-door transfer from Minsk to Kaunas International Airport (KUN). Fixed price, English-speaking driver, comfort or business class. ~280 km, 4–7 hrs incl. Belarus–Lithuania border. Book online or call +375 (44) 762-06-49."
         pathRu="/трансфер-минск-каунас-аэропорт"
         pathEn="/minsk-kaunas-airport"
         keywordsRu="трансфер минск каунас, трансфер минск аэропорт каунаса, такси минск каунас аэропорт, kun трансфер, минск kaunas трансфер, заказ авто в аэропорт каунаса, ryanair каунас"

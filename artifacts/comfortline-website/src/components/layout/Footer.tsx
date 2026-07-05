@@ -74,10 +74,10 @@ export function Footer() {
               <a href="https://t.me/transfer_comfortline" target="_blank" rel="noopener noreferrer" aria-label="Telegram" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "Telegram" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <SiTelegram className="h-5 w-5" />
               </a>
-              <a href="https://wa.me/375291552776" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "WhatsApp" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a href="https://wa.me/375447620649" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "WhatsApp" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <SiWhatsapp className="h-5 w-5" />
               </a>
-              <a href="viber://chat?number=%2B375291552776" aria-label="Viber" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a href="viber://chat?number=%2B375447620649" aria-label="Viber" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <SiViber className="h-5 w-5" />
               </a>
               <a href="https://m.me/103816619260365" target="_blank" rel="noopener noreferrer" aria-label="Messenger" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
@@ -114,7 +114,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li className="flex items-start gap-3">
                 <PhoneCall className="h-5 w-5 text-primary shrink-0" />
-                <a href="tel:+375291552776" onClick={gtagPhoneConversion} className="hover:text-primary transition-colors font-medium text-foreground">+375 (29) 155-27-76</a>
+                <a href="tel:+375447620649" onClick={gtagPhoneConversion} className="hover:text-primary transition-colors font-medium text-foreground">+375 (44) 762-06-49</a>
               </li>
               <li className="flex items-start gap-3">
                 <Send className="h-5 w-5 text-primary shrink-0" />

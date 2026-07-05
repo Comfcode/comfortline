@@ -516,7 +516,7 @@ export default function MercedesVClassPage() {
                 <ArrowRight className="h-4 w-4" />
               </button>
               <a
-                href="tel:+375291552776"
+                href="tel:+375447620649"
                 onClick={gtagPhoneConversion}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-border hover:border-primary/50 text-foreground font-semibold text-sm transition-colors"
               >

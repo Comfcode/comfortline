@@ -108,8 +108,8 @@ export function Navbar() {
 
   const socialLinks = [
     { icon: SiTelegram,  href: "https://t.me/transfer_comfortline",              label: "Telegram",  bg: "#229ED9" },
-    { icon: SiViber,     href: "viber://chat?number=%2B375291552776",             label: "Viber",     bg: "#7360F2" },
-    { icon: SiWhatsapp,  href: "https://wa.me/375291552776",                      label: "WhatsApp",  bg: "#25D366" },
+    { icon: SiViber,     href: "viber://chat?number=%2B375447620649",             label: "Viber",     bg: "#7360F2" },
+    { icon: SiWhatsapp,  href: "https://wa.me/375447620649",                      label: "WhatsApp",  bg: "#25D366" },
     { icon: Instagram,   href: "https://www.instagram.com/transfer_comfortline/", label: "Instagram", bg: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)" },
     { icon: SiMessenger, href: "https://m.me/103816619260365",                    label: "Messenger", bg: "linear-gradient(45deg,#0084FF,#B34FFF)" },
   ];
@@ -251,12 +251,12 @@ export function Navbar() {
 
             {/* Phone — only visible at 2xl (1536px+) to keep RU/EN always in view */}
             <a
-              href="tel:+375291552776"
+              href="tel:+375447620649"
               onClick={gtagPhoneConversion}
               className="hidden 2xl:flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
             >
               <Phone className="h-3 w-3 text-primary" />
-              +375 (29) 155-27-76
+              +375 (44) 762-06-49
             </a>
 
             <div className="h-4 w-px bg-border/50" />
@@ -332,12 +332,12 @@ export function Navbar() {
             </div>
             <NavBorderQueueBadge variant="mobile" />
             <a
-              href="tel:+375291552776"
+              href="tel:+375447620649"
               onClick={gtagPhoneConversion}
               className="flex items-center gap-2 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/70"
             >
               <Phone className="h-6 w-6 text-primary" />
-              <span className="hidden sm:inline">+375 (29) 155-27-76</span>
+              <span className="hidden sm:inline">+375 (44) 762-06-49</span>
             </a>
             <button
               aria-label={mobileMenuOpen ? "Закрыть меню" : "Открыть меню"}

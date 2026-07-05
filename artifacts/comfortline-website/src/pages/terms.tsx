@@ -10,7 +10,7 @@ const ruContent = {
 УНП: 193255422
 Адрес: Республика Беларусь, г. Минск, ул. Фёдорова, 19-10
 Email: info@comfortline.by
-Телефон: +375 (29) 155-27-76`,
+Телефон: +375 (44) 762-06-49`,
   sections: [
     {
       heading: "1. Общие положения",
@@ -119,7 +119,7 @@ const enContent = {
 UNP: 193255422
 Address: Minsk, Republic of Belarus
 Email: info@comfortline.by
-Phone: +375 (29) 155-27-76`,
+Phone: +375 (44) 762-06-49`,
   sections: [
     {
       heading: "1. General",

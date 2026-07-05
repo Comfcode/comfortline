@@ -18,7 +18,7 @@ const ruContent = {
 УНП: 193255422
 Адрес: Республика Беларусь, г. Минск, ул. Фёдорова, 19-10
 Email: info@comfortline.by
-Телефон: +375 (29) 155-27-76`,
+Телефон: +375 (44) 762-06-49`,
     },
     {
       heading: "2. Персональные данные, которые обрабатываются",
@@ -114,7 +114,7 @@ Sole Proprietor Murashko Andrei Antonovich
 UNP: 193255422
 Address: Republic of Belarus, Minsk, Fyodorova St., 19-10
 Email: info@comfortline.by
-Phone: +375 (29) 155-27-76`,
+Phone: +375 (44) 762-06-49`,
     },
     {
       heading: "2. Personal Data Processed",

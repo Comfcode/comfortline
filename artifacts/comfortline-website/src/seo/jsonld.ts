@@ -78,7 +78,7 @@ export function localBusinessJsonLd(lang: "ru" | "en") {
         telephone: BUSINESS.phone,
         contactType: "reservations",
         availableLanguage: ["Russian", "English"],
-        url: "https://wa.me/375291552776",
+        url: "https://wa.me/375447620649",
       },
     ],
     openingHoursSpecification: {

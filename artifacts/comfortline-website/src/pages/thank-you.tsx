@@ -145,12 +145,12 @@ export default function ThankYouPage() {
               {c.backBtn}
             </a>
             <a
-              href="tel:+375291552776"
+              href="tel:+375447620649"
               onClick={gtagPhoneConversion}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border hover:border-primary/50 text-foreground font-semibold text-sm transition-colors"
             >
               <Phone className="w-4 h-4 text-primary" />
-              +375 (29) 155-27-76
+              +375 (44) 762-06-49
             </a>
           </motion.div>
         </motion.div>

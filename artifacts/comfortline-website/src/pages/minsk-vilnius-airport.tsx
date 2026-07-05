@@ -172,8 +172,8 @@ export default function MinskVilniusAirportPage() {
       <Seo
         titleRu="Трансфер Минск — Аэропорт Вильнюса (VNO) | ComfortLine"
         titleEn="Minsk to Vilnius Airport (VNO) Private Transfer | ComfortLine"
-        descRu="Индивидуальный трансфер из Минска в международный аэропорт Вильнюса (VNO). Фиксированная цена, подача от двери, опытный водитель, помощь на границе Беларусь–Литва. ~175 км, 2,5–5 ч. Заказ онлайн или +375 (29) 155-27-76."
-        descEn="Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, English-speaking driver, comfort or business class. ~175 km, 2.5–5 hrs incl. Belarus–Lithuania border. Book online or call +375 (29) 155-27-76."
+        descRu="Индивидуальный трансфер из Минска в международный аэропорт Вильнюса (VNO). Фиксированная цена, подача от двери, опытный водитель, помощь на границе Беларусь–Литва. ~175 км, 2,5–5 ч. Заказ онлайн или +375 (44) 762-06-49."
+        descEn="Private door-to-door transfer from Minsk to Vilnius International Airport (VNO). Fixed price, English-speaking driver, comfort or business class. ~175 km, 2.5–5 hrs incl. Belarus–Lithuania border. Book online or call +375 (44) 762-06-49."
         pathRu="/трансфер-минск-вильнюс-аэропорт"
         pathEn="/minsk-vilnius-airport"
         keywordsRu="трансфер минск вильнюс, трансфер минск аэропорт вильнюса, такси минск вильнюс аэропорт, vno трансфер, минск vilnius трансфер, заказ авто в аэропорт вильнюса"
