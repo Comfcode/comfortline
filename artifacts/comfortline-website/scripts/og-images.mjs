@@ -29,6 +29,7 @@ export const OG_ROUTES = [
   { slug: "blog-kakoy-kpp-vybrat", title: "Каменный Лог \u00B7 Котловка \u00B7 Бенякони", subtitle: "Какой КПП выбрать в 2026" },
   { slug: "blog-transfer-s-detmi", title: "Трансфер с детьми из Минска", subtitle: "Чек-лист и советы родителям" },
   { slug: "blog-kak-dobratsya-do-vno", title: "Как добраться из Минска в аэропорт VNO", subtitle: "Все способы, цены и время" },
+  { slug: "blog-sovetskie-mozaiki-minska", title: "Советские мозаики Минска", subtitle: "Гид по монументальному искусству города" },
 ];
 
 function escapeXml(s) {

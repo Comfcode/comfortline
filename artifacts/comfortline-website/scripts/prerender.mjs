@@ -35,6 +35,39 @@ function extractObjectLiteral(src, markerRegex) {
   return null;
 }
 
+/** Like extractObjectLiteral but for a `[...]` array literal following the marker. */
+function extractArrayLiteral(src, markerRegex) {
+  const m = markerRegex.exec(src);
+  if (!m) return null;
+  const searchFrom = m.index + m[0].length;
+  const bracketStart = src.indexOf("[", searchFrom);
+  if (bracketStart === -1) return null;
+  let depth = 0;
+  for (let i = bracketStart; i < src.length; i++) {
+    if (src[i] === "[") depth++;
+    else if (src[i] === "]") {
+      depth--;
+      if (depth === 0) return src.slice(bracketStart, i + 1);
+    }
+  }
+  return null;
+}
+
+/** Extract `{ q: "...", a: "..." }` FAQ entries from a `faq: [...]` array literal string. */
+function extractFaqEntries(blockStr) {
+  if (!blockStr) return [];
+  const arrStr = extractArrayLiteral(blockStr, /\bfaq:\s*/);
+  if (!arrStr) return [];
+  const objStrs = splitTopLevelObjects(arrStr);
+  const entries = [];
+  for (const objStr of objStrs) {
+    const q = field(objStr, "q");
+    const a = field(objStr, "a");
+    if (q && a) entries.push({ question: q, answer: a });
+  }
+  return entries;
+}
+
 function splitTopLevelObjects(arrayBodyStr) {
   const objects = [];
   let depth = 0;
@@ -65,6 +98,14 @@ function field(objStr, name) {
   const re = new RegExp(name + ':\\s*"((?:[^"\\\\]|\\\\.)*)"');
   const m = re.exec(objStr);
   return m ? unescapeJsString(m[1]) : null;
+}
+
+/** Extract a numeric `key: 123` field from a plain JS object literal string. */
+function numField(objStr, name) {
+  if (!objStr) return null;
+  const re = new RegExp(name + ":\\s*(\\d+)");
+  const m = re.exec(objStr);
+  return m ? Number(m[1]) : null;
 }
 
 /** Extract a `key="value"` prop from a JSX tag's attribute string. */
@@ -149,7 +190,36 @@ function extractRouteFromPageSource(src) {
     descEn,
     pathRu: attr(seoTag, "pathRu"),
     pathEn: attr(seoTag, "pathEn"),
+    faqRu: extractFaqEntries(ruBlock),
+    faqEn: extractFaqEntries(enBlock),
   };
+}
+
+// ----------------------------------------------------------------------------
+// faq.tsx — a bespoke shape (MANUAL_FILES): ruFaq/enFaq are FaqSection[] with
+// nested `items: FaqItem[]`, not a flat `faq: [...]` like the other pages.
+// ----------------------------------------------------------------------------
+
+function collectManualFaqEntries(varName) {
+  const src = fs.readFileSync(path.join(PAGES_DIR, "faq.tsx"), "utf8");
+  const arrStr = extractArrayLiteral(src, new RegExp(`const\\s+${varName}\\s*:[^=]*=\\s*`));
+  if (!arrStr) {
+    console.warn(`[prerender] WARNING: could not parse ${varName} array from faq.tsx`);
+    return [];
+  }
+  const sectionStrs = splitTopLevelObjects(arrStr.slice(1, -1));
+  const entries = [];
+  for (const sectionStr of sectionStrs) {
+    const itemsArr = extractArrayLiteral(sectionStr, /items:\s*/);
+    if (!itemsArr) continue;
+    const itemStrs = splitTopLevelObjects(itemsArr.slice(1, -1));
+    for (const itemStr of itemStrs) {
+      const q = field(itemStr, "q");
+      const a = field(itemStr, "a");
+      if (q && a) entries.push({ question: q, answer: a });
+    }
+  }
+  return entries;
 }
 
 function collectAutoRoutes() {
@@ -216,6 +286,12 @@ function collectVehicleRoutes() {
       h1En: field(enBlock, "name") || stripComfortLineSuffix(titleEn),
       introRu: field(ruBlock, "desc") || field(seoStr, "descRu"),
       introEn: field(enBlock, "desc") || field(seoStr, "descEn"),
+      isVehicle: true,
+      vehicleImage: field(ruBlock, "image") || field(enBlock, "image"),
+      vehicleSeats: numField(ruBlock, "seats") || numField(enBlock, "seats"),
+      vehicleYear: field(ruBlock, "year") || field(enBlock, "year"),
+      vehicleClassRu: field(ruBlock, "classBadge"),
+      vehicleClassEn: field(enBlock, "classBadge"),
     });
   }
   return routes;
@@ -583,19 +659,50 @@ function buildHtml(template, route, lang, blogIndexRoute) {
     extraJsonLd = `
     <script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd)}</script>`;
   } else {
-    const taxiJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "TaxiService",
-      name: title,
-      description: desc,
-      url: canonicalUrl,
-      provider: { "@id": "https://comfortline.by#business" },
-      areaServed: [
-        { "@type": "Place", name: "Minsk" },
-        { "@type": "Place", name: isKaunas ? (isRu ? "Каунас" : "Kaunas") : isRu ? (route.pathRu.includes("вильнюс") ? "Вильнюс" : "Варшава") : (route.pathEn.includes("vilnius") ? "Vilnius" : "Warsaw") },
-      ],
-      inLanguage: lang,
-    };
+    let mainJsonLd;
+    if (route.isVehicle) {
+      const vehicleClass = isRu ? route.vehicleClassRu : route.vehicleClassEn || route.vehicleClassRu;
+      mainJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        serviceType: isRu ? "Индивидуальный трансфер" : "Private transfer",
+        name: h1,
+        description: desc,
+        image: route.vehicleImage ? SITE_URL + route.vehicleImage : undefined,
+        url: canonicalUrl,
+        provider: { "@id": `${SITE_URL}#business` },
+        offers: {
+          "@type": "Offer",
+          url: canonicalUrl,
+          availability: "https://schema.org/InStock",
+          priceCurrency: "BYN",
+          seller: { "@id": `${SITE_URL}#business` },
+        },
+        vehicle: {
+          "@type": "Vehicle",
+          name: h1,
+          image: route.vehicleImage ? SITE_URL + route.vehicleImage : undefined,
+          seatingCapacity: route.vehicleSeats || undefined,
+          modelDate: route.vehicleYear || undefined,
+          vehicleConfiguration: vehicleClass || undefined,
+          brand: { "@type": "Brand", name: h1.split(" ")[0] },
+        },
+      };
+    } else {
+      mainJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "TaxiService",
+        name: title,
+        description: desc,
+        url: canonicalUrl,
+        provider: { "@id": `${SITE_URL}#business` },
+        areaServed: [
+          { "@type": "Place", name: "Minsk" },
+          { "@type": "Place", name: isKaunas ? (isRu ? "Каунас" : "Kaunas") : isRu ? (route.pathRu.includes("вильнюс") ? "Вильнюс" : "Варшава") : (route.pathEn.includes("vilnius") ? "Vilnius" : "Warsaw") },
+        ],
+        inLanguage: lang,
+      };
+    }
     const breadcrumbJsonLd = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -604,9 +711,20 @@ function buildHtml(template, route, lang, blogIndexRoute) {
         { "@type": "ListItem", position: 2, name: title, item: canonicalUrl },
       ],
     };
-    extraJsonLd = `
-    <script type="application/ld+json">${JSON.stringify(taxiJsonLd)}</script>
-    <script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd)}</script>`;
+    const scripts = [mainJsonLd, breadcrumbJsonLd];
+    const faqEntries = isRu ? route.faqRu : route.faqEn;
+    if (faqEntries && faqEntries.length > 0) {
+      scripts.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqEntries.map((e) => ({
+          "@type": "Question",
+          name: e.question,
+          acceptedAnswer: { "@type": "Answer", text: e.answer },
+        })),
+      });
+    }
+    extraJsonLd = "\n" + scripts.map((s) => `    <script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n");
   }
   html = html.replace("</head>", `${extraJsonLd}\n  </head>`);
 
@@ -636,6 +754,12 @@ function main() {
   const autoRoutes = collectAutoRoutes();
   const vehicleRoutes = collectVehicleRoutes();
   const { blogIndexRoute, blogArticleRoutes } = collectBlogRoutes();
+
+  const faqRoute = manualRoutes.find((r) => r.ogSlug === "faq");
+  if (faqRoute) {
+    faqRoute.faqRu = collectManualFaqEntries("ruFaq");
+    faqRoute.faqEn = collectManualFaqEntries("enFaq");
+  }
 
   const allRoutes = [
     ...manualRoutes,

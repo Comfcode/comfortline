@@ -35,8 +35,7 @@
       })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109687510', 'ym');
       ym(109687510, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/109687510" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    <!-- /Yandex.Metrika counter (noscript pixel moved to top of <body> — <noscript><div> is invalid inside <head>) -->
 
     <!-- Yandex Webmaster verification -->
     <meta name="yandex-verification" content="6af7e7ce533f0656" />
@@ -140,12 +139,114 @@
       ]
     }
     </script>
-    <!-- Note: the full TaxiService / LocalBusiness entity (#business) is injected
-         per-route by src/seo/Seo.tsx (localBusinessJsonLd) with localised content,
-         priceRange "€€", knowsLanguage, hasOfferCatalog, contactPoint, etc.
-         Keeping it only there avoids duplicate @id conflicts in Search Console. -->
+    <!-- Static #business node (RU, matches the default <html lang="ru"> below) so crawlers
+         that don't execute JS still resolve the WebSite publisher / Organization / TaxiService
+         provider @id references below. src/seo/Seo.tsx (localBusinessJsonLd) re-emits a
+         localised copy of this same @id client-side once JS runs; browsers keep only the
+         client-rendered version (use-seo.ts removes/replaces all ld+json on mount), so there
+         is no duplicate-node conflict in a real browser or in Search Console's rendered view. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["TaxiService", "LocalBusiness"],
+      "@id": "https://comfortline.by#business",
+      "name": "ComfortLine",
+      "alternateName": ["ComfortLine Transfer", "Комфортлайн", "ComfortLine Минск"],
+      "legalName": "ComfortLine Transfer",
+      "url": "https://comfortline.by/",
+      "logo": "https://comfortline.by/favicon.svg",
+      "image": ["https://comfortline.by/opengraph.jpg", "https://comfortline.by/car-mercedes-e.jpg", "https://comfortline.by/car-kia-carnival.jpg"],
+      "telephone": "+375447620649",
+      "email": "info@comfortline.by",
+      "priceRange": "€€",
+      "slogan": "Комфортный трансфер из Минска в аэропорты Вильнюса и Варшавы",
+      "description": "ComfortLine — комфортный трансфер из Минска в аэропорт Вильнюса (VNO), аэропорт Варшавы (WAW, Модлин), Берлин и города Европы. Фиксированная цена, опытные водители, комфортные автомобили.",
+      "foundingDate": "2018",
+      "paymentAccepted": "Cash, Credit Card",
+      "currenciesAccepted": "EUR, USD, BYN, PLN",
+      "knowsLanguage": ["ru", "en", "be", "pl"],
+      "address": { "@type": "PostalAddress", "addressLocality": "Минск", "addressRegion": "Минская область", "addressCountry": "BY" },
+      "geo": { "@type": "GeoCoordinates", "latitude": 53.9006, "longitude": 27.5590 },
+      "areaServed": [
+        { "@type": "Place", "name": "Minsk" },
+        { "@type": "Place", "name": "Belarus" },
+        { "@type": "Place", "name": "Lithuania" },
+        { "@type": "Place", "name": "Poland" },
+        { "@type": "Place", "name": "Latvia" },
+        { "@type": "Place", "name": "Germany" },
+        { "@type": "Place", "name": "Czech Republic" }
+      ],
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 53.9006, "longitude": 27.5590 },
+        "geoRadius": 1500000
+      },
+      "sameAs": [
+        "https://t.me/+375447620649",
+        "https://wa.me/375447620649",
+        "https://www.instagram.com/transfer_comfortline/",
+        "https://m.me/103816619260365"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+375447620649",
+          "contactType": "customer service",
+          "availableLanguage": ["Russian", "English", "Belarusian", "Polish"],
+          "areaServed": ["BY", "LT", "PL", "LV", "DE", "CZ", "RU"],
+          "contactOption": ["TollFree"],
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+375447620649",
+          "contactType": "reservations",
+          "availableLanguage": ["Russian", "English"],
+          "url": "https://wa.me/375447620649"
+        }
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Популярные направления",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "position": 1,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Трансфер Минск — Аэропорт Вильнюса (VNO)",
+              "url": "https://comfortline.by/трансфер-минск-вильнюс-аэропорт",
+              "provider": { "@id": "https://comfortline.by#business" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 2,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Трансфер Минск — Аэропорт Шопен (WAW)",
+              "url": "https://comfortline.by/трансфер-минск-варшава-шопен",
+              "provider": { "@id": "https://comfortline.by#business" }
+            }
+          }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
+    <noscript><div><img src="https://mc.yandex.ru/watch/109687510" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

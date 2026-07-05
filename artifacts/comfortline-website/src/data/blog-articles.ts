@@ -11,6 +11,7 @@ export type Block =
   | { type: "callout"; text: string }
   | { type: "table"; headers: string[]; rows: string[][] }
   | { type: "link"; href: string; label: string; description?: string }
+  | { type: "img"; src: string; alt: string; caption?: string }
   | { type: "liveQueue" };
 
 export interface Article {
@@ -2552,6 +2553,205 @@ export const ARTICLES: Article[] = [
     ],
     related: ["граница-беларусь-литва", "какой-кпп-выбрать", "виза-свободный-въезд-в-беларусь-2026"],
     ctaRoute: { label: "Забронировать трансфер в Литву или Латвию", labelEn: "Book a transfer to Lithuania or Latvia", path: "/трансфер-в-литву" },
+  },
+  {
+    slug: "советские-мозаики-минска",
+    slugEn: "soviet-mosaics-minsk-guide",
+    titleEn: "Soviet Mosaics of Minsk: A Walking Guide to the City's Hidden Monumental Art",
+    descriptionEn: "Where to find Minsk's best Soviet-era mosaics: the Vostok-1 towers ('Golden Gates'), the Florentine mosaic at Oktyabrskaya metro, the Dom Kino frieze and the Palace of Water Sports panel — with photos and directions.",
+    ogSlug: "blog-sovetskie-mozaiki-minska",
+    title: "Советские мозаики Минска: гид по монументальному искусству города",
+    description:
+      "Где искать лучшие советские мозаики Минска: башни микрорайона Восток-1 («Золотые ворота»), флорентийская мозаика на «Октябрьской», фриз Дома кино и панно Дворца водного спорта — с фото и маршрутом.",
+    intro:
+      "Минск — один из самых недооценённых городов Европы для любителей советского монументального искусства. На фасадах жилых башен, в переходах метро и на кинотеатрах до сих пор сохранились огромные мозаичные панно 1960–1980-х годов — эпические сцены труда, космоса и культуры, выложенные смальтой и мрамором. Собрали маршрут по четырём главным точкам, которые стоит увидеть своими глазами.",
+    dateISO: "2026-07-05",
+    readingMin: 8,
+    category: "Минск",
+    tags: ["Минск", "мозаика", "архитектура", "советское искусство", "экскурсия"],
+    body: [
+      { type: "h2", text: "Восток-1: «Золотые ворота» с мозаичными башнями" },
+      {
+        type: "p",
+        text:
+          "Главная точка маршрута — микрорайон Восток-1 у одноимённой станции метро. Две высотные жилые башни здесь называют «Золотыми воротами Минска»: их торцевые фасады, выходящие на проспект Независимости, полностью покрыты мозаикой на тему освоения космоса, науки, труда и искусства. Панно создавались в 1970-е годы группой белорусских художников-монументалистов и остаются одними из крупнейших мозаичных композиций в стране.",
+      },
+      {
+        type: "img",
+        src: "/mosaic-vostok-panorama.jpg",
+        alt: "Жилая башня микрорайона Восток-1 в Минске с мозаикой на фасаде",
+        caption: "Башня Восток-1 на проспекте Независимости — мозаика видна с проезжей части и из окон метро.",
+      },
+      {
+        type: "p",
+        text:
+          "Каждая башня разбита на несколько крупных регистров: в верхней части — символика космоса и науки, ниже — фигуры рабочих, учёных и деятелей культуры в стилизованных арках. Композиция читается снизу вверх, как единое повествование о советском проекте будущего.",
+      },
+      {
+        type: "img",
+        src: "/mosaic-vostok-science.jpg",
+        alt: "Крупный план мозаики «Город науки» на башне Восток-1 в Минске",
+        caption: "Фрагмент «Город науки» — фигуры в золотой смальте на фоне символа СССР.",
+      },
+      {
+        type: "img",
+        src: "/mosaic-vostok-culture.jpg",
+        alt: "Мозаика «Город культуры» на второй башне микрорайона Восток-1",
+        caption: "Соседняя башня посвящена теме культуры и искусства — та же система арок и цветных лент.",
+      },
+      {
+        type: "callout",
+        text: "Лучшее время для фото — раннее утро или ближе к вечеру: солнце светит вдоль проспекта и подсвечивает смальту сбоку, из-за чего мозаика «загорается».",
+      },
+      { type: "h2", text: "Станция метро «Октябрьская»: флорентийская мозаика Кузнецова" },
+      {
+        type: "p",
+        text:
+          "В переходе станции метро «Октябрьская» сохранилась масштабная флорентийская мозаика (техника набора из природного камня и мрамора без смальты) работы художника Андрея Кузнецова — «Этапы большого пути». Композиция рассказывает историю индустриализации и достижений советской эпохи через фигуры рабочих, инженеров и символику труда.",
+      },
+      {
+        type: "img",
+        src: "/mosaic-oktyabrskaya-metro.jpg",
+        alt: "Флорентийская мозаика в переходе станции метро Октябрьская в Минске",
+        caption: "Мозаика «Этапы большого пути» над лестницей в переходе станции «Октябрьская».",
+      },
+      {
+        type: "p",
+        text:
+          "В отличие от ярких мозаик Восток-1, здесь преобладает приглушённая палитра натурального камня — охра, тёмно-коричневый, серый мрамор. Это одна из немногих флорентийских мозаик такого масштаба, сохранившихся в интерьере действующего общественного пространства в Беларуси.",
+      },
+      { type: "h2", text: "Дом кино: фриз с партизанской темой" },
+      {
+        type: "p",
+        text:
+          "Здание бывшего Дома кино на улице Толбухина — ещё один пример советского монументального искусства, интегрированного в фасад общественного здания. Протяжённый декоративный фриз в верхней части здания посвящён партизанской и военной теме — узнаваемый мотив для белорусской монументальной живописи 1970-х годов, где память о войне соседствует с образами мирного труда и кино как искусства.",
+      },
+      {
+        type: "p",
+        text:
+          "Здание неоднократно меняло назначение (сейчас в нём располагается Дворец детей и молодёжи), но фасадный декор сохранён. Стоит заглянуть сюда, если вы уже смотрите башни Восток-1 — это в 10–15 минутах на машине.",
+      },
+      { type: "h2", text: "Дворец водного спорта: мозаичное панно на фасаде" },
+      {
+        type: "p",
+        text:
+          "Дворец водного спорта в спортивном комплексе «Олимпийский» — характерный образец советской спортивной архитектуры 1970-х с монументальным декором на тему воды, спорта и здоровья на фасаде. Здание действующее: здесь по-прежнему тренируются пловцы и работают секции, поэтому осматривать декор удобнее снаружи, не мешая посетителям.",
+      },
+      {
+        type: "callout",
+        text:
+          "Маршрут по всем четырём точкам занимает около 3–4 часов с учётом переездов на машине и остановок для фото. Многие туристы объединяют его с посещением проспекта Независимости — крупнейшего цельного ансамбля сталинской архитектуры в Европе.",
+      },
+      { type: "h2", text: "Как спланировать маршрут" },
+      {
+        type: "ol",
+        items: [
+          "Начните с башен Восток-1 (метро «Восток») — это самая эффектная и фотогеничная точка.",
+          "Доедьте до станции метро «Октябрьская» и спуститесь в переход к мозаике Кузнецова.",
+          "Проедьте мимо здания бывшего Дома кино на Толбухина, чтобы увидеть фриз.",
+          "Завершите маршрут у Дворца водного спорта в комплексе «Олимпийский».",
+        ],
+      },
+      {
+        type: "p",
+        text:
+          "Если вы прилетаете в Минск транзитом или у вас несколько свободных часов между рейсами, водитель ComfortLine может провести вас по этому маршруту на комфортном автомобиле с остановками у каждой точки — без необходимости разбираться в общественном транспорте.",
+      },
+    ],
+    categoryEn: "Minsk",
+    introEn:
+      "Minsk is one of Europe's most underrated cities for fans of Soviet monumental art. Huge mosaic panels from the 1960s–1980s — epic scenes of labour, space and culture rendered in smalt and marble — still cover residential towers, metro passages and cinema façades across the city. Here is a route to the four most rewarding spots.",
+    bodyEn: [
+      { type: "h2", text: "Vostok-1: the 'Golden Gates' mosaic towers" },
+      {
+        type: "p",
+        text:
+          "The route's centrepiece is the Vostok-1 neighbourhood, next to the metro station of the same name. Locals call its two high-rise residential towers the 'Golden Gates of Minsk': their end walls, facing Independence Avenue, are completely covered in mosaics on the themes of space exploration, science, labour and art. The panels were created in the 1970s by a group of Belarusian monumental artists and remain among the largest mosaic compositions in the country.",
+      },
+      {
+        type: "img",
+        src: "/mosaic-vostok-panorama.jpg",
+        alt: "Vostok-1 residential tower in Minsk with a large mosaic on its facade",
+        caption: "A Vostok-1 tower on Independence Avenue — the mosaic is visible from the street and from the metro exit.",
+      },
+      {
+        type: "p",
+        text:
+          "Each tower is divided into large registers: cosmic and scientific symbolism at the top, then figures of workers, scientists and cultural figures set within stylised arches below. The composition reads bottom-to-top as a single narrative about the Soviet vision of the future.",
+      },
+      {
+        type: "img",
+        src: "/mosaic-vostok-science.jpg",
+        alt: "Close-up of the 'City of Science' mosaic on the Vostok-1 tower in Minsk",
+        caption: "A fragment of 'City of Science' — figures in gold smalt against a Soviet emblem.",
+      },
+      {
+        type: "img",
+        src: "/mosaic-vostok-culture.jpg",
+        alt: "'City of Culture' mosaic on the second Vostok-1 tower",
+        caption: "The neighbouring tower is dedicated to culture and the arts, using the same arch-and-ribbon system.",
+      },
+      {
+        type: "callout",
+        text: "The best light for photos is early morning or early evening, when the sun rakes along the avenue and lights the smalt from the side, making the mosaic 'glow'.",
+      },
+      { type: "h2", text: "Oktyabrskaya metro station: Kuznetsov's Florentine mosaic" },
+      {
+        type: "p",
+        text:
+          "The underground passage at Oktyabrskaya metro station holds a large Florentine mosaic (a technique using inlaid natural stone and marble rather than smalt) by artist Andrey Kuznetsov, titled 'Stages of the Great Journey'. The composition tells the story of industrialisation and Soviet-era achievement through figures of workers, engineers and labour symbolism.",
+      },
+      {
+        type: "img",
+        src: "/mosaic-oktyabrskaya-metro.jpg",
+        alt: "Florentine mosaic in the underpass at Oktyabrskaya metro station in Minsk",
+        caption: "'Stages of the Great Journey' above the stairway in the Oktyabrskaya station passage.",
+      },
+      {
+        type: "p",
+        text:
+          "Unlike the bright colours of Vostok-1, this piece is dominated by a muted natural-stone palette — ochre, dark brown, grey marble. It's one of the few Florentine mosaics of this scale still preserved inside a working public space in Belarus.",
+      },
+      { type: "h2", text: "Dom Kino: the partisan-themed frieze" },
+      {
+        type: "p",
+        text:
+          "The former Dom Kino (House of Cinema) building on Talbukhina Street is another example of Soviet monumental art built into a public façade. A long decorative frieze along the top of the building is dedicated to the partisan and wartime theme — a recurring motif in Belarusian monumental painting of the 1970s, where memory of the war sits alongside images of peaceful labour and cinema as an art form.",
+      },
+      {
+        type: "p",
+        text:
+          "The building has changed function more than once (it now houses a children's and youth centre), but the façade decoration has been preserved. Worth a short stop if you're already visiting the Vostok-1 towers — it's a 10–15 minute drive away.",
+      },
+      { type: "h2", text: "Palace of Water Sports: the mosaic facade panel" },
+      {
+        type: "p",
+        text:
+          "The Palace of Water Sports, part of the 'Olimpiysky' sports complex, is a typical example of 1970s Soviet sports architecture, with monumental decoration on the theme of water, sport and health on its façade. The building is still active — swimmers train here and classes run daily — so it's best viewed from outside without disturbing visitors.",
+      },
+      {
+        type: "callout",
+        text:
+          "The full four-stop route takes about 3–4 hours including driving time and photo stops. Many visitors combine it with a walk down Independence Avenue, the largest intact ensemble of Stalinist architecture in Europe.",
+      },
+      { type: "h2", text: "How to plan the route" },
+      {
+        type: "ol",
+        items: [
+          "Start at the Vostok-1 towers (Vostok metro station) — the most striking and photogenic stop.",
+          "Head to Oktyabrskaya metro station and go down into the passage to see the Kuznetsov mosaic.",
+          "Drive past the former Dom Kino building on Talbukhina Street to see the frieze.",
+          "Finish at the Palace of Water Sports in the Olimpiysky complex.",
+        ],
+      },
+      {
+        type: "p",
+        text:
+          "If you're passing through Minsk between flights or have a few free hours, a ComfortLine driver can take you along this route in a comfortable car with stops at each site — no need to figure out public transport.",
+      },
+    ],
+    related: ["как-добраться-до-аэропорта-вильнюса", "аэропорт-варшавы-вав"],
+    ctaRoute: { label: "Заказать трансфер и экскурсию по Минску", labelEn: "Book a Minsk transfer and city tour", path: "/трансфер-по-минску" },
   },
 ];
 

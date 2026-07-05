@@ -116,6 +116,22 @@ function renderBlock(block: Block, idx: number) {
           </span>
         </a>
       );
+    case "img":
+      return (
+        <figure key={idx} className="my-7">
+          <img
+            src={block.src}
+            alt={block.alt}
+            loading="lazy"
+            className="w-full rounded-2xl border border-border object-cover max-h-[520px]"
+          />
+          {block.caption && (
+            <figcaption className="text-xs text-muted-foreground text-center mt-2">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
     case "liveQueue":
       return <BorderQueueWidget key={idx} />;
   }
