@@ -647,7 +647,8 @@ const LanguageContext = createContext<LanguageContextType>({
 // window.location.pathname can be percent-encoded in some proxied environments,
 // so we never read it directly for Cyrillic detection.
 function getLangFromPath(path: string): Lang {
-  const param = new URLSearchParams(window.location.search).get("lang");
+  const param =
+    typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("lang") : null;
   if (param === "en" || param === "ru") return param;
 
   // Path-based English shell for shared pages (/en, /en/faq, /en/privacy, /en/terms).

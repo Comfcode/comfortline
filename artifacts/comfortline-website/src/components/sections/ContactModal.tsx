@@ -124,6 +124,13 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
 
   const inputCls = "w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition bg-white";
 
+  // React's synchronous SSR renderers (renderToStaticMarkup/renderToString)
+  // reject portals outright, even when their content is empty. This modal is
+  // always closed on first paint, so it's safe to skip entirely during the
+  // build-time SSR pass (see scripts/prerender.mjs) — the client render
+  // mounts it normally in the browser.
+  if ((globalThis as { __SSR_PRERENDER__?: boolean }).__SSR_PRERENDER__) return null;
+
   return createPortal(
     <AnimatePresence>
       {open && (

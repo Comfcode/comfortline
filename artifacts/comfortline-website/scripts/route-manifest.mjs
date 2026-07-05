@@ -407,12 +407,13 @@ function collectBlogRoutes() {
 // ----------------------------------------------------------------------------
 // Manually curated entries.
 //
-// These four routes (/, /faq, /terms, /privacy) are registered as a SINGLE
-// wouter <Route> each in App.tsx — English is toggled client-side via a
-// `?lang=en` query string, not a distinct path. A static file host can only
-// serve one prerendered document per path, so we emit one HTML file (in RU,
-// matching the site's default <html lang="ru">) with hreflang correctly
-// pointing at the `?lang=en` variant, mirroring src/seo/use-seo.ts.
+// These four routes (/, /faq, /terms, /privacy) share the same page
+// component between languages in App.tsx, but each language now has its own
+// distinct path — the RU path (/, /faq, /terms, /privacy) and a matching
+// path-based English shell (/en, /en/faq, /en/terms, /en/privacy). Both are
+// registered as separate wouter <Route>s pointing at the same component, so
+// each gets its own prerendered HTML file with correct <html lang>, hreflang,
+// and (for /en, /en/faq, etc.) real SSR-rendered English markup.
 // ----------------------------------------------------------------------------
 
 const manualRoutes = [

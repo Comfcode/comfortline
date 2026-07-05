@@ -1,12 +1,99 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { createServer as createViteServer } from "vite";
+import { JSDOM } from "jsdom";
 import { collectAllRoutes, SITE_URL, DEFAULT_OG_IMAGE } from "./route-manifest.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const DIST = path.join(ROOT, "dist", "public");
 const OG_DIR = path.join(DIST, "og");
+
+// ============================================================================
+// SSR bootstrap — jsdom globals + a Vite SSR module loader for src/ssr-entry.tsx
+//
+// React's renderToStaticMarkup is synchronous and cannot suspend on a lazy()
+// import, so it renders actual (eagerly-imported) route components via
+// src/ssr-entry.tsx. A handful of components reference `document`/`window`
+// unconditionally during render (e.g. ReactDOM.createPortal(..., document.body)
+// in modals that are closed by default), so jsdom stubs are installed globally
+// before the SSR module graph is loaded.
+// ============================================================================
+
+function installJsdomGlobals() {
+  const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: SITE_URL + "/" });
+  const { window } = dom;
+  global.window = window;
+  global.document = window.document;
+  // Explicit signal (not tied to typeof window/document) that lets components
+  // opt out of browser-only behavior (e.g. createPortal, which React's
+  // synchronous SSR renderer rejects outright) during this build-time pass.
+  global.__SSR_PRERENDER__ = true;
+  Object.defineProperty(global, "navigator", {
+    value: window.navigator,
+    configurable: true,
+    writable: true,
+  });
+  global.HTMLElement = window.HTMLElement;
+  global.customElements = window.customElements;
+  global.CustomEvent = window.CustomEvent;
+  global.Node = window.Node;
+  global.getComputedStyle = window.getComputedStyle;
+  window.matchMedia =
+    window.matchMedia ||
+    (() => ({
+      matches: false,
+      media: "",
+      onchange: null,
+      addListener() {},
+      removeListener() {},
+      addEventListener() {},
+      removeEventListener() {},
+      dispatchEvent() {
+        return false;
+      },
+    }));
+  global.matchMedia = window.matchMedia;
+  class NoopObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  global.IntersectionObserver = window.IntersectionObserver || NoopObserver;
+  global.ResizeObserver = window.ResizeObserver || NoopObserver;
+  window.scrollTo = window.scrollTo || (() => {});
+  return dom;
+}
+
+async function createSsrModuleLoader() {
+  const vite = await createViteServer({
+    root: ROOT,
+    configFile: path.join(ROOT, "vite.config.ts"),
+    server: { middlewareMode: true, hmr: false },
+    appType: "custom",
+    logLevel: "warn",
+  });
+  const { SsrApp } = await vite.ssrLoadModule("/src/ssr-entry.tsx");
+  return { vite, SsrApp };
+}
+
+/**
+ * Render the real page markup for a given path via wouter's actual route
+ * matching. Returns null (instead of throwing) if rendering fails, so the
+ * caller can fall back to the synthetic summary block for that one route
+ * without failing the whole build.
+ */
+function renderRouteMarkup(SsrApp, routePath) {
+  try {
+    return renderToStaticMarkup(createElement(SsrApp, { path: routePath }));
+  } catch (err) {
+    console.warn(`[prerender] SSR render failed for "${routePath}": ${err?.message || err}`);
+    return null;
+  }
+}
 
 // ============================================================================
 // HTML generation
@@ -21,7 +108,7 @@ function escapeHtml(s) {
     .replace(/'/g, "&#39;");
 }
 
-function buildHtml(template, route, lang, blogIndexRoute) {
+function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
   const isRu = lang === "ru";
   const title = isRu ? route.titleRu : route.titleEn;
   const desc = isRu ? route.descRu : route.descEn;
@@ -283,8 +370,13 @@ function buildHtml(template, route, lang, blogIndexRoute) {
           .join("")}</section>`
       : "";
 
-  const seoBlock = `<div id="root"><header><h1>${escapeHtml(h1)}</h1></header><main><p>${escapeHtml(intro)}</p>${faqHtml}<nav aria-label="${escapeHtml(navLabel)}"><a href="${homeHref}">${escapeHtml(homeLabel)}</a> · <a href="${faqHref}">${escapeHtml(faqLabel)}</a> · <a href="${blogHref}">${escapeHtml(blogLabel)}</a> · <a href="${altUrl}" hreflang="${isRu ? "en" : "ru"}">${escapeHtml(altLabel)}</a></nav></main></div>`;
-  html = html.replace('<div id="root"></div>', seoBlock);
+  // Prefer the real, SSR-rendered route markup (actual React page component
+  // output via src/ssr-entry.tsx). Only fall back to a hand-built summary
+  // block — still real, visible, in-flow content with an H1/intro/FAQ/nav,
+  // just not the full page — if SSR rendering failed for this one route.
+  const fallbackBlock = `<header><h1>${escapeHtml(h1)}</h1></header><main><p>${escapeHtml(intro)}</p>${faqHtml}<nav aria-label="${escapeHtml(navLabel)}"><a href="${homeHref}">${escapeHtml(homeLabel)}</a> · <a href="${faqHref}">${escapeHtml(faqLabel)}</a> · <a href="${blogHref}">${escapeHtml(blogLabel)}</a> · <a href="${altUrl}" hreflang="${isRu ? "en" : "ru"}">${escapeHtml(altLabel)}</a></nav></main>`;
+  const rootInner = ssrMarkup ?? fallbackBlock;
+  html = html.replace('<div id="root"></div>', `<div id="root">${rootInner}</div>`);
 
   return html;
 }
@@ -298,7 +390,7 @@ function emit(routePath, html) {
   return path.relative(DIST, path.join(folder, "index.html"));
 }
 
-function main() {
+async function main() {
   const templatePath = path.join(DIST, "index.html");
   if (!fs.existsSync(templatePath)) {
     console.error(`[prerender] template not found: ${templatePath}`);
@@ -308,16 +400,34 @@ function main() {
 
   const { allRoutes, manualRoutes, autoRoutes, vehicleRoutes, blogIndexRoute, blogArticleRoutes } = collectAllRoutes();
 
+  installJsdomGlobals();
+  const { vite, SsrApp } = await createSsrModuleLoader();
+
+  let ssrFailures = 0;
   const written = [];
   for (const route of allRoutes) {
-    written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute)));
-    written.push(emit(route.pathEn, buildHtml(template, route, "en", blogIndexRoute)));
+    const markupRu = renderRouteMarkup(SsrApp, route.pathRu);
+    const markupEn = renderRouteMarkup(SsrApp, route.pathEn);
+    if (!markupRu) ssrFailures++;
+    if (!markupEn) ssrFailures++;
+    written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute, markupRu)));
+    written.push(emit(route.pathEn, buildHtml(template, route, "en", blogIndexRoute, markupEn)));
   }
+
+  await vite.close();
 
   console.log(
     `[prerender] wrote ${written.length} files for ${allRoutes.length} routes (${manualRoutes.length} manual, ${autoRoutes.length} auto, ${vehicleRoutes.length} vehicle, ${1 + blogArticleRoutes.length} blog):`,
   );
   for (const f of written) console.log(`  - ${f}`);
+  if (ssrFailures > 0) {
+    console.warn(`[prerender] ${ssrFailures}/${written.length} pages fell back to the synthetic summary block (SSR render threw for that route).`);
+  } else {
+    console.log(`[prerender] all ${written.length} pages were rendered via real SSR (src/ssr-entry.tsx).`);
+  }
 }
 
-main();
+main().catch((err) => {
+  console.error("[prerender] fatal error:", err);
+  process.exit(1);
+});
