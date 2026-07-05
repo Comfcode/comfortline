@@ -2718,6 +2718,12 @@ export const ARTICLES: Article[] = [
           "The former Dom Kino (House of Cinema) building on Talbukhina Street is another example of Soviet monumental art built into a public façade. A long decorative frieze along the top of the building is dedicated to the partisan and wartime theme — a recurring motif in Belarusian monumental painting of the 1970s, where memory of the war sits alongside images of peaceful labour and cinema as an art form.",
       },
       {
+        type: "img",
+        src: "/mosaic-domkino-frieze.jpg",
+        alt: "Mosaic frieze with a partisan theme on the former Dom Kino building in Minsk",
+        caption: "The frieze on the former Dom Kino façade — stylised faces and partisan-movement symbolism.",
+      },
+      {
         type: "p",
         text:
           "The building has changed function more than once (it now houses a children's and youth centre), but the façade decoration has been preserved. Worth a short stop if you're already visiting the Vostok-1 towers — it's a 10–15 minute drive away.",
