@@ -149,6 +149,11 @@ interface Translations {
       directLinkUrl: string;
     };
   };
+  reviewLinks: {
+    heading: string;
+    google: string;
+    tripadvisor: string;
+  };
   footer: {
     tagline: string;
     navHeading: string;
@@ -364,6 +369,11 @@ const ru: Translations = {
       directLinkLabel: "Лицензия ИП Мурашко А.А.:",
       directLinkUrl: "https://license.gov.by/onelicense/157966",
     },
+  },
+  reviewLinks: {
+    heading: "Оставить отзыв",
+    google: "Google Карты",
+    tripadvisor: "Tripadvisor",
   },
   footer: {
     tagline: "Индивидуальный трансфер по Беларуси и Европе. Работаем с 2015 года.",
@@ -595,6 +605,11 @@ const en: Translations = {
       directLinkLabel: "Licence — Murashko A.A.:",
       directLinkUrl: "https://license.gov.by/onelicense/157966",
     },
+  },
+  reviewLinks: {
+    heading: "Leave a Review",
+    google: "Google Maps",
+    tripadvisor: "Tripadvisor",
   },
   footer: {
     tagline: "Individual transfer across Belarus and Europe. Operating since 2015.",

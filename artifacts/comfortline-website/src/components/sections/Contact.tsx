@@ -3,6 +3,7 @@ import { useLang } from "@/context/language-context";
 import { ExternalLink, Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
 import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
+import { ReviewLinks } from "@/components/layout/ReviewLinks";
 import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
 
 export function Contact() {
@@ -60,6 +61,12 @@ export function Contact() {
                 <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">{t.contact.address}</div>
                 <div className="text-foreground font-medium">г. Минск, ул. Фёдорова, 19-10</div>
               </div>
+            </div>
+
+            {/* Review links */}
+            <div className="pt-4 border-t border-border/50">
+              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">{t.reviewLinks.heading}</div>
+              <ReviewLinks />
             </div>
 
             {/* Messenger quick links */}

@@ -5,6 +5,7 @@ import { SiTelegram, SiViber, SiWhatsapp, SiMessenger } from "react-icons/si";
 import { useTheme } from "next-themes";
 import { useLang } from "@/context/language-context";
 import { Logo } from "@/components/brand/Logo";
+import { ReviewLinks } from "@/components/layout/ReviewLinks";
 import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
 
 const navHrefs = ["#services", "#fleet", "#advantages", "#reviews"];
@@ -125,6 +126,10 @@ export function Footer() {
                 <span>г. Минск, ул. Фёдорова, 19-10</span>
               </li>
             </ul>
+            <div className="mt-5">
+              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">{t.reviewLinks.heading}</div>
+              <ReviewLinks variant="icons" />
+            </div>
           </div>
 
         </div>
