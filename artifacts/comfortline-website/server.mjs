@@ -247,11 +247,22 @@ const server = http.createServer((req, res) => {
     const decoded = decodeURIComponent(rawPath);
     const status = isKnownRoute(decoded) ? 200 : 404;
 
-    const html = fs.readFileSync(INDEX_PATH);
+    const routeFile =
+      decoded === "/"
+        ? INDEX_PATH
+        : path.join(PUBLIC_DIR, decoded.replace(/^\/+/, ""), "index.html");
+
+    const htmlPath = fs.existsSync(routeFile)
+      ? routeFile
+      : INDEX_PATH;
+
+    const html = fs.readFileSync(htmlPath);
+
     res.writeHead(status, {
       "Content-Type": "text/html; charset=utf-8",
       "Cache-Control": "no-cache",
     });
+
     res.end(html);
   } catch {
     res.writeHead(500);
