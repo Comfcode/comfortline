@@ -216,8 +216,8 @@ const ru: Translations = {
   },
   hero: {
     badge: "Всегда вовремя. Работаем с 2015 года.",
-    headline1: "Индивидуальный трансфер, которому доверяют",
-    headline2: "Такси и частный трансфер Минск — Вильнюс, Варшава и Европа",
+    headline1: "Такси и индивидуальный трансфер из Минска",
+    headline2: "",
     checkmarks: ["по Беларуси и России", "по всей Европе", "трансфер в Аэропорт", "перевозим с детьми и питомцами"],
     cta: "Заказать трансфер",
     ctaSecondary: "Узнать цены",
@@ -452,8 +452,8 @@ const en: Translations = {
   },
   hero: {
     badge: "Always on time. Operating since 2015.",
-    headline1: "Private transfers you can trust",
-    headline2: "Private taxi transfers from Minsk to Vilnius, Warsaw & Europe",
+    headline1: "Private taxi and individual transfers from Minsk",
+    headline2: "",
     checkmarks: ["across Belarus & Europe", "across all of Europe", "airport transfers", "kids & pets welcome"],
     cta: "Book a Transfer",
     ctaSecondary: "See Rates",
