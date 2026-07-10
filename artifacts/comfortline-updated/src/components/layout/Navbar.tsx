@@ -286,9 +286,9 @@ export function Navbar() {
                 EN
               </a>
               <span className="text-border/60">/</span>
-              <a href={plHref} hrefLang="pl" className="px-1.5 py-0.5 text-foreground/40 hover:text-foreground/70 transition-colors">PL</a>
+              <a href={plHref} hrefLang="pl" className={`px-1.5 py-0.5 transition-colors ${normalizedPath === plHref ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"}`}>PL</a>
               <span className="text-border/60">/</span>
-              <a href={frHref} hrefLang="fr" className="px-1.5 py-0.5 text-foreground/40 hover:text-foreground/70 transition-colors">FR</a>
+              <a href={frHref} hrefLang="fr" className={`px-1.5 py-0.5 transition-colors ${normalizedPath === frHref ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"}`}>FR</a>
             </div>
 
             {/* Theme toggle */}
@@ -327,9 +327,9 @@ export function Navbar() {
                 <span className="text-border/60">/</span>
                 <a href={enHref} hrefLang="en" className={`px-1 py-0.5 transition-colors ${lang === "en" ? "text-foreground" : "text-foreground/40"}`}>EN</a>
                 <span className="text-border/60">/</span>
-                <a href={plHref} hrefLang="pl" className="px-1 py-0.5 text-foreground/40">PL</a>
+                <a href={plHref} hrefLang="pl" className={`px-1 py-0.5 ${normalizedPath === plHref ? "text-foreground" : "text-foreground/40"}`}>PL</a>
                 <span className="text-border/60">/</span>
-                <a href={frHref} hrefLang="fr" className="px-1 py-0.5 text-foreground/40">FR</a>
+                <a href={frHref} hrefLang="fr" className={`px-1 py-0.5 ${normalizedPath === frHref ? "text-foreground" : "text-foreground/40"}`}>FR</a>
               </div>
               <button
                 onClick={() => setTheme(isDark ? "light" : "dark")}
