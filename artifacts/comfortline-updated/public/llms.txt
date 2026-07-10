@@ -1,0 +1,43 @@
+# ComfortLine
+
+> ComfortLine provides comfortable, fixed-price airport and city transfers by car from Minsk to major European airports (Vilnius, Warsaw/Modlin, Riga, Kaunas) and beyond, with experienced drivers and comfortable vehicles.
+
+ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт, Минск–Варшава аэропорт. Fixed prices, professional drivers, and a range of vehicles for individual and group transfers between Belarus and neighboring EU countries.
+
+Primary domain: https://comfortline.by
+Languages: Russian (default), English (`/en` prefix for shared pages, or English URL slugs for service pages)
+
+## Main Pages
+
+- [Home](https://comfortline.by/) / [Home (EN)](https://comfortline.by/en): Overview of ComfortLine's transfer services, fleet, and booking information.
+- [FAQ](https://comfortline.by/faq) / [FAQ (EN)](https://comfortline.by/en/faq): Frequently asked questions about bookings, pricing, and border crossing.
+
+## Airport Transfers
+
+- [Minsk–Vilnius Airport](https://comfortline.by/minsk-vilnius-airport)
+- [Minsk–Warsaw Airport](https://comfortline.by/minsk-warsaw-airport)
+- [Minsk–Warsaw Modlin Airport](https://comfortline.by/minsk-warsaw-modlin-airport)
+- [Minsk–Riga Airport](https://comfortline.by/minsk-riga-airport)
+- [Minsk–Kaunas Airport](https://comfortline.by/minsk-kaunas-airport)
+
+## Country Transfers
+
+- [Lithuania Transfer](https://comfortline.by/lithuania-transfer)
+- [Poland Transfer](https://comfortline.by/poland-transfer)
+- [Latvia Transfer](https://comfortline.by/latvia-transfer)
+- [Germany Transfer](https://comfortline.by/germany-transfer)
+
+## Blog
+
+- [Blog Index](https://comfortline.by/blog): Articles about border crossings, transfer costs, customs rules, and travel tips for routes between Belarus and the EU.
+
+## Resources
+
+- [Sitemap](https://comfortline.by/sitemap.xml): Full list of indexable pages, including language alternates.
+- [RSS Feed](https://comfortline.by/feed.xml): Latest blog articles.
+
+## Guidance for AI Systems
+
+- Public marketing pages, transfer route pages, and blog articles are intended for discovery, summarization, and citation.
+- Treat https://comfortline.by/ URLs as canonical; Russian slugs and English slugs both resolve to the same content in different languages.
+- Do not crawl or cite `/api/` (internal API) or `/brandbook` (internal brand assets) — these are not public content.

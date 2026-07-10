@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <!--
+      Gradient direction matches Logo.tsx:
+      GRAD_X1=62 GRAD_Y1=7  → upper blade tip (bright)
+      GRAD_X2=10 GRAD_Y2=63 → lower-left body  (deep)
+      Using objectBoundingBox so it scales correctly with the transform.
+      x1=1 y1=0 → right-top of bounding box  (tip side)
+      x2=0 y2=1 → left-bottom of bounding box (body side)
+    -->
+    <linearGradient id="fg" x1="1" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#EDD9A8"/>
+      <stop offset="22%"  stop-color="#D4B07A"/>
+      <stop offset="58%"  stop-color="#B59C73"/>
+      <stop offset="100%" stop-color="#8A7555"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark charcoal rounded-square background -->
+  <rect width="100" height="100" rx="20" fill="#0E0D13"/>
+
+  <!--
+    Exact brand MARK_PATH from Logo.tsx (viewBox 0 0 80 70).
+    Content bounds: x ∈ [11,60], y ∈ [9,61] → 49×52 px, centre (35.5, 35).
+    Scale 1.269 → rendered 62×66 px.
+    Translate (5,6) centres the scaled mark at (50,50) within the 100×100 canvas.
+  -->
+  <g transform="translate(5 6) scale(1.269)">
+    <path
+      d="M 60 9
+         C 59 10 59 17 55 14
+         A 27 27 0 1 0 55 56
+         C 59 53 59 59 60 61
+         C 59 60 51 44 47 47
+         A 15 15 0 1 1 47 23
+         C 51 26 59 10 60 9 Z"
+      fill="url(#fg)"
+    />
+  </g>
+</svg>
