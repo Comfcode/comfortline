@@ -33,7 +33,9 @@ function upsertMeta(attr: "name" | "property", key: string, content: string) {
 }
 
 function upsertCanonical(href: string) {
-  let el = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+  let el = document.head.querySelector<HTMLLinkElement>(
+    'link[rel="canonical"]',
+  );
   if (!el) {
     el = document.createElement("link");
     el.rel = "canonical";
@@ -43,11 +45,15 @@ function upsertCanonical(href: string) {
 }
 
 function clearTagged(selector: string) {
-  document.head.querySelectorAll(`${selector}[${SEO_FLAG}]`).forEach((el) => el.remove());
+  document.head
+    .querySelectorAll(`${selector}[${SEO_FLAG}]`)
+    .forEach((el) => el.remove());
 }
 
 export function useSeo(data: SeoData) {
-  const altKey = data.alternates.map((a) => `${a.hreflang}|${a.href}`).join(",");
+  const altKey = data.alternates
+    .map((a) => `${a.hreflang}|${a.href}`)
+    .join(",");
   const jsonKey = data.jsonLd ? JSON.stringify(data.jsonLd) : "";
 
   useEffect(() => {
@@ -78,7 +84,17 @@ export function useSeo(data: SeoData) {
     upsertMeta("property", "og:url", data.canonical);
     upsertMeta("property", "og:type", data.ogType || "website");
     upsertMeta("property", "og:site_name", "ComfortLine");
-    upsertMeta("property", "og:locale", data.lang === "ru" ? "ru_RU" : "en_US");
+    const ogLocales = {
+      ru: "ru_RU",
+      en: "en_US",
+      pl: "pl_PL",
+      fr: "fr_FR",
+    } as const;
+    upsertMeta(
+      "property",
+      "og:locale",
+      ogLocales[(data.lang || "en") as keyof typeof ogLocales] || "en_US",
+    );
     if (data.ogImage) upsertMeta("property", "og:image", data.ogImage);
 
     upsertMeta("name", "twitter:card", "summary_large_image");
@@ -90,7 +106,9 @@ export function useSeo(data: SeoData) {
 
     // Remove ALL existing hreflang alternates (tagged or not) to avoid conflicts
     // with stale ones shipped in index.html or left over from another route.
-    document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
+    document.head
+      .querySelectorAll('link[rel="alternate"][hreflang]')
+      .forEach((el) => el.remove());
     data.alternates.forEach((alt) => {
       const link = document.createElement("link");
       link.rel = "alternate";
