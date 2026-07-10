@@ -14,7 +14,7 @@ const TAP_THRESHOLD = 5;
 const TAP_WINDOW_MS = 3000;
 
 export function Footer() {
-  const { t, lang } = useLang();
+  const { t, locale } = useLang();
   const f = t.footer;
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -59,29 +59,73 @@ export function Footer() {
     <footer className="bg-background border-t border-border pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-
           {/* Logo & About */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <a href="#" className="inline-block mb-6">
-              <Logo variant="stacked" scheme={logoScheme} height={72} showTagline />
+              <Logo
+                variant="stacked"
+                scheme={logoScheme}
+                height={72}
+                showTagline
+              />
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               {f.tagline}
             </p>
             <div className="flex gap-4">
-              <a href="https://www.instagram.com/transfer_comfortline/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a
+                href="https://www.instagram.com/transfer_comfortline/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://t.me/+375447620649" target="_blank" rel="noopener noreferrer" aria-label="Telegram" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "Telegram" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a
+                href="https://t.me/+375447620649"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Telegram"
+                onClick={() =>
+                  gtagEvent("contact", {
+                    event_category: "messenger",
+                    event_label: "Telegram",
+                  })
+                }
+                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
                 <SiTelegram className="h-5 w-5" />
               </a>
-              <a href="https://wa.me/375447620649" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "WhatsApp" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a
+                href="https://wa.me/375447620649"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                onClick={() =>
+                  gtagEvent("contact", {
+                    event_category: "messenger",
+                    event_label: "WhatsApp",
+                  })
+                }
+                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
                 <SiWhatsapp className="h-5 w-5" />
               </a>
-              <a href="viber://chat?number=%2B375447620649" aria-label="Viber" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a
+                href="viber://chat?number=%2B375447620649"
+                aria-label="Viber"
+                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
                 <SiViber className="h-5 w-5" />
               </a>
-              <a href="https://m.me/103816619260365" target="_blank" rel="noopener noreferrer" aria-label="Messenger" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a
+                href="https://m.me/103816619260365"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Messenger"
+                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
                 <SiMessenger className="h-5 w-5" />
               </a>
             </div>
@@ -92,46 +136,94 @@ export function Footer() {
             <h4 className="font-bold text-foreground mb-6">{f.navHeading}</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               {f.navLinks.map((label, i) => (
-                <li key={i}><a href={navHrefs[i]} className="hover:text-primary transition-colors">{label}</a></li>
+                <li key={i}>
+                  <a
+                    href={navHrefs[i]}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {label}
+                  </a>
+                </li>
               ))}
-              <li><a href={f.blogHref} className="hover:text-primary transition-colors">{f.blogLabel}</a></li>
-              <li><a href={f.faqHref} className="hover:text-primary transition-colors">{f.faqLabel}</a></li>
+              <li>
+                <a
+                  href={f.blogHref}
+                  className="hover:text-primary transition-colors"
+                >
+                  {f.blogLabel}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={f.faqHref}
+                  className="hover:text-primary transition-colors"
+                >
+                  {f.faqLabel}
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="font-bold text-foreground mb-6">{f.servicesHeading}</h4>
+            <h4 className="font-bold text-foreground mb-6">
+              {f.servicesHeading}
+            </h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               {f.serviceLinks.map((link, i) => (
-                <li key={i}><a href={link.href} className="hover:text-primary transition-colors">{link.label}</a></li>
+                <li key={i}>
+                  <a
+                    href={link.href}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold text-foreground mb-6">{f.contactsHeading}</h4>
+            <h4 className="font-bold text-foreground mb-6">
+              {f.contactsHeading}
+            </h4>
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li className="flex items-start gap-3">
                 <PhoneCall className="h-5 w-5 text-primary shrink-0" />
-                <a href="tel:+375447620649" onClick={gtagPhoneConversion} className="hover:text-primary transition-colors font-medium text-foreground">+375 (44) 762-06-49</a>
+                <a
+                  href="tel:+375447620649"
+                  onClick={gtagPhoneConversion}
+                  className="hover:text-primary transition-colors font-medium text-foreground"
+                >
+                  +375 (44) 762-06-49
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Send className="h-5 w-5 text-primary shrink-0" />
-                <a href="mailto:info@comfortline.by" className="hover:text-primary transition-colors">info@comfortline.by</a>
+                <a
+                  href="mailto:info@comfortline.by"
+                  className="hover:text-primary transition-colors"
+                >
+                  info@comfortline.by
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <div className="mt-1 w-2 h-2 rounded-full bg-primary shrink-0" />
-                <span>г. Минск, ул. Фёдорова, 19-10</span>
+                <span>
+                  {locale === "ru"
+                    ? "г. Минск, ул. Фёдорова, 19-10"
+                    : "19-10 Fiodorova St., Minsk, Belarus"}
+                </span>
               </li>
             </ul>
             <div className="mt-5">
-              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">{t.reviewLinks.heading}</div>
+              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                {t.reviewLinks.heading}
+              </div>
               <ReviewLinks variant="icons" />
             </div>
           </div>
-
         </div>
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
@@ -145,14 +237,23 @@ export function Footer() {
           <div className="flex flex-wrap gap-4 items-center">
             <span>{f.legalName}</span>
             <span>{f.unp}</span>
-            <a href={lang === "en" ? "/en/privacy" : "/privacy"} className="hover:text-primary transition-colors underline underline-offset-2">
+            <a
+              href={locale === "ru" ? "/privacy" : "/en/privacy"}
+              className="hover:text-primary transition-colors underline underline-offset-2"
+            >
               {f.privacyPolicy}
             </a>
-            <a href={lang === "en" ? "/en/terms" : "/terms"} className="hover:text-primary transition-colors underline underline-offset-2">
+            <a
+              href={locale === "ru" ? "/terms" : "/en/terms"}
+              className="hover:text-primary transition-colors underline underline-offset-2"
+            >
               {f.terms}
             </a>
             {brandbookVisible && (
-              <a href="/brandbook" className="hover:text-primary transition-colors underline underline-offset-2">
+              <a
+                href="/brandbook"
+                className="hover:text-primary transition-colors underline underline-offset-2"
+              >
                 {f.brandbook}
               </a>
             )}
