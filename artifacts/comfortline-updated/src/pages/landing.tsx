@@ -13,10 +13,10 @@ export default function LandingPage() {
   return (
     <div className="min-h-[100dvh] flex flex-col w-full bg-background selection:bg-primary/30">
       <Seo
-        titleRu="Трансфер Минск — Вильнюс и Варшава | ComfortLine"
-        titleEn="Private Transfers Minsk–Vilnius & Warsaw | ComfortLine"
-        descRu="Частный трансфер из Минска в Вильнюс, Варшаву и аэропорты Европы. Фиксированная цена, комфортные авто и опытные водители."
-        descEn="Private transfers from Minsk to Vilnius, Warsaw and European airports. Fixed fares, comfortable vehicles and professional drivers."
+        titleRu="Такси и частный трансфер из Минска | ComfortLine"
+        titleEn="Private Taxi Transfers from Minsk | ComfortLine"
+        descRu="Такси и индивидуальный трансфер из Минска в Вильнюс, Варшаву и аэропорты Европы. Фиксированная цена, комфортные авто и опытные водители."
+        descEn="Private taxi and individual transfers from Minsk to Vilnius, Warsaw and European airports. Fixed fares and professional drivers."
         pathRu="/"
         pathEn="/en"
         keywordsRu="трансфер минск вильнюс аэропорт, трансфер минск варшава аэропорт, минск vno, минск waw, такси минск аэропорт вильнюса, такси минск аэропорт варшавы, комфортный трансфер из минска, трансфер минск европа, ComfortLine"
