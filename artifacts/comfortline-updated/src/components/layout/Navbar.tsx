@@ -10,6 +10,7 @@ import { NavBorderQueueBadge } from "@/components/layout/NavBorderQueueBadge";
 import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
 import { useLocation } from "wouter";
 import { getAlternateLangHref } from "@/lib/lang-urls";
+import priorityLocales from "@/data/priority-locales.json";
 
 /** Maps each nav href to the section id it represents (for IntersectionObserver) */
 const SECTION_MAP: Record<string, string> = {
@@ -36,6 +37,12 @@ export function Navbar() {
   const [location]                        = useLocation();
   const ruHref = getAlternateLangHref(location, "ru");
   const enHref = getAlternateLangHref(location, "en");
+  const normalizedPath = decodeURIComponent(location.split("#")[0]).replace(/\/+$/, "") || "/";
+  const priorityRoute = priorityLocales.find((route) =>
+    ([route.ru, route.en, route.pl, route.fr] as string[]).includes(normalizedPath)
+  );
+  const plHref = priorityRoute?.pl || "/pl";
+  const frHref = priorityRoute?.fr || "/fr";
   const isDark = !mounted || resolvedTheme === "dark";
 
   useEffect(() => setMounted(true), []);
@@ -278,6 +285,10 @@ export function Navbar() {
               >
                 EN
               </a>
+              <span className="text-border/60">/</span>
+              <a href={plHref} hrefLang="pl" className="px-1.5 py-0.5 text-foreground/40 hover:text-foreground/70 transition-colors">PL</a>
+              <span className="text-border/60">/</span>
+              <a href={frHref} hrefLang="fr" className="px-1.5 py-0.5 text-foreground/40 hover:text-foreground/70 transition-colors">FR</a>
             </div>
 
             {/* Theme toggle */}
@@ -315,6 +326,10 @@ export function Navbar() {
                 <a href={ruHref} hrefLang="ru" className={`px-1 py-0.5 transition-colors ${lang === "ru" ? "text-foreground" : "text-foreground/40"}`}>RU</a>
                 <span className="text-border/60">/</span>
                 <a href={enHref} hrefLang="en" className={`px-1 py-0.5 transition-colors ${lang === "en" ? "text-foreground" : "text-foreground/40"}`}>EN</a>
+                <span className="text-border/60">/</span>
+                <a href={plHref} hrefLang="pl" className="px-1 py-0.5 text-foreground/40">PL</a>
+                <span className="text-border/60">/</span>
+                <a href={frHref} hrefLang="fr" className="px-1 py-0.5 text-foreground/40">FR</a>
               </div>
               <button
                 onClick={() => setTheme(isDark ? "light" : "dark")}
