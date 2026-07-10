@@ -6,6 +6,7 @@ import { collectAllRoutes, SITE_URL } from "./route-manifest.mjs";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const output = path.join(root, "dist", "public");
 const { allRoutes } = collectAllRoutes();
+const priorityLocales=JSON.parse(fs.readFileSync(path.join(root,"src","data","priority-locales.json"),"utf8"));
 const errors = [];
 
 function routeFile(routePath) {
@@ -57,10 +58,11 @@ for (const route of allRoutes) {
     if (count(html, /hreflang=["']x-default["']/gi) !== 1) errors.push(`${routePath}: expected one x-default alternate`);
   }
 }
+for(const route of priorityLocales)for(const language of ["pl","fr"]){const routePath=route[language],file=routeFile(routePath);if(!fs.existsSync(file)){errors.push(`${routePath}: prerendered HTML is missing`);continue;}const html=fs.readFileSync(file,"utf8");if(!html.includes(`<html lang="${language}">`))errors.push(`${routePath}: incorrect language`);if(!/<h1\b/i.test(html))errors.push(`${routePath}: H1 missing`);for(const code of ["ru","en","pl","fr"])if(!html.includes(`hreflang="${code}"`))errors.push(`${routePath}: hreflang ${code} missing`);}
 
 if (errors.length > 0) {
   console.error(`[seo-smoke] failed with ${errors.length} error(s):\n${errors.map((error) => `- ${error}`).join("\n")}`);
   process.exit(1);
 }
 
-console.log(`[seo-smoke] passed: ${allRoutes.length * 2} localized route checks`);
+console.log(`[seo-smoke] passed: ${allRoutes.length*2+priorityLocales.length*2} localized route checks`);

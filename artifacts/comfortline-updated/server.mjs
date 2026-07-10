@@ -21,6 +21,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, "dist", "public");
 const ARTICLES_SRC_PATH = path.join(__dirname, "src", "data", "blog-articles.ts");
+const PRIORITY_LOCALES_PATH = path.join(__dirname, "src", "data", "priority-locales.json");
 
 // ---------------------------------------------------------------------------
 // Blog article allowlist, parsed straight from src/data/blog-articles.ts.
@@ -178,6 +179,10 @@ const KNOWN = new Set([
   "/brandbook",
   "/thank-you",
 ]);
+try {
+  const priorityLocales = JSON.parse(fs.readFileSync(PRIORITY_LOCALES_PATH, "utf8"));
+  for (const route of priorityLocales) { KNOWN.add(route.pl); KNOWN.add(route.fr); }
+} catch { /* build checks the inventory */ }
 
 /** Returns true if decoded pathname corresponds to a valid SPA route. */
 function isKnownRoute(pathname) {

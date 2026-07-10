@@ -11,6 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const DIST = path.join(ROOT, "dist", "public");
 const OG_DIR = path.join(DIST, "og");
+const PRIORITY_LOCALES_PATH = path.join(ROOT, "src", "data", "priority-locales.json");
 
 // ============================================================================
 // SSR bootstrap — jsdom globals + a Vite SSR module loader for src/ssr-entry.tsx
@@ -234,10 +235,8 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
     <link rel="alternate" hreflang="ru" href="${SITE_URL + encodeURI(route.pathRu)}" />
     <link rel="alternate" hreflang="en" href="${SITE_URL + encodeURI(route.pathEn)}" />
     <link rel="alternate" hreflang="x-default" href="${SITE_URL + encodeURI(route.pathRu)}" />`;
-  html = html.replace(
-    /<!-- hreflang alternates are injected[^>]*-->/,
-    hreflang,
-  );
+  if (/<!-- hreflang alternates are injected[^>]*-->/.test(html)) html = html.replace(/<!-- hreflang alternates are injected[^>]*-->/, hreflang);
+  else html = html.replace(/(?:\s*<link rel="alternate" hreflang="[^"]+" href="[^"]+"\s*\/>)+/, hreflang);
 
   let extraJsonLd = "";
   if (route.isArticle) {
@@ -416,6 +415,21 @@ function emit(routePath, html) {
   return path.relative(DIST, path.join(folder, "index.html"));
 }
 
+function priorityCopy(route, lang) {
+  const pl=lang==="pl", name=pl?route.plName:route.frName, home=route.key==="home";
+  const h1=home?(pl?"Prywatne i indywidualne transfery z Mińska":"Transferts privés et individuels depuis Minsk"):(pl?`Prywatny transfer Mińsk — ${name}`:`Transfert privé Minsk — ${name}`);
+  const desc=pl?`Indywidualny transfer taksówką na trasie Mińsk — ${name}. Stała cena, odbiór spod drzwi i doświadczony kierowca.`:`Transfert privé en taxi de Minsk vers ${name}. Tarif fixe, prise en charge porte-à-porte et chauffeur expérimenté.`;
+  return {h1,desc,title:`${h1} | ComfortLine`};
+}
+function buildPriorityHtml(template, route, lang, markup) {
+  const a=priorityCopy(route,lang), other=lang==="pl"?"fr":"pl", b=priorityCopy(route,other);
+  const pseudo={ogSlug:`priority-${route.key}`,pageType:route.key==="home"?"home":"service",pathRu:route[lang],pathEn:route[other],titleRu:a.title,titleEn:b.title,descRu:a.desc,descEn:b.desc,h1Ru:a.h1,h1En:b.h1,introRu:a.desc,introEn:b.desc};
+  let html=buildHtml(template,pseudo,"ru",null,markup).replace('<html lang="ru">',`<html lang="${lang}">`);
+  html=html.replaceAll('"inLanguage":"ru"',`"inLanguage":"${lang}"`).replaceAll('"name":"Минск"',`"name":"${lang==="pl"?"Mińsk":"Minsk"}"`).replaceAll('"name":"Главная"',`"name":"${lang==="pl"?"Strona główna":"Accueil"}"`);
+  const links=["ru","en","pl","fr"].map(code=>`    <link rel="alternate" hreflang="${code}" href="${SITE_URL+encodeURI(route[code])}" />`).join("\n")+ `\n    <link rel="alternate" hreflang="x-default" href="${SITE_URL+route.en}" />`;
+  return html.replace(/\s*<link rel="alternate" hreflang="ru"[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*\/>/,"\n"+links);
+}
+
 async function main() {
   const templatePath = path.join(DIST, "index.html");
   if (!fs.existsSync(templatePath)) {
@@ -438,6 +452,11 @@ async function main() {
     if (!markupEn) ssrFailures++;
     written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute, markupRu)));
     written.push(emit(route.pathEn, buildHtml(template, route, "en", blogIndexRoute, markupEn)));
+  }
+  const priorityLocales=JSON.parse(fs.readFileSync(PRIORITY_LOCALES_PATH,"utf8"));
+  for (const route of priorityLocales) for (const lang of ["pl","fr"]) {
+    const markup=renderRouteMarkup(SsrApp,route[lang]); if(!markup) ssrFailures++;
+    written.push(emit(route[lang],buildPriorityHtml(template,route,lang,markup)));
   }
 
   await vite.close();

@@ -27,6 +27,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const ARTICLES_SRC_PATH = path.join(ROOT, "src", "data", "blog-articles.ts");
 const SITEMAP_PATH = path.join(ROOT, "public", "sitemap.xml");
+const PRIORITY_LOCALES_PATH = path.join(ROOT, "src", "data", "priority-locales.json");
 
 const SITE_URL = "https://comfortline.by";
 const BLOG_BASE_RU = "/блог";
@@ -116,7 +117,7 @@ function isPerArticleBlogBlock(block) {
   return /\/blog\/[^/]+$/.test(loc) || /\/%D0%B1%D0%BB%D0%BE%D0%B3\/[^/]+$/.test(loc);
 }
 
-function regenerateSitemap(sitemapXml, articles) {
+function regenerateSitemap(sitemapXml, articles, priorityLocales) {
   const blockRegex = /  <url>[\s\S]*?<\/url>/g;
   const blocks = sitemapXml.match(blockRegex) || [];
 
@@ -124,7 +125,7 @@ function regenerateSitemap(sitemapXml, articles) {
   let blogIndexEnEnd = -1;
 
   for (const block of blocks) {
-    if (isPerArticleBlogBlock(block)) continue; // drop stale/auto-managed article entries
+    if (isPerArticleBlogBlock(block) || /<loc>https:\/\/comfortline\.by\/(?:pl|fr)(?:\/|<)/.test(block)) continue;
     keptBlocks.push(block);
     if (/<loc>https:\/\/comfortline\.by\/blog<\/loc>/.test(block)) {
       blogIndexEnEnd = keptBlocks.length; // insert right after this block
@@ -140,6 +141,12 @@ function regenerateSitemap(sitemapXml, articles) {
     .filter(Boolean);
 
   keptBlocks.splice(blogIndexEnEnd, 0, ...newArticleBlocks);
+  for(const route of priorityLocales){const alts=["ru","en","pl","fr"].map(code=>`      <xhtml:link rel="alternate" hreflang="${code}" href="${SITE_URL}${encodeURI(route[code])}"/>`).join("\n");for(const code of ["pl","fr"])keptBlocks.push(`  <url>
+      <loc>${SITE_URL}${encodeURI(route[code])}</loc>
+      <lastmod>${TODAY}</lastmod><changefreq>monthly</changefreq><priority>${route.key==="home"?"0.9":"0.8"}</priority>
+${alts}
+      <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${route.en}"/>
+    </url>`);}
 
   // Rebuild the file: replace the region from the first original block to the
   // last with the newline-joined kept+inserted blocks, preserving header/footer.
@@ -156,10 +163,11 @@ function regenerateSitemap(sitemapXml, articles) {
 function main() {
   const src = fs.readFileSync(ARTICLES_SRC_PATH, "utf8");
   const articles = extractArticles(src);
+  const priorityLocales=JSON.parse(fs.readFileSync(PRIORITY_LOCALES_PATH,"utf8"));
   if (articles.length === 0) throw new Error("No articles parsed from blog-articles.ts");
 
   const sitemapXml = fs.readFileSync(SITEMAP_PATH, "utf8");
-  const updated = regenerateSitemap(sitemapXml, articles);
+  const updated = regenerateSitemap(sitemapXml, articles, priorityLocales);
   fs.writeFileSync(SITEMAP_PATH, updated, "utf8");
 
   process.stdout.write(

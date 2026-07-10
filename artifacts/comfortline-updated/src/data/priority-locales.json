@@ -1,0 +1,13 @@
+[
+{"key":"home","ru":"/","en":"/en","pl":"/pl","fr":"/fr","plName":"Europa","frName":"Europe"},
+{"key":"vilnius-airport","ru":"/трансфер-минск-вильнюс-аэропорт","en":"/minsk-vilnius-airport","pl":"/pl/transfer-minsk-lotnisko-wilno","fr":"/fr/transfert-minsk-aeroport-vilnius","plName":"Lotnisko w Wilnie (VNO)","frName":"Aéroport de Vilnius (VNO)"},
+{"key":"vilnius","ru":"/трансфер-минск-вильнюс","en":"/minsk-vilnius-transfer","pl":"/pl/transfer-minsk-wilno","fr":"/fr/transfert-minsk-vilnius","plName":"Wilno","frName":"Vilnius"},
+{"key":"warsaw-airport","ru":"/трансфер-минск-варшава-шопен","en":"/minsk-warsaw-airport","pl":"/pl/transfer-minsk-lotnisko-chopina","fr":"/fr/transfert-minsk-aeroport-varsovie-chopin","plName":"Lotnisko Chopina (WAW)","frName":"Aéroport Chopin de Varsovie (WAW)"},
+{"key":"warsaw-modlin","ru":"/трансфер-минск-варшава-модлин","en":"/minsk-warsaw-modlin-airport","pl":"/pl/transfer-minsk-lotnisko-modlin","fr":"/fr/transfert-minsk-aeroport-modlin","plName":"Lotnisko Modlin (WMI)","frName":"Aéroport de Modlin (WMI)"},
+{"key":"warsaw","ru":"/трансфер-варшава","en":"/warsaw-transfer","pl":"/pl/transfer-minsk-warszawa","fr":"/fr/transfert-minsk-varsovie","plName":"Warszawa","frName":"Varsovie"},
+{"key":"kaunas-airport","ru":"/трансфер-минск-каунас-аэропорт","en":"/minsk-kaunas-airport","pl":"/pl/transfer-minsk-lotnisko-kowno","fr":"/fr/transfert-minsk-aeroport-kaunas","plName":"Lotnisko w Kownie (KUN)","frName":"Aéroport de Kaunas (KUN)"},
+{"key":"kaunas","ru":"/трансфер-минск-каунас","en":"/minsk-kaunas-transfer","pl":"/pl/transfer-minsk-kowno","fr":"/fr/transfert-minsk-kaunas","plName":"Kowno","frName":"Kaunas"},
+{"key":"riga-airport","ru":"/трансфер-минск-рига-аэропорт","en":"/minsk-riga-airport","pl":"/pl/transfer-minsk-lotnisko-ryga","fr":"/fr/transfert-minsk-aeroport-riga","plName":"Lotnisko w Rydze (RIX)","frName":"Aéroport de Riga (RIX)"},
+{"key":"lithuania","ru":"/трансфер-в-литву","en":"/lithuania-transfer","pl":"/pl/transfer-minsk-litwa","fr":"/fr/transfert-minsk-lituanie","plName":"Litwa","frName":"Lituanie"},
+{"key":"poland","ru":"/трансфер-в-польшу","en":"/poland-transfer","pl":"/pl/transfer-minsk-polska","fr":"/fr/transfert-minsk-pologne","plName":"Polska","frName":"Pologne"}
+]

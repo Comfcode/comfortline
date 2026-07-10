@@ -1136,4 +1136,202 @@
       <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-palanga-transfer"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BF%D0%B0%D0%BB%D0%B0%D0%BD%D0%B3%D0%B0"/>
     </url>
+  <url>
+      <loc>https://comfortline.by/pl</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/en"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/en"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/en"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-lotnisko-wilno</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-vilnius-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-wilno"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-vilnius"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-vilnius-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-aeroport-vilnius</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-vilnius-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-wilno"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-vilnius"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-vilnius-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-wilno</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-vilnius-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-wilno"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-vilnius"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-vilnius-transfer"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-vilnius</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8E%D1%81"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-vilnius-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-wilno"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-vilnius"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-vilnius-transfer"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-lotnisko-chopina</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D1%88%D0%BE%D0%BF%D0%B5%D0%BD"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-warsaw-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-chopina"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-varsovie-chopin"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-warsaw-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-aeroport-varsovie-chopin</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D1%88%D0%BE%D0%BF%D0%B5%D0%BD"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-warsaw-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-chopina"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-varsovie-chopin"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-warsaw-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-lotnisko-modlin</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D0%BC%D0%BE%D0%B4%D0%BB%D0%B8%D0%BD"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-warsaw-modlin-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-modlin"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-modlin"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-warsaw-modlin-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-aeroport-modlin</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0-%D0%BC%D0%BE%D0%B4%D0%BB%D0%B8%D0%BD"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-warsaw-modlin-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-modlin"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-modlin"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-warsaw-modlin-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-warszawa</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/warsaw-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-warszawa"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-varsovie"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/warsaw-transfer"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-varsovie</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D0%B0"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/warsaw-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-warszawa"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-varsovie"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/warsaw-transfer"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-lotnisko-kowno</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BA%D0%B0%D1%83%D0%BD%D0%B0%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-kaunas-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-kowno"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-kaunas"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-kaunas-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-aeroport-kaunas</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BA%D0%B0%D1%83%D0%BD%D0%B0%D1%81-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-kaunas-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-kowno"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-kaunas"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-kaunas-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-kowno</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BA%D0%B0%D1%83%D0%BD%D0%B0%D1%81"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-kaunas-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-kowno"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-kaunas"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-kaunas-transfer"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-kaunas</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D0%BA%D0%B0%D1%83%D0%BD%D0%B0%D1%81"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-kaunas-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-kowno"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-kaunas"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-kaunas-transfer"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-lotnisko-ryga</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D1%80%D0%B8%D0%B3%D0%B0-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-riga-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-ryga"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-riga"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-riga-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-aeroport-riga</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%BC%D0%B8%D0%BD%D1%81%D0%BA-%D1%80%D0%B8%D0%B3%D0%B0-%D0%B0%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/minsk-riga-airport"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-lotnisko-ryga"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-aeroport-riga"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/minsk-riga-airport"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-litwa</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D0%BB%D0%B8%D1%82%D0%B2%D1%83"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/lithuania-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-litwa"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-lituanie"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/lithuania-transfer"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-lituanie</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D0%BB%D0%B8%D1%82%D0%B2%D1%83"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/lithuania-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-litwa"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-lituanie"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/lithuania-transfer"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/pl/transfer-minsk-polska</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D0%BF%D0%BE%D0%BB%D1%8C%D1%88%D1%83"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/poland-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-polska"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-pologne"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/poland-transfer"/>
+    </url>
+  <url>
+      <loc>https://comfortline.by/fr/transfert-minsk-pologne</loc>
+      <lastmod>2026-07-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="ru" href="https://comfortline.by/%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%B5%D1%80-%D0%B2-%D0%BF%D0%BE%D0%BB%D1%8C%D1%88%D1%83"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://comfortline.by/poland-transfer"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="https://comfortline.by/pl/transfer-minsk-polska"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://comfortline.by/fr/transfert-minsk-pologne"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://comfortline.by/poland-transfer"/>
+    </url>
 </urlset>

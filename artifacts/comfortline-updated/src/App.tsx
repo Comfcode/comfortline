@@ -62,6 +62,7 @@ const MinskTrakaiTransferPage          = lazy(() => import("@/pages/minsk-trakai
 const MinskKlaipedaTransferPage        = lazy(() => import("@/pages/minsk-klaipeda-transfer"));
 const MinskDruskininkaiTransferPage    = lazy(() => import("@/pages/minsk-druskininkai-transfer"));
 const MinskKaunasTransferPage      = lazy(() => import("@/pages/minsk-kaunas-transfer"));
+const PriorityLocalePage           = lazy(() => import("@/pages/priority-locale-page"));
 
 const queryClient = new QueryClient();
 
@@ -184,6 +185,10 @@ function Router() {
         <Route path="/minsk-druskininkai-transfer" component={MinskDruskininkaiTransferPage} />
         <Route path="/трансфер-минск-друскининкай" component={MinskDruskininkaiTransferPage} />
 
+        <Route path="/pl" component={PriorityLocalePage} />
+        <Route path="/pl/:slug" component={PriorityLocalePage} />
+        <Route path="/fr" component={PriorityLocalePage} />
+        <Route path="/fr/:slug" component={PriorityLocalePage} />
         <Route path="/brandbook" component={BrandbookPage} />
         <Route path="/thank-you" component={ThankYouPage} />
         <Route component={NotFound} />

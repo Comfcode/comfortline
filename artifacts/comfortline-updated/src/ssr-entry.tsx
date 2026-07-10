@@ -68,6 +68,7 @@ import MinskTrakaiTransferPage from "@/pages/minsk-trakai-transfer";
 import MinskKlaipedaTransferPage from "@/pages/minsk-klaipeda-transfer";
 import MinskDruskininkaiTransferPage from "@/pages/minsk-druskininkai-transfer";
 import MinskKaunasTransferPage from "@/pages/minsk-kaunas-transfer";
+import PriorityLocalePage from "@/pages/priority-locale-page";
 
 const queryClient = new QueryClient();
 
@@ -189,6 +190,10 @@ function SsrRouter() {
       <Route path="/minsk-druskininkai-transfer" component={MinskDruskininkaiTransferPage} />
       <Route path="/трансфер-минск-друскининкай" component={MinskDruskininkaiTransferPage} />
 
+      <Route path="/pl" component={PriorityLocalePage} />
+      <Route path="/pl/:slug" component={PriorityLocalePage} />
+      <Route path="/fr" component={PriorityLocalePage} />
+      <Route path="/fr/:slug" component={PriorityLocalePage} />
       <Route component={NotFound} />
     </Switch>
   );
