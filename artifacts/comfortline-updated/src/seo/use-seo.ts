@@ -124,6 +124,7 @@ export function useSeo(data: SeoData) {
     data.ogImage,
     data.ogType,
     data.keywords,
+    data.robots,
     altKey,
     jsonKey,
   ]);

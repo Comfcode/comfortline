@@ -141,10 +141,10 @@ export default function MinskWarsawModlinAirportPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Seo
-        titleRu="Трансфер Минск — Аэропорт Варшавы Модлин (WMI) | ComfortLine"
-        titleEn="Minsk to Warsaw Modlin Airport (WMI) Private Transfer | ComfortLine"
-        descRu="Индивидуальный трансфер из Минска в аэропорт Варшавы Модлин (WMI). Фиксированная цена, опытный водитель, помощь на границе Беларусь–Польша. ~600 км, 7–10 ч. Заказ онлайн или +375 (44) 762-06-49."
-        descEn="Private transfer from Minsk to Warsaw Modlin Airport (WMI). Fixed price, professional driver, assistance at the Belarus–Poland border. ~600 km, 7–10 hrs. Book online or call +375 (44) 762-06-49."
+        titleRu="Минск — аэропорт Модлин (WMI) | ComfortLine"
+        titleEn="Minsk to Modlin Airport (WMI) | ComfortLine"
+        descRu="Трансфер Минск — аэропорт Варшавы Модлин (WMI): 600 км, фиксированная цена, подача от двери и помощь на границе."
+        descEn="Private Minsk to Warsaw Modlin Airport (WMI) transfer: 600 km, fixed fare, door-to-door pickup and border assistance."
         pathRu="/трансфер-минск-варшава-модлин"
         pathEn="/minsk-warsaw-modlin-airport"
         keywordsRu="трансфер минск модлин, минск варшава модлин, wmi трансфер, минск warsaw modlin, такси в аэропорт модлин"

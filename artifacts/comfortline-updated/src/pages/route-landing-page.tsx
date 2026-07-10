@@ -71,6 +71,25 @@ interface Props {
   data: RoutePageData;
 }
 
+const RELATED_ROUTES = [
+  { ru: ["Такси Минск — Вильнюс", "/трансфер-минск-вильнюс"], en: ["Minsk to Vilnius transfer", "/minsk-vilnius-transfer"] },
+  { ru: ["Трансфер Минск — аэропорт Вильнюса (VNO)", "/трансфер-минск-вильнюс-аэропорт"], en: ["Minsk to Vilnius Airport (VNO)", "/minsk-vilnius-airport"] },
+  { ru: ["Такси Минск — Каунас", "/трансфер-минск-каунас"], en: ["Minsk to Kaunas transfer", "/minsk-kaunas-transfer"] },
+  { ru: ["Трансфер Минск — аэропорт Каунаса (KUN)", "/трансфер-минск-каунас-аэропорт"], en: ["Minsk to Kaunas Airport (KUN)", "/minsk-kaunas-airport"] },
+  { ru: ["Такси Минск — Рига", "/трансфер-рига"], en: ["Minsk to Riga transfer", "/riga-transfer"] },
+  { ru: ["Трансфер Минск — аэропорт Риги (RIX)", "/трансфер-минск-рига-аэропорт"], en: ["Minsk to Riga Airport (RIX)", "/minsk-riga-airport"] },
+  { ru: ["Такси Минск — Варшава", "/трансфер-варшава"], en: ["Minsk to Warsaw transfer", "/warsaw-transfer"] },
+  { ru: ["Трансфер Минск — аэропорт Шопен (WAW)", "/трансфер-минск-варшава-шопен"], en: ["Minsk to Warsaw Chopin Airport (WAW)", "/minsk-warsaw-airport"] },
+  { ru: ["Трансфер Минск — аэропорт Модлин (WMI)", "/трансфер-минск-варшава-модлин"], en: ["Minsk to Warsaw Modlin Airport (WMI)", "/minsk-warsaw-modlin-airport"] },
+  { ru: ["Такси Минск — Гданьск", "/трансфер-минск-гданьск"], en: ["Minsk to Gdańsk transfer", "/minsk-gdansk-transfer"] },
+  { ru: ["Такси Минск — Краков", "/трансфер-минск-краков"], en: ["Minsk to Kraków transfer", "/minsk-krakow-transfer"] },
+  { ru: ["Такси Минск — Вроцлав", "/трансфер-минск-вроцлав"], en: ["Minsk to Wrocław transfer", "/minsk-wroclaw-transfer"] },
+  { ru: ["Такси Минск — Познань", "/трансфер-минск-познань"], en: ["Minsk to Poznań transfer", "/minsk-poznan-transfer"] },
+  { ru: ["Такси Минск — Катовице", "/трансфер-минск-катовице"], en: ["Minsk to Katowice transfer", "/minsk-katowice-transfer"] },
+  { ru: ["Такси Минск — Клайпеда", "/трансфер-минск-клайпеда"], en: ["Minsk to Klaipėda transfer", "/minsk-klaipeda-transfer"] },
+  { ru: ["Такси Минск — Паланга", "/трансфер-минск-паланга"], en: ["Minsk to Palanga transfer", "/minsk-palanga-transfer"] },
+] as const;
+
 export function RouteLandingPage({ data }: Props) {
   const { lang } = useLang();
   const c = data[lang];
@@ -78,6 +97,10 @@ export function RouteLandingPage({ data }: Props) {
   const seoTitle = isRu ? data.seo.titleRu : data.seo.titleEn;
   const seoDesc = isRu ? data.seo.descRu : data.seo.descEn;
   const seoPath = isRu ? data.seo.pathRu : data.seo.pathEn;
+  const currentRouteIndex = Math.max(0, RELATED_ROUTES.findIndex((route) => route[lang][1] === seoPath));
+  const relatedRoutes = Array.from({ length: 6 }, (_, offset) =>
+    RELATED_ROUTES[(currentRouteIndex + offset + 1) % RELATED_ROUTES.length][lang],
+  );
   const breadcrumbName = isRu
     ? (data.seo.breadcrumbRu || data.ru.title)
     : (data.seo.breadcrumbEn || data.en.title);
@@ -272,6 +295,20 @@ export function RouteLandingPage({ data }: Props) {
             </div>
           </motion.section>
         )}
+
+        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <h2 className="text-2xl font-bold text-foreground mb-6">
+            {isRu ? "Популярные направления из Минска" : "Popular private transfers from Minsk"}
+          </h2>
+          <nav aria-label={isRu ? "Похожие маршруты" : "Related routes"} className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {relatedRoutes.map(([label, href]) => (
+              <a key={href} href={href} className="flex items-center justify-between gap-3 bg-card border border-border rounded-xl px-5 py-4 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors">
+                {label}
+                <ArrowRight className="h-4 w-4 shrink-0" />
+              </a>
+            ))}
+          </nav>
+        </motion.section>
 
         {/* CTA */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>

@@ -635,7 +635,7 @@ const en: Translations = {
     blogLabel: "Blog",
     blogHref: "/blog",
     faqLabel: "FAQ",
-    faqHref: "/faq",
+    faqHref: "/en/faq",
     contactsHeading: "Contacts",
     copyright: "All rights reserved.",
     legalName: "IE Murashko Andrey Antonovich",

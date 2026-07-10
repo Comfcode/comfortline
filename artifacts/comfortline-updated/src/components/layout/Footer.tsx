@@ -14,7 +14,7 @@ const TAP_THRESHOLD = 5;
 const TAP_WINDOW_MS = 3000;
 
 export function Footer() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const f = t.footer;
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -145,10 +145,10 @@ export function Footer() {
           <div className="flex flex-wrap gap-4 items-center">
             <span>{f.legalName}</span>
             <span>{f.unp}</span>
-            <a href="/privacy" className="hover:text-primary transition-colors underline underline-offset-2">
+            <a href={lang === "en" ? "/en/privacy" : "/privacy"} className="hover:text-primary transition-colors underline underline-offset-2">
               {f.privacyPolicy}
             </a>
-            <a href="/terms" className="hover:text-primary transition-colors underline underline-offset-2">
+            <a href={lang === "en" ? "/en/terms" : "/terms"} className="hover:text-primary transition-colors underline underline-offset-2">
               {f.terms}
             </a>
             {brandbookVisible && (

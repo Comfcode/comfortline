@@ -21,7 +21,7 @@ export const BUSINESS = {
   ],
   serviceArea: ["Minsk", "Belarus", "Lithuania", "Poland", "Latvia", "Germany", "Czech Republic"],
   geo: { lat: 53.9006, lng: 27.5590 },
-  foundingDate: "2018",
+  foundingDate: "2015",
   slogan: {
     ru: "Комфортный трансфер из Минска в аэропорты Вильнюса и Варшавы",
     en: "Comfortable transfers from Minsk to Vilnius and Warsaw airports",
