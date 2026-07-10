@@ -196,28 +196,73 @@ const INDEX_PATH = path.join(PUBLIC_DIR, "index.html");
 
 const CANONICAL_HOST = "comfortline.by";
 
+const TRACKING_PARAMS = new Set([
+  "fbclid", "gclid", "dclid", "gbraid", "wbraid", "yclid",
+  "_ym_debug", "gtm_latency", "gad_source", "gad_campaignid",
+]);
+
+function isTrackingParam(name) {
+  const normalized = name.toLowerCase();
+  return TRACKING_PARAMS.has(normalized) || normalized.startsWith("utm_") || normalized.startsWith("gad_");
+}
+
+function routeHtmlPath(encodedPathname) {
+  const decoded = decodeURIComponent(encodedPathname);
+  return decoded === "/"
+    ? INDEX_PATH
+    : path.join(PUBLIC_DIR, decoded.replace(/^[/]+|[/]+$/g, ""), "index.html");
+}
+
+function alternatePathForLanguage(encodedPathname, language) {
+  try {
+    const htmlPath = routeHtmlPath(encodedPathname);
+    if (!fs.existsSync(htmlPath)) return null;
+    const html = fs.readFileSync(htmlPath, "utf8");
+    const tags = html.match(/<link[^>]*rel=["']alternate["'][^>]*>/gi) || [];
+    for (const tag of tags) {
+      const hreflang = /hreflang=["']([^"']+)["']/i.exec(tag)?.[1];
+      const href = /href=["']([^"']+)["']/i.exec(tag)?.[1];
+      if (hreflang === language && href) return new URL(href, `https://${CANONICAL_HOST}`).pathname;
+    }
+  } catch {
+    // Retain the current path if prerender metadata is unavailable.
+  }
+  return null;
+}
+
+export function normalizeRequestUrl(inputUrl) {
+  let pathname = inputUrl.pathname;
+  if (pathname !== "/" && pathname.endsWith("/")) pathname = pathname.replace(/[/]+$/, "");
+
+  const language = inputUrl.searchParams.get("lang");
+  if (language === "ru" || language === "en") {
+    pathname = alternatePathForLanguage(pathname, language) || pathname;
+    inputUrl.searchParams.delete("lang");
+  }
+
+  for (const name of [...inputUrl.searchParams.keys()]) {
+    if (isTrackingParam(name)) inputUrl.searchParams.delete(name);
+  }
+
+  const query = inputUrl.searchParams.toString();
+  return pathname + (query ? `?${query}` : "");
+}
+
 const server = http.createServer((req, res) => {
   try {
     const url = new URL(req.url ?? "/", `http://localhost`);
     const rawPath = url.pathname;
+    const incomingPathAndSearch = rawPath + url.search;
+    const normalizedPathAndSearch = normalizeRequestUrl(url);
 
-    // --- -1. Canonicalise host: www.comfortline.by → comfortline.by (permanent redirect) ---
-    // Google Search Console flags www/non-www as unresolved duplicates unless the
-    // non-canonical host issues a real 301 (a <link rel="canonical"> tag alone isn't
-    // enough of a signal). SITE_URL in src/seo/seo-config.ts is the non-www origin,
-    // so every other host variant must merge into it here.
+    // --- -1. Canonicalise host and URL variants in one permanent redirect ---
     const hostHeader = (req.headers.host || "").toLowerCase().split(":")[0];
-    if (hostHeader && hostHeader !== CANONICAL_HOST && hostHeader === `www.${CANONICAL_HOST}`) {
-      const location = `https://${CANONICAL_HOST}${rawPath}${url.search || ""}`;
+    const isWww = hostHeader === `www.${CANONICAL_HOST}`;
+    if (isWww || normalizedPathAndSearch !== incomingPathAndSearch) {
+      const location = isWww
+        ? `https://${CANONICAL_HOST}${normalizedPathAndSearch}`
+        : normalizedPathAndSearch;
       res.writeHead(301, { "Location": location, "Cache-Control": "public, max-age=86400" });
-      res.end();
-      return;
-    }
-
-    // --- 0. Normalise trailing slashes: /path/ → /path (permanent redirect) ---
-    if (rawPath !== "/" && rawPath.endsWith("/")) {
-      const canonical = rawPath.replace(/\/+$/, "") + (url.search || "");
-      res.writeHead(301, { "Location": canonical, "Cache-Control": "public, max-age=86400" });
       res.end();
       return;
     }
@@ -270,6 +315,9 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  process.stdout.write(`ComfortLine website on port ${PORT}\n`);
-});
+const isDirectRun = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isDirectRun) {
+  server.listen(PORT, () => {
+    process.stdout.write(`ComfortLine website on port ${PORT}\\n`);
+  });
+}
