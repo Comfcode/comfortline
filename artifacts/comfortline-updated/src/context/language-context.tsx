@@ -1,10 +1,17 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { useLocation } from "wouter";
 
-type Lang = "ru" | "en";
+export type Lang = "ru" | "en";
+export type Locale = Lang | "pl" | "fr";
 
 interface Translations {
-  lang: "ru" | "en";
+  lang: Lang;
   modal: {
     title: string;
     passenger: string;
@@ -109,7 +116,12 @@ interface Translations {
     book: string;
     routes: {
       name: string;
-      plans: { name: string; price: string; features: string[]; popular?: boolean }[];
+      plans: {
+        name: string;
+        price: string;
+        features: string[];
+        popular?: boolean;
+      }[];
     }[];
   };
   advantages: {
@@ -189,7 +201,8 @@ const ru: Translations = {
     suitcaseMany: "чемоданов",
     classLabel: "Класс",
     contactHeading: "Контактные данные",
-    contactSubtext: "Для оформления заказа оставьте контакты — менеджер свяжется с вами в ближайшее время.",
+    contactSubtext:
+      "Для оформления заказа оставьте контакты — менеджер свяжется с вами в ближайшее время.",
     name: "Ваше имя",
     email: "Ваш email",
     phone: "Ваш телефон",
@@ -218,7 +231,12 @@ const ru: Translations = {
     badge: "Всегда вовремя. Работаем с 2015 года.",
     headline1: "Такси и индивидуальный трансфер из Минска",
     headline2: "",
-    checkmarks: ["по Беларуси и России", "по всей Европе", "трансфер в Аэропорт", "перевозим с детьми и питомцами"],
+    checkmarks: [
+      "по Беларуси и России",
+      "по всей Европе",
+      "трансфер в Аэропорт",
+      "перевозим с детьми и питомцами",
+    ],
     cta: "Заказать трансфер",
     ctaSecondary: "Узнать цены",
   },
@@ -253,16 +271,41 @@ const ru: Translations = {
     toastTitle: "Заявка отправлена!",
     toastDesc: "Наш менеджер свяжется с вами в ближайшее время.",
     popularDestsLabel: "Популярные направления",
-    popularDests: ["Минск, Беларусь", "Аэропорт Минск-2 (MSQ)", "Вильнюс, Литва", "Варшава, Польша", "Рига, Латвия", "Брест, Беларусь", "Гродно, Беларусь", "Витебск, Беларусь"],
+    popularDests: [
+      "Минск, Беларусь",
+      "Аэропорт Минск-2 (MSQ)",
+      "Вильнюс, Литва",
+      "Варшава, Польша",
+      "Рига, Латвия",
+      "Брест, Беларусь",
+      "Гродно, Беларусь",
+      "Витебск, Беларусь",
+    ],
   },
   services: {
     label: "Наши Услуги",
     heading: "Направления комфорта",
     items: [
-      { title: "Трансфер в Аэропорт", description: "Индивидуальный и групповой. Фиксированная цена. Предварительный заказ. Детские кресла. Встретим с табличкой." },
-      { title: "Группы / Делегации до 8 человек", description: "Трансферы, экскурсии. Вместительные микроавтобусы (8 мест), большие багажные отделения." },
-      { title: "Поездки по Минску, Беларуси и России", description: "Почасовая оплата в городе, подсчёт по километражу между городами. Седаны, микроавтобусы." },
-      { title: "Поездки по Европе (Литва, Латвия, Польша)", description: "На выбор автомобили разных классов и типов кузова. Комфортное прохождение границы." },
+      {
+        title: "Трансфер в Аэропорт",
+        description:
+          "Индивидуальный и групповой. Фиксированная цена. Предварительный заказ. Детские кресла. Встретим с табличкой.",
+      },
+      {
+        title: "Группы / Делегации до 8 человек",
+        description:
+          "Трансферы, экскурсии. Вместительные микроавтобусы (8 мест), большие багажные отделения.",
+      },
+      {
+        title: "Поездки по Минску, Беларуси и России",
+        description:
+          "Почасовая оплата в городе, подсчёт по километражу между городами. Седаны, микроавтобусы.",
+      },
+      {
+        title: "Поездки по Европе (Литва, Латвия, Польша)",
+        description:
+          "На выбор автомобили разных классов и типов кузова. Комфортное прохождение границы.",
+      },
     ],
   },
   fleet: {
@@ -280,34 +323,131 @@ const ru: Translations = {
   pricing: {
     label: "Тарифы",
     heading: "Цены на трансфер",
-    subheading: "Выберите направление — фиксированные цены на популярные маршруты.",
+    subheading:
+      "Выберите направление — фиксированные цены на популярные маршруты.",
     popular: "Популярный выбор",
     book: "Заказать",
     routes: [
       {
         name: "Минск → Аэропорт",
         plans: [
-          { name: "Легковая — Эконом", price: "По запросу", features: ["Встреча с табличкой", "Помощь с багажом", "Детское кресло по запросу", "Ожидание при задержке рейса"] },
-          { name: "Комфорт", price: "По запросу", popular: true, features: ["Встреча с табличкой", "Помощь с багажом", "Wi-Fi в салоне", "Вода для пассажиров"] },
-          { name: "Бизнес", price: "По запросу", features: ["Mercedes E-Class", "Встреча с табличкой", "Wi-Fi в салоне", "Вода для пассажиров"] },
-          { name: "Минивэн (до 6 чел.)", price: "По запросу", features: ["Kia Carnival", "Встреча с табличкой", "Много места для багажа", "Детское кресло по запросу"] },
-          { name: "Микроавтобус (до 8 чел.)", price: "По запросу", features: ["Fiat Scudo", "Встреча с табличкой", "Подходит для групп", "Детские кресла по запросу"] },
+          {
+            name: "Легковая — Эконом",
+            price: "По запросу",
+            features: [
+              "Встреча с табличкой",
+              "Помощь с багажом",
+              "Детское кресло по запросу",
+              "Ожидание при задержке рейса",
+            ],
+          },
+          {
+            name: "Комфорт",
+            price: "По запросу",
+            popular: true,
+            features: [
+              "Встреча с табличкой",
+              "Помощь с багажом",
+              "Wi-Fi в салоне",
+              "Вода для пассажиров",
+            ],
+          },
+          {
+            name: "Бизнес",
+            price: "По запросу",
+            features: [
+              "Mercedes E-Class",
+              "Встреча с табличкой",
+              "Wi-Fi в салоне",
+              "Вода для пассажиров",
+            ],
+          },
+          {
+            name: "Минивэн (до 6 чел.)",
+            price: "По запросу",
+            features: [
+              "Kia Carnival",
+              "Встреча с табличкой",
+              "Много места для багажа",
+              "Детское кресло по запросу",
+            ],
+          },
+          {
+            name: "Микроавтобус (до 8 чел.)",
+            price: "По запросу",
+            features: [
+              "Fiat Scudo",
+              "Встреча с табличкой",
+              "Подходит для групп",
+              "Детские кресла по запросу",
+            ],
+          },
         ],
       },
       {
         name: "Минск → Вильнюс",
         plans: [
-          { name: "Легковой авто", price: "По запросу", features: ["Сопровождение до двери", "Помощь с багажом", "Ожидание при задержке"] },
-          { name: "Минивэн", price: "По запросу", popular: true, features: ["Kia Carnival, до 5 пас.", "Сопровождение до двери", "Много места для багажа"] },
-          { name: "Бизнес", price: "По запросу", features: ["Mercedes E-Class", "Сопровождение до двери", "Wi-Fi в салоне"] },
+          {
+            name: "Легковой авто",
+            price: "По запросу",
+            features: [
+              "Сопровождение до двери",
+              "Помощь с багажом",
+              "Ожидание при задержке",
+            ],
+          },
+          {
+            name: "Минивэн",
+            price: "По запросу",
+            popular: true,
+            features: [
+              "Kia Carnival, до 5 пас.",
+              "Сопровождение до двери",
+              "Много места для багажа",
+            ],
+          },
+          {
+            name: "Бизнес",
+            price: "По запросу",
+            features: [
+              "Mercedes E-Class",
+              "Сопровождение до двери",
+              "Wi-Fi в салоне",
+            ],
+          },
         ],
       },
       {
         name: "Минск → Варшава",
         plans: [
-          { name: "Легковая", price: "По запросу", features: ["Сопровождение до двери", "Помощь с багажом", "Ожидание при задержке"] },
-          { name: "Бизнес", price: "По запросу", features: ["Mercedes E-Class", "Сопровождение до двери", "Wi-Fi в салоне"] },
-          { name: "Минивэн", price: "По запросу", popular: true, features: ["Kia Carnival, до 5 пас.", "Сопровождение до двери", "Много места для багажа"] },
+          {
+            name: "Легковая",
+            price: "По запросу",
+            features: [
+              "Сопровождение до двери",
+              "Помощь с багажом",
+              "Ожидание при задержке",
+            ],
+          },
+          {
+            name: "Бизнес",
+            price: "По запросу",
+            features: [
+              "Mercedes E-Class",
+              "Сопровождение до двери",
+              "Wi-Fi в салоне",
+            ],
+          },
+          {
+            name: "Минивэн",
+            price: "По запросу",
+            popular: true,
+            features: [
+              "Kia Carnival, до 5 пас.",
+              "Сопровождение до двери",
+              "Много места для багажа",
+            ],
+          },
         ],
       },
     ],
@@ -316,37 +456,114 @@ const ru: Translations = {
     label: "Почему ComfortLine",
     heading: "Безупречный сервис в каждой поездке",
     items: [
-      { title: "Вся линейка транспорта", description: "Седаны эконом и комфорт, микроавтобусы до 8 мест. Подберем авто под ваши нужды." },
-      { title: "Всегда вовремя", description: "Менеджер координирует весь процесс. Подача машины точно в назначенное время." },
-      { title: "Профессиональные водители", description: "Вежливые, опытные, отлично знают город и маршруты. Всегда пунктуальны и дисциплинированы." },
-      { title: "Предзаказ и день в день", description: "Принимаем заявки заранее и срочные заказы минимум за 5 часов до прибытия." },
-      { title: "Пассажиры застрахованы", description: "Ваша безопасность — наш приоритет. Жизнь и здоровье каждого пассажира застрахованы на время поездки." },
-      { title: "Гибкие тарифы", description: "Фиксированные цены на популярные направления и специальные условия для постоянных корпоративных клиентов." },
+      {
+        title: "Вся линейка транспорта",
+        description:
+          "Седаны эконом и комфорт, микроавтобусы до 8 мест. Подберем авто под ваши нужды.",
+      },
+      {
+        title: "Всегда вовремя",
+        description:
+          "Менеджер координирует весь процесс. Подача машины точно в назначенное время.",
+      },
+      {
+        title: "Профессиональные водители",
+        description:
+          "Вежливые, опытные, отлично знают город и маршруты. Всегда пунктуальны и дисциплинированы.",
+      },
+      {
+        title: "Предзаказ и день в день",
+        description:
+          "Принимаем заявки заранее и срочные заказы минимум за 5 часов до прибытия.",
+      },
+      {
+        title: "Пассажиры застрахованы",
+        description:
+          "Ваша безопасность — наш приоритет. Жизнь и здоровье каждого пассажира застрахованы на время поездки.",
+      },
+      {
+        title: "Гибкие тарифы",
+        description:
+          "Фиксированные цены на популярные направления и специальные условия для постоянных корпоративных клиентов.",
+      },
     ],
   },
   reviews: {
     label: "Отзывы",
     heading: "Что говорят наши клиенты",
     items: [
-      { name: "Александра", city: "Минск", text: "Ездили коллективом на экскурсию в Дудутки. Водитель приехал за 15 минут до оговоренного времени. Машина была чистой и аккуратной. Спасибо за высокий уровень сервиса!" },
-      { name: "Евгений", city: "Москва", text: "Приезжали в Минск компанией 6 человек. Обратились в ComfortLine. Нас встретили в аэропорту с табличкой, доехали быстро и дешево. Отличная организация трансфера." },
-      { name: "Юлия", city: "Молодечно", text: "Решили семьёй поехать в Египет. Семья не маленькая, трое детей. Воспользовались трансфером и не прогадали. В микроавтобусе было просторно, комфортно. Спасибо!" },
-      { name: "Дмитрий", city: "Гродно", text: "Заказывал трансфер Минск — Вильнюс. Водитель был пунктуален, ехали комфортно, без задержек. Очень приятный сервис, уже рекомендовал коллегам." },
-      { name: "Наталья", city: "Брест", text: "Возвращались из Варшавы с большим количеством вещей. Водитель помог с багажом, в салоне было просторно. Граница прошла быстро, всё организовано отлично." },
-      { name: "Сергей", city: "Варшава", text: "Летел из Минска — трансфер в аэропорт заказал за день. Всё прошло идеально: приехали вовремя, водитель знал терминал, довёз с запасом времени." },
-      { name: "Виктория", city: "Минск", text: "Деловая поездка в Вильнюс. Сидела с ноутбуком всю дорогу — тихо, Wi-Fi работал. Это совсем другой уровень по сравнению с обычными такси." },
-      { name: "Андрей", city: "Вильнюс", text: "Заказывал трансфер для родителей Минск — аэропорт. Пожилым людям понравилось — водитель помог с вещами, был вежлив и терпелив. Большое спасибо!" },
-      { name: "Татьяна", city: "Минск", text: "Сделала мужу подарок — поездка на день рождения в бизнес-классе. Автомобиль был шикарным, встреча с цветами. Произвело очень сильное впечатление." },
-      { name: "Игорь", city: "Гомель", text: "Корпоративный трансфер для делегации из 8 человек. Два автомобиля подали одновременно, никто не ждал. Профессиональный подход к работе, рекомендую." },
-      { name: "Ольга", city: "Минск", text: "Езжу с ComfortLine уже больше года — на встречи, в аэропорт, иногда просто по городу. Надёжность на высшем уровне, за всё время не было ни одного опоздания." },
-      { name: "Максим", city: "Москва", text: "Прилетал в Минск на конференцию. Встретили прямо у выхода, помогли с чемоданами. В машине уже ждала вода. Приятно удивлён уровнем сервиса." },
-      { name: "Елена", city: "Брест", text: "Трансфер Польша — Минск с тремя пересадками пугал, но всё организовали безупречно. Водитель был на связи весь путь. Доехали спокойно и вовремя." },
+      {
+        name: "Александра",
+        city: "Минск",
+        text: "Ездили коллективом на экскурсию в Дудутки. Водитель приехал за 15 минут до оговоренного времени. Машина была чистой и аккуратной. Спасибо за высокий уровень сервиса!",
+      },
+      {
+        name: "Евгений",
+        city: "Москва",
+        text: "Приезжали в Минск компанией 6 человек. Обратились в ComfortLine. Нас встретили в аэропорту с табличкой, доехали быстро и дешево. Отличная организация трансфера.",
+      },
+      {
+        name: "Юлия",
+        city: "Молодечно",
+        text: "Решили семьёй поехать в Египет. Семья не маленькая, трое детей. Воспользовались трансфером и не прогадали. В микроавтобусе было просторно, комфортно. Спасибо!",
+      },
+      {
+        name: "Дмитрий",
+        city: "Гродно",
+        text: "Заказывал трансфер Минск — Вильнюс. Водитель был пунктуален, ехали комфортно, без задержек. Очень приятный сервис, уже рекомендовал коллегам.",
+      },
+      {
+        name: "Наталья",
+        city: "Брест",
+        text: "Возвращались из Варшавы с большим количеством вещей. Водитель помог с багажом, в салоне было просторно. Граница прошла быстро, всё организовано отлично.",
+      },
+      {
+        name: "Сергей",
+        city: "Варшава",
+        text: "Летел из Минска — трансфер в аэропорт заказал за день. Всё прошло идеально: приехали вовремя, водитель знал терминал, довёз с запасом времени.",
+      },
+      {
+        name: "Виктория",
+        city: "Минск",
+        text: "Деловая поездка в Вильнюс. Сидела с ноутбуком всю дорогу — тихо, Wi-Fi работал. Это совсем другой уровень по сравнению с обычными такси.",
+      },
+      {
+        name: "Андрей",
+        city: "Вильнюс",
+        text: "Заказывал трансфер для родителей Минск — аэропорт. Пожилым людям понравилось — водитель помог с вещами, был вежлив и терпелив. Большое спасибо!",
+      },
+      {
+        name: "Татьяна",
+        city: "Минск",
+        text: "Сделала мужу подарок — поездка на день рождения в бизнес-классе. Автомобиль был шикарным, встреча с цветами. Произвело очень сильное впечатление.",
+      },
+      {
+        name: "Игорь",
+        city: "Гомель",
+        text: "Корпоративный трансфер для делегации из 8 человек. Два автомобиля подали одновременно, никто не ждал. Профессиональный подход к работе, рекомендую.",
+      },
+      {
+        name: "Ольга",
+        city: "Минск",
+        text: "Езжу с ComfortLine уже больше года — на встречи, в аэропорт, иногда просто по городу. Надёжность на высшем уровне, за всё время не было ни одного опоздания.",
+      },
+      {
+        name: "Максим",
+        city: "Москва",
+        text: "Прилетал в Минск на конференцию. Встретили прямо у выхода, помогли с чемоданами. В машине уже ждала вода. Приятно удивлён уровнем сервиса.",
+      },
+      {
+        name: "Елена",
+        city: "Брест",
+        text: "Трансфер Польша — Минск с тремя пересадками пугал, но всё организовали безупречно. Водитель был на связи весь путь. Доехали спокойно и вовремя.",
+      },
     ],
   },
   instagram: {
     label: "Мы в Instagram",
     heading: "Поездки наших клиентов",
-    subheading: "Реальные кадры из наших трансферов — автомобили, маршруты и моменты в дороге. Подписывайтесь, чтобы видеть свежие поездки.",
+    subheading:
+      "Реальные кадры из наших трансферов — автомобили, маршруты и моменты в дороге. Подписывайтесь, чтобы видеть свежие поездки.",
     cta: "Открыть @transfer_comfortline",
     profileUrl: "https://www.instagram.com/transfer_comfortline/",
     loadMore: "Показать ещё",
@@ -355,7 +572,8 @@ const ru: Translations = {
   contact: {
     label: "Связаться с нами",
     heading: "Заказать трансфер",
-    subheading: "Заполните форму выше или свяжитесь с нами напрямую — наш менеджер подтвердит детали и организует поездку. Работаем круглосуточно.",
+    subheading:
+      "Заполните форму выше или свяжитесь с нами напрямую — наш менеджер подтвердит детали и организует поездку. Работаем круглосуточно.",
     phone: "Телефон",
     email: "Email",
     address: "Адрес",
@@ -376,15 +594,25 @@ const ru: Translations = {
     tripadvisor: "Tripadvisor",
   },
   footer: {
-    tagline: "Индивидуальный трансфер по Беларуси и Европе. Работаем с 2015 года.",
+    tagline:
+      "Индивидуальный трансфер по Беларуси и Европе. Работаем с 2015 года.",
     navHeading: "Навигация",
     navLinks: ["Услуги", "Автопарк", "Преимущества", "Отзывы"],
     servicesHeading: "Направления",
     serviceLinks: [
-      { label: "Минск — Вильнюс (VNO)", href: "/трансфер-минск-вильнюс-аэропорт" },
+      {
+        label: "Минск — Вильнюс (VNO)",
+        href: "/трансфер-минск-вильнюс-аэропорт",
+      },
       { label: "Минск — Варшава (WAW)", href: "/трансфер-минск-варшава-шопен" },
-      { label: "Минск — Варшава (Модлин)", href: "/трансфер-минск-варшава-модлин" },
-      { label: "Минск — Каунас (KUN)", href: "/трансфер-минск-каунас-аэропорт" },
+      {
+        label: "Минск — Варшава (Модлин)",
+        href: "/трансфер-минск-варшава-модлин",
+      },
+      {
+        label: "Минск — Каунас (KUN)",
+        href: "/трансфер-минск-каунас-аэропорт",
+      },
       { label: "Минск — Рига (RIX)", href: "/трансфер-минск-рига-аэропорт" },
       { label: "Трансфер в Берлин", href: "/трансфер-берлин" },
       { label: "Трансфер в Прагу", href: "/трансфер-прага" },
@@ -425,7 +653,8 @@ const en: Translations = {
     suitcaseMany: "Suitcases",
     classLabel: "Class",
     contactHeading: "Contact details",
-    contactSubtext: "To place an order, leave your contacts and our manager will get in touch shortly.",
+    contactSubtext:
+      "To place an order, leave your contacts and our manager will get in touch shortly.",
     name: "Your name",
     email: "Your email",
     phone: "Your phone number",
@@ -454,7 +683,12 @@ const en: Translations = {
     badge: "Always on time. Operating since 2015.",
     headline1: "Private taxi and individual transfers from Minsk",
     headline2: "",
-    checkmarks: ["across Belarus & Europe", "across all of Europe", "airport transfers", "kids & pets welcome"],
+    checkmarks: [
+      "across Belarus & Europe",
+      "across all of Europe",
+      "airport transfers",
+      "kids & pets welcome",
+    ],
     cta: "Book a Transfer",
     ctaSecondary: "See Rates",
   },
@@ -489,16 +723,41 @@ const en: Translations = {
     toastTitle: "Request sent!",
     toastDesc: "Our manager will contact you shortly.",
     popularDestsLabel: "Popular destinations",
-    popularDests: ["Minsk, Belarus", "Minsk Airport (MSQ)", "Vilnius, Lithuania", "Warsaw, Poland", "Riga, Latvia", "Brest, Belarus", "Grodno, Belarus", "Vitebsk, Belarus"],
+    popularDests: [
+      "Minsk, Belarus",
+      "Minsk Airport (MSQ)",
+      "Vilnius, Lithuania",
+      "Warsaw, Poland",
+      "Riga, Latvia",
+      "Brest, Belarus",
+      "Grodno, Belarus",
+      "Vitebsk, Belarus",
+    ],
   },
   services: {
     label: "Our Services",
     heading: "Routes of Comfort",
     items: [
-      { title: "Airport Transfer", description: "Individual and group. Fixed price. Pre-booking available. Child seats. Meet & greet with name board." },
-      { title: "Groups / Delegations up to 8", description: "Transfers and excursions. Spacious minivans (8 seats) with large luggage compartments." },
-      { title: "Trips in Minsk & Belarus", description: "Hourly rate in the city, per-kilometer rate between cities. Sedans and minivans for any road." },
-      { title: "Trips Across Europe (Lithuania, Latvia, Poland)", description: "Choose from a wide range of vehicle classes. Comfortable border crossing included." },
+      {
+        title: "Airport Transfer",
+        description:
+          "Individual and group. Fixed price. Pre-booking available. Child seats. Meet & greet with name board.",
+      },
+      {
+        title: "Groups / Delegations up to 8",
+        description:
+          "Transfers and excursions. Spacious minivans (8 seats) with large luggage compartments.",
+      },
+      {
+        title: "Trips in Minsk & Belarus",
+        description:
+          "Hourly rate in the city, per-kilometer rate between cities. Sedans and minivans for any road.",
+      },
+      {
+        title: "Trips Across Europe (Lithuania, Latvia, Poland)",
+        description:
+          "Choose from a wide range of vehicle classes. Comfortable border crossing included.",
+      },
     ],
   },
   fleet: {
@@ -523,27 +782,123 @@ const en: Translations = {
       {
         name: "Minsk → Airport",
         plans: [
-          { name: "Sedan — Economy", price: "On request", features: ["Meet & greet with board", "Luggage assistance", "Child seat on request", "Wait for delayed flights"] },
-          { name: "Comfort", price: "On request", popular: true, features: ["Meet & greet with board", "Luggage assistance", "In-car Wi-Fi", "Water for passengers"] },
-          { name: "Business", price: "On request", features: ["Mercedes E-Class", "Meet & greet with board", "In-car Wi-Fi", "Water for passengers"] },
-          { name: "Minivan (up to 6 pax)", price: "On request", features: ["Kia Carnival", "Meet & greet with board", "Ample luggage space", "Child seat on request"] },
-          { name: "Minibus (up to 8 pax)", price: "On request", features: ["Fiat Scudo", "Meet & greet with board", "Suitable for groups", "Child seats on request"] },
+          {
+            name: "Sedan — Economy",
+            price: "On request",
+            features: [
+              "Meet & greet with board",
+              "Luggage assistance",
+              "Child seat on request",
+              "Wait for delayed flights",
+            ],
+          },
+          {
+            name: "Comfort",
+            price: "On request",
+            popular: true,
+            features: [
+              "Meet & greet with board",
+              "Luggage assistance",
+              "In-car Wi-Fi",
+              "Water for passengers",
+            ],
+          },
+          {
+            name: "Business",
+            price: "On request",
+            features: [
+              "Mercedes E-Class",
+              "Meet & greet with board",
+              "In-car Wi-Fi",
+              "Water for passengers",
+            ],
+          },
+          {
+            name: "Minivan (up to 6 pax)",
+            price: "On request",
+            features: [
+              "Kia Carnival",
+              "Meet & greet with board",
+              "Ample luggage space",
+              "Child seat on request",
+            ],
+          },
+          {
+            name: "Minibus (up to 8 pax)",
+            price: "On request",
+            features: [
+              "Fiat Scudo",
+              "Meet & greet with board",
+              "Suitable for groups",
+              "Child seats on request",
+            ],
+          },
         ],
       },
       {
         name: "Minsk → Vilnius",
         plans: [
-          { name: "Sedan", price: "On request", features: ["Door-to-door service", "Luggage assistance", "Wait for delays"] },
-          { name: "Minivan", price: "On request", popular: true, features: ["Kia Carnival, up to 5 pax", "Door-to-door service", "Ample luggage space"] },
-          { name: "Business", price: "On request", features: ["Mercedes E-Class", "Door-to-door service", "In-car Wi-Fi"] },
+          {
+            name: "Sedan",
+            price: "On request",
+            features: [
+              "Door-to-door service",
+              "Luggage assistance",
+              "Wait for delays",
+            ],
+          },
+          {
+            name: "Minivan",
+            price: "On request",
+            popular: true,
+            features: [
+              "Kia Carnival, up to 5 pax",
+              "Door-to-door service",
+              "Ample luggage space",
+            ],
+          },
+          {
+            name: "Business",
+            price: "On request",
+            features: [
+              "Mercedes E-Class",
+              "Door-to-door service",
+              "In-car Wi-Fi",
+            ],
+          },
         ],
       },
       {
         name: "Minsk → Warsaw",
         plans: [
-          { name: "Sedan", price: "On request", features: ["Door-to-door service", "Luggage assistance", "Wait for delays"] },
-          { name: "Business", price: "On request", features: ["Mercedes E-Class", "Door-to-door service", "In-car Wi-Fi"] },
-          { name: "Minivan", price: "On request", popular: true, features: ["Kia Carnival, up to 5 pax", "Door-to-door service", "Ample luggage space"] },
+          {
+            name: "Sedan",
+            price: "On request",
+            features: [
+              "Door-to-door service",
+              "Luggage assistance",
+              "Wait for delays",
+            ],
+          },
+          {
+            name: "Business",
+            price: "On request",
+            features: [
+              "Mercedes E-Class",
+              "Door-to-door service",
+              "In-car Wi-Fi",
+            ],
+          },
+          {
+            name: "Minivan",
+            price: "On request",
+            popular: true,
+            features: [
+              "Kia Carnival, up to 5 pax",
+              "Door-to-door service",
+              "Ample luggage space",
+            ],
+          },
         ],
       },
     ],
@@ -552,37 +907,114 @@ const en: Translations = {
     label: "Why ComfortLine",
     heading: "Impeccable service every ride",
     items: [
-      { title: "Full range of vehicles", description: "Economy and comfort sedans, minivans up to 8 seats. We will find the right car for your needs." },
-      { title: "Always on time", description: "Our manager coordinates the entire process. Your car arrives exactly on schedule." },
-      { title: "Professional drivers", description: "Polite, experienced, and knowledgeable. Business attire available on request." },
-      { title: "Pre-booking & same-day", description: "Accept advance bookings and urgent orders with at least 5 hours' notice." },
-      { title: "Passengers insured", description: "Your safety is our priority. The life and health of every passenger is insured for the journey." },
-      { title: "Flexible rates", description: "Fixed prices on popular routes and special terms for regular corporate clients." },
+      {
+        title: "Full range of vehicles",
+        description:
+          "Economy and comfort sedans, minivans up to 8 seats. We will find the right car for your needs.",
+      },
+      {
+        title: "Always on time",
+        description:
+          "Our manager coordinates the entire process. Your car arrives exactly on schedule.",
+      },
+      {
+        title: "Professional drivers",
+        description:
+          "Polite, experienced, and knowledgeable. Business attire available on request.",
+      },
+      {
+        title: "Pre-booking & same-day",
+        description:
+          "Accept advance bookings and urgent orders with at least 5 hours' notice.",
+      },
+      {
+        title: "Passengers insured",
+        description:
+          "Your safety is our priority. The life and health of every passenger is insured for the journey.",
+      },
+      {
+        title: "Flexible rates",
+        description:
+          "Fixed prices on popular routes and special terms for regular corporate clients.",
+      },
     ],
   },
   reviews: {
     label: "Reviews",
     heading: "What our clients say",
     items: [
-      { name: "Alexandra", city: "Minsk", text: "We took a group excursion to Dudutki. The driver arrived 15 minutes early. The car was spotless. Thank you for the outstanding level of service!" },
-      { name: "Evgeny", city: "Moscow", text: "We came to Minsk as a group of 6. Used ComfortLine — they met us at the airport with a name board, got us to the hotel quickly. Excellent transfer." },
-      { name: "Julia", city: "Molodechno", text: "Family trip to Egypt — three kids and lots of luggage. The minivan was spacious and comfortable. Couldn't have managed without this service. Thank you!" },
-      { name: "Dmitry", city: "Grodno", text: "Booked a transfer from Minsk to Vilnius. The driver was on time, the ride was smooth and quiet. Great service — I've already recommended ComfortLine to my colleagues." },
-      { name: "Natalia", city: "Brest", text: "Coming back from Warsaw with a lot of luggage. The driver helped with everything, the car was spacious. The border crossing was quick and well organized." },
-      { name: "Sergei", city: "Warsaw", text: "Had an early flight from Minsk — booked the airport transfer the day before. Everything went perfectly: arrived on time, driver knew the terminal, got there with time to spare." },
-      { name: "Victoria", city: "Minsk", text: "Business trip to Vilnius. I worked on my laptop the entire way — quiet, Wi-Fi worked. A completely different experience compared to regular taxis." },
-      { name: "Andrew", city: "Vilnius", text: "Ordered a transfer for my elderly parents from Minsk to the airport. They loved it — the driver helped with bags and was patient and kind. Very grateful!" },
-      { name: "Tatiana", city: "Minsk", text: "Treated my husband to a business-class ride for his birthday. The car was stunning, the greeting was personal. It really made an impression." },
-      { name: "Igor", city: "Gomel", text: "Corporate transfer for a delegation of 8. Two cars showed up simultaneously, no one waited. Very professional approach — highly recommended for business travel." },
-      { name: "Olga", city: "Minsk", text: "I've been using ComfortLine for over a year — meetings, airport runs, occasional city rides. Reliable every single time. Not a single delay in all that time." },
-      { name: "Max", city: "Moscow", text: "Flew into Minsk for a conference. Was met right at the exit, luggage handled, water already in the car. Genuinely impressed by the level of service." },
-      { name: "Elena", city: "Brest", text: "The Poland–Minsk transfer with border crossing worried me, but everything was arranged perfectly. The driver stayed in touch the whole way. Arrived on time, stress-free." },
+      {
+        name: "Alexandra",
+        city: "Minsk",
+        text: "We took a group excursion to Dudutki. The driver arrived 15 minutes early. The car was spotless. Thank you for the outstanding level of service!",
+      },
+      {
+        name: "Evgeny",
+        city: "Moscow",
+        text: "We came to Minsk as a group of 6. Used ComfortLine — they met us at the airport with a name board, got us to the hotel quickly. Excellent transfer.",
+      },
+      {
+        name: "Julia",
+        city: "Molodechno",
+        text: "Family trip to Egypt — three kids and lots of luggage. The minivan was spacious and comfortable. Couldn't have managed without this service. Thank you!",
+      },
+      {
+        name: "Dmitry",
+        city: "Grodno",
+        text: "Booked a transfer from Minsk to Vilnius. The driver was on time, the ride was smooth and quiet. Great service — I've already recommended ComfortLine to my colleagues.",
+      },
+      {
+        name: "Natalia",
+        city: "Brest",
+        text: "Coming back from Warsaw with a lot of luggage. The driver helped with everything, the car was spacious. The border crossing was quick and well organized.",
+      },
+      {
+        name: "Sergei",
+        city: "Warsaw",
+        text: "Had an early flight from Minsk — booked the airport transfer the day before. Everything went perfectly: arrived on time, driver knew the terminal, got there with time to spare.",
+      },
+      {
+        name: "Victoria",
+        city: "Minsk",
+        text: "Business trip to Vilnius. I worked on my laptop the entire way — quiet, Wi-Fi worked. A completely different experience compared to regular taxis.",
+      },
+      {
+        name: "Andrew",
+        city: "Vilnius",
+        text: "Ordered a transfer for my elderly parents from Minsk to the airport. They loved it — the driver helped with bags and was patient and kind. Very grateful!",
+      },
+      {
+        name: "Tatiana",
+        city: "Minsk",
+        text: "Treated my husband to a business-class ride for his birthday. The car was stunning, the greeting was personal. It really made an impression.",
+      },
+      {
+        name: "Igor",
+        city: "Gomel",
+        text: "Corporate transfer for a delegation of 8. Two cars showed up simultaneously, no one waited. Very professional approach — highly recommended for business travel.",
+      },
+      {
+        name: "Olga",
+        city: "Minsk",
+        text: "I've been using ComfortLine for over a year — meetings, airport runs, occasional city rides. Reliable every single time. Not a single delay in all that time.",
+      },
+      {
+        name: "Max",
+        city: "Moscow",
+        text: "Flew into Minsk for a conference. Was met right at the exit, luggage handled, water already in the car. Genuinely impressed by the level of service.",
+      },
+      {
+        name: "Elena",
+        city: "Brest",
+        text: "The Poland–Minsk transfer with border crossing worried me, but everything was arranged perfectly. The driver stayed in touch the whole way. Arrived on time, stress-free.",
+      },
     ],
   },
   instagram: {
     label: "Follow us on Instagram",
     heading: "Our clients on the road",
-    subheading: "Real photos from our transfers — vehicles, routes and moments en route. Follow us to see the latest trips.",
+    subheading:
+      "Real photos from our transfers — vehicles, routes and moments en route. Follow us to see the latest trips.",
     cta: "Open @transfer_comfortline",
     profileUrl: "https://www.instagram.com/transfer_comfortline/",
     loadMore: "Show more",
@@ -591,7 +1023,8 @@ const en: Translations = {
   contact: {
     label: "Get in Touch",
     heading: "Book a Transfer",
-    subheading: "Use the booking form above or contact us directly — our manager will confirm the details and arrange your trip. We operate around the clock.",
+    subheading:
+      "Use the booking form above or contact us directly — our manager will confirm the details and arrange your trip. We operate around the clock.",
     phone: "Phone",
     email: "Email",
     address: "Address",
@@ -612,14 +1045,18 @@ const en: Translations = {
     tripadvisor: "Tripadvisor",
   },
   footer: {
-    tagline: "Individual transfer across Belarus and Europe. Operating since 2015.",
+    tagline:
+      "Individual transfer across Belarus and Europe. Operating since 2015.",
     navHeading: "Navigation",
     navLinks: ["Services", "Fleet", "Why Us", "Reviews"],
     servicesHeading: "Routes",
     serviceLinks: [
       { label: "Minsk — Vilnius (VNO)", href: "/minsk-vilnius-airport" },
       { label: "Minsk — Warsaw (WAW)", href: "/minsk-warsaw-airport" },
-      { label: "Minsk — Warsaw (Modlin)", href: "/minsk-warsaw-modlin-airport" },
+      {
+        label: "Minsk — Warsaw (Modlin)",
+        href: "/minsk-warsaw-modlin-airport",
+      },
       { label: "Minsk — Kaunas (KUN)", href: "/minsk-kaunas-airport" },
       { label: "Minsk — Riga (RIX)", href: "/minsk-riga-airport" },
       { label: "Berlin transfer", href: "/berlin-transfer" },
@@ -646,14 +1083,435 @@ const en: Translations = {
   },
 };
 
+const pl: Translations = {
+  ...en,
+  lang: "en",
+  nav: {
+    services: "Usługi",
+    fleet: "Flota",
+    prices: "Ceny",
+    advantages: "Dlaczego my",
+    reviews: "Opinie",
+    contacts: "Kontakt",
+    faq: "FAQ",
+  },
+  hero: {
+    ...en.hero,
+    badge: "Zawsze na czas. Działamy od 2015 roku.",
+    headline1: "Prywatne i indywidualne transfery z Mińska",
+    headline2: "",
+    checkmarks: [
+      "Białoruś i Europa",
+      "Transfery lotniskowe",
+      "Stała cena",
+      "Dzieci i zwierzęta mile widziane",
+    ],
+    cta: "Zarezerwuj transfer",
+    ctaSecondary: "Sprawdź ceny",
+  },
+  booking: {
+    ...en.booking,
+    from: "Skąd",
+    fromPlaceholder: "Miasto / lotnisko",
+    to: "Dokąd",
+    toPlaceholder: "Miasto / lotnisko",
+    date: "Data podróży",
+    datePlaceholder: "Wybierz datę",
+    passengersClass: "Pasażerowie, klasa",
+    adults: "Dorośli",
+    children: "Dzieci",
+    babies: "Niemowlęta",
+    pets: "Zwierzęta",
+    suitcases: "Liczba walizek",
+    vehicleClass: "Klasa pojazdu",
+    classAny: "Dowolna",
+    classComfort: "Komfort",
+    classBusiness: "Biznes",
+    classPremium: "Premium",
+    apply: "Zastosuj",
+    cta: "Zarezerwuj transfer",
+    toastTitle: "Zapytanie wysłane!",
+    toastDesc: "Nasz menedżer wkrótce się skontaktuje.",
+    popularDestsLabel: "Popularne kierunki",
+  },
+  modal: {
+    ...en.modal,
+    title: "Rezerwacja transferu",
+    contactHeading: "Dane kontaktowe",
+    contactSubtext: "Zostaw dane, a nasz menedżer potwierdzi szczegóły.",
+    name: "Imię",
+    email: "E-mail",
+    phone: "Telefon",
+    comment: "Komentarz",
+    privacyText: "Akceptuję",
+    privacyLink: "politykę prywatności",
+    privacyAnd: "i",
+    termsLink: "warunki usługi",
+    submit: "Zamów transfer",
+    step1Title: "Wybierz trasę",
+    step2Title: "Dokończ rezerwację",
+    selectPlan: "Wybierz",
+    back: "Wstecz",
+    planLabel: "Taryfa",
+  },
+  services: {
+    ...en.services,
+    label: "Nasze usługi",
+    heading: "Kierunki podróży",
+    items: [
+      {
+        title: "Transfery lotniskowe",
+        description:
+          "Prywatny odbiór, stała cena i punktualny dojazd do terminalu.",
+      },
+      {
+        title: "Grupy do 8 osób",
+        description: "Przestronne minivany dla rodzin, delegacji i grup.",
+      },
+      {
+        title: "Mińsk i Białoruś",
+        description: "Przejazdy miejskie i międzymiastowe.",
+      },
+      {
+        title: "Europa",
+        description: "Litwa, Łotwa, Polska i inne kraje Europy.",
+      },
+    ],
+  },
+  fleet: {
+    ...en.fleet,
+    label: "Flota",
+    heading: "Nasze samochody",
+    filterAll: "Wszystkie",
+    book: "Zarezerwuj",
+    seats: "Miejsca",
+    trunk: "Bagaż",
+    airportLabel: "Transfer lotniskowy",
+    from: "od",
+    perHour: "godz.",
+  },
+  advantages: {
+    ...en.advantages,
+    label: "Dlaczego ComfortLine",
+    heading: "Komfort w każdej podróży",
+    items: [
+      {
+        title: "Dopasowany pojazd",
+        description: "Sedany, auta biznesowe i minivany do 8 osób.",
+      },
+      {
+        title: "Zawsze na czas",
+        description: "Kierowca przyjeżdża o ustalonej godzinie.",
+      },
+      {
+        title: "Doświadczeni kierowcy",
+        description: "Profesjonalna obsługa i znajomość tras granicznych.",
+      },
+      {
+        title: "Rezerwacja 24/7",
+        description: "Przyjmujemy rezerwacje z wyprzedzeniem i pilne zlecenia.",
+      },
+      {
+        title: "Ubezpieczeni pasażerowie",
+        description: "Bezpieczeństwo podczas całej podróży.",
+      },
+      {
+        title: "Stałe ceny",
+        description: "Cena uzgodniona przed wyjazdem bez ukrytych opłat.",
+      },
+    ],
+  },
+  reviews: {
+    ...en.reviews,
+    label: "Opinie",
+    heading: "Co mówią klienci",
+    items: [
+      {
+        name: "Aleksandra",
+        city: "Mińsk",
+        text: "Kierowca przyjechał wcześniej, a samochód był czysty i komfortowy.",
+      },
+      {
+        name: "Dmitrij",
+        city: "Grodno",
+        text: "Transfer Mińsk–Wilno przebiegł punktualnie i bez stresu.",
+      },
+      {
+        name: "Natalia",
+        city: "Brześć",
+        text: "Świetna pomoc z bagażem i bardzo dobra organizacja przejazdu.",
+      },
+    ],
+  },
+  instagram: {
+    ...en.instagram,
+    label: "Instagram",
+    heading: "Podróże naszych klientów",
+    subheading: "Prawdziwe zdjęcia z transferów, samochodów i tras.",
+    cta: "Otwórz @transfer_comfortline",
+    loadMore: "Pokaż więcej",
+    viewOnInstagram: "Zobacz post na Instagramie",
+  },
+  contact: {
+    ...en.contact,
+    label: "Kontakt",
+    heading: "Zarezerwuj transfer",
+    subheading:
+      "Wypełnij formularz lub skontaktuj się bezpośrednio. Pracujemy całodobowo.",
+    phone: "Telefon",
+    email: "E-mail",
+    address: "Adres",
+    licensing: {
+      ...en.contact.licensing,
+      badge: "Licencjonowany przewoźnik",
+      heading: "Informacje o licencji",
+    },
+  },
+  reviewLinks: { ...en.reviewLinks, heading: "Dodaj opinię" },
+  footer: {
+    ...en.footer,
+    tagline:
+      "Prywatne transfery po Białorusi i Europie. Działamy od 2015 roku.",
+    navHeading: "Nawigacja",
+    navLinks: ["Usługi", "Flota", "Dlaczego my", "Opinie"],
+    servicesHeading: "Trasy",
+    serviceLinks: en.footer.serviceLinks.map((x, i) => ({
+      ...x,
+      href:
+        [
+          "/pl/transfer-minsk-lotnisko-wilno",
+          "/pl/transfer-minsk-lotnisko-chopina",
+          "/pl/transfer-minsk-lotnisko-modlin",
+          "/pl/transfer-minsk-lotnisko-kowno",
+          "/pl/transfer-minsk-lotnisko-ryga",
+        ][i] || "/pl",
+    })),
+    blogLabel: "Blog",
+    blogHref: "/blog",
+    faqLabel: "FAQ",
+    faqHref: "/en/faq",
+    contactsHeading: "Kontakt",
+    copyright: "Wszelkie prawa zastrzeżone.",
+    privacyPolicy: "Polityka prywatności",
+    terms: "Warunki usługi",
+  },
+};
+
+const fr: Translations = {
+  ...pl,
+  lang: "en",
+  nav: {
+    services: "Services",
+    fleet: "Véhicules",
+    prices: "Tarifs",
+    advantages: "Pourquoi nous",
+    reviews: "Avis",
+    contacts: "Contact",
+    faq: "FAQ",
+  },
+  hero: {
+    ...pl.hero,
+    badge: "Toujours à l’heure. Depuis 2015.",
+    headline1: "Transferts privés et individuels depuis Minsk",
+    checkmarks: [
+      "Biélorussie et Europe",
+      "Transferts aéroport",
+      "Tarif fixe",
+      "Enfants et animaux acceptés",
+    ],
+    cta: "Réserver un transfert",
+    ctaSecondary: "Voir les tarifs",
+  },
+  booking: {
+    ...pl.booking,
+    from: "Départ",
+    fromPlaceholder: "Ville / aéroport",
+    to: "Destination",
+    toPlaceholder: "Ville / aéroport",
+    date: "Date du voyage",
+    datePlaceholder: "Choisir une date",
+    passengersClass: "Passagers, catégorie",
+    adults: "Adultes",
+    children: "Enfants",
+    babies: "Bébés",
+    pets: "Animaux",
+    suitcases: "Nombre de valises",
+    vehicleClass: "Catégorie",
+    classAny: "Toutes",
+    classComfort: "Confort",
+    classBusiness: "Affaires",
+    apply: "Appliquer",
+    cta: "Réserver",
+    toastTitle: "Demande envoyée !",
+    toastDesc: "Notre responsable vous contactera prochainement.",
+    popularDestsLabel: "Destinations populaires",
+  },
+  modal: {
+    ...pl.modal,
+    title: "Réservation du transfert",
+    contactHeading: "Coordonnées",
+    contactSubtext: "Laissez vos coordonnées pour confirmer le voyage.",
+    name: "Nom",
+    phone: "Téléphone",
+    comment: "Commentaire",
+    privacyText: "J’accepte la",
+    privacyLink: "politique de confidentialité",
+    privacyAnd: "et les",
+    termsLink: "conditions de service",
+    submit: "Réserver",
+    step1Title: "Choisir l’itinéraire",
+    step2Title: "Finaliser la réservation",
+    selectPlan: "Choisir",
+    back: "Retour",
+    planLabel: "Tarif",
+  },
+  services: {
+    ...pl.services,
+    label: "Nos services",
+    heading: "Destinations",
+    items: [
+      {
+        title: "Transferts aéroport",
+        description:
+          "Prise en charge privée, tarif fixe et arrivée ponctuelle au terminal.",
+      },
+      {
+        title: "Groupes jusqu’à 8 personnes",
+        description: "Minivans spacieux pour familles, délégations et groupes.",
+      },
+      {
+        title: "Minsk et Biélorussie",
+        description: "Trajets urbains et interurbains.",
+      },
+      {
+        title: "Europe",
+        description: "Lituanie, Lettonie, Pologne et autres pays européens.",
+      },
+    ],
+  },
+  fleet: {
+    ...pl.fleet,
+    label: "Véhicules",
+    heading: "Notre flotte",
+    filterAll: "Tous",
+    book: "Réserver",
+    seats: "Places",
+    trunk: "Bagages",
+    from: "à partir de",
+    perHour: "heure",
+  },
+  advantages: {
+    ...pl.advantages,
+    label: "Pourquoi ComfortLine",
+    heading: "Le confort à chaque trajet",
+    items: [
+      {
+        title: "Véhicule adapté",
+        description:
+          "Berlines, véhicules d’affaires et minivans jusqu’à 8 personnes.",
+      },
+      {
+        title: "Toujours à l’heure",
+        description: "Le chauffeur arrive à l’heure convenue.",
+      },
+      {
+        title: "Chauffeurs expérimentés",
+        description:
+          "Service professionnel et maîtrise des itinéraires frontaliers.",
+      },
+      {
+        title: "Réservation 24/7",
+        description: "Réservations anticipées et demandes urgentes.",
+      },
+      {
+        title: "Passagers assurés",
+        description: "Votre sécurité pendant tout le trajet.",
+      },
+      {
+        title: "Tarifs fixes",
+        description: "Prix confirmé avant le départ, sans frais cachés.",
+      },
+    ],
+  },
+  reviews: {
+    ...pl.reviews,
+    label: "Avis",
+    heading: "Ce que disent nos clients",
+    items: [
+      {
+        name: "Alexandra",
+        city: "Minsk",
+        text: "Le chauffeur est arrivé en avance et la voiture était propre et confortable.",
+      },
+      {
+        name: "Dmitri",
+        city: "Grodno",
+        text: "Le transfert Minsk–Vilnius était ponctuel et sans stress.",
+      },
+      {
+        name: "Natalia",
+        city: "Brest",
+        text: "Excellente aide avec les bagages et trajet très bien organisé.",
+      },
+    ],
+  },
+  instagram: {
+    ...pl.instagram,
+    heading: "Les voyages de nos clients",
+    subheading: "Photos réelles de nos transferts, véhicules et itinéraires.",
+    cta: "Ouvrir @transfer_comfortline",
+    loadMore: "Afficher plus",
+    viewOnInstagram: "Voir sur Instagram",
+  },
+  contact: {
+    ...pl.contact,
+    label: "Contact",
+    heading: "Réserver un transfert",
+    subheading:
+      "Remplissez le formulaire ou contactez-nous directement. Service 24h/24.",
+    phone: "Téléphone",
+    address: "Adresse",
+    licensing: {
+      ...pl.contact.licensing,
+      badge: "Transporteur agréé",
+      heading: "Informations sur la licence",
+    },
+  },
+  reviewLinks: { ...pl.reviewLinks, heading: "Laisser un avis" },
+  footer: {
+    ...pl.footer,
+    tagline: "Transferts privés en Biélorussie et en Europe. Depuis 2015.",
+    navHeading: "Navigation",
+    navLinks: ["Services", "Véhicules", "Pourquoi nous", "Avis"],
+    servicesHeading: "Itinéraires",
+    serviceLinks: en.footer.serviceLinks.map((x, i) => ({
+      ...x,
+      href:
+        [
+          "/fr/transfert-minsk-aeroport-vilnius",
+          "/fr/transfert-minsk-aeroport-varsovie-chopin",
+          "/fr/transfert-minsk-aeroport-modlin",
+          "/fr/transfert-minsk-aeroport-kaunas",
+          "/fr/transfert-minsk-aeroport-riga",
+        ][i] || "/fr",
+    })),
+    contactsHeading: "Contact",
+    copyright: "Tous droits réservés.",
+    privacyPolicy: "Confidentialité",
+    terms: "Conditions de service",
+  },
+};
+
 interface LanguageContextType {
   lang: Lang;
+  locale: Locale;
   setLang: (lang: Lang) => void;
   t: Translations;
 }
 
 const LanguageContext = createContext<LanguageContextType>({
   lang: "ru",
+  locale: "ru",
   setLang: () => {},
   t: ru,
 });
@@ -661,21 +1519,36 @@ const LanguageContext = createContext<LanguageContextType>({
 // Takes a decoded path (wouter's useLocation already calls decodeURI on it).
 // window.location.pathname can be percent-encoded in some proxied environments,
 // so we never read it directly for Cyrillic detection.
-function getLangFromPath(path: string): Lang {
+function getLocaleFromPath(path: string): Locale {
   const param =
-    typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("lang") : null;
-  if (param === "en" || param === "ru") return param;
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("lang")
+      : null;
+  if (param === "en" || param === "ru" || param === "pl" || param === "fr")
+    return param;
 
   // Path-based English shell for shared pages (/en, /en/faq, /en/privacy, /en/terms).
   const normalizedForEnCheck = path.replace(/\/+$/, "") || "/";
-  if (normalizedForEnCheck === "/en" || normalizedForEnCheck.startsWith("/en/")) return "en";
+  if (normalizedForEnCheck === "/pl" || normalizedForEnCheck.startsWith("/pl/"))
+    return "pl";
+  if (normalizedForEnCheck === "/fr" || normalizedForEnCheck.startsWith("/fr/"))
+    return "fr";
+  if (normalizedForEnCheck === "/en" || normalizedForEnCheck.startsWith("/en/"))
+    return "en";
 
   // Cyrillic characters in the decoded path → always Russian
   if (/[\u0400-\u04FF]/.test(path)) return "ru";
 
   // Paths that are shared between both languages (same URL) → default Russian
   const normalized = path.replace(/\/+$/, "") || "/";
-  const sharedPaths = ["/", "/faq", "/privacy", "/terms", "/brandbook", "/thank-you"];
+  const sharedPaths = [
+    "/",
+    "/faq",
+    "/privacy",
+    "/terms",
+    "/brandbook",
+    "/thank-you",
+  ];
   if (sharedPaths.includes(normalized)) return "ru";
 
   // Latin-only slug that is not a shared path → English service page or blog
@@ -684,14 +1557,25 @@ function getLangFromPath(path: string): Lang {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [location] = useLocation();
-  const [lang, setLang] = useState<Lang>(() => getLangFromPath(location));
+  const [locale, setLocale] = useState<Locale>(() =>
+    getLocaleFromPath(location),
+  );
+  const lang: Lang = locale === "ru" ? "ru" : "en";
+  const setLang = (next: Lang) => setLocale(next);
 
   useEffect(() => {
-    setLang(getLangFromPath(location));
+    setLocale(getLocaleFromPath(location));
   }, [location]);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t: lang === "ru" ? ru : en }}>
+    <LanguageContext.Provider
+      value={{
+        lang,
+        locale,
+        setLang,
+        t: ({ ru, en, pl, fr } as const)[locale],
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );
