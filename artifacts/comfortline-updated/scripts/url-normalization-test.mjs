@@ -15,6 +15,8 @@ const cases = [
   ["/?lang=en", "/en"],
   ["/riga-transfer?lang=ru", "/трансфер-рига"],
   ["/трансфер-рига?lang=en", "/riga-transfer"],
+  ["/minsk-vilnius-transfer?lang=pl", "/pl/transfer-minsk-wilno"],
+  ["/minsk-vilnius-transfer?lang=fr", "/fr/transfert-minsk-vilnius"],
 ];
 
 for (const [input, expected] of cases) {
