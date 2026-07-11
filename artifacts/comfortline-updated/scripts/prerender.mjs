@@ -440,7 +440,7 @@ async function main() {
 
   const { allRoutes, manualRoutes, autoRoutes, vehicleRoutes, blogIndexRoute, blogArticleRoutes } = collectAllRoutes();
 
-  installJsdomGlobals();
+  const dom = installJsdomGlobals();
   const { vite, SsrApp } = await createSsrModuleLoader();
 
   let ssrFailures = 0;
@@ -460,6 +460,7 @@ async function main() {
   }
 
   await vite.close();
+  dom.window.close();
 
   console.log(
     `[prerender] wrote ${written.length} files for ${allRoutes.length} routes (${manualRoutes.length} manual, ${autoRoutes.length} auto, ${vehicleRoutes.length} vehicle, ${1 + blogArticleRoutes.length} blog):`,
@@ -472,7 +473,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error("[prerender] fatal error:", err);
-  process.exit(1);
-});
+main()
+  .then(() => process.exit(0))
+  .catch((err) => {
+    console.error("[prerender] fatal error:", err);
+    process.exit(1);
+  });
