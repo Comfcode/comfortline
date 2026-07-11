@@ -108,6 +108,8 @@ function Router() {
         <Route path="/блог" component={BlogIndexPage} />
         <Route path="/blog/:slug" component={BlogArticlePage} />
         <Route path="/блог/:slug" component={BlogArticlePage} />
+        <Route path="/pl/blog/:slug" component={BlogArticlePage} />
+        <Route path="/fr/blog/:slug" component={BlogArticlePage} />
 
         <Route path="/mercedes-e-class-transfer" component={VehiclePageMercedes} />
         <Route path="/трансфер-мерседес-е-класс" component={VehiclePageMercedes} />
