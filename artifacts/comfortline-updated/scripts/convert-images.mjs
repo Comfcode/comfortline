@@ -37,7 +37,20 @@ async function main() {
   let totalBefore = 0;
   let totalAfter = 0;
   for (const file of files) {
-    const r = await convertOne(file);
+    let r;
+    try {
+      r = await convertOne(file);
+    } catch (error) {
+      // A legacy source image must not prevent the entire static site from
+      // building when a checked-in WebP counterpart already exists.
+      const base = file.replace(/\.(png|jpg|jpeg)$/i, "");
+      const fallback = path.join(PUBLIC_DIR, base + ".webp");
+      if (fs.existsSync(fallback)) {
+        console.warn(`[webp] keep ${base}.webp; source ${file} could not be decoded`);
+        continue;
+      }
+      throw error;
+    }
     totalBefore += r.before;
     totalAfter += r.after;
     const pct = Math.round((1 - r.after / r.before) * 100);
