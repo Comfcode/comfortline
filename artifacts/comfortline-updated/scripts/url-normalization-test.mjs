@@ -17,6 +17,11 @@ const cases = [
   ["/трансфер-рига?lang=en", "/riga-transfer"],
   ["/minsk-vilnius-transfer?lang=pl", "/pl/transfer-minsk-wilno"],
   ["/minsk-vilnius-transfer?lang=fr", "/fr/transfert-minsk-vilnius"],
+  ["/russia-transfer/", "/belarus-transfer"],
+  ["/blog/стоимость-трансфер-минск-варшава/", "/блог/стоимость-трансфер-минск-варшава"],
+  ["/blog/трансфер-с-детьми/", "/блог/трансфер-с-детьми"],
+  ["/blog/граница-беларусь-литва/", "/блог/граница-беларусь-литва"],
+  ["/blog/какой-кпп-выбрать/", "/блог/какой-кпп-выбрать"],
 ];
 
 for (const [input, expected] of cases) {
