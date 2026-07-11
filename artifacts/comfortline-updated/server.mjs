@@ -245,6 +245,15 @@ export function normalizeRequestUrl(inputUrl) {
   let pathname = inputUrl.pathname;
   if (pathname !== "/" && pathname.endsWith("/")) pathname = pathname.replace(/[/]+$/, "");
 
+  // Legacy URLs seen by Google before the route scheme was finalized.
+  // Send each variant directly to its single indexable destination.
+  const decodedPathname = decodeURIComponent(pathname);
+  if (decodedPathname === "/russia-transfer") pathname = "/belarus-transfer";
+  else if (decodedPathname.startsWith("/blog/")) {
+    const russianBlogPath = decodedPathname.replace(/^\/blog\//, "/блог/");
+    if (BLOG_SLUG_PATHS.has(russianBlogPath)) pathname = russianBlogPath;
+  }
+
   const language = inputUrl.searchParams.get("lang");
   if (["ru", "en", "pl", "fr"].includes(language)) {
     pathname = alternatePathForLanguage(pathname, language) || pathname;
