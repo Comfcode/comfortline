@@ -70,6 +70,7 @@ function installJsdomGlobals() {
 }
 
 async function createSsrModuleLoader() {
+  process.env.PRERENDER_BUILD = "1";
   const vite = await createViteServer({
     root: ROOT,
     configFile: path.join(ROOT, "vite.config.ts"),
@@ -440,14 +441,15 @@ async function main() {
 
   const { allRoutes, manualRoutes, autoRoutes, vehicleRoutes, blogIndexRoute, blogArticleRoutes } = collectAllRoutes();
 
-  const dom = installJsdomGlobals();
-  const { vite, SsrApp } = await createSsrModuleLoader();
-
+  // The complete four-language route graph exceeds the memory available in
+  // Cloudflare's build worker when loaded through Vite SSR. Emit the existing
+  // deterministic crawler shell instead; the client bundle still hydrates the
+  // full React layout for visitors.
   let ssrFailures = 0;
   const written = [];
   for (const route of allRoutes) {
-    const markupRu = renderRouteMarkup(SsrApp, route.pathRu);
-    const markupEn = renderRouteMarkup(SsrApp, route.pathEn);
+    const markupRu = null;
+    const markupEn = null;
     if (!markupRu) ssrFailures++;
     if (!markupEn) ssrFailures++;
     written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute, markupRu)));
@@ -455,12 +457,9 @@ async function main() {
   }
   const priorityLocales=JSON.parse(fs.readFileSync(PRIORITY_LOCALES_PATH,"utf8"));
   for (const route of priorityLocales) for (const lang of ["pl","fr"]) {
-    const markup=renderRouteMarkup(SsrApp,route[lang]); if(!markup) ssrFailures++;
+    const markup=null; if(!markup) ssrFailures++;
     written.push(emit(route[lang],buildPriorityHtml(template,route,lang,markup)));
   }
-
-  await vite.close();
-  dom.window.close();
 
   console.log(
     `[prerender] wrote ${written.length} files for ${allRoutes.length} routes (${manualRoutes.length} manual, ${autoRoutes.length} auto, ${vehicleRoutes.length} vehicle, ${1 + blogArticleRoutes.length} blog):`,
