@@ -17,33 +17,53 @@ export type Block =
 export interface Article {
   slug: string;
   slugEn?: string;
+  slugPl?: string;
+  slugFr?: string;
   titleEn?: string;
+  titlePl?: string;
+  titleFr?: string;
   descriptionEn?: string;
+  descriptionPl?: string;
+  descriptionFr?: string;
   ogSlug: string;
   title: string;
   description: string;
   intro: string;
   introEn?: string;
+  introPl?: string;
+  introFr?: string;
   dateISO: string;
   readingMin: number;
   category: string;
   categoryEn?: string;
+  categoryPl?: string;
+  categoryFr?: string;
   tags: string[];
   body: Block[];
   bodyEn?: Block[];
+  bodyPl?: Block[];
+  bodyFr?: Block[];
   related: string[]; // slugs of related articles
-  ctaRoute?: { label: string; labelEn?: string; path: string }; // internal link to a money page
+  ctaRoute?: { label: string; labelEn?: string; labelPl?: string; labelFr?: string; path: string }; // internal link to a money page
 }
 
 export const BLOG_BASE_RU = "/блог";
 export const BLOG_BASE_EN = "/blog";
+export const BLOG_BASE_PL = "/pl/blog";
+export const BLOG_BASE_FR = "/fr/blog";
 
 export const ARTICLES: Article[] = [
   {
     slug: "граница-беларусь-литва",
     slugEn: "belarus-lithuania-border-crossing-guide",
+    slugPl: "granica-bialorus-litwa-2026",
+    slugFr: "frontiere-bielorussie-lituanie-2026",
     titleEn: "Belarus–Lithuania Border Crossing Guide 2026: Wait Times, Documents & Checkpoints",
+    titlePl: "Granica Białoruś–Litwa w 2026 roku: kolejki, dokumenty i przejścia",
+    titleFr: "Frontière Biélorussie–Lituanie en 2026 : délais, documents et postes",
     descriptionEn: "Everything about crossing the Belarus–Lithuania border in 2026: open checkpoints, typical wait times, required documents and tips from ComfortLine drivers.",
+    descriptionPl: "Przekraczanie granicy Białoruś–Litwa w 2026 roku: otwarte przejścia, czas oczekiwania, wymagane dokumenty i porady kierowców ComfortLine.",
+    descriptionFr: "Tout savoir sur la frontière Biélorussie–Lituanie en 2026 : postes ouverts, délais, documents requis et conseils des chauffeurs ComfortLine.",
     ogSlug: "blog-granitsa-belarus-litva",
     title: "Как пересечь границу Беларусь — Литва в 2026: время, документы, КПП",
     description:
@@ -124,8 +144,12 @@ export const ARTICLES: Article[] = [
       },
     ],
     categoryEn: "Border",
+    categoryPl: "Granica",
+    categoryFr: "Frontière",
     introEn:
       "The Belarus–Lithuania border is our busiest transfer route. Here is everything you need to know for 2026: open checkpoints, average crossing times, required documents, common reasons for refusal and tips from our drivers.",
+    introPl: "Granica Białoruś–Litwa to najczęściej obsługiwana trasa naszych transferów. Zebraliśmy najważniejsze informacje na 2026 rok: czynne przejścia, średni czas odprawy, dokumenty, przyczyny odmowy wjazdu i porady kierowców.",
+    introFr: "La frontière Biélorussie–Lituanie est l’itinéraire le plus fréquent de nos transferts. Voici l’essentiel pour 2026 : postes ouverts, délais moyens, documents, motifs de refus et conseils de nos chauffeurs.",
     bodyEn: [
       { type: "h2", text: "Open Checkpoints in 2026" },
       {
@@ -192,15 +216,53 @@ export const ARTICLES: Article[] = [
         text: "If you need to guarantee you make your flight — book a ComfortLine transfer with a border buffer. Our drivers monitor queue lengths in real time and can switch checkpoints instantly.",
       },
     ],
+    bodyPl: [
+      { type: "h2", text: "Które przejścia graniczne działają w 2026 roku" },
+      { type: "p", text: "Spośród czterech historycznych przejść między Białorusią a Litwą dla samochodów osobowych stabilnie działają Kamienny Łog (Łosza) i Bieniakonie. Kotłówka działa w ograniczonym zakresie, a Ławaryszki są zamknięte dla prywatnych samochodów. Przed wyjazdem należy sprawdzić komunikaty białoruskiego Komitetu Celnego i litewskiej VSAT." },
+      { type: "table", headers: ["Przejście (BY)", "Strona litewska", "Pojazdy", "Średni czas"], rows: [["Kamienny Łog", "Miedniki", "Samochody i autobusy", "2–5 godz."], ["Bieniakonie", "Soleczniki", "Samochody", "3–6 godz."], ["Kotłówka", "Ławaryszki", "Ograniczony ruch", "—"]] },
+      { type: "h2", text: "Dokumenty wymagane przy wjeździe na Litwę" },
+      { type: "ul", items: ["Ważny paszport — co najmniej 3 miesiące po planowanym wyjeździe z UE.", "Wiza Schengen lub karta pobytu w kraju UE.", "Ubezpieczenie medyczne z sumą co najmniej 30 000 €.", "Potwierdzenie celu podróży: rezerwacja hotelu, bilety lub zaproszenie.", "Potwierdzenie środków finansowych — około 50 € dziennie.", "Dla osoby niepełnoletniej podróżującej bez obojga rodziców — zgoda notarialna."] },
+      { type: "h2", text: "Ile trwa przekroczenie granicy" },
+      { type: "p", text: "Granica jest najbardziej nieprzewidywalnym etapem podróży Mińsk–Wilno. Według danych kierowców z lat 2025–2026 odprawa w Kamiennym Łogu w dni robocze trwa zwykle 2,5–4 godziny. W piątkowe wieczory i niedzielne popołudnia czas może wzrosnąć do 6–8 godzin. Bieniakonie są zazwyczaj wolniejsze o 1–1,5 godziny, choć zależy to od zmiany." },
+      { type: "link", href: "https://mon.declarant.by/#/zone", label: "Elektroniczna kolejka — mon.declarant.by", description: "Oficjalny monitoring rejestracji pojazdów w strefach oczekiwania na białoruskich przejściach, aktualizowany w czasie rzeczywistym. Jeśli strona się nie otwiera, spróbuj użyć VPN." },
+      { type: "liveQueue" },
+      { type: "h3", text: "Porady naszych kierowców" },
+      { type: "ul", items: ["Najspokojniej jest we wtorki i środy od 6:00 do 11:00.", "W piątki i niedziele zaplanuj dodatkowe 6 godzin przed odlotem.", "Gdy jedno przejście jest zatłoczone, kierowca może zmienić trasę; przejścia dzieli około 40 minut jazdy.", "Zatankuj na Białorusi — paliwo na Litwie jest droższe o 30–40%.", "Przygotuj wszystkie dokumenty w jednej teczce."] },
+      { type: "h2", text: "Najczęstsze przyczyny odmowy wjazdu" },
+      { type: "ul", items: ["Nieważne lub nieprawidłowe ubezpieczenie.", "Brak potwierdzenia celu podróży albo biletu powrotnego.", "Błędnie wypełniona deklaracja celna.", "Podejrzenie przewozu towarów objętych sankcjami.", "Paszport tracący ważność w ciągu 1–2 miesięcy."] },
+      { type: "callout", text: "Jeżeli musisz zdążyć na lot, zarezerwuj transfer ComfortLine z odpowiednim zapasem na granicę. Kierowcy monitorują kolejki i mogą szybko zmienić przejście." }
+    ],
+    bodyFr: [
+      { type: "h2", text: "Postes-frontières ouverts en 2026" },
+      { type: "p", text: "Parmi les quatre passages historiques entre la Biélorussie et la Lituanie, seuls Kamenny Log (Losha) et Benyakoni fonctionnent régulièrement pour les voitures particulières. Kotlovka est soumis à des restrictions et Lavorishkes est fermé aux véhicules privés. Vérifiez toujours les informations des douanes biélorusses et du VSAT lituanien avant le départ." },
+      { type: "table", headers: ["Poste (BY)", "Côté lituanien", "Véhicules", "Délai moyen"], rows: [["Kamenny Log", "Medininkai", "Voitures et bus", "2–5 h"], ["Benyakoni", "Šalčininkai", "Voitures", "3–6 h"], ["Kotlovka", "Lavorishkes", "Accès limité", "—"]] },
+      { type: "h2", text: "Documents nécessaires pour entrer en Lituanie" },
+      { type: "ul", items: ["Passeport valable au moins trois mois après la sortie prévue de l’UE.", "Visa Schengen ou titre de séjour d’un pays de l’UE.", "Assurance médicale couvrant au moins 30 000 €.", "Justificatif du voyage : réservation d’hôtel, billets ou invitation.", "Preuve de ressources suffisantes — environ 50 € par jour.", "Pour un mineur sans ses deux parents : autorisation parentale notariée."] },
+      { type: "h2", text: "Combien de temps faut-il à la frontière ?" },
+      { type: "p", text: "La frontière est l’étape la plus imprévisible du trajet Minsk–Vilnius. D’après nos chauffeurs en 2025–2026, Kamenny Log prend généralement 2 h 30 à 4 h en semaine. Le vendredi soir et le dimanche après-midi, l’attente peut atteindre 6 à 8 heures. Benyakoni est souvent plus lent de 1 à 1 h 30, selon l’équipe de contrôle." },
+      { type: "link", href: "https://mon.declarant.by/#/zone", label: "File d’attente électronique — mon.declarant.by", description: "Service officiel de suivi en temps réel des véhicules enregistrés dans les zones d’attente des postes biélorusses. Si le site ne s’ouvre pas, essayez avec un VPN." },
+      { type: "liveQueue" },
+      { type: "h3", text: "Conseils de nos chauffeurs" },
+      { type: "ul", items: ["Les périodes les plus calmes sont le mardi et le mercredi de 6 h à 11 h.", "Le vendredi et le dimanche, prévoyez six heures supplémentaires avant votre vol.", "Si un poste est saturé, le chauffeur peut changer d’itinéraire ; les deux passages sont séparés par environ 40 minutes.", "Faites le plein en Biélorussie : le carburant est 30 à 40 % plus cher en Lituanie.", "Regroupez tous vos documents dans une pochette."] },
+      { type: "h2", text: "Motifs fréquents de refus d’entrée" },
+      { type: "ul", items: ["Assurance expirée ou incorrecte.", "Absence de justificatif du voyage ou de billet retour.", "Déclaration douanière incorrecte.", "Soupçon de transport de marchandises sanctionnées.", "Passeport expirant dans un ou deux mois."] },
+      { type: "callout", text: "Si vous devez absolument prendre votre vol, réservez un transfert ComfortLine avec une marge suffisante. Nos chauffeurs suivent les files en temps réel et peuvent changer rapidement de poste." }
+    ],
     related: ["какой-кпп-выбрать", "что-нельзя-ввозить-в-ес", "как-добраться-до-аэропорта-вильнюса"],
-    ctaRoute: { label: "Заказать трансфер Минск — Вильнюс (VNO)", labelEn: "Book Minsk–Vilnius (VNO) transfer", path: "/трансфер-минск-вильнюс-аэропорт" },
+    ctaRoute: { label: "Заказать трансфер Минск — Вильнюс (VNO)", labelEn: "Book Minsk–Vilnius (VNO) transfer", labelPl: "Zarezerwuj transfer Mińsk–Wilno (VNO)", labelFr: "Réserver le transfert Minsk–Vilnius (VNO)", path: "/трансфер-минск-вильнюс-аэропорт" },
   },
 
   {
     slug: "стоимость-трансфер-минск-варшава",
     slugEn: "minsk-warsaw-transfer-price-2026",
+    slugPl: "cena-transferu-minsk-warszawa-2026",
+    slugFr: "prix-transfert-minsk-varsovie-2026",
     titleEn: "Minsk to Warsaw Transfer Price 2026: Fixed Costs, Inclusions & Booking",
+    titlePl: "Cena transferu Mińsk–Warszawa w 2026 roku: koszty i rezerwacja",
+    titleFr: "Prix du transfert Minsk–Varsovie en 2026 : tarifs et réservation",
     descriptionEn: "How much does a private transfer from Minsk to Warsaw cost in 2026? Fixed prices by car type, what's included, border tips, and how to book.",
+    descriptionPl: "Ile kosztuje prywatny transfer z Mińska do Warszawy w 2026 roku? Stałe ceny według klasy auta, zakres usługi, granica i rezerwacja.",
+    descriptionFr: "Combien coûte un transfert privé de Minsk à Varsovie en 2026 ? Tarifs fixes selon le véhicule, services inclus, frontière et réservation.",
     ogSlug: "blog-stoimost-transfer-minsk-varshava",
     title: "Сколько стоит трансфер Минск — Варшава в 2026",
     description:
@@ -269,8 +331,12 @@ export const ARTICLES: Article[] = [
       },
     ],
     categoryEn: "Pricing",
+    categoryPl: "Ceny",
+    categoryFr: "Tarifs",
     introEn:
       "A Minsk–Warsaw transfer covers 550–600 km including a border crossing. The price depends less on distance and more on car class, time of day and season. Here is how it all adds up.",
+    introPl: "Transfer Mińsk–Warszawa obejmuje 550–600 km i przekroczenie granicy. Cena zależy nie tylko od odległości, ale także od klasy samochodu, pory dnia i sezonu. Wyjaśniamy, z czego składa się koszt podróży.",
+    introFr: "Le transfert Minsk–Varsovie représente 550 à 600 km avec un passage de frontière. Le tarif dépend de la catégorie du véhicule, de l’heure et de la saison autant que de la distance. Voici comment il est calculé.",
     bodyEn: [
       { type: "h2", text: "What Makes Up the Price" },
       {
@@ -326,15 +392,45 @@ export const ARTICLES: Article[] = [
         text: "Want an exact price for your dates? Send us a request — our manager will reply with a quote shortly.",
       },
     ],
+    bodyPl: [
+      { type: "h2", text: "Co składa się na cenę" },
+      { type: "ul", items: ["Paliwo w obie strony — zużycie zależy od klasy samochodu.", "Czas pracy kierowcy: 8–12 godzin jazdy oraz oczekiwanie na granicy.", "Opłaty drogowe i płatne odcinki w Polsce.", "Eksploatacja samochodu na długiej trasie.", "Postój podczas odprawy granicznej."] },
+      { type: "h2", text: "Porównanie klas samochodów" },
+      { type: "table", headers: ["Klasa", "Samochód", "Pasażerowie", "Cena"], rows: [["Ekonomiczna", "VW Polo / Renault Logan", "do 3", "Na zapytanie"], ["Komfort", "VW Passat / Skoda Octavia", "do 3", "Na zapytanie"], ["Biznes", "Mercedes Klasy E", "do 3", "Na zapytanie"], ["Minivan", "Hyundai Palisade / Kia Carnival", "do 4–5", "Na zapytanie"], ["Mikrobus", "Fiat Scudo i podobne", "do 8", "Na zapytanie"]] },
+      { type: "p", text: "Ostateczna cena zależy od adresu odbioru w Mińsku, wybranego lotniska w Warszawie — Chopina lub Modlin — sezonu i pory dnia. Ceny ComfortLine są stałe: płacisz kwotę potwierdzoną przez menedżera, bez taksometru i dopłat za korki. Dokładną wycenę otrzymasz po wysłaniu zapytania." },
+      { type: "h2", text: "Kiedy transfer kosztuje więcej" },
+      { type: "ul", items: ["Święta i terminy o zwiększonym ruchu, w tym Nowy Rok, majówka i polskie święta państwowe.", "Przejazd nocny z odbiorem między 23:00 a 06:00.", "Pilna rezerwacja dokonana mniej niż 12 godzin wcześniej.", "Odbiór poza Mińskiem.", "Dodatkowe przystanki na trasie."] },
+      { type: "h2", text: "Co obejmuje cena ComfortLine" },
+      { type: "ul", items: ["Odbiór spod dowolnego adresu w Mińsku.", "Pomoc kierowcy na granicy i przy bagażu.", "Woda butelkowana w samochodzie.", "Wi-Fi i ładowarki USB.", "Bezpłatny fotelik dziecięcy na życzenie."] },
+      { type: "callout", text: "Chcesz poznać dokładną cenę dla wybranego terminu? Wyślij zapytanie — nasz menedżer wkrótce prześle wycenę." }
+    ],
+    bodyFr: [
+      { type: "h2", text: "Composition du tarif" },
+      { type: "ul", items: ["Carburant pour l’aller-retour, selon la catégorie et la consommation du véhicule.", "Temps du chauffeur : 8 à 12 heures de trajet, plus l’attente à la frontière.", "Péages et routes payantes en Pologne.", "Usure du véhicule sur un long trajet.", "Immobilisation pendant le contrôle frontalier."] },
+      { type: "h2", text: "Comparaison des catégories de véhicules" },
+      { type: "table", headers: ["Catégorie", "Véhicule", "Passagers", "Tarif"], rows: [["Économique", "VW Polo / Renault Logan", "jusqu’à 3", "Sur demande"], ["Confort", "VW Passat / Skoda Octavia", "jusqu’à 3", "Sur demande"], ["Affaires", "Mercedes Classe E", "jusqu’à 3", "Sur demande"], ["Monospace", "Hyundai Palisade / Kia Carnival", "jusqu’à 4–5", "Sur demande"], ["Minibus", "Fiat Scudo ou similaire", "jusqu’à 8", "Sur demande"]] },
+      { type: "p", text: "Le prix final dépend de l’adresse de prise en charge à Minsk, de l’aéroport choisi à Varsovie — Chopin ou Modlin — de la saison et de l’heure. Les tarifs ComfortLine sont fixes : vous payez le montant confirmé par le conseiller, sans compteur ni supplément pour les embouteillages. Nous communiquons le prix exact après votre demande." },
+      { type: "h2", text: "Quand le transfert coûte-t-il plus cher ?" },
+      { type: "ul", items: ["Jours fériés et périodes très demandées, notamment le Nouvel An et les fêtes polonaises.", "Départ de nuit entre 23 h et 6 h.", "Réservation urgente moins de 12 heures avant le départ.", "Prise en charge en dehors de Minsk.", "Arrêts supplémentaires sur l’itinéraire."] },
+      { type: "h2", text: "Ce qui est inclus dans le tarif ComfortLine" },
+      { type: "ul", items: ["Prise en charge à toute adresse à Minsk.", "Assistance du chauffeur à la frontière et pour les bagages.", "Eau en bouteille dans le véhicule.", "Wi-Fi et prises USB.", "Siège enfant gratuit sur demande."] },
+      { type: "callout", text: "Vous souhaitez un prix précis pour vos dates ? Envoyez une demande : notre conseiller vous transmettra rapidement un devis." }
+    ],
     related: ["граница-беларусь-литва", "что-нельзя-ввозить-в-ес"],
-    ctaRoute: { label: "Заказать трансфер Минск — Варшава Шопен (WAW)", labelEn: "Book Minsk–Warsaw Chopin (WAW) transfer", path: "/трансфер-минск-варшава-шопен" },
+    ctaRoute: { label: "Заказать трансфер Минск — Варшава Шопен (WAW)", labelEn: "Book Minsk–Warsaw Chopin (WAW) transfer", labelPl: "Zarezerwuj transfer Mińsk–Lotnisko Chopina (WAW)", labelFr: "Réserver le transfert Minsk–Varsovie Chopin (WAW)", path: "/трансфер-минск-варшава-шопен" },
   },
 
   {
     slug: "что-нельзя-ввозить-в-ес",
     slugEn: "what-not-to-bring-from-belarus-to-eu",
+    slugPl: "czego-nie-wolno-wwiezc-z-bialorusi-do-ue-2026",
+    slugFr: "produits-interdits-bielorussie-union-europeenne-2026",
     titleEn: "What You Cannot Bring from Belarus into the EU: 2026 Customs Rules & Limits",
+    titlePl: "Czego nie wolno wwozić z Białorusi do UE w 2026 roku: limity celne",
+    titleFr: "Produits interdits de Biélorussie vers l’UE en 2026 : règles douanières",
     descriptionEn: "Full list of prohibited and restricted items when crossing from Belarus to the EU: cash limits, alcohol, tobacco, food, valuables and customs rules explained.",
+    descriptionPl: "Pełna lista towarów zakazanych i ograniczonych przy wjeździe z Białorusi do UE: limity gotówki, alkoholu, tytoniu, żywności i zasady deklarowania.",
+    descriptionFr: "Liste complète des produits interdits ou limités de Biélorussie vers l’UE : espèces, alcool, tabac, aliments, objets de valeur et déclaration.",
     ogSlug: "blog-chto-nelzya-vvozit-v-es",
     title: "Что нельзя ввозить из Беларуси в ЕС в 2026: полный список с лимитами",
     description:
@@ -547,8 +643,12 @@ export const ARTICLES: Article[] = [
       },
     ],
     categoryEn: "Customs",
+    categoryPl: "Cło",
+    categoryFr: "Douane",
     introEn:
       "Lithuania, Poland and Latvia enforce EU sanction rules on entry from Belarus very strictly. Even one extra packet of cigarettes or 200 ml of perfume over the limit can lead to confiscation. Below is the complete list of prohibitions, current limits and advice on how to cross without issues.",
+    introPl: "Litwa, Polska i Łotwa bardzo rygorystycznie stosują unijne sankcje wobec osób przyjeżdżających z Białorusi. Nawet przekroczenie limitu papierosów lub perfum może prowadzić do konfiskaty. Poniżej przedstawiamy zakazy, aktualne limity i praktyczne wskazówki.",
+    introFr: "La Lituanie, la Pologne et la Lettonie appliquent strictement les sanctions européennes aux arrivées depuis la Biélorussie. Un dépassement de la franchise de cigarettes ou de parfum peut entraîner une confiscation. Voici les interdictions, limites et conseils pratiques.",
     bodyEn: [
       { type: "h2", text: "Items Completely Prohibited from Belarus into the EU" },
       {
@@ -732,15 +832,103 @@ export const ARTICLES: Article[] = [
         text: "Rules change: EU sanctions packages are updated several times a year. Check the current limits on the Belarusian customs website and the entry country's customs authority before every trip. ComfortLine drivers monitor updates and will alert you to current restrictions.",
       },
     ],
+    bodyPl: [
+      { type: "h2", text: "Towary całkowicie zakazane przy wwozie z Białorusi do UE" },
+      { type: "p", text: "W ramach sankcji UE poniższych kategorii nie wolno wwozić z Białorusi niezależnie od ilości i wartości:" },
+      { type: "ul", items: ["Benzyna i olej napędowy w kanistrach poza zbiornikiem pojazdu (Litwa 0 l, Polska do 10 l, Łotwa 0 l).", "Wyroby tytoniowe ponad dozwolony limit.", "Sprzęt wojskowy i myśliwski, broń pneumatyczna oraz gaz obronny.", "Leki na receptę w ilości przekraczającej potrzeby osobiste.", "Produkty pochodzenia zwierzęcego: mięso, wędliny, mleko, sery, twaróg i miód.", "Świeże owoce, warzywa, rośliny, nasiona, sadzonki i ziemia.", "Towary objęte sankcjami UE, m.in. wybrane wyroby stalowe, drewno, nawozy potasowe i maszyny.", "Elektronikę o wartości ponad 750 € trzeba zgłosić pisemnie."] },
+      { type: "h2", text: "Limity celne dla podróżnych: Litwa, Polska i Łotwa" },
+      { type: "p", text: "Limity dotyczą dorosłych podróżnych przybywających z państwa trzeciego. Przy podróży krótszej niż 24 godziny mogą obowiązywać niższe normy." },
+      { type: "table", headers: ["Kategoria", "Litwa", "Polska", "Łotwa"], rows: [["Papierosy", "40", "40", "40"], ["Cygaretki do 3 g", "20", "20", "20"], ["Cygara", "10", "10", "10"], ["Tytoń", "50 g", "50 g", "50 g"], ["Alkohol powyżej 22%", "1 l", "1 l", "1 l"], ["Wino niemusujące", "4 l", "4 l", "4 l"], ["Piwo", "16 l", "16 l", "16 l"], ["Perfumy", "50 ml", "50 ml", "50 ml"], ["Woda toaletowa", "250 ml", "250 ml", "250 ml"], ["Towary i prezenty", "do 300 €", "do 300 €", "do 300 €"], ["Paliwo w kanistrze", "0 l", "do 10 l", "0 l"]] },
+      { type: "callout", text: "Limitów nie można wymieniać między kategoriami: rezygnacja z papierosów nie zwiększa limitu mocnego alkoholu." },
+      { type: "h2", text: "Bezcłowy wwóz na Białoruś" },
+      { type: "p", text: "Przy wjeździe transportem lądowym lub pieszo od 1 kwietnia 2024 r. można bez cła wwieźć na osobę dorosłą towary o wartości do 500 € i wadze do 25 kg." },
+      { type: "table", headers: ["Sposób wjazdu", "Wartość", "Waga"], rows: [["Transport lądowy / pieszo", "do 500 €", "do 25 kg"], ["Samolot", "do 10 000 €", "do 50 kg"], ["Dostawa przewoźnikiem", "do 200 €", "do 31 kg"], ["Przesyłka międzynarodowa", "do 200 €", "do 31 kg brutto"]] },
+      { type: "p", text: "Niezależnie od sposobu wjazdu limit tytoniu wynosi 200 papierosów, 50 cygar lub cygaretek, 200 wkładów do podgrzewania albo 250 g tytoniu. Alkoholu powyżej 0,5% można przewieźć do 3 l. Limity obowiązują od 18. roku życia." },
+      { type: "p", text: "Przekroczenie limitu przy wjeździe lądowym podlega opłacie 30% nadwyżki, nie mniej niż 4 € za kilogram. Dla przesyłek stawka wynosi 15%, nie mniej niż 2 € za kilogram. Za alkohol od 3 do 5 l pobiera się 10 € za każdy litr ponad limit. Ilości handlowe są odprawiane oddzielnie." },
+      { type: "link", href: "https://www.customs.gov.by/fizicheskim-litsam/besposhlinnyy-vvoz-vyvoz-tovarov-dlya-lichnogo-polzovaniya/", label: "Białoruski Komitet Celny — bezcłowy wwóz i wywóz", description: "Oficjalne limity wartości, wagi i ilości towarów osobistych" },
+      { type: "link", href: "https://www.customs.gov.by/fizicheskim-litsam/vvoz-tovarov-dlya-lichnogo-polzovaniya-s-uplatoy-tamozhennykh-platezhey/", label: "Białoruski Komitet Celny — wwóz z opłatami", description: "Oficjalne stawki dla towarów przekraczających limity" },
+      { type: "h2", text: "Gotówka i obowiązek deklaracji" },
+      { type: "p", text: "Wywóz gotówki z Białorusi i jej wwóz do UE regulują oddzielnie przepisy białoruskie i przepisy kraju wjazdu." },
+      { type: "h3", text: "Wywóz gotówki z Białorusi" },
+      { type: "ul", items: ["Do 10 000 USD lub równowartości — bez deklaracji.", "Powyżej 10 000 USD — obowiązkowa deklaracja pisemna.", "Niezadeklarowana nadwyżka może zostać skonfiskowana.", "Biżuteria osobista, karty bankowe i czeki podróżne nie wchodzą do limitu gotówki."] },
+      { type: "h3", text: "Wwóz gotówki do UE" },
+      { type: "ul", items: ["Do 10 000 € lub równowartości — bez deklaracji.", "Powyżej 10 000 € — obowiązkowa unijna deklaracja środków pieniężnych.", "Deklarację składa się organom celnym kraju wjazdu.", "Ukrycie nadwyżki grozi grzywną i konfiskatą."] },
+      { type: "link", href: "https://www.customs.by/deklarirovaniye", label: "Białoruski Komitet Celny — zasady deklarowania", description: "Aktualne limity gotówki, biżuterii i towarów" },
+      { type: "h2", text: "Przesyłki i zakupy internetowe" },
+      { type: "p", text: "Dla paczek kurierskich i zakupów z platform internetowych obowiązują zasady dotyczące przesyłek międzynarodowych." },
+      { type: "ul", items: ["Towary z państw EUG traktuje się na granicy Białoruś–UE jak pochodzące z państwa trzeciego.", "Unijny próg zwolnienia z cła wynosi do 150 € na przesyłkę; powyżej nalicza się cło i VAT.", "Wiele identycznych produktów może zostać uznane za ładunek handlowy.", "Aktualne zasady kontroli publikuje białoruska administracja celna."] },
+      { type: "link", href: "https://customs.gov.by/participants-ved/perevozchikam/informatsiya-o-provedenii-kontrolya-mezhdunarodnykh-pochtovykh-otpravleniy-i-tovarov-sleduyushchikh-/", label: "Kontrola przesyłek międzynarodowych", description: "Oficjalne informacje o procedurach celnych" },
+      { type: "h2", text: "Co sprawdzają służby graniczne" },
+      { type: "ul", items: ["Zbiornik paliwa i kanistry.", "Liczbę papierosów i oznaczenia akcyzowe.", "Ilość alkoholu i banderole.", "Wartość elektroniki na podstawie rachunków.", "Torby z żywnością i lodówki turystyczne.", "Bagażnik i walizki skanerem lub ręcznie.", "Karty i telefony tylko wyjątkowo, przy podejrzeniu przemytu."] },
+      { type: "h2", text: "Konsekwencje naruszeń" },
+      { type: "table", headers: ["Naruszenie", "Konsekwencja"], rows: [["Papierosy ponad limit", "Konfiskata całej partii"], ["Alkohol ponad limit", "Konfiskata nadwyżki i grzywna"], ["Gotówka ponad 10 000 €", "Konfiskata, możliwe zatrzymanie"], ["Zakazana żywność", "Konfiskata i grzywna"], ["Paliwo w kanistrze na Litwie/Łotwie", "Konfiskata"], ["Elektronika ponad 750 €", "Zatrzymanie, odprawa i opłata"]] },
+      { type: "h2", text: "Najczęstsze pytania" },
+      { type: "h3", text: "Czy można wwieźć domowe jedzenie?" },
+      { type: "p", text: "Nie. Mięso, nabiał, jaja i miód są zakazane. Najbezpieczniej nie przewozić żadnych produktów pochodzenia zwierzęcego." },
+      { type: "h3", text: "Czy papierosy w kieszeni liczą się osobno?" },
+      { type: "p", text: "Nie. Limit 40 papierosów jest łączny na osobę, niezależnie od miejsca przechowywania." },
+      { type: "h3", text: "Czy laptop lub telefon trzeba deklarować?" },
+      { type: "p", text: "Jeden używany laptop i telefon nie wymagają deklaracji. Kilka nowych urządzeń w opakowaniach o łącznej wartości ponad 750 € należy zgłosić." },
+      { type: "h3", text: "Czy zasady różnią się między przejściami?" },
+      { type: "p", text: "Zasady celne są jednakowe. Przejścia różnią się jedynie obciążeniem i szybkością odprawy." },
+      { type: "callout", text: "Przepisy i sankcje zmieniają się kilka razy w roku. Przed podróżą sprawdź strony urzędów celnych. Kierowcy ComfortLine śledzą aktualizacje i informują o ograniczeniach." }
+    ],
+    bodyFr: [
+      { type: "h2", text: "Produits totalement interdits de Biélorussie vers l’UE" },
+      { type: "p", text: "Dans le cadre des sanctions européennes, les catégories suivantes sont interdites quelle que soit leur quantité ou leur valeur :" },
+      { type: "ul", items: ["Essence ou gazole en bidon hors réservoir du véhicule : Lituanie 0 l, Pologne jusqu’à 10 l, Lettonie 0 l.", "Produits du tabac dépassant la franchise.", "Matériel militaire ou de chasse, armes à air comprimé et aérosols de défense.", "Médicaments sur ordonnance en quantité supérieure aux besoins personnels du voyage.", "Produits d’origine animale : viande, charcuterie, lait, fromage, fromage blanc et miel.", "Fruits et légumes frais, plantes, semences, jeunes plants et terre.", "Marchandises sanctionnées par l’UE, notamment certains produits en acier, bois, engrais potassiques et machines.", "Les appareils électroniques d’une valeur supérieure à 750 € doivent être déclarés par écrit."] },
+      { type: "h2", text: "Franchises douanières : Lituanie, Pologne et Lettonie" },
+      { type: "p", text: "Ces franchises concernent les voyageurs adultes arrivant d’un pays tiers. Des seuils réduits peuvent s’appliquer aux séjours de moins de 24 heures." },
+      { type: "table", headers: ["Catégorie", "Lituanie", "Pologne", "Lettonie"], rows: [["Cigarettes", "40", "40", "40"], ["Cigarillos jusqu’à 3 g", "20", "20", "20"], ["Cigares", "10", "10", "10"], ["Tabac à rouler", "50 g", "50 g", "50 g"], ["Spiritueux à plus de 22%", "1 l", "1 l", "1 l"], ["Vin non mousseux", "4 l", "4 l", "4 l"], ["Bière", "16 l", "16 l", "16 l"], ["Parfum", "50 ml", "50 ml", "50 ml"], ["Eau de toilette", "250 ml", "250 ml", "250 ml"], ["Biens et cadeaux", "jusqu’à 300 €", "jusqu’à 300 €", "jusqu’à 300 €"], ["Carburant en bidon", "0 l", "jusqu’à 10 l", "0 l"]] },
+      { type: "callout", text: "Les franchises ne sont pas interchangeables : renoncer aux cigarettes ne permet pas de doubler la quantité de spiritueux." },
+      { type: "h2", text: "Franchises à l’entrée en Biélorussie" },
+      { type: "p", text: "Depuis le 1er avril 2024, l’entrée par voie terrestre ou à pied permet d’importer sans droits, par adulte, jusqu’à 500 € de marchandises et 25 kg." },
+      { type: "table", headers: ["Mode d’entrée", "Valeur", "Poids"], rows: [["Transport terrestre / à pied", "jusqu’à 500 €", "jusqu’à 25 kg"], ["Avion", "jusqu’à 10 000 €", "jusqu’à 50 kg"], ["Livraison par transporteur", "jusqu’à 200 €", "jusqu’à 31 kg"], ["Envoi postal international", "jusqu’à 200 €", "jusqu’à 31 kg brut"]] },
+      { type: "p", text: "La franchise de tabac, identique pour tous les modes d’entrée, est de 200 cigarettes, 50 cigares ou cigarillos, 200 bâtonnets de tabac chauffé ou 250 g de tabac. La limite d’alcool de plus de 0,5% est de 3 l. Ces franchises sont réservées aux personnes de 18 ans et plus." },
+      { type: "p", text: "Au-delà des seuils terrestres, les droits représentent 30% de l’excédent, avec un minimum de 4 € par kilogramme. Pour les colis, le taux est de 15%, minimum 2 € par kilogramme. Entre 3 et 5 l d’alcool, chaque litre excédentaire coûte 10 €. Les quantités commerciales sont traitées séparément." },
+      { type: "link", href: "https://www.customs.gov.by/fizicheskim-litsam/besposhlinnyy-vvoz-vyvoz-tovarov-dlya-lichnogo-polzovaniya/", label: "Douanes biélorusses — importation et exportation en franchise", description: "Limites officielles de valeur, poids et quantité pour les biens personnels" },
+      { type: "link", href: "https://www.customs.gov.by/fizicheskim-litsam/vvoz-tovarov-dlya-lichnogo-polzovaniya-s-uplatoy-tamozhennykh-platezhey/", label: "Douanes biélorusses — importation avec paiement", description: "Taux officiels applicables au dépassement des franchises" },
+      { type: "h2", text: "Espèces et obligation de déclaration" },
+      { type: "p", text: "La sortie d’espèces de Biélorussie et leur entrée dans l’UE sont régies séparément par les règles biélorusses et celles du pays européen d’arrivée." },
+      { type: "h3", text: "Sortie d’espèces de Biélorussie" },
+      { type: "ul", items: ["Jusqu’à 10 000 USD ou l’équivalent : aucune déclaration.", "Au-delà de 10 000 USD : déclaration écrite obligatoire.", "L’excédent non déclaré peut être intégralement confisqué.", "Bijoux personnels, cartes bancaires et chèques de voyage ne comptent pas dans cette limite."] },
+      { type: "h3", text: "Entrée d’espèces dans l’Union européenne" },
+      { type: "ul", items: ["Jusqu’à 10 000 € ou l’équivalent : aucune déclaration.", "Au-delà de 10 000 € : déclaration européenne d’argent liquide obligatoire.", "La déclaration est remise aux douanes du pays d’entrée.", "La dissimulation de l’excédent expose à une amende et à la confiscation."] },
+      { type: "link", href: "https://www.customs.by/deklarirovaniye", label: "Douanes biélorusses — règles de déclaration", description: "Limites actuelles concernant les espèces, bijoux et marchandises" },
+      { type: "h2", text: "Colis et achats en ligne" },
+      { type: "p", text: "Les colis de services de livraison et les achats effectués sur des plateformes en ligne relèvent des règles des envois postaux internationaux." },
+      { type: "ul", items: ["Les marchandises provenant de l’UEE sont considérées comme originaires d’un pays tiers à la frontière Biélorussie–UE.", "Le seuil européen de franchise est de 150 € par colis ; au-delà, droits et TVA sont dus.", "Plusieurs articles identiques peuvent être requalifiés en cargaison commerciale.", "Les règles de contrôle à jour sont publiées par l’administration douanière biélorusse."] },
+      { type: "link", href: "https://customs.gov.by/participants-ved/perevozchikam/informatsiya-o-provedenii-kontrolya-mezhdunarodnykh-pochtovykh-otpravleniy-i-tovarov-sleduyushchikh-/", label: "Contrôle des envois postaux internationaux", description: "Informations officielles sur les procédures douanières" },
+      { type: "h2", text: "Ce que contrôlent les gardes-frontières" },
+      { type: "ul", items: ["Réservoir de carburant et bidons.", "Nombre de cigarettes et marquages fiscaux.", "Quantité d’alcool et timbres d’accise.", "Valeur des appareils électroniques à l’aide des factures.", "Sacs alimentaires et glacières.", "Coffre et bagages au scanner ou manuellement.", "Cartes bancaires et téléphones, très rarement et uniquement en cas de soupçon."] },
+      { type: "h2", text: "Conséquences des infractions douanières" },
+      { type: "table", headers: ["Infraction", "Conséquence"], rows: [["Cigarettes au-delà de la franchise", "Confiscation de tout le tabac"], ["Alcool excédentaire", "Confiscation de l’excédent et amende"], ["Plus de 10 000 € non déclarés", "Confiscation, détention possible"], ["Aliments interdits", "Confiscation et amende"], ["Carburant en bidon en Lituanie/Lettonie", "Confiscation"], ["Électronique de plus de 750 €", "Retenue, formalités et droits"]] },
+      { type: "h2", text: "Questions fréquentes" },
+      { type: "h3", text: "Puis-je emporter de la nourriture faite maison ?" },
+      { type: "p", text: "Non. La viande, les produits laitiers, les œufs et le miel sont interdits. Le plus sûr est de ne transporter aucun aliment d’origine animale." },
+      { type: "h3", text: "Les cigarettes dans une poche comptent-elles séparément ?" },
+      { type: "p", text: "Non. La limite totale est de 40 cigarettes par personne, quel que soit l’endroit où elles sont rangées." },
+      { type: "h3", text: "Faut-il déclarer un ordinateur ou un téléphone ?" },
+      { type: "p", text: "Un ordinateur et un téléphone personnels ne nécessitent pas de déclaration. Plusieurs appareils neufs emballés, d’une valeur totale supérieure à 750 €, doivent être déclarés." },
+      { type: "h3", text: "Les règles changent-elles selon le poste-frontière ?" },
+      { type: "p", text: "Non. Les règles douanières sont identiques ; seuls la circulation et le temps de traitement varient." },
+      { type: "callout", text: "Les règles et sanctions évoluent plusieurs fois par an. Consultez les sites officiels des douanes avant le voyage. Les chauffeurs ComfortLine suivent les changements et signalent les restrictions en vigueur." }
+    ],
     related: ["граница-беларусь-литва", "какой-кпп-выбрать", "граница-беларусь-польша"],
-    ctaRoute: { label: "Заказать трансфер в Литву, Польшу или Латвию", labelEn: "Book a transfer to Lithuania, Poland or Latvia", path: "/трансфер-минск-вильнюс-аэропорт" },
+    ctaRoute: { label: "Заказать трансфер в Литву, Польшу или Латвию", labelEn: "Book a transfer to Lithuania, Poland or Latvia", labelPl: "Zarezerwuj transfer na Litwę, do Polski lub na Łotwę", labelFr: "Réserver un transfert vers la Lituanie, la Pologne ou la Lettonie", path: "/трансфер-минск-вильнюс-аэропорт" },
   },
 
   {
     slug: "какой-кпп-выбрать",
     slugEn: "which-belarus-border-crossing-to-choose",
+    slugPl: "kamienny-log-kotlowka-bieniakonie-ktore-przejscie-wybrac",
+    slugFr: "kamenny-log-kotlovka-benyakoni-quel-poste-choisir",
     titleEn: "Kamenny Log vs Kotlovka vs Benyakoni: Which Belarus Border Crossing Is Fastest",
+    titlePl: "Kamienny Łog, Kotłówka czy Bieniakonie: które przejście wybrać?",
+    titleFr: "Kamenny Log, Kotlovka ou Benyakoni : quel poste-frontière choisir ?",
     descriptionEn: "Comparing Belarus–Lithuania border checkpoints in 2026: average wait times, working hours, truck restrictions and which crossing is best for car transfers.",
+    descriptionPl: "Porównanie przejść Białoruś–Litwa w 2026 roku: kolejki, infrastruktura, ograniczenia oraz najlepsza trasa dla transferu samochodem.",
+    descriptionFr: "Comparatif des postes Biélorussie–Lituanie en 2026 : attentes, infrastructures, restrictions et meilleur itinéraire en voiture.",
     ogSlug: "blog-kakoy-kpp-vybrat",
     title: "Каменный Лог vs Котловка vs Бенякони — какой КПП выбрать в 2026",
     description:
@@ -811,8 +999,12 @@ export const ARTICLES: Article[] = [
       },
     ],
     categoryEn: "Border",
+    categoryPl: "Granica",
+    categoryFr: "Frontière",
     introEn:
       "Travelling from Minsk to Lithuania, you have three checkpoint options. The choice of crossing can save — or cost — up to 4 hours. Here is a breakdown based on our drivers' daily statistics.",
+    introPl: "Podróżując z Mińska na Litwę, możesz wybierać spośród trzech przejść. Właściwy wybór pozwala zaoszczędzić nawet cztery godziny. Porównanie opiera się na codziennych danych naszych kierowców.",
+    introFr: "Pour aller de Minsk en Lituanie, trois postes sont envisageables. Le bon choix peut faire gagner jusqu’à quatre heures. Ce comparatif repose sur les statistiques quotidiennes de nos chauffeurs.",
     bodyEn: [
       { type: "h2", text: "Kamenny Log — The Main Choice" },
       {
@@ -868,15 +1060,51 @@ export const ARTICLES: Article[] = [
         text: "A ComfortLine driver decides en route which crossing is faster. This is part of the fixed price — no extra charge for a route change.",
       },
     ],
+    bodyPl: [
+      { type: "h2", text: "Kamienny Łog — główny wybór" },
+      { type: "p", text: "To przejście o największym natężeniu ruchu. Ma dobrą infrastrukturę, dwa pasy dla samochodów osobowych, strefę opłat, kawiarnię i toalety po obu stronach. Leży przy trasie M7 Mińsk–Wilno; po stronie litewskiej nazywa się Medininkai (Miedniki)." },
+      { type: "ul", items: ["Zalety: sprawna odprawa, rozwinięta infrastruktura i wygodna trasa.", "Wady: największe obciążenie; w godzinach szczytu oczekiwanie dochodzi do 6 godzin.", "Najlepszy czas: wtorek–środa, 6:00–11:00."] },
+      { type: "h2", text: "Bieniakonie — wariant rezerwowy" },
+      { type: "p", text: "Przejście położone 60 km na południe od Kamiennego Łogu; po stronie litewskiej to Šalčininkai (Soleczniki). Ruch jest mniejszy, ale przepustowość również. Objazd wydłuża drogę do Wilna o około 40 minut." },
+      { type: "ul", items: ["Zalety: krótsze kolejki w weekendy.", "Wady: około 140 km do Wilna zamiast 100 km i skromniejsza infrastruktura.", "Warto wybrać w piątek wieczorem lub niedzielę, gdy Kamienny Łog jest zatłoczony."] },
+      { type: "h2", text: "Kotłówka — ruch ograniczony" },
+      { type: "p", text: "Od 2023 roku ruch przez Kotłówkę jest ograniczony. W 2026 roku przejście jest praktycznie niedostępne dla większości prywatnych tras pasażerskich. Przed wyjazdem trzeba sprawdzić aktualne komunikaty." },
+      { type: "h2", text: "Jak wybrać przejście w dniu podróży" },
+      { type: "ol", items: ["Sprawdź aktualną liczbę samochodów w serwisie białoruskiej administracji celnej.", "Jeżeli w Kamiennym Łogu czeka ponad 150 aut, rozważ Bieniakonie.", "Uwzględnij dzień tygodnia; od piątku do niedzieli Bieniakonie często są lepsze.", "Sprawdź także dane litewskiego VSAT.", "Zaufaj kierowcy ComfortLine — dane o kolejkach aktualizujemy co 30 minut."] },
+      { type: "link", href: "https://mon.declarant.by/#/zone", label: "Elektroniczna kolejka — mon.declarant.by", description: "Oficjalny monitoring pojazdów w elektronicznej kolejce, aktualizowany w czasie rzeczywistym. Jeśli strona nie działa, spróbuj użyć VPN." },
+      { type: "liveQueue" },
+      { type: "callout", text: "Kierowca ComfortLine wybiera po drodze szybsze przejście. Zmiana trasy jest objęta stałą ceną i nie powoduje dopłat." }
+    ],
+    bodyFr: [
+      { type: "h2", text: "Kamenny Log — le choix principal" },
+      { type: "p", text: "C’est le poste au trafic le plus important. Il dispose de deux voies pour les voitures, d’une zone de paiement, d’un café et de toilettes des deux côtés. Il se trouve sur la M7 Minsk–Vilnius ; le côté lituanien s’appelle Medininkai." },
+      { type: "ul", items: ["Avantages : traitement efficace, bonnes infrastructures et route pratique.", "Inconvénient : poste le plus fréquenté, avec jusqu’à six heures d’attente aux heures de pointe.", "Meilleur créneau : mardi–mercredi, de 6 h à 11 h."] },
+      { type: "h2", text: "Benyakoni — la solution de secours" },
+      { type: "p", text: "Ce poste se situe 60 km au sud de Kamenny Log ; le côté lituanien est Šalčininkai. Le trafic est plus faible, mais sa capacité aussi. Le détour ajoute environ 40 minutes jusqu’à Vilnius." },
+      { type: "ul", items: ["Avantage : file souvent plus courte le week-end.", "Inconvénients : environ 140 km jusqu’à Vilnius au lieu de 100 km et services plus limités.", "À choisir le vendredi soir ou le dimanche lorsque Kamenny Log est saturé."] },
+      { type: "h2", text: "Kotlovka — fonctionnement limité" },
+      { type: "p", text: "La circulation par Kotlovka est restreinte depuis 2023. En 2026, ce poste est pratiquement indisponible pour la plupart des trajets privés. Vérifiez impérativement les informations officielles avant le départ." },
+      { type: "h2", text: "Choisir le poste le jour du voyage" },
+      { type: "ol", items: ["Consultez le nombre actuel de véhicules sur le site des douanes biélorusses.", "Si Kamenny Log compte plus de 150 voitures, envisagez Benyakoni.", "Tenez compte du jour : du vendredi au dimanche, Benyakoni est souvent préférable.", "Vérifiez également le VSAT du côté lituanien.", "Faites confiance au chauffeur ComfortLine : nos données sont actualisées toutes les 30 minutes."] },
+      { type: "link", href: "https://mon.declarant.by/#/zone", label: "File d’attente électronique — mon.declarant.by", description: "Suivi officiel en temps réel des véhicules enregistrés dans la file électronique. Si le site ne s’ouvre pas, essayez avec un VPN." },
+      { type: "liveQueue" },
+      { type: "callout", text: "Le chauffeur ComfortLine choisit en route le poste le plus rapide. Le changement d’itinéraire est compris dans le tarif fixe, sans supplément." }
+    ],
     related: ["граница-беларусь-литва", "как-добраться-до-аэропорта-вильнюса"],
-    ctaRoute: { label: "Заказать трансфер Минск — Вильнюс (VNO)", labelEn: "Book Minsk–Vilnius (VNO) transfer", path: "/трансфер-минск-вильнюс-аэропорт" },
+    ctaRoute: { label: "Заказать трансфер Минск — Вильнюс (VNO)", labelEn: "Book Minsk–Vilnius (VNO) transfer", labelPl: "Zarezerwuj transfer Mińsk–Wilno (VNO)", labelFr: "Réserver le transfert Minsk–Vilnius (VNO)", path: "/трансфер-минск-вильнюс-аэропорт" },
   },
 
   {
     slug: "трансфер-с-детьми",
     slugEn: "family-airport-transfer-with-children",
+    slugPl: "transfer-na-lotnisko-z-dziecmi-z-minska",
+    slugFr: "transfert-aeroport-avec-enfants-depuis-minsk",
     titleEn: "Airport Transfer with Children from Minsk: Family Travel Checklist",
+    titlePl: "Transfer z dziećmi z Mińska na lotnisko: lista dla rodziców",
+    titleFr: "Transfert aéroport avec des enfants depuis Minsk : liste pratique",
     descriptionEn: "How to travel with kids from Minsk to the airport by private transfer: car seats, luggage, timing and tips for a smooth family journey.",
+    descriptionPl: "Jak podróżować z dziećmi prywatnym transferem z Mińska na lotnisko: foteliki, bagaż, dokumenty, czas i praktyczne wskazówki.",
+    descriptionFr: "Voyager avec des enfants en transfert privé de Minsk à l’aéroport : sièges auto, bagages, documents, horaires et conseils pratiques.",
     ogSlug: "blog-transfer-s-detmi",
     title: "Трансфер с детьми из Минска в аэропорт: чек-лист для родителей",
     description:
@@ -944,8 +1172,12 @@ export const ARTICLES: Article[] = [
       },
     ],
     categoryEn: "Family Travel",
+    categoryPl: "Podróż z rodziną",
+    categoryFr: "Voyage en famille",
     introEn:
       "Travelling to the airport with children is always stressful — a long road, a border crossing, night departures and restless kids. Below is the distilled experience of our drivers over 8 years: how to make the transfer comfortable for everyone.",
+    introPl: "Podróż na lotnisko z dziećmi bywa stresująca: długa trasa, granica, nocny wyjazd i zmęczenie. Zebraliśmy doświadczenia naszych kierowców z ośmiu lat pracy, aby ułatwić komfortową podróż całej rodzinie.",
+    introFr: "Un trajet vers l’aéroport avec des enfants peut être stressant : longue route, frontière, départ nocturne et fatigue. Voici les conseils tirés de huit années d’expérience de nos chauffeurs pour voyager confortablement en famille.",
     bodyEn: [
       { type: "h2", text: "Documents for Your Child" },
       {
@@ -1000,15 +1232,45 @@ export const ARTICLES: Article[] = [
         text: "Book a minivan — more space, a more comfortable seat for the child, room for a pram. ComfortLine provides the Hyundai Palisade or Kia Carnival.",
       },
     ],
+    bodyPl: [
+      { type: "h2", text: "Dokumenty dziecka" },
+      { type: "ul", items: ["Paszport dziecka, także niemowlęcia.", "Wiza Schengen lub wpisanie dziecka do wizy rodzica, jeśli przepisy na to pozwalają.", "Oryginał aktu urodzenia.", "Gdy dziecko podróżuje bez obojga rodziców — przetłumaczona i poświadczona zgoda notarialna.", "Ubezpieczenie medyczne z ochroną co najmniej 30 000 €."] },
+      { type: "h2", text: "Foteliki dziecięce" },
+      { type: "p", text: "Zgodnie z przepisami Białorusi i UE dzieci poniżej 12 lat i niższe niż 150 cm powinny podróżować w odpowiednim foteliku lub na podstawce. ComfortLine zapewnia foteliki bezpłatnie — podczas rezerwacji podaj wiek i wagę dziecka." },
+      { type: "table", headers: ["Wiek", "Waga", "Rodzaj zabezpieczenia"], rows: [["0–1 rok", "do 13 kg", "Nosidełko grupy 0/0+"], ["1–4 lata", "9–18 kg", "Fotelik grupy 1"], ["3–7 lat", "15–25 kg", "Fotelik grupy 2"], ["7–12 lat", "22–36 kg", "Podstawka grupy 3"]] },
+      { type: "h2", text: "Co zabrać w podróż" },
+      { type: "ul", items: ["Wodę i przekąski na 4–6 godzin — na granicy nie ma sklepów.", "Chusteczki nawilżane, ręczniki papierowe i małe worki na śmieci.", "Ubranie na zmianę.", "Ulubioną zabawkę i słuchawki do oglądania bajek.", "Lekki koc na czas działania klimatyzacji.", "Lek na chorobę lokomocyjną, jeśli dziecko jej doświadcza."] },
+      { type: "h2", text: "Jak sprawniej przekroczyć granicę z dzieckiem" },
+      { type: "ul", items: ["Unikaj piątkowych wieczorów i niedzielnych popołudni.", "Trzymaj wszystkie dokumenty w jednej teczce.", "Przy długiej kolejce zapytaj kierowcę o pas rodzinny; niektóre litewskie przejścia przepuszczają rodziny z małymi dziećmi wcześniej.", "Nakarm dziecko i skorzystajcie z toalety przed dojazdem do granicy."] },
+      { type: "callout", text: "Wybierz minivana: zapewnia więcej miejsca na fotelik i wózek. ComfortLine może podstawić Hyundai Palisade lub Kia Carnival." }
+    ],
+    bodyFr: [
+      { type: "h2", text: "Documents de l’enfant" },
+      { type: "ul", items: ["Passeport de l’enfant, y compris pour un nourrisson.", "Visa Schengen ou inscription sur le visa du parent lorsque la réglementation le permet.", "Acte de naissance original.", "Si l’enfant voyage sans ses deux parents : autorisation notariée, traduite et certifiée.", "Assurance médicale couvrant au moins 30 000 €."] },
+      { type: "h2", text: "Sièges enfant" },
+      { type: "p", text: "Selon les règles biélorusses et européennes, les enfants de moins de 12 ans mesurant moins de 150 cm doivent utiliser un dispositif homologué ou un rehausseur. ComfortLine fournit gratuitement le siège : indiquez simplement l’âge et le poids lors de la réservation." },
+      { type: "table", headers: ["Âge", "Poids", "Dispositif"], rows: [["0–1 an", "jusqu’à 13 kg", "Coque groupe 0/0+"], ["1–4 ans", "9–18 kg", "Siège groupe 1"], ["3–7 ans", "15–25 kg", "Siège groupe 2"], ["7–12 ans", "22–36 kg", "Rehausseur groupe 3"]] },
+      { type: "h2", text: "À emporter pendant le trajet" },
+      { type: "ul", items: ["Eau et collations pour 4 à 6 heures, car il n’y a pas de magasin à la frontière.", "Lingettes, essuie-tout et petits sacs poubelle.", "Vêtements de rechange.", "Jouet préféré et casque pour regarder des dessins animés.", "Couverture légère lorsque la climatisation fonctionne.", "Médicament contre le mal des transports si nécessaire."] },
+      { type: "h2", text: "Passer plus rapidement la frontière avec un enfant" },
+      { type: "ul", items: ["Évitez le vendredi soir et le dimanche après-midi.", "Regroupez tous les documents dans une pochette.", "En cas de longue file, demandez au chauffeur s’il existe une voie familiale ; certains postes lituaniens donnent la priorité aux familles avec de jeunes enfants.", "Faites manger l’enfant et prévoyez un passage aux toilettes avant la frontière."] },
+      { type: "callout", text: "Réservez un monospace : davantage d’espace pour le siège et la poussette. ComfortLine peut proposer un Hyundai Palisade ou un Kia Carnival." }
+    ],
     related: ["граница-беларусь-литва", "стоимость-трансфер-минск-варшава"],
-    ctaRoute: { label: "Заказать минивэн с детским креслом", labelEn: "Book a minivan with child seat", path: "/трансфер-хендай-палисад" },
+    ctaRoute: { label: "Заказать минивэн с детским креслом", labelEn: "Book a minivan with child seat", labelPl: "Zarezerwuj minivana z fotelikiem dziecięcym", labelFr: "Réserver un monospace avec siège enfant", path: "/трансфер-хендай-палисад" },
   },
 
   {
     slug: "как-добраться-до-аэропорта-вильнюса",
     slugEn: "how-to-get-to-vilnius-airport-from-minsk",
+    slugPl: "jak-dojechac-z-minska-na-lotnisko-w-wilnie-vno",
+    slugFr: "comment-aller-de-minsk-a-aeroport-vilnius-vno",
     titleEn: "How to Get from Minsk to Vilnius Airport (VNO): All Options 2026",
+    titlePl: "Jak dojechać z Mińska na lotnisko w Wilnie (VNO) w 2026 roku",
+    titleFr: "Comment aller de Minsk à l’aéroport de Vilnius (VNO) en 2026",
     descriptionEn: "Complete guide to reaching Vilnius Airport from Minsk in 2026: private transfer, bus, minibus — travel times, prices and an honest comparison.",
+    descriptionPl: "Transfer prywatny, taksówka dzielona, autobus lub własne auto z Mińska na lotnisko VNO: porównanie czasu, ceny i wygody w 2026 roku.",
+    descriptionFr: "Transfert privé, taxi partagé, bus ou voiture de Minsk à VNO : comparaison des durées, prix et niveaux de confort en 2026.",
     ogSlug: "blog-kak-dobratsya-do-vno",
     title: "Как добраться из Минска в аэропорт Вильнюса (VNO) в 2026",
     description:
@@ -1056,8 +1318,12 @@ export const ARTICLES: Article[] = [
       },
     ],
     categoryEn: "Airport",
+    categoryPl: "Lotnisko",
+    categoryFr: "Aéroport",
     introEn:
       "Vilnius Airport (VNO) is the most convenient international hub for Belarusian travellers. Minsk to VNO is around 175 km. Here we compare all the options for getting there.",
+    introPl: "Lotnisko w Wilnie (VNO) jest jednym z najwygodniejszych międzynarodowych portów dla podróżnych z Białorusi. Od Mińska dzieli je około 175 km. Porównujemy wszystkie sposoby dojazdu.",
+    introFr: "L’aéroport de Vilnius (VNO) est l’un des hubs internationaux les plus pratiques pour les voyageurs biélorusses. Il se trouve à environ 175 km de Minsk. Voici toutes les solutions pour s’y rendre.",
     bodyEn: [
       { type: "h2", text: "Options Compared" },
       {
@@ -1090,15 +1356,43 @@ export const ARTICLES: Article[] = [
         text: "If catching your flight without surprises matters — choose a private ComfortLine transfer. Book online or by phone; quote shortly.",
       },
     ],
+    bodyPl: [
+      { type: "h2", text: "Porównanie możliwości" },
+      { type: "table", headers: ["Sposób", "Czas", "Cena", "Komfort"], rows: [["Prywatny transfer ComfortLine", "3–5 godz.", "Na zapytanie", "★★★★★"], ["Taksówka dzielona", "4–6 godz.", "Taniej niż transfer prywatny", "★★★"], ["Autobus Mińsk–Wilno", "5–7 godz.", "Najtańsza opcja", "★★"], ["Własny samochód", "3–5 godz.", "Paliwo i parking", "★★★★"]] },
+      { type: "h2", text: "Transfer prywatny: zalety i wady" },
+      { type: "p", text: "Prywatny transfer jest najbardziej przewidywalnym rozwiązaniem. Kierowca odbiera spod wskazanego adresu o ustalonej godzinie, cena jest potwierdzana wcześniej, a podczas podróży pomaga na granicy i przy bagażu. To dobry wybór przy locie o konkretnej godzinie oraz dla rodzin z dziećmi." },
+      { type: "h2", text: "Taksówka dzielona i autobus" },
+      { type: "p", text: "Są tańsze, ale mniej przewidywalne. Taksówki dzielone mogą czekać na komplet pasażerów i odbierać ich z kilku adresów. Autobusy kursują według rozkładu, lecz stoją we wspólnej kolejce i mogą zostać opóźnione przez kontrolę całej grupy." },
+      { type: "h2", text: "Własny samochód" },
+      { type: "p", text: "To rozsądna opcja przy krótkim wyjeździe na 3–5 dni. Przy dłuższej podróży trzeba doliczyć parking na lotnisku, paliwo w obie strony oraz odpowiednie ubezpieczenie pojazdu." },
+      { type: "callout", text: "Jeżeli chcesz dotrzeć na lot bez niespodzianek, wybierz indywidualny transfer ComfortLine. Rezerwacja jest dostępna online lub telefonicznie; dokładną wycenę otrzymasz po zgłoszeniu." }
+    ],
+    bodyFr: [
+      { type: "h2", text: "Comparaison des solutions" },
+      { type: "table", headers: ["Solution", "Durée", "Prix", "Confort"], rows: [["Transfert privé ComfortLine", "3–5 h", "Sur demande", "★★★★★"], ["Taxi partagé", "4–6 h", "Moins cher qu’un transfert privé", "★★★"], ["Bus Minsk–Vilnius", "5–7 h", "Option la plus économique", "★★"], ["Voiture personnelle", "3–5 h", "Carburant et stationnement", "★★★★"]] },
+      { type: "h2", text: "Transfert privé : avantages et inconvénients" },
+      { type: "p", text: "Le transfert privé est la solution la plus prévisible. Le chauffeur vient à l’adresse convenue, le tarif est confirmé à l’avance et il aide à la frontière ainsi qu’avec les bagages. Cette formule convient particulièrement lorsque l’horaire du vol est impératif ou pour une famille avec des enfants." },
+      { type: "h2", text: "Taxi partagé et bus" },
+      { type: "p", text: "Ces solutions coûtent moins cher mais sont moins prévisibles. Un taxi partagé peut attendre d’être complet et prendre des passagers à plusieurs adresses. Les bus suivent un horaire, mais restent dans la file commune et peuvent être retardés par le contrôle du groupe." },
+      { type: "h2", text: "Voiture personnelle" },
+      { type: "p", text: "C’est une option intéressante pour un séjour court de trois à cinq jours. Pour une absence plus longue, il faut ajouter le stationnement à l’aéroport, le carburant aller-retour et l’assurance automobile nécessaire." },
+      { type: "callout", text: "Pour rejoindre votre vol sans mauvaise surprise, choisissez un transfert individuel ComfortLine. Réservation en ligne ou par téléphone ; le tarif exact est confirmé après la demande." }
+    ],
     related: ["граница-беларусь-литва", "какой-кпп-выбрать", "трансфер-с-детьми"],
-    ctaRoute: { label: "Заказать трансфер Минск — Вильнюс (VNO)", labelEn: "Book Minsk–Vilnius (VNO) transfer", path: "/трансфер-минск-вильнюс-аэропорт" },
+    ctaRoute: { label: "Заказать трансфер Минск — Вильнюс (VNO)", labelEn: "Book Minsk–Vilnius (VNO) transfer", labelPl: "Zarezerwuj transfer Mińsk–Wilno (VNO)", labelFr: "Réserver le transfert Minsk–Vilnius (VNO)", path: "/трансфер-минск-вильнюс-аэропорт" },
   },
 
   {
     slug: "аэропорт-варшавы-вав",
     slugEn: "warsaw-chopin-airport-guide-from-belarus",
+    slugPl: "lotnisko-chopina-warszawa-waw-przewodnik-z-bialorusi",
+    slugFr: "aeroport-varsovie-chopin-waw-guide-depuis-bielorussie",
     titleEn: "Warsaw Chopin Airport (WAW): Complete Guide for Travelers from Belarus",
+    titlePl: "Lotnisko Chopina w Warszawie (WAW): przewodnik dla podróżnych z Białorusi",
+    titleFr: "Aéroport Varsovie-Chopin (WAW) : guide pour les voyageurs de Biélorussie",
     descriptionEn: "Everything about Warsaw Chopin Airport for passengers from Belarus: terminals, check-in tips, transfer options and how to get there from Minsk.",
+    descriptionPl: "Lotnisko Chopina WAW dla pasażerów z Białorusi: terminale, odprawa, strefa spotkań, transfer z Mińska i lotnisko Modlin.",
+    descriptionFr: "L’aéroport Chopin WAW pour les passagers de Biélorussie : terminaux, enregistrement, accueil, transfert depuis Minsk et Modlin.",
     ogSlug: "blog-airport-warsaw-waw",
     title: "Аэропорт Варшавы (WAW): полный гайд для пассажиров из Беларуси",
     description:
@@ -1155,8 +1449,12 @@ export const ARTICLES: Article[] = [
       },
     ],
     categoryEn: "Airport",
+    categoryPl: "Lotnisko",
+    categoryFr: "Aéroport",
     introEn:
       "Warsaw Frederic Chopin Airport (WAW) is Poland's largest hub and one of the most popular airports for Belarusian travellers. Here is everything you need to know before your flight.",
+    introPl: "Lotnisko Chopina w Warszawie (WAW) jest największym portem lotniczym w Polsce i jednym z najpopularniejszych wśród podróżnych z Białorusi. Oto najważniejsze informacje przed wylotem.",
+    introFr: "L’aéroport Frédéric-Chopin de Varsovie (WAW) est le principal hub de Pologne et l’un des plus utilisés par les voyageurs biélorusses. Voici l’essentiel avant votre vol.",
     bodyEn: [
       { type: "h2", text: "General Information" },
       {
@@ -1202,15 +1500,49 @@ export const ARTICLES: Article[] = [
         text: "ComfortLine transfers to both Warsaw airports — WAW and WMI. Your driver delivers you from door to check-in and assists with luggage.",
       },
     ],
+    bodyPl: [
+      { type: "h2", text: "Informacje ogólne" },
+      { type: "p", text: "WAW znajduje się 10 km na południowy zachód od centrum Warszawy. Odległość z Mińska wynosi około 550–600 km, a przejazd z granicą trwa zwykle 7–9 godzin. Lotnisko działa przez całą dobę. Obsługują je m.in. LOT, Ryanair, Wizz Air, Lufthansa i Turkish Airlines." },
+      { type: "h2", text: "Terminale A i B" },
+      { type: "p", text: "Terminale pasażerskie są połączone przejściem, którego pokonanie zajmuje 5–7 minut. Terminal A obsługuje główne połączenia europejskie i międzynarodowe, a Terminal B przewoźników niskokosztowych. Przed wyjazdem sprawdź terminal na stronie linii lotniczej." },
+      { type: "table", headers: ["Terminal", "Linie", "Zalecana odprawa"], rows: [["Terminal A", "LOT, Lufthansa, Turkish, Emirates i inne", "2–3 godziny przed odlotem"], ["Terminal B", "Ryanair, Wizz Air", "2 godziny; odprawa online obowiązkowa"]] },
+      { type: "h2", text: "Strefa spotkań i transfer" },
+      { type: "p", text: "Strefa przylotów i spotkań mieści się na parterze obu terminali. Kierowca ComfortLine czeka w hali przylotów z tabliczką. Do odbioru używane są parkingi P1 przy Terminalu A i P2 przy Terminalu B; pierwsze 15–20 minut jest bezpłatne." },
+      { type: "h2", text: "Modlin (WMI) jako alternatywa" },
+      { type: "p", text: "Lotnisko Warszawa-Modlin znajduje się około 35 km na północ od Warszawy i jest wykorzystywane głównie przez tanie linie, zwłaszcza Ryanair. Dojazd z Mińska trwa około 30–40 minut dłużej. Przy rezerwacji zawsze wskaż właściwy kod: WAW albo WMI." },
+      { type: "h2", text: "Wskazówki przed wylotem" },
+      { type: "ul", items: ["Ryanair i Wizz Air wymagają odprawy online; wydruk karty przy stanowisku może kosztować 50–55 €.", "Przyjedź co najmniej 2 godziny wcześniej, a do Terminalu A najlepiej 2,5 godziny przed odlotem.", "Sprawdź numer bramki online poprzedniego wieczoru.", "Kursy wymiany na lotnisku są niekorzystne; złote przygotuj wcześniej.", "Bezpłatne Wi-Fi działa we wszystkich strefach."] },
+      { type: "callout", text: "ComfortLine realizuje transfery na oba warszawskie lotniska — WAW i WMI. Kierowca dowiezie Cię od drzwi do strefy odprawy i pomoże z bagażem." }
+    ],
+    bodyFr: [
+      { type: "h2", text: "Informations générales" },
+      { type: "p", text: "WAW se situe à 10 km au sud-ouest du centre de Varsovie. La distance depuis Minsk est d’environ 550 à 600 km et le transfert prend généralement 7 à 9 heures avec la frontière. L’aéroport fonctionne 24 h/24. Il accueille notamment LOT, Ryanair, Wizz Air, Lufthansa et Turkish Airlines." },
+      { type: "h2", text: "Terminaux A et B" },
+      { type: "p", text: "Les deux terminaux sont reliés par un passage de 5 à 7 minutes. Le terminal A accueille les principaux vols européens et internationaux ; le terminal B est utilisé par les compagnies à bas prix. Vérifiez toujours le terminal sur le site de votre compagnie." },
+      { type: "table", headers: ["Terminal", "Compagnies", "Enregistrement conseillé"], rows: [["Terminal A", "LOT, Lufthansa, Turkish, Emirates et autres", "2 à 3 heures avant le départ"], ["Terminal B", "Ryanair, Wizz Air", "2 heures ; enregistrement en ligne obligatoire"]] },
+      { type: "h2", text: "Zone d’accueil et transfert" },
+      { type: "p", text: "La zone des arrivées et des rencontres se trouve au rez-de-chaussée des deux terminaux. Le chauffeur ComfortLine attend avec une pancarte nominative. Les parkings de prise en charge sont P1 pour le terminal A et P2 pour le terminal B ; les 15 à 20 premières minutes sont gratuites." },
+      { type: "h2", text: "Modlin (WMI), alternative à WAW" },
+      { type: "p", text: "L’aéroport de Varsovie-Modlin se trouve à 35 km au nord de la capitale et accueille surtout les compagnies à bas prix, notamment Ryanair. Depuis Minsk, le trajet prend environ 30 à 40 minutes de plus. Lors de la réservation, précisez toujours WAW ou WMI." },
+      { type: "h2", text: "Conseils avant le vol" },
+      { type: "ul", items: ["Ryanair et Wizz Air imposent l’enregistrement en ligne ; l’impression au comptoir peut coûter 50 à 55 €.", "Arrivez au moins 2 heures à l’avance, ou 2 h 30 pour le terminal A.", "Vérifiez votre porte d’embarquement en ligne la veille au soir.", "Le change à l’aéroport est défavorable ; procurez-vous des zlotys auparavant.", "Le Wi-Fi gratuit est disponible dans toutes les zones."] },
+      { type: "callout", text: "ComfortLine dessert les deux aéroports de Varsovie, WAW et WMI. Le chauffeur vous conduit de votre porte à la zone d’enregistrement et vous aide avec les bagages." }
+    ],
     related: ["стоимость-трансфер-минск-варшава", "граница-беларусь-польша", "что-нельзя-ввозить-в-ес"],
-    ctaRoute: { label: "Заказать трансфер Минск — Варшава (WAW)", labelEn: "Book Minsk–Warsaw (WAW) transfer", path: "/трансфер-минск-варшава-шопен" },
+    ctaRoute: { label: "Заказать трансфер Минск — Варшава (WAW)", labelEn: "Book Minsk–Warsaw (WAW) transfer", labelPl: "Zarezerwuj transfer Mińsk–Warszawa (WAW)", labelFr: "Réserver le transfert Minsk–Varsovie (WAW)", path: "/трансфер-минск-варшава-шопен" },
   },
 
   {
     slug: "граница-беларусь-польша",
     slugEn: "belarus-poland-border-crossing-guide",
+    slugPl: "granica-bialorus-polska-2026-przejscia-dokumenty-kolejki",
+    slugFr: "frontiere-bielorussie-pologne-2026-postes-documents-attente",
     titleEn: "Belarus–Poland Border Crossing Guide 2026: Checkpoints, Documents & Wait Times",
+    titlePl: "Granica Białoruś–Polska w 2026: przejścia, dokumenty i kolejki",
+    titleFr: "Frontière Biélorussie–Pologne en 2026 : postes, documents et attente",
     descriptionEn: "Practical guide to crossing the Belarus–Poland border in 2026: working checkpoints, required documents, typical wait times and practical tips.",
+    descriptionPl: "Praktyczny przewodnik po granicy Białoruś–Polska w 2026 roku: czynne przejścia, dokumenty, czas oczekiwania i porady kierowców.",
+    descriptionFr: "Guide pratique de la frontière Biélorussie–Pologne en 2026 : postes ouverts, documents, délais habituels et conseils des chauffeurs.",
     ogSlug: "blog-granitsa-belarus-polsha",
     title: "Граница Беларусь–Польша в 2026: КПП, документы, очереди",
     description:
@@ -1287,8 +1619,12 @@ export const ARTICLES: Article[] = [
       },
     ],
     categoryEn: "Border",
+    categoryPl: "Granica",
+    categoryFr: "Frontière",
     introEn:
       "The Belarus–Poland border is the second busiest route after Lithuania. Minsk to Brest is around 350 km, then the border crossing and another 200 km to Warsaw. Here is how it works in 2026.",
+    introPl: "Granica Białoruś–Polska jest drugą najczęściej wybieraną trasą po kierunku litewskim. Z Mińska do Brześcia jest około 350 km, a po przekroczeniu granicy pozostaje około 200 km do Warszawy.",
+    introFr: "La frontière Biélorussie–Pologne est le deuxième itinéraire le plus fréquent après la Lituanie. Minsk–Brest représente environ 350 km, puis il reste près de 200 km jusqu’à Varsovie après la frontière.",
     bodyEn: [
       { type: "h2", text: "Working Checkpoints in 2026" },
       {
@@ -1354,15 +1690,57 @@ export const ARTICLES: Article[] = [
         text: "ComfortLine drivers monitor both crossings online. If needed, we reroute to Domachevo quickly so you don't lose unnecessary hours.",
       },
     ],
+    bodyPl: [
+      { type: "h2", text: "Czynne przejścia w 2026 roku" },
+      { type: "p", text: "Dla samochodów osobowych działają trzy główne przejścia. Wybór ma duży wpływ na czas oczekiwania i powinien być częścią planowania podróży." },
+      { type: "table", headers: ["Przejście BY", "Przejście PL", "Trasa", "Średni czas"], rows: [["Brześć", "Terespol", "M1 / E30 do Warszawy", "3–7 godz."], ["Domaczewo", "Sławatycze", "Objazd południowy", "1–3 godz."], ["Bruzgi", "Kuźnica Białostocka", "Grodno–Białystok", "2–5 godz."]] },
+      { type: "h2", text: "Brześć–Terespol: najbardziej zatłoczone przejście" },
+      { type: "p", text: "Najbardziej znane przejście leży bezpośrednio przy trasie M1. Obsługuje największy ruch samochodowy, dlatego od piątku do niedzieli i przed świętami kolejki mogą trwać 6–10 godzin. Najlepiej podróżować od wtorku do czwartku wcześnie rano." },
+      { type: "h2", text: "Domaczewo: spokojniejsza alternatywa" },
+      { type: "p", text: "Domaczewo znajduje się 43 km na południe od Brześcia. Trasa jest dłuższa o 60–80 km, ale kolejki bywają 2–3 razy krótsze. Droga do Warszawy przez Lublin wydłuża przejazd o około godzinę." },
+      { type: "h2", text: "Bruzgi: kierunek północny" },
+      { type: "p", text: "Przejście Bruzgi–Kuźnica jest wygodne dla podróżnych z Grodna oraz jadących do Białegostoku, Gdańska lub Trójmiasta. Z Mińska jest około 330 km. Kolejki są zwykle umiarkowane, lecz rosną latem." },
+      { type: "h2", text: "Dokumenty potrzebne przy wjeździe do Polski" },
+      { type: "ul", items: ["Paszport ważny co najmniej 3 miesiące po planowanym wyjeździe z UE.", "Wiza Schengen lub ważna karta pobytu w UE.", "Ubezpieczenie medyczne na minimum 30 000 €, ważne w całej strefie Schengen.", "Rezerwacja hotelu lub zaproszenie.", "Bilet powrotny albo potwierdzenie celu podróży.", "Wymagane ubezpieczenie pojazdu przy podróży własnym autem."] },
+      { type: "h2", text: "Porady kierowców ComfortLine" },
+      { type: "ul", items: ["Planuj wyjazd od wtorku do czwartku; kolejki są znacznie krótsze niż w piątek.", "Trzymaj dokumenty w jednej teczce.", "W Terespolu jasno podaj cel podróży: turystyka, biznes lub tranzyt.", "Zasięg białoruskich operatorów działa do granicy, dalej przełącz telefon na polską sieć.", "Miej przy sobie złote, ponieważ terminale po polskiej stronie czasami nie działają."] },
+      { type: "link", href: "https://mon.declarant.by/#/zone", label: "Elektroniczna kolejka — mon.declarant.by", description: "Oficjalny monitoring kolejek w Brześciu i Domaczewie, aktualizowany w czasie rzeczywistym. Jeśli strona się nie otwiera, spróbuj użyć VPN." },
+      { type: "liveQueue" },
+      { type: "callout", text: "Kierowcy ComfortLine śledzą sytuację online. W razie potrzeby szybko zmieniamy trasę na Domaczewo, aby ograniczyć czas oczekiwania." }
+    ],
+    bodyFr: [
+      { type: "h2", text: "Postes ouverts en 2026" },
+      { type: "p", text: "Trois postes principaux accueillent les voitures particulières. Le choix du passage influence fortement l’attente et doit être intégré à la préparation du trajet." },
+      { type: "table", headers: ["Poste BY", "Poste PL", "Itinéraire", "Délai moyen"], rows: [["Brest", "Terespol", "M1 / E30 vers Varsovie", "3–7 h"], ["Domachevo", "Sławatycze", "Contournement sud", "1–3 h"], ["Bruzgi", "Kuźnica Białostocka", "Grodno–Białystok", "2–5 h"]] },
+      { type: "h2", text: "Brest–Terespol : le passage le plus fréquenté" },
+      { type: "p", text: "Ce poste se trouve directement sur la M1 et concentre le plus grand trafic. Du vendredi au dimanche et avant les jours fériés, l’attente peut atteindre 6 à 10 heures. Privilégiez le mardi au jeudi, tôt le matin." },
+      { type: "h2", text: "Domachevo : l’alternative plus calme" },
+      { type: "p", text: "Domachevo se trouve 43 km au sud de Brest. Le trajet est plus long de 60 à 80 km, mais les files sont souvent deux à trois fois plus courtes. Le passage par Lublin ajoute environ une heure jusqu’à Varsovie." },
+      { type: "h2", text: "Bruzgi : pour le nord de la Pologne" },
+      { type: "p", text: "Bruzgi–Kuźnica convient aux voyageurs venant de Grodno ou se rendant à Białystok, Gdańsk et dans la Tricité. La distance depuis Minsk est d’environ 330 km. L’attente reste généralement modérée, sauf en été." },
+      { type: "h2", text: "Documents nécessaires pour entrer en Pologne" },
+      { type: "ul", items: ["Passeport valable au moins trois mois après la sortie prévue de l’UE.", "Visa Schengen ou titre de séjour européen valide.", "Assurance médicale d’au moins 30 000 €, valable dans tout l’espace Schengen.", "Réservation d’hôtel ou invitation.", "Billet retour ou justificatif du voyage.", "Assurance automobile requise si vous conduisez votre propre véhicule."] },
+      { type: "h2", text: "Conseils des chauffeurs ComfortLine" },
+      { type: "ul", items: ["Voyagez du mardi au jeudi ; les files sont nettement plus courtes que le vendredi.", "Regroupez tous les documents dans une pochette.", "À Terespol, indiquez clairement le motif : tourisme, affaires ou transit.", "Le réseau mobile biélorusse fonctionne jusqu’à la frontière, puis les opérateurs polonais prennent le relais.", "Prévoyez des zlotys en espèces, car les terminaux peuvent être indisponibles."] },
+      { type: "link", href: "https://mon.declarant.by/#/zone", label: "File électronique — mon.declarant.by", description: "Suivi officiel en temps réel des files à Brest et Domachevo. Si le site ne s’ouvre pas, essayez avec un VPN." },
+      { type: "liveQueue" },
+      { type: "callout", text: "Les chauffeurs ComfortLine suivent la situation en ligne. Si nécessaire, nous passons rapidement par Domachevo afin d’éviter plusieurs heures d’attente." }
+    ],
     related: ["стоимость-трансфер-минск-варшава", "что-нельзя-ввозить-в-ес", "аэропорт-варшавы-вав"],
-    ctaRoute: { label: "Заказать трансфер Минск — Варшава", labelEn: "Book Minsk–Warsaw transfer", path: "/трансфер-минск-варшава-шопен" },
+    ctaRoute: { label: "Заказать трансфер Минск — Варшава", labelEn: "Book Minsk–Warsaw transfer", labelPl: "Zarezerwuj transfer Mińsk–Warszawa", labelFr: "Réserver le transfert Minsk–Varsovie", path: "/трансфер-минск-варшава-шопен" },
   },
 
   {
     slug: "аэропорт-риги-rix",
     slugEn: "riga-airport-guide-from-minsk-belarus",
+    slugPl: "lotnisko-ryga-rix-przewodnik-z-minska-bialorusi",
+    slugFr: "aeroport-riga-rix-guide-depuis-minsk-bielorussie",
     titleEn: "Riga Airport (RIX) Guide for Passengers from Minsk & Belarus",
+    titlePl: "Lotnisko w Rydze (RIX): przewodnik dla pasażerów z Mińska i Białorusi",
+    titleFr: "Aéroport de Riga (RIX) : guide pour les passagers de Minsk et Biélorussie",
     descriptionEn: "Complete guide to Riga Airport for travelers from Belarus: terminals, how to get there from Minsk, check-in tips and private transfer options.",
+    descriptionPl: "Lotnisko RIX dla podróżnych z Białorusi: terminal, linie lotnicze, strefa spotkań, odprawa i prywatny transfer Mińsk–Ryga.",
+    descriptionFr: "Guide de RIX pour les voyageurs de Biélorussie : terminal, compagnies, zone d’accueil, enregistrement et transfert Minsk–Riga.",
     ogSlug: "blog-airport-riga-rix",
     title: "Аэропорт Риги (RIX): гайд для пассажиров из Беларуси",
     description:
@@ -1421,8 +1799,12 @@ export const ARTICLES: Article[] = [
       },
     ],
     categoryEn: "Airport",
+    categoryPl: "Lotnisko",
+    categoryFr: "Aéroport",
     introEn:
       "Riga International Airport (RIX) is the third-largest hub in the Baltics after Vilnius and Tallinn. For Belarusian travellers it is attractive for airBaltic routes and destinations not available from Vilnius. Distance from Minsk — around 470 km.",
+    introPl: "Międzynarodowe lotnisko w Rydze (RIX) jest trzecim co do wielkości portem w krajach bałtyckich. Podróżnych z Białorusi przyciąga siatką airBaltic i kierunkami niedostępnymi z Wilna. Od Mińska dzieli je około 470 km.",
+    introFr: "L’aéroport international de Riga (RIX) est le troisième hub des pays baltes. Il attire les voyageurs biélorusses grâce au réseau airBaltic et à des destinations absentes de Vilnius. Il se trouve à environ 470 km de Minsk.",
     bodyEn: [
       { type: "h2", text: "Why Riga Rather than Vilnius?" },
       {
@@ -1470,8 +1852,36 @@ export const ARTICLES: Article[] = [
         text: "ComfortLine transfers to Riga Airport (RIX). Door-to-door pick-up, luggage assistance and live border queue information — all included.",
       },
     ],
+    bodyPl: [
+      { type: "h2", text: "Dlaczego Ryga zamiast Wilna?" },
+      { type: "p", text: "Wilno jest bliżej, ale Ryga oferuje większą siatkę połączeń: airBaltic lata do ponad 80 miejsc. RIX jest szczególnie wygodny przy podróżach do Skandynawii, Islandii, Kanady i na wybrane kierunki azjatyckie." },
+      { type: "h2", text: "Układ lotniska" },
+      { type: "p", text: "RIX to kompaktowe lotnisko z jednym terminalem i trzema pirsami. A obsługuje loty regionalne, B loty Schengen, a C połączenia poza Schengen. Oznaczenia są po łotewsku, angielsku i rosyjsku." },
+      { type: "table", headers: ["Linia", "Główne kierunki"], rows: [["airBaltic", "Helsinki, Amsterdam, Londyn, Berlin, Dubaj, Toronto"], ["Ryanair", "Bristol, Dublin, Madryt, Mediolan, Ateny"], ["Wizz Air", "Wiedeń, Berlin, Rzym, Barcelona"], ["Finnair", "Helsinki i połączenia światowe"]] },
+      { type: "h2", text: "Przyloty i miejsce spotkania" },
+      { type: "p", text: "Wyjście z przylotów prowadzi bezpośrednio do głównej hali na parterze. Kierowca ComfortLine czeka z tabliczką przy wyjściu ze strefy celnej. Punktem orientacyjnym jest kawiarnia Coffee & Chocolate przy głównym wyjściu." },
+      { type: "h2", text: "Wskazówki przed wylotem" },
+      { type: "ul", items: ["airBaltic wymaga odprawy online; odprawa przy stanowisku kosztuje około 30 €.", "Bezpłatny bagaż podręczny obejmuje małą torbę; większa walizka kabinowa jest dodatkowo płatna.", "Bezpłatne Wi-Fi wymaga weryfikacji SMS-em.", "Sklepy Duty Free znajdują się za kontrolą paszportową.", "Autobus miejski nr 22 kursuje do centrum co 10–15 minut; podróż trwa około 30 minut."] },
+      { type: "h2", text: "Transfer Mińsk–Ryga: najważniejsze informacje" },
+      { type: "p", text: "Trasa prowadzi przez przejście Hryhorowszczyna–Pāternieki na granicy Białoruś–Łotwa. Jest ono zwykle mniej zatłoczone niż przejścia litewskie; w dni robocze odprawa trwa przeciętnie 1,5–3 godziny. Cała podróż zajmuje 7–9 godzin, dlatego zalecamy dodatkowy zapas przed lotem." },
+      { type: "callout", text: "ComfortLine realizuje transfery na lotnisko w Rydze. Odbiór spod drzwi, pomoc z bagażem i aktualne informacje o kolejce granicznej są wliczone w usługę." }
+    ],
+    bodyFr: [
+      { type: "h2", text: "Pourquoi Riga plutôt que Vilnius ?" },
+      { type: "p", text: "Vilnius est plus proche, mais Riga dispose d’un réseau plus vaste : airBaltic dessert plus de 80 destinations. RIX est particulièrement pratique pour la Scandinavie, l’Islande, le Canada et certaines liaisons asiatiques." },
+      { type: "h2", text: "Organisation de l’aéroport" },
+      { type: "p", text: "RIX est un aéroport compact avec un terminal et trois jetées. A accueille les vols régionaux, B les vols Schengen et C les vols hors Schengen. La signalisation est en letton, anglais et russe." },
+      { type: "table", headers: ["Compagnie", "Destinations principales"], rows: [["airBaltic", "Helsinki, Amsterdam, Londres, Berlin, Dubaï, Toronto"], ["Ryanair", "Bristol, Dublin, Madrid, Milan, Athènes"], ["Wizz Air", "Vienne, Berlin, Rome, Barcelone"], ["Finnair", "Helsinki et correspondances mondiales"]] },
+      { type: "h2", text: "Arrivées et point de rencontre" },
+      { type: "p", text: "La sortie des arrivées mène directement au hall principal du rez-de-chaussée. Le chauffeur ComfortLine attend avec une pancarte à la sortie de la douane. Le café Coffee & Chocolate, près de la sortie principale, sert de repère." },
+      { type: "h2", text: "Conseils avant le vol" },
+      { type: "ul", items: ["airBaltic impose l’enregistrement en ligne ; le comptoir facture environ 30 €.", "Seul un petit sac est gratuit ; une valise cabine entraîne un supplément.", "Le Wi-Fi gratuit utilise une vérification par SMS.", "Les boutiques Duty Free se trouvent après le contrôle des passeports.", "Le bus urbain 22 rejoint le centre toutes les 10 à 15 minutes en environ 30 minutes."] },
+      { type: "h2", text: "Transfert Minsk–Riga : informations essentielles" },
+      { type: "p", text: "L’itinéraire passe par Grigorovshchina–Pāternieki à la frontière Biélorussie–Lettonie. Ce poste est généralement moins chargé que ceux de Lituanie ; en semaine, le passage prend en moyenne 1 h 30 à 3 h. Le trajet total dure 7 à 9 heures, avec une marge recommandée avant le vol." },
+      { type: "callout", text: "ComfortLine assure les transferts vers l’aéroport de Riga. Prise en charge à domicile, aide aux bagages et informations actualisées sur la frontière sont incluses." }
+    ],
     related: ["граница-беларусь-польша", "что-нельзя-ввозить-в-ес", "как-добраться-до-аэропорта-вильнюса"],
-    ctaRoute: { label: "Заказать трансфер Минск — Рига (RIX)", labelEn: "Book Minsk–Riga (RIX) transfer", path: "/трансфер-минск-рига-аэропорт" },
+    ctaRoute: { label: "Заказать трансфер Минск — Рига (RIX)", labelEn: "Book Minsk–Riga (RIX) transfer", labelPl: "Zarezerwuj transfer Mińsk–Ryga (RIX)", labelFr: "Réserver le transfert Minsk–Riga (RIX)", path: "/трансфер-минск-рига-аэропорт" },
   },
 
   {
