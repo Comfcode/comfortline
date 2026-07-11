@@ -179,8 +179,9 @@ const KNOWN = new Set([
   "/brandbook",
   "/thank-you",
 ]);
+let priorityLocales = [];
 try {
-  const priorityLocales = JSON.parse(fs.readFileSync(PRIORITY_LOCALES_PATH, "utf8"));
+  priorityLocales = JSON.parse(fs.readFileSync(PRIORITY_LOCALES_PATH, "utf8"));
   for (const route of priorityLocales) { KNOWN.add(route.pl); KNOWN.add(route.fr); }
 } catch { /* build checks the inventory */ }
 
@@ -220,6 +221,11 @@ function routeHtmlPath(encodedPathname) {
 
 function alternatePathForLanguage(encodedPathname, language) {
   try {
+    const decodedPath = decodeURIComponent(encodedPathname).replace(/\/+$/, "") || "/";
+    const priorityRoute = priorityLocales.find((route) =>
+      [route.ru, route.en, route.pl, route.fr].includes(decodedPath),
+    );
+    if (priorityRoute?.[language]) return priorityRoute[language];
     const htmlPath = routeHtmlPath(encodedPathname);
     if (!fs.existsSync(htmlPath)) return null;
     const html = fs.readFileSync(htmlPath, "utf8");
@@ -240,7 +246,7 @@ export function normalizeRequestUrl(inputUrl) {
   if (pathname !== "/" && pathname.endsWith("/")) pathname = pathname.replace(/[/]+$/, "");
 
   const language = inputUrl.searchParams.get("lang");
-  if (language === "ru" || language === "en") {
+  if (["ru", "en", "pl", "fr"].includes(language)) {
     pathname = alternatePathForLanguage(pathname, language) || pathname;
     inputUrl.searchParams.delete("lang");
   }
