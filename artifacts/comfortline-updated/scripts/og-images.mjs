@@ -101,11 +101,17 @@ async function main() {
     seen.add(route.ogSlug);
 
     for (const lang of ["ru", "en"]) {
-      const svg = svgFor(textFor(route, lang));
       const outPath = path.join(OG_DIR, `${route.ogSlug}-${lang}.jpg`);
-      await sharp(Buffer.from(svg)).jpeg({ quality: 90, mozjpeg: true }).toFile(outPath);
-      console.log(`[og] ${route.ogSlug}-${lang}.jpg`);
-      count++;
+      try {
+        const svg = svgFor(textFor(route, lang));
+        await sharp(Buffer.from(svg)).jpeg({ quality: 90, mozjpeg: true }).toFile(outPath);
+        console.log(`[og] ${route.ogSlug}-${lang}.jpg`);
+        count++;
+      } catch (error) {
+        // Social artwork is an enhancement; one problematic text overlay must
+        // never prevent the HTML, sitemap, or SEO validation from building.
+        console.warn(`[og] skipped ${route.ogSlug}-${lang}: ${error instanceof Error ? error.message : String(error)}`);
+      }
     }
   }
   console.log(`[og] generated ${count} OG images in dist/public/og/`);
