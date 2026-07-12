@@ -2,14 +2,21 @@ import { useLang } from "@/context/language-context";
 import { useSeo } from "./use-seo";
 import { SITE_URL, DEFAULT_OG_IMAGE } from "./seo-config";
 import { localBusinessJsonLd, breadcrumbJsonLd, type BreadcrumbItem } from "./jsonld";
+import priorityRoutes from "@/data/priority-locales.json";
 
 interface SeoProps {
   titleRu: string;
   titleEn: string;
+  titlePl?: string;
+  titleFr?: string;
   descRu: string;
   descEn: string;
+  descPl?: string;
+  descFr?: string;
   pathRu: string;
   pathEn: string;
+  pathPl?: string;
+  pathFr?: string;
   keywordsRu?: string;
   keywordsEn?: string;
   ogImage?: string;
@@ -22,7 +29,7 @@ interface SeoProps {
 }
 
 export function Seo(props: SeoProps) {
-  const { lang } = useLang();
+  const { lang, locale } = useLang();
   const isRu = lang === "ru"; // UI language — used for breadcrumbs and JSON-LD (follows user preference)
 
   // SEO language — derived from the ACTUAL URL, not the user's preference.
@@ -46,8 +53,21 @@ export function Seo(props: SeoProps) {
     }
   }
 
-  const title = seoIsRu ? props.titleRu : props.titleEn;
-  const description = seoIsRu ? props.descRu : props.descEn;
+  const routeGroup = priorityRoutes.find((route) =>
+    route.ru === props.pathRu || route.en === props.pathEn
+  );
+  const localizedPaths = {
+    ru: props.pathRu,
+    en: props.pathEn,
+    pl: props.pathPl ?? routeGroup?.pl ?? props.pathEn,
+    fr: props.pathFr ?? routeGroup?.fr ?? props.pathEn,
+  };
+  const liveLocale = typeof window !== "undefined"
+    ? (window.location.pathname === localizedPaths.pl ? "pl" : window.location.pathname === localizedPaths.fr ? "fr" : seoIsRu ? "ru" : "en")
+    : locale;
+  canonicalPath = localizedPaths[liveLocale];
+  const title = liveLocale === "ru" ? props.titleRu : liveLocale === "pl" ? (props.titlePl ?? props.titleEn) : liveLocale === "fr" ? (props.titleFr ?? props.titleEn) : props.titleEn;
+  const description = liveLocale === "ru" ? props.descRu : liveLocale === "pl" ? (props.descPl ?? props.descEn) : liveLocale === "fr" ? (props.descFr ?? props.descEn) : props.descEn;
   const keywords = seoIsRu ? props.keywordsRu : props.keywordsEn;
 
   const allJsonLd: object[] = [];
@@ -71,15 +91,17 @@ export function Seo(props: SeoProps) {
     description,
     canonical: SITE_URL + canonicalPath,
     alternates: [
-      { hreflang: "ru", href: SITE_URL + props.pathRu },
-      { hreflang: "en", href: SITE_URL + props.pathEn },
-      { hreflang: "x-default", href: SITE_URL + props.pathRu },
+      { hreflang: "ru", href: SITE_URL + localizedPaths.ru },
+      { hreflang: "en", href: SITE_URL + localizedPaths.en },
+      { hreflang: "pl", href: SITE_URL + localizedPaths.pl },
+      { hreflang: "fr", href: SITE_URL + localizedPaths.fr },
+      { hreflang: "x-default", href: SITE_URL + localizedPaths.en },
     ],
     ogImage: props.ogImage || DEFAULT_OG_IMAGE,
     ogType: props.ogType,
     keywords,
     jsonLd: allJsonLd,
-    lang: seoIsRu ? "ru" : "en",
+    lang: liveLocale,
     robots: props.noindex ? "noindex, nofollow" : undefined,
   });
 

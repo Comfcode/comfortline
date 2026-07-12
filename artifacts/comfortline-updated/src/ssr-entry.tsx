@@ -68,7 +68,6 @@ import MinskTrakaiTransferPage from "@/pages/minsk-trakai-transfer";
 import MinskKlaipedaTransferPage from "@/pages/minsk-klaipeda-transfer";
 import MinskDruskininkaiTransferPage from "@/pages/minsk-druskininkai-transfer";
 import MinskKaunasTransferPage from "@/pages/minsk-kaunas-transfer";
-import PriorityLocalePage from "@/pages/priority-locale-page";
 
 const queryClient = new QueryClient();
 
@@ -113,6 +112,10 @@ function SsrRouter() {
       <Route path="/блог" component={BlogIndexPage} />
       <Route path="/blog/:slug" component={BlogArticlePage} />
       <Route path="/блог/:slug" component={BlogArticlePage} />
+      <Route path="/pl/blog" component={BlogIndexPage} />
+      <Route path="/fr/blog" component={BlogIndexPage} />
+      <Route path="/pl/blog/:slug" component={BlogArticlePage} />
+      <Route path="/fr/blog/:slug" component={BlogArticlePage} />
 
       <Route path="/mercedes-e-class-transfer" component={VehiclePageMercedes} />
       <Route path="/трансфер-мерседес-е-класс" component={VehiclePageMercedes} />
@@ -190,10 +193,28 @@ function SsrRouter() {
       <Route path="/minsk-druskininkai-transfer" component={MinskDruskininkaiTransferPage} />
       <Route path="/трансфер-минск-друскининкай" component={MinskDruskininkaiTransferPage} />
 
-      <Route path="/pl" component={PriorityLocalePage} />
-      <Route path="/pl/:slug" component={PriorityLocalePage} />
-      <Route path="/fr" component={PriorityLocalePage} />
-      <Route path="/fr/:slug" component={PriorityLocalePage} />
+      <Route path="/pl" component={LandingPage} />
+      <Route path="/fr" component={LandingPage} />
+      <Route path="/pl/transfer-minsk-lotnisko-wilno" component={MinskVilniusAirportPage} />
+      <Route path="/fr/transfert-minsk-aeroport-vilnius" component={MinskVilniusAirportPage} />
+      <Route path="/pl/transfer-minsk-wilno" component={MinskVilniusTransferPage} />
+      <Route path="/fr/transfert-minsk-vilnius" component={MinskVilniusTransferPage} />
+      <Route path="/pl/transfer-minsk-lotnisko-chopina" component={MinskWarsawAirportPage} />
+      <Route path="/fr/transfert-minsk-aeroport-varsovie-chopin" component={MinskWarsawAirportPage} />
+      <Route path="/pl/transfer-minsk-lotnisko-modlin" component={MinskWarsawModlinAirportPage} />
+      <Route path="/fr/transfert-minsk-aeroport-modlin" component={MinskWarsawModlinAirportPage} />
+      <Route path="/pl/transfer-minsk-warszawa" component={WarsawTransferPage} />
+      <Route path="/fr/transfert-minsk-varsovie" component={WarsawTransferPage} />
+      <Route path="/pl/transfer-minsk-lotnisko-kowno" component={MinskKaunasAirportPage} />
+      <Route path="/fr/transfert-minsk-aeroport-kaunas" component={MinskKaunasAirportPage} />
+      <Route path="/pl/transfer-minsk-kowno" component={MinskKaunasTransferPage} />
+      <Route path="/fr/transfert-minsk-kaunas" component={MinskKaunasTransferPage} />
+      <Route path="/pl/transfer-minsk-lotnisko-ryga" component={MinskRigaAirportPage} />
+      <Route path="/fr/transfert-minsk-aeroport-riga" component={MinskRigaAirportPage} />
+      <Route path="/pl/transfer-minsk-litwa" component={LithuaniaTransferPage} />
+      <Route path="/fr/transfert-minsk-lituanie" component={LithuaniaTransferPage} />
+      <Route path="/pl/transfer-minsk-polska" component={PolandTransferPage} />
+      <Route path="/fr/transfert-minsk-pologne" component={PolandTransferPage} />
       <Route component={NotFound} />
     </Switch>
   );

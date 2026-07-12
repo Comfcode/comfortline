@@ -382,13 +382,21 @@ function collectBlogRoutes() {
   for (const objStr of objStrs) {
     const slug = field(objStr, "slug");
     const slugEn = field(objStr, "slugEn");
+    const slugPl = field(objStr, "slugPl") || slugEn;
+    const slugFr = field(objStr, "slugFr") || slugEn;
     const ogSlug = field(objStr, "ogSlug");
     const title = field(objStr, "title");
     const titleEn = field(objStr, "titleEn");
+    const titlePl = field(objStr, "titlePl") || titleEn;
+    const titleFr = field(objStr, "titleFr") || titleEn;
     const description = field(objStr, "description");
     const descriptionEn = field(objStr, "descriptionEn");
+    const descriptionPl = field(objStr, "descriptionPl") || descriptionEn;
+    const descriptionFr = field(objStr, "descriptionFr") || descriptionEn;
     const intro = field(objStr, "intro");
     const introEn = field(objStr, "introEn");
+    const introPl = field(objStr, "introPl") || introEn;
+    const introFr = field(objStr, "introFr") || introEn;
     const dateISO = field(objStr, "dateISO");
     const category = field(objStr, "category");
     const categoryEn = field(objStr, "categoryEn");
@@ -414,14 +422,22 @@ function collectBlogRoutes() {
       ogSlug: ogSlug || `blog-${slug}`,
       pathRu: `/блог/${slug}`,
       pathEn: `/blog/${slugEn || slug}`,
+      pathPl: `/pl/blog/${slugPl || slug}`,
+      pathFr: `/fr/blog/${slugFr || slug}`,
       titleRu: `${title} | Блог ComfortLine`,
       titleEn: `${titleEn || title} | ComfortLine Blog`,
+      titlePl: `${titlePl || titleEn || title} | Blog ComfortLine`,
+      titleFr: `${titleFr || titleEn || title} | Blog ComfortLine`,
       descRu: description,
       descEn: descriptionEn || description,
+      descPl: descriptionPl || descriptionEn || description,
+      descFr: descriptionFr || descriptionEn || description,
       h1Ru: title,
       h1En: titleEn || title,
       introRu: intro,
       introEn: introEn || intro,
+      introPl: introPl || introEn || intro,
+      introFr: introFr || introEn || intro,
       isArticle: true,
       datePublished: dateISO,
       dateModified: dateISO,

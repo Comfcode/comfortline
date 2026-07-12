@@ -70,7 +70,6 @@ function installJsdomGlobals() {
 }
 
 async function createSsrModuleLoader() {
-  process.env.PRERENDER_BUILD = "1";
   const vite = await createViteServer({
     root: ROOT,
     configFile: path.join(ROOT, "vite.config.ts"),
@@ -441,15 +440,14 @@ async function main() {
 
   const { allRoutes, manualRoutes, autoRoutes, vehicleRoutes, blogIndexRoute, blogArticleRoutes } = collectAllRoutes();
 
-  // The complete four-language route graph exceeds the memory available in
-  // Cloudflare's build worker when loaded through Vite SSR. Emit the existing
-  // deterministic crawler shell instead; the client bundle still hydrates the
-  // full React layout for visitors.
+  const dom = installJsdomGlobals();
+  const { vite, SsrApp } = await createSsrModuleLoader();
+
   let ssrFailures = 0;
   const written = [];
   for (const route of allRoutes) {
-    const markupRu = null;
-    const markupEn = null;
+    const markupRu = renderRouteMarkup(SsrApp, route.pathRu);
+    const markupEn = renderRouteMarkup(SsrApp, route.pathEn);
     if (!markupRu) ssrFailures++;
     if (!markupEn) ssrFailures++;
     written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute, markupRu)));
@@ -457,9 +455,29 @@ async function main() {
   }
   const priorityLocales=JSON.parse(fs.readFileSync(PRIORITY_LOCALES_PATH,"utf8"));
   for (const route of priorityLocales) for (const lang of ["pl","fr"]) {
-    const markup=null; if(!markup) ssrFailures++;
+    const markup=renderRouteMarkup(SsrApp,route[lang]); if(!markup) ssrFailures++;
     written.push(emit(route[lang],buildPriorityHtml(template,route,lang,markup)));
   }
+  for (const route of blogArticleRoutes) for (const lang of ["pl", "fr"]) {
+    const localizedPath = route[lang === "pl" ? "pathPl" : "pathFr"];
+    const pseudo = {
+      ...route,
+      pathRu: localizedPath,
+      titleRu: route[lang === "pl" ? "titlePl" : "titleFr"],
+      descRu: route[lang === "pl" ? "descPl" : "descFr"],
+      h1Ru: route[lang === "pl" ? "titlePl" : "titleFr"].replace(/ \| (?:Blog )?ComfortLine$/, ""),
+      introRu: route[lang === "pl" ? "introPl" : "introFr"],
+    };
+    const markup = renderRouteMarkup(SsrApp, localizedPath); if (!markup) ssrFailures++;
+    let html = buildHtml(template, pseudo, "ru", blogIndexRoute, markup).replace('<html lang="ru">', `<html lang="${lang}">`);
+    const alternates = [["ru", route.pathRu], ["en", route.pathEn], ["pl", route.pathPl], ["fr", route.pathFr], ["x-default", route.pathEn]]
+      .map(([code, href]) => `    <link rel="alternate" hreflang="${code}" href="${SITE_URL + encodeURI(href)}" />`).join("\n");
+    html = html.replace(/\s*<link rel="alternate" hreflang="ru"[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*\/>/, "\n" + alternates);
+    written.push(emit(localizedPath, html));
+  }
+
+  await vite.close();
+  dom.window.close();
 
   console.log(
     `[prerender] wrote ${written.length} files for ${allRoutes.length} routes (${manualRoutes.length} manual, ${autoRoutes.length} auto, ${vehicleRoutes.length} vehicle, ${1 + blogArticleRoutes.length} blog):`,

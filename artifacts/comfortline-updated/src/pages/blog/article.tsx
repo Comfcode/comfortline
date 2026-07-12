@@ -138,27 +138,30 @@ function renderBlock(block: Block, idx: number) {
 }
 
 export default function BlogArticlePage() {
-  const { lang } = useLang();
+  const { lang, locale } = useLang();
   const isRu = lang === "ru";
-  const base = isRu ? BLOG_BASE_RU : BLOG_BASE_EN;
+  const base = locale === "ru" ? BLOG_BASE_RU : locale === "pl" ? "/pl/blog" : locale === "fr" ? "/fr/blog" : BLOG_BASE_EN;
 
   const [, paramsRu] = useRoute(`${BLOG_BASE_RU}/:slug`);
   const [, paramsEn] = useRoute(`${BLOG_BASE_EN}/:slug`);
-  const slug = (paramsRu?.slug ?? paramsEn?.slug) as string | undefined;
+  const [, paramsPl] = useRoute(`/pl/blog/:slug`);
+  const [, paramsFr] = useRoute(`/fr/blog/:slug`);
+  const slug = (paramsRu?.slug ?? paramsEn?.slug ?? paramsPl?.slug ?? paramsFr?.slug) as string | undefined;
 
   const article = slug ? findArticle(slug) : undefined;
   if (!article) return <NotFound />;
 
   const enSlug = article.slugEn ?? encodeURI(article.slug);
-  const url = isRu
-    ? SITE_URL + BLOG_BASE_RU + "/" + encodeURI(article.slug)
-    : SITE_URL + BLOG_BASE_EN + "/" + enSlug;
+  const plSlug = article.slugPl ?? enSlug;
+  const frSlug = article.slugFr ?? enSlug;
+  const localized = <T,>(ru: T, en: T, pl?: T, fr?: T) => locale === "ru" ? ru : locale === "pl" ? (pl ?? en) : locale === "fr" ? (fr ?? en) : en;
+  const url = SITE_URL + localized(`${BLOG_BASE_RU}/${encodeURI(article.slug)}`, `${BLOG_BASE_EN}/${enSlug}`, `/pl/blog/${plSlug}`, `/fr/blog/${frSlug}`);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: isRu ? article.title : (article.titleEn ?? article.title),
-    description: isRu ? article.description : (article.descriptionEn ?? article.description),
+    headline: localized(article.title, article.titleEn ?? article.title, article.titlePl, article.titleFr),
+    description: localized(article.description, article.descriptionEn ?? article.description, article.descriptionPl, article.descriptionFr),
     datePublished: article.dateISO,
     dateModified: article.dateISO,
     author: {
@@ -173,7 +176,7 @@ export default function BlogArticlePage() {
     },
     image: `${SITE_URL}/og/${article.ogSlug}.jpg`,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    inLanguage: isRu ? "ru" : "en",
+    inLanguage: locale,
     keywords: article.tags.join(", "),
   };
 
@@ -186,10 +189,16 @@ export default function BlogArticlePage() {
       <Seo
         titleRu={`${article.title} | Блог ComfortLine`}
         titleEn={`${article.titleEn ?? article.title} | ComfortLine Blog`}
+        titlePl={`${article.titlePl ?? article.titleEn ?? article.title} | Blog ComfortLine`}
+        titleFr={`${article.titleFr ?? article.titleEn ?? article.title} | Blog ComfortLine`}
         descRu={article.description}
         descEn={article.descriptionEn ?? article.description}
+        descPl={article.descriptionPl}
+        descFr={article.descriptionFr}
         pathRu={`${BLOG_BASE_RU}/${article.slug}`}
         pathEn={`${BLOG_BASE_EN}/${enSlug}`}
+        pathPl={`/pl/blog/${plSlug}`}
+        pathFr={`/fr/blog/${frSlug}`}
         keywordsRu={article.tags.join(", ")}
         keywordsEn={article.tags.join(", ")}
         ogImage={`${SITE_URL}/og/${article.ogSlug}.jpg`}
@@ -227,11 +236,11 @@ export default function BlogArticlePage() {
           </div>
 
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-            {isRu ? article.title : (article.titleEn ?? article.title)}
+            {localized(article.title, article.titleEn ?? article.title, article.titlePl, article.titleFr)}
           </h1>
 
           <p className="text-lg text-muted-foreground leading-relaxed mb-10 border-l-2 border-primary/40 pl-4 italic">
-            {isRu ? article.intro : (article.introEn ?? article.intro)}
+            {localized(article.intro, article.introEn ?? article.intro, article.introPl, article.introFr)}
           </p>
 
           <motion.div
@@ -240,7 +249,7 @@ export default function BlogArticlePage() {
             transition={{ duration: 0.4 }}
             className="prose-comfortline"
           >
-            {(isRu ? article.body : (article.bodyEn ?? article.body)).map(renderBlock)}
+            {localized(article.body, article.bodyEn ?? article.body, article.bodyPl, article.bodyFr).map(renderBlock)}
           </motion.div>
 
           {/* Tags */}
@@ -269,7 +278,7 @@ export default function BlogArticlePage() {
                 href={article.ctaRoute.path}
                 className="inline-block px-8 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
               >
-                {isRu ? article.ctaRoute.label : (article.ctaRoute.labelEn ?? article.ctaRoute.label)}
+                {localized(article.ctaRoute.label, article.ctaRoute.labelEn ?? article.ctaRoute.label, article.ctaRoute.labelPl, article.ctaRoute.labelFr)}
               </a>
             </div>
           )}
@@ -285,14 +294,14 @@ export default function BlogArticlePage() {
                 {relatedArticles.map((r) => (
                   <a
                     key={r.slug}
-                    href={`${base}/${isRu ? encodeURI(r.slug) : (r.slugEn ?? encodeURI(r.slug))}`}
+                    href={`${base}/${localized(encodeURI(r.slug), r.slugEn ?? encodeURI(r.slug), r.slugPl, r.slugFr)}`}
                     className="block bg-card border border-border rounded-2xl p-5 hover:border-primary/50 hover:bg-primary/5 transition-all group"
                   >
                     <p className="font-bold text-foreground group-hover:text-primary transition-colors mb-1.5 leading-snug">
-                      {isRu ? r.title : (r.titleEn ?? r.title)}
+                      {localized(r.title, r.titleEn ?? r.title, r.titlePl, r.titleFr)}
                     </p>
                     <p className="text-muted-foreground text-xs leading-relaxed">
-                      {isRu ? r.description : (r.descriptionEn ?? r.description)}
+                      {localized(r.description, r.descriptionEn ?? r.description, r.descriptionPl, r.descriptionFr)}
                     </p>
                     <span className="inline-flex items-center gap-1 mt-3 text-primary text-xs font-semibold">
                       {isRu ? "Читать" : "Read"} <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />

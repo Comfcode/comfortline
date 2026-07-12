@@ -77,8 +77,10 @@ function extractArticles(src) {
       const objStr = arrayBody.slice(start, i);
       const slug = /(?<!\w)slug:\s*"([^"]+)"/.exec(objStr)?.[1];
       const slugEn = /slugEn:\s*"([^"]+)"/.exec(objStr)?.[1];
+      const slugPl = /slugPl:\s*"([^"]+)"/.exec(objStr)?.[1];
+      const slugFr = /slugFr:\s*"([^"]+)"/.exec(objStr)?.[1];
       const dateISO = /dateISO:\s*"([^"]+)"/.exec(objStr)?.[1];
-      if (slug) articles.push({ slug, slugEn, dateISO });
+      if (slug) articles.push({ slug, slugEn, slugPl, slugFr, dateISO });
     } else {
       i++;
     }
@@ -93,6 +95,8 @@ function buildArticleUrlBlocks(article) {
   }
   const ruLoc = `${SITE_URL}${encodeURI(`${BLOG_BASE_RU}/${article.slug}`)}`;
   const enLoc = `${SITE_URL}${BLOG_BASE_EN}/${article.slugEn}`;
+  const plLoc = `${SITE_URL}/pl/blog/${article.slugPl || article.slugEn}`;
+  const frLoc = `${SITE_URL}/fr/blog/${article.slugFr || article.slugEn}`;
   const lastmod = article.dateISO || TODAY;
 
   const block = (loc) => `  <url>
@@ -102,10 +106,12 @@ function buildArticleUrlBlocks(article) {
       <priority>0.7</priority>
       <xhtml:link rel="alternate" hreflang="ru" href="${ruLoc}"/>
       <xhtml:link rel="alternate" hreflang="en" href="${enLoc}"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="${ruLoc}"/>
+      <xhtml:link rel="alternate" hreflang="pl" href="${plLoc}"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="${frLoc}"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="${enLoc}"/>
     </url>`;
 
-  return `${block(ruLoc)}\n${block(enLoc)}`;
+  return `${block(ruLoc)}\n${block(enLoc)}\n${block(plLoc)}\n${block(frLoc)}`;
 }
 
 function isPerArticleBlogBlock(block) {
@@ -114,7 +120,7 @@ function isPerArticleBlogBlock(block) {
   const loc = locMatch[1];
   // Index pages end in exactly /blog or /%D0%B1%D0%BB%D0%BE%D0%B3 (no trailing slug).
   // Per-article pages have a slug segment after the blog base.
-  return /\/blog\/[^/]+$/.test(loc) || /\/%D0%B1%D0%BB%D0%BE%D0%B3\/[^/]+$/.test(loc);
+  return /\/(?:pl|fr)?\/?blog\/[^/]+$/.test(loc) || /\/%D0%B1%D0%BB%D0%BE%D0%B3\/[^/]+$/.test(loc);
 }
 
 function regenerateSitemap(sitemapXml, articles, priorityLocales) {
