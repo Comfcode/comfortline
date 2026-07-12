@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "node scripts/convert-images.mjs && node scripts/generate-blog-sitemap.mjs && vite build --config vite.config.ts && node scripts/og-images.mjs && node scripts/prerender.mjs && node scripts/url-normalization-test.mjs && node scripts/seo-smoke-test.mjs",
+    "build": "node scripts/convert-images.mjs && node scripts/generate-blog-sitemap.mjs && vite build --config vite.config.ts && node scripts/og-images.mjs && node scripts/prerender.mjs && node scripts/url-normalization-test.mjs && node scripts/seo-smoke-test.mjs && node scripts/bing-seo-test.mjs && node scripts/indexnow.mjs --all --non-blocking",
     "build:production": "pnpm run build",
     "seo:smoke": "node scripts/seo-smoke-test.mjs",
     "test:url-normalization": "node scripts/url-normalization-test.mjs",
@@ -15,7 +15,8 @@
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "audit:seo": "node scripts/seo-smoke-test.mjs",
-    "audit:ru-routes": "node scripts/russian-route-seo-test.mjs"
+    "audit:ru-routes": "node scripts/russian-route-seo-test.mjs",
+    "audit:bing": "node scripts/bing-seo-test.mjs && node scripts/indexnow.mjs --all --dry-run"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",
