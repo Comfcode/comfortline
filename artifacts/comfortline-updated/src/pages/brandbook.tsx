@@ -17,6 +17,14 @@ const colors = [
 ];
 
 const downloads = [
+  [
+    "Guidelines PDF · RU/EN/PL/FR",
+    "/brand/comfortline-brand-guidelines-multilingual.pdf",
+  ],
+  ["Guidelines PDF · Русский", "/brand/comfortline-brand-guidelines-ru.pdf"],
+  ["Guidelines PDF · English", "/brand/comfortline-brand-guidelines-en.pdf"],
+  ["Guidelines PDF · Polski", "/brand/comfortline-brand-guidelines-pl.pdf"],
+  ["Guidelines PDF · Français", "/brand/comfortline-brand-guidelines-fr.pdf"],
   ["Complete asset package", "/brand/comfortline-brand-assets.zip"],
   ["Primary SVG", "/brand/comfortline-logo-primary.svg"],
   ["Light-background SVG", "/brand/comfortline-logo-on-light.svg"],
