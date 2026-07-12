@@ -233,13 +233,13 @@ function WarsawAirportSeo() {
   const isRu = lang === "ru";
   return (
     <Seo
-      titleRu="Минск — аэропорт Шопен (WAW) | ComfortLine"
+      titleRu="Такси Минск — аэропорт Шопен | Индивидуальный трансфер"
       titleEn="Minsk to Warsaw Airport (WAW) | ComfortLine"
-      descRu="Трансфер Минск — аэропорт Варшавы Шопен (WAW): 550 км, фиксированная цена, подача от двери и помощь на границе."
+      descRu="Такси и индивидуальный трансфер Минск — аэропорт Варшавы Шопен (WAW) — Минск. Фиксированная цена, подача от двери, помощь на границе, 24/7."
       descEn="Private Minsk to Warsaw Chopin Airport (WAW) transfer: 550 km, fixed fare, door-to-door pickup and border assistance."
       pathRu="/трансфер-минск-варшава-шопен"
       pathEn="/minsk-warsaw-airport"
-      keywordsRu="трансфер минск варшава, трансфер минск варшава аэропорт, такси минск варшава шопен, waw трансфер, минск warsaw chopin, аэропорт шопен из минска"
+      keywordsRu="такси минск аэропорт шопен, такси аэропорт шопен минск, индивидуальный трансфер минск варшава, трансфер минск waw, частный трансфер минск варшава"
       keywordsEn="minsk warsaw airport transfer, minsk to waw taxi, warsaw chopin airport transfer, private transfer minsk warsaw, belarus poland border transfer"
       breadcrumbsRu={[
         { name: "Главная", path: "/" },

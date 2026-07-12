@@ -14,7 +14,8 @@
     "og": "node scripts/og-images.mjs",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "audit:seo": "node scripts/seo-smoke-test.mjs"
+    "audit:seo": "node scripts/seo-smoke-test.mjs",
+    "audit:ru-routes": "node scripts/russian-route-seo-test.mjs"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",

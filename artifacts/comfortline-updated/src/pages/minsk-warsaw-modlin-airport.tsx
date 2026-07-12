@@ -261,13 +261,13 @@ export default function MinskWarsawModlinAirportPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Seo
-        titleRu="Минск — аэропорт Модлин (WMI) | ComfortLine"
+        titleRu="Такси Минск — аэропорт Модлин | Индивидуальный трансфер"
         titleEn="Minsk to Modlin Airport (WMI) | ComfortLine"
-        descRu="Трансфер Минск — аэропорт Варшавы Модлин (WMI): 600 км, фиксированная цена, подача от двери и помощь на границе."
+        descRu="Такси и индивидуальный трансфер Минск — аэропорт Модлин (WMI) — Минск. Фиксированная цена, подача от двери, помощь на границе, поездки 24/7."
         descEn="Private Minsk to Warsaw Modlin Airport (WMI) transfer: 600 km, fixed fare, door-to-door pickup and border assistance."
         pathRu="/трансфер-минск-варшава-модлин"
         pathEn="/minsk-warsaw-modlin-airport"
-        keywordsRu="трансфер минск модлин, минск варшава модлин, wmi трансфер, минск warsaw modlin, такси в аэропорт модлин"
+        keywordsRu="такси минск аэропорт модлин, такси модлин минск, индивидуальный трансфер минск модлин, трансфер минск wmi, частный трансфер минск варшава"
         keywordsEn="minsk warsaw modlin transfer, minsk to wmi taxi, warsaw modlin airport private transfer, ryanair modlin minsk"
         breadcrumbsRu={[
           { name: "Главная", path: "/" },

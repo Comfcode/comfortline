@@ -177,8 +177,22 @@ export function RouteLandingPage({ data }: Props) {
   const { lang, locale } = useLang();
   const c = data[locale] ?? data.en;
   const isRu = lang === "ru";
-  const seoTitle = isRu ? data.seo.titleRu : data.seo.titleEn;
-  const seoDesc = isRu ? data.seo.descRu : data.seo.descEn;
+  const fromRu = data.ru.prefilledFrom || "Минск";
+  const toRu = data.ru.prefilledTo || data.ru.title;
+  const routeSeoTitleRu = `Такси ${fromRu} — ${toRu} | Индивидуальный трансфер`;
+  const routeSeoDescRu = `Такси и индивидуальный трансфер ${fromRu} — ${toRu} — ${fromRu}. Подача от двери, фиксированная цена за автомобиль, опытный водитель, помощь на границе и поездки 24/7.`;
+  const routeKeywordsRu = [
+    `такси ${fromRu} ${toRu}`,
+    `такси ${toRu} ${fromRu}`,
+    `индивидуальный трансфер ${fromRu} ${toRu}`,
+    `трансфер ${fromRu} ${toRu}`,
+    `трансфер ${toRu} ${fromRu}`,
+    `частный трансфер ${fromRu} ${toRu}`,
+  ]
+    .join(", ")
+    .toLowerCase();
+  const seoTitle = isRu ? routeSeoTitleRu : data.seo.titleEn;
+  const seoDesc = isRu ? routeSeoDescRu : data.seo.descEn;
   const seoPath = isRu ? data.seo.pathRu : data.seo.pathEn;
   const currentRouteIndex = Math.max(
     0,
@@ -214,11 +228,11 @@ export function RouteLandingPage({ data }: Props) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Seo
-        titleRu={data.seo.titleRu}
+        titleRu={routeSeoTitleRu}
         titleEn={data.seo.titleEn}
         titlePl={data.seo.titlePl}
         titleFr={data.seo.titleFr}
-        descRu={data.seo.descRu}
+        descRu={routeSeoDescRu}
         descEn={data.seo.descEn}
         descPl={data.seo.descPl}
         descFr={data.seo.descFr}
@@ -226,6 +240,7 @@ export function RouteLandingPage({ data }: Props) {
         pathEn={data.seo.pathEn}
         pathPl={data.seo.pathPl}
         pathFr={data.seo.pathFr}
+        keywordsRu={routeKeywordsRu}
         jsonLd={allJsonLd}
         breadcrumbsRu={[
           { name: "Главная", path: "/" },
@@ -265,6 +280,13 @@ export function RouteLandingPage({ data }: Props) {
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mb-10">
             {c.subtitle}
           </p>
+          {isRu && (
+            <p className="text-muted-foreground/90 text-sm leading-relaxed max-w-2xl -mt-6 mb-10">
+              Закажите такси {fromRu} — {toRu} или обратный индивидуальный
+              трансфер {toRu} — {fromRu}. Стоимость фиксируется за весь
+              автомобиль до поездки.
+            </p>
+          )}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {c.stats.map((s) => (
               <div

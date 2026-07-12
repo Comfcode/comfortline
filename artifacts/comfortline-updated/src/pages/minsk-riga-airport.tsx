@@ -236,13 +236,13 @@ export default function MinskRigaAirportPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Seo
-        titleRu="Трансфер Минск — Аэропорт Риги (RIX) | ComfortLine"
+        titleRu="Такси Минск — аэропорт Риги | Индивидуальный трансфер"
         titleEn="Minsk to Riga Airport (RIX) | ComfortLine"
-        descRu="Трансфер Минск — аэропорт Риги (RIX): 470 км, фиксированная цена, подача от двери и помощь на границе."
+        descRu="Такси и индивидуальный трансфер Минск — аэропорт Риги (RIX) — Минск. Фиксированная цена, подача от двери, помощь на границе, поездки 24/7."
         descEn="Private Minsk to Riga Airport (RIX) transfer: 470 km, fixed fare, door-to-door pickup and border assistance."
         pathRu="/трансфер-минск-рига-аэропорт"
         pathEn="/minsk-riga-airport"
-        keywordsRu="трансфер минск рига, трансфер минск аэропорт риги, такси минск рига аэропорт, rix трансфер, минск rix трансфер, заказ авто в аэропорт риги, airbaltic минск, рига трансфер из минска"
+        keywordsRu="такси минск аэропорт риги, такси аэропорт риги минск, индивидуальный трансфер минск рига, трансфер минск rix, частный трансфер минск рига"
         keywordsEn="minsk riga airport transfer, minsk to rix taxi, private transfer minsk riga, riga international airport ride, belarus latvia border transfer, airbaltic minsk riga"
         ogImage={`${SITE_URL}/og/minsk-riga-airport.jpg`}
         breadcrumbsRu={[

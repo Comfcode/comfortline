@@ -131,7 +131,8 @@ function attr(tagStr, name) {
 function langField(objStr, name) {
   if (!objStr) return { ru: null, en: null };
   const ternaryRe = new RegExp(
-    name + ':\\s*isRu\\s*\\?\\s*"((?:[^"\\\\]|\\\\.)*)"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"',
+    name +
+      ':\\s*isRu\\s*\\?\\s*"((?:[^"\\\\]|\\\\.)*)"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"',
   );
   const tm = ternaryRe.exec(objStr);
   if (tm) return { ru: unescapeJsString(tm[1]), en: unescapeJsString(tm[2]) };
@@ -163,7 +164,12 @@ const TEMPLATE_FILES = new Set([
 ]);
 // Handled with hand-curated entries below because they don't fit either
 // convention (query-param language switch, or a bespoke content shape).
-const MANUAL_FILES = new Set(["landing.tsx", "faq.tsx", "terms.tsx", "privacy-policy.tsx"]);
+const MANUAL_FILES = new Set([
+  "landing.tsx",
+  "faq.tsx",
+  "terms.tsx",
+  "privacy-policy.tsx",
+]);
 // Excluded entirely: brandbook is noindex, thank-you has no static <Seo/> (client-only redirect target).
 const EXCLUDED_FILES = new Set(["brandbook.tsx", "thank-you.tsx"]);
 
@@ -178,20 +184,33 @@ function extractRouteFromPageSource(src) {
     // CountryPageData routes (e.g. france-transfer.tsx) cover many
     // destinations at once and never carry a single fromName/toName pair —
     // the client renders no service-specific JSON-LD for them either.
-    const isCountryPage = dataTypeMatch && dataTypeMatch[1] === "CountryPageData";
+    const isCountryPage =
+      dataTypeMatch && dataTypeMatch[1] === "CountryPageData";
     // RouteSeo.fromName/toName are plain (RU-only) strings reused verbatim
     // for both languages at runtime by RouteLandingPage — mirror that here
     // rather than inventing a translation that the live site doesn't have.
     const fromName = isCountryPage ? null : field(seoBlock, "fromName");
     const toName = isCountryPage ? null : field(seoBlock, "toName");
+    const fromRu = isCountryPage
+      ? null
+      : field(ruBlock, "prefilledFrom") || fromName || "Минск";
+    const toRu = isCountryPage
+      ? null
+      : field(ruBlock, "prefilledTo") || toName || field(ruBlock, "title");
+    const optimizedTitleRu = isCountryPage
+      ? `Такси ${field(ruBlock, "title")} | Индивидуальные трансферы`
+      : `Такси ${fromRu} — ${toRu} | Индивидуальный трансфер`;
+    const optimizedDescRu = isCountryPage
+      ? `Такси и индивидуальные трансферы ${field(ruBlock, "title")} и обратно. Фиксированная цена за автомобиль, подача от двери, опытный водитель и помощь на границе.`
+      : `Такси и индивидуальный трансфер ${fromRu} — ${toRu} — ${fromRu}. Подача от двери, фиксированная цена за автомобиль, опытный водитель, помощь на границе и поездки 24/7.`;
     return {
       h1Ru: field(ruBlock, "title"),
       introRu: field(ruBlock, "subtitle"),
       h1En: field(enBlock, "title"),
       introEn: field(enBlock, "subtitle"),
-      titleRu: field(seoBlock, "titleRu"),
+      titleRu: optimizedTitleRu,
       titleEn: field(seoBlock, "titleEn"),
-      descRu: field(seoBlock, "descRu"),
+      descRu: optimizedDescRu,
       descEn: field(seoBlock, "descEn"),
       pathRu: field(seoBlock, "pathRu"),
       pathEn: field(seoBlock, "pathEn"),
@@ -209,8 +228,12 @@ function extractRouteFromPageSource(src) {
   if (/\bnoindex\b/.test(seoTag)) return null;
 
   const contentObj = extractObjectLiteral(src, /const\s+content\s*=\s*/);
-  const ruBlock = contentObj ? extractObjectLiteral(contentObj, /\bru:\s*/) : null;
-  const enBlock = contentObj ? extractObjectLiteral(contentObj, /\ben:\s*/) : null;
+  const ruBlock = contentObj
+    ? extractObjectLiteral(contentObj, /\bru:\s*/)
+    : null;
+  const enBlock = contentObj
+    ? extractObjectLiteral(contentObj, /\ben:\s*/)
+    : null;
 
   const titleRu = attr(seoTag, "titleRu");
   const titleEn = attr(seoTag, "titleEn");
@@ -253,9 +276,14 @@ function extractRouteFromPageSource(src) {
 
 function collectManualFaqEntries(varName) {
   const src = fs.readFileSync(path.join(PAGES_DIR, "faq.tsx"), "utf8");
-  const arrStr = extractArrayLiteral(src, new RegExp(`const\\s+${varName}\\s*:[^=]*=\\s*`));
+  const arrStr = extractArrayLiteral(
+    src,
+    new RegExp(`const\\s+${varName}\\s*:[^=]*=\\s*`),
+  );
   if (!arrStr) {
-    console.warn(`[route-manifest] WARNING: could not parse ${varName} array from faq.tsx`);
+    console.warn(
+      `[route-manifest] WARNING: could not parse ${varName} array from faq.tsx`,
+    );
     return [];
   }
   const sectionStrs = splitTopLevelObjects(arrStr.slice(1, -1));
@@ -277,11 +305,24 @@ function collectAutoRoutes() {
   const out = [];
   for (const file of fs.readdirSync(PAGES_DIR)) {
     if (!file.endsWith(".tsx")) continue;
-    if (TEMPLATE_FILES.has(file) || MANUAL_FILES.has(file) || EXCLUDED_FILES.has(file)) continue;
+    if (
+      TEMPLATE_FILES.has(file) ||
+      MANUAL_FILES.has(file) ||
+      EXCLUDED_FILES.has(file)
+    )
+      continue;
     const src = fs.readFileSync(path.join(PAGES_DIR, file), "utf8");
     const extracted = extractRouteFromPageSource(src);
-    if (!extracted || !extracted.pathRu || !extracted.pathEn || !extracted.titleRu || !extracted.titleEn) {
-      console.warn(`[route-manifest] WARNING: could not extract SEO route metadata from src/pages/${file} — skipping.`);
+    if (
+      !extracted ||
+      !extracted.pathRu ||
+      !extracted.pathEn ||
+      !extracted.titleRu ||
+      !extracted.titleEn
+    ) {
+      console.warn(
+        `[route-manifest] WARNING: could not extract SEO route metadata from src/pages/${file} — skipping.`,
+      );
       continue;
     }
     out.push({ ogSlug: slugFromPath(extracted.pathEn), ...extracted });
@@ -295,10 +336,18 @@ function collectAutoRoutes() {
 
 function collectVehicleRoutes() {
   const src = fs.readFileSync(path.join(PAGES_DIR, "vehicle-page.tsx"), "utf8");
-  const seoMapStr = extractObjectLiteral(src, /const\s+vehicleSeo\s*:[^=]*=\s*/);
-  const contentMapStr = extractObjectLiteral(src, /const\s+vehicleContent\s*:[^=]*=\s*/);
+  const seoMapStr = extractObjectLiteral(
+    src,
+    /const\s+vehicleSeo\s*:[^=]*=\s*/,
+  );
+  const contentMapStr = extractObjectLiteral(
+    src,
+    /const\s+vehicleContent\s*:[^=]*=\s*/,
+  );
   if (!seoMapStr || !contentMapStr) {
-    console.warn("[route-manifest] WARNING: could not parse vehicleSeo/vehicleContent maps from vehicle-page.tsx");
+    console.warn(
+      "[route-manifest] WARNING: could not parse vehicleSeo/vehicleContent maps from vehicle-page.tsx",
+    );
     return [];
   }
 
@@ -321,8 +370,12 @@ function collectVehicleRoutes() {
   for (const slug of Object.keys(seoEntries)) {
     const seoStr = seoEntries[slug];
     const contentStr = contentEntries[slug];
-    const ruBlock = contentStr ? extractObjectLiteral(contentStr, /\bru:\s*/) : null;
-    const enBlock = contentStr ? extractObjectLiteral(contentStr, /\ben:\s*/) : null;
+    const ruBlock = contentStr
+      ? extractObjectLiteral(contentStr, /\bru:\s*/)
+      : null;
+    const enBlock = contentStr
+      ? extractObjectLiteral(contentStr, /\ben:\s*/)
+      : null;
     const titleRu = field(seoStr, "titleRu");
     const titleEn = field(seoStr, "titleEn");
     routes.push({
@@ -356,10 +409,15 @@ function collectVehicleRoutes() {
 // ----------------------------------------------------------------------------
 
 function collectBlogRoutes() {
-  const src = fs.readFileSync(path.join(ROOT, "src", "data", "blog-articles.ts"), "utf8");
+  const src = fs.readFileSync(
+    path.join(ROOT, "src", "data", "blog-articles.ts"),
+    "utf8",
+  );
   const arrMatch = /export const ARTICLES\s*:\s*Article\[\]\s*=\s*\[/.exec(src);
   if (!arrMatch) {
-    console.warn("[route-manifest] WARNING: could not find ARTICLES array in blog-articles.ts");
+    console.warn(
+      "[route-manifest] WARNING: could not find ARTICLES array in blog-articles.ts",
+    );
     return { blogIndexRoute: null, blogArticleRoutes: [] };
   }
   const arrStart = arrMatch.index + arrMatch[0].length - 1; // position of the opening "["
@@ -409,7 +467,9 @@ function collectBlogRoutes() {
       : [];
 
     if (!slug || !title || !description || !intro) {
-      console.warn(`[route-manifest] WARNING: incomplete blog article entry (slug=${slug}) — skipping.`);
+      console.warn(
+        `[route-manifest] WARNING: incomplete blog article entry (slug=${slug}) — skipping.`,
+      );
       continue;
     }
     if (!slugEn || !titleEn || !descriptionEn || !introEn) {
@@ -461,7 +521,8 @@ function collectBlogRoutes() {
     h1En: "ComfortLine Blog",
     introRu:
       "Практические гайды по трансферу, пересечению границы и аэропортам Европы. Опыт водителей ComfortLine за 8 лет работы.",
-    introEn: "Practical guides on transfers, border crossings and European airports. 8 years of ComfortLine driver experience.",
+    introEn:
+      "Practical guides on transfers, border crossings and European airports. 8 years of ComfortLine driver experience.",
   };
 
   return { blogIndexRoute, blogArticleRoutes };
@@ -485,8 +546,10 @@ const manualRoutes = [
     pageType: "home",
     pathRu: "/",
     pathEn: "/en",
-    titleRu: "ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт, Минск–Варшава аэропорт",
-    titleEn: "ComfortLine — Comfortable Transfers Minsk–Vilnius Airport, Minsk–Warsaw Airport",
+    titleRu:
+      "ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт, Минск–Варшава аэропорт",
+    titleEn:
+      "ComfortLine — Comfortable Transfers Minsk–Vilnius Airport, Minsk–Warsaw Airport",
     descRu:
       "Комфортный трансфер из Минска в аэропорт Вильнюса (VNO) и аэропорт Варшавы (WAW, Модлин), Берлин и города Европы. Фиксированная цена, опытный водитель, комфортные авто. Заказ онлайн или +375 (44) 762-06-49.",
     descEn:
@@ -541,7 +604,8 @@ const manualRoutes = [
     titleEn: "Privacy Policy | ComfortLine",
     descRu:
       "Политика конфиденциальности ComfortLine: как мы обрабатываем персональные данные клиентов трансфера и обеспечиваем их защиту.",
-    descEn: "ComfortLine privacy policy — how we process and protect personal data of our transfer customers.",
+    descEn:
+      "ComfortLine privacy policy — how we process and protect personal data of our transfer customers.",
     h1Ru: "Политика обработки персональных данных",
     h1En: "Personal Data Processing Policy",
     introRu: "ИП Мурашко Андрей Антонович (Comfortline.by)",
@@ -575,5 +639,12 @@ export function collectAllRoutes() {
     ...blogArticleRoutes,
   ];
 
-  return { allRoutes, manualRoutes, autoRoutes, vehicleRoutes, blogIndexRoute, blogArticleRoutes };
+  return {
+    allRoutes,
+    manualRoutes,
+    autoRoutes,
+    vehicleRoutes,
+    blogIndexRoute,
+    blogArticleRoutes,
+  };
 }

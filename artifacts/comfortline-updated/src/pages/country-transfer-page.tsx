@@ -81,15 +81,20 @@ export function CountryTransferPage({ data }: Props) {
   const { lang, locale } = useLang();
   const c = data[locale] ?? data.en;
   const isRu = lang === "ru";
+  const routeNameRu = data.ru.title;
+  const countrySeoTitleRu = `Такси ${routeNameRu} | Индивидуальные трансферы`;
+  const countrySeoDescRu = `Такси и индивидуальные трансферы ${routeNameRu} и обратно. Фиксированная цена за автомобиль, подача от двери, опытный водитель и помощь на границе.`;
+  const countryKeywordsRu =
+    `такси ${routeNameRu}, индивидуальный трансфер ${routeNameRu}, трансфер ${routeNameRu}, частный трансфер ${routeNameRu}`.toLowerCase();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Seo
-        titleRu={data.seo.titleRu}
+        titleRu={countrySeoTitleRu}
         titleEn={data.seo.titleEn}
         titlePl={data.seo.titlePl}
         titleFr={data.seo.titleFr}
-        descRu={data.seo.descRu}
+        descRu={countrySeoDescRu}
         descEn={data.seo.descEn}
         descPl={data.seo.descPl}
         descFr={data.seo.descFr}
@@ -97,6 +102,7 @@ export function CountryTransferPage({ data }: Props) {
         pathEn={data.seo.pathEn}
         pathPl={data.seo.pathPl}
         pathFr={data.seo.pathFr}
+        keywordsRu={countryKeywordsRu}
         breadcrumbsRu={[
           { name: "Главная", path: "/" },
           {
@@ -138,6 +144,12 @@ export function CountryTransferPage({ data }: Props) {
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl">
             {c.subtitle}
           </p>
+          {isRu && (
+            <p className="text-muted-foreground/90 text-sm leading-relaxed max-w-2xl mt-4">
+              Закажите такси или индивидуальный трансфер по направлению{" "}
+              {routeNameRu} и обратно. Цена фиксируется за автомобиль до выезда.
+            </p>
+          )}
         </div>
       </div>
 

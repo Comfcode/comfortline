@@ -321,13 +321,13 @@ export default function MinskVilniusAirportPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Seo
-        titleRu="Трансфер Минск — Аэропорт Вильнюса (VNO) | ComfortLine"
+        titleRu="Такси Минск — аэропорт Вильнюса | Индивидуальный трансфер"
         titleEn="Minsk to Vilnius Airport (VNO) Private Transfer | ComfortLine"
-        descRu="Трансфер Минск — аэропорт Вильнюса (VNO): 175 км, фиксированная цена, подача от двери и помощь на границе Беларусь — Литва."
+        descRu="Такси и индивидуальный трансфер Минск — аэропорт Вильнюса (VNO) — Минск. Фиксированная цена, подача от двери, помощь на границе, работа 24/7."
         descEn="Private Minsk to Vilnius Airport (VNO) transfer: 175 km, fixed fare, door-to-door pickup and Belarus–Lithuania border assistance."
         pathRu="/трансфер-минск-вильнюс-аэропорт"
         pathEn="/minsk-vilnius-airport"
-        keywordsRu="трансфер минск вильнюс, трансфер минск аэропорт вильнюса, такси минск вильнюс аэропорт, vno трансфер, минск vilnius трансфер, заказ авто в аэропорт вильнюса"
+        keywordsRu="такси минск аэропорт вильнюса, такси аэропорт вильнюса минск, индивидуальный трансфер минск вильнюс, трансфер минск vno, частный трансфер минск вильнюс"
         keywordsEn="minsk vilnius airport transfer, minsk to vno taxi, private transfer minsk vilnius, vilnius international airport ride, belarus lithuania border transfer"
         breadcrumbsRu={[
           { name: "Главная", path: "/" },

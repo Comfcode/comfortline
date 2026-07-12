@@ -236,13 +236,13 @@ export default function MinskKaunasAirportPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Seo
-        titleRu="Трансфер Минск — Аэропорт Каунаса (KUN) | ComfortLine"
+        titleRu="Такси Минск — аэропорт Каунаса | Индивидуальный трансфер"
         titleEn="Minsk to Kaunas Airport (KUN) | ComfortLine"
-        descRu="Трансфер Минск — аэропорт Каунаса (KUN): 280 км, фиксированная цена, подача от двери и помощь на границе."
+        descRu="Такси и индивидуальный трансфер Минск — аэропорт Каунаса (KUN) — Минск. Фиксированная цена, подача от двери, помощь на границе, 24/7."
         descEn="Private Minsk to Kaunas Airport (KUN) transfer: 280 km, fixed fare, door-to-door pickup and border assistance."
         pathRu="/трансфер-минск-каунас-аэропорт"
         pathEn="/minsk-kaunas-airport"
-        keywordsRu="трансфер минск каунас, трансфер минск аэропорт каунаса, такси минск каунас аэропорт, kun трансфер, минск kaunas трансфер, заказ авто в аэропорт каунаса, ryanair каунас"
+        keywordsRu="такси минск аэропорт каунаса, такси аэропорт каунаса минск, индивидуальный трансфер минск каунас, трансфер минск kun, частный трансфер минск каунас"
         keywordsEn="minsk kaunas airport transfer, minsk to kun taxi, private transfer minsk kaunas, kaunas international airport ride, belarus lithuania border transfer, ryanair kaunas"
         ogImage={`${SITE_URL}/og/minsk-kaunas-airport.jpg`}
         breadcrumbsRu={[

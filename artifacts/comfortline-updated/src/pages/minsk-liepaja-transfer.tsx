@@ -118,7 +118,7 @@ const data: RoutePageData = {
     badge: "Liepāja Transfer",
     title: "Minsk — Liepāja",
     subtitle:
-      'Direct private transfer from Minsk to Liepāja — the "City of Wind" on the Baltic coast. A wide sandy beach, the imperial Karosta military district and one of Europe\'s finest organs inside St Trinity Cathedral.',
+      "Direct private transfer from Minsk to Liepāja — the \"City of Wind\" on the Baltic coast. A wide sandy beach, the imperial Karosta military district and one of Europe's finest organs inside St Trinity Cathedral.",
     stats: [
       { label: "Distance", value: "~650 km" },
       { label: "Travel time", value: "7–9 hrs" },
