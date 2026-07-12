@@ -1,8 +1,8 @@
 /**
  * Production SPA server for ComfortLine website.
  *
- * Why this exists instead of static serving:
- *   Replit's static server rewrites all unknown paths to index.html with HTTP 200.
+ * Why this exists instead of basic static serving:
+ *   Basic SPA rewrites return index.html with HTTP 200 for unknown paths.
  *   Search engines (Yandex, Google) test non-existent URLs and expect HTTP 404.
  *   "Soft 404" (HTML page served with 200) causes indexing warnings in Search Console.
  *
