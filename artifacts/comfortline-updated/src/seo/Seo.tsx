@@ -1,7 +1,11 @@
 import { useLang } from "@/context/language-context";
 import { useSeo } from "./use-seo";
 import { SITE_URL, DEFAULT_OG_IMAGE } from "./seo-config";
-import { localBusinessJsonLd, breadcrumbJsonLd, type BreadcrumbItem } from "./jsonld";
+import {
+  localBusinessJsonLd,
+  breadcrumbJsonLd,
+  type BreadcrumbItem,
+} from "./jsonld";
 import priorityRoutes from "@/data/priority-locales.json";
 
 interface SeoProps {
@@ -43,7 +47,8 @@ export function Seo(props: SeoProps) {
   let canonicalPath = isRu ? props.pathRu : props.pathEn;
   if (typeof window !== "undefined") {
     const liveFull = window.location.pathname + window.location.search;
-    const decodedFull = decodeURIComponent(window.location.pathname) + window.location.search;
+    const decodedFull =
+      decodeURIComponent(window.location.pathname) + window.location.search;
     if (liveFull === props.pathEn || decodedFull === props.pathEn) {
       seoIsRu = false;
       canonicalPath = props.pathEn;
@@ -53,8 +58,8 @@ export function Seo(props: SeoProps) {
     }
   }
 
-  const routeGroup = priorityRoutes.find((route) =>
-    route.ru === props.pathRu || route.en === props.pathEn
+  const routeGroup = priorityRoutes.find(
+    (route) => route.ru === props.pathRu || route.en === props.pathEn,
   );
   const localizedPaths = {
     ru: props.pathRu,
@@ -62,16 +67,37 @@ export function Seo(props: SeoProps) {
     pl: props.pathPl ?? routeGroup?.pl ?? props.pathEn,
     fr: props.pathFr ?? routeGroup?.fr ?? props.pathEn,
   };
-  const liveLocale = typeof window !== "undefined"
-    ? (window.location.pathname === localizedPaths.pl ? "pl" : window.location.pathname === localizedPaths.fr ? "fr" : seoIsRu ? "ru" : "en")
-    : locale;
+  const liveLocale =
+    typeof window !== "undefined"
+      ? window.location.pathname === localizedPaths.pl
+        ? "pl"
+        : window.location.pathname === localizedPaths.fr
+          ? "fr"
+          : seoIsRu
+            ? "ru"
+            : "en"
+      : locale;
   canonicalPath = localizedPaths[liveLocale];
-  const title = liveLocale === "ru" ? props.titleRu : liveLocale === "pl" ? (props.titlePl ?? props.titleEn) : liveLocale === "fr" ? (props.titleFr ?? props.titleEn) : props.titleEn;
-  const description = liveLocale === "ru" ? props.descRu : liveLocale === "pl" ? (props.descPl ?? props.descEn) : liveLocale === "fr" ? (props.descFr ?? props.descEn) : props.descEn;
+  const title =
+    liveLocale === "ru"
+      ? props.titleRu
+      : liveLocale === "pl"
+        ? (props.titlePl ?? props.titleEn)
+        : liveLocale === "fr"
+          ? (props.titleFr ?? props.titleEn)
+          : props.titleEn;
+  const description =
+    liveLocale === "ru"
+      ? props.descRu
+      : liveLocale === "pl"
+        ? (props.descPl ?? props.descEn)
+        : liveLocale === "fr"
+          ? (props.descFr ?? props.descEn)
+          : props.descEn;
   const keywords = seoIsRu ? props.keywordsRu : props.keywordsEn;
 
   const allJsonLd: object[] = [];
-  if (!props.noBusinessJsonLd) allJsonLd.push(localBusinessJsonLd(lang));
+  if (!props.noBusinessJsonLd) allJsonLd.push(localBusinessJsonLd(liveLocale));
 
   const breadcrumbs = isRu ? props.breadcrumbsRu : props.breadcrumbsEn;
   if (breadcrumbs && breadcrumbs.length > 0) {

@@ -1,19 +1,35 @@
 import { BUSINESS, SITE_URL } from "./seo-config";
+import type { Locale } from "@/context/language-context";
 
-export function localBusinessJsonLd(lang: "ru" | "en") {
-  const description =
-    lang === "ru"
-      ? "ComfortLine — комфортный трансфер из Минска в аэропорт Вильнюса (VNO), аэропорт Варшавы (WAW, Модлин), Берлин и города Европы. Фиксированная цена, опытные водители, комфортные автомобили."
-      : "ComfortLine — comfortable transfers from Minsk to Vilnius Airport (VNO), Warsaw Airport (WAW, Modlin), Berlin and major European cities. Personalised quotes, professional drivers, comfortable vehicles.";
+export function localBusinessJsonLd(lang: Locale) {
+  const descriptions: Record<Locale, string> = {
+    ru: "ComfortLine — комфортный трансфер из Минска в аэропорт Вильнюса (VNO), аэропорт Варшавы (WAW, Модлин), Берлин и города Европы. Фиксированная цена, опытные водители, комфортные автомобили.",
+    en: "ComfortLine — comfortable transfers from Minsk to Vilnius Airport (VNO), Warsaw Airport (WAW, Modlin), Berlin and major European cities. Personalised quotes, professional drivers, comfortable vehicles.",
+    pl: "ComfortLine — komfortowe transfery z Mińska na lotniska w Wilnie (VNO), Warszawie (WAW, Modlin), do Berlina i miast Europy. Stała cena i doświadczeni kierowcy.",
+    fr: "ComfortLine — transferts confortables de Minsk vers les aéroports de Vilnius (VNO), Varsovie (WAW, Modlin), Berlin et les villes européennes. Tarif fixe et chauffeurs expérimentés.",
+  };
+  const description = descriptions[lang];
 
   const popularRoutes = [
     {
-      ru: { name: "Трансфер Минск — Аэропорт Вильнюса (VNO)", path: "/трансфер-минск-вильнюс-аэропорт" },
-      en: { name: "Minsk to Vilnius Airport (VNO) transfer", path: "/minsk-vilnius-airport" },
+      ru: {
+        name: "Трансфер Минск — Аэропорт Вильнюса (VNO)",
+        path: "/трансфер-минск-вильнюс-аэропорт",
+      },
+      en: {
+        name: "Minsk to Vilnius Airport (VNO) transfer",
+        path: "/minsk-vilnius-airport",
+      },
     },
     {
-      ru: { name: "Трансфер Минск — Аэропорт Шопен (WAW)", path: "/трансфер-минск-варшава-шопен" },
-      en: { name: "Minsk to Warsaw Chopin Airport (WAW) transfer", path: "/minsk-warsaw-airport" },
+      ru: {
+        name: "Трансфер Минск — Аэропорт Шопен (WAW)",
+        path: "/трансфер-минск-варшава-шопен",
+      },
+      en: {
+        name: "Minsk to Warsaw Chopin Airport (WAW) transfer",
+        path: "/minsk-warsaw-airport",
+      },
     },
   ];
 
@@ -26,7 +42,11 @@ export function localBusinessJsonLd(lang: "ru" | "en") {
     legalName: BUSINESS.legalName,
     url: BUSINESS.url,
     logo: BUSINESS.logo,
-    image: [BUSINESS.image, `${SITE_URL}/car-mercedes-e.jpg`, `${SITE_URL}/car-kia-carnival.jpg`],
+    image: [
+      BUSINESS.image,
+      `${SITE_URL}/car-mercedes-e.jpg`,
+      `${SITE_URL}/car-kia-carnival.jpg`,
+    ],
     telephone: BUSINESS.phone,
     email: BUSINESS.email,
     priceRange: "€€",
@@ -38,8 +58,16 @@ export function localBusinessJsonLd(lang: "ru" | "en") {
     knowsLanguage: ["ru", "en", "be", "pl"],
     address: {
       "@type": "PostalAddress",
-      addressLocality: lang === "ru" ? "Минск" : "Minsk",
-      addressRegion: lang === "ru" ? "Минская область" : "Minsk Region",
+      addressLocality:
+        lang === "ru" ? "Минск" : lang === "pl" ? "Mińsk" : "Minsk",
+      addressRegion:
+        lang === "ru"
+          ? "Минская область"
+          : lang === "pl"
+            ? "Obwód miński"
+            : lang === "fr"
+              ? "Région de Minsk"
+              : "Minsk Region",
       addressCountry: "BY",
     },
     geo: {
@@ -47,7 +75,10 @@ export function localBusinessJsonLd(lang: "ru" | "en") {
       latitude: BUSINESS.geo.lat,
       longitude: BUSINESS.geo.lng,
     },
-    areaServed: BUSINESS.serviceArea.map((a) => ({ "@type": "Place", name: a })),
+    areaServed: BUSINESS.serviceArea.map((a) => ({
+      "@type": "Place",
+      name: a,
+    })),
     serviceArea: {
       "@type": "GeoCircle",
       geoMidpoint: {
@@ -68,7 +99,15 @@ export function localBusinessJsonLd(lang: "ru" | "en") {
         contactOption: ["TollFree"],
         hoursAvailable: {
           "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
           opens: "00:00",
           closes: "23:59",
         },
@@ -83,20 +122,35 @@ export function localBusinessJsonLd(lang: "ru" | "en") {
     ],
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
       opens: "00:00",
       closes: "23:59",
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: lang === "ru" ? "Популярные направления" : "Popular routes",
+      name:
+        lang === "ru"
+          ? "Популярные направления"
+          : lang === "pl"
+            ? "Popularne trasy"
+            : lang === "fr"
+              ? "Itinéraires populaires"
+              : "Popular routes",
       itemListElement: popularRoutes.map((r, i) => ({
         "@type": "Offer",
         position: i + 1,
         itemOffered: {
           "@type": "Service",
-          name: r[lang].name,
-          url: SITE_URL + r[lang].path,
+          name: r[lang === "ru" ? "ru" : "en"].name,
+          url: SITE_URL + r[lang === "ru" ? "ru" : "en"].path,
           provider: { "@id": `${SITE_URL}#business` },
         },
       })),
@@ -133,13 +187,15 @@ export function taxiServiceJsonLd(s: ServiceJsonLdInput) {
       price: s.priceFrom,
       priceCurrency: currency,
       valueAddedTaxIncluded: true,
-      description: s.lang === "ru" ? "Цена от, фиксированная" : "From, fixed price",
+      description:
+        s.lang === "ru" ? "Цена от, фиксированная" : "From, fixed price",
     };
   }
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: s.lang === "ru" ? "Индивидуальный трансфер" : "Private transfer",
+    serviceType:
+      s.lang === "ru" ? "Индивидуальный трансфер" : "Private transfer",
     name: s.name,
     description: s.description,
     url: s.url,
@@ -202,7 +258,8 @@ export function vehicleJsonLd(v: VehicleJsonLdInput) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: v.lang === "ru" ? "Индивидуальный трансфер" : "Private transfer",
+    serviceType:
+      v.lang === "ru" ? "Индивидуальный трансфер" : "Private transfer",
     name: v.name,
     description: v.description,
     image: v.image,

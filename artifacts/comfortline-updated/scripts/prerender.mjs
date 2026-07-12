@@ -5,13 +5,25 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { createServer as createViteServer } from "vite";
 import { JSDOM } from "jsdom";
-import { collectAllRoutes, SITE_URL, DEFAULT_OG_IMAGE } from "./route-manifest.mjs";
+import {
+  collectAllRoutes,
+  SITE_URL,
+  DEFAULT_OG_IMAGE,
+} from "./route-manifest.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const DIST = path.join(ROOT, "dist", "public");
 const OG_DIR = path.join(DIST, "og");
-const PRIORITY_LOCALES_PATH = path.join(ROOT, "src", "data", "priority-locales.json");
+const PRIORITY_LOCALES_PATH = path.join(
+  ROOT,
+  "src",
+  "data",
+  "priority-locales.json",
+);
+const PRIORITY_LOCALES = JSON.parse(
+  fs.readFileSync(PRIORITY_LOCALES_PATH, "utf8"),
+);
 
 // ============================================================================
 // SSR bootstrap — jsdom globals + a Vite SSR module loader for src/ssr-entry.tsx
@@ -25,7 +37,9 @@ const PRIORITY_LOCALES_PATH = path.join(ROOT, "src", "data", "priority-locales.j
 // ============================================================================
 
 function installJsdomGlobals() {
-  const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: SITE_URL + "/" });
+  const dom = new JSDOM("<!doctype html><html><body></body></html>", {
+    url: SITE_URL + "/",
+  });
   const { window } = dom;
   global.window = window;
   global.document = window.document;
@@ -91,7 +105,9 @@ function renderRouteMarkup(SsrApp, routePath) {
   try {
     return renderToStaticMarkup(createElement(SsrApp, { path: routePath }));
   } catch (err) {
-    console.warn(`[prerender] SSR render failed for "${routePath}": ${err?.message || err}`);
+    console.warn(
+      `[prerender] SSR render failed for "${routePath}": ${err?.message || err}`,
+    );
     return null;
   }
 }
@@ -128,7 +144,8 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
   // it — any route-specific file that failed to generate falls back to the
   // stable, always-present site-wide opengraph.jpg instead of a broken image URL.
   const ogImage =
-    route.ogSlug && fs.existsSync(path.join(OG_DIR, `${route.ogSlug}-${lang}.jpg`))
+    route.ogSlug &&
+    fs.existsSync(path.join(OG_DIR, `${route.ogSlug}-${lang}.jpg`))
       ? `${SITE_URL}/og/${route.ogSlug}-${lang}.jpg`
       : DEFAULT_OG_IMAGE;
   const ogType = route.isArticle ? "article" : "website";
@@ -168,7 +185,9 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
   };
   const destGeo =
     route.pageType === "service" && toName
-      ? Object.entries(KNOWN_GEO).find(([key]) => toName.toLowerCase().includes(key))?.[1] || null
+      ? Object.entries(KNOWN_GEO).find(([key]) =>
+          toName.toLowerCase().includes(key),
+        )?.[1] || null
       : null;
   if (destGeo) {
     html = html.replace(
@@ -231,12 +250,33 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
     `<meta name="twitter:image" content="${ogImage}" />`,
   );
 
-  const hreflang = `
-    <link rel="alternate" hreflang="ru" href="${SITE_URL + encodeURI(route.pathRu)}" />
-    <link rel="alternate" hreflang="en" href="${SITE_URL + encodeURI(route.pathEn)}" />
-    <link rel="alternate" hreflang="x-default" href="${SITE_URL + encodeURI(route.pathRu)}" />`;
-  if (/<!-- hreflang alternates are injected[^>]*-->/.test(html)) html = html.replace(/<!-- hreflang alternates are injected[^>]*-->/, hreflang);
-  else html = html.replace(/(?:\s*<link rel="alternate" hreflang="[^"]+" href="[^"]+"\s*\/>)+/, hreflang);
+  const localizedRoute = PRIORITY_LOCALES.find(
+    (candidate) =>
+      candidate.ru === route.pathRu || candidate.en === route.pathEn,
+  );
+  const alternatePaths = localizedRoute
+    ? ["ru", "en", "pl", "fr"].map((code) => [code, localizedRoute[code]])
+    : [
+        ["ru", route.pathRu],
+        ["en", route.pathEn],
+      ];
+  const hreflang = `\n${alternatePaths
+    .map(
+      ([code, href]) =>
+        `    <link rel="alternate" hreflang="${code}" href="${SITE_URL + encodeURI(href)}" />`,
+    )
+    .join("\n")}
+    <link rel="alternate" hreflang="x-default" href="${SITE_URL + encodeURI(route.pathEn)}" />`;
+  if (/<!-- hreflang alternates are injected[^>]*-->/.test(html))
+    html = html.replace(
+      /<!-- hreflang alternates are injected[^>]*-->/,
+      hreflang,
+    );
+  else
+    html = html.replace(
+      /(?:\s*<link rel="alternate" hreflang="[^"]+" href="[^"]+"\s*\/>)+/,
+      hreflang,
+    );
 
   let extraJsonLd = "";
   if (route.isArticle) {
@@ -248,8 +288,18 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
       image: { "@type": "ImageObject", url: ogImage, width: 1200, height: 630 },
       url: canonicalUrl,
       mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
-      author: { "@type": "Organization", name: "ComfortLine", url: SITE_URL, "@id": `${SITE_URL}#organization` },
-      publisher: { "@type": "Organization", "@id": `${SITE_URL}#organization`, name: "ComfortLine", logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` } },
+      author: {
+        "@type": "Organization",
+        name: "ComfortLine",
+        url: SITE_URL,
+        "@id": `${SITE_URL}#organization`,
+      },
+      publisher: {
+        "@type": "Organization",
+        "@id": `${SITE_URL}#organization`,
+        name: "ComfortLine",
+        logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` },
+      },
       datePublished: route.datePublished,
       dateModified: route.dateModified,
       articleSection: isRu ? route.section : route.sectionEn || route.section,
@@ -264,14 +314,33 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
     <meta property="article:author" content="ComfortLine" />
     <meta property="article:publisher" content="${SITE_URL}" />
     <meta property="article:section" content="${escapeHtml(isRu ? route.section : route.sectionEn || route.section)}" />
-    ${route.keywords.split(",").map((k) => `<meta property="article:tag" content="${escapeHtml(k.trim())}" />`).join("\n    ")}`;
-    html = html.replace(`<meta property="og:type" content="${ogType}" />`, `<meta property="og:type" content="${ogType}" />${articleMetaInjection}`);
+    ${route.keywords
+      .split(",")
+      .map(
+        (k) =>
+          `<meta property="article:tag" content="${escapeHtml(k.trim())}" />`,
+      )
+      .join("\n    ")}`;
+    html = html.replace(
+      `<meta property="og:type" content="${ogType}" />`,
+      `<meta property="og:type" content="${ogType}" />${articleMetaInjection}`,
+    );
     const breadcrumbJsonLd = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: isRu ? "Главная" : "Home", item: SITE_URL + "/" },
-        { "@type": "ListItem", position: 2, name: isRu ? "Блог" : "Blog", item: SITE_URL + encodeURI(isRu ? "/блог" : "/blog") },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: isRu ? "Главная" : "Home",
+          item: SITE_URL + "/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: isRu ? "Блог" : "Blog",
+          item: SITE_URL + encodeURI(isRu ? "/блог" : "/blog"),
+        },
         { "@type": "ListItem", position: 3, name: h1, item: canonicalUrl },
       ],
     };
@@ -283,8 +352,18 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: isRu ? "Главная" : "Home", item: SITE_URL + "/" },
-        { "@type": "ListItem", position: 2, name: isRu ? "Блог" : "Blog", item: canonicalUrl },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: isRu ? "Главная" : "Home",
+          item: SITE_URL + "/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: isRu ? "Блог" : "Blog",
+          item: canonicalUrl,
+        },
       ],
     };
     extraJsonLd = `
@@ -298,7 +377,9 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
     // jsonLd prop for real route/vehicle pages).
     let mainJsonLd = null;
     if (route.isVehicle) {
-      const vehicleClass = isRu ? route.vehicleClassRu : route.vehicleClassEn || route.vehicleClassRu;
+      const vehicleClass = isRu
+        ? route.vehicleClassRu
+        : route.vehicleClassEn || route.vehicleClassRu;
       mainJsonLd = {
         "@context": "https://schema.org",
         "@type": "Service",
@@ -329,7 +410,9 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
       // Real route/airport/themed transfer pages: use the exact fromName/
       // toName the page itself defines (route-manifest.mjs extracts these
       // from the page source) instead of guessing the destination from the URL.
-      const fromName = (isRu ? route.fromNameRu : route.fromNameEn) || (isRu ? "Минск" : "Minsk");
+      const fromName =
+        (isRu ? route.fromNameRu : route.fromNameEn) ||
+        (isRu ? "Минск" : "Minsk");
       const routeToName = (isRu ? route.toNameRu : route.toNameEn) || h1;
       mainJsonLd = {
         "@context": "https://schema.org",
@@ -352,7 +435,12 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: isRu ? "Главная" : "Home", item: SITE_URL + "/" },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: isRu ? "Главная" : "Home",
+          item: SITE_URL + "/",
+        },
         { "@type": "ListItem", position: 2, name: title, item: canonicalUrl },
       ],
     };
@@ -369,7 +457,14 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
         })),
       });
     }
-    extraJsonLd = "\n" + scripts.map((s) => `    <script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n");
+    extraJsonLd =
+      "\n" +
+      scripts
+        .map(
+          (s) =>
+            `    <script type="application/ld+json">${JSON.stringify(s)}</script>`,
+        )
+        .join("\n");
   }
   html = html.replace("</head>", `${extraJsonLd}\n  </head>`);
 
@@ -391,7 +486,10 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
   const faqHtml =
     faqEntries && faqEntries.length > 0
       ? `<section><h2>${escapeHtml(faqHeading)}</h2>${faqEntries
-          .map((e) => `<h3>${escapeHtml(e.question)}</h3><p>${escapeHtml(e.answer)}</p>`)
+          .map(
+            (e) =>
+              `<h3>${escapeHtml(e.question)}</h3><p>${escapeHtml(e.answer)}</p>`,
+          )
           .join("")}</section>`
       : "";
 
@@ -401,7 +499,10 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
   // just not the full page — if SSR rendering failed for this one route.
   const fallbackBlock = `<header><h1>${escapeHtml(h1)}</h1></header><main><p>${escapeHtml(intro)}</p>${faqHtml}<nav aria-label="${escapeHtml(navLabel)}"><a href="${homeHref}">${escapeHtml(homeLabel)}</a> · <a href="${faqHref}">${escapeHtml(faqLabel)}</a> · <a href="${blogHref}">${escapeHtml(blogLabel)}</a> · <a href="${altUrl}" hreflang="${isRu ? "en" : "ru"}">${escapeHtml(altLabel)}</a></nav></main>`;
   const rootInner = ssrMarkup ?? fallbackBlock;
-  html = html.replace('<div id="root"></div>', `<div id="root">${rootInner}</div>`);
+  html = html.replace(
+    '<div id="root"></div>',
+    `<div id="root">${rootInner}</div>`,
+  );
 
   return html;
 }
@@ -416,18 +517,65 @@ function emit(routePath, html) {
 }
 
 function priorityCopy(route, lang) {
-  const pl=lang==="pl", name=pl?route.plName:route.frName, home=route.key==="home";
-  const h1=home?(pl?"Prywatne i indywidualne transfery z Mińska":"Transferts privés et individuels depuis Minsk"):(pl?`Prywatny transfer Mińsk — ${name}`:`Transfert privé Minsk — ${name}`);
-  const desc=pl?`Indywidualny transfer taksówką na trasie Mińsk — ${name}. Stała cena, odbiór spod drzwi i doświadczony kierowca.`:`Transfert privé en taxi de Minsk vers ${name}. Tarif fixe, prise en charge porte-à-porte et chauffeur expérimenté.`;
-  return {h1,desc,title:`${h1} | ComfortLine`};
+  const pl = lang === "pl",
+    name = pl ? route.plName : route.frName,
+    home = route.key === "home";
+  const h1 = home
+    ? pl
+      ? "Prywatne i indywidualne transfery z Mińska"
+      : "Transferts privés et individuels depuis Minsk"
+    : pl
+      ? `Prywatny transfer Mińsk — ${name}`
+      : `Transfert privé Minsk — ${name}`;
+  const desc = pl
+    ? `Indywidualny transfer taksówką na trasie Mińsk — ${name}. Stała cena, odbiór spod drzwi i doświadczony kierowca.`
+    : `Transfert privé en taxi de Minsk vers ${name}. Tarif fixe, prise en charge porte-à-porte et chauffeur expérimenté.`;
+  return { h1, desc, title: `${h1} | ComfortLine` };
 }
 function buildPriorityHtml(template, route, lang, markup) {
-  const a=priorityCopy(route,lang), other=lang==="pl"?"fr":"pl", b=priorityCopy(route,other);
-  const pseudo={ogSlug:`priority-${route.key}`,pageType:route.key==="home"?"home":"service",pathRu:route[lang],pathEn:route[other],titleRu:a.title,titleEn:b.title,descRu:a.desc,descEn:b.desc,h1Ru:a.h1,h1En:b.h1,introRu:a.desc,introEn:b.desc};
-  let html=buildHtml(template,pseudo,"ru",null,markup).replace('<html lang="ru">',`<html lang="${lang}">`);
-  html=html.replaceAll('"inLanguage":"ru"',`"inLanguage":"${lang}"`).replaceAll('"name":"Минск"',`"name":"${lang==="pl"?"Mińsk":"Minsk"}"`).replaceAll('"name":"Главная"',`"name":"${lang==="pl"?"Strona główna":"Accueil"}"`);
-  const links=["ru","en","pl","fr"].map(code=>`    <link rel="alternate" hreflang="${code}" href="${SITE_URL+encodeURI(route[code])}" />`).join("\n")+ `\n    <link rel="alternate" hreflang="x-default" href="${SITE_URL+route.en}" />`;
-  return html.replace(/\s*<link rel="alternate" hreflang="ru"[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*\/>/,"\n"+links);
+  const a = priorityCopy(route, lang),
+    other = lang === "pl" ? "fr" : "pl",
+    b = priorityCopy(route, other);
+  const pseudo = {
+    ogSlug: `priority-${route.key}`,
+    pageType: route.key === "home" ? "home" : "service",
+    pathRu: route[lang],
+    pathEn: route[other],
+    titleRu: a.title,
+    titleEn: b.title,
+    descRu: a.desc,
+    descEn: b.desc,
+    h1Ru: a.h1,
+    h1En: b.h1,
+    introRu: a.desc,
+    introEn: b.desc,
+  };
+  let html = buildHtml(template, pseudo, "ru", null, markup).replace(
+    '<html lang="ru">',
+    `<html lang="${lang}">`,
+  );
+  html = html
+    .replaceAll('"inLanguage":"ru"', `"inLanguage":"${lang}"`)
+    .replaceAll(
+      '"name":"Минск"',
+      `"name":"${lang === "pl" ? "Mińsk" : "Minsk"}"`,
+    )
+    .replaceAll(
+      '"name":"Главная"',
+      `"name":"${lang === "pl" ? "Strona główna" : "Accueil"}"`,
+    );
+  const links =
+    ["ru", "en", "pl", "fr"]
+      .map(
+        (code) =>
+          `    <link rel="alternate" hreflang="${code}" href="${SITE_URL + encodeURI(route[code])}" />`,
+      )
+      .join("\n") +
+    `\n    <link rel="alternate" hreflang="x-default" href="${SITE_URL + route.en}" />`;
+  return html.replace(
+    /\s*<link rel="alternate" hreflang="ru"[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*\/>/,
+    "\n" + links,
+  );
 }
 
 async function main() {
@@ -438,7 +586,14 @@ async function main() {
   }
   const template = fs.readFileSync(templatePath, "utf8");
 
-  const { allRoutes, manualRoutes, autoRoutes, vehicleRoutes, blogIndexRoute, blogArticleRoutes } = collectAllRoutes();
+  const {
+    allRoutes,
+    manualRoutes,
+    autoRoutes,
+    vehicleRoutes,
+    blogIndexRoute,
+    blogArticleRoutes,
+  } = collectAllRoutes();
 
   const dom = installJsdomGlobals();
   const { vite, SsrApp } = await createSsrModuleLoader();
@@ -450,31 +605,68 @@ async function main() {
     const markupEn = renderRouteMarkup(SsrApp, route.pathEn);
     if (!markupRu) ssrFailures++;
     if (!markupEn) ssrFailures++;
-    written.push(emit(route.pathRu, buildHtml(template, route, "ru", blogIndexRoute, markupRu)));
-    written.push(emit(route.pathEn, buildHtml(template, route, "en", blogIndexRoute, markupEn)));
+    written.push(
+      emit(
+        route.pathRu,
+        buildHtml(template, route, "ru", blogIndexRoute, markupRu),
+      ),
+    );
+    written.push(
+      emit(
+        route.pathEn,
+        buildHtml(template, route, "en", blogIndexRoute, markupEn),
+      ),
+    );
   }
-  const priorityLocales=JSON.parse(fs.readFileSync(PRIORITY_LOCALES_PATH,"utf8"));
-  for (const route of priorityLocales) for (const lang of ["pl","fr"]) {
-    const markup=renderRouteMarkup(SsrApp,route[lang]); if(!markup) ssrFailures++;
-    written.push(emit(route[lang],buildPriorityHtml(template,route,lang,markup)));
-  }
-  for (const route of blogArticleRoutes) for (const lang of ["pl", "fr"]) {
-    const localizedPath = route[lang === "pl" ? "pathPl" : "pathFr"];
-    const pseudo = {
-      ...route,
-      pathRu: localizedPath,
-      titleRu: route[lang === "pl" ? "titlePl" : "titleFr"],
-      descRu: route[lang === "pl" ? "descPl" : "descFr"],
-      h1Ru: route[lang === "pl" ? "titlePl" : "titleFr"].replace(/ \| (?:Blog )?ComfortLine$/, ""),
-      introRu: route[lang === "pl" ? "introPl" : "introFr"],
-    };
-    const markup = renderRouteMarkup(SsrApp, localizedPath); if (!markup) ssrFailures++;
-    let html = buildHtml(template, pseudo, "ru", blogIndexRoute, markup).replace('<html lang="ru">', `<html lang="${lang}">`);
-    const alternates = [["ru", route.pathRu], ["en", route.pathEn], ["pl", route.pathPl], ["fr", route.pathFr], ["x-default", route.pathEn]]
-      .map(([code, href]) => `    <link rel="alternate" hreflang="${code}" href="${SITE_URL + encodeURI(href)}" />`).join("\n");
-    html = html.replace(/\s*<link rel="alternate" hreflang="ru"[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*\/>/, "\n" + alternates);
-    written.push(emit(localizedPath, html));
-  }
+  for (const route of PRIORITY_LOCALES)
+    for (const lang of ["pl", "fr"]) {
+      const markup = renderRouteMarkup(SsrApp, route[lang]);
+      if (!markup) ssrFailures++;
+      written.push(
+        emit(route[lang], buildPriorityHtml(template, route, lang, markup)),
+      );
+    }
+  for (const route of blogArticleRoutes)
+    for (const lang of ["pl", "fr"]) {
+      const localizedPath = route[lang === "pl" ? "pathPl" : "pathFr"];
+      const pseudo = {
+        ...route,
+        pathRu: localizedPath,
+        titleRu: route[lang === "pl" ? "titlePl" : "titleFr"],
+        descRu: route[lang === "pl" ? "descPl" : "descFr"],
+        h1Ru: route[lang === "pl" ? "titlePl" : "titleFr"].replace(
+          / \| (?:Blog )?ComfortLine$/,
+          "",
+        ),
+        introRu: route[lang === "pl" ? "introPl" : "introFr"],
+      };
+      const markup = renderRouteMarkup(SsrApp, localizedPath);
+      if (!markup) ssrFailures++;
+      let html = buildHtml(
+        template,
+        pseudo,
+        "ru",
+        blogIndexRoute,
+        markup,
+      ).replace('<html lang="ru">', `<html lang="${lang}">`);
+      const alternates = [
+        ["ru", route.pathRu],
+        ["en", route.pathEn],
+        ["pl", route.pathPl],
+        ["fr", route.pathFr],
+        ["x-default", route.pathEn],
+      ]
+        .map(
+          ([code, href]) =>
+            `    <link rel="alternate" hreflang="${code}" href="${SITE_URL + encodeURI(href)}" />`,
+        )
+        .join("\n");
+      html = html.replace(
+        /\s*<link rel="alternate" hreflang="ru"[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*\/>/,
+        "\n" + alternates,
+      );
+      written.push(emit(localizedPath, html));
+    }
 
   await vite.close();
   dom.window.close();
@@ -484,9 +676,13 @@ async function main() {
   );
   for (const f of written) console.log(`  - ${f}`);
   if (ssrFailures > 0) {
-    console.warn(`[prerender] ${ssrFailures}/${written.length} pages fell back to the synthetic summary block (SSR render threw for that route).`);
+    console.warn(
+      `[prerender] ${ssrFailures}/${written.length} pages fell back to the synthetic summary block (SSR render threw for that route).`,
+    );
   } else {
-    console.log(`[prerender] all ${written.length} pages were rendered via real SSR (src/ssr-entry.tsx).`);
+    console.log(
+      `[prerender] all ${written.length} pages were rendered via real SSR (src/ssr-entry.tsx).`,
+    );
   }
 }
 
