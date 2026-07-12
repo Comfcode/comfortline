@@ -118,6 +118,114 @@ const content = {
     ctaBtn: "Request a booking",
     backBtn: "← All services",
   },
+  pl: {
+    badge: "Przenosić",
+    title: "Mińsk — Port Lotniczy Warszawa",
+    subtitle: "Prywatny transfer na Twój lot do Warszawy. Międzynarodowe doświadczenie, stała cena, profesjonalny kierowca.",
+    stats: [
+      { label: "Dystans", value: "~550 km" },
+      { label: "Czas podróży", value: "6–10 godz" },
+      { label: "Klasa pojazdu", value: "Komfort / Biznes" },
+      { label: "Ulec poprawie", value: "Od drzwi do drzwi" },
+    ],
+    howTitle: "Jak działa transfer",
+    steps: [
+      { icon: MapPin, title: "Odbiór drzwi", desc: "Twój kierowca dotrze pod Twój adres w Mińsku dokładnie na czas." },
+      { icon: ShieldCheck, title: "Granica białorusko-polska", desc: "Twój kierowca monitoruje wszystkie przejścia graniczne w czasie rzeczywistym i wybiera najszybsze przejście." },
+      { icon: Plane, title: "Przylot na lotnisko", desc: "Dostarczone bezpośrednio do odpowiedniego terminala na Lotnisku Chopina z zapasem czasu." },
+    ],
+    airportTitle: "Lotnisko Chopina w Warszawie (WAW)",
+    airportInfo: [
+      { label: "Pełne imię i nazwisko", value: "Lotnisko Chopina w Warszawie" },
+      { label: "Kod IATA", value: "WAW" },
+      { label: "Adres", value: "Żwirki i Wigury 1, 00-906 Warszawa, Polska" },
+      { label: "Terminale", value: "Terminal A (międzynarodowy) i Terminal B (Schengen)" },
+      { label: "Główne linie lotnicze", value: "LOT, Ryanair, Wizz Air, Lufthansa, British Airways, Emirates" },
+      { label: "Transfer miejski", value: "SKM (20 min), metro S2 (30 min), taksówka (25–40 min)" },
+    ],
+    altTitle: "Służymy również",
+    photosTitle: "Galeria Lotniska",
+    photos: [
+      { src: "/img/warsaw/chopin-terminal.png", caption: "Terminal Lotniska Chopina w Warszawie (WAW)" },
+      { src: "/img/warsaw/chopin-international.png", caption: "Terminal międzynarodowy" },
+    ],
+    tipsTitle: "Przydatne informacje",
+    tips: [
+      "Przejście graniczne Białoruś – Polska: średnio 3–8 godzin. W dni szczytowe może trwać do 12 godzin.",
+      "Zalecamy wyruszenie na 8–10 godzin przed lotem.",
+      "Sprawdź dokładnie: czy lecisz z Warszawy Chopina (WAW) czy Warszawy Modlina (WMI)? To są różne lotniska.",
+      "Terminal A obsługuje trasy spoza strefy Schengen. Terminal B obsługuje loty w strefie Schengen.",
+      "Parking bezpłatny przez pierwsze 15 minut (strefa wysiadania).",
+      "W Terminalu A dostępna jest całodobowa restauracja.",
+    ],
+    whyTitle: "Dlaczego ComfortLine",
+    whyItems: [
+      "Stała cena — bez licznika, bez ukrytych dodatków",
+      "Kierowca doświadczony na wszystkich przejściach granicznych Białorusko-Polska",
+      "Foteliki dziecięce dostępne na życzenie",
+      "Spotkania i powitania na tablicy ogłoszeń w sprawie transferów powrotnych",
+      "Pomoc bagażowa wliczona w cenę",
+      "Dostępność 24 godziny na dobę, 7 dni w tygodniu, także w święta",
+    ],
+    ctaTitle: "Zarezerwuj swój transfer",
+    ctaDesc: "Prześlij zapytanie, a nasz menedżer wkrótce skontaktuje się z Tobą i poda dokładną cenę.",
+    ctaBtn: "Poproś o rezerwację",
+    backBtn: "← Wszystkie usługi",
+  },
+  fr: {
+    badge: "Transfert",
+    title: "Minsk — Aéroport de Varsovie",
+    subtitle: "Transfert privé vers votre vol pour Varsovie. Expertise internationale, forfait, chauffeur professionnel.",
+    stats: [
+      { label: "Distance", value: "~550km" },
+      { label: "Temps de trajet", value: "6 à 10 heures" },
+      { label: "Classe de véhicule", value: "Confort / Affaires" },
+      { label: "Ramasser", value: "Porte-à-porte" },
+    ],
+    howTitle: "Comment fonctionne le transfert",
+    steps: [
+      { icon: MapPin, title: "Ramassage de porte", desc: "Votre chauffeur arrive à votre adresse à Minsk exactement à l'heure." },
+      { icon: ShieldCheck, title: "Frontière Biélorussie-Pologne", desc: "Votre chauffeur surveille tous les points de contrôle frontaliers en temps réel et sélectionne le passage le plus rapide." },
+      { icon: Plane, title: "Arrivée à l'aéroport", desc: "Livré directement au bon terminal de l'aéroport Chopin avec du temps libre." },
+    ],
+    airportTitle: "Aéroport Frédéric Chopin de Varsovie (WAW)",
+    airportInfo: [
+      { label: "Nom et prénom", value: "Aéroport Frédéric Chopin de Varsovie" },
+      { label: "Code IATA", value: "WAW" },
+      { label: "Adresse", value: "Żwirki i Wigury 1, 00-906 Varsovie, Pologne" },
+      { label: "Terminaux", value: "Terminal A (international) et Terminal B (Schengen)" },
+      { label: "Principales compagnies aériennes", value: "LOT, Ryanair, Wizz Air, Lufthansa, British Airways, Emirates" },
+      { label: "Transfert de ville", value: "Train SKM (20 min), métro S2 (30 min), taxi (25-40 min)" },
+    ],
+    altTitle: "Nous servons également",
+    photosTitle: "Galerie de l'aéroport",
+    photos: [
+      { src: "/img/warsaw/chopin-terminal.png", caption: "Terminal de l'aéroport Chopin de Varsovie (WAW)" },
+      { src: "/img/warsaw/chopin-international.png", caption: "Terminal international" },
+    ],
+    tipsTitle: "Informations utiles",
+    tips: [
+      "Passage de la frontière entre la Biélorussie et la Pologne : 3 à 8 heures en moyenne. Peut durer jusqu'à 12 heures les jours de pointe.",
+      "Nous vous recommandons de partir 8 à 10 heures avant votre vol.",
+      "Vérifiez attentivement : votre vol provient-il de Varsovie Chopin (WAW) ou de Varsovie Modlin (WMI) ? Ce sont des aéroports différents.",
+      "Le terminal A gère les itinéraires non Schengen. Le terminal B gère les vols Schengen.",
+      "Parking gratuit les 15 premières minutes (zone de dépôt).",
+      "Un restaurant ouvert 24h/24 et 7j/7 est disponible au Terminal A.",
+    ],
+    whyTitle: "Pourquoi ComfortLine",
+    whyItems: [
+      "Prix ​​fixe — pas de compteur, pas d'extras cachés",
+      "Chauffeur expérimenté à tous les postes frontaliers entre la Biélorussie et la Pologne",
+      "Sièges enfants disponibles sur demande",
+      "Rencontre et accueil sur un tableau de noms pour les transferts de retour",
+      "Assistance bagages incluse",
+      "Disponible 24h/24 et 7j/7 y compris les jours fériés",
+    ],
+    ctaTitle: "Réservez votre transfert",
+    ctaDesc: "Soumettez une demande et notre responsable vous contactera sous peu avec un prix exact.",
+    ctaBtn: "Demander une réservation",
+    backBtn: "← Tous les services",
+  },
 };
 
 function WarsawAirportSeo() {
@@ -154,10 +262,9 @@ function WarsawAirportSeo() {
     />
   );
 }
-
 export default function MinskWarsawAirportPage() {
-  const { lang } = useLang();
-  const c = content[lang];
+  const { lang, locale } = useLang();
+  const c = content[locale as keyof typeof content] ?? content.en;
 
   return (
     <div className="min-h-screen bg-background text-foreground">

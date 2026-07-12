@@ -130,11 +130,131 @@ const content = {
     ctaBtn: "Request a booking",
     backBtn: "← All services",
   },
+  pl: {
+    badge: "Przenosić",
+    title: "Mińsk — Port Lotniczy Warszawa Modlin",
+    subtitle: "Prywatny transfer na lotnisko Warszawa Modlin (WMI). Hub niedrogich linii lotniczych, stała cena, profesjonalny szofer.",
+    stats: [
+      { label: "Dystans", value: "~570 km" },
+      { label: "Czas podróży", value: "6–10 godz" },
+      { label: "Klasa pojazdu", value: "Komfort / Biznes" },
+      { label: "Ulec poprawie", value: "Od drzwi do drzwi" },
+    ],
+    howTitle: "Jak działa transfer",
+    steps: [
+      { icon: MapPin, title: "Odbiór drzwi", desc: "Twój kierowca dotrze pod Twój adres w Mińsku dokładnie na czas." },
+      { icon: ShieldCheck, title: "Granica białorusko-polska", desc: "Twój kierowca monitoruje wszystkie punkty kontrolne w czasie rzeczywistym i wybiera najszybszy przejazd." },
+      { icon: Plane, title: "Przylot na lotnisko", desc: "Dostarczone prosto do terminalu w Modlinie — kompaktowego, jednoterminalowego lotniska — z zapasem czasu." },
+    ],
+    airportTitle: "Port Lotniczy Warszawa Modlin (WMI)",
+    airportInfo: [
+      { label: "Pełne imię i nazwisko", value: "Lotnisko Warszawa/Modlin" },
+      { label: "Kod IATA", value: "WMI" },
+      { label: "Adres", value: "ul. Gen. Wiktora Thommée 1A, 05-102 Nowy Dwór Mazowiecki, Polska" },
+      { label: "Odległość od Warszawy", value: "~35 km na północ od centrum Warszawy" },
+      { label: "Terminale", value: "1 terminal (wszystkie loty)" },
+      { label: "Linie lotnicze", value: "Ryanair, Wizz Air (budżetowe trasy europejskie)" },
+      { label: "Transfer miejski", value: "Autobus Modlin Ekspres (55 min), Flixbus, taksówka (35–50 min)" },
+    ],
+    noteTitle: "Ważny",
+    note: "Modlin i Chopin to dwa odrębne lotniska. Upewnij się, że Twój lot wylatuje z Warszawy Modlin (WMI), a nie z Warszawy Chopin (WAW).",
+    photosTitle: "Galeria Lotniska",
+    photos: [
+      { src: "/img/warsaw/modlin-terminal.png", caption: "Terminal Portu Lotniczego Warszawa Modlin (WMI)" },
+      { src: "/img/warsaw/modlin-tower.png", caption: "Strefa przylotów i dostęp do taksówek" },
+    ],
+    tipsTitle: "Przydatne informacje",
+    tips: [
+      "Przejście graniczne Białoruś – Polska: średnio 3–8 godzin. W dni szczytowe do 12 godzin.",
+      "Zalecamy wyruszenie na 8–10 godzin przed lotem.",
+      "Modlin jest oddalony od Warszawy o 35 km – co wpływa na dojazd do samego lotniska.",
+      "Głównymi operatorami są Ryanair i Wizz Air. Zameldowanie kończy się ściśle punktualnie.",
+      "Wewnątrz terminala dostępne jest bezpłatne Wi-Fi.",
+      "Terminal jest niewielki — zdecydowanie zaleca się wcześniejszą odprawę online.",
+    ],
+    whyTitle: "Dlaczego ComfortLine",
+    whyItems: [
+      "Stała cena — bez licznika, bez ukrytych dodatków",
+      "Kierowca doświadczony na wszystkich przejściach granicznych Białorusko-Polska",
+      "Foteliki dziecięce dostępne na życzenie",
+      "Spotkania i powitania na tablicy ogłoszeń w sprawie transferów powrotnych",
+      "Pomoc bagażowa wliczona w cenę",
+      "Dostępność 24 godziny na dobę, 7 dni w tygodniu, także w święta",
+    ],
+    alsoTitle: "Zobacz także",
+    alsoLinks: [
+      { label: "Mińsk — Lotnisko Chopina w Warszawie (WAW)", href: "/minsk-warsaw-airport" },
+    ],
+    ctaTitle: "Zarezerwuj swój transfer",
+    ctaDesc: "Prześlij zapytanie, a nasz menedżer wkrótce skontaktuje się z Tobą i poda dokładną cenę.",
+    ctaBtn: "Poproś o rezerwację",
+    backBtn: "← Wszystkie usługi",
+  },
+  fr: {
+    badge: "Transfert",
+    title: "Minsk — Aéroport de Varsovie Modlin",
+    subtitle: "Transfert privé à l'aéroport de Varsovie Modlin (WMI). Hub des compagnies aériennes à bas prix, forfait, chauffeur professionnel.",
+    stats: [
+      { label: "Distance", value: "~570km" },
+      { label: "Temps de trajet", value: "6 à 10 heures" },
+      { label: "Classe de véhicule", value: "Confort / Affaires" },
+      { label: "Ramasser", value: "Porte-à-porte" },
+    ],
+    howTitle: "Comment fonctionne le transfert",
+    steps: [
+      { icon: MapPin, title: "Ramassage de porte", desc: "Votre chauffeur arrive à votre adresse à Minsk exactement à l'heure." },
+      { icon: ShieldCheck, title: "Frontière Biélorussie-Pologne", desc: "Votre chauffeur surveille tous les points de contrôle en temps réel et sélectionne le passage le plus rapide." },
+      { icon: Plane, title: "Arrivée à l'aéroport", desc: "Livré directement au terminal de Modlin – aéroport compact à terminal unique – avec du temps à perdre." },
+    ],
+    airportTitle: "Aéroport de Varsovie Modlin (WMI)",
+    airportInfo: [
+      { label: "Nom et prénom", value: "Aéroport de Varsovie/Modlin" },
+      { label: "Code IATA", value: "WMI" },
+      { label: "Adresse", value: "ul. Général Wiktora Thommée 1A, 05-102 Nowy Dwór Mazowiecki, Pologne" },
+      { label: "Distance de Varsovie", value: "~35 km au nord du centre-ville de Varsovie" },
+      { label: "Terminaux", value: "1 terminal (tous les vols)" },
+      { label: "Compagnies aériennes", value: "Ryanair, Wizz Air (itinéraires européens à petit budget)" },
+      { label: "Transfert de ville", value: "Bus Modlin Ekspres (55 min), Flixbus, taxi (35-50 min)" },
+    ],
+    noteTitle: "Important",
+    note: "Modlin et Chopin sont deux aéroports distincts. Assurez-vous que votre vol part de Varsovie Modlin (WMI) et non de Varsovie Chopin (WAW).",
+    photosTitle: "Galerie de l'aéroport",
+    photos: [
+      { src: "/img/warsaw/modlin-terminal.png", caption: "Terminal de l'aéroport de Varsovie Modlin (WMI)" },
+      { src: "/img/warsaw/modlin-tower.png", caption: "Zone des arrivées et accès aux taxis" },
+    ],
+    tipsTitle: "Informations utiles",
+    tips: [
+      "Passage de la frontière entre la Biélorussie et la Pologne : 3 à 8 heures en moyenne. Jusqu'à 12 heures les jours de pointe.",
+      "Nous vous recommandons de partir 8 à 10 heures avant votre vol.",
+      "Modlin se trouve à 35 km de Varsovie — comptez le trajet jusqu'à l'aéroport lui-même.",
+      "Ryanair et Wizz Air sont les principaux opérateurs. L'enregistrement ferme strictement à l'heure.",
+      "Une connexion Wi-Fi gratuite est disponible à l’intérieur du terminal.",
+      "Le terminal est compact : l’enregistrement en ligne à l’avance est fortement recommandé.",
+    ],
+    whyTitle: "Pourquoi ComfortLine",
+    whyItems: [
+      "Prix ​​fixe — pas de compteur, pas d'extras cachés",
+      "Chauffeur expérimenté à tous les postes frontaliers entre la Biélorussie et la Pologne",
+      "Sièges enfants disponibles sur demande",
+      "Rencontre et accueil sur un tableau de noms pour les transferts de retour",
+      "Assistance bagages incluse",
+      "Disponible 24h/24 et 7j/7 y compris les jours fériés",
+    ],
+    alsoTitle: "Voir aussi",
+    alsoLinks: [
+      { label: "Minsk — Aéroport Frédéric Chopin de Varsovie (WAW)", href: "/minsk-warsaw-airport" },
+    ],
+    ctaTitle: "Réservez votre transfert",
+    ctaDesc: "Soumettez une demande et notre responsable vous contactera sous peu avec un prix exact.",
+    ctaBtn: "Demander une réservation",
+    backBtn: "← Tous les services",
+  },
 };
 
 export default function MinskWarsawModlinAirportPage() {
-  const { lang } = useLang();
-  const c = content[lang];
+  const { lang, locale } = useLang();
+  const c = content[locale as keyof typeof content] ?? content.en;
 
   const isRu = lang === "ru";
 

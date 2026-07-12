@@ -118,11 +118,119 @@ const content = {
     ctaBtn: "Request a booking",
     backBtn: "← All services",
   },
+  pl: {
+    badge: "Przenosić",
+    title: "Transfer z Mińska na lotnisko w Rydze (RIX).",
+    subtitle: "Prywatny transfer od drzwi do drzwi z Mińska na międzynarodowe lotnisko w Rydze (RIX). Stała cena, profesjonalny kierowca, pełna asysta na granicy białorusko-łotewskiej.",
+    seoIntro: "Zarezerwuj transfer z Mińska do Rygi online lub telefonicznie. Stała cena, brak licznika, brak przepięć. Trasa ~470 km przez przejście graniczne Grigorievka / Paternieki zajmuje zazwyczaj 5–8 godzin, w zależności od kolejek. Międzynarodowy port lotniczy w Rydze jest największym węzłem komunikacyjnym w regionie bałtyckim, obsługującym bezpośrednie loty do Europy Zachodniej, Skandynawii i nie tylko.",
+    stats: [
+      { label: "Dystans", value: "~470 km" },
+      { label: "Czas podróży", value: "5–8 godz" },
+      { label: "Klasa pojazdu", value: "Komfort / Biznes" },
+      { label: "Ulec poprawie", value: "Od drzwi do drzwi" },
+    ],
+    howTitle: "Jak działa transfer",
+    steps: [
+      { icon: MapPin, title: "Odbiór drzwi", desc: "Twój kierowca dotrze pod Twój adres w Mińsku dokładnie na czas." },
+      { icon: ShieldCheck, title: "Przejście graniczne", desc: "Białoruś – Łotwa na punkcie kontrolnym Grigorievka / Paternieki. Twój kierowca monitoruje sytuację w kolejkach i zna alternatywne trasy." },
+      { icon: Plane, title: "Przylot na lotnisko", desc: "Dostawa bezpośrednio do terminalu na lotnisku w Rydze na długo przed lotem." },
+    ],
+    airportTitle: "Port lotniczy Ryga (RIX)",
+    airportInfo: [
+      { label: "Pełne imię i nazwisko", value: "Międzynarodowe lotnisko w Rydze" },
+      { label: "Kod IATA", value: "RIX" },
+      { label: "Adres", value: "Mārupes nov., Rīgas rajons, LV-1053, Łotwa" },
+      { label: "Terminale", value: "1 terminal (wszystkie loty)" },
+      { label: "Główne linie lotnicze", value: "airBaltic, Ryanair, Wizz Air, LOT, Finnair, SAS" },
+      { label: "Transfer miejski", value: "Autobus nr 22 (30 min), taksówka (20–25 min)" },
+    ],
+    photosTitle: "Galeria Lotniska",
+    photos: [
+      { src: "/riga-airport-exterior.jpg", caption: "Terminal lotniska w Rydze (RIX)" },
+      { src: "/riga-airport-gate.jpg", caption: "Brama odlotów lotniska w Rydze" },
+    ],
+    tipsTitle: "Przydatne informacje",
+    tips: [
+      "Lotnisko działa 24 godziny na dobę, 7 dni w tygodniu. Godziny szczytu to wczesny ranek i wieczór.",
+      "Przejście graniczne Białoruś – Łotwa: 1–4 godziny, w pracowite dni do 6 godzin.",
+      "Zalecamy wyruszenie na 5–6 godzin przed lotem.",
+      "Bezpłatny bezprzewodowy dostęp do Internetu i poczekalnie na terenie całego terminalu.",
+      "Dostępne są sklepy wolnocłowe, kawiarnie i salony biznesowe.",
+      "airBaltic to macierzysty przewoźnik — ponad 70 kierunków z Rygi.",
+    ],
+    whyTitle: "Dlaczego ComfortLine",
+    whyItems: [
+      "Stała cena — bez licznika, bez ukrytych dodatków",
+      "Kierowca doświadczony w przejściach granicznych",
+      "Foteliki dziecięce dostępne na życzenie",
+      "Spotkanie i powitanie na tablicy ogłoszeń w sprawie transferów powrotnych z Rygi",
+      "Pomoc bagażowa wliczona w cenę",
+      "Dostępność 24 godziny na dobę, 7 dni w tygodniu, także w święta",
+    ],
+    ctaTitle: "Zarezerwuj swój transfer",
+    ctaDesc: "Prześlij zapytanie, a nasz menedżer wkrótce skontaktuje się z Tobą i poda dokładną cenę.",
+    ctaBtn: "Poproś o rezerwację",
+    backBtn: "← Wszystkie usługi",
+  },
+  fr: {
+    badge: "Transfert",
+    title: "Transfert de Minsk à l'aéroport de Riga (RIX)",
+    subtitle: "Transfert privé de porte à porte de Minsk à l'aéroport international de Riga (RIX). Prix ​​fixe, chauffeur professionnel, assistance complète à la frontière Biélorussie-Lettonie.",
+    seoIntro: "Réservez un transfert de l'aéroport de Minsk à Riga en ligne ou par téléphone. Prix ​​fixe, pas de compteur, pas de surtension. Le trajet d'environ 470 km via le poste frontière de Grigorievka/Paternieki prend généralement 5 à 8 heures en fonction des files d'attente. L'aéroport international de Riga est la plus grande plaque tournante de la région baltique, proposant des vols directs vers l'Europe occidentale, la Scandinavie et au-delà.",
+    stats: [
+      { label: "Distance", value: "~470km" },
+      { label: "Temps de trajet", value: "5 à 8 heures" },
+      { label: "Classe de véhicule", value: "Confort / Affaires" },
+      { label: "Ramasser", value: "Porte-à-porte" },
+    ],
+    howTitle: "Comment fonctionne le transfert",
+    steps: [
+      { icon: MapPin, title: "Ramassage de porte", desc: "Votre chauffeur arrive à votre adresse à Minsk exactement à l'heure." },
+      { icon: ShieldCheck, title: "Poste frontière", desc: "Biélorussie-Lettonie au point de contrôle Grigorievka / Paternieki. Votre chauffeur surveille les conditions de file d'attente et connaît les itinéraires alternatifs." },
+      { icon: Plane, title: "Arrivée à l'aéroport", desc: "Livré directement au terminal de l'aéroport de Riga bien avant votre vol." },
+    ],
+    airportTitle: "Aéroport de Riga (RIX)",
+    airportInfo: [
+      { label: "Nom et prénom", value: "Aéroport international de Riga" },
+      { label: "Code IATA", value: "RIX" },
+      { label: "Adresse", value: "Mārupes nov., Rīgas Rajons, LV-1053, Lettonie" },
+      { label: "Terminaux", value: "1 terminal (tous les vols)" },
+      { label: "Principales compagnies aériennes", value: "airBaltic, Ryanair, Wizz Air, LOT, Finnair, SAS" },
+      { label: "Transfert de ville", value: "Bus n°22 (30 min), taxi (20-25 min)" },
+    ],
+    photosTitle: "Galerie de l'aéroport",
+    photos: [
+      { src: "/riga-airport-exterior.jpg", caption: "Terminal de l'aéroport de Riga (RIX)" },
+      { src: "/riga-airport-gate.jpg", caption: "Porte d'embarquement de l'aéroport de Riga" },
+    ],
+    tipsTitle: "Informations utiles",
+    tips: [
+      "L'aéroport fonctionne 24h/24 et 7j/7. Les heures de pointe sont tôt le matin et le soir.",
+      "Passage de la frontière entre la Biélorussie et la Lettonie : 1 à 4 heures, jusqu'à 6 heures les jours de pointe.",
+      "Nous vous recommandons de partir 5 à 6 heures avant votre vol.",
+      "Wi-Fi gratuit et zones d'attente dans tout le terminal.",
+      "Des boutiques Duty Free, des cafés et des salons d'affaires sont tous disponibles.",
+      "airBaltic est le transporteur national – plus de 70 destinations au départ de Riga.",
+    ],
+    whyTitle: "Pourquoi ComfortLine",
+    whyItems: [
+      "Prix ​​fixe — pas de compteur, pas d'extras cachés",
+      "Chauffeur expérimenté aux passages de frontières",
+      "Sièges enfants disponibles sur demande",
+      "Rencontre sur un tableau de noms pour les transferts aller-retour depuis Riga",
+      "Assistance bagages incluse",
+      "Disponible 24h/24 et 7j/7 y compris les jours fériés",
+    ],
+    ctaTitle: "Réservez votre transfert",
+    ctaDesc: "Soumettez une demande et notre responsable vous contactera sous peu avec un prix exact.",
+    ctaBtn: "Demander une réservation",
+    backBtn: "← Tous les services",
+  },
 };
 
 export default function MinskRigaAirportPage() {
-  const { lang } = useLang();
-  const c = content[lang];
+  const { lang, locale } = useLang();
+  const c = content[locale as keyof typeof content] ?? content.en;
   const isRu = lang === "ru";
 
   return (

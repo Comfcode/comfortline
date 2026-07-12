@@ -118,11 +118,119 @@ const content = {
     ctaBtn: "Request a booking",
     backBtn: "← All services",
   },
+  pl: {
+    badge: "Przenosić",
+    title: "Transfer z Mińska na lotnisko w Kownie (KUN).",
+    subtitle: "Prywatny transfer od drzwi do drzwi z Mińska na międzynarodowe lotnisko w Kownie (KUN). Stała cena, profesjonalny kierowca, pełna pomoc na granicy białorusko-litewskiej.",
+    seoIntro: "Zarezerwuj transfer z lotniska Mińsk do Kowna online lub telefonicznie. Stała cena, brak licznika, brak przepięć. Trasa o długości około 280 km przez przejście graniczne Kamenny Log / Benyakoni zajmuje zazwyczaj 4–7 godzin, w zależności od kolejek. Kowno to drugie co do wielkości lotnisko na Litwie i główny węzeł komunikacyjny Ryanair.",
+    stats: [
+      { label: "Dystans", value: "~280 km" },
+      { label: "Czas podróży", value: "4–7 godz" },
+      { label: "Klasa pojazdu", value: "Komfort / Biznes" },
+      { label: "Ulec poprawie", value: "Od drzwi do drzwi" },
+    ],
+    howTitle: "Jak działa transfer",
+    steps: [
+      { icon: MapPin, title: "Odbiór drzwi", desc: "Twój kierowca dotrze pod Twój adres w Mińsku dokładnie na czas." },
+      { icon: ShieldCheck, title: "Przejście graniczne", desc: "Białoruś – Litwa. Twój kierowca zna procedury graniczne i monitoruje stan kolejek." },
+      { icon: Plane, title: "Przylot na lotnisko", desc: "Dostawa bezpośrednio do terminalu na lotnisku w Kownie na długo przed lotem." },
+    ],
+    airportTitle: "Port lotniczy Kowno (KUN)",
+    airportInfo: [
+      { label: "Pełne imię i nazwisko", value: "Międzynarodowy port lotniczy w Kownie" },
+      { label: "Kod IATA", value: "KUN" },
+      { label: "Adres", value: "Oro uosto g. 4, Karmėlava, Litwa" },
+      { label: "Terminale", value: "1 terminal (wszystkie loty)" },
+      { label: "Główne linie lotnicze", value: "Ryanair, Wizz Air, LOT, Lufthansa" },
+      { label: "Transfer miejski", value: "Autobus nr 29G (40 min), taksówka (15–20 min)" },
+    ],
+    photosTitle: "Galeria Lotniska",
+    photos: [
+      { src: "/img/kaunas/airport-terminal.png", caption: "Terminal lotniska w Kownie (KUN)" },
+      { src: "/img/kaunas/airport-building.png", caption: "Budynek lotniska w Kownie" },
+    ],
+    tipsTitle: "Przydatne informacje",
+    tips: [
+      "Lotnisko działa 24 godziny na dobę, 7 dni w tygodniu. Większość lotów odlatuje wcześnie rano.",
+      "Przejście graniczne Białoruś – Litwa: 2–5 godzin, w pracowite dni do 7 godzin.",
+      "Zalecamy wyruszenie na 5–6 godzin przed lotem.",
+      "Darmowe Wi-Fi, kawiarnie i strefy odpoczynku dostępne w jednym terminalu.",
+      "Odprawa Ryanair rozpoczyna się na 2 godziny przed odlotem.",
+      "Kowno jest często tańsze niż Wilno — tani przewoźnicy utrzymują ceny na niskim poziomie.",
+    ],
+    whyTitle: "Dlaczego ComfortLine",
+    whyItems: [
+      "Stała cena — bez licznika, bez ukrytych dodatków",
+      "Kierowca doświadczony w przejściach granicznych",
+      "Foteliki dziecięce dostępne na życzenie",
+      "Spotkania i powitania na tablicy ogłoszeń w sprawie transferów powrotnych",
+      "Pomoc bagażowa wliczona w cenę",
+      "Dostępność 24 godziny na dobę, 7 dni w tygodniu, także w święta",
+    ],
+    ctaTitle: "Zarezerwuj swój transfer",
+    ctaDesc: "Prześlij zapytanie, a nasz menedżer wkrótce skontaktuje się z Tobą i poda dokładną cenę.",
+    ctaBtn: "Poproś o rezerwację",
+    backBtn: "← Wszystkie usługi",
+  },
+  fr: {
+    badge: "Transfert",
+    title: "Transfert de Minsk à l'aéroport de Kaunas (KUN)",
+    subtitle: "Transfert privé de porte à porte de Minsk à l'aéroport international de Kaunas (KUN). Prix ​​fixe, chauffeur professionnel, assistance complète à la frontière Biélorussie-Lituanie.",
+    seoIntro: "Réservez un transfert de l'aéroport de Minsk à Kaunas en ligne ou par téléphone. Prix ​​fixe, pas de compteur, pas de surtension. Le parcours d'environ 280 km via le poste frontière de Kamenny Log / Benyakoni prend généralement 4 à 7 heures en fonction des files d'attente. Kaunas est le deuxième plus grand aéroport de Lituanie et un hub majeur de Ryanair.",
+    stats: [
+      { label: "Distance", value: "~280km" },
+      { label: "Temps de trajet", value: "4 à 7 heures" },
+      { label: "Classe de véhicule", value: "Confort / Affaires" },
+      { label: "Ramasser", value: "Porte-à-porte" },
+    ],
+    howTitle: "Comment fonctionne le transfert",
+    steps: [
+      { icon: MapPin, title: "Ramassage de porte", desc: "Votre chauffeur arrive à votre adresse à Minsk exactement à l'heure." },
+      { icon: ShieldCheck, title: "Poste frontière", desc: "Biélorussie – Lituanie. Votre chauffeur connaît les routines frontalières et surveille les conditions de file d'attente." },
+      { icon: Plane, title: "Arrivée à l'aéroport", desc: "Livré directement au terminal de l'aéroport de Kaunas bien avant votre vol." },
+    ],
+    airportTitle: "Aéroport de Kaunas (KUN)",
+    airportInfo: [
+      { label: "Nom et prénom", value: "Aéroport international de Kaunas" },
+      { label: "Code IATA", value: "KUN" },
+      { label: "Adresse", value: "Oro uosto g. 4, Karmėlava, Lituanie" },
+      { label: "Terminaux", value: "1 terminal (tous les vols)" },
+      { label: "Principales compagnies aériennes", value: "Ryanair, Wizz Air, LOT, Lufthansa" },
+      { label: "Transfert de ville", value: "Bus n° 29G (40 min), taxi (15-20 min)" },
+    ],
+    photosTitle: "Galerie de l'aéroport",
+    photos: [
+      { src: "/img/kaunas/airport-terminal.png", caption: "Terminal de l'aéroport de Kaunas (KUN)" },
+      { src: "/img/kaunas/airport-building.png", caption: "Bâtiment de l'aéroport de Kaunas" },
+    ],
+    tipsTitle: "Informations utiles",
+    tips: [
+      "L'aéroport fonctionne 24h/24 et 7j/7. La plupart des vols partent tôt le matin.",
+      "Passage de la frontière entre la Biélorussie et la Lituanie : 2 à 5 heures, jusqu'à 7 heures les jours de pointe.",
+      "Nous vous recommandons de partir 5 à 6 heures avant votre vol.",
+      "Wi-Fi gratuit, cafés et zones de repos disponibles dans le terminal unique.",
+      "L'enregistrement Ryanair ouvre 2 heures avant le départ.",
+      "Kaunas est souvent moins cher que Vilnius – les compagnies low-cost maintiennent les prix bas.",
+    ],
+    whyTitle: "Pourquoi ComfortLine",
+    whyItems: [
+      "Prix ​​fixe — pas de compteur, pas d'extras cachés",
+      "Chauffeur expérimenté aux passages de frontières",
+      "Sièges enfants disponibles sur demande",
+      "Rencontre et accueil sur un tableau de noms pour les transferts de retour",
+      "Assistance bagages incluse",
+      "Disponible 24h/24 et 7j/7 y compris les jours fériés",
+    ],
+    ctaTitle: "Réservez votre transfert",
+    ctaDesc: "Soumettez une demande et notre responsable vous contactera sous peu avec un prix exact.",
+    ctaBtn: "Demander une réservation",
+    backBtn: "← Tous les services",
+  },
 };
 
 export default function MinskKaunasAirportPage() {
-  const { lang } = useLang();
-  const c = content[lang];
+  const { lang, locale } = useLang();
+  const c = content[locale as keyof typeof content] ?? content.en;
   const isRu = lang === "ru";
 
   return (

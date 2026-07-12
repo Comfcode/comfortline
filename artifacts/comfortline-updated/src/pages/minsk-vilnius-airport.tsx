@@ -161,11 +161,161 @@ const content = {
     ctaBtn: "Request a booking",
     backBtn: "← All services",
   },
+  pl: {
+    badge: "Przenosić",
+    title: "Transfer z Mińska na lotnisko w Wilnie (VNO).",
+    subtitle: "Prywatny transfer od drzwi do drzwi z Mińska na międzynarodowe lotnisko w Wilnie (VNO). Stała cena, profesjonalny kierowca, pełna pomoc na granicy białorusko-litewskiej.",
+    seoIntro: "Istnieją trzy główne sposoby podróżowania z Mińska na lotnisko w Wilnie (VNO): autokar rozkładowy, wspólny minibus lub prywatny transfer. Najszybszy i najwygodniejszy jest transfer prywatny: odbiór pod drzwi w Mińsku, dowóz bezpośrednio pod terminal VNO, stała cena za cały samochód (1–3 pasażerów) – bez licznika. Trasa ~175 km przez przejście graniczne Kamenny Log/Kotlovka zajmuje 2,5–5 godzin w zależności od kolejek. Jeździmy komfortowym Volkswagenem Passatem lub biznesowym Mercedesem E-klasą.",
+    comparisonTitle: "Jak dojechać: autokar, minibus, prywatny transfer",
+    comparisonIntro: "Porównanie trzech głównych sposobów podróży z Mińska na lotnisko w Wilnie (VNO):",
+    comparison: {
+      headers: ["Transport", "Cena", "Czas podróży", "Najlepsze dla"],
+      rows: [
+        ["Autokar rozkładowy (Ecolines, Lux Express)", "Według taryfy przewoźnika", "5–7 godzin + oczekiwanie na granicy", "Podróżujący samotnie z ograniczonym budżetem i lekkim bagażem"],
+        ["Wspólny minibus (Minsktrans, prywatny)", "Według taryfy przewoźnika", "4–6 godz", "1 pasażer z lekkim bagażem"],
+        ["Prywatny transfer ComfortLine", "Stała cena za samochód (1–4 os.) — na zapytanie", "2,5–5 godzin od drzwi do terminala", "Rodziny, podróże służbowe, nocne/wczesne loty, dużo bagażu"],
+      ],
+    },
+    stats: [
+      { label: "Dystans", value: "~175 km" },
+      { label: "Czas podróży", value: "2,5–5 godz" },
+      { label: "Klasa pojazdu", value: "Komfort / Biznes" },
+      { label: "Ulec poprawie", value: "Od drzwi do drzwi" },
+    ],
+    howTitle: "Jak działa transfer",
+    steps: [
+      { icon: MapPin, title: "Odbiór drzwi", desc: "Twój kierowca dotrze pod Twój adres w Mińsku dokładnie na czas." },
+      { icon: ShieldCheck, title: "Przejście graniczne", desc: "Białoruś – Litwa. Twój kierowca zna procedury graniczne i monitoruje stan kolejek." },
+      { icon: Plane, title: "Przylot na lotnisko", desc: "Dostarczone bezpośrednio do odpowiedniego terminala na długo przed lotem." },
+    ],
+    airportTitle: "Port Lotniczy Wilno (VNO)",
+    airportInfo: [
+      { label: "Pełne imię i nazwisko", value: "Międzynarodowy Port Lotniczy w Wilnie" },
+      { label: "Kod IATA", value: "VNO" },
+      { label: "Adres", value: "Rodūnios kelias 10A, Wilno, Litwa" },
+      { label: "Terminale", value: "1 terminal (wszystkie loty)" },
+      { label: "Główne linie lotnicze", value: "Ryanair, Wizz Air, LOT, Turkish Airlines, flydubai" },
+      { label: "Transfer miejski", value: "Autobus nr 1 (40 min), taksówka (25–35 min)" },
+    ],
+    photosTitle: "Galeria Lotniska",
+    photos: [
+      { src: "/vilnius-airport-exterior.jpg", caption: "Terminal lotniska w Wilnie (VNO)" },
+      { src: "/vilnius-airport-interior.jpg", caption: "Hala odlotów lotniska w Wilnie" },
+    ],
+    tipsTitle: "Przydatne informacje",
+    tips: [
+      "Lotnisko działa 24 godziny na dobę, 7 dni w tygodniu. Loty wcześnie rano i późno w nocy są powszechne.",
+      "Przejście graniczne Białoruś – Litwa: średnio 1–3 godziny, w pracowite dni do 5 godzin.",
+      "Zalecamy wyruszenie na 4–5 godzin przed lotem.",
+      "W jednym terminalu dostępne jest bezpłatne Wi-Fi, kawiarnie i strefy odpoczynku.",
+      "Stanowiska odprawy czynne są 2–3 godziny przed odlotem.",
+      "Wilno to popularna alternatywa dla Warszawy — często tańsze loty z VNO.",
+    ],
+    whyTitle: "Dlaczego ComfortLine",
+    whyItems: [
+      "Stała cena — bez licznika, bez ukrytych dodatków",
+      "Kierowca doświadczony w przejściach granicznych",
+      "Foteliki dziecięce dostępne na życzenie",
+      "Spotkania i powitania na tablicy ogłoszeń w sprawie transferów powrotnych",
+      "Pomoc bagażowa wliczona w cenę",
+      "Dostępność 24 godziny na dobę, 7 dni w tygodniu, także w święta",
+    ],
+    faqTitle: "Często zadawane pytania — Mińsk do lotniska w Wilnie",
+    faq: [
+      { q: "Ile kosztuje transfer z Mińska na lotnisko w Wilnie (VNO)?", a: "Cena na zapytanie – prosimy o kontakt. Dokładna liczba zależy od klasy pojazdu (komfort/biznes/minivan), tego, czy potrzebujesz fotelika dziecięcego, czy podróżujesz ze zwierzęciem, adresu odbioru w Mińsku i wszelkich innych specjalnych życzeń. Nasz menadżer potwierdza stałą cenę (bez licznika) obejmującą paliwo, ubezpieczenie, pomoc graniczną, wodę butelkowaną i bagaż już wliczony w cenę – bez żadnych dodatkowych opłat przy odbiorze i nadaniu." },
+      { q: "Jak długo trwa podróż z Mińska do VNO?", a: "Sam dojazd ~175 km autostradą M7 trwa około 2 godzin. Dolicz 1–3 godziny (do 4–5 w dni szczytu) na przejście graniczne Kamenny Log/Kotlovka. Zaplanuj podróż od drzwi do terminala na 2,5–5 godzin. Zalecamy opuszczenie Mińska na 4–5 godzin przed lotem." },
+      { q: "Z jakiego przejścia granicznego korzystasz?", a: "Domyślnie Kamenny Log (Białoruś) — Medininkai (Litwa), zwana także „Kotłowką” — główne przejście pasażerskie na tej trasie. Jeśli kolejki są duże, kierowca może przesiąść się na Benyakoni — Salčininkai. Decyzja zapada rano na podstawie warunków na żywo." },
+      { q: "Jakie dokumenty potrzebuję, aby wjechać na Litwę?", a: "Ważny paszport i wiza Schengen (dla obywateli Białorusi, Rosji i innych, którzy jej potrzebują). Obywatele UE/Litwy — paszport lub dowód osobisty. Dzieci muszą posiadać własny paszport. Zalecane jest ubezpieczenie medyczne strefy Schengen." },
+      { q: "Czy autokar jest tańszy niż prywatny transfer?", a: "Jeśli podróżujesz samotnie z małą torbą — tak, rozkładowy autokar (Ecolines, Lux Express) jest zazwyczaj tańszy w przeliczeniu na osobę. Jeśli podróżujesz z bagażem w parze, rodzinie lub grupie, prywatny transfer jest często tańszy w przeliczeniu na osobę i 1–3 godziny szybszy dzięki bezpośredniemu serwisowi od drzwi do terminala, bez przesiadek i nocnego czekania na dworcu autobusowym. Zapytaj naszego menadżera o dokładną wycenę w zależności od wielkości imprezy." },
+      { q: "Czy obsługujecie loty w nocy czy poranne loty?", a: "Tak, działamy 24 godziny na dobę, 7 dni w tygodniu, także w święta. W przypadku lotów w godzinach 5:00–7:00 zazwyczaj wypływamy z Mińska o 23:00–00:00. Brak dopłat za noclegi i święta." },
+      { q: "Czy dostępny jest transfer z lotniska w Wilnie do Mińska?", a: "Tak. Kierowca czeka na Ciebie w hali przylotów VNO z tabliczką z nazwiskiem (bezpłatnie), pomaga z bagażem i podwozi pod Twój adres w Mińsku. Zarezerwuj oba kierunki w jednym zapytaniu — 5% rabatu." },
+      { q: "Czy mogę poprosić o fotelik dziecięcy?", a: "Tak — foteliki dziecięce i podstawki są dostarczane bezpłatnie na życzenie przy rezerwacji. Proszę podać wiek dziecka." },
+    ],
+    ctaTitle: "Zarezerwuj swój transfer",
+    ctaDesc: "Prześlij zapytanie, a nasz menedżer wkrótce skontaktuje się z Tobą i poda dokładną cenę.",
+    ctaBtn: "Poproś o rezerwację",
+    backBtn: "← Wszystkie usługi",
+  },
+  fr: {
+    badge: "Transfert",
+    title: "Transfert de Minsk à l'aéroport de Vilnius (VNO)",
+    subtitle: "Transfert privé de porte à porte de Minsk à l'aéroport international de Vilnius (VNO). Prix ​​fixe, chauffeur professionnel, assistance complète à la frontière Biélorussie-Lituanie.",
+    seoIntro: "Il existe trois moyens principaux de voyager de Minsk à l'aéroport de Vilnius (VNO) : un autocar régulier, un minibus partagé ou un transfert privé. Le plus rapide et le plus pratique est un transfert privé : prise en charge à la porte à Minsk, dépose directement au terminal VNO, prix fixe pour la voiture entière (1 à 3 passagers) — pas de compteur. Le parcours d'environ 175 km via le poste frontière de Kamenny Log / Kotlovka prend 2,5 à 5 heures en fonction des files d'attente. Nous utilisons une Volkswagen Passat de classe confort ou une Mercedes Classe E de classe affaires.",
+    comparisonTitle: "Comment s'y rendre : autocar, minibus, transfert privé",
+    comparisonIntro: "Comparaison des trois principaux moyens de transport de Minsk à l'aéroport de Vilnius (VNO) :",
+    comparison: {
+      headers: ["Transport", "Prix", "Temps de trajet", "Idéal pour"],
+      rows: [
+        ["Autocar régulier (Ecolines, Lux Express)", "Tarif par transporteur", "5 à 7 heures + attente à la frontière", "Voyageurs solitaires à petit budget avec bagages légers"],
+        ["Minibus partagé (Minsktrans, privé)", "Tarif par transporteur", "4 à 6 heures", "1 passager avec bagages légers"],
+        ["Transfert privé ComfortLine", "Prix ​​fixe par voiture (1 à 4 personnes) — sur demande", "2,5 à 5 heures de la porte au terminal", "Familles, voyages d'affaires, vols de nuit/tôt, beaucoup de bagages"],
+      ],
+    },
+    stats: [
+      { label: "Distance", value: "~175km" },
+      { label: "Temps de trajet", value: "2,5 à 5 heures" },
+      { label: "Classe de véhicule", value: "Confort / Affaires" },
+      { label: "Ramasser", value: "Porte-à-porte" },
+    ],
+    howTitle: "Comment fonctionne le transfert",
+    steps: [
+      { icon: MapPin, title: "Ramassage de porte", desc: "Votre chauffeur arrive à votre adresse à Minsk exactement à l'heure." },
+      { icon: ShieldCheck, title: "Poste frontière", desc: "Biélorussie – Lituanie. Votre chauffeur connaît les routines frontalières et surveille les conditions de file d'attente." },
+      { icon: Plane, title: "Arrivée à l'aéroport", desc: "Livré directement au bon terminal bien avant votre vol." },
+    ],
+    airportTitle: "Aéroport de Vilnius (VNO)",
+    airportInfo: [
+      { label: "Nom et prénom", value: "Aéroport international de Vilnius" },
+      { label: "Code IATA", value: "VNO" },
+      { label: "Adresse", value: "Rodūnios kelias 10A, Vilnius, Lituanie" },
+      { label: "Terminaux", value: "1 terminal (tous les vols)" },
+      { label: "Principales compagnies aériennes", value: "Ryanair, Wizz Air, LOT, Turkish Airlines, flydubai" },
+      { label: "Transfert de ville", value: "Bus n°1 (40 min), taxi (25-35 min)" },
+    ],
+    photosTitle: "Galerie de l'aéroport",
+    photos: [
+      { src: "/vilnius-airport-exterior.jpg", caption: "Terminal de l'aéroport de Vilnius (VNO)" },
+      { src: "/vilnius-airport-interior.jpg", caption: "Hall des départs de l’aéroport de Vilnius" },
+    ],
+    tipsTitle: "Informations utiles",
+    tips: [
+      "L'aéroport fonctionne 24h/24 et 7j/7. Les vols tôt le matin et tard le soir sont courants.",
+      "Passage de la frontière entre la Biélorussie et la Lituanie : 1 à 3 heures en moyenne, jusqu'à 5 heures les jours de pointe.",
+      "Nous vous recommandons de partir 4 à 5 heures avant votre vol.",
+      "Une connexion Wi-Fi gratuite, des cafés et des zones de repos sont disponibles dans le terminal unique.",
+      "Les comptoirs d'enregistrement ouvrent 2 à 3 heures avant le départ.",
+      "Vilnius est une alternative populaire à Varsovie — des vols souvent moins chers au départ de VNO.",
+    ],
+    whyTitle: "Pourquoi ComfortLine",
+    whyItems: [
+      "Prix ​​fixe — pas de compteur, pas d'extras cachés",
+      "Chauffeur expérimenté aux passages de frontières",
+      "Sièges enfants disponibles sur demande",
+      "Rencontre et accueil sur un tableau de noms pour les transferts de retour",
+      "Assistance bagages incluse",
+      "Disponible 24h/24 et 7j/7 y compris les jours fériés",
+    ],
+    faqTitle: "Foire aux questions — Minsk à l'aéroport de Vilnius",
+    faq: [
+      { q: "Combien coûte un transfert de Minsk à l'aéroport de Vilnius (VNO) ?", a: "Le prix est sur demande – veuillez nous contacter. Le montant exact dépend de la classe du véhicule (confort/business/minivan), de la nécessité ou non d'un siège enfant, du fait que vous voyagez avec un animal de compagnie, de votre adresse de prise en charge à Minsk et de toute autre demande particulière. Notre responsable confirme un prix fixe (sans compteur) avec carburant, assurance, assistance aux frontières, eau en bouteille et bagages déjà inclus — aucun extra lors de la prise en charge ou du dépôt." },
+      { q: "Quelle est la durée du trajet Minsk - VNO ?", a: "Le trajet lui-même, environ 175 km sur l'autoroute M7, dure environ 2 heures. Ajoutez 1 à 3 heures (jusqu'à 4 à 5 heures les jours de pointe) pour le poste frontière de Kamenny Log / Kotlovka. Prévoyez 2,5 à 5 heures de porte au terminal. Nous vous recommandons de quitter Minsk 4 à 5 heures avant votre vol." },
+      { q: "Quel poste frontière utilisez-vous ?", a: "Par défaut, Kamenny Log (Biélorussie) — Medininkai (Lituanie), également connu sous le nom de « Kotlovka » — est le principal passage pour passagers sur cette route. Si les files d'attente sont nombreuses, le chauffeur peut passer à Benyakoni — Šalčininkai. La décision est prise le matin en fonction des conditions réelles." },
+      { q: "De quels documents ai-je besoin pour entrer en Lituanie ?", a: "Un passeport valide et un visa Schengen (pour les ressortissants biélorusses, russes et autres qui en ont besoin). Citoyens de l’UE/lituaniens – passeport ou carte d’identité nationale. Les enfants ont besoin de leur propre passeport. Une assurance médicale espace Schengen est recommandée." },
+      { q: "L'autocar est-il moins cher qu'un transfert privé ?", a: "Si vous voyagez seul avec un petit sac, oui, l'autocar régulier (Ecolines, Lux Express) est généralement moins cher par personne. Si vous voyagez en couple, en famille ou en groupe avec des bagages, un transfert privé est souvent moins cher par personne et 1 à 3 heures plus rapide grâce au service direct de porte à terminal sans transfert ni attente nocturne à la gare routière. Demandez à notre responsable le devis exact en fonction de la taille de votre groupe." },
+      { q: "Opérez-vous de nuit ou pour des vols tôt le matin ?", a: "Oui, nous fonctionnons 24h/24 et 7j/7, y compris les jours fériés. Pour les vols de 5h00 à 7h00, nous partons généralement de Minsk entre 23h00 et minuit. Pas de supplément pour les nuits ou les jours fériés." },
+      { q: "Le transfert aller-retour de l'aéroport de Vilnius à Minsk est-il disponible ?", a: "Oui. Le chauffeur vous attend dans le hall des arrivées de VNO avec une pancarte nominative (gratuite), vous aide à porter vos bagages et vous dépose à votre adresse à Minsk. Réservez dans les deux sens en une seule demande — 5 % de réduction." },
+      { q: "Puis-je demander un siège enfant ?", a: "Oui, les sièges enfants et rehausseurs sont fournis gratuitement sur demande lors de la réservation. Merci de nous indiquer l'âge de l'enfant." },
+    ],
+    ctaTitle: "Réservez votre transfert",
+    ctaDesc: "Soumettez une demande et notre responsable vous contactera sous peu avec un prix exact.",
+    ctaBtn: "Demander une réservation",
+    backBtn: "← Tous les services",
+  },
 };
 
 export default function MinskVilniusAirportPage() {
-  const { lang } = useLang();
-  const c = content[lang];
+  const { lang, locale } = useLang();
+  const c = content[locale as keyof typeof content] ?? content.en;
   const isRu = lang === "ru";
 
   return (
@@ -463,7 +613,6 @@ export default function MinskVilniusAirportPage() {
     </div>
   );
 }
-
 let vilniusFaqUid = 0;
 function VilniusFaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
