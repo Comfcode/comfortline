@@ -76,8 +76,12 @@ function loadBlogSlugPaths() {
         const objStr = arrayBody.slice(start, i);
         const slug = /(?<!\w)slug:\s*"([^"]+)"/.exec(objStr)?.[1];
         const slugEn = /slugEn:\s*"([^"]+)"/.exec(objStr)?.[1];
+        const slugPl = /slugPl:\s*"([^"]+)"/.exec(objStr)?.[1];
+        const slugFr = /slugFr:\s*"([^"]+)"/.exec(objStr)?.[1];
         if (slug) paths.add(`/блог/${slug}`);
         if (slugEn) paths.add(`/blog/${slugEn}`);
+        if (slugPl) paths.add(`/pl/blog/${slugPl}`);
+        if (slugFr) paths.add(`/fr/blog/${slugFr}`);
       } else {
         i++;
       }
@@ -302,7 +306,9 @@ const server = http.createServer((req, res) => {
       const mime = MIME[ext] ?? "application/octet-stream";
       // Hashed assets (Vite appends content hash) can be cached forever.
       // HTML must revalidate so users always get the latest app shell.
-      const cache = ext === ".html" ? "no-cache" : "public, max-age=31536000, immutable";
+      const cache = ext === ".html"
+        ? "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
+        : "public, max-age=31536000, immutable";
       res.writeHead(200, { "Content-Type": mime, "Cache-Control": cache });
       fs.createReadStream(filePath).pipe(res);
       return;
@@ -325,7 +331,7 @@ const server = http.createServer((req, res) => {
 
     res.writeHead(status, {
       "Content-Type": "text/html; charset=utf-8",
-      "Cache-Control": "no-cache",
+      "Cache-Control": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
     });
 
     res.end(html);

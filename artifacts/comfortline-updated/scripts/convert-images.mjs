@@ -27,9 +27,15 @@ async function convertOne(file) {
 }
 
 async function main() {
-  const files = fs
-    .readdirSync(PUBLIC_DIR)
-    .filter((f) => /\.(png|jpg|jpeg)$/i.test(f) && !SKIP.has(f));
+  const files = [];
+  function walk(dir, prefix = "") {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const relative = path.join(prefix, entry.name);
+      if (entry.isDirectory()) walk(path.join(dir, entry.name), relative);
+      else if (/\.(png|jpg|jpeg)$/i.test(entry.name) && !SKIP.has(relative)) files.push(relative);
+    }
+  }
+  walk(PUBLIC_DIR);
   if (files.length === 0) {
     console.log("[webp] no images to convert");
     return;
@@ -41,15 +47,8 @@ async function main() {
     try {
       r = await convertOne(file);
     } catch (error) {
-      // A legacy source image must not prevent the entire static site from
-      // building when a checked-in WebP counterpart already exists.
-      const base = file.replace(/\.(png|jpg|jpeg)$/i, "");
-      const fallback = path.join(PUBLIC_DIR, base + ".webp");
-      if (fs.existsSync(fallback)) {
-        console.warn(`[webp] keep ${base}.webp; source ${file} could not be decoded`);
-        continue;
-      }
-      throw error;
+      console.warn(`[webp] warn ${file}: ${error.message}`);
+      continue;
     }
     totalBefore += r.before;
     totalAfter += r.after;

@@ -2,7 +2,7 @@ kind = "web"
 previewPath = "/"
 title = "ComfortLine Website"
 version = "1.0.0"
-id = "artifacts/comfortline-website"
+id = "artifacts/comfortline-updated"
 router = "path"
 
 [[integratedSkills]]
@@ -15,15 +15,15 @@ paths = [ "/" ]
 localPort = 24307
 
 [services.development]
-run = "pnpm --filter @workspace/comfortline-website run dev"
+run = "pnpm --dir artifacts/comfortline-updated run dev"
 
 [services.production]
 
 [services.production.build]
-args = ["pnpm", "--filter", "@workspace/comfortline-website", "run", "build"]
+args = ["pnpm", "--dir", "artifacts/comfortline-updated", "run", "build"]
 
 [services.production.run]
-args = ["node", "artifacts/comfortline-website/server.mjs"]
+args = ["node", "artifacts/comfortline-updated/server.mjs"]
 
 [services.production.run.env]
 PORT = "24307"
