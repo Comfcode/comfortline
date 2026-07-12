@@ -1,0 +1,26 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "color": {
+    "brand": { "$type": "color", "$value": "#B59C73" },
+    "brand-highlight": { "$type": "color", "$value": "#D4B07A" },
+    "canvas-dark": { "$type": "color", "$value": "#0E0D13" },
+    "surface-dark": { "$type": "color", "$value": "#131218" },
+    "text-on-dark": { "$type": "color", "$value": "#F5F0E8" },
+    "canvas-light": { "$type": "color", "$value": "#F8F7F5" },
+    "text-on-light": { "$type": "color", "$value": "#131218" }
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "$value": ["Montserrat", "Arial", "sans-serif"]
+    },
+    "weight-regular": { "$type": "fontWeight", "$value": 400 },
+    "weight-semibold": { "$type": "fontWeight", "$value": 600 },
+    "weight-bold": { "$type": "fontWeight", "$value": 700 },
+    "weight-display": { "$type": "fontWeight", "$value": 800 }
+  },
+  "radius": {
+    "control": { "$type": "dimension", "$value": { "value": 8, "unit": "px" } },
+    "card": { "$type": "dimension", "$value": { "value": 16, "unit": "px" } }
+  }
+}

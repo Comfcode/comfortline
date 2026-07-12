@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 70" role="img" aria-labelledby="title">
+  <title id="title">ComfortLine</title>
+  <defs><linearGradient id="gold" x1="62" y1="7" x2="10" y2="63" gradientUnits="userSpaceOnUse"><stop stop-color="#EDD9A8"/><stop offset=".22" stop-color="#D4B07A"/><stop offset=".58" stop-color="#B59C73"/><stop offset="1" stop-color="#8A7555"/></linearGradient></defs>
+  <path d="M60 9C59 10 59 17 55 14A27 27 0 1 0 55 56C59 53 59 59 60 61C59 60 51 44 47 47A15 15 0 1 1 47 23C51 26 59 10 60 9Z" fill="url(#gold)"/>
+  <text x="84" y="29" font-family="Montserrat,Arial,sans-serif" font-weight="300" font-size="13" fill="#F5F0E8" letter-spacing="5">COMFORT</text>
+  <text x="84" y="55" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="17" fill="#B59C73" letter-spacing="1.5">LINE</text>
+</svg>
