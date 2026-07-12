@@ -10,7 +10,8 @@ const content = {
   ru: {
     badge: "Заявка принята",
     title: "Спасибо за ваш запрос!",
-    subtitle: "Мы получили вашу заявку и свяжемся с вами в ближайшее время для подтверждения деталей.",
+    subtitle:
+      "Мы получили вашу заявку и свяжемся с вами в ближайшее время для подтверждения деталей.",
     promise1: "Ответим в ближайшее время",
     promise2: "Подтвердим маршрут и стоимость",
     promise3: "Пришлём детали на email",
@@ -20,24 +21,50 @@ const content = {
   en: {
     badge: "Request received",
     title: "Thank you for your inquiry!",
-    subtitle: "We've received your booking request and will contact you shortly to confirm the details.",
+    subtitle:
+      "We've received your booking request and will contact you shortly to confirm the details.",
     promise1: "Response shortly",
     promise2: "Route and price confirmed",
     promise3: "Details sent to your email",
     backBtn: "Back to home",
     phoneLabel: "Or call us right now",
   },
+  pl: {
+    badge: "Otrzymano prośbę",
+    title: "Dziękujemy za zapytanie!",
+    subtitle:
+      "Otrzymaliśmy Twoją prośbę o rezerwację i wkrótce skontaktujemy się z Tobą, aby potwierdzić szczegóły.",
+    promise1: "Odpowiedź wkrótce",
+    promise2: "Trasa i cena potwierdzona",
+    promise3: "Szczegóły przesłane na Twój e-mail",
+    backBtn: "Powrót do domu",
+    phoneLabel: "Lub zadzwoń do nas już teraz",
+  },
+  fr: {
+    badge: "Demande reçue",
+    title: "Merci pour votre demande !",
+    subtitle:
+      "Nous avons reçu votre demande de réservation et vous contacterons sous peu pour confirmer les détails.",
+    promise1: "Réponse sous peu",
+    promise2: "Itinéraire et prix confirmés",
+    promise3: "Détails envoyés à votre email",
+    backBtn: "Retour à la maison",
+    phoneLabel: "Ou appelez-nous maintenant",
+  },
 };
 
 export default function ThankYouPage() {
-  const { lang } = useLang();
-  const c = content[lang];
+  const { lang, locale } = useLang();
+  const c = content[locale as keyof typeof content] ?? content.en;
 
   useEffect(() => {
-    document.title = lang === "ru"
-      ? "Заявка принята — ComfortLine"
-      : "Thank You — ComfortLine";
-    const existing = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    document.title =
+      lang === "ru"
+        ? "Заявка принята — ComfortLine"
+        : "Thank You — ComfortLine";
+    const existing = document.head.querySelector<HTMLMetaElement>(
+      'meta[name="robots"]',
+    );
     const prevContent = existing?.content;
     let el = existing;
     let createdByUs = false;
@@ -73,7 +100,11 @@ export default function ThankYouPage() {
           <motion.div
             initial={{ scale: 0.6, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.15, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              delay: 0.15,
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="flex justify-center mb-8"
           >
             <div className="relative">
