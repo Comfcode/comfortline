@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, type ComponentType } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { useBrowserLocation } from "wouter/use-browser-location";
 
@@ -13,6 +13,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "@/context/language-context";
+import priorityLocales from "@/data/priority-locales.json";
 
 const LandingPage                  = lazy(() => import("@/pages/landing"));
 const PrivacyPolicyPage            = lazy(() => import("@/pages/privacy-policy"));
@@ -70,6 +71,53 @@ function VehiclePageKia()       { return <Suspense fallback={null}><VehiclePageM
 function VehiclePageHyundai()   { return <Suspense fallback={null}><VehiclePageModule slug="hyundai-palisade" /></Suspense>; }
 function VehiclePageFiat()      { return <Suspense fallback={null}><VehiclePageModule slug="fiat-scudo" /></Suspense>; }
 function VehiclePageAudi()      { return <Suspense fallback={null}><VehiclePageModule slug="audi-a6" /></Suspense>; }
+
+const localizedRouteComponents: Record<string, ComponentType> = {
+  "/en": LandingPage,
+  "/minsk-vilnius-airport": MinskVilniusAirportPage,
+  "/minsk-vilnius-transfer": MinskVilniusTransferPage,
+  "/minsk-warsaw-airport": MinskWarsawAirportPage,
+  "/minsk-warsaw-modlin-airport": MinskWarsawModlinAirportPage,
+  "/warsaw-transfer": WarsawTransferPage,
+  "/minsk-kaunas-airport": MinskKaunasAirportPage,
+  "/minsk-kaunas-transfer": MinskKaunasTransferPage,
+  "/minsk-riga-airport": MinskRigaAirportPage,
+  "/lithuania-transfer": LithuaniaTransferPage,
+  "/poland-transfer": PolandTransferPage,
+  "/minsk-ventspils-transfer": MinskVentspilsTransferPage,
+  "/minsk-liepaja-transfer": MinskLiepajaTransferPage,
+  "/minsk-jurmala-transfer": MinskJurmalaTransferPage,
+  "/minsk-daugavpils-transfer": MinskDaugavpilsTransferPage,
+  "/minsk-palanga-transfer": MinskPalangaTransferPage,
+  "/minsk-katowice-transfer": MinskKatowiceTransferPage,
+  "/minsk-lodz-transfer": MinskLodzTransferPage,
+  "/minsk-poznan-transfer": MinskPoznanTransferPage,
+  "/minsk-krakow-transfer": MinskKrakowTransferPage,
+  "/minsk-wroclaw-transfer": MinskWroclawTransferPage,
+  "/minsk-gdansk-transfer": MinskGdanskTransferPage,
+  "/minsk-trakai-transfer": MinskTrakaiTransferPage,
+  "/minsk-klaipeda-transfer": MinskKlaipedaTransferPage,
+  "/minsk-druskininkai-transfer": MinskDruskininkaiTransferPage,
+  "/minsk-city-transfer": MinskCityTransferPage,
+  "/belarus-transfer": BelarusTransferPage,
+  "/group-transfer": GroupTransferPage,
+  "/berlin-transfer": BerlinTransferPage,
+  "/prague-transfer": PragueTransferPage,
+  "/riga-transfer": RigaTransferPage,
+  "/sanatorium-transfer": SanatoriumTransferPage,
+  "/ski-transfer": SkiTransferPage,
+  "/vip-transfer": VipTransferPage,
+  "/mercedes-v-class-transfer": MercedesVClassPage,
+  "/europe-transfer": EuropeTransferPage,
+  "/latvia-transfer": LatviaTransferPage,
+  "/france-transfer": FranceTransferPage,
+  "/germany-transfer": GermanyTransferPage,
+  "/mercedes-e-class-transfer": VehiclePageMercedes,
+  "/kia-carnival-transfer": VehiclePageKia,
+  "/hyundai-palisade-transfer": VehiclePageHyundai,
+  "/fiat-scudo-transfer": VehiclePageFiat,
+  "/audi-a6-transfer": VehiclePageAudi,
+};
 
 function Router() {
   return (
@@ -210,6 +258,15 @@ function Router() {
         <Route path="/fr/transfert-minsk-lituanie" component={LithuaniaTransferPage} />
         <Route path="/pl/transfer-minsk-polska" component={PolandTransferPage} />
         <Route path="/fr/transfert-minsk-pologne" component={PolandTransferPage} />
+        {priorityLocales.flatMap(({ en, pl, fr }) => {
+          const component = localizedRouteComponents[en];
+          return component
+            ? [
+                <Route key={pl} path={pl} component={component} />,
+                <Route key={fr} path={fr} component={component} />,
+              ]
+            : [];
+        })}
         <Route path="/brandbook" component={BrandbookPage} />
         <Route path="/thank-you" component={ThankYouPage} />
         <Route component={NotFound} />
