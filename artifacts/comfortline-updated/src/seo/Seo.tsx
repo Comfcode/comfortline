@@ -32,6 +32,16 @@ interface SeoProps {
   noindex?: boolean;
 }
 
+type SeoLocale = "ru" | "en" | "pl" | "fr";
+
+export function normalizeRoutePath(value: string) {
+  const [pathname, ...queryParts] = decodeURIComponent(value).split("?");
+  const normalizedPath = pathname.replace(/\/+$/, "") || "/";
+  return queryParts.length > 0
+    ? `${normalizedPath}?${queryParts.join("?")}`
+    : normalizedPath;
+}
+
 export function Seo(props: SeoProps) {
   const { lang, locale } = useLang();
   const isRu = lang === "ru"; // UI language — used for breadcrumbs and JSON-LD (follows user preference)
@@ -43,21 +53,6 @@ export function Seo(props: SeoProps) {
   // distinct RU/EN pathnames (e.g. /faq vs /en/faq) or (for a few legacy
   // utility pages) a `?lang=en` query string, are matched correctly instead of
   // always falling into the RU branch.
-  let seoIsRu = isRu;
-  let canonicalPath = isRu ? props.pathRu : props.pathEn;
-  if (typeof window !== "undefined") {
-    const liveFull = window.location.pathname + window.location.search;
-    const decodedFull =
-      decodeURIComponent(window.location.pathname) + window.location.search;
-    if (liveFull === props.pathEn || decodedFull === props.pathEn) {
-      seoIsRu = false;
-      canonicalPath = props.pathEn;
-    } else if (liveFull === props.pathRu || decodedFull === props.pathRu) {
-      seoIsRu = true;
-      canonicalPath = props.pathRu;
-    }
-  }
-
   const routeGroup = priorityRoutes.find(
     (route) => route.ru === props.pathRu || route.en === props.pathEn,
   );
@@ -67,17 +62,17 @@ export function Seo(props: SeoProps) {
     pl: props.pathPl ?? routeGroup?.pl ?? props.pathEn,
     fr: props.pathFr ?? routeGroup?.fr ?? props.pathEn,
   };
-  const liveLocale =
+  const liveRoute =
     typeof window !== "undefined"
-      ? window.location.pathname === localizedPaths.pl
-        ? "pl"
-        : window.location.pathname === localizedPaths.fr
-          ? "fr"
-          : seoIsRu
-            ? "ru"
-            : "en"
-      : locale;
-  canonicalPath = localizedPaths[liveLocale];
+      ? normalizeRoutePath(window.location.pathname + window.location.search)
+      : null;
+  const matchedLocale = liveRoute
+    ? (Object.entries(localizedPaths).find(
+        ([, path]) => normalizeRoutePath(path) === liveRoute,
+      )?.[0] as SeoLocale | undefined)
+    : undefined;
+  const liveLocale: SeoLocale = matchedLocale ?? locale;
+  const canonicalPath = localizedPaths[liveLocale];
   const title =
     liveLocale === "ru"
       ? props.titleRu
@@ -94,7 +89,7 @@ export function Seo(props: SeoProps) {
         : liveLocale === "fr"
           ? (props.descFr ?? props.descEn)
           : props.descEn;
-  const keywords = seoIsRu ? props.keywordsRu : props.keywordsEn;
+  const keywords = liveLocale === "ru" ? props.keywordsRu : props.keywordsEn;
 
   const allJsonLd: object[] = [];
   if (!props.noBusinessJsonLd) allJsonLd.push(localBusinessJsonLd(liveLocale));
