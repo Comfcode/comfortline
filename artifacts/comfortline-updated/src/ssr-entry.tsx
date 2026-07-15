@@ -16,11 +16,13 @@
 //
 // IMPORTANT: keep this route table in sync with src/App.tsx's <Router />.
 
+import type { ComponentType } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "@/context/language-context";
+import priorityLocales from "@/data/priority-locales.json";
 
 import LandingPage from "@/pages/landing";
 import PrivacyPolicyPage from "@/pages/privacy-policy";
@@ -76,6 +78,53 @@ function VehiclePageKia()      { return <VehiclePage slug="kia-carnival" />; }
 function VehiclePageHyundai()  { return <VehiclePage slug="hyundai-palisade" />; }
 function VehiclePageFiat()     { return <VehiclePage slug="fiat-scudo" />; }
 function VehiclePageAudi()     { return <VehiclePage slug="audi-a6" />; }
+
+const localizedRouteComponents: Record<string, ComponentType> = {
+  "/en": LandingPage,
+  "/minsk-vilnius-airport": MinskVilniusAirportPage,
+  "/minsk-vilnius-transfer": MinskVilniusTransferPage,
+  "/minsk-warsaw-airport": MinskWarsawAirportPage,
+  "/minsk-warsaw-modlin-airport": MinskWarsawModlinAirportPage,
+  "/warsaw-transfer": WarsawTransferPage,
+  "/minsk-kaunas-airport": MinskKaunasAirportPage,
+  "/minsk-kaunas-transfer": MinskKaunasTransferPage,
+  "/minsk-riga-airport": MinskRigaAirportPage,
+  "/lithuania-transfer": LithuaniaTransferPage,
+  "/poland-transfer": PolandTransferPage,
+  "/minsk-ventspils-transfer": MinskVentspilsTransferPage,
+  "/minsk-liepaja-transfer": MinskLiepajaTransferPage,
+  "/minsk-jurmala-transfer": MinskJurmalaTransferPage,
+  "/minsk-daugavpils-transfer": MinskDaugavpilsTransferPage,
+  "/minsk-palanga-transfer": MinskPalangaTransferPage,
+  "/minsk-katowice-transfer": MinskKatowiceTransferPage,
+  "/minsk-lodz-transfer": MinskLodzTransferPage,
+  "/minsk-poznan-transfer": MinskPoznanTransferPage,
+  "/minsk-krakow-transfer": MinskKrakowTransferPage,
+  "/minsk-wroclaw-transfer": MinskWroclawTransferPage,
+  "/minsk-gdansk-transfer": MinskGdanskTransferPage,
+  "/minsk-trakai-transfer": MinskTrakaiTransferPage,
+  "/minsk-klaipeda-transfer": MinskKlaipedaTransferPage,
+  "/minsk-druskininkai-transfer": MinskDruskininkaiTransferPage,
+  "/minsk-city-transfer": MinskCityTransferPage,
+  "/belarus-transfer": BelarusTransferPage,
+  "/group-transfer": GroupTransferPage,
+  "/berlin-transfer": BerlinTransferPage,
+  "/prague-transfer": PragueTransferPage,
+  "/riga-transfer": RigaTransferPage,
+  "/sanatorium-transfer": SanatoriumTransferPage,
+  "/ski-transfer": SkiTransferPage,
+  "/vip-transfer": VipTransferPage,
+  "/mercedes-v-class-transfer": MercedesVClassPage,
+  "/europe-transfer": EuropeTransferPage,
+  "/latvia-transfer": LatviaTransferPage,
+  "/france-transfer": FranceTransferPage,
+  "/germany-transfer": GermanyTransferPage,
+  "/mercedes-e-class-transfer": VehiclePageMercedes,
+  "/kia-carnival-transfer": VehiclePageKia,
+  "/hyundai-palisade-transfer": VehiclePageHyundai,
+  "/fiat-scudo-transfer": VehiclePageFiat,
+  "/audi-a6-transfer": VehiclePageAudi,
+};
 
 function SsrRouter() {
   return (
@@ -215,6 +264,15 @@ function SsrRouter() {
       <Route path="/fr/transfert-minsk-lituanie" component={LithuaniaTransferPage} />
       <Route path="/pl/transfer-minsk-polska" component={PolandTransferPage} />
       <Route path="/fr/transfert-minsk-pologne" component={PolandTransferPage} />
+      {priorityLocales.flatMap(({ en, pl, fr }) => {
+        const component = localizedRouteComponents[en];
+        return component
+          ? [
+              <Route key={pl} path={pl} component={component} />,
+              <Route key={fr} path={fr} component={component} />,
+            ]
+          : [];
+      })}
       <Route component={NotFound} />
     </Switch>
   );
