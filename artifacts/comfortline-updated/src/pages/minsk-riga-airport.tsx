@@ -298,13 +298,27 @@ export default function MinskRigaAirportPage() {
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-booking-modal", {
                 detail: {
-                  prefilledFrom: isRu ? "Минск" : "Minsk",
-                  prefilledTo: isRu ? "Аэропорт Риги (RIX)" : "Riga Airport (RIX)",
+                  prefilledFrom:
+                  locale === "ru" ? "Минск" : locale === "pl" ? "Mińsk" : "Minsk",
+                  prefilledTo:
+                  locale === "ru"
+                    ? "${m[1]}"
+                    : locale === "pl"
+                      ? "${destMap[1]}"
+                      : locale === "fr"
+                        ? "${destMap[0]}"
+                        : "${m[2]}",
                 }
               }))}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 cursor-pointer"
             >
-              {isRu ? "Забронировать трансфер" : "Book transfer"}
+              {locale === "ru"
+                ? "Забронировать трансфер"
+                : locale === "pl"
+                  ? "Zarezerwuj transfer"
+                  : locale === "fr"
+                    ? "Réserver le transfert"
+                    : "Book transfer"}
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
